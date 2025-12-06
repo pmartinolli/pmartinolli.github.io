@@ -41,19 +41,99 @@
 <section id="repérer-les-p407-manquants" class="level3">
 <h3 class="anchored" data-anchor-id="repérer-les-p407-manquants">Repérer les P407 manquants</h3>
 <p>Je lance une requête SPARQL pour repérer tous les <em>scholarly articles</em> qui n’ont pas de <em>language</em> (P407). La requête est faite auprès de Qlever car c’est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).</p>
-<pre class="sparql"><code>PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt;
-PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;
-PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt;
-PREFIX p: &lt;http://www.wikidata.org/prop/&gt;
-PREFIX ps: &lt;http://www.wikidata.org/prop/statement/&gt;
-PREFIX pq: &lt;http://www.wikidata.org/prop/qualifier/&gt;
-SELECT ?item ?DOI WHERE {
-  # Find items with Q13442814 (scholarly article)
-  ?item wdt:P31 wd:Q13442814 .
-  ?item wdt:P356 ?DOI .
-  # Find items that have missing P407 (language)
-  FILTER NOT EXISTS { ?item wdt:P407 ?language. }.
-}</code></pre>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1">PREFIX wikibase: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>wikiba.se<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ontology#<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb1-2">PREFIX wd: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.wikidata.org<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>entity<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb1-3">PREFIX wdt: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.wikidata.org<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>prop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>direct<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb1-4">PREFIX p: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.wikidata.org<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>prop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb1-5">PREFIX ps: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.wikidata.org<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>prop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>statement<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb1-6">PREFIX pq: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.wikidata.org<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>prop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>qualifier<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb1-7"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">SELECT</span> ?item ?DOI <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">WHERE</span> {</span>
+<span id="cb1-8">  # Find items <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> Q13442814 (scholarly article)</span>
+<span id="cb1-9">  ?item wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P31</span> wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q13442814</span> .</span>
+<span id="cb1-10">  ?item wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P356</span> ?DOI .</span>
+<span id="cb1-11">  # Find items that have missing P407 (language)</span>
+<span id="cb1-12">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">FILTER</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">EXISTS</span> { ?item wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P407</span> ?language. }.</span>
+<span id="cb1-13">}</span></code></pre></div>
 <p><a href="https://qlever.dev/wikidata/z2V4IN">Try it</a></p>
 <p><em>Download</em> &gt; <em>Download result as CSV</em> : <code>input.csv</code></p>
 <p>Cela me produit une liste au format CSV qui contient deux colonnes :</p>
@@ -61,9 +141,9 @@ SELECT ?item ?DOI WHERE {
 <li>Une colonne QID de l’article</li>
 <li>Une colonne avec le DOI de l’article</li>
 </ul>
-<pre class="csv"><code>qid,doi
-Q132142173,10.1086/1000006
-Q113847548,10.1086/100002</code></pre>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb2-1">qid,doi</span>
+<span id="cb2-2">Q132142173,10.1086/1000006</span>
+<span id="cb2-3">Q113847548,10.1086/100002</span></code></pre></div>
 <p>Ce fichier peut peser 150 MB ou plus.</p>
 </section>
 </section>
@@ -381,21 +461,21 @@ font-style: inherit;">"input.csv"</span>, <span class="st" style="color: #20794D
 background-color: null;
 font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div>
 <p>Cela me produit un fichier <code>output_languages.csv</code>, placé lui aussi dans le même dossier que les autres fichiers.</p>
-<pre class="csv"><code>qid,language
-Q59230317,en
-Q59230331,en
-Q59230333,en
-Q60206758,en</code></pre>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb4-1">qid,language</span>
+<span id="cb4-2">Q59230317,en</span>
+<span id="cb4-3">Q59230331,en</span>
+<span id="cb4-4">Q59230333,en</span>
+<span id="cb4-5">Q60206758,en</span></code></pre></div>
 </section>
 <section id="transformer-le-code-de-langue-en-qid" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-le-code-de-langue-en-qid">Transformer le code de langue en QID</h2>
 <p>Dans cette étape, je transforme les codes de langue <code>en</code>, <code>fr</code>, <code>es</code>, etc. dans leurs identifiants Wikidata correspondants. Par exemple, <code>en</code> devient Q1860 pour <em>English</em>. Pour cela, j’utilise OpenRefine et une méthode nommée «<a href="https://doi.org/10.46430/phfr0038">processus de réconciliation</a>».</p>
 <p>Je réconcilie la colonne <code>language</code> avec la valeur <code>modern language (Q1288568)</code>. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme <code>P407</code>. Puis, une fois terminé, j’exporte seulement les colonnes <code>qid</code> et <code>P407</code> au format CSV.</p>
-<pre class="csv"><code>qid,P407
-Q115754644,Q1860
-Q98205420,Q1860
-Q91441407,Q1860
-Q91287237,Q1860</code></pre>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1">qid,P407</span>
+<span id="cb5-2">Q115754644,Q1860</span>
+<span id="cb5-3">Q98205420,Q1860</span>
+<span id="cb5-4">Q91441407,Q1860</span>
+<span id="cb5-5">Q91287237,Q1860</span></code></pre></div>
 </section>
 <section id="verser-dans-wikidata" class="level2">
 <h2 class="anchored" data-anchor-id="verser-dans-wikidata">Verser dans Wikidata</h2>
@@ -408,11 +488,11 @@ Q91287237,Q1860</code></pre>
 <li>Ne rien activer dans les boutons du dessous</li>
 <li><em>Enter your command here…</em> : copier-coller ceci (courant sur 150 000 lignes ou moins)</li>
 </ul>
-<pre class="csv"><code>qid,P407
-Q115754644,Q1860
-Q98205420,Q1860
-Q91441407,Q1860
-Q91287237,Q1860</code></pre>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb6-1">qid,P407</span>
+<span id="cb6-2">Q115754644,Q1860</span>
+<span id="cb6-3">Q98205420,Q1860</span>
+<span id="cb6-4">Q91441407,Q1860</span>
+<span id="cb6-5">Q91287237,Q1860</span></code></pre></div>
 <ul>
 <li>Cliquer sur <em>Create</em>.</li>
 <li>Attendre 10 minutes environ. Puis cliquer sur <em>Run Batch</em>.</li>
@@ -649,32 +729,121 @@ Q91287237,Q1860</code></pre>
 <section id="utilisation-de-ces-propriétés-dans-wikidata" class="level4">
 <h4 class="anchored" data-anchor-id="utilisation-de-ces-propriétés-dans-wikidata">Utilisation de ces propriétés dans Wikidata</h4>
 <p><a href="https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D">Compter</a> combien est-ce qu’il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.</p>
-<pre class="sparql"><code># Count total songs and songs with P921 (main subject) property
-SELECT DISTINCT
-  (COUNT(DISTINCT ?song) AS ?totalSongs)
-  (COUNT(DISTINCT ?songWithP921) AS ?songsWithP921)
-  (COUNT(DISTINCT ?songWithP136) AS ?songWithP136)
-WHERE {
-  VALUES ?songType {wd:Q7366       # song
-                    wd:Q105543609  # musical work/composition
-                    wd:Q207628     # composed musical work
-                    wd:Q2188189    # musical work
-                    wd:Q7302866    # audio track
-                   }.
-  ?song wdt:P31 ?songType.
-
-  # Optional: check if song has P921 (main subject)
-  OPTIONAL {
-    ?song wdt:P921 ?subject .
-    BIND(?song AS ?songWithP921)
-  }
-
-  # Optional: check if song has P136 (genre)
-  OPTIONAL {
-    ?song wdt:P136 ?genre .
-    BIND(?song AS ?songWithP136)
-  }
-}</code></pre>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"># <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Count</span> total songs <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> songs <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> P921 (main subject) property</span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">SELECT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DISTINCT</span></span>
+<span id="cb1-3">  (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">COUNT</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DISTINCT</span> ?song) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">AS</span> ?totalSongs)</span>
+<span id="cb1-4">  (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">COUNT</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DISTINCT</span> ?songWithP921) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">AS</span> ?songsWithP921)</span>
+<span id="cb1-5">  (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">COUNT</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DISTINCT</span> ?songWithP136) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">AS</span> ?songWithP136)</span>
+<span id="cb1-6"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">WHERE</span> {</span>
+<span id="cb1-7">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">VALUES</span> ?songType {wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q7366</span>       # song</span>
+<span id="cb1-8">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q105543609</span>  # musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>composition</span>
+<span id="cb1-9">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q207628</span>     # composed musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span></span>
+<span id="cb1-10">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q2188189</span>    # musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span></span>
+<span id="cb1-11">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q7302866</span>    # audio track</span>
+<span id="cb1-12">                   }.</span>
+<span id="cb1-13">  ?song wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P31</span> ?songType.</span>
+<span id="cb1-14"></span>
+<span id="cb1-15">  # Optional: <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">check</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> song has P921 (main subject)</span>
+<span id="cb1-16">  OPTIONAL {</span>
+<span id="cb1-17">    ?song wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P921</span> ?subject .</span>
+<span id="cb1-18">    BIND(?song <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">AS</span> ?songWithP921)</span>
+<span id="cb1-19">  }</span>
+<span id="cb1-20"></span>
+<span id="cb1-21">  # Optional: <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">check</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> song has P136 (genre)</span>
+<span id="cb1-22">  OPTIONAL {</span>
+<span id="cb1-23">    ?song wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P136</span> ?genre .</span>
+<span id="cb1-24">    BIND(?song <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">AS</span> ?songWithP136)</span>
+<span id="cb1-25">  }</span>
+<span id="cb1-26">}</span></code></pre></div>
 <ul>
 <li>Résultats du 7 octobre 2025: Nombre de chansons au total = 214 538
 <ul>
@@ -687,19 +856,76 @@ WHERE {
 </section>
 <section id="lister-tous-les-thèmes-de-chansons" class="level4">
 <h4 class="anchored" data-anchor-id="lister-tous-les-thèmes-de-chansons">Lister tous les thèmes de chansons</h4>
-<pre class="sparql"><code># List all the topics of songs
-SELECT DISTINCT ?song ?songLabel ?subject ?subjectLabel
-WHERE {
-  VALUES ?songType {wd:Q7366       # song
-                    wd:Q105543609  # musical work/composition
-                    wd:Q207628     # composed musical work
-                    wd:Q2188189    # musical work
-                    wd:Q7302866    # audio track
-                   }.
-  ?song wdt:P31 ?songType.
-  ?song wdt:P921 ?subject.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-}</code></pre>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"># <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">List</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">all</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">the</span> topics <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">of</span> songs</span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">SELECT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DISTINCT</span> ?song ?songLabel ?subject ?subjectLabel</span>
+<span id="cb2-3"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">WHERE</span> {</span>
+<span id="cb2-4">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">VALUES</span> ?songType {wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q7366</span>       # song</span>
+<span id="cb2-5">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q105543609</span>  # musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>composition</span>
+<span id="cb2-6">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q207628</span>     # composed musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span></span>
+<span id="cb2-7">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q2188189</span>    # musical <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">work</span></span>
+<span id="cb2-8">                    wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q7302866</span>    # audio track</span>
+<span id="cb2-9">                   }.</span>
+<span id="cb2-10">  ?song wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P31</span> ?songType.</span>
+<span id="cb2-11">  ?song wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P921</span> ?subject.</span>
+<span id="cb2-12">  SERVICE wikibase<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:label</span> { bd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:serviceParam</span> wikibase<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
+<span id="cb2-13">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#%23%20List%20all%20the%20topics%20of%20songs%0ASELECT%20DISTINCT%20%3Fsong%20%3FsongLabel%20%3Fsubject%20%3FsubjectLabel%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%3Fsong%20wdt%3AP921%20%3Fsubject.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A">try it</a></p>
 <p>Il y en a 2395 à ce jour.</p>
 </section>
@@ -919,10 +1145,28 @@ WHERE {
 <h2 class="anchored" data-anchor-id="petite-revue-de-données-wikimédienne">Petite revue de données Wikimédienne</h2>
 <p>En parcourant la <a href="https://en.wikipedia.org/wiki/Imaginary_book">liste Wikipédia</a> des livres et de collections de livres imaginaires, je remarque que Rabelais est absent, alors qu’il semble être le premier (ou un des premiers) à avoir créé une liste de livres imaginaires. De plus, il n’y a pas de traduction française de la page (à faire). La page sur la<a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor">librairie de Saint-Victor</a> n’existe qu’en français. Il existe une page en anglais, français, russe et japonais des livres du <a href="https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books">Mythe de Cthulhu</a>.</p>
 <p>Quant à Wikidata, elle manque aussi de plusieurs éléments.</p>
-<pre class="sparql"><code>SELECT ?livre_fictionnel ?livre_fictionnelLabel WHERE {
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-  ?livre_fictionnel wdt:P31 wd:Q74574.
-}</code></pre>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">SELECT</span> ?livre_fictionnel ?livre_fictionnelLabel <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">WHERE</span> {</span>
+<span id="cb1-2">  SERVICE wikibase<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:label</span> { bd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:serviceParam</span> wikibase<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
+<span id="cb1-3">  ?livre_fictionnel wdt<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:P31</span> wd<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:Q74574</span>.</span>
+<span id="cb1-4">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Flivre_fictionnel%20%3Flivre_fictionnelLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%20%20%3Flivre_fictionnel%20wdt%3AP31%20wd%3AQ74574.%0A%7D%0A">try it</a>. Il y en avait 100 en octobre 2025.</p>
 <section id="livres-imaginaires-potentiels" class="level3">
 <h3 class="anchored" data-anchor-id="livres-imaginaires-potentiels">Livres imaginaires potentiels</h3>

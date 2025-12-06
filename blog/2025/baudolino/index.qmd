@@ -30,7 +30,7 @@ En parcourant la [liste Wikipédia](https://en.wikipedia.org/wiki/Imaginary_book
 
 Quant à Wikidata, elle manque aussi de plusieurs éléments.
 
-``` sparql
+``` sql
 SELECT ?livre_fictionnel ?livre_fictionnelLabel WHERE {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
   ?livre_fictionnel wdt:P31 wd:Q74574.

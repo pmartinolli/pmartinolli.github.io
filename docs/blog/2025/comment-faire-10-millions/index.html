@@ -222,19 +222,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="repérer-les-p407-manquants" class="level3">
 <h3 class="anchored" data-anchor-id="repérer-les-p407-manquants">Repérer les P407 manquants</h3>
 <p>Je lance une requête SPARQL pour repérer tous les <em>scholarly articles</em> qui n’ont pas de <em>language</em> (P407). La requête est faite auprès de Qlever car c’est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).</p>
-<pre class="sparql"><code>PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt;
-PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;
-PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt;
-PREFIX p: &lt;http://www.wikidata.org/prop/&gt;
-PREFIX ps: &lt;http://www.wikidata.org/prop/statement/&gt;
-PREFIX pq: &lt;http://www.wikidata.org/prop/qualifier/&gt;
-SELECT ?item ?DOI WHERE {
-  # Find items with Q13442814 (scholarly article)
-  ?item wdt:P31 wd:Q13442814 .
-  ?item wdt:P356 ?DOI .
-  # Find items that have missing P407 (language)
-  FILTER NOT EXISTS { ?item wdt:P407 ?language. }.
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PREFIX wikibase: <span class="op">&lt;</span>http:<span class="op">//</span>wikiba.se<span class="op">/</span>ontology#<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>PREFIX wd: <span class="op">&lt;</span>http:<span class="op">//</span>www.wikidata.org<span class="op">/</span>entity<span class="op">/&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>PREFIX wdt: <span class="op">&lt;</span>http:<span class="op">//</span>www.wikidata.org<span class="op">/</span>prop<span class="op">/</span>direct<span class="op">/&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>PREFIX p: <span class="op">&lt;</span>http:<span class="op">//</span>www.wikidata.org<span class="op">/</span>prop<span class="op">/&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>PREFIX ps: <span class="op">&lt;</span>http:<span class="op">//</span>www.wikidata.org<span class="op">/</span>prop<span class="op">/</span>statement<span class="op">/&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>PREFIX pq: <span class="op">&lt;</span>http:<span class="op">//</span>www.wikidata.org<span class="op">/</span>prop<span class="op">/</span>qualifier<span class="op">/&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> ?item ?DOI <span class="kw">WHERE</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  # Find items <span class="kw">with</span> Q13442814 (scholarly article)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  ?item wdt<span class="ch">:P31</span> wd<span class="ch">:Q13442814</span> .</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  ?item wdt<span class="ch">:P356</span> ?DOI .</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  # Find items that have missing P407 (language)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FILTER</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> { ?item wdt<span class="ch">:P407</span> ?language. }.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://qlever.dev/wikidata/z2V4IN">Try it</a></p>
 <p><em>Download</em> &gt; <em>Download result as CSV</em> : <code>input.csv</code></p>
 <p>Cela me produit une liste au format CSV qui contient deux colonnes :</p>
@@ -242,9 +242,9 @@ SELECT ?item ?DOI WHERE {
 <li>Une colonne QID de l’article</li>
 <li>Une colonne avec le DOI de l’article</li>
 </ul>
-<pre class="csv"><code>qid,doi
-Q132142173,10.1086/1000006
-Q113847548,10.1086/100002</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>qid,doi</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Q132142173,10.1086/1000006</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Q113847548,10.1086/100002</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ce fichier peut peser 150 MB ou plus.</p>
 </section>
 </section>
@@ -309,21 +309,21 @@ Q113847548,10.1086/100002</code></pre>
 <span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>fetch_crossref_languages(<span class="st">"input.csv"</span>, <span class="st">"output_languages.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Cela me produit un fichier <code>output_languages.csv</code>, placé lui aussi dans le même dossier que les autres fichiers.</p>
-<pre class="csv"><code>qid,language
-Q59230317,en
-Q59230331,en
-Q59230333,en
-Q60206758,en</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>qid,language</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Q59230317,en</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Q59230331,en</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Q59230333,en</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Q60206758,en</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="transformer-le-code-de-langue-en-qid" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-le-code-de-langue-en-qid">Transformer le code de langue en QID</h2>
 <p>Dans cette étape, je transforme les codes de langue <code>en</code>, <code>fr</code>, <code>es</code>, etc. dans leurs identifiants Wikidata correspondants. Par exemple, <code>en</code> devient Q1860 pour <em>English</em>. Pour cela, j’utilise OpenRefine et une méthode nommée «<a href="https://doi.org/10.46430/phfr0038">processus de réconciliation</a>».</p>
 <p>Je réconcilie la colonne <code>language</code> avec la valeur <code>modern language (Q1288568)</code>. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme <code>P407</code>. Puis, une fois terminé, j’exporte seulement les colonnes <code>qid</code> et <code>P407</code> au format CSV.</p>
-<pre class="csv"><code>qid,P407
-Q115754644,Q1860
-Q98205420,Q1860
-Q91441407,Q1860
-Q91287237,Q1860</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>qid,P407</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Q115754644,Q1860</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Q98205420,Q1860</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Q91441407,Q1860</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Q91287237,Q1860</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="verser-dans-wikidata" class="level2">
 <h2 class="anchored" data-anchor-id="verser-dans-wikidata">Verser dans Wikidata</h2>
@@ -336,11 +336,11 @@ Q91287237,Q1860</code></pre>
 <li>Ne rien activer dans les boutons du dessous</li>
 <li><em>Enter your command here…</em> : copier-coller ceci (courant sur 150 000 lignes ou moins)</li>
 </ul>
-<pre class="csv"><code>qid,P407
-Q115754644,Q1860
-Q98205420,Q1860
-Q91441407,Q1860
-Q91287237,Q1860</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>qid,P407</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Q115754644,Q1860</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Q98205420,Q1860</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Q91441407,Q1860</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>Q91287237,Q1860</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Cliquer sur <em>Create</em>.</li>
 <li>Attendre 10 minutes environ. Puis cliquer sur <em>Run Batch</em>.</li>

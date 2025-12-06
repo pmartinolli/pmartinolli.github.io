@@ -93,7 +93,7 @@ Autres propriétés thématiques plus spécifiques :
 
 [Compter](https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D) combien est-ce qu'il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.
 
-``` sparql
+``` sql
 # Count total songs and songs with P921 (main subject) property
 SELECT DISTINCT
   (COUNT(DISTINCT ?song) AS ?totalSongs)
@@ -130,7 +130,7 @@ WHERE {
 
 #### Lister tous les thèmes de chansons
 
-``` sparql
+``` sql
 # List all the topics of songs
 SELECT DISTINCT ?song ?songLabel ?subject ?subjectLabel
 WHERE {

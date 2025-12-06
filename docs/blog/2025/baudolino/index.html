@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -188,10 +222,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="petite-revue-de-données-wikimédienne">Petite revue de données Wikimédienne</h2>
 <p>En parcourant la <a href="https://en.wikipedia.org/wiki/Imaginary_book">liste Wikipédia</a> des livres et de collections de livres imaginaires, je remarque que Rabelais est absent, alors qu’il semble être le premier (ou un des premiers) à avoir créé une liste de livres imaginaires. De plus, il n’y a pas de traduction française de la page (à faire). La page sur la<a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor">librairie de Saint-Victor</a> n’existe qu’en français. Il existe une page en anglais, français, russe et japonais des livres du <a href="https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books">Mythe de Cthulhu</a>.</p>
 <p>Quant à Wikidata, elle manque aussi de plusieurs éléments.</p>
-<pre class="sparql"><code>SELECT ?livre_fictionnel ?livre_fictionnelLabel WHERE {
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-  ?livre_fictionnel wdt:P31 wd:Q74574.
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> ?livre_fictionnel ?livre_fictionnelLabel <span class="kw">WHERE</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  SERVICE wikibase<span class="ch">:label</span> { bd<span class="ch">:serviceParam</span> wikibase<span class="ch">:language</span> <span class="ot">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  ?livre_fictionnel wdt<span class="ch">:P31</span> wd<span class="ch">:Q74574</span>.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Flivre_fictionnel%20%3Flivre_fictionnelLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%20%20%3Flivre_fictionnel%20wdt%3AP31%20wd%3AQ74574.%0A%7D%0A">try it</a>. Il y en avait 100 en octobre 2025.</p>
 <section id="livres-imaginaires-potentiels" class="level3">
 <h3 class="anchored" data-anchor-id="livres-imaginaires-potentiels">Livres imaginaires potentiels</h3>

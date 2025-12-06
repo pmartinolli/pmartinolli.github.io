@@ -6,7 +6,6 @@ description: "Flux de travail pour ajouter la langue à des articles avec DOI, v
 categories: [Wikidata, OpenRefine, HumanitésNumériques]
 ---
 
-
 ## Introduction
 
 J'ai trouvé un filon inexploité dans le *Wikidata gnoming*, une activité consistant à mettre son bonnet et descendre dans les données avec sa petite pioche pour y miner des informations. Ce filon est la propriété *language* (P407) manquante dans beaucoup de *scholarly articles* qui ont été versés à la va-vite. Selon moi, ces données mal-versées sont une forme de vandalisme. En effet, elles encombrent Wikidata de données peu cohérentes, peu pertinentes et surtout de mauvaise qualité. Les contributeurs Wikidata et la fondation Wikimédia ont exprimé leur consternation aux [données versées en masse](https://www.wikidata.org/wiki/Wikidata_talk:Requests_for_comment/Mass-editing_policy). La conséquence la plus déplorable a été la division du contenu de Wikidata en [deux graphes](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split) pour séparer les *scholarly articles* (qui constituent la majorité des ajouts en masse) du reste de Wikidata.
@@ -26,7 +25,7 @@ Je pense que dans tout projet de versements en masse dans Wikidata, il faut intr
 
 Je lance une requête SPARQL pour repérer tous les *scholarly articles* qui n'ont pas de *language* (P407). La requête est faite auprès de Qlever car c'est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).
 
-``` sparql
+``` sql
 PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -51,7 +50,7 @@ Cela me produit une liste au format CSV qui contient deux colonnes :
 -   Une colonne QID de l'article
 -   Une colonne avec le DOI de l'article
 
-``` csv
+``` xml
 qid,doi
 Q132142173,10.1086/1000006
 Q113847548,10.1086/100002
@@ -125,7 +124,7 @@ fetch_crossref_languages("input.csv", "output_languages.csv")
 
 Cela me produit un fichier `output_languages.csv`, placé lui aussi dans le même dossier que les autres fichiers.
 
-``` csv
+``` xml
 qid,language
 Q59230317,en
 Q59230331,en
@@ -139,7 +138,7 @@ Dans cette étape, je transforme les codes de langue `en`, `fr`, `es`, etc. dans
 
 Je réconcilie la colonne `language` avec la valeur `modern language (Q1288568)`. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme `P407`. Puis, une fois terminé, j'exporte seulement les colonnes `qid` et `P407` au format CSV.
 
-``` csv
+``` xml
 qid,P407
 Q115754644,Q1860
 Q98205420,Q1860
@@ -158,7 +157,7 @@ Je verse des lots de moins de 150 000 lignes de ce fichier CSV dans [QuickStatem
 -   Ne rien activer dans les boutons du dessous
 -   *Enter your command here...* : copier-coller ceci (courant sur 150 000 lignes ou moins)
 
-``` csv
+``` xml
 qid,P407
 Q115754644,Q1860
 Q98205420,Q1860

@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -253,32 +287,32 @@ ul.task-list li input[type="checkbox"] {
 <section id="utilisation-de-ces-propriétés-dans-wikidata" class="level4">
 <h4 class="anchored" data-anchor-id="utilisation-de-ces-propriétés-dans-wikidata">Utilisation de ces propriétés dans Wikidata</h4>
 <p><a href="https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D">Compter</a> combien est-ce qu’il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.</p>
-<pre class="sparql"><code># Count total songs and songs with P921 (main subject) property
-SELECT DISTINCT
-  (COUNT(DISTINCT ?song) AS ?totalSongs)
-  (COUNT(DISTINCT ?songWithP921) AS ?songsWithP921)
-  (COUNT(DISTINCT ?songWithP136) AS ?songWithP136)
-WHERE {
-  VALUES ?songType {wd:Q7366       # song
-                    wd:Q105543609  # musical work/composition
-                    wd:Q207628     # composed musical work
-                    wd:Q2188189    # musical work
-                    wd:Q7302866    # audio track
-                   }.
-  ?song wdt:P31 ?songType.
-
-  # Optional: check if song has P921 (main subject)
-  OPTIONAL {
-    ?song wdt:P921 ?subject .
-    BIND(?song AS ?songWithP921)
-  }
-
-  # Optional: check if song has P136 (genre)
-  OPTIONAL {
-    ?song wdt:P136 ?genre .
-    BIND(?song AS ?songWithP136)
-  }
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a># <span class="fu">Count</span> total songs <span class="kw">and</span> songs <span class="kw">with</span> P921 (main subject) property</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> ?song) <span class="kw">AS</span> ?totalSongs)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> ?songWithP921) <span class="kw">AS</span> ?songsWithP921)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> ?songWithP136) <span class="kw">AS</span> ?songWithP136)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">VALUES</span> ?songType {wd<span class="ch">:Q7366</span>       # song</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q105543609</span>  # musical <span class="kw">work</span><span class="op">/</span>composition</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q207628</span>     # composed musical <span class="kw">work</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q2188189</span>    # musical <span class="kw">work</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q7302866</span>    # audio track</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                   }.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  ?song wdt<span class="ch">:P31</span> ?songType.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  # Optional: <span class="kw">check</span> <span class="cf">if</span> song has P921 (main subject)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  OPTIONAL {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ?song wdt<span class="ch">:P921</span> ?subject .</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    BIND(?song <span class="kw">AS</span> ?songWithP921)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  # Optional: <span class="kw">check</span> <span class="cf">if</span> song has P136 (genre)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  OPTIONAL {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ?song wdt<span class="ch">:P136</span> ?genre .</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    BIND(?song <span class="kw">AS</span> ?songWithP136)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Résultats du 7 octobre 2025: Nombre de chansons au total = 214 538
 <ul>
@@ -291,19 +325,19 @@ WHERE {
 </section>
 <section id="lister-tous-les-thèmes-de-chansons" class="level4">
 <h4 class="anchored" data-anchor-id="lister-tous-les-thèmes-de-chansons">Lister tous les thèmes de chansons</h4>
-<pre class="sparql"><code># List all the topics of songs
-SELECT DISTINCT ?song ?songLabel ?subject ?subjectLabel
-WHERE {
-  VALUES ?songType {wd:Q7366       # song
-                    wd:Q105543609  # musical work/composition
-                    wd:Q207628     # composed musical work
-                    wd:Q2188189    # musical work
-                    wd:Q7302866    # audio track
-                   }.
-  ?song wdt:P31 ?songType.
-  ?song wdt:P921 ?subject.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-}</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a># <span class="kw">List</span> <span class="kw">all</span> <span class="kw">the</span> topics <span class="kw">of</span> songs</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> ?song ?songLabel ?subject ?subjectLabel</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">VALUES</span> ?songType {wd<span class="ch">:Q7366</span>       # song</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q105543609</span>  # musical <span class="kw">work</span><span class="op">/</span>composition</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q207628</span>     # composed musical <span class="kw">work</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q2188189</span>    # musical <span class="kw">work</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                    wd<span class="ch">:Q7302866</span>    # audio track</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                   }.</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ?song wdt<span class="ch">:P31</span> ?songType.</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ?song wdt<span class="ch">:P921</span> ?subject.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  SERVICE wikibase<span class="ch">:label</span> { bd<span class="ch">:serviceParam</span> wikibase<span class="ch">:language</span> <span class="ot">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://query.wikidata.org/#%23%20List%20all%20the%20topics%20of%20songs%0ASELECT%20DISTINCT%20%3Fsong%20%3FsongLabel%20%3Fsubject%20%3FsubjectLabel%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%3Fsong%20wdt%3AP921%20%3Fsubject.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A">try it</a></p>
 <p>Il y en a 2395 à ce jour.</p>
 </section>

@@ -21,6 +21,7 @@ quarto install extension schochastics/academicons
 
 quarto add quarto-ext/fontawesome
 
+py -m pip install jupyter
 
 
 
