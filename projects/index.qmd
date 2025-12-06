@@ -1,0 +1,19 @@
+---
+title: "projects"
+format: html
+---
+
+-   Projets pédagogiques
+    -   [Manuel de recherche documentaire](https://pmartinolli.github.io/QMpRD/) : pour le séminaire PLU6058.
+    -   [Thesaurus++](thesaurusPlusPlus/index.html) : pour aider à organiser ses données de recherche.
+-   Projets Wikidata en cours
+    -   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
+    -   Histoire des mathématiques : pour tracer qui cite qui en [remontant les références](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html) du papier séminal sur la théorie des jeux.
+    -   Liste de [revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) : pour mieux les repérer et les évaluer.
+-   Projets rêvés :
+    -   Créer un nouveau modèle générique de dataviz expliquant comment ajouter la dimension temporelle sur les graphes de relation.
+    -   Comment constituer un index consultable de tous les articles d'encyclopédie ? un métapédia ? ou un pédiapédia ?
+    -   Comment annoter facilement des documents TEI ? (auto et manu)
+    -   Faire une dataviz du *Manuscrit retrouvé à Saragosse* de Jan Potocki.
+-   [Tabletop role-playing games](../ttrpg/index.html) : pour le plaisir de pratiquer des méthodes digitales ou de sciences sociales sur le jeu de rôle sur table.
+-   *in limbo* : projets terminés, abandonnés, en suspens, etc.

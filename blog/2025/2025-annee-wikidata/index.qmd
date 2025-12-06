@@ -1,0 +1,27 @@
+---
+title: "2025, année Wikidata ?"
+author: "Pascal Martinolli"
+date: "2025-10-06"
+categories: [Wikidata, HumanitésNumériques]
+description: "Quelques points saillants et projets en cours autour de cet outil pertinent pour la science ouverte."
+---
+
+Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.
+
+Dans les prochains jours, 3 articles vont être publiés sur le sujet :
+
+-   Deux sur le blogue Zotero francophone, centrés sur l'extension Cita.
+    -   « [Enrichir sa collection de références Zotero grâce à l'extension Cita](https://zotero.hypotheses.org/5740) »
+    -   « [Contribuer à Wikidata avec Cita](https://zotero.hypotheses.org/5780) » Dans l'introduction, je parle de l'intérêt de Wikidata pour la science ouverte.
+-   Un dans *Programming historian* en français : « [Enrichir ses données avec le processus de réconciliation d’OpenRefine](https://doi.org/10.46430/phfr0038) ». En conclusion, je discute des enjeux pour la gestion de données de recherche en histoire.
+
+À ce jour, j'ai contribué environ [4](https://www.wikidata.org/wiki/Special:Contributions/Pmartinolli) millions de fois. J'ai aussi amélioré le fichier d'exportation Zotero pour [Wikidata QuickStatements.js](https://github.com/zotero/translators/pull/3468).
+
+Depuis cet année, je participe à une équipe de valorisation des [revues québécoises du réseau Circé](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9). Cette équipe poursuit l'excellente présentation faite par Michael Miller lors du congrès ACFAS de mai dernier où il expliquait les avantages à avoir une stratégie Wikimedia pour le rayonnement des revues. J'en parlerai dans un futur billet.
+
+J'ai développé plein de petits outils en JavaScript et HTML pour tirer parti de Wikidata et présenter simplement au grand public ce qu'il est possible de faire avec cet outil austère et méconnu.
+
+-   Liste de [revues en histoire](https://pmartinolli.github.io/code/revuesdhistoire/)
+-   Un réseau de citation sur une chronologie : pour les [jeux de rôle](https://pmartinolli.github.io/code/timelined_networks/ttrpg_timelined_network.html) ou pour les [travaux scientifiques](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html). Ce dernier graphe a été positivement remarqué par Egon Willighagen, un des co-concepteur de [Scholia](https://scholia.toolforge.org/) et il aimerait peut être développer ce type de visualisation. J'en parlerai dans un futur billet.
+
+Je vais aussi participer à la révision d'article pour un numéro spécial Wikidata du [*Journal of Open Humanities Data (JOHD)*](https://openhumanitiesdata.metajnl.com/).

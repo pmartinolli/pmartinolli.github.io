@@ -1,0 +1,182 @@
+---
+title: "Comment faire 10 millions de contributions dans Wikidata sans se fatiguer ?"
+author: "Pascal Martinolli"
+date: "2025-11-30"
+description: "Flux de travail pour ajouter la langue à des articles avec DOI, via CrossRef, OpenRefine & Quickstatements"
+categories: [Wikidata, OpenRefine, HumanitésNumériques]
+---
+
+
+## Introduction
+
+J'ai trouvé un filon inexploité dans le *Wikidata gnoming*, une activité consistant à mettre son bonnet et descendre dans les données avec sa petite pioche pour y miner des informations. Ce filon est la propriété *language* (P407) manquante dans beaucoup de *scholarly articles* qui ont été versés à la va-vite. Selon moi, ces données mal-versées sont une forme de vandalisme. En effet, elles encombrent Wikidata de données peu cohérentes, peu pertinentes et surtout de mauvaise qualité. Les contributeurs Wikidata et la fondation Wikimédia ont exprimé leur consternation aux [données versées en masse](https://www.wikidata.org/wiki/Wikidata_talk:Requests_for_comment/Mass-editing_policy). La conséquence la plus déplorable a été la division du contenu de Wikidata en [deux graphes](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split) pour séparer les *scholarly articles* (qui constituent la majorité des ajouts en masse) du reste de Wikidata.
+
+Je pense que dans tout projet de versements en masse dans Wikidata, il faut introduire une notion de notoriété et de contrôle qualité. Par exemple, je suis dans un projet de valorisation de la recherche dans des [revues savantes québécoises (Circé)](https://www.wikidata.org/wiki/User:Pmartinolli/ReseauCIRCE). Nous voudrions verser des références de leur contenu. Selon moi, il faudrait prioriser les articles de recherche révisés par les pairs et assez consistants (pas d'éditorial, pas de comptes-rendus de livres, pas d'opinion ou de tribune, pas d'articles de moins de 5 pages, etc.).
+
+## Flux de travail
+
+-   En quelques mots :
+    -   Avec une SPARQL, je repère tous les articles qui ont P407 manquante. J'en créé une liste avec le `QID de l'article` et son `DOI`.
+    -   Je lance un script python qui va chercher chaque `DOI` de cette liste et qui retourne le code de langue. Par exemple `en` pour l'anglais.
+    -   J'importe cette nouvelle liste dans OpenRefine et je réconcilie la colonne du code de langue. J'exporte une liste finale avec le `QID de l'article` et le `QID de la langue`
+    -   Par paquets, je verse ces données avec QuickStatements 3.
+    -   CQFD. (*ce qu'il fallait data-ifier*)
+
+### Repérer les P407 manquants
+
+Je lance une requête SPARQL pour repérer tous les *scholarly articles* qui n'ont pas de *language* (P407). La requête est faite auprès de Qlever car c'est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).
+
+``` sparql
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+SELECT ?item ?DOI WHERE {
+  # Find items with Q13442814 (scholarly article)
+  ?item wdt:P31 wd:Q13442814 .
+  ?item wdt:P356 ?DOI .
+  # Find items that have missing P407 (language)
+  FILTER NOT EXISTS { ?item wdt:P407 ?language. }.
+}
+```
+
+[Try it](https://qlever.dev/wikidata/z2V4IN)
+
+*Download* \> *Download result as CSV* : `input.csv`
+
+Cela me produit une liste au format CSV qui contient deux colonnes :
+
+-   Une colonne QID de l'article
+-   Une colonne avec le DOI de l'article
+
+``` csv
+qid,doi
+Q132142173,10.1086/1000006
+Q113847548,10.1086/100002
+```
+
+Ce fichier peut peser 150 MB ou plus.
+
+## Récupérer la langue dans CrossRef
+
+Je lance le script Python ci-dessous. Ce script nommé `QueryCrossrefAPI_withCSVofQIDnDOI_forLanguage.py` (sic) est placé dans le même dossier que le fichier `input.csv`. Grâce à l'API de Crossref, il va chercher le fichier JSON de l'article, correspondant au DOI de l'article. Ensuite, il extrait seulement la valeur (*value*) de la clé (*key*) `message.language`. Cette API de CrossRef est ouverte à tous alors pour ne pas la surcharger de demande, il est une bonne pratique d'ajouter un `time.sleep(0.05)` pour espacer les demandes.
+
+``` python
+import csv
+import requests
+import time
+
+def fetch_crossref_languages(input_csv, output_csv, chunk_size=1000):
+
+    results = []
+    counter = 0
+
+    with open(input_csv, newline='', encoding='utf-8') as infile:
+        reader = csv.DictReader(infile)
+
+        for row in reader:
+            qid = row.get("qid")
+            print(qid, end=": ")
+            doi = row.get("doi", "")
+            print(doi, end="= ")
+            language = None
+
+            if doi:
+                url = "https://api.crossref.org/works/" + doi
+                try:
+                    r = requests.get(url, timeout=10)
+                    r.raise_for_status()
+                    data = r.json()
+                    language = data.get("message", {}).get("language")
+                    print(language)
+                except Exception as e:
+                    language = e
+                    print(f"Error fetching {doi}: {e}")
+
+                # Rate limit: wait 50 ms
+                time.sleep(0.05)
+
+            results.append({"qid": qid, "language": language})
+            counter += 1
+
+            # Every `chunk_size` rows, flush to CSV
+            if counter % chunk_size == 0:
+                with open(output_csv, "a", newline='', encoding="utf-8") as outfile:
+                    writer = csv.DictWriter(outfile, fieldnames=["qid", "language"])
+                    if counter == chunk_size:  # write header only once
+                        writer.writeheader()
+                    writer.writerows(results)
+                results = []  # reset buffer
+                print(f"✅ Wrote {counter} rows to {output_csv}")
+
+    # Write any remaining rows
+    if results:
+        with open(output_csv, "a", newline='', encoding="utf-8") as outfile:
+            writer = csv.DictWriter(outfile, fieldnames=["qid", "language"])
+            if counter <= chunk_size:  # in case file never got header
+                writer.writeheader()
+            writer.writerows(results)
+        print(f"✅ Finished: wrote total {counter} rows to {output_csv}")
+
+fetch_crossref_languages("input.csv", "output_languages.csv")
+```
+
+Cela me produit un fichier `output_languages.csv`, placé lui aussi dans le même dossier que les autres fichiers.
+
+``` csv
+qid,language
+Q59230317,en
+Q59230331,en
+Q59230333,en
+Q60206758,en
+```
+
+## Transformer le code de langue en QID
+
+Dans cette étape, je transforme les codes de langue `en`, `fr`, `es`, etc. dans leurs identifiants Wikidata correspondants. Par exemple, `en` devient Q1860 pour *English*. Pour cela, j'utilise OpenRefine et une méthode nommée «[processus de réconciliation](https://doi.org/10.46430/phfr0038)».
+
+Je réconcilie la colonne `language` avec la valeur `modern language (Q1288568)`. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme `P407`. Puis, une fois terminé, j'exporte seulement les colonnes `qid` et `P407` au format CSV.
+
+``` csv
+qid,P407
+Q115754644,Q1860
+Q98205420,Q1860
+Q91441407,Q1860
+Q91287237,Q1860
+```
+
+## Verser dans Wikidata
+
+Je verse des lots de moins de 150 000 lignes de ce fichier CSV dans [QuickStatements 3.0](https://qs-dev.toolforge.org/) (les versions antérieures ne peuvent prendre plus de quelques dizaines de milliers).
+
+-   *New batch*
+-   Wikibase : laisser tel quel
+-   *Command format* : `CSV`
+-   *Custom batch name* : `P407 improvements with data from CrossRef`
+-   Ne rien activer dans les boutons du dessous
+-   *Enter your command here...* : copier-coller ceci (courant sur 150 000 lignes ou moins)
+
+``` csv
+qid,P407
+Q115754644,Q1860
+Q98205420,Q1860
+Q91441407,Q1860
+Q91287237,Q1860
+```
+
+-   Cliquer sur *Create*.
+-   Attendre 10 minutes environ. Puis cliquer sur *Run Batch*.
+-   Cela va prendre environ 24h pour 150 000 lignes. Il y aura probablement des erreurs, alors pour les relancer, cliquer sur *Rerun*.
+-   Et voilà ! Répétez chaque jour avant d'aller vous brosser les dents.
+
+## Annexes
+
+Titre du billet tiré du premier roman de [Dany Laferrière](https://fr.wikipedia.org/wiki/Comment_faire_l%27amour_avec_un_n%C3%A8gre_sans_se_fatiguer_(roman))
+
+Pour les *scholarly articles*, il y a beaucoup de données manquantes pour les propriétés *publish in* ou *publisher*. J'ai commencé un peu à travailler dessus avec les mêmes méthodes que ci-dessus. Voici un [script Python](http://pmartinolli.github.io/code/Wikidata/QueryCrossrefAPI_withCSVofQIDnDOI_forJournalName.py) qui va chercher ces informations.
+
+Dans le même ordre d'idée, il y a encore plus de données manquantes pour les affiliations de chaque auteur... Mais ce sera pour une autre fois.
+
+Je suis encore loin de mon [shīfu (師父)](https://fr.wikipedia.org/wiki/Sifu), [Simon Villeneuve](https://www.wikidata.org/wiki/Q78061707), qui m'a initié aux arts wikidatiens en 2019. Cette dimension ludifiée de la contribution est amusante et elle peut entretenir la motivation pour contribuer. Cependant, un gros volume de données sur P407 est peu riche en soi, dans la mesure où c'est une information simple, facilement vérifiable et récupérable. Il y a des propriétés beaucoup plus importantes. Par exemple, *publish in* permet de raccorder un élément à sa revue et ainsi obtenir plein d'informations complémentaires (disciplines, méthodes, valeur de la revue, etc.). Ou bien par exemple, *main subect* pour regrouper des éléments autour d'un même sujet, etc.

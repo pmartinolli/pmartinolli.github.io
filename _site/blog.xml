@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Pascal Martinolli</title>
+<link>https://pmartinolli.github.io/blog.html</link>
+<atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<description>A website built with Quarto</description>
+<generator>quarto-1.6.39</generator>
+<lastBuildDate>Sun, 30 Nov 2025 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Comment faire 10 millions de contributions dans Wikidata sans se fatiguer ?</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/comment-faire-100-millions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>J’ai trouvé un filon inexploité dans le <em>Wikidata gnoming</em>, une activité consistant à mettre son bonnet et descendre dans les données avec sa petite pioche pour y miner des informations. Ce filon est la propriété <em>language</em> (P407) manquante dans beaucoup de <em>scholarly articles</em> qui ont été versés à la va-vite. Selon moi, ces données mal-versées sont une forme de vandalisme. En effet, elles encombrent Wikidata de données peu cohérentes, peu pertinentes et surtout de mauvaise qualité. Les contributeurs Wikidata et la fondation Wikimédia ont exprimé leur consternation aux <a href="https://www.wikidata.org/wiki/Wikidata_talk:Requests_for_comment/Mass-editing_policy">données versées en masse</a>. La conséquence la plus déplorable a été la division du contenu de Wikidata en <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split">deux graphes</a> pour séparer les <em>scholarly articles</em> (qui constituent la majorité des ajouts en masse) du reste de Wikidata.</p>
+<p>Je pense que dans tout projet de versements en masse dans Wikidata, il faut introduire une notion de notoriété et de contrôle qualité. Par exemple, je suis dans un projet de valorisation de la recherche dans des <a href="https://www.wikidata.org/wiki/User:Pmartinolli/ReseauCIRCE">revues savantes québécoises (Circé)</a>. Nous voudrions verser des références de leur contenu. Selon moi, il faudrait prioriser les articles de recherche révisés par les pairs et assez consistants (pas d’éditorial, pas de comptes-rendus de livres, pas d’opinion ou de tribune, pas d’articles de moins de 5 pages, etc.).</p>
+</section>
+<section id="flux-de-travail" class="level2">
+<h2 class="anchored" data-anchor-id="flux-de-travail">Flux de travail</h2>
+<ul>
+<li>En quelques mots :
+<ul>
+<li>Avec une SPARQL, je repère tous les articles qui ont P407 manquante. J’en créé une liste avec le <code>QID de l'article</code> et son <code>DOI</code>.</li>
+<li>Je lance un script python qui va chercher chaque <code>DOI</code> de cette liste et qui retourne le code de langue. Par exemple <code>en</code> pour l’anglais.</li>
+<li>J’importe cette nouvelle liste dans OpenRefine et je réconcilie la colonne du code de langue. J’exporte une liste finale avec le <code>QID de l'article</code> et le <code>QID de la langue</code></li>
+<li>Par paquets, je verse ces données avec QuickStatements 3.</li>
+<li>CQFD. (<em>ce qu’il fallait data-ifier</em>)</li>
+</ul></li>
+</ul>
+<section id="repérer-les-p407-manquants" class="level3">
+<h3 class="anchored" data-anchor-id="repérer-les-p407-manquants">Repérer les P407 manquants</h3>
+<p>Je lance une requête SPARQL pour repérer tous les <em>scholarly articles</em> qui n’ont pas de <em>language</em> (P407). La requête est faite auprès de Qlever car c’est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).</p>
+<pre class="sparql"><code>PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt;
+PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;
+PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt;
+PREFIX p: &lt;http://www.wikidata.org/prop/&gt;
+PREFIX ps: &lt;http://www.wikidata.org/prop/statement/&gt;
+PREFIX pq: &lt;http://www.wikidata.org/prop/qualifier/&gt;
+SELECT ?item ?DOI WHERE {
+  # Find items with Q13442814 (scholarly article)
+  ?item wdt:P31 wd:Q13442814 .
+  ?item wdt:P356 ?DOI .
+  # Find items that have missing P407 (language)
+  FILTER NOT EXISTS { ?item wdt:P407 ?language. }.
+}</code></pre>
+<p><a href="https://qlever.dev/wikidata/z2V4IN">Try it</a></p>
+<p><em>Download</em> &gt; <em>Download result as CSV</em> : <code>input.csv</code></p>
+<p>Cela me produit une liste au format CSV qui contient deux colonnes :</p>
+<ul>
+<li>Une colonne QID de l’article</li>
+<li>Une colonne avec le DOI de l’article</li>
+</ul>
+<pre class="csv"><code>qid,doi
+Q132142173,10.1086/1000006
+Q113847548,10.1086/100002</code></pre>
+<p>Ce fichier peut peser 150 MB ou plus.</p>
+</section>
+</section>
+<section id="récupérer-la-langue-dans-crossref" class="level2">
+<h2 class="anchored" data-anchor-id="récupérer-la-langue-dans-crossref">Récupérer la langue dans CrossRef</h2>
+<p>Je lance le script Python ci-dessous. Ce script nommé <code>QueryCrossrefAPI_withCSVofQIDnDOI_forLanguage.py</code> (sic) est placé dans le même dossier que le fichier <code>input.csv</code>. Grâce à l’API de Crossref, il va chercher le fichier JSON de l’article, correspondant au DOI de l’article. Ensuite, il extrait seulement la valeur (<em>value</em>) de la clé (<em>key</em>) <code>message.language</code>. Cette API de CrossRef est ouverte à tous alors pour ne pas la surcharger de demande, il est une bonne pratique d’ajouter un <code>time.sleep(0.05)</code> pour espacer les demandes.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> csv</span>
+<span id="cb3-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> requests</span>
+<span id="cb3-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> time</span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> fetch_crossref_languages(input_csv, output_csv, chunk_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>):</span>
+<span id="cb3-6"></span>
+<span id="cb3-7">    results <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb3-8">    counter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb3-9"></span>
+<span id="cb3-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(input_csv, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> infile:</span>
+<span id="cb3-11">        reader <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> csv.DictReader(infile)</span>
+<span id="cb3-12"></span>
+<span id="cb3-13">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> row <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> reader:</span>
+<span id="cb3-14">            qid <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qid"</span>)</span>
+<span id="cb3-15">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(qid, end<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">": "</span>)</span>
+<span id="cb3-16">            doi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"doi"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)</span>
+<span id="cb3-17">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(doi, end<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"= "</span>)</span>
+<span id="cb3-18">            language <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span></span>
+<span id="cb3-19"></span>
+<span id="cb3-20">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> doi:</span>
+<span id="cb3-21">                url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://api.crossref.org/works/"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> doi</span>
+<span id="cb3-22">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">try</span>:</span>
+<span id="cb3-23">                    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(url, timeout<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb3-24">                    r.raise_for_status()</span>
+<span id="cb3-25">                    data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.json()</span>
+<span id="cb3-26">                    language <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"message"</span>, {}).get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"language"</span>)</span>
+<span id="cb3-27">                    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(language)</span>
+<span id="cb3-28">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Exception</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> e:</span>
+<span id="cb3-29">                    language <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> e</span>
+<span id="cb3-30">                    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Error fetching </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>doi<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>e<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb3-31"></span>
+<span id="cb3-32">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Rate limit: wait 50 ms</span></span>
+<span id="cb3-33">                time.sleep(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>)</span>
+<span id="cb3-34"></span>
+<span id="cb3-35">            results.append({<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qid"</span>: qid, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"language"</span>: language})</span>
+<span id="cb3-36">            counter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb3-37"></span>
+<span id="cb3-38">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Every `chunk_size` rows, flush to CSV</span></span>
+<span id="cb3-39">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> counter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> chunk_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb3-40">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(output_csv, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf-8"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> outfile:</span>
+<span id="cb3-41">                    writer <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> csv.DictWriter(outfile, fieldnames<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"language"</span>])</span>
+<span id="cb3-42">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> counter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> chunk_size:  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># write header only once</span></span>
+<span id="cb3-43">                        writer.writeheader()</span>
+<span id="cb3-44">                    writer.writerows(results)</span>
+<span id="cb3-45">                results <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reset buffer</span></span>
+<span id="cb3-46">                <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"✅ Wrote </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>counter<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> rows to </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>output_csv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb3-47"></span>
+<span id="cb3-48">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write any remaining rows</span></span>
+<span id="cb3-49">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> results:</span>
+<span id="cb3-50">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(output_csv, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf-8"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> outfile:</span>
+<span id="cb3-51">            writer <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> csv.DictWriter(outfile, fieldnames<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"language"</span>])</span>
+<span id="cb3-52">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> counter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> chunk_size:  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># in case file never got header</span></span>
+<span id="cb3-53">                writer.writeheader()</span>
+<span id="cb3-54">            writer.writerows(results)</span>
+<span id="cb3-55">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"✅ Finished: wrote total </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>counter<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> rows to </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>output_csv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb3-56"></span>
+<span id="cb3-57">fetch_crossref_languages(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"input.csv"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div>
+<p>Cela me produit un fichier <code>output_languages.csv</code>, placé lui aussi dans le même dossier que les autres fichiers.</p>
+<pre class="csv"><code>qid,language
+Q59230317,en
+Q59230331,en
+Q59230333,en
+Q60206758,en</code></pre>
+</section>
+<section id="transformer-le-code-de-langue-en-qid" class="level2">
+<h2 class="anchored" data-anchor-id="transformer-le-code-de-langue-en-qid">Transformer le code de langue en QID</h2>
+<p>Dans cette étape, je transforme les codes de langue <code>en</code>, <code>fr</code>, <code>es</code>, etc. dans leurs identifiants Wikidata correspondants. Par exemple, <code>en</code> devient Q1860 pour <em>English</em>. Pour cela, j’utilise OpenRefine et une méthode nommée «<a href="https://doi.org/10.46430/phfr0038">processus de réconciliation</a>».</p>
+<p>Je réconcilie la colonne <code>language</code> avec la valeur <code>modern language (Q1288568)</code>. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme <code>P407</code>. Puis, une fois terminé, j’exporte seulement les colonnes <code>qid</code> et <code>P407</code> au format CSV.</p>
+<pre class="csv"><code>qid,P407
+Q115754644,Q1860
+Q98205420,Q1860
+Q91441407,Q1860
+Q91287237,Q1860</code></pre>
+</section>
+<section id="verser-dans-wikidata" class="level2">
+<h2 class="anchored" data-anchor-id="verser-dans-wikidata">Verser dans Wikidata</h2>
+<p>Je verse des lots de moins de 150 000 lignes de ce fichier CSV dans <a href="https://qs-dev.toolforge.org/">QuickStatements 3.0</a> (les versions antérieures ne peuvent prendre plus de quelques dizaines de milliers).</p>
+<ul>
+<li><em>New batch</em></li>
+<li>Wikibase : laisser tel quel</li>
+<li><em>Command format</em> : <code>CSV</code></li>
+<li><em>Custom batch name</em> : <code>P407 improvements with data from CrossRef</code></li>
+<li>Ne rien activer dans les boutons du dessous</li>
+<li><em>Enter your command here…</em> : copier-coller ceci (courant sur 150 000 lignes ou moins)</li>
+</ul>
+<pre class="csv"><code>qid,P407
+Q115754644,Q1860
+Q98205420,Q1860
+Q91441407,Q1860
+Q91287237,Q1860</code></pre>
+<ul>
+<li>Cliquer sur <em>Create</em>.</li>
+<li>Attendre 10 minutes environ. Puis cliquer sur <em>Run Batch</em>.</li>
+<li>Cela va prendre environ 24h pour 150 000 lignes. Il y aura probablement des erreurs, alors pour les relancer, cliquer sur <em>Rerun</em>.</li>
+<li>Et voilà ! Répétez chaque jour avant d’aller vous brosser les dents.</li>
+</ul>
+</section>
+<section id="annexes" class="level2">
+<h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
+<p>Titre du billet tiré du premier roman de <a href="https://fr.wikipedia.org/wiki/Comment_faire_l%27amour_avec_un_n%C3%A8gre_sans_se_fatiguer_(roman)">Dany Laferrière</a></p>
+<p>Pour les <em>scholarly articles</em>, il y a beaucoup de données manquantes pour les propriétés <em>publish in</em> ou <em>publisher</em>. J’ai commencé un peu à travailler dessus avec les mêmes méthodes que ci-dessus. Voici un <a href="http://pmartinolli.github.io/code/Wikidata/QueryCrossrefAPI_withCSVofQIDnDOI_forJournalName.py">script Python</a> qui va chercher ces informations.</p>
+<p>Dans le même ordre d’idée, il y a encore plus de données manquantes pour les affiliations de chaque auteur… Mais ce sera pour une autre fois.</p>
+<p>Je suis encore loin de mon <a href="https://fr.wikipedia.org/wiki/Sifu">shīfu (師父)</a>, <a href="https://www.wikidata.org/wiki/Q78061707">Simon Villeneuve</a>, qui m’a initié aux arts wikidatiens en 2019. Cette dimension ludifiée de la contribution est amusante et elle peut entretenir la motivation pour contribuer. Cependant, un gros volume de données sur P407 est peu riche en soi, dans la mesure où c’est une information simple, facilement vérifiable et récupérable. Il y a des propriétés beaucoup plus importantes. Par exemple, <em>publish in</em> permet de raccorder un élément à sa revue et ainsi obtenir plein d’informations complémentaires (disciplines, méthodes, valeur de la revue, etc.). Ou bien par exemple, <em>main subect</em> pour regrouper des éléments autour d’un même sujet, etc.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Wikidata</category>
+  <category>OpenRefine</category>
+  <category>HumanitésNumériques</category>
+  <guid>https://pmartinolli.github.io/blog/2025/comment-faire-100-millions/</guid>
+  <pubDate>Sun, 30 Nov 2025 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Modifier des références en lot dans Zotero</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/zotero-actions-tags-multiremplacement/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<ul>
+<li>Exemple d’application :
+<ul>
+<li>Pour une série de documents dans un fonds d’archives.</li>
+<li>Avec le style Chicago 18.</li>
+</ul></li>
+<li>Outils :
+<ul>
+<li>Zotero.</li>
+<li>Extension <em>Actions &amp; Tags</em>, de <a href="https://github.com/windingwind/">windingwind</a>.</li>
+<li>Script <em>Bulk Edit Multiple Items</em>, de <a href="https://github.com/thalient-ai">thalient-ai</a>.</li>
+</ul></li>
+</ul>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Dans <a href="https://zotero.hypotheses.org/5162">un billet de Zotero francophone</a>, j’ai découvert qu’on pouvait utiliser l’extension <em>Actions &amp; Tags</em> avec un JavaScript dédié pour modifier en lot des champs de Zotero. Cette méthode peut être adaptée pour modifier n’importe quel champ. C’est vraiment très utile car l’absence de modification en lot a toujours été un gros défaut de Zotero pour un travail documentaire poussé. En passant, l’extension <a href="https://github.com/ChenglongMa/zoplicate">Zoplicate</a> est aussi un bon outil pour travailler comme un.e pro de la documentation car il permet de dédoublonner avec plus de fonctionalités que les fonctions de base de Zotero. Ces deux extensions avancées témoignent de la croissance bienvenue de contributeurs chinois dans la communauté des utilisateurs de Zotero (qui serait la 3e après les anglophones et les francophones).</p>
+</section>
+<section id="cas-pratique" class="level2">
+<h2 class="anchored" data-anchor-id="cas-pratique">Cas pratique</h2>
+<p>Imaginons que nous ayons une cinquantaine de références bibliographiques dans Zotero qui correspondent à des documents que nous avons trouvé dans la boîte d’archive numéro 14, du Fonds d’archives numéro 33 de l’Unseen University de Ankh-Morpork. Pour les citer convenablement, on va ajouter en lot :</p>
+<ul>
+<li><code>Boîte 14</code> dans le champ <strong>Loc. dans l’archive</strong></li>
+<li><code>Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld</code> dans le champ <strong>Archive</strong>.</li>
+</ul>
+<p>Car nous allons utiliser <a href="www.zotero.org/styles/chicago-notes-bibliography-archive-place-first"><em>Chicago Manual of Style 18th edition (notes and bibliography, archival references with place first)</em></a> qui va nous créer une référence qui ressemblera à ceci en note de bas de page :</p>
+<blockquote class="blockquote">
+<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777, Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).</p>
+</blockquote>
+<p>Et à ceci en bibliographie finale (seul le point après 777 change):</p>
+<blockquote class="blockquote">
+<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777. Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).</p>
+</blockquote>
+<section id="problème-du-style-chicago-actuel" class="level4">
+<h4 class="anchored" data-anchor-id="problème-du-style-chicago-actuel">Problème du style Chicago actuel</h4>
+<p>Normalement, la note de bas de page devrait avoir cette forme :</p>
+<blockquote class="blockquote">
+<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777, Boîte 14, Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld.</p>
+</blockquote>
+<p>Et la bibliographie finale celle-ci :</p>
+<blockquote class="blockquote">
+<p>Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld.</p>
+</blockquote>
+<p>Il faudrait que je modifie le fichier CSL pour refléter ça. Ce sera pour une prochaine fois.</p>
+</section>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<ul>
+<li>Aller à <a href="https://github.com/windingwind/zotero-actions-tags" class="uri">https://github.com/windingwind/zotero-actions-tags</a></li>
+<li>Cliquer sur <em>Releases</em> à droite</li>
+<li>Télécharger le fichier .xpi sur votre ordinateur</li>
+<li>Zotero &gt; Outils &gt; Extensions &gt; (roue) <em>Install plugin from file</em> &gt; sélectionner le fichier .xpi. Redémarrer Zotero.</li>
+<li>Zotero &gt; Édition &gt; Paramètres &gt; <em>Actions &amp; Tags</em>
+<ul>
+<li>Cliquer sur (+)</li>
+<li>Name = <code>MultiModif</code></li>
+<li>Event = <code>None</code></li>
+<li>Operation = <code>Script</code></li>
+<li>Data = Copier-coller le code JavaScript de la page <a href="https://github.com/windingwind/zotero-actions-tags/discussions/343"><em>Bulk edit Multiple Items</em></a></li>
+<li>Menu Label = <code>MultiModif</code></li>
+<li>In Item Menu = cocher</li>
+<li><em>Save</em>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="traitement" class="level2">
+<h2 class="anchored" data-anchor-id="traitement">Traitement</h2>
+<ul>
+<li>Mettre les 50 références dans une collection « Boîte 14 » par exemple.</li>
+<li>Sélectionner toutes les références de cette collection.</li>
+<li>Clic-droit : <em>Trigger Action</em> &gt; MultiModif
+<ol type="1">
+<li><em>Do you want to modify…</em> : saisir <code>1</code></li>
+<li><em>Start typing the field name…</em> : saisir <code>archive</code></li>
+<li><em>Multiple matches found…</em> : saisir le numéro correspondant au champ à éditer :
+<ul>
+<li><em>Archive</em> (pour le chemin du Fonds à la ville)</li>
+</ul></li>
+<li><em>Enter characters…</em> : laisser vide pour les champs vides ou saisir <code>*</code> pour les champs avec du texte</li>
+<li><em>Enter the replacement…</em> : saisir <code>Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld</code></li>
+<li><em>You have chosen…</em> : OK</li>
+<li><em>Confirm…</em> : OK</li>
+<li><em>(x) items updated…</em> : OK</li>
+</ol></li>
+<li>Recommencer avec ceci pour l’étape 3 :
+<ul>
+<li><em>Location in Archive</em> (pour le chemin du dossier à la boîte ou la série)</li>
+</ul></li>
+<li>Et ceci à l’étape 5 :
+<ul>
+<li><em>Enter the replacement…</em> : saisir <code>Boîte 14</code> ou <code>Dossier 2a, Boîte 14, Série IV</code></li>
+</ul></li>
+</ul>
+<p>Le script bogue si on tente de remplacer un champ qui n’existe pas dans le type de document d’une référence sélectionnée. Par exemple, ne pas tenter de remplacer le contenu de <em>Language</em> dans une référence de type <em>Software</em>. On peut s’aider de <a href="https://www.zotero.org/support/kb/item_types_and_fields">cette page</a> ou de <a href="https://pobrien333.github.io/zot2csl/">zot2csl</a> (traduit en <a href="https://docs.zotero-fr.org/kb/item_types_and_fields/">français</a>) pour repérer quels champs sont disponibles selon le type de document.</p>
+<p>⚠️ Avertissement : il n’y a pas de fonction Annuler (<em>Undo</em>). Donc soyez prudent.e avant tout traitement en lot. Une sauvegarde préalable est fortement recommandée avant tout travail de ce type.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Zotero</category>
+  <category>HumanitésNumériques</category>
+  <guid>https://pmartinolli.github.io/blog/2025/zotero-actions-tags-multiremplacement/</guid>
+  <pubDate>Wed, 22 Oct 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Les propriétés thématiques dans Wikidata</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Historiquement, les pratiques de catalogage et de traitement documentaire d’oeuvres artistiques ont toujours été très réticentes à utiliser une indexation thématique pour interpréter et ajouter des mots-clés décrivant le sujet principal ou les sujets secondaires représentés. Par exemple, elles sont exclues de l’<a href="https://www.bnf.fr/fr/indexation-sujet-les-referentiels-utilises-par-la-bnf">indexation analytique</a> de la BNF :</p>
+<blockquote class="blockquote">
+<p>« L’indexation analytique par matière s’applique aux seules œuvres documentaires. En sont généralement exclus les œuvres littéraires et les textes classiques, philosophiques ou religieux. Cependant, dans les cas particuliers de fonds spécialisés de telles œuvres pourront être indexées. » (norme AFNOR Z 44-070).</p>
+</blockquote>
+<section id="exemples-de-sujets-thématiques" class="level3">
+<h3 class="anchored" data-anchor-id="exemples-de-sujets-thématiques">Exemples de sujets thématiques</h3>
+<p>Exemples :</p>
+<ul>
+<li>deuil</li>
+<li>relation père-fils</li>
+<li>mémoire coloniale</li>
+<li>rapport au corps</li>
+<li>quête de l’identité</li>
+</ul>
+<p>Exemples de termes proches ou plus spécifiques :</p>
+<ul>
+<li>deuil impossible</li>
+<li>transmission de la mémoire familiale</li>
+<li>déni des exactions coloniales</li>
+<li>rejet du vieillissement physique</li>
+<li>exploration de ses origines</li>
+</ul>
+</section>
+<section id="pourquoi" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi">Pourquoi ?</h3>
+<p>Voici une liste non ordonnée de raisons possibles pour lesquelles les propriétés thématiques sont peu indexées dans les catalogues :</p>
+<ul>
+<li>Absence des mots-clés dans le vocabulaire contrôlé</li>
+<li>Difficulté à apparier des sujets flous, mouvants, historiquement datés, etc.</li>
+<li>Conflit entre l’intention des auteurs et celles des catalogueurs</li>
+<li>Culture de la neutralité dans la profession du catalogage</li>
+<li>Manque de ressources pour cataloguer de manière appropriée et cohérente : temps, formation, expertise.</li>
+<li>Décider ce qui constitue un « sujet important » versus un sujet secondaire ou implicite demande un jugement. Cela varie selon l’indexeur, le contexte et le public attendu.</li>
+<li>Biais culturel : un sujet peut être plus facilement reconnu dans un contexte culturel, linguistique ou disciplinaire que dans un autre.</li>
+<li>Difficilement automatisable: les outils automatiques (text mining, IA, etc.) peuvent repérer des mots-clés, mais ont souvent du mal avec les métaphores, l’ironie, les implicites, les multiplicités de sens. L’intervention humaine est presque toujours nécessaire.</li>
+</ul>
+</section>
+<section id="enjeux" class="level3">
+<h3 class="anchored" data-anchor-id="enjeux">Enjeux</h3>
+<p>Le manque d’indexation par sujets thématiques dans les oeuvres artistiques réduit le potentiel de Wikidata comme outil de découverte et d’exploration.</p>
+<p>Exemples échevelés de requêtes qu’il serait possible de faire dans un Wikidata bien indexé avec des sujets thématiques :</p>
+<ul>
+<li>Toutes les oeuvres dont l’écrivain a conçu d’abord des oeuvres parlant de problèmes de transmission de la mémoire familiale puis ensuite de l’exploration de ses origines. Et ensuite l’inverse.</li>
+<li>Toutes les oeuvres parlant de deuil impossible dans un contexte révolutionnaire ou d’exode rural.</li>
+<li>L’évolution chronologique des thématiques d’un chanteur dans toute sa carrière.</li>
+<li>La transmission des thématiques des chansons de tous les membres de l’école du Wu-Tang Clan.</li>
+<li>(votre sujet de TP ou de mémoire ici)</li>
+</ul>
+</section>
+<section id="définitions" class="level3">
+<h3 class="anchored" data-anchor-id="définitions">Définitions</h3>
+<p>Le <strong>catalogage</strong> «pur» sert à repérer les informations bibliographiques simples et objectives : titre, auteur, date de publication, source, citation, contient une bibliographie, contient des cartes, etc.</p>
+<p>Le <a href="https://questions-reponses.enssib.fr/question/analyse-documentaire-catalogage-indexation"><strong>traitement documentaire</strong></a> est une tâche supplémentaire qui permet de mettre en valeur la notice produite par le catalogage. Dans ce traitement documentaire, on trouve le résumé, la classification (un sujet général), l’indexation par mots-clés contrôlés ou mots-clés libres, etc. C’est de cette indexation thématique que je parle.</p>
+<p>Un <strong>thésaurus</strong> est une liste de mots-clés contrôlés et hiérarchisés en génériques / spécifiques.</p>
+</section>
+<section id="état-de-lart-dans-wikidata" class="level3">
+<h3 class="anchored" data-anchor-id="état-de-lart-dans-wikidata">État de l’art dans Wikidata</h3>
+<section id="propriétés-thématiques-de-wikidata" class="level4">
+<h4 class="anchored" data-anchor-id="propriétés-thématiques-de-wikidata">Propriétés thématiques de Wikidata</h4>
+<p>Dans Wikidata, les mots-clés utilisés dans les propriétés thématiques (<em>main subject</em>, <em>depicts</em>, etc.), sont à la fois contrôlés et libres.</p>
+<ul>
+<li><em>Contrôlés</em> car il faut qu’il y ait un élément avec un identifiant.</li>
+<li><em>Libres</em> car parfois cet élément n’est pas placé dans une organisation de mots-clés (on dit ontologie, ou taxonomie, ou thésaurus), dans le sens où il n’est pas la sous-classe d’une classe existante.</li>
+</ul>
+<p>Principales propriétés thématiques :</p>
+<ul>
+<li><a href="https://www.wikidata.org/wiki/Property:P136"><em>genre</em></a> (genre artistique), catégorie dans laquelle l’œuvre ou l’artiste se situe</li>
+<li><a href="https://www.wikidata.org/wiki/Property:P1269"><em>facet of</em></a> (aspect de), sujet général dont cet élément est un aspect</li>
+<li><a href="https://www.wikidata.org/wiki/Property:P921"><em>main subject</em></a> (sujet ou thème principal)</li>
+<li><a href="https://www.wikidata.org/wiki/Property:P180"><em>depicts</em></a> (dépeint), entité visuellement dépeinte dans une image, décrite littéralement décrite dans une œuvre, ou incorporée dans un médium audio-visuel ou autre. Peut être utilisé pour sujet ou thème secondaire.</li>
+</ul>
+<p>Autres propriétés thématiques plus spécifiques :</p>
+<ul>
+<li><em>narrative motif</em></li>
+<li><em>commemorates</em></li>
+<li><em>named after</em></li>
+<li><em>fictional or mythical analog of</em></li>
+<li><em>significant person</em></li>
+<li><em>movement</em></li>
+<li><em>publication type of scholarly work</em></li>
+<li><em>form of creative work</em></li>
+<li><em>depicted format</em></li>
+</ul>
+</section>
+<section id="utilisation-de-ces-propriétés-dans-wikidata" class="level4">
+<h4 class="anchored" data-anchor-id="utilisation-de-ces-propriétés-dans-wikidata">Utilisation de ces propriétés dans Wikidata</h4>
+<p><a href="https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D">Compter</a> combien est-ce qu’il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.</p>
+<pre class="sparql"><code># Count total songs and songs with P921 (main subject) property
+SELECT DISTINCT
+  (COUNT(DISTINCT ?song) AS ?totalSongs)
+  (COUNT(DISTINCT ?songWithP921) AS ?songsWithP921)
+  (COUNT(DISTINCT ?songWithP136) AS ?songWithP136)
+WHERE {
+  VALUES ?songType {wd:Q7366       # song
+                    wd:Q105543609  # musical work/composition
+                    wd:Q207628     # composed musical work
+                    wd:Q2188189    # musical work
+                    wd:Q7302866    # audio track
+                   }.
+  ?song wdt:P31 ?songType.
+
+  # Optional: check if song has P921 (main subject)
+  OPTIONAL {
+    ?song wdt:P921 ?subject .
+    BIND(?song AS ?songWithP921)
+  }
+
+  # Optional: check if song has P136 (genre)
+  OPTIONAL {
+    ?song wdt:P136 ?genre .
+    BIND(?song AS ?songWithP136)
+  }
+}</code></pre>
+<ul>
+<li>Résultats du 7 octobre 2025: Nombre de chansons au total = 214 538
+<ul>
+<li>Avec <em>main subject</em> (P921) = 1615</li>
+<li>Avec <em>genre</em> (P136) = 61 500</li>
+<li>(Avec <em>facet of</em> (P1269) = 0)</li>
+<li>(Avec <em>depicts</em> (P180) = 0)</li>
+</ul></li>
+</ul>
+</section>
+<section id="lister-tous-les-thèmes-de-chansons" class="level4">
+<h4 class="anchored" data-anchor-id="lister-tous-les-thèmes-de-chansons">Lister tous les thèmes de chansons</h4>
+<pre class="sparql"><code># List all the topics of songs
+SELECT DISTINCT ?song ?songLabel ?subject ?subjectLabel
+WHERE {
+  VALUES ?songType {wd:Q7366       # song
+                    wd:Q105543609  # musical work/composition
+                    wd:Q207628     # composed musical work
+                    wd:Q2188189    # musical work
+                    wd:Q7302866    # audio track
+                   }.
+  ?song wdt:P31 ?songType.
+  ?song wdt:P921 ?subject.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+}</code></pre>
+<p><a href="https://query.wikidata.org/#%23%20List%20all%20the%20topics%20of%20songs%0ASELECT%20DISTINCT%20%3Fsong%20%3FsongLabel%20%3Fsubject%20%3FsubjectLabel%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%3Fsong%20wdt%3AP921%20%3Fsubject.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A">try it</a></p>
+<p>Il y en a 2395 à ce jour.</p>
+</section>
+</section>
+<section id="comment-améliorer-la-situation" class="level2">
+<h2 class="anchored" data-anchor-id="comment-améliorer-la-situation">Comment améliorer la situation ?</h2>
+<p>On peut partir de collections d’oeuvres sur un thème en particulier et les indexer dans Wikidata. Cela garantit :</p>
+<ul>
+<li>une masse critique d’éléments sur un thème;</li>
+<li>induit un traitement par sélection raisonnée;</li>
+<li>parfois permet de rajouter une source pour ces données indexées;</li>
+<li>procure le plaisir de travailler sur un ensemble fini.</li>
+</ul>
+<p>Exigences :</p>
+<ul>
+<li>Savoir traiter les éléments en lot (coucou <a href="https://doi.org/10.46430/phfr0038">OpenRefine</a> et QuickStatements),</li>
+<li>Avoir créé ou amélioré la qualité de l’indexation de l’élément thématique.
+<ul>
+<li>Si créé : ne pas oublier de raccorder comme une sous-classe d’une autre classe</li>
+</ul></li>
+<li>Dans la mesure du possible, indiquer la référence de tous les éléments thématiques car ils peuvent être sujet à interprétation.
+<ul>
+<li>Exception : dans le cas d’une indexation manuelle basée sur un jugement personnel (à voir).</li>
+<li>Suggestions de propriétés à ajouter en Référence :
+<ul>
+<li><em>stated in</em> (P248) : QID de la source</li>
+<li><em>object named as</em> (P1932) : chaîne de caractères, comment l’élément est nommé dans la source (<a href="https://www.wikidata.org/wiki/Q50814702">exemple dans les main subjects</a>)</li>
+<li><em>reference URL</em> (P854) : permalien (<a href="https://www.wikidata.org/wiki/Q1533284">exemple dans les main subjects</a>)</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9">Syntaxe QuickStatements</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>On peut animer des ateliers Wikidata basés sur l’enrichissement de sujets thématiques. Voir Annexe 1, ci-dessous.</p>
+<hr>
+</section>
+<section id="annexe-1-on-connaît-le-thème-de-la-chanson.-en-quête-du-sujet-idéal-datelier-wikidata" class="level1">
+<h1>Annexe 1 : On connaît (le thème de) la chanson. En quête du sujet idéal d’atelier Wikidata ?</h1>
+<p>En suivant les idées de la partie précédente, je pense avoir trouvé une idée de contribution idéale pour un atelier d’initiation à Wikidata pour des professionnels de l’information et plus généralement pour tout le monde. Il s’agit de rajouter des propriétés <em>main subject</em> à ses chansons favorites.</p>
+<section id="pourquoi-1" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-1">Pourquoi ?</h2>
+<ul>
+<li>La propriété <em>main subject</em> est une propriété thématique très riche mais sous-utilisée dans Wikidata. Voir plus haut.</li>
+<li>Tout le monde a des chansons favorites qui lui tiennent à coeur. Or un des secrets pour maintenir ou susciter la passion de la contribution Wikimédienne est de partir des passions de chacun.</li>
+<li>Cela fait pratiquer la recherche de chansons dans Wikidata.</li>
+<li>Peut être que cela va susciter la création d’un nouvel élément si la chanson n’existe pas encore. Avec tout le questionnement sur comment faire. On peut prendre modèle sur les chansons existantes.</li>
+<li>Cela fait pratiquer la recherche des bons termes :
+<ul>
+<li>via la boîte de saisie semi-automatique (parfois limitée)</li>
+<li>via la recherche Wikidata (parfois très longue)</li>
+<li>via la page Wikipédia sur la chanson (<a href="https://www.wikidata.org/wiki/Q158553">exemple</a>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="autres-propriétés-proches" class="level2">
+<h2 class="anchored" data-anchor-id="autres-propriétés-proches">Autres propriétés proches</h2>
+<ul>
+<li><em>named after</em></li>
+<li><em>depicts</em></li>
+<li><em>genre</em></li>
+<li><em>present in work</em></li>
+</ul>
+</section>
+<section id="défis" class="level2">
+<h2 class="anchored" data-anchor-id="défis">Défis</h2>
+<p>Certains termes ou sujets sont souvent problématiques et on peut rencontrer rapidement des cas complexes pour des débutants :</p>
+<ul>
+<li>Un sujet est mêlé à un autre : comment les séparer ?
+<ul>
+<li>Ex: j’ai trouvé 2 éléments pour <a href="https://www.wikidata.org/wiki/Q19607723"><em>self-determination</em></a>, un était surtout légal et institutionnel, tandis que l’autre était plus flou, individuel et générique. Je l’ai modifié pour ajouter <em>value</em> et ainsi l’utiliser dans un cadre plus personnel.</li>
+</ul></li>
+<li>Un sujet existant est mal indexé, il faut l’enrichir.
+<ul>
+<li>Ex: En cherchant à trouver le sujet principal de <a href="https://www.wikidata.org/wiki/Q41180"><em>La Marseillaise</em></a>, je suis tombé sur cet élément intéressant : <a href="https://www.wikidata.org/wiki/Q52197736">defense of the State</a> qui n’était qu’un concept issus d’un article solitaire en slovène et que j’ai amélioré en concept universel.</li>
+</ul></li>
+<li>Un sujet n’existe pas encore. Comment le créer et l’indexer avec les bons <em>instance of</em> et <em>subclass of</em> ? Comment ajouter les bonnes propriétés pour l’enrichir le plus vite possible (voir ci-dessous)</li>
+</ul>
+<section id="suggestion-de-propriétés-pour-indexer-un-sujet-thématique" class="level3">
+<h3 class="anchored" data-anchor-id="suggestion-de-propriétés-pour-indexer-un-sujet-thématique">Suggestion de propriétés pour indexer un sujet thématique</h3>
+<ul>
+<li><em>label</em> et <em>alias</em> en français et en anglais</li>
+<li><em>instance of</em> : le plus important ? surtout si c’est un fait (événement, personne, lieu, etc.)</li>
+<li><em>subclass of</em> : le plus important ? surtout si c’est une idée ou un concept</li>
+<li><em>facet of</em></li>
+<li><em>uses</em></li>
+<li><em>has goal</em></li>
+<li><em>part of</em></li>
+</ul>
+</section>
+</section>
+<section id="pour-aller-plus-loin" class="level2">
+<h2 class="anchored" data-anchor-id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li>Manipuler les données en lot : l’atelier peut se poursuivre avec une démonstration de OpenRefine et de QuickStatements.</li>
+<li>Utiliser les <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Chanson_par_th%C3%A8me">catégories de Wikipédia</a>, avec ou sans <a href="https://petscan.wmcloud.org/">PetScan</a>.
+<ul>
+<li>Dans la page catégorie précédente, cliquer sur PetScan. On arrive sur l’outil, on remarque Chanson par thème dans Catégories &gt; Catégories. Aller dans Wikidata : cocher Ajouter des éléments, quand c’est possible. Résultat : TSV. Exécuter. Récupérer le fichier .tsv</li>
+<li>À ma connaissance, il n’est pas possible d’exporter les catégories depuis PetScan, alors on va importer le fichier .tsv dans OpenRefine, puis récupérer les pages Wikipédia pour extraire leurs catégories.
+<ul>
+<li>Title : column &gt; add column based on this column. Name = Fetch. value = <code>"https://fr.wikipedia.org/wiki/" + value.escape("url")</code> (<em>escape</em> permet de transformer les accents, sinon <em>fetch</em> échoue)</li>
+<li>Attendre un peu que OpenRefine capture le contenu des pages web pointées (environ 10 minutes pour 1000 pages).</li>
+<li>Fetch &gt; Column &gt; Add column based on this column. Name = Categories. Value = <code>value.substring(value.indexOf("RLCONF=") + 7).split(";RLSTATE")[0].parseJson().wgCategories.join(";")</code></li>
+<li>Sauvegarder au format .tsv</li>
+<li>Supprimer la colonne Fetch</li>
+<li>Cliquer sur Categories &gt; Edit Cells &gt; Split multiples rows &gt; separator = ;</li>
+<li>Passer de la vue <em>row</em> à la vue <em>records</em></li>
+<li>Supprimer les catégories non-pertinentes :
+<ul>
+<li>Titre : Cell &gt; fill down</li>
+<li>Wikidata : Cell &gt; fill down</li>
+<li>Créer une <em>custom facet</em> basées sur <code>value.contains(/^(Article |Catégorie |Portail:|Bon article|Page |Wikipédia:)/)</code></li>
+</ul></li>
+<li>Passer de la vue <em>records</em> à la vue <em>row</em></li>
+<li>Remove matching rows de la facette Categories = true</li>
+</ul></li>
+</ul></li>
+<li>Chercher des bases de données ayant ces mots-clés thématiques :
+<ul>
+<li>Écrire à leurs auteurs et demander s’il est possible de réutiliser une partie de leurs données. Attention, il y a toujours des droits d’auteur par défaut sur les mots-clés.</li>
+<li>Utiliser des techniques de <em>web scraping</em> pour récupérer les données (<em>Fetch</em> dans OpenRefine par exemple).</li>
+</ul></li>
+<li>Dans le même ordre d’idée, chercher en ligne des listes sélectionnées de chansons de type « Les 100 plus belles chansons d’amour » puis :
+<ul>
+<li>Extraire les chansons,</li>
+<li>les importer dans OpenRefine,</li>
+<li>les aligner,</li>
+<li>ajouter le sujet principal,</li>
+<li>verser dans Wikidata avec l’option interne ou avec QuickStatements.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="annexe-2-quelques-pratiques-dindexation-avancée" class="level1">
+<h1>Annexe 2 : Quelques pratiques d’indexation avancée</h1>
+<ul>
+<li>Technique de la <a href="https://services.lib.uliege.be/guide_catalo/lindexation-matiere-introduction/">double indexation</a> qui utilise plusieurs thésaurus pour capter les nuances dans différents vocabulaires contrôlés.</li>
+<li>Technique de la revue systématique où plusieurs personnes (au moins trois) indexent séparemment puis elles mettent en commun leurs indexations.</li>
+<li>Technique de la limite du nombre de mots-clés. Par exemple, maximum trois pour la <a href="https://www.bnf.fr/fr/indexation-sujet-les-referentiels-utilises-par-la-bnf">BNF avec Rameau</a>.</li>
+<li>Technique du double niveau qui distingue entre les sujets principaux et les sujets secondaires d’une oeuvre (distingué par * dans PubMed et Medline).</li>
+<li>Vérification de l’ontologie où chaque mot-clé devrait être placé dans une hiérarchie de termes génériques/spécifiques.</li>
+<li>Bonification de l’ontologie des mots-clés avec l’ajout d’alias (synonymes exacts).</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>Wikidata</category>
+  <guid>https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/</guid>
+  <pubDate>Tue, 07 Oct 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>2025, année Wikidata ?</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/2025-annee-wikidata/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.</p>
+<p>Dans les prochains jours, 3 articles vont être publiés sur le sujet :</p>
+<ul>
+<li>Deux sur le blogue Zotero francophone, centrés sur l’extension Cita.
+<ul>
+<li>« <a href="https://zotero.hypotheses.org/5740">Enrichir sa collection de références Zotero grâce à l’extension Cita</a> »</li>
+<li>« <a href="https://zotero.hypotheses.org/5780">Contribuer à Wikidata avec Cita</a> » Dans l’introduction, je parle de l’intérêt de Wikidata pour la science ouverte.</li>
+</ul></li>
+<li>Un dans <em>Programming historian</em> en français : « <a href="https://doi.org/10.46430/phfr0038">Enrichir ses données avec le processus de réconciliation d’OpenRefine</a> ». En conclusion, je discute des enjeux pour la gestion de données de recherche en histoire.</li>
+</ul>
+<p>À ce jour, j’ai contribué environ <a href="https://www.wikidata.org/wiki/Special:Contributions/Pmartinolli">4</a> millions de fois. J’ai aussi amélioré le fichier d’exportation Zotero pour <a href="https://github.com/zotero/translators/pull/3468">Wikidata QuickStatements.js</a>.</p>
+<p>Depuis cet année, je participe à une équipe de valorisation des <a href="https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9">revues québécoises du réseau Circé</a>. Cette équipe poursuit l’excellente présentation faite par Michael Miller lors du congrès ACFAS de mai dernier où il expliquait les avantages à avoir une stratégie Wikimedia pour le rayonnement des revues. J’en parlerai dans un futur billet.</p>
+<p>J’ai développé plein de petits outils en JavaScript et HTML pour tirer parti de Wikidata et présenter simplement au grand public ce qu’il est possible de faire avec cet outil austère et méconnu.</p>
+<ul>
+<li>Liste de <a href="https://pmartinolli.github.io/code/revuesdhistoire/">revues en histoire</a></li>
+<li>Un réseau de citation sur une chronologie : pour les <a href="https://pmartinolli.github.io/code/timelined_networks/ttrpg_timelined_network.html">jeux de rôle</a> ou pour les <a href="https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html">travaux scientifiques</a>. Ce dernier graphe a été positivement remarqué par Egon Willighagen, un des co-concepteur de <a href="https://scholia.toolforge.org/">Scholia</a> et il aimerait peut être développer ce type de visualisation. J’en parlerai dans un futur billet.</li>
+</ul>
+<p>Je vais aussi participer à la révision d’article pour un numéro spécial Wikidata du <a href="https://openhumanitiesdata.metajnl.com/"><em>Journal of Open Humanities Data (JOHD)</em></a>.</p>
+
+
+
+ ]]></description>
+  <category>Wikidata</category>
+  <category>HumanitésNumériques</category>
+  <guid>https://pmartinolli.github.io/blog/2025/2025-annee-wikidata/</guid>
+  <pubDate>Mon, 06 Oct 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Baudolino, « hallucinations » et livres imaginaires</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/baudolino/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="baudolino-invente-des-livres-que-personne-ne-trouve" class="level2">
+<h2 class="anchored" data-anchor-id="baudolino-invente-des-livres-que-personne-ne-trouve">Baudolino invente des livres que personne ne trouve</h2>
+<p>En lisant <a href="https://fr.wikipedia.org/wiki/Baudolino"><em>Baudolino</em></a> de Umberto Eco, je suis tombé sur ce passage que je trouve le plus drôle du livre.</p>
+<blockquote class="blockquote">
+<p>Baudolino, partageant l’opinion d’Otton sur la maigre imagination du pauvre chanoine, avait jugé utile de l’alimenter un peu, et, après lui avoir communiqué quelques titres de manuscrits qu’il avait vus, il lui en avait cité d’autres qu’il avait adroitement inventés, par exemple le <em>De optimitate triparum</em> du Vénérable Beda, un <em>Ars honeste petandi</em>, un <em>De modo cacandi</em>, un <em>De castramentandis crinibus</em>, et un <em>De patria diabolorum</em>. Toutes œuvres qui avaient suscité l’étonnement et la curiosité du bon chanoine empressé à demander copies de ces trésors inconnus de la sapience. Service que Baudolino lui aurait rendu de bon gré, pour guérir le remords de ce parchemin d’Otton qu’il avait effacé, mais il ne savait vraiment pas quoi copier, et il avait dû inventer que ces œuvres se trouvaient, certes, à l’abbaye de Saint-Victor, mais elles étaient en odeur d’hérésie et les chanoines ne les laissaient voir à personne. « J’ai su par la suite, disait Baudolino à Nicétas, que Rahewin avait écrit à un docte Parisien qu’il connaissait, le priant de demander ces manuscrits aux victoriens, qui n’en ont évidemment pas trouvé trace; ils ont accusé leur bibliothécaire d’incurie, et le pauvre de jurer que lui, il ne les avait jamais vus. J’imagine qu’au bout du compte quelque chanoine, pour mettre les choses en place, aura fini par écrire vraiment ces livres, et j’espère qu’un jour quelqu’un les trouvera. » (p.&nbsp;99-100)</p>
+</blockquote>
+</section>
+<section id="chatgpt-invente-des-références-que-personne-ne-trouve" class="level2">
+<h2 class="anchored" data-anchor-id="chatgpt-invente-des-références-que-personne-ne-trouve">ChatGPT invente des références que personne ne trouve</h2>
+<p>Le roman <em>Baudolino</em> date de 2000, donc bien avant la fièvre des grands modèles de langue qui produisent des références qui n’existent pas (« hallucinées »). Depuis le succès de ChatGPT en 2023, de temps en temps, des étudiant.e.s nous arrivent au bureau de référence de la bibliothèque et nous demandent des livres qui n’existent pas.</p>
+</section>
+<section id="les-livres-imaginaires-étranges-objets-littéraires" class="level2">
+<h2 class="anchored" data-anchor-id="les-livres-imaginaires-étranges-objets-littéraires">Les livres imaginaires, étranges objets littéraires</h2>
+<p>En faisant une petite recherche, j’ai découvert que ce passage est un clin d’oeil au <em>Pantagruel</em> de Rabelais qui inventa probablement la première bibliothèque imaginaire : une liste d’ouvrages de l’abbaye de Saint-Victor, pour se moquer des augustins qui rejetaient la pensée de Érasme (1,4). Par exemple, <a href="https://www.wikidata.org/wiki/Q136724471"><em>De Modo Cacandi</em></a> (trad. « Des manières de se torcher ») y est mentionné comme étant un ouvrage de Tartaretus qui serait « Pierre Tateret, un théologien de la Sorbonne, commentateur d’Aristote, réputé pour ses subtilités scolastiques. Son nom est déformé pour jouer avec le verbe <em>tarter</em>, ʻaller à la selleʼ. » (2)</p>
+<p>En remuant l’idées des livres imaginaires, je réalise soudain que leur apparition dans l’histoire de la littérature n’est pas anodine. Je décide alors de remonter les pistes pour traquer leurs contextes et peut être révéler quelques tendances ou hypothèses pertinentes.</p>
+<p>Les livres imaginaires sont des objets littéraires étranges, des sortes de références pures, des citations sans objet, des attributions sans cible, des liens intertextuels qui ne mènent à rien, sans texte et qui n’existent que dans des textes.</p>
+</section>
+<section id="petite-revue-de-données-wikimédienne" class="level2">
+<h2 class="anchored" data-anchor-id="petite-revue-de-données-wikimédienne">Petite revue de données Wikimédienne</h2>
+<p>En parcourant la <a href="https://en.wikipedia.org/wiki/Imaginary_book">liste Wikipédia</a> des livres et de collections de livres imaginaires, je remarque que Rabelais est absent, alors qu’il semble être le premier (ou un des premiers) à avoir créé une liste de livres imaginaires. De plus, il n’y a pas de traduction française de la page (à faire). La page sur la<a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor">librairie de Saint-Victor</a> n’existe qu’en français. Il existe une page en anglais, français, russe et japonais des livres du <a href="https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books">Mythe de Cthulhu</a>.</p>
+<p>Quant à Wikidata, elle manque aussi de plusieurs éléments.</p>
+<pre class="sparql"><code>SELECT ?livre_fictionnel ?livre_fictionnelLabel WHERE {
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+  ?livre_fictionnel wdt:P31 wd:Q74574.
+}</code></pre>
+<p><a href="https://query.wikidata.org/#SELECT%20%3Flivre_fictionnel%20%3Flivre_fictionnelLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%20%20%3Flivre_fictionnel%20wdt%3AP31%20wd%3AQ74574.%0A%7D%0A">try it</a>. Il y en avait 100 en octobre 2025.</p>
+<section id="livres-imaginaires-potentiels" class="level3">
+<h3 class="anchored" data-anchor-id="livres-imaginaires-potentiels">Livres imaginaires potentiels</h3>
+<p>Dans la classe des livres imaginaires, mentionons les livres qui auraient pu exister mais que leur auteur s’est restreint de rédiger et de diffuser. Un exemple fameux est la <a href="https://www.bestofsherlock.com/ref/untold.htm">collection</a> des « <em>unchronicled cases</em> » de Sherlock Holmes (<a href="https://www.wikidata.org/wiki/Q136747565">qid</a>) dont Watson parle dans « Le pont de Thor » et dans « La pensionnaire voilée » (3). Ce sont des affaires si scandaleuses que Watson a choisi de ne pas les publier. En 2011, Anthony Horowitz publia <em>House of Silk</em> comme une réponse à ce défi.</p>
+<p>11 <em>unchronicled cases</em> ont été ajoutés à Wikidata.</p>
+</section>
+<section id="livres-imaginaires-pratiques" class="level3">
+<h3 class="anchored" data-anchor-id="livres-imaginaires-pratiques">Livres imaginaires pratiques</h3>
+<p>J’ai utilisé de nombreuses fois des livres ou des articles imaginaires dans mes formations en bibliothèque. Parfois, en insérant des blagues de type <em>Easter Eggs</em> (que moi-même seul comprenait probablement). Chris Marker utilisa aussi des livres factices pour illustrer son documentaire <a href="https://www.bnf.fr/fr/des-livres-imaginaires-la-reserve-des-livres-rares"><em>Toute la mémoire du monde</em></a> (1956).</p>
+</section>
+</section>
+<section id="hypothèses-à-pourquoi-créer-des-livres-imaginaires" class="level2">
+<h2 class="anchored" data-anchor-id="hypothèses-à-pourquoi-créer-des-livres-imaginaires">Hypothèses à « Pourquoi créer des livres imaginaires ? »</h2>
+<ul>
+<li>Se moquer de la scholastique, de ses méthodes d’érudition et de la bibliomanie de l’époque (Rabelais, dans <em>Pantagruel</em>)</li>
+<li>Donner de l’épaisseur et de la consistence au roman, une couche de verisimilitude (le journal d’<a href="https://dune.fandom.com/wiki/Irulan_Corrino%27s_Attributed_Book_Workings">Irulan</a> dans les épigraphes de <em>Dune</em> de Frank Herbert)</li>
+<li>Exciter l’imagination du lecteur (les <em>unchronicled cases</em> de Sherlock Holmes) et explorer les limites de la fiction puisqu’une promesse de connaissance est offerte mais n’est pas développée. C’est probablement dans cette démarche que le lecteur est le plus en posture de co-créateur ou de joueur participant à la fiction.</li>
+<li>Faire communauté en gérant une collection partagée de livres imaginaires en réutilisant, remixant, ajoutant des livres imaginaires d’autres auteurs d’un même mouvement ou d’un même groupe d’auteurs (les livres maudits de H.P. Lovecraft, tel le <em>Necronomicon</em>, qui furent repris et augmentés par ses lecteurs et ses émulateurs).</li>
+<li>Créer un mythe ou une métafiction autour du livre imaginaire, repris par d’autres jusqu’à le rendre presque réel (<em>Necronomicon</em>) ou qui devient réalité (<em>Tlön, Uqbar, Orbis Tertius</em> de Borges)</li>
+</ul>
+</section>
+<section id="listes-de-livres-imaginaires-à-ajouter-à-wikidata" class="level2">
+<h2 class="anchored" data-anchor-id="listes-de-livres-imaginaires-à-ajouter-à-wikidata">Listes de livres imaginaires à ajouter à Wikidata</h2>
+<ul>
+<li>Dans <a href="https://www.fabula.org/actualites/63059/s-mahieu-la-bibliotheque-invisible-catalogue-des-livres-imaginaires.html">La bibliothèque invisible</a> de Mahieu.</li>
+<li>Dans <a href="https://www.fnac.com/livre-numerique/a15732334/Jacques-Geoffroy-Mille-et-un-livres-imaginaires">Mille et un livres imaginaires</a> de Geoffroy. Ainsi que son site web <a href="http://fictiotheque.free.fr/">Fictiothèque</a> ou son <a href="https://geoffroyjac.blogspot.com/">blogue</a>.</li>
+<li>Dans ce billet de <a href="https://biblioweb.hypotheses.org/18560">biblioweb</a></li>
+<li>La page Wikipédia de la <a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor">librairie de Saint-Victor</a> et des livres du <a href="https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books">Mythe de Cthulhu</a>.</li>
+</ul>
+</section>
+<section id="références" class="level2">
+<h2 class="anchored" data-anchor-id="références">Références</h2>
+<ol type="1">
+<li>Anne-Pascale Pouey-Mounou. « La Librairie de Saint-Victor et l’amplification créatrice ». In <em>Early Modern Catalogues of Imaginary Books</em>, (Leiden, The Netherlands: Brill, 2019) https://doi.org/10.1163/9789004413658_003</li>
+<li>Jean-Claude Ternaux. « L’odorat chez Rabelais ». <em>Bien Dire et Bien Aprandre</em>, 37, 2022, 31-44. https://dx.doi.org/10.54563/bdba.1694</li>
+<li>Richard Saint-Gelais, « La lecture des œuvres imaginaires : enjeux et paradoxes », dans <em>Fabula-LhT</em>, n° 13, « La Bibliothèque des textes fantômes », dir. Marc Escola et Laure Depretto, 2014. https://doi.org/10.58282/lht.1300</li>
+<li>Cappellen, Raphaël. <em>Rabelais et la bibliothèque imaginaire: Liste énigmatique et création générique</em>. In <em>Liste et effet liste en littérature</em>, sous la direction de Michelle Lecolle et Raymond Michel. Classiques Garnier, 2013, pages 163-174. https://doi.org/10.15122/ISBN.978-2-8124-0995-0.P.0163</li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>citation</category>
+  <category>Wikidata</category>
+  <guid>https://pmartinolli.github.io/blog/2025/baudolino/</guid>
+  <pubDate>Sat, 27 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

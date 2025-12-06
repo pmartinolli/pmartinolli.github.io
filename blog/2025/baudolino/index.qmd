@@ -1,0 +1,72 @@
+---
+title: "Baudolino, « hallucinations » et livres imaginaires"
+author: "Pascal Martinolli"
+date: "2025-09-27"
+categories: [citation, Wikidata]
+description: "Comment on part de faux livres dans un roman comme précurseurs de hallucinations des LLMs, puis comment nous explorons l'apparition de références à des livres imaginaires comme un seuil dans l'histoire de la pratique des citations."
+---
+
+## Baudolino invente des livres que personne ne trouve
+
+En lisant [*Baudolino*](https://fr.wikipedia.org/wiki/Baudolino) de Umberto Eco, je suis tombé sur ce passage que je trouve le plus drôle du livre.
+
+> Baudolino, partageant l'opinion d'Otton sur la maigre imagination du pauvre chanoine, avait jugé utile de l'alimenter un peu, et, après lui avoir communiqué quelques titres de manuscrits qu'il avait vus, il lui en avait cité d'autres qu'il avait adroitement inventés, par exemple le *De optimitate triparum* du Vénérable Beda, un *Ars honeste petandi*, un *De modo cacandi*, un *De castramentandis crinibus*, et un *De patria diabolorum*. Toutes œuvres qui avaient suscité l'étonnement et la curiosité du bon chanoine empressé à demander copies de ces trésors inconnus de la sapience. Service que Baudolino lui aurait rendu de bon gré, pour guérir le remords de ce parchemin d'Otton qu'il avait effacé, mais il ne savait vraiment pas quoi copier, et il avait dû inventer que ces œuvres se trouvaient, certes, à l'abbaye de Saint-Victor, mais elles étaient en odeur d'hérésie et les chanoines ne les laissaient voir à personne. « J'ai su par la suite, disait Baudolino à Nicétas, que Rahewin avait écrit à un docte Parisien qu'il connaissait, le priant de demander ces manuscrits aux victoriens, qui n'en ont évidemment pas trouvé trace; ils ont accusé leur bibliothécaire d'incurie, et le pauvre de jurer que lui, il ne les avait jamais vus. J'imagine qu'au bout du compte quelque chanoine, pour mettre les choses en place, aura fini par écrire vraiment ces livres, et j'espère qu'un jour quelqu'un les trouvera. » (p. 99-100)
+
+## ChatGPT invente des références que personne ne trouve
+
+Le roman *Baudolino* date de 2000, donc bien avant la fièvre des grands modèles de langue qui produisent des références qui n'existent pas (« hallucinées »). Depuis le succès de ChatGPT en 2023, de temps en temps, des étudiant.e.s nous arrivent au bureau de référence de la bibliothèque et nous demandent des livres qui n'existent pas.
+
+## Les livres imaginaires, étranges objets littéraires
+
+En faisant une petite recherche, j'ai découvert que ce passage est un clin d'oeil au *Pantagruel* de Rabelais qui inventa probablement la première bibliothèque imaginaire : une liste d'ouvrages de l'abbaye de Saint-Victor, pour se moquer des augustins qui rejetaient la pensée de Érasme (1,4). Par exemple, [*De Modo Cacandi*](https://www.wikidata.org/wiki/Q136724471) (trad. « Des manières de se torcher ») y est mentionné comme étant un ouvrage de Tartaretus qui serait « Pierre Tateret, un théologien de la Sorbonne, commentateur d’Aristote, réputé pour ses subtilités scolastiques. Son nom est déformé pour jouer avec le verbe *tarter*, ʻaller à la selleʼ. » (2)
+
+En remuant l'idées des livres imaginaires, je réalise soudain que leur apparition dans l'histoire de la littérature n'est pas anodine. Je décide alors de remonter les pistes pour traquer leurs contextes et peut être révéler quelques tendances ou hypothèses pertinentes.
+
+Les livres imaginaires sont des objets littéraires étranges, des sortes de références pures, des citations sans objet, des attributions sans cible, des liens intertextuels qui ne mènent à rien, sans texte et qui n'existent que dans des textes.
+
+## Petite revue de données Wikimédienne
+
+En parcourant la [liste Wikipédia](https://en.wikipedia.org/wiki/Imaginary_book) des livres et de collections de livres imaginaires, je remarque que Rabelais est absent, alors qu'il semble être le premier (ou un des premiers) à avoir créé une liste de livres imaginaires. De plus, il n'y a pas de traduction française de la page (à faire). La page sur la[librairie de Saint-Victor](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor) n'existe qu'en français. Il existe une page en anglais, français, russe et japonais des livres du [Mythe de Cthulhu](https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books).
+
+Quant à Wikidata, elle manque aussi de plusieurs éléments.
+
+``` sparql
+SELECT ?livre_fictionnel ?livre_fictionnelLabel WHERE {
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+  ?livre_fictionnel wdt:P31 wd:Q74574.
+}
+```
+
+[try it](https://query.wikidata.org/#SELECT%20%3Flivre_fictionnel%20%3Flivre_fictionnelLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%20%20%3Flivre_fictionnel%20wdt%3AP31%20wd%3AQ74574.%0A%7D%0A). Il y en avait 100 en octobre 2025.
+
+### Livres imaginaires potentiels
+
+Dans la classe des livres imaginaires, mentionons les livres qui auraient pu exister mais que leur auteur s'est restreint de rédiger et de diffuser. Un exemple fameux est la [collection](https://www.bestofsherlock.com/ref/untold.htm) des « *unchronicled cases* » de Sherlock Holmes ([qid](https://www.wikidata.org/wiki/Q136747565)) dont Watson parle dans « Le pont de Thor » et dans « La pensionnaire voilée » (3). Ce sont des affaires si scandaleuses que Watson a choisi de ne pas les publier. En 2011, Anthony Horowitz publia *House of Silk* comme une réponse à ce défi.
+
+11 *unchronicled cases* ont été ajoutés à Wikidata.
+
+### Livres imaginaires pratiques
+
+J'ai utilisé de nombreuses fois des livres ou des articles imaginaires dans mes formations en bibliothèque. Parfois, en insérant des blagues de type *Easter Eggs* (que moi-même seul comprenait probablement). Chris Marker utilisa aussi des livres factices pour illustrer son documentaire [*Toute la mémoire du monde*](https://www.bnf.fr/fr/des-livres-imaginaires-la-reserve-des-livres-rares) (1956).
+
+## Hypothèses à « Pourquoi créer des livres imaginaires ? »
+
+-   Se moquer de la scholastique, de ses méthodes d'érudition et de la bibliomanie de l'époque (Rabelais, dans *Pantagruel*)
+-   Donner de l'épaisseur et de la consistence au roman, une couche de verisimilitude (le journal d'[Irulan](https://dune.fandom.com/wiki/Irulan_Corrino%27s_Attributed_Book_Workings) dans les épigraphes de *Dune* de Frank Herbert)
+-   Exciter l'imagination du lecteur (les *unchronicled cases* de Sherlock Holmes) et explorer les limites de la fiction puisqu'une promesse de connaissance est offerte mais n'est pas développée. C'est probablement dans cette démarche que le lecteur est le plus en posture de co-créateur ou de joueur participant à la fiction.
+-   Faire communauté en gérant une collection partagée de livres imaginaires en réutilisant, remixant, ajoutant des livres imaginaires d'autres auteurs d'un même mouvement ou d'un même groupe d'auteurs (les livres maudits de H.P. Lovecraft, tel le *Necronomicon*, qui furent repris et augmentés par ses lecteurs et ses émulateurs).
+-   Créer un mythe ou une métafiction autour du livre imaginaire, repris par d'autres jusqu'à le rendre presque réel (*Necronomicon*) ou qui devient réalité (*Tlön, Uqbar, Orbis Tertius* de Borges)
+
+## Listes de livres imaginaires à ajouter à Wikidata
+
+-   Dans [La bibliothèque invisible](https://www.fabula.org/actualites/63059/s-mahieu-la-bibliotheque-invisible-catalogue-des-livres-imaginaires.html) de Mahieu.
+-   Dans [Mille et un livres imaginaires](https://www.fnac.com/livre-numerique/a15732334/Jacques-Geoffroy-Mille-et-un-livres-imaginaires) de Geoffroy. Ainsi que son site web [Fictiothèque](http://fictiotheque.free.fr/) ou son [blogue](https://geoffroyjac.blogspot.com/).
+-   Dans ce billet de [biblioweb](https://biblioweb.hypotheses.org/18560)
+-   La page Wikipédia de la [librairie de Saint-Victor](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor) et des livres du [Mythe de Cthulhu](https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books).
+
+## Références
+
+1.  Anne-Pascale Pouey-Mounou. « La Librairie de Saint-Victor et l’amplification créatrice ». In *Early Modern Catalogues of Imaginary Books*, (Leiden, The Netherlands: Brill, 2019) https://doi.org/10.1163/9789004413658_003
+2.  Jean-Claude Ternaux. « L’odorat chez Rabelais ». *Bien Dire et Bien Aprandre*, 37, 2022, 31-44. https://dx.doi.org/10.54563/bdba.1694
+3.  Richard Saint-Gelais, « La lecture des œuvres imaginaires : enjeux et paradoxes », dans *Fabula-LhT*, n° 13, « La Bibliothèque des textes fantômes », dir. Marc Escola et Laure Depretto, 2014. https://doi.org/10.58282/lht.1300
+4.  Cappellen, Raphaël. *Rabelais et la bibliothèque imaginaire: Liste énigmatique et création générique*. In *Liste et effet liste en littérature*, sous la direction de Michelle Lecolle et Raymond Michel. Classiques Garnier, 2013, pages 163-174. https://doi.org/10.15122/ISBN.978-2-8124-0995-0.P.0163

@@ -1,0 +1,62 @@
+---
+title: "teaching"
+format: html
+---
+
+### Manuel pratique de recherche documentaire
+
+[En libre accès CC-BY-NC-SA 4.0 pour le séminaire PLU6058](https://pmartinolli.github.io/QMpRD/).
+
+[![](PLU6058-Sherlock_Holmes_.png){fig-alt="Sherlock Holmes recommandant le séminaire PLU6058 à Watson."}](https://pmartinolli.github.io/QMpRD/)
+
+### Séquences pédagogiques longues
+
+-   Martinolli, Pascal. 2025. « Enrichir ses données avec le processus de réconciliation d’OpenRefine ». *Programming Historian* en français. <https://doi.org/10.46430/phfr0038>
+
+-   Lal, Shalini, Tania Sabatino et Sarra Jazi (Pascal Martinolli et al. : contributeurs). 2024. [*Mieux réussir un examen de la portée en sciences de la santé : une boîte à outils*](https://pressbooks.etsmtl.ca/reussirexamensciencessante/). Université de Montréal, Faculté de médecine, École de réadaptation. Pressbook.
+
+-   Martinolli, Pascal. 2020-2024. BONICI, un MOOC pour bonifier ses compétences informationnelles. Plateforme EdX.
+
+### Matériels pédagogiques courts
+
+-   Martinolli, Pascal. 2023. « [Évaluer un document de type source secondaire (monographie ou article scientifique) en histoire](https://github.com/pmartinolli/TM-bullshitometer/blob/master/files/Histoire-evaluer-monographie-article.pdf) ». Variante du Foutaisomètre.
+
+-   Martinolli, Pascal. 2023. « [Comment cerner l’essentiel de la conversation scientifique et repérer les courants de pensée dominants d’une discipline sur un sujet que l’on ne maîtrise pas ?](https://github.com/pmartinolli/SeFaireUneTete) ». Fiche pratique.
+
+-   Martinolli, Pascal. 2023. « Capsules de formation sur les opérateurs logiques ».
+
+    -   [Capsule d’introduction](https://youtu.be/XXtGzSGLA8o)
+
+    -   [Série avancée](https://umontreal.ca.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=654420b3-e1fb-4522-9305-af5d01651a44).
+
+-   Martinolli, Pascal. 2023. « [Capsules de formation à Zotero](https://www.youtube.com/playlist?list=PL1K-7kmyXRXEVQfM5WsWP28Rjib3Wd1tp) ». Série YouTube.
+
+-   ♥ Martinolli, Pascal. (2022 màj) 2016. « [Foutaisomètre : donne des critères pour évaluer la qualité d’une source](https://github.com/pmartinolli/TM-bullshitometer) ». Publisher.
+
+-   Martinolli, Pascal. (2022 màj) 2017. « [Feuille de personnage du chercheur](https://github.com/pmartinolli/TM_SchoCharSheet) ». Publisher.
+
+-   Martinolli, Pascal, et Camille Arpin. 2021. « [Choisir une licence Creative Commons pour diffuser un travail universitaire (TP) en libre accès](https://github.com/pmartinolli/MonTPenCC) ». Google Drawings.
+
+-   Rioux, Valérie, Cynthia Gagné, et Pascal Martinolli. 2021. « [Dans quelle revue diffuser ma recherche ?](https://github.com/pmartinolli/where2publish) ».
+
+-   Martinolli, Pascal. 2020. « [Publions & Périssons : jeu de rôle de classe sur la publication scientifique](https://github.com/pmartinolli/TM-publishnperish) ». Markdown.
+
+-   Martinolli, Pascal. 2020. « [Être e-visible ou invisible ?](https://www.raccoursci.com/astuce/communication-scientifique-strategie-ereputation/) » RaccourSci. 13 avril 2020.
+
+-   ♥ Martinolli, Pascal. 2020. « [Thésaurus personnel pour collection de références bibliographiques](https://github.com/pmartinolli/TM-MyThesaurus) ». LibreOffice.
+
+-   Martinolli, Pascal. 2020. « [Tutoriel d’initiation à Wikidata à l’usage des bibliothécaires en soutien à la recherche de leurs institutions](https://www.wikidata.org/wiki/User:Pmartinolli/Curation_chercheurs_UdeM) ». Wikidata. 22 octobre 2020.
+
+-   Martinolli, Pascal. 2019. « [Bonnes pratiques de sauvegarde pour sa recherche](https://github.com/pmartinolli/TM-Saveorcry) ». Libre Office Draw.
+
+-   Martinolli, Pascal. 2019. « [Should I Stay or Should I Go ?  Repérer les conférences prédatrices](https://github.com/pmartinolli/TM-Scamference) ». Publisher.
+
+-   Martinolli, Pascal. 2018. « [ZotLog: Inspiring students to adopt structured methods in Zotero](https://sandbox.acrl.org/library-collection/zotlog-inspiring-students-adopt-structured-methods-zotero) ». ACRL Framework for Information Literacy Sandbox. 2018.
+
+-   Martinolli, Pascal. 2018. « [Gestion d’identité et de profil en ligne pour jeune chercheur universitaire](https://github.com/pmartinolli/TM-SchoProMa) ». LibreOffice Draw.
+
+-   Martinolli, Pascal. 2017. « [Critères d’autorité pour évaluer les sources en anthropologie](https://papyrus.bib.umontreal.ca/xmlui/handle/1866/20284) ». Université de Montréal.
+
+-   Martinolli, Pascal. 2016. « [Incubablog : Programme de 12 semaines pour démarrer un blogue sur un sujet de recherche](https://github.com/pmartinolli/TM-incubablog) ».
+
+-   Martinolli, Pascal. 2016. « [Wikipedibus : Comment devenir un wikipédien en 5 étapes](https://github.com/pmartinolli/TM-Wikipedibus) ». Publisher.

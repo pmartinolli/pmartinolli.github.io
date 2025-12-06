@@ -1,0 +1,86 @@
+---
+title: "Modifier des références en lot dans Zotero"
+author: "Pascal Martinolli"
+date: "2025-10-22"
+categories: [Zotero, HumanitésNumériques]
+description: "Utilisation d'une extension avec un script dédié pour modifier tout champ de la notice."
+---
+
+
+-   Exemple d'application :
+    -   Pour une série de documents dans un fonds d'archives.
+    -   Avec le style Chicago 18.
+-   Outils :
+    -   Zotero.
+    -   Extension *Actions & Tags*, de [windingwind](https://github.com/windingwind/).
+    -   Script *Bulk Edit Multiple Items*, de [thalient-ai](https://github.com/thalient-ai).
+
+## Introduction
+
+Dans [un billet de Zotero francophone](https://zotero.hypotheses.org/5162), j'ai découvert qu'on pouvait utiliser l'extension *Actions & Tags* avec un JavaScript dédié pour modifier en lot des champs de Zotero. Cette méthode peut être adaptée pour modifier n'importe quel champ. C'est vraiment très utile car l'absence de modification en lot a toujours été un gros défaut de Zotero pour un travail documentaire poussé. En passant, l'extension [Zoplicate](https://github.com/ChenglongMa/zoplicate) est aussi un bon outil pour travailler comme un.e pro de la documentation car il permet de dédoublonner avec plus de fonctionalités que les fonctions de base de Zotero. Ces deux extensions avancées témoignent de la croissance bienvenue de contributeurs chinois dans la communauté des utilisateurs de Zotero (qui serait la 3e après les anglophones et les francophones).
+
+## Cas pratique
+
+Imaginons que nous ayons une cinquantaine de références bibliographiques dans Zotero qui correspondent à des documents que nous avons trouvé dans la boîte d'archive numéro 14, du Fonds d'archives numéro 33 de l'Unseen University de Ankh-Morpork. Pour les citer convenablement, on va ajouter en lot :
+
+-   `Boîte 14` dans le champ **Loc. dans l'archive**
+-   `Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld` dans le champ **Archive**.
+
+Car nous allons utiliser [*Chicago Manual of Style 18th edition (notes and bibliography, archival references with place first)*](www.zotero.org/styles/chicago-notes-bibliography-archive-place-first) qui va nous créer une référence qui ressemblera à ceci en note de bas de page :
+
+> Question numéro 842 du *The Unseen University Challenge*, 7 juillet 777, Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).
+
+Et à ceci en bibliographie finale (seul le point après 777 change):
+
+> Question numéro 842 du *The Unseen University Challenge*, 7 juillet 777. Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).
+
+#### Problème du style Chicago actuel
+
+Normalement, la note de bas de page devrait avoir cette forme :
+
+> Question numéro 842 du *The Unseen University Challenge*, 7 juillet 777, Boîte 14, Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld.
+
+Et la bibliographie finale celle-ci :
+
+> Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld.
+
+Il faudrait que je modifie le fichier CSL pour refléter ça. Ce sera pour une prochaine fois.
+
+## Installation
+
+-   Aller à <https://github.com/windingwind/zotero-actions-tags>
+-   Cliquer sur *Releases* à droite
+-   Télécharger le fichier .xpi sur votre ordinateur
+-   Zotero \> Outils \> Extensions \> (roue) *Install plugin from file* \> sélectionner le fichier .xpi. Redémarrer Zotero.
+-   Zotero \> Édition \> Paramètres \> *Actions & Tags*
+    -   Cliquer sur (+)
+    -   Name = `MultiModif`
+    -   Event = `None`
+    -   Operation = `Script`
+    -   Data = Copier-coller le code JavaScript de la page [*Bulk edit Multiple Items*](https://github.com/windingwind/zotero-actions-tags/discussions/343)
+    -   Menu Label = `MultiModif`
+    -   In Item Menu = cocher
+    -   *Save*.
+
+## Traitement
+
+-   Mettre les 50 références dans une collection « Boîte 14 » par exemple.
+-   Sélectionner toutes les références de cette collection.
+-   Clic-droit : *Trigger Action* \> MultiModif
+    1.  *Do you want to modify...* : saisir `1`
+    2.  *Start typing the field name...* : saisir `archive`
+    3.  *Multiple matches found...* : saisir le numéro correspondant au champ à éditer :
+        -   *Archive* (pour le chemin du Fonds à la ville)
+    4.  *Enter characters...* : laisser vide pour les champs vides ou saisir `*` pour les champs avec du texte
+    5.  *Enter the replacement...* : saisir `Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld`
+    6.  *You have chosen...* : OK
+    7.  *Confirm...* : OK
+    8.  *(x) items updated...* : OK
+-   Recommencer avec ceci pour l'étape 3 :
+    -   *Location in Archive* (pour le chemin du dossier à la boîte ou la série)
+-   Et ceci à l'étape 5 :
+    -   *Enter the replacement...* : saisir `Boîte 14` ou `Dossier 2a, Boîte 14, Série IV`
+
+Le script bogue si on tente de remplacer un champ qui n'existe pas dans le type de document d'une référence sélectionnée. Par exemple, ne pas tenter de remplacer le contenu de *Language* dans une référence de type *Software*. On peut s'aider de [cette page](https://www.zotero.org/support/kb/item_types_and_fields) ou de [zot2csl](https://pobrien333.github.io/zot2csl/) (traduit en [français](https://docs.zotero-fr.org/kb/item_types_and_fields/)) pour repérer quels champs sont disponibles selon le type de document.
+
+⚠️ Avertissement : il n'y a pas de fonction Annuler (*Undo*). Donc soyez prudent.e avant tout traitement en lot. Une sauvegarde préalable est fortement recommandée avant tout travail de ce type.

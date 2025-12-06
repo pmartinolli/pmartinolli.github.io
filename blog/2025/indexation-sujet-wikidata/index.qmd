@@ -1,0 +1,259 @@
+---
+title: "Les propriétés thématiques dans Wikidata"
+author: "Pascal Martinolli"
+date: "2025-10-07"
+categories: [Wikidata]
+description: "Les propriétés thématiques sont souvent les mal-aimés du travail d'indexation des oeuvres artistiques. Qu'en est-il de Wikidata ? Plus une idée d'atelier Wikidata idéal ?"
+---
+
+Historiquement, les pratiques de catalogage et de traitement documentaire d'oeuvres artistiques ont toujours été très réticentes à utiliser une indexation thématique pour interpréter et ajouter des mots-clés décrivant le sujet principal ou les sujets secondaires représentés. Par exemple, elles sont exclues de l'[indexation analytique](https://www.bnf.fr/fr/indexation-sujet-les-referentiels-utilises-par-la-bnf) de la BNF :
+
+> « L’indexation analytique par matière s’applique aux seules œuvres documentaires. En sont généralement exclus les œuvres littéraires et les textes classiques, philosophiques ou religieux. Cependant, dans les cas particuliers de fonds spécialisés de telles œuvres pourront être indexées. » (norme AFNOR Z 44-070).
+
+### Exemples de sujets thématiques
+
+Exemples :
+
+-   deuil
+-   relation père-fils
+-   mémoire coloniale
+-   rapport au corps
+-   quête de l'identité
+
+Exemples de termes proches ou plus spécifiques :
+
+-   deuil impossible
+-   transmission de la mémoire familiale
+-   déni des exactions coloniales
+-   rejet du vieillissement physique
+-   exploration de ses origines
+
+### Pourquoi ?
+
+Voici une liste non ordonnée de raisons possibles pour lesquelles les propriétés thématiques sont peu indexées dans les catalogues :
+
+-   Absence des mots-clés dans le vocabulaire contrôlé
+-   Difficulté à apparier des sujets flous, mouvants, historiquement datés, etc.
+-   Conflit entre l'intention des auteurs et celles des catalogueurs
+-   Culture de la neutralité dans la profession du catalogage
+-   Manque de ressources pour cataloguer de manière appropriée et cohérente : temps, formation, expertise.
+-   Décider ce qui constitue un « sujet important » versus un sujet secondaire ou implicite demande un jugement. Cela varie selon l’indexeur, le contexte et le public attendu.
+-   Biais culturel : un sujet peut être plus facilement reconnu dans un contexte culturel, linguistique ou disciplinaire que dans un autre.
+-   Difficilement automatisable: les outils automatiques (text mining, IA, etc.) peuvent repérer des mots-clés, mais ont souvent du mal avec les métaphores, l’ironie, les implicites, les multiplicités de sens. L’intervention humaine est presque toujours nécessaire.
+
+### Enjeux
+
+Le manque d'indexation par sujets thématiques dans les oeuvres artistiques réduit le potentiel de Wikidata comme outil de découverte et d'exploration.
+
+Exemples échevelés de requêtes qu'il serait possible de faire dans un Wikidata bien indexé avec des sujets thématiques :
+
+-   Toutes les oeuvres dont l'écrivain a conçu d'abord des oeuvres parlant de problèmes de transmission de la mémoire familiale puis ensuite de l'exploration de ses origines. Et ensuite l'inverse.
+-   Toutes les oeuvres parlant de deuil impossible dans un contexte révolutionnaire ou d'exode rural.
+-   L'évolution chronologique des thématiques d'un chanteur dans toute sa carrière.
+-   La transmission des thématiques des chansons de tous les membres de l'école du Wu-Tang Clan.
+-   (votre sujet de TP ou de mémoire ici)
+
+### Définitions
+
+Le **catalogage** «pur» sert à repérer les informations bibliographiques simples et objectives : titre, auteur, date de publication, source, citation, contient une bibliographie, contient des cartes, etc.
+
+Le [**traitement documentaire**](https://questions-reponses.enssib.fr/question/analyse-documentaire-catalogage-indexation) est une tâche supplémentaire qui permet de mettre en valeur la notice produite par le catalogage. Dans ce traitement documentaire, on trouve le résumé, la classification (un sujet général), l'indexation par mots-clés contrôlés ou mots-clés libres, etc. C'est de cette indexation thématique que je parle.
+
+Un **thésaurus** est une liste de mots-clés contrôlés et hiérarchisés en génériques / spécifiques.
+
+### État de l'art dans Wikidata
+
+#### Propriétés thématiques de Wikidata
+
+Dans Wikidata, les mots-clés utilisés dans les propriétés thématiques (*main subject*, *depicts*, etc.), sont à la fois contrôlés et libres.
+
+-   *Contrôlés* car il faut qu'il y ait un élément avec un identifiant.
+-   *Libres* car parfois cet élément n'est pas placé dans une organisation de mots-clés (on dit ontologie, ou taxonomie, ou thésaurus), dans le sens où il n'est pas la sous-classe d'une classe existante.
+
+Principales propriétés thématiques :
+
+-   [*genre*](https://www.wikidata.org/wiki/Property:P136) (genre artistique), catégorie dans laquelle l'œuvre ou l'artiste se situe
+-   [*facet of*](https://www.wikidata.org/wiki/Property:P1269) (aspect de), sujet général dont cet élément est un aspect
+-   [*main subject*](https://www.wikidata.org/wiki/Property:P921) (sujet ou thème principal)
+-   [*depicts*](https://www.wikidata.org/wiki/Property:P180) (dépeint), entité visuellement dépeinte dans une image, décrite littéralement décrite dans une œuvre, ou incorporée dans un médium audio-visuel ou autre. Peut être utilisé pour sujet ou thème secondaire.
+
+Autres propriétés thématiques plus spécifiques :
+
+-   *narrative motif*
+-   *commemorates*
+-   *named after*
+-   *fictional or mythical analog of*
+-   *significant person*
+-   *movement*
+-   *publication type of scholarly work*
+-   *form of creative work*
+-   *depicted format*
+
+#### Utilisation de ces propriétés dans Wikidata
+
+[Compter](https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D) combien est-ce qu'il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.
+
+``` sparql
+# Count total songs and songs with P921 (main subject) property
+SELECT DISTINCT
+  (COUNT(DISTINCT ?song) AS ?totalSongs)
+  (COUNT(DISTINCT ?songWithP921) AS ?songsWithP921)
+  (COUNT(DISTINCT ?songWithP136) AS ?songWithP136)
+WHERE {
+  VALUES ?songType {wd:Q7366       # song
+                    wd:Q105543609  # musical work/composition
+                    wd:Q207628     # composed musical work
+                    wd:Q2188189    # musical work
+                    wd:Q7302866    # audio track
+                   }.
+  ?song wdt:P31 ?songType.
+
+  # Optional: check if song has P921 (main subject)
+  OPTIONAL {
+    ?song wdt:P921 ?subject .
+    BIND(?song AS ?songWithP921)
+  }
+
+  # Optional: check if song has P136 (genre)
+  OPTIONAL {
+    ?song wdt:P136 ?genre .
+    BIND(?song AS ?songWithP136)
+  }
+}
+```
+
+-   Résultats du 7 octobre 2025: Nombre de chansons au total = 214 538
+    -   Avec *main subject* (P921) = 1615
+    -   Avec *genre* (P136) = 61 500
+    -   (Avec *facet of* (P1269) = 0)
+    -   (Avec *depicts* (P180) = 0)
+
+#### Lister tous les thèmes de chansons
+
+``` sparql
+# List all the topics of songs
+SELECT DISTINCT ?song ?songLabel ?subject ?subjectLabel
+WHERE {
+  VALUES ?songType {wd:Q7366       # song
+                    wd:Q105543609  # musical work/composition
+                    wd:Q207628     # composed musical work
+                    wd:Q2188189    # musical work
+                    wd:Q7302866    # audio track
+                   }.
+  ?song wdt:P31 ?songType.
+  ?song wdt:P921 ?subject.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+}
+```
+
+[try it](https://query.wikidata.org/#%23%20List%20all%20the%20topics%20of%20songs%0ASELECT%20DISTINCT%20%3Fsong%20%3FsongLabel%20%3Fsubject%20%3FsubjectLabel%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%3Fsong%20wdt%3AP921%20%3Fsubject.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A)
+
+Il y en a 2395 à ce jour.
+
+## Comment améliorer la situation ?
+
+On peut partir de collections d'oeuvres sur un thème en particulier et les indexer dans Wikidata. Cela garantit :
+
+-   une masse critique d'éléments sur un thème;
+-   induit un traitement par sélection raisonnée;
+-   parfois permet de rajouter une source pour ces données indexées;
+-   procure le plaisir de travailler sur un ensemble fini.
+
+Exigences :
+
+-   Savoir traiter les éléments en lot (coucou [OpenRefine](https://doi.org/10.46430/phfr0038) et QuickStatements),
+-   Avoir créé ou amélioré la qualité de l'indexation de l'élément thématique.
+    -   Si créé : ne pas oublier de raccorder comme une sous-classe d'une autre classe
+-   Dans la mesure du possible, indiquer la référence de tous les éléments thématiques car ils peuvent être sujet à interprétation.
+    -   Exception : dans le cas d'une indexation manuelle basée sur un jugement personnel (à voir).
+    -   Suggestions de propriétés à ajouter en Référence :
+        -   *stated in* (P248) : QID de la source
+        -   *object named as* (P1932) : chaîne de caractères, comment l'élément est nommé dans la source ([exemple dans les main subjects](https://www.wikidata.org/wiki/Q50814702))
+        -   *reference URL* (P854) : permalien ([exemple dans les main subjects](https://www.wikidata.org/wiki/Q1533284))
+        -   [Syntaxe QuickStatements](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9)
+
+On peut animer des ateliers Wikidata basés sur l'enrichissement de sujets thématiques. Voir Annexe 1, ci-dessous.
+
+------------------------------------------------------------------------
+
+# Annexe 1 : On connaît (le thème de) la chanson. En quête du sujet idéal d'atelier Wikidata ?
+
+En suivant les idées de la partie précédente, je pense avoir trouvé une idée de contribution idéale pour un atelier d'initiation à Wikidata pour des professionnels de l'information et plus généralement pour tout le monde. Il s'agit de rajouter des propriétés *main subject* à ses chansons favorites.
+
+## Pourquoi ?
+
+-   La propriété *main subject* est une propriété thématique très riche mais sous-utilisée dans Wikidata. Voir plus haut.
+-   Tout le monde a des chansons favorites qui lui tiennent à coeur. Or un des secrets pour maintenir ou susciter la passion de la contribution Wikimédienne est de partir des passions de chacun.
+-   Cela fait pratiquer la recherche de chansons dans Wikidata.
+-   Peut être que cela va susciter la création d'un nouvel élément si la chanson n'existe pas encore. Avec tout le questionnement sur comment faire. On peut prendre modèle sur les chansons existantes.
+-   Cela fait pratiquer la recherche des bons termes :
+    -   via la boîte de saisie semi-automatique (parfois limitée)
+    -   via la recherche Wikidata (parfois très longue)
+    -   via la page Wikipédia sur la chanson ([exemple](https://www.wikidata.org/wiki/Q158553))
+
+## Autres propriétés proches
+
+-   *named after*
+-   *depicts*
+-   *genre*
+-   *present in work*
+
+## Défis
+
+Certains termes ou sujets sont souvent problématiques et on peut rencontrer rapidement des cas complexes pour des débutants :
+
+-   Un sujet est mêlé à un autre : comment les séparer ?
+    -   Ex: j'ai trouvé 2 éléments pour [*self-determination*](https://www.wikidata.org/wiki/Q19607723), un était surtout légal et institutionnel, tandis que l'autre était plus flou, individuel et générique. Je l'ai modifié pour ajouter *value* et ainsi l'utiliser dans un cadre plus personnel.
+-   Un sujet existant est mal indexé, il faut l'enrichir.
+    -   Ex: En cherchant à trouver le sujet principal de [*La Marseillaise*](https://www.wikidata.org/wiki/Q41180), je suis tombé sur cet élément intéressant : [defense of the State](https://www.wikidata.org/wiki/Q52197736) qui n'était qu'un concept issus d'un article solitaire en slovène et que j'ai amélioré en concept universel.
+-   Un sujet n'existe pas encore. Comment le créer et l'indexer avec les bons *instance of* et *subclass of* ? Comment ajouter les bonnes propriétés pour l'enrichir le plus vite possible (voir ci-dessous)
+
+### Suggestion de propriétés pour indexer un sujet thématique
+
+-   *label* et *alias* en français et en anglais
+-   *instance of* : le plus important ? surtout si c'est un fait (événement, personne, lieu, etc.)
+-   *subclass of* : le plus important ? surtout si c'est une idée ou un concept
+-   *facet of*
+-   *uses*
+-   *has goal*
+-   *part of*
+
+## Pour aller plus loin
+
+-   Manipuler les données en lot : l'atelier peut se poursuivre avec une démonstration de OpenRefine et de QuickStatements.
+-   Utiliser les [catégories de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Chanson_par_th%C3%A8me), avec ou sans [PetScan](https://petscan.wmcloud.org/).
+    -   Dans la page catégorie précédente, cliquer sur PetScan. On arrive sur l'outil, on remarque Chanson par thème dans Catégories \> Catégories. Aller dans Wikidata : cocher Ajouter des éléments, quand c'est possible. Résultat : TSV. Exécuter. Récupérer le fichier .tsv
+    -   À ma connaissance, il n'est pas possible d'exporter les catégories depuis PetScan, alors on va importer le fichier .tsv dans OpenRefine, puis récupérer les pages Wikipédia pour extraire leurs catégories.
+        -   Title : column \> add column based on this column. Name = Fetch. value = `"https://fr.wikipedia.org/wiki/" + value.escape("url")` (*escape* permet de transformer les accents, sinon *fetch* échoue)
+        -   Attendre un peu que OpenRefine capture le contenu des pages web pointées (environ 10 minutes pour 1000 pages).
+        -   Fetch \> Column \> Add column based on this column. Name = Categories. Value = `value.substring(value.indexOf("RLCONF=") + 7).split(";RLSTATE")[0].parseJson().wgCategories.join(";")`
+        -   Sauvegarder au format .tsv
+        -   Supprimer la colonne Fetch
+        -   Cliquer sur Categories \> Edit Cells \> Split multiples rows \> separator = ;
+        -   Passer de la vue *row* à la vue *records*
+        -   Supprimer les catégories non-pertinentes :
+            -   Titre : Cell \> fill down
+            -   Wikidata : Cell \> fill down
+            -   Créer une *custom facet* basées sur `value.contains(/^(Article |Catégorie |Portail:|Bon article|Page |Wikipédia:)/)`
+        -   Passer de la vue *records* à la vue *row*
+        -   Remove matching rows de la facette Categories = true
+-   Chercher des bases de données ayant ces mots-clés thématiques :
+    -   Écrire à leurs auteurs et demander s'il est possible de réutiliser une partie de leurs données. Attention, il y a toujours des droits d'auteur par défaut sur les mots-clés.
+    -   Utiliser des techniques de *web scraping* pour récupérer les données (*Fetch* dans OpenRefine par exemple).
+-   Dans le même ordre d'idée, chercher en ligne des listes sélectionnées de chansons de type « Les 100 plus belles chansons d'amour » puis :
+    -   Extraire les chansons,
+    -   les importer dans OpenRefine,
+    -   les aligner,
+    -   ajouter le sujet principal,
+    -   verser dans Wikidata avec l'option interne ou avec QuickStatements.
+
+------------------------------------------------------------------------
+
+# Annexe 2 : Quelques pratiques d'indexation avancée
+
+-   Technique de la [double indexation](https://services.lib.uliege.be/guide_catalo/lindexation-matiere-introduction/) qui utilise plusieurs thésaurus pour capter les nuances dans différents vocabulaires contrôlés.
+-   Technique de la revue systématique où plusieurs personnes (au moins trois) indexent séparemment puis elles mettent en commun leurs indexations.
+-   Technique de la limite du nombre de mots-clés. Par exemple, maximum trois pour la [BNF avec Rameau](https://www.bnf.fr/fr/indexation-sujet-les-referentiels-utilises-par-la-bnf).
+-   Technique du double niveau qui distingue entre les sujets principaux et les sujets secondaires d'une oeuvre (distingué par \* dans PubMed et Medline).
+-   Vérification de l'ontologie où chaque mot-clé devrait être placé dans une hiérarchie de termes génériques/spécifiques.
+-   Bonification de l'ontologie des mots-clés avec l'ajout d'alias (synonymes exacts).

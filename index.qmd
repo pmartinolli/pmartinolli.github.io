@@ -1,0 +1,40 @@
+---
+title: ""
+image: img/pascalmartinolli.jpg
+about:
+  template: solana
+  links:
+    - icon: mastodon
+      text: Mastodon
+      href: https://mastodon.social/@pascaliensis
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/pascalmartinolli
+    - icon: github
+      text: Github
+      href: https://github.com/pmartinolli
+    - text: "{{< ai orcid >}} Orcid"
+      href: https://orcid.org/0000-0003-0122-5300
+    - text: "{{< fa brands bluesky >}} Bluesky"
+      href: https://bsky.app/profile/pascaliensis.bsky.social
+    - text: "{{< fa brands wikipedia-w >}} Wikidata"
+      href: https://www.wikidata.org/wiki/User:Pmartinolli
+    - text: "{{< ai google-scholar >}} Google Scholar"
+      href: https://scholar.google.com/citations?user=gXtvDv8AAAAJ
+---
+
+**Bibliothécaire universitaire** : pour l’histoire, la formation et les humanités numériques.
+
+**« Citez-vous les uns les autres »** : j’étudie les pratiques de citation dans l’histoire, dans la publication scientifique et dans la culture populaire.
+
+**Recherche dilletante** : j’étudie les jeux de rôle sur table, principalement avec des méthodes historiques, numériques et de sciences sociales.
+
+$* * *$
+
+Martinolli, Pascal. 2025. “**Enrichir ses données avec le processus de réconciliation d’OpenRefine**”. *Programming Historian en français,* (7). doi:[10.46430/phfr0038](https://doi.org/10.46430/phfr0038).
+
+Martinolli, Pascal. 2022. “**A Scholarly Character Sheet to Frame Learning Activities and Improve Engagement**”. *International Journal of Role-Playing*, (12): 40–61. doi:[10.33063/ijrp.vi12.291](https://doi.org/10.33063/ijrp.vi12.291).
+
+Martinolli, Pascal. 2021. “**La formation documentaire en temps de pandémie : Les webinaires matinaux**”. *Partnership: The Canadian Journal of Library and Information Practice and Research,* 16 (1): 1–11. doi:[10.21083/partnership.v16i1.6392](https://doi.org/10.21083/partnership.v16i1.6392).
+
+~[Autres publications](cv/index.html)~

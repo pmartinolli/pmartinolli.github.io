@@ -1,0 +1,49 @@
+---
+title: "Thesaurus++"
+format: html
+description: "Un thesaurus pour une recherche ++ : pourquoi l'utiliser et comment le concevoir pour améliorer la gestion de ses données de recherche"
+---
+
+Que ce soit pour vos références bibliographiques ou pour vos données de terrain (enquête, archives, notes, expériences, etc.), voici une série de ressources pour vous vendre l’intérêt de concevoir un thésaurus personnel et pour vous donner des exemples d’applications pratiques.
+
+## Liste de ressources (presque en vrac)
+
+-   Chapitre « [Thesaurus pour la recherche](https://pmartinolli.github.io/QMpRD/chapters/thesaurus.html) » du *Manuel pratique de recherche documentaire*. Idéal pour commencer et avoir une vision d’ensemble.
+
+-   La page GitHub [My Thesaurus](https://github.com/pmartinolli/MyThesaurus) contient de nombreuses ressources pratiques.
+
+-   Un cahier des charges fonctionnel pour qu’un codeur bénévole créé [ZotFlag, une extension Zotero](https://pmartinolli.github.io/ZotFlag/)
+
+## Pour aller plus loin
+
+-   Pour coder un thésaurus simple, vous pouvez utiliser le language SKOS (Simple Knowledge Organization System). SKOS est spécifiquement conçu pour représenter des thésaurus, des taxonomies et d’autres vocabulaires contrôlés de manière standardisée.
+
+-   Pour un thésaurus plus complexe, avec des relations multiples, vous avez le language OWL/RDF (du XML). Il peut être facilement construit avec [WebProtégé](https://webprotege.stanford.edu/) (site web où il faut se créer un compte, gratuit) ou [Protégé](https://protege.stanford.edu/) (logiciel libre). OWL peut inclure du SKOS.
+
+    -   J’en parle un peu avec un exemple concret de mécanismes de jeu de rôle [ici](https://jdr.hypotheses.org/2144) et [ici](https://jdr.hypotheses.org/2230).
+
+## Note d’intention
+
+### Au commencement était le thésaurus
+
+Le cœur de ma formation de DESS à l’[Institut national des techniques de la documentation (INTD)](https://intd.cnam.fr/) du Conservatoire national des arts et métiers (CNAM) portait sur la construction de thésaurus. C’était la fierté de l’école, et cette compétence représentait bien un cinquième des cours. Nous apprenions à concevoir des thésaurus pour des centres de documentation, des instituts de recherche, des laboratoires ou encore des entreprises.
+
+J’ai toujours gardé un excellent souvenir de cette formation, car elle me donnait le sentiment de posséder une véritable compétence technique, concrète et valorisable. Quelques années plus tard, cette expertise m’a d’ailleurs permis d’obtenir mon premier emploi hors de France : j’ai conçu simultanément le thésaurus du centre de documentation de [Vélo Québec](https://www.velo.qc.ca/) et celui du [Centre de la montagne](https://montroyal.montreal.ca/patrimoine-documentaire-archivistique/amis-montagne) (à la Maison Smith du Mont Royal). Les deux associations s’étaient partagé mon poste, et j’y avais développé leur base de données documentaire à l’aide de FileMaker.
+
+### Le thésaurus dans la peau
+
+Le thésaurus est revenu dans ma vie professionnelle à travers les formations au logiciel Zotero. J’avais envie d’aller au-delà de la simple formation « clic-bouton » pour apprendre à faire des bibliographies. Vers 2015, j’ai donc conçu une formation de niveau avancé (un « niveau 2 ») axée sur la gestion des collections et, surtout, sur la mise en place d’un système de marqueurs contrôlés. Le thésaurus faisait ainsi son grand retour dans ma vie.
+
+À partir de 2018, j’ai commencé à accompagner des équipes de chercheurs en histoire de l’art et en sciences politiques dans l’utilisation d’un thésaurus « zoteroéen » adapté à leurs petits groupes de recherche. En parallèle, dans le cadre de mon hobby autour du jeu de rôle, j’ai co-créé avec Sébastien Delphino et Thomas Munier un thésaurus que nous avions baptisé [**Thesaurus Rex**](https://jdr.hypotheses.org/628). Je l’ai ensuite utilisé avec succès pour alimenter ma base de données [**academicTTRPG**](https://www.zotero.org/groups/446523). En 2020, j’ai partagé ces principes dans un billet publié sur le [**blogue Zotero francophone**](https://zotero.hypotheses.org/3298).
+
+Vers 2022, la dimension du soutien à la recherche a pris une place plus importante dans le métier de bibliothécaire. Je suis convaincu que l’un des rôles du bibliothécaire en bibliothèque de recherche est d’aider les chercheurs à concevoir leurs propres thésaurus pour organiser leurs données — qu’il s’agisse de leurs références bibliographiques, de leurs données de recherche actives (enquêtes, entretiens, archives, expériences, etc.) ou encore de leurs dispositifs de diffusion.
+
+### Réflexion plus large
+
+Je pense qu’en élevant le niveau technique et méthodologique des usagers du numérique — notamment par une meilleure maîtrise des vocabulaires contrôlés comme les thésaurus — on peut contribuer à hausser la culture générale de la société.
+
+Cette montée en compétence peut se faire de manière « bottom-up », c’est-à-dire à partir de la base, comme l’explique Caroline Ball dans un [billet de blogue](https://katinamagazine.org/content/article/open-knowledge/2025/how-fanfiction-can-help-reimagine-scholarly-publishing). Elle y montre comment les pratiques d’indexation des communautés de fanfiction d’AO3 peuvent inspirer la publication savante. Elle parle de « folksonomie » (littéralement une taxonomie du peuple) où chaque utilisateur indexe librement ses textes avec les mots-clés de son choix, tandis qu’un second groupe harmonise ensuite ces termes pour les rapprocher d’un vocabulaire plus normalisé. Cette forme de *synodal epistemic indexing* (ou « synodalité épistémique », pour reprendre un néologisme que je propose) constitue selon moi une excellente porte d’entrée vers la compréhension et l’usage des thésaurus.
+
+Une autre voie consiste à [indexer les éléments thématiques dans Wikidata](https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/) et à réfléchir collectivement à l’ontologie des classes qui les structurent.
+
+Peut-être avons-nous manqué le virage du web sémantique et de l’informatique personnelle, ce qui expliquerait en partie notre fascination actuelle pour les LLMs (voir [le billet de Rakhim](https://rakhim.exotext.com/ai-is-impressive-because-we-ve-failed-at-semantic-web-and-personal-computing)). Quoi qu’il en soit, pour rééquilibrer ou reconquérir l’« injustice épistémique » souvent dénoncée dans les pratiques de production du savoir, il me semble essentiel de démocratiser les techniques d’indexation et la culture des vocabulaires contrôlés, afin qu’elles ne soient plus réservées aux seuls spécialistes.

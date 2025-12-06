@@ -1,0 +1,118 @@
+---
+title: "cv"
+format: html
+bibliography: bibliography.bib
+csl: chicago-manual-of-style-mod_pascal.csl
+nocite: | 
+  @*
+citeproc: true
+---
+
+### Emplois
+
+#### Bibliothécaire
+
++--------------+---------------------------------------------------------------+
+| 2008-...     | **Université de Montréal**, Montréal, Canada\                 |
+|              | - Pour histoire et pour la formation\                         |
+|              | - Humanités numériques : fouille de texte, numérisation,\     |
+|              | indexation; Thesaurus et ontologies; Visualisation de données |
++--------------+---------------------------------------------------------------+
+
+#### Documentaliste
+
++--------------+-------------------------------------------------------------------+
+| 2002-2008    | Université de Montréal, Montréal, Canada\                         |
+|              | - Département des sciences économiques\                           |
+|              | - École de relations industrielles                                |
++--------------+-------------------------------------------------------------------+
+| Avant 2002   | Electricité de France (Direction de la stratégie), Paris, France\ |
+|              | Les Echos (*Lettres professionnelles*), Paris, France             |
++--------------+-------------------------------------------------------------------+
+
+### Diplômes
+
++----------------------------------------------+---------------------------------------------------------------------------------------+
+| D. E. S. S. en sc. info. et de la doc. spé.\ | Conservatoire national des **arts et métiers** (CNAM)\                                |
+| *≅ M.Sc.*                                    | [Institut national des techniques de la documentation](https://intd.cnam.fr/) (INTD)\ |
+|                                              | Paris, France                                                                         |
++----------------------------------------------+---------------------------------------------------------------------------------------+
+| Maîtrise en histoire\                        | Université de Nice-Sophia-Antipolis\                                                  |
+| *≅ M.A.*                                     | Nice, France                                                                          |
++----------------------------------------------+---------------------------------------------------------------------------------------+
+
+### Activités
+
+-   *Peer-reviewing* :
+    -   Canadian Journal of Academic Librarianship
+    -   Partnership: The Canadian Journal of Library & Information Practice & Research
+    -   Journal of Open Humanities Data
+-   Contributeur et formateur Wikidata et Wikipédia (2015+).
+-   Membre du comité de rédaction [Blogue Zotero francophone](https://zotero.hypotheses.org/) : Rédaction de billet ; traduction du logiciel et de la documentation technique (2019+)
+-   Conseiller pour la valorisation des revues du [Réseau Circé](https://reseaucirce.org/) (2025+)
+-   Gestionnaire de bibliographies en ligne Zotero
+    -   Bibliographie du [Département d’histoire](https://bibliographies.bib.umontreal.ca/histoire_udem/) de l’UdeM (2021+)
+    -   [Sources primaires pour la recherche en histoire](https://kerko.bib.umontreal.ca/sources-primaires-histoire/) (2025+)
+    -   Bibliographie sélective « [Essays on wargaming](https://www.zotero.org/groups/5373960/) » (2024+)
+    -   Bibliographie sélective « [Hunger, Famine and Starvation in Historical Perspective](https://www.zotero.org/groups/5373408/) » (2024+)
+    -   Bibliographie exhaustive de [Pierre Teilhard de Chardin](https://www.zotero.org/groups/5115263/) (2023+)
+    -   Bibliography of [scholarly studies on TTRPG](https://www.zotero.org/groups/446523) (2016+)
+-   Conseiller en communication scientifique ACFAS : Conseiller en communication scientifique pour les participants aux congrès de l'ACFAS; enseignant pour des ateliers de communication scientifique (2021+)
+-   Enseignant ASTED-FMD pour des ateliers de formation continue occasionnels (2018+).
+-   Blogueur éclectique
+    -   « [Jeux de rôle sur table](https://jdr.hypotheses.org/) », carnet de recherche Hypothèses sur le JDR avec un angle universitaire (2016+)
+    -   « [ZOtRPG !](http://zotrpg.blogspot.com/) », blog about scholarly topics on tabletop role-playing games (2016+)
+    -   « [Le Filtre](https://tinyurl.com/lefiltre/) », veille pour bibliothécaires (occasionnelle, 2020+)
+    -   « [Mangea lou Libretoun](http://libretoun.blogspot.com/) », bandes dessinées sur le monde des bibliothèques (2009-2011)
+
+### Compétences
+
+(★ je suis bon; ☆ je me débrouille bien)
+
+-   **Langues** : français ★, anglais ★, espagnol ☆, chinois (débutant).
+-   **Méthodes** :
+    -   Enseignement & conception pédagogique ★
+    -   Thesaurus & classification ★
+    -   Graphe de connaissances & données ouvertes liées ★
+    -   Gestion de collection & numérisation ★
+    -   Fouille de texte ★
+    -   Transcription OCR/HTR ☆
+    -   Visualisation de données ☆
+-   **Compétences informatiques** :
+    -   **Balisage** :
+        -   HTML/XHTML, CSS ★
+        -   JSON, YAML ★
+        -   dot, Mermaid ★
+        -   Markdown, Quarto ★
+        -   LaTeX, BibTeX ★
+        -   XML :
+            -   TEI (débutant)
+            -   OWL/RDF ★
+            -   CSL ★
+            -   SKOS ☆
+    -   **Programmation** :
+        -   SPARQL ★
+        -   R ☆
+        -   Python ☆
+        -   SQL, SQlite, PHP/MySQL ☆
+        -   JavaScript, D3 ☆
+        -   Turbo Pascal ★
+    -   **Expertise** :
+        -   Zotero ★
+        -   OpenRefine ★
+        -   Camtasia ★
+        -   Protégé ★
+        -   Oxygen (débutant)
+    -   **Plateformes** :
+        -   Wikidata ★
+        -   ORCID + ORCID Manager ★
+        -   Moodle, Edx, H5P ★
+        -   PressBook ★
+        -   Transkribus ★
+        -   GitHub ☆
+        -   ObservableHQ ☆
+
+### Publications
+
+::: {#refs}
+:::

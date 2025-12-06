@@ -1,0 +1,101 @@
+{
+  "about.qmd": {
+    "about.html": "ecb30e55"
+  },
+  "index.qmd": {
+    "index.html": "2273f914"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "ec76211b"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "dba277d4"
+  },
+  "blog.qmd": {
+    "blog.html": "02f80c08"
+  },
+  "projects.qmd": {
+    "projects.html": "deed357d"
+  },
+  "posts/2025-annee-wikidata/index.qmd": {
+    "index.html": "ac5de039"
+  },
+  "posts/baudolino/index.qmd": {
+    "index.html": "5de1caca"
+  },
+  "posts/comment-faire-100-millions/index.qmd": {
+    "index.html": "7dc5b312"
+  },
+  "posts/indexation-sujet-wikidata/index.qmd": {
+    "index.html": "18053530"
+  },
+  "posts/zotero-actions-tags-multiremplacement/index.qmd": {
+    "index.html": "6c0589a2"
+  },
+  "blog/2025-annee-wikidata/index.qmd": {
+    "index.html": "af1dc989"
+  },
+  "blog/baudolino/index.qmd": {
+    "index.html": "e19c5c64"
+  },
+  "blog/comment-faire-100-millions/index.qmd": {
+    "index.html": "274d22c5"
+  },
+  "blog/indexation-sujet-wikidata/index.qmd": {
+    "index.html": "74a66b6e"
+  },
+  "blog/zotero-actions-tags-multiremplacement/index.qmd": {
+    "index.html": "7f4d2516"
+  },
+  "cv.qmd": {
+    "cv.html": "8cda8f11"
+  },
+  "ttrpg.qmd": {
+    "ttrpg.html": "8315dae6"
+  },
+  "blog/2025/2025-annee-wikidata/index.qmd": {
+    "index.html": "08066ea8"
+  },
+  "blog/2025/baudolino/index.qmd": {
+    "index.html": "f4f98b1d"
+  },
+  "blog/2025/comment-faire-100-millions/index.qmd": {
+    "index.html": "ac3aeb20"
+  },
+  "blog/2025/indexation-sujet-wikidata/index.qmd": {
+    "index.html": "5ab6404a"
+  },
+  "blog/2025/zotero-actions-tags-multiremplacement/index.qmd": {
+    "index.html": "66d11397"
+  },
+  "projects/teaching/index.qmd": {
+    "index.html": "83564206"
+  },
+  "projects/thesaurusPlusPlus/index.qmd": {
+    "index.html": "8ec72576"
+  },
+  "ttrpg/index.qmd": {
+    "index.html": "8d3c0e01"
+  },
+  "projects/index.qmd": {
+    "index.html": "0e52be77"
+  },
+  "cv/index.qmd": {
+    "index.html": "52113774"
+  },
+  "blog/blog.qmd": {
+    "blog.html": "c3759240"
+  },
+  "blog/index.qmd": {
+    "index.html": "d00e7275"
+  },
+  "cv-templates/cv-templates.qmd": {
+    "cv-templates.tex": "8077ff81"
+  },
+  "cv/index2.qmd": {
+    "index2.html": "977bc1ae"
+  },
+  "teaching/index.qmd": {
+    "index.html": "53a37f70"
+  }
+}
