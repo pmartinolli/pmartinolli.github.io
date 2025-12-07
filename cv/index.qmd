@@ -1,5 +1,5 @@
 ---
-title: "cv"
+title: "about"
 format: html
 bibliography: bibliography.bib
 csl: chicago-manual-of-style-mod_pascal.csl
@@ -14,7 +14,7 @@ citeproc: true
 
 +--------------+---------------------------------------------------------------+
 | 2008-...     | **Université de Montréal**, Montréal, Canada\                 |
-|              | - Pour histoire et pour la formation\                         |
+|              | - Pour l'histoire et pour la formation\                       |
 |              | - Humanités numériques : fouille de texte, numérisation,\     |
 |              | indexation; Thesaurus et ontologies; Visualisation de données |
 +--------------+---------------------------------------------------------------+

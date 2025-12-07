@@ -1,0 +1,101 @@
+---
+title: "Programmes à réinstaller sur un nouvel ordinateur"
+format: html
+author: "Pascal Martinolli"
+date: "2025-12-06"
+categories: []
+description: "Listes de tous les programmes à réinstaller dans le cas d'un passage à un nouvel ordinateur ou après un reformatage d'ordinateur."
+---
+
+### Internet
+
+- [Firefox](https://www.firefox.com/)
+	- Synchroniser Firefox avec mon compte
+	- Supprimer les fonctions IA de FF : Disable the AI chatbot: Go to Settings and select Firefox Labs. Deselect the AI chatbot box (and everything else if there is). 
+	- Disable smart tab features: Open a new tab and type `about:config` in the address bar. 
+		- Search for `browser.tabs.groups.smart.enabled`. Double-click the entry to change its value to `false`. 
+		- Search for and set the following preferences to `false` : `browser.ml.enable` & `browser.ml.chat.enabled` 
+
+- [Chrome](https://play.google.com) 
+	- Synchronize Chrome with G account
+	
+
+### Utilitaires
+
+- [Notepad++](https://notepad-plus-plus.org/) pour éditer des fichiers texte
+- [VS Codium](https://vscodium.com/) pour éditer des fichiers texte 
+- [Fox-it PDF](https://www.foxit.com/) pour lire des PDF 
+- [IrfanView](https://www.irfanview.com/) pour lire des images 
+	- installer les [plugins](https://www.irfanview.com/64bit.htm) 
+	- OCR avec Tesseract
+	- Edit > Show Paint dialog
+- [CDisplayEx](https://www.cdisplayex.com/) pour lire des BDs 
+- [FileZilla](https://filezilla-project.org/) pour transférer des fichiers par FTP 
+- [RSSOwl](https://www.rssowl.org/) pour collectionner et lire des alertes RSS 
+- [7-Zip](https://www.7-zip.org/) pour faire des fichiers compressés 
+- [Clone Spy](https://clonespy.com/) pour repérer des fichiers doublons 
+- [Karen Directory Printer](https://www.karenware.com/powertools/karens-directory-printer) pour lister des dossiers et des fichiers 
+- [ExifTool](https://exiftool.org/) pour lire et éditer des métadonnées d'images 
+
+
+
+### Programmation
+
+- R https://cran.r-project.org/bin/windows/base/ 
+- RStudio https://posit.co/download/rstudio-desktop/
+	- Quarto https://quarto.org/docs/get-started/ 
+	- Rtools? https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html
+- [Python](https://www.python.org/)
+- [Spyder](https://www.spyder-ide.org/) pour éditer et lancer des scripts Python
+	- console : conda install pip
+	- installer les packages importants 
+	# pip install unicodedata
+	# pip install wikidataintegrator
+	# pip install unidecode 
+	# pip install langdetect
+	# pip install isbnlib
+	# pip install frontend
+	# pip install tools
+	# pip install fitz
+	# pip install --upgrade pymupdf
+	# pip install --upgrade pytesseract
+	# pip install pdf2image
+- [GitHub desktop](https://desktop.github.com/download/)
+	- Synchronize with p.um@gmail + double check with Authenticator
+- Windows 11 : Systeme > Batterie et alimentation > Delai d'expiration de l'écran, de la veille... > Sur Secteur : Mettre en veille = JAMAIS (pour éviter de pauser les scripts Python quand on est en veille)
+
+## Humanités numériques
+
+- [OpenRefine](https://openrefine.org/) : pour traiter des données tabulées
+- [LibreOffice](https://www.libreoffice.org/) : pour faire de la bureautique
+- [Zotero](https://www.zotero.org/) : pour gérer ses lectures et faire des bibliographies
+	- Installer le connector
+	- Synchroniser avec le compte `xxxxx` 
+	- Installer les plugins : Zoplicate, Zutilo, Cita, Better BibTeX
+- Installer Oxygen XML depuis la logithèque de l'UdeM : pour faire du XML/TEI
+- [MikTeX](https://miktex.org/) full install : pour rédiger des documents TeX
+- [Obsidian](https://obsidian.md/) : pour prendre des notes liées
+- [Zettlr](https://www.zettlr.com/) : pour les fichiers MarkDown
+- [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki) : pour l'OCR
+- [Pandoc](https://pandoc.org/) : pour transformer les formats de documents
+- [Ghostscript GPL](https://ghostscript.com/releases/gsdnld.html) : pour les PDF  
+- [NVU](https://www.nvu.com/) pour éditer des pages html
+
+
+### Télécharger
+
+- wget
+- HTTrack
+- qBitTorrent
+- DC++ 
+
+
+### Jouer
+
+- [Linux WSL](https://learn.microsoft.com/en-us/linux/install#install-linux-with-windows-subsystem-for-linux)
+  - Lancer Powershell en mode Administrateur : `wsl --install -d Ubuntu`
+- [Ollama](https://ollama.com/) : pour installer un LLM
+ - [DeepSeek 7b](https://ollama.com/library/deepseek-r1:7b) (run `ollama run deepseek-r1:7b` in terminal after Ollama installed)   
+ 
+ 
+

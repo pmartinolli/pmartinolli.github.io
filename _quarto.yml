@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  description: "A website built with Quarto"
+  description: "Personal website built with Quarto"
   site-url: https://pmartinolli.github.io 
   title: "Pascal Martinolli"
   navbar:

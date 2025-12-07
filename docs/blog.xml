@@ -8,9 +8,130 @@
 <title>Pascal Martinolli</title>
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
-<description>A website built with Quarto</description>
+<description>Personal website built with Quarto</description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sun, 30 Nov 2025 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 06 Dec 2025 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Programmes à réinstaller sur un nouvel ordinateur</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2025/programmes-reinstallation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="internet" class="level3">
+
+<ul>
+<li><a href="https://www.firefox.com/">Firefox</a>
+<ul>
+<li>Synchroniser Firefox avec mon compte</li>
+<li>Supprimer les fonctions IA de FF : Disable the AI chatbot: Go to Settings and select Firefox Labs. Deselect the AI chatbot box (and everything else if there is).</li>
+<li>Disable smart tab features: Open a new tab and type <code>about:config</code> in the address bar.
+<ul>
+<li>Search for <code>browser.tabs.groups.smart.enabled</code>. Double-click the entry to change its value to <code>false</code>.</li>
+<li>Search for and set the following preferences to <code>false</code> : <code>browser.ml.enable</code> &amp; <code>browser.ml.chat.enabled</code></li>
+</ul></li>
+</ul></li>
+<li><a href="https://play.google.com">Chrome</a>
+<ul>
+<li>Synchronize Chrome with G account</li>
+</ul></li>
+</ul>
+</section>
+<section id="utilitaires" class="level3">
+<h3 class="anchored" data-anchor-id="utilitaires">Utilitaires</h3>
+<ul>
+<li><a href="https://notepad-plus-plus.org/">Notepad++</a> pour éditer des fichiers texte</li>
+<li><a href="https://vscodium.com/">VS Codium</a> pour éditer des fichiers texte</li>
+<li><a href="https://www.foxit.com/">Fox-it PDF</a> pour lire des PDF</li>
+<li><a href="https://www.irfanview.com/">IrfanView</a> pour lire des images
+<ul>
+<li>installer les <a href="https://www.irfanview.com/64bit.htm">plugins</a></li>
+<li>OCR avec Tesseract</li>
+<li>Edit &gt; Show Paint dialog</li>
+</ul></li>
+<li><a href="https://www.cdisplayex.com/">CDisplayEx</a> pour lire des BDs</li>
+<li><a href="https://filezilla-project.org/">FileZilla</a> pour transférer des fichiers par FTP</li>
+<li><a href="https://www.rssowl.org/">RSSOwl</a> pour collectionner et lire des alertes RSS</li>
+<li><a href="https://www.7-zip.org/">7-Zip</a> pour faire des fichiers compressés</li>
+<li><a href="https://clonespy.com/">Clone Spy</a> pour repérer des fichiers doublons</li>
+<li><a href="https://www.karenware.com/powertools/karens-directory-printer">Karen Directory Printer</a> pour lister des dossiers et des fichiers</li>
+<li><a href="https://exiftool.org/">ExifTool</a> pour lire et éditer des métadonnées d’images</li>
+</ul>
+</section>
+<section id="programmation" class="level3">
+<h3 class="anchored" data-anchor-id="programmation">Programmation</h3>
+<ul>
+<li>R https://cran.r-project.org/bin/windows/base/</li>
+<li>RStudio https://posit.co/download/rstudio-desktop/
+<ul>
+<li>Quarto https://quarto.org/docs/get-started/</li>
+<li>Rtools? https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html</li>
+</ul></li>
+<li><a href="https://www.python.org/">Python</a></li>
+<li><a href="https://www.spyder-ide.org/">Spyder</a> pour éditer et lancer des scripts Python
+<ul>
+<li>console : conda install pip</li>
+<li>installer les packages importants # pip install unicodedata # pip install wikidataintegrator # pip install unidecode # pip install langdetect # pip install isbnlib # pip install frontend # pip install tools # pip install fitz # pip install –upgrade pymupdf # pip install –upgrade pytesseract # pip install pdf2image</li>
+</ul></li>
+<li><a href="https://desktop.github.com/download/">GitHub desktop</a>
+<ul>
+<li>Synchronize with p.um@gmail + double check with Authenticator</li>
+</ul></li>
+<li>Windows 11 : Systeme &gt; Batterie et alimentation &gt; Delai d’expiration de l’écran, de la veille… &gt; Sur Secteur : Mettre en veille = JAMAIS (pour éviter de pauser les scripts Python quand on est en veille)</li>
+</ul>
+</section>
+<section id="humanités-numériques" class="level2">
+<h2 class="anchored" data-anchor-id="humanités-numériques">Humanités numériques</h2>
+<ul>
+<li><a href="https://openrefine.org/">OpenRefine</a> : pour traiter des données tabulées</li>
+<li><a href="https://www.libreoffice.org/">LibreOffice</a> : pour faire de la bureautique</li>
+<li><a href="https://www.zotero.org/">Zotero</a> : pour gérer ses lectures et faire des bibliographies
+<ul>
+<li>Installer le connector</li>
+<li>Synchroniser avec le compte <code>xxxxx</code></li>
+<li>Installer les plugins : Zoplicate, Zutilo, Cita, Better BibTeX</li>
+</ul></li>
+<li>Installer Oxygen XML depuis la logithèque de l’UdeM : pour faire du XML/TEI</li>
+<li><a href="https://miktex.org/">MikTeX</a> full install : pour rédiger des documents TeX</li>
+<li><a href="https://obsidian.md/">Obsidian</a> : pour prendre des notes liées</li>
+<li><a href="https://www.zettlr.com/">Zettlr</a> : pour les fichiers MarkDown</li>
+<li><a href="https://github.com/UB-Mannheim/tesseract/wiki">Tesseract</a> : pour l’OCR</li>
+<li><a href="https://pandoc.org/">Pandoc</a> : pour transformer les formats de documents</li>
+<li><a href="https://ghostscript.com/releases/gsdnld.html">Ghostscript GPL</a> : pour les PDF<br>
+</li>
+<li><a href="https://www.nvu.com/">NVU</a> pour éditer des pages html</li>
+</ul>
+<section id="télécharger" class="level3">
+<h3 class="anchored" data-anchor-id="télécharger">Télécharger</h3>
+<ul>
+<li>wget</li>
+<li>HTTrack</li>
+<li>qBitTorrent</li>
+<li>DC++</li>
+</ul>
+</section>
+<section id="jouer" class="level3">
+<h3 class="anchored" data-anchor-id="jouer">Jouer</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/linux/install#install-linux-with-windows-subsystem-for-linux">Linux WSL</a>
+<ul>
+<li>Lancer Powershell en mode Administrateur : <code>wsl --install -d Ubuntu</code></li>
+</ul></li>
+<li><a href="https://ollama.com/">Ollama</a> : pour installer un LLM</li>
+<li><a href="https://ollama.com/library/deepseek-r1:7b">DeepSeek 7b</a> (run <code>ollama run deepseek-r1:7b</code> in terminal after Ollama installed)</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://pmartinolli.github.io/blog/2025/programmes-reinstallation/</guid>
+  <pubDate>Sat, 06 Dec 2025 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Comment faire 10 millions de contributions dans Wikidata sans se fatiguer ?</title>
   <dc:creator>Pascal Martinolli</dc:creator>
