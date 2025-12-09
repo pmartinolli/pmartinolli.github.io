@@ -175,10 +175,24 @@ ul.task-list li input[type="checkbox"] {
 <li>Search for <code>browser.tabs.groups.smart.enabled</code>. Double-click the entry to change its value to <code>false</code>.</li>
 <li>Search for and set the following preferences to <code>false</code> : <code>browser.ml.enable</code> &amp; <code>browser.ml.chat.enabled</code></li>
 </ul></li>
+<li>Installer les extensions suivantes :
+<ul>
+<li>uBlock Origin : pour bloquer la publicité</li>
+<li>Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: besoin de se connecter une fois à Internet Archive avec son compte.</li>
+<li>Zotero Connector (voir plus bas)</li>
+</ul></li>
 </ul></li>
 <li><a href="https://play.google.com">Chrome</a>
 <ul>
 <li>Synchronize Chrome with G account</li>
+<li>Installer les extensions suivantes :
+<ul>
+<li>AdBlock : pour bloquer la publicité</li>
+<li>PrintFriendly : pour faire des PDF</li>
+<li>Zotero Connector</li>
+<li>Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: besoin de se connecter une fois à Internet Archive avec son compte.</li>
+<li>PubPeer : pour repérer les commentaires sur des articles scientifiques</li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -206,21 +220,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="programmation" class="level3">
 <h3 class="anchored" data-anchor-id="programmation">Programmation</h3>
 <ul>
-<li>R https://cran.r-project.org/bin/windows/base/</li>
-<li>RStudio https://posit.co/download/rstudio-desktop/
+<li><a href="https://cran.r-project.org/bin/windows/base/">R</a> + <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> : pour un bel environnement de programmation
 <ul>
-<li>Quarto https://quarto.org/docs/get-started/</li>
-<li>Rtools? https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html</li>
+<li><a href="https://quarto.org/docs/get-started/">Quarto</a> : pour faire des beaux sites et des beaux documents</li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html">Rtools</a>? (un peu avancé)</li>
 </ul></li>
 <li><a href="https://www.python.org/">Python</a></li>
 <li><a href="https://www.spyder-ide.org/">Spyder</a> pour éditer et lancer des scripts Python
 <ul>
 <li>console : conda install pip</li>
-<li>installer les packages importants # pip install unicodedata # pip install wikidataintegrator # pip install unidecode # pip install langdetect # pip install isbnlib # pip install frontend # pip install tools # pip install fitz # pip install –upgrade pymupdf # pip install –upgrade pytesseract # pip install pdf2image</li>
+<li>installer les packages importants</li>
+<li><code># pip install unicodedata # pip install wikidataintegrator # pip install unidecode # pip install langdetect # pip install isbnlib # pip install frontend # pip install tools # pip install fitz # pip install --upgrade pymupdf # pip install --upgrade pytesseract # pip install pdf2image</code></li>
 </ul></li>
 <li><a href="https://desktop.github.com/download/">GitHub desktop</a>
 <ul>
-<li>Synchronize with p.um@gmail + double check with Authenticator</li>
+<li>Synchronize with Gmail + double check with Authenticator sur mon téléphone cellulaire</li>
 </ul></li>
 <li>Windows 11 : Systeme &gt; Batterie et alimentation &gt; Delai d’expiration de l’écran, de la veille… &gt; Sur Secteur : Mettre en veille = JAMAIS (pour éviter de pauser les scripts Python quand on est en veille)</li>
 </ul>
@@ -235,6 +249,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Installer le connector</li>
 <li>Synchroniser avec le compte <code>xxxxx</code></li>
 <li>Installer les plugins : Zoplicate, Zutilo, Cita, Better BibTeX</li>
+<li>Installer <a href="https://pmartinolli.github.io/QMpRD/chapters/zoteroinstaller.html">plusieurs</a> bases de données sur un même ordinateur</li>
 </ul></li>
 <li>Installer Oxygen XML depuis la logithèque de l’UdeM : pour faire du XML/TEI</li>
 <li><a href="https://miktex.org/">MikTeX</a> full install : pour rédiger des documents TeX</li>
@@ -242,17 +257,16 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://www.zettlr.com/">Zettlr</a> : pour les fichiers MarkDown</li>
 <li><a href="https://github.com/UB-Mannheim/tesseract/wiki">Tesseract</a> : pour l’OCR</li>
 <li><a href="https://pandoc.org/">Pandoc</a> : pour transformer les formats de documents</li>
-<li><a href="https://ghostscript.com/releases/gsdnld.html">Ghostscript GPL</a> : pour les PDF<br>
-</li>
+<li><a href="https://ghostscript.com/releases/gsdnld.html">Ghostscript GPL</a> : pour les PDF</li>
 <li><a href="https://www.nvu.com/">NVU</a> pour éditer des pages html</li>
 </ul>
 <section id="télécharger" class="level3">
 <h3 class="anchored" data-anchor-id="télécharger">Télécharger</h3>
 <ul>
-<li>wget</li>
-<li>HTTrack</li>
-<li>qBitTorrent</li>
-<li>DC++</li>
+<li><a href="https://www.gnu.org/software/wget/">wget</a></li>
+<li><a href="https://www.httrack.com/">HTTrack</a></li>
+<li><a href="https://www.qbittorrent.org/">qBitTorrent</a></li>
+<li><a href="https://dcplusplus.sourceforge.io/">DC++</a></li>
 </ul>
 </section>
 <section id="jouer" class="level3">
@@ -262,8 +276,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Lancer Powershell en mode Administrateur : <code>wsl --install -d Ubuntu</code></li>
 </ul></li>
-<li><a href="https://ollama.com/">Ollama</a> : pour installer un LLM</li>
+<li><a href="https://ollama.com/">Ollama</a> : pour installer un LLM
+<ul>
 <li><a href="https://ollama.com/library/deepseek-r1:7b">DeepSeek 7b</a> (run <code>ollama run deepseek-r1:7b</code> in terminal after Ollama installed)</li>
+</ul></li>
 </ul>
 
 

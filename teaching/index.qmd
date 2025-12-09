@@ -23,7 +23,7 @@ format: html
 
 -   Martinolli, Pascal. 2023. « [Comment cerner l’essentiel de la conversation scientifique et repérer les courants de pensée dominants d’une discipline sur un sujet que l’on ne maîtrise pas ?](https://github.com/pmartinolli/SeFaireUneTete) ». Fiche pratique.
 
--   Martinolli, Pascal. 2023. « Capsules de formation sur les opérateurs logiques ».
+-   ♥ Martinolli, Pascal. 2023. « Capsules de formation sur les opérateurs logiques ».
 
     -   [Capsule d’introduction](https://youtu.be/XXtGzSGLA8o)
 

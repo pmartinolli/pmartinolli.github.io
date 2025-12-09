@@ -146,6 +146,8 @@ Q91441407,Q1860
 Q91287237,Q1860
 ```
 
+Astuces : ne pas dépasser 1,5 million de lignes car OpenRefine commence à souffrir. Ne pas hésiter à supprimer les cellules vides de la colonne `language`, voire supprimer (ie. *Filter*) les cellules contenant le terme `error` or `http`.
+
 ## Verser dans Wikidata
 
 Je verse des lots de moins de 150 000 lignes de ce fichier CSV dans [QuickStatements 3.0](https://qs-dev.toolforge.org/) (les versions antérieures ne peuvent prendre plus de quelques dizaines de milliers).
