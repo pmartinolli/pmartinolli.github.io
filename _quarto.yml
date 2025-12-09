@@ -1,11 +1,12 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: docs   # pour le publier facilement avec Github Pages
 
 website:
   description: "Personal website built with Quarto"
   site-url: https://pmartinolli.github.io 
   title: "Pascal Martinolli"
+  repo-url: https://github.com/pmartinolli/pmartinolli.github.io
   navbar:
     right:
       - blog.qmd
@@ -13,11 +14,16 @@ website:
       - teaching/index.qmd
       - cv/index.qmd
       - ttrpg/index.qmd
+  page-footer:
+    center: |
+      <small>[CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.en) - Les informations diffusées sur ce site web n'engagent que leur auteur.</small>
+
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: cosmo
+      dark: solar     # parallèle à cosmo en dark 
     css: styles.css
+    respect-user-color-scheme: true  #pour le bouton light/dark en haut à droite
 
 editor: visual

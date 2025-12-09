@@ -1,6 +1,7 @@
 ---
 title: "teaching"
 format: html
+description: "Liste de quelques matériels pédagogiques en libre accès, développés pour la recherche et l'enseignement universitaire des compétences informationnelles."
 ---
 
 ### Manuel pratique de recherche documentaire

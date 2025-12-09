@@ -1,6 +1,7 @@
 ---
 title: "about"
 format: html
+description: "Une sélection de mes emplois, diplômes, activités, compétences et publications, présentés en listes hiérarchiques et icônées."
 bibliography: bibliography.bib
 csl: chicago-manual-of-style-mod_pascal.csl
 nocite: | 
@@ -12,34 +13,34 @@ citeproc: true
 
 #### Bibliothécaire
 
-+--------------+---------------------------------------------------------------+
-| 2008-...     | **Université de Montréal**, Montréal, Canada\                 |
-|              | - Pour l'histoire et pour la formation\                       |
-|              | - Humanités numériques : fouille de texte, numérisation,\     |
-|              | indexation; Thesaurus et ontologies; Visualisation de données |
-+--------------+---------------------------------------------------------------+
++----------+---------------------------------------------------------------+
+| 2008-... | **Université de Montréal**, Montréal, Canada\                 |
+|          | - Pour l'histoire et pour la formation\                       |
+|          | - Humanités numériques : fouille de texte, numérisation,\     |
+|          | indexation; Thesaurus et ontologies; Visualisation de données |
++----------+---------------------------------------------------------------+
 
 #### Documentaliste
 
-+--------------+-------------------------------------------------------------------+
-| 2002-2008    | Université de Montréal, Montréal, Canada\                         |
-|              | - Département des sciences économiques\                           |
-|              | - École de relations industrielles                                |
-+--------------+-------------------------------------------------------------------+
-| Avant 2002   | Electricité de France (Direction de la stratégie), Paris, France\ |
-|              | Les Echos (*Lettres professionnelles*), Paris, France             |
-+--------------+-------------------------------------------------------------------+
++------------+-------------------------------------------------------------------+
+| 2002-2008  | Université de Montréal, Montréal, Canada\                         |
+|            | - Département des sciences économiques\                           |
+|            | - École de relations industrielles                                |
++------------+-------------------------------------------------------------------+
+| Avant 2002 | Electricité de France (Direction de la stratégie), Paris, France\ |
+|            | Les Echos (*Lettres professionnelles*), Paris, France             |
++------------+-------------------------------------------------------------------+
 
 ### Diplômes
 
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| D. E. S. S. en sc. info. et de la doc. spé.\ | Conservatoire national des **arts et métiers** (CNAM)\                                |
-| *≅ M.Sc.*                                    | [Institut national des techniques de la documentation](https://intd.cnam.fr/) (INTD)\ |
-|                                              | Paris, France                                                                         |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| Maîtrise en histoire\                        | Université de Nice-Sophia-Antipolis\                                                  |
-| *≅ M.A.*                                     | Nice, France                                                                          |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+| D. E. S. S. en sciences de l'information et de la documentation spécialisée\ | Conservatoire national des **arts et métiers** (CNAM)\                                |
+| *≅ M. Sc.*                                                                   | [Institut national des techniques de la documentation](https://intd.cnam.fr/) (INTD)\ |
+|                                                                              | Paris, France                                                                         |
++------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+| Maîtrise en histoire\                                                        | Université de Nice-Sophia-Antipolis\                                                  |
+| *≅ M. A.*                                                                    | Nice, France                                                                          |
++------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
 
 ### Activités
 

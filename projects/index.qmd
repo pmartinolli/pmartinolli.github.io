@@ -4,22 +4,69 @@ format: html
 description: "Listes de projets sur lesquels je travaille ou sur lesquels je pense travailler prochainement. Ils représentent les intérêts de recherche professionnels et amateurs, principalement l'organisation des connaissances, les jeux, la transmission culturelle, les liens de citation et les données ouvertes."
 ---
 
--   Projets pédagogiques en cours
-    -   [Manuel de recherche documentaire](https://pmartinolli.github.io/QMpRD/) : pour le séminaire PLU6058.
-    -   [Thesaurus++](thesaurusPlusPlus/index.html) : pour aider à organiser ses données de recherche.
--   Projets Wikidata en cours
-    -   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
-    -   Histoire des mathématiques : pour tracer qui cite qui en [remontant les références](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html) du papier séminal sur la théorie des jeux.
-    -   Liste de [revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) : pour mieux les repérer et les évaluer.
+### Projets pédagogiques en cours
+
+-   [Manuel de recherche documentaire](https://pmartinolli.github.io/QMpRD/) : pour le séminaire PLU6058.
+-   [Thesaurus++](thesaurusPlusPlus/index.html) : pour aider à organiser ses données de recherche.
+
+### Projets Wikidata en cours
+
+-   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
+-   Histoire des mathématiques : pour tracer qui cite qui en [remontant les références](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html) du papier séminal sur la théorie des jeux.
+-   Liste de [revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) : pour mieux les repérer et les évaluer.
+
+### *TTRPG projects*
+
 -   [Tabletop role-playing games](../ttrpg/index.html) : pour le plaisir de pratiquer des méthodes digitales ou de sciences sociales sur le jeu de rôle sur table.
--   Projets rêvés, ou à développer, ou à diffuser :
-    -   Créer un nouveau modèle générique de dataviz expliquant comment ajouter la dimension temporelle sur les graphes de relation.
-    -   Comment constituer un index consultable de tous les articles d'encyclopédie ? un métapédia ? ou un pédiapédia ?
-    -   Comment annoter facilement des documents TEI ? (auto et manu)
-    -   Faire une dataviz du *Manuscrit retrouvé à Saragosse* de Jan Potocki.
+-   À faire :
     -   Dresser un parallèle entre l'évolution culturelle des logicielles et celles des jeux de rôle sur table. Billet de blogue ?
     -   Dessiner une carte des régions de France les plus citées dans les jeux de rôle.
     -   Publier le code de *CitationesLudorum*, un ensemble de scripts Python pour traiter un corpus numérisé de jeux de rôle sur table.
-    -   Diffuser un plan de gestion de données de recherche modèle basé pour un projet de repérage de citations dans les kriegsspiels/wargames depuis le XVIIIe siècle.
--   *in limbo* : projets terminés, abandonnés, en suspens, etc.
-    -   Liste à venir
+
+### Projets rêvés
+
+-   Créer un nouveau modèle générique de dataviz expliquant comment ajouter la dimension temporelle sur les graphes de relation.
+-   Comment constituer un index consultable de tous les articles d'encyclopédie ? un métapédia ? ou un pédiapédia ?
+-   Faire une dataviz du *Manuscrit retrouvé à Saragosse* de Jan Potocki.
+-   Diffuser un plan de gestion de données de recherche modèle basé pour un projet de repérage de citations dans les kriegsspiels/wargames depuis le XVIIIe siècle.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+### *in limbo* : projets terminés, oubliés, abandonnés, ajournés, en suspens
+
+-   **2020..**
+    -   [Bibliographie sélective « Essays on wargaming »](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5373960/). 2024-. En cours.
+    -   [Bibliographie sélective « Hunger, Famine and Starvation in Historical Perspective »](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5373408/). 2024-. En cours.
+    -   [Bibliographie exhaustive de Pierre Teilhard de Chardin](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5115263/). 2023-. En cours
+    -   [Curation des chercheurs de l'UdeM sur Wikidata](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/UdeM). 2019-2022.
+    -   [*Predatory publishing and Wikidata*](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/Predatory_publishing_and_Wikidata). 2022
+    -   [Ontologies et valorisation du théâtre québécois sur Wikidata (avec le CQT)](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/CQT). 2022
+-   **2010..**
+    -   Judge Bao card game. 2012-..
+    -   *C'est cuit*, avec Roland D. 2015-..
+    -   [*Cultural transmissions in games*](https://web.archive.org/web/20241203022121/https://github.com/pmartinolli/TTGBG)& [WikiProject Board Games](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/Wikidata:WikiProject_Board_Games). 2016-..
+    -   [*Hogwarts 1899: Merry Christmas from Azkaban*](https://web.archive.org/web/20241203022121/https://pascaliensis.itch.io/hogwarts-1899-merry-christmas-from-azkaban). 2016.
+    -   [*Thesaurus-Rex*](https://web.archive.org/web/20241203022121/https://jdr.hypotheses.org/category/thesaurusrex), avec Thomas Munier et Sébastien Delfino. 2018.
+    -   [Ma bibliothèque est vaccinée](https://web.archive.org/web/20241203022121/https://mabibliothequeestvaccinee.blogspot.com/). 2019.
+-   **2000..**
+    -   [Numérisation et diffusion de plus de 1000 thèses et mémoires](https://web.archive.org/web/20241203022121/https://papyrus.bib.umontreal.ca/) du Département de sciences économiques et de l'École de relations industrielles de l'Université de Montréal. 2007.
+    -   [Yragael Saga](https://web.archive.org/web/20241203022121/http://yragael.free.fr/) \[[blog](https://web.archive.org/web/20241203022121/http://narcomancien.blogspot.ca/), [itchio](https://web.archive.org/web/20241203022121/https://pascaliensis.itch.io/)\] : fanfiction de fantasy, *French fantasy serial novel*. 2000-..
+    -   *Mutation de la distribution et des usages engendrés par la version électronique de publications de presse. L’exemple des Lettres professionnelles des Echos*. Mémoire de DESS (Institut national des techniques de la documentation du Conservatoire national des arts et métiers), sous la direction de Brigitte Guyot. 2001.
+    -   [« Lou pintre »](https://web.archive.org/web/20241203022121/http://loupintre.blogspot.com/) : peinture, *paintings*. 2004-2010.
+    -   [« Mangea lou libretoun »](https://web.archive.org/web/20241203022121/http://libretoun.blogspot.com/) : bandes dessinées courtes sur les bibliothèques, *library comic strips*. 2009-2011.
+    -   *Le Fennec* : bande dessinée avec Christian F. 2010-..
+-   **1990..**
+    -   Co-scénariste de *Razorbyk*, réalisé par Nicolas Fogliarini, 1995-1996.
+    -   *Les mouvements de jeunesse d’Action catholique dans le diocèse de Nice, de 1927 à 1950*. Mémoire de maîtrise en histoire (Université Nice-Sophia-Antipolis), sous la direction de Ralph Schor. 1999.
