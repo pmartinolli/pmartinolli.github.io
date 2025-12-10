@@ -1,5 +1,6 @@
 ---
 title: "blog"
+description: "RSS feed : https://pmartinolli.github.io/blog.xml"
 listing:
   contents: blog
   feed: true
