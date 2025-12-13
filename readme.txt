@@ -29,5 +29,8 @@ Documentation :
 - https://github.com/schochastics/academicons
 - https://github.com/quarto-ext/fontawesome
 
+Inspirations : 
+- https://github.com/JoshuaWilsonBlack/quarto-personal
+
 Astuces : 
-Faire flotter une image à droite : ![Alt text](img/myimage.jpg){.float-end .ms-3 style="width:200px"}
+- Faire flotter une image à droite : ![Alt text](img/myimage.jpg){.float-end .ms-3 style="width:200px"}

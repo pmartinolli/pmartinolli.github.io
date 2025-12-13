@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "blog",
     "section": "",
-    "text": "Programmes à réinstaller sur un nouvel ordinateur\n\n\n\n\n\nListes de tous les programmes à réinstaller dans le cas d’un passage à un nouvel ordinateur ou après un reformatage d’ordinateur.\n\n\n\n\n\nDec 6, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nComment faire 10 millions de contributions dans Wikidata sans se fatiguer ?\n\n\n\nWikidata\n\nOpenRefine\n\nHumanitésNumériques\n\n\n\nFlux de travail pour ajouter la langue à des articles avec DOI, via CrossRef, OpenRefine & Quickstatements\n\n\n\n\n\nNov 30, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nModifier des références en lot dans Zotero\n\n\n\nZotero\n\nHumanitésNumériques\n\n\n\nUtilisation d’une extension avec un script dédié pour modifier tout champ de la notice.\n\n\n\n\n\nOct 22, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nLes propriétés thématiques dans Wikidata\n\n\n\nWikidata\n\n\n\nLes propriétés thématiques sont souvent les mal-aimés du travail d’indexation des oeuvres artistiques. Qu’en est-il de Wikidata ? Plus une idée d’atelier Wikidata idéal ?\n\n\n\n\n\nOct 7, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\n2025, année Wikidata ?\n\n\n\nWikidata\n\nHumanitésNumériques\n\n\n\nQuelques points saillants et projets en cours autour de cet outil pertinent pour la science ouverte.\n\n\n\n\n\nOct 6, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nBaudolino, « hallucinations » et livres imaginaires\n\n\n\ncitation\n\nWikidata\n\n\n\nComment on part de faux livres dans un roman comme précurseurs de hallucinations des LLMs, puis comment nous explorons l’apparition de références à des livres imaginaires comme un seuil dans l’histoire de la pratique des citations.\n\n\n\n\n\nSep 27, 2025\n\n\nPascal Martinolli\n\n\n\n\n\nNo matching items"
+    "text": "Citations dans L’épopée de Gilgamesh\n\n\n\n\n\n\ncitation\n\n\n\nOù l’on discute des pratiques de citation dans l’un des plus anciens texte de l’humanité, en le remettant en contexte.\n\n\n\n\n\nDec 12, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nProgrammes à réinstaller sur un nouvel ordinateur\n\n\n\n\n\n\n\n\nListes de tous les programmes à réinstaller dans le cas d’un passage à un nouvel ordinateur ou après un reformatage d’ordinateur.\n\n\n\n\n\nDec 6, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nComment faire 10 millions de contributions dans Wikidata sans se fatiguer ?\n\n\n\n\n\n\nWikidata\n\n\nOpenRefine\n\n\nHumanitésNumériques\n\n\n\nFlux de travail pour ajouter la langue à des articles avec DOI, via CrossRef, OpenRefine & Quickstatements\n\n\n\n\n\nNov 30, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nModifier des références en lot dans Zotero\n\n\n\n\n\n\nZotero\n\n\nHumanitésNumériques\n\n\n\nUtilisation d’une extension avec un script dédié pour modifier tout champ de la notice.\n\n\n\n\n\nOct 22, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nLes propriétés thématiques dans Wikidata\n\n\n\n\n\n\nWikidata\n\n\n\nLes propriétés thématiques sont souvent les mal-aimés du travail d’indexation des oeuvres artistiques. Qu’en est-il de Wikidata ? Plus une idée d’atelier Wikidata idéal ?\n\n\n\n\n\nOct 7, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\n2025, année Wikidata ?\n\n\n\n\n\n\nWikidata\n\n\nHumanitésNumériques\n\n\n\nQuelques points saillants et projets en cours autour de cet outil pertinent pour la science ouverte.\n\n\n\n\n\nOct 6, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\n\n\n\n\n\n\nBaudolino, « hallucinations » et livres imaginaires\n\n\n\n\n\n\ncitation\n\n\nWikidata\n\n\n\nComment on part de faux livres dans un roman comme précurseurs de hallucinations des LLMs, puis comment nous explorons l’apparition de références à des livres imaginaires comme un seuil dans l’histoire de la pratique des citations.\n\n\n\n\n\nSep 27, 2025\n\n\nPascal Martinolli\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/2025/programmes-reinstallation/index.html",
@@ -112,13 +112,6 @@
     "text": "Annexes\nTitre du billet tiré du premier roman de Dany Laferrière\nPour les scholarly articles, il y a beaucoup de données manquantes pour les propriétés publish in ou publisher. J’ai commencé un peu à travailler dessus avec les mêmes méthodes que ci-dessus. Voici un script Python qui va chercher ces informations.\nDans le même ordre d’idée, il y a encore plus de données manquantes pour les affiliations de chaque auteur… Mais ce sera pour une autre fois.\nJe suis encore loin de mon shīfu (師父), Simon Villeneuve, qui m’a initié aux arts wikidatiens en 2019. Cette dimension ludifiée de la contribution est amusante et elle peut entretenir la motivation pour contribuer. Cependant, un gros volume de données sur P407 est peu riche en soi, dans la mesure où c’est une information simple, facilement vérifiable et récupérable. Il y a des propriétés beaucoup plus importantes. Par exemple, publish in permet de raccorder un élément à sa revue et ainsi obtenir plein d’informations complémentaires (disciplines, méthodes, valeur de la revue, etc.). Ou bien par exemple, main subect pour regrouper des éléments autour d’un même sujet, etc."
   },
   {
-    "objectID": "blog/2025/2025-annee-wikidata/index.html",
-    "href": "blog/2025/2025-annee-wikidata/index.html",
-    "title": "2025, année Wikidata ?",
-    "section": "",
-    "text": "Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.\nDans les prochains jours, 3 articles vont être publiés sur le sujet :\n\nDeux sur le blogue Zotero francophone, centrés sur l’extension Cita.\n\n« Enrichir sa collection de références Zotero grâce à l’extension Cita »\n« Contribuer à Wikidata avec Cita » Dans l’introduction, je parle de l’intérêt de Wikidata pour la science ouverte.\n\nUn dans Programming historian en français : « Enrichir ses données avec le processus de réconciliation d’OpenRefine ». En conclusion, je discute des enjeux pour la gestion de données de recherche en histoire.\n\nÀ ce jour, j’ai contribué environ 4 millions de fois. J’ai aussi amélioré le fichier d’exportation Zotero pour Wikidata QuickStatements.js.\nDepuis cet année, je participe à une équipe de valorisation des revues québécoises du réseau Circé. Cette équipe poursuit l’excellente présentation faite par Michael Miller lors du congrès ACFAS de mai dernier où il expliquait les avantages à avoir une stratégie Wikimedia pour le rayonnement des revues. J’en parlerai dans un futur billet.\nJ’ai développé plein de petits outils en JavaScript et HTML pour tirer parti de Wikidata et présenter simplement au grand public ce qu’il est possible de faire avec cet outil austère et méconnu.\n\nListe de revues en histoire\nUn réseau de citation sur une chronologie : pour les jeux de rôle ou pour les travaux scientifiques. Ce dernier graphe a été positivement remarqué par Egon Willighagen, un des co-concepteur de Scholia et il aimerait peut être développer ce type de visualisation. J’en parlerai dans un futur billet.\n\nJe vais aussi participer à la révision d’article pour un numéro spécial Wikidata du Journal of Open Humanities Data (JOHD)."
-  },
-  {
     "objectID": "blog/2025/baudolino/index.html",
     "href": "blog/2025/baudolino/index.html",
     "title": "Baudolino, « hallucinations » et livres imaginaires",
@@ -173,6 +166,69 @@
     "title": "Baudolino, « hallucinations » et livres imaginaires",
     "section": "Références",
     "text": "Références\n\nAnne-Pascale Pouey-Mounou. « La Librairie de Saint-Victor et l’amplification créatrice ». In Early Modern Catalogues of Imaginary Books, (Leiden, The Netherlands: Brill, 2019) https://doi.org/10.1163/9789004413658_003\nJean-Claude Ternaux. « L’odorat chez Rabelais ». Bien Dire et Bien Aprandre, 37, 2022, 31-44. https://dx.doi.org/10.54563/bdba.1694\nRichard Saint-Gelais, « La lecture des œuvres imaginaires : enjeux et paradoxes », dans Fabula-LhT, n° 13, « La Bibliothèque des textes fantômes », dir. Marc Escola et Laure Depretto, 2014. https://doi.org/10.58282/lht.1300\nCappellen, Raphaël. Rabelais et la bibliothèque imaginaire: Liste énigmatique et création générique. In Liste et effet liste en littérature, sous la direction de Michelle Lecolle et Raymond Michel. Classiques Garnier, 2013, pages 163-174. https://doi.org/10.15122/ISBN.978-2-8124-0995-0.P.0163"
+  },
+  {
+    "objectID": "blog/2025/2025-annee-wikidata/index.html",
+    "href": "blog/2025/2025-annee-wikidata/index.html",
+    "title": "2025, année Wikidata ?",
+    "section": "",
+    "text": "Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.\nDans les prochains jours, 3 articles vont être publiés sur le sujet :\n\nDeux sur le blogue Zotero francophone, centrés sur l’extension Cita.\n\n« Enrichir sa collection de références Zotero grâce à l’extension Cita »\n« Contribuer à Wikidata avec Cita » Dans l’introduction, je parle de l’intérêt de Wikidata pour la science ouverte.\n\nUn dans Programming historian en français : « Enrichir ses données avec le processus de réconciliation d’OpenRefine ». En conclusion, je discute des enjeux pour la gestion de données de recherche en histoire.\n\nÀ ce jour, j’ai contribué environ 4 millions de fois. J’ai aussi amélioré le fichier d’exportation Zotero pour Wikidata QuickStatements.js.\nDepuis cet année, je participe à une équipe de valorisation des revues québécoises du réseau Circé. Cette équipe poursuit l’excellente présentation faite par Michael Miller lors du congrès ACFAS de mai dernier où il expliquait les avantages à avoir une stratégie Wikimedia pour le rayonnement des revues. J’en parlerai dans un futur billet.\nJ’ai développé plein de petits outils en JavaScript et HTML pour tirer parti de Wikidata et présenter simplement au grand public ce qu’il est possible de faire avec cet outil austère et méconnu.\n\nListe de revues en histoire\nUn réseau de citation sur une chronologie : pour les jeux de rôle ou pour les travaux scientifiques. Ce dernier graphe a été positivement remarqué par Egon Willighagen, un des co-concepteur de Scholia et il aimerait peut être développer ce type de visualisation. J’en parlerai dans un futur billet.\n\nJe vais aussi participer à la révision d’article pour un numéro spécial Wikidata du Journal of Open Humanities Data (JOHD)."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html",
+    "href": "blog/2025/citations-in-gilgamesh/index.html",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "",
+    "text": "En Mésopotamie, vers -3300, l’écriture aurait une origine comptable et administrative, permettant de fixer des quantités de biens matériels de manière pérenne, pour contrôler les ressources.\nUne des première mention de référence extérieure au document serait l’utilisation des sceaux, par exemple les fameux sceaux-cylindres, qui permettent de « signer » une transation ou de marquer un stockage. Ils représente des institutions ou des individus précis, identifiés par des combinaisons uniques de symboles."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#origine-de-lécriture-et-citation",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#origine-de-lécriture-et-citation",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "",
+    "text": "En Mésopotamie, vers -3300, l’écriture aurait une origine comptable et administrative, permettant de fixer des quantités de biens matériels de manière pérenne, pour contrôler les ressources.\nUne des première mention de référence extérieure au document serait l’utilisation des sceaux, par exemple les fameux sceaux-cylindres, qui permettent de « signer » une transation ou de marquer un stockage. Ils représente des institutions ou des individus précis, identifiés par des combinaisons uniques de symboles."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#premiers-textes-littéraires",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#premiers-textes-littéraires",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "Premiers textes littéraires",
+    "text": "Premiers textes littéraires\nParmi les plus anciens textes connus serait un recueil de sagesses religieuses : Les Instructions de Shuruppak (-2500 environ).Il s’agit d’une liste de conseils spirituels et moraux.\nIl y a d’autres textes sous forme de listes, comme pour ordonner le monde : listes de rois, de lieux, d’animaux, etc."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#lépopée-de-gilgamesh",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#lépopée-de-gilgamesh",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "L’épopée de Gilgamesh",
+    "text": "L’épopée de Gilgamesh\nC’est avec l’affirmation de la forme littéraire du récit que se multiplient les mentions, les références et les citations. La structuration du récit en plusieurs niveaux ou selon différents points de vue semble en effet offrir un terrain particulièrement propice au jeu des renvois et des échos textuels.\nL’Épopée de Gilgamesh est l’un des plus anciens récits littéraires connus, datant d’environ 2100 avant J.-C. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d’argile vers XVIIIe – XVIIe siècle av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d’Uruk, qui est à la fois un héros surhumain et un homme confronté à sa propre mortalité.\n\nHe saw the Secret, discovered the Hidden,\nhe brought information of (the time) before the Flood. […]\nHe carved on a stone stela all of his toils [Tablette 1]\n\nCe passage souligne l’importance accordée à la fixation du récit dans la pierre afin de lui conférer valeur, pérennité et autorité, mais aussi pour permettre qu’on s’y réfère ultérieurement. Des intentions comparables se retrouvent dans le Code de Hammurabi datant d’une période proche : gravé dans la pierre, exposé publiquement, il est conçu comme un texte de référence avant d’être recopié, évoqué ou cité."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#mise-en-abîme-de-laudience",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#mise-en-abîme-de-laudience",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "Mise en abîme de l’audience",
+    "text": "Mise en abîme de l’audience\n\nFind the copper tablet box,\nopen the … of its lock of bronze,\nundo the fastening of its secret opening.\nTake and read out from the lapis lazuli tablet\nhow Gilgamesh went through every hardship. [Tablette 1]\n\nDès l’ouverture de L’Épopée, le récit met en scène sa propre lecture et promet une révélation à venir. Il s’agit d’une forme d’auto-référence littéraire qui semble souligner la puissance de l’écrit : un texte capable de se désigner lui-même et de s’adresser directement à son lecteur."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#mentions-lacunaires-dépisodes-connus",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#mentions-lacunaires-dépisodes-connus",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "Mentions lacunaires d’épisodes connus",
+    "text": "Mentions lacunaires d’épisodes connus\nL’épopée de Gilgamesh apparaît comme une condensation de récits antérieurs, souvent évoqués sans être pleinement développés. Ces allusions laissent entendre que l’audience connaît déjà ces épisodes et qu’une simple mention suffit à les convoquer. Ainsi, certains récits détaillant les relations entre dieux et humains ne sont pas explicitement inclus ; les interactions évoquées renvoient implicitement à une mythologie partagée."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#inclusion-dun-récit-plus-ancien-dans-le-récit-actuel",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#inclusion-dun-récit-plus-ancien-dans-le-récit-actuel",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "Inclusion d’un récit plus ancien dans le récit actuel",
+    "text": "Inclusion d’un récit plus ancien dans le récit actuel\nLe récit du Déluge (Tablette XI - récit d’Utnapishtim) est explicitement un récit antérieur enchâssé au sein de L’épopée de Gilgamesh."
+  },
+  {
+    "objectID": "blog/2025/citations-in-gilgamesh/index.html#un-récit-synthétique",
+    "href": "blog/2025/citations-in-gilgamesh/index.html#un-récit-synthétique",
+    "title": "Citations dans L’épopée de Gilgamesh",
+    "section": "Un récit synthétique",
+    "text": "Un récit synthétique\nL’ensemble de ces procédés (mentions elliptiques, références lacunaires, inclusion de récits plus anciens) montre que L’Épopée de Gilgamesh fonctionne davantage comme un récit synthétique que comme une somme exhaustive. Elle présuppose une audience informée, dotée d’une mémoire culturelle commune et familière des codes narratifs du mythe.\nÀ cet égard, elle peut être rapprochée des récits homériques, qui évoquent des mythes sans les développer, ou encore de textes médiévaux faisant référence à la Bible ou aux légendes sans les expliciter entièrement.\nDans le contexte d’une culture largement orale, ce type de récit agit comme une fixation sélective d’un répertoire beaucoup plus vaste. La manière d’incorporer certains récits ou d’en évoquer d’autres de façon plus ou moins développée témoigne ainsi de la transition entre une tradition essentiellement orale et les débuts d’une stabilisation textuelle."
   },
   {
     "objectID": "blog/2025/indexation-sujet-wikidata/index.html",
