@@ -6,6 +6,8 @@ categories: [citation]
 description: "Où l'on discute des pratiques de citation dans l'un des plus anciens texte de l'humanité, en le remettant en contexte."
 ---
 
+[**Billet en cours d'écriture**]{.smallcaps}
+
 Par où commencer quand on veut explorer les pratiques de citation dans l'histoire humaine ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ?
 
 ## Introduction
