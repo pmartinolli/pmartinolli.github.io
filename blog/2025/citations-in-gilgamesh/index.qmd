@@ -6,39 +6,74 @@ categories: [citation]
 description: "Où l'on discute des pratiques de citation dans l'un des plus anciens texte de l'humanité, en le remettant en contexte."
 ---
 
-## Les sceaux : premières références écrites
+Par où commencer quand on veut explorer les pratiques de citation dans l'histoire humaine ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ?
 
-Nous sommes en Mésopotamie, vers 3300 avant Jésus-Christ, des scribes sumériens inventent une technologie cognitive qui va révolutionner l'humanité : l'écriture. Elle semble apparaître pour répondre à un besoin de contrôle de ressources comptables et administratives. Elle permet de fixer des informations immatérielles, principalement des quantités associées à des biens matériels, sur des tablettes d'argile.
+## Introduction
 
-Ces tablettes d'écritures gestionnaires vont probablement recevoir les premières références de l'histoire grâce à l'apposition de sceaux sur celles-ci. L'invention des sceaux a précédée celle de l'écriture. D'abord sous la forme de tampons, puis plus tard sous la forme de [sceaux-cylindres](https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie), ces outils permettent de sceller des denrées ou d'identifier des biens en y apposant une « signature ». En combinant ces deux technologies, nous avons désormais une information riche accompagnée d'une autre information qui fait une attribution à une entité en dehors du document . 
+Avant d'arriver à *L'épopée* en question, on va mettre un peu les choses en contexte et nuancer la primauté de ce texte. Si les berceaux de l'humanité se trouvent en Afrique, on peut dire que les berceaux de la vie sociale en groupes denses se trouve dans la région appelée le « Croissant fertile », ou la Mésopotamie.
 
-Cette première référence est unique mais elle peut être imprimée un nombre infini de fois de manière fiable. Elle est constituée d'un ensemble de symboles qui sont sélectionnés et agencés sur le sceau pour représenter de manière abstraite la personne ou l'institution qui s'y réfère. En effet, cette première référence contient une information que nous allons retrouver tout au long de l'histoire de la citation : une entité nommée. 
+Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont ensuite rayonner et révolutionner l'humanité : les sceaux et l'écriture.
+
+## Les sceaux : premiers marquages
+
+Les premiers sceaux de l'histoire apparaissent vers le VII^e^ millénaire av. J.-C. (entre l'an -7000 et -6001), au cours d'une période nommée [Hassuna](https://fr.wikipedia.org/wiki/P%C3%A9riode_de_Hassuna) et sur les sites archéologiques de [Bouqras](https://fr.wikipedia.org/wiki/Bouqras) et de [Tell es-Sawwan](https://fr.wikipedia.org/wiki/Tell_es-Sawwan).
+
+D'abord sous la forme de tampons, puis plus tard sous la forme de [sceaux-cylindres](https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie), ces outils permettent de sceller des denrées ou d'identifier des biens en y apposant une « signature ».
+
+## L'écriture : première fixation de l'information
+
+Toujours en Mésopotamie, vers 3300 avant Jésus-Christ, des scribes sumériens inventent la technologie cognitive la plus connue de l'histoire humaine : l'écriture.
+
+Elle semble apparaître pour répondre à un besoin comptables et administratif de contrôle de ressources. Elle permet de fixer des informations immatérielles, principalement des quantités associées à des biens matériels, sur des tablettes d'argile.
+
+## Tablette + Sceau : première référence de l'histoire
+
+Certaines tablettes d'écritures vont recevoir la marque de sceaux : ce sont les premières références de l'histoire. \[date, pièce\]
+
+Ce type de référence est unique mais il peut être imprimée un nombre infini de fois de manière fiable. Chaque sceau est constituée d'un ensemble de symboles[^1] qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution.
+
+[^1]: Ce sont ces symboles qui ont influencé les premiers caractères d'écriture.
+
+Notons une facette importante de cette référence que nous allons retrouver tout au long de l'histoire de la citation : une identité propre et nommée.
+
+Ainsi, en combinant ces deux technologies, nous avons désormais une information riche encodée dans un document, accompagnée d'une autre information qui fait une référence à une entité nommée en dehors du document.
 
 ## Les listes : premiers textes littéraires
 
-Plus tard, vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc. Certaines listes commencent à devenir sémantiquement plus riches. Par exemple, les [*Instructions de Shuruppak*](https://fr.wikipedia.org/wiki/Instructions_de_Shuruppak) est une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte mésopotamien, écrit en sumérien, commence par une référence explicite aux autorités spirituelles qui donnent crédit au texte.
+Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc. Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les [*Instructions de Shuruppak*](https://fr.wikipedia.org/wiki/Instructions_de_Shuruppak) est une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte mésopotamien, écrit en sumérien, commence par une référence explicite aux autorités spirituelles qui donnent crédit au texte.
 
 > In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land; Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land. Curuppag gave instructions to his son; Curuppag, the son of Ubara-Tutu gave instructions to his son Zi-ud-sura: My son, let me give you instructions: you should pay attention! Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! ([source](https://etcsl.orinst.ox.ac.uk/section5/tr561.htm))
 
-Ces références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : souligner l'importance des instructions qui vont suivre, s'adresser personnellement à l'auditeur, enjoindre à ne pas les ignorer ou les transgresser, mentionner leur valeur et inventer à les suivre.
+Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait.
 
+### De l'oralité à la textualité
+
+La culture scribale de ces sociétés se basait sur la transmission orale du savoir, sur la copie anonyme des documents et sur des attributions occasionnelles à des figures légendaires, reflétant une vision de la connissance d'abord collective avant d'être individuelle.
+
+### Naissance de l'auteur attribué
+
+[Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-00027-000) suggère que l'autorialité a débuté sous la forme d'autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d'un auteur. C'est seulement vers le premier millénaire avant J.-C. que l'idée d'attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques[^2]. L'attribution à un auteur (*attributed authorship*) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l'espace une sélection de textes littéraires sumériens et de leur donner du contexte.
+
+[^2]: Dans *Uruk List of Kings and Sages*.
+
+[Steineck et Schwermann](https://doi.org/10.1163/9789004279421_002) discutent de la place de l'auteur, de sa construction, de son attribution. D'une manière plus générale, il semble que l'attribution à une personne savante de plus en plus proche de la production du texte soit associée à l'apparition de notion d'individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.
 
 ## L'épopée de Gilgamesh
 
-Cependant, pour avoir les références textuelles les plus riches, il faut attendre l’affirmation de la forme littéraire du récit. En effet, les mentions, les références et les citations se multiplient et se complexifient avec le texte en récit. Il est possible que la structure intrinsèque du récit en plusieurs niveaux ou selon différents points de vue semble offre un terrain particulièrement propice au jeu des renvois et des échos textuels.
+Pour avoir les références textuelles les plus riches, il faut attendre l’affirmation de la forme littéraire du récit. En effet, les mentions, les références et les citations se multiplient et se complexifient avec le texte en récit. Il est possible que la structure intrinsèque du récit en plusieurs niveaux ou selon différents points de vue semble offre un terrain particulièrement propice au jeu des renvois et des échos textuels.
 
 Datant d'environ 2100 avant J.-C., [*L'Épopée de Gilgamesh*](https://fr.wikipedia.org/wiki/%C3%89pop%C3%A9e_de_Gilgamesh) est l'un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d'argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d'Uruk, un héros surhumain et un homme confronté à sa propre mortalité.
 
-Au début, le roi est décrit en ces termes : 
+Au début, le roi est décrit en ces termes :
 
 > He saw the Secret, discovered the Hidden,\
 > he brought information of (the time) before the Flood. \[...\]\
 
-Cette introduction fait référence à un ensemble d'informations existantes, un corpus que le roi et le narrateur est allé chercher dans le passé pour le ramener dans le présent.  
+Cette introduction fait référence à un ensemble d'informations existantes, un corpus que le roi et le narrateur est allé chercher dans le passé pour le ramener dans le présent.
 
-## Graver pour être cité 
+### Graver pour être cité
 
-Quelques lignes plus loin on retrouve cette phrase : 
+Quelques lignes plus loin on retrouve cette phrase :
 
 > He carved on a stone stela all of his toils \[[Tablette 1](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm)\]
 
@@ -46,9 +81,9 @@ Le [Code de Hammurabi](https://fr.wikipedia.org/wiki/Code_de_Hammurabi), un text
 
 Ce passage souligne l'importance pour les Mésopotamiens de fixer un texte sur une pierre publique pour lui conférer non seulement valeur, pérennité et autorité mais aussi pour permettre que des informations futures puissent se baser sur elle.
 
-## Mise en abîme de l'audience
+### Mise en abîme de l'audience
 
-Le récit de *L'Épopée* joue avec cette fixation matérielle en mettant en scène sa propre lecture sous la forme d'une auto-référence littéraire : 
+Le récit de *L'Épopée* joue avec cette fixation matérielle en mettant en scène sa propre lecture sous la forme d'une auto-référence littéraire :
 
 > Find the copper tablet box,\
 > open the ... of its lock of bronze,\
@@ -56,21 +91,26 @@ Le récit de *L'Épopée* joue avec cette fixation matérielle en mettant en sc�
 > Take and read out from the lapis lazuli tablet\
 > how Gilgamesh went through every hardship. \[[Tablette 1](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm)\]
 
-Ce mécanisme littéraire puissant montre que le texte est capable de se référencer lui-même et de s'adresser directement à son lecteur en l'absorbant dans le récit. 
+Ce mécanisme littéraire puissant montre que le texte est capable de se référencer lui-même et de s'adresser directement à son lecteur en l'absorbant dans le récit.
 
-## Mentions lacunaires d'épisodes connus
+### Mentions lacunaires d'épisodes connus
 
 *L'épopée de Gilgamesh* apparaît comme une condensation de récits textuels et oraux antérieurs, souvent évoqués sans être pleinement développés. Ces allusions laissent entendre que l'audience connaît déjà ces épisodes et qu'une simple mention suffit à les convoquer. Ainsi, certains récits détaillant les relations entre dieux et humains ne sont pas explicitement inclus. On pourrait définir ces ellipses comme des références implicites qui renvoient à une mythologie partagée.
 
-## Inclusion d'un récit plus ancien dans le récit actuel
+### Inclusion d'un récit plus ancien dans le récit actuel
 
 Parfois l'inclusion d'un récit antérieur est directe et explicite. Par exemple, la narration de l'épisode du Déluge ([Tablette XI](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm)) ) par Utnapishtim est un récit antérieur enchâssé au sein de *L'épopée de Gilgamesh*.
 
 Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d'autres cultures comme celle de Grève antique par exemple.
 
-## Un récit synthétique
+### Un récit synthétique
 
 L'ensemble de ces procédés de référence montre que *L'Épopée de Gilgamesh* fonctionne comme une tentative de fixation sélective d'un répertoire beaucoup plus vaste. Dans le contexte d'une culture largement orale qui teste des formes de stabilisation textuelle, elle présuppose une audience informée et dotée d'une mémoire culturelle communee. Ces différentes formes de références, incorporées dans un récit synthétique, sont des portes vers la culture mésopotamienne. Certaines portes nous sont invisibles et certaines sont fermées car nous sommes trop distant de ce passé et nous en avons perdu les clés.
- 
+
 À cet égard, elle peut être rapprochée des récits homériques qui évoquent des mythes sans les développer, ou encore de textes médiévaux faisant référence à la Bible ou aux légendes sans les expliciter entièrement.
 
+## Références
+
+Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
+
+Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
