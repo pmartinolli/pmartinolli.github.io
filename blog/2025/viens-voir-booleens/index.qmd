@@ -1,0 +1,78 @@
+---
+title: "Viens voir les booléens !"
+author: "Pascal Martinolli"
+date: "2025-12-18"
+categories: [HumanitésNumériques]
+description: "Où l'on revient aux bases de la recherche documentaire."
+format: html
+---
+
+## Booléen ?
+
+Maîtriser les booléens est la base pour interroger des systèmes informatiques, plus spécifiquemet des base de données bibliographiques ou des bases de documents.
+
+Ce sont des opérateurs logiques que l'on place entre des mots à rechercher.
+
+L'arrivée de la recherche sémanantique et par «intelligence artificielle» générative offrent de nouvelles voies de repérage de documents mais la compréhension des booléens demeure une brique fondamentale à connaître.
+
+## Trop long pas vu
+
+L'essentiel à savoir se trouve dans cette superbe capsule vidéo de 8 minutes :
+
+{{< video https://www.youtube.com/embed/XXtGzSGLA8o >}}
+
+## Exploration en détail
+
+### Introduction aux opérateurs de recherche
+
+{{< video https://youtu.be/ZrxkyXpt6fs >}}
+
+
+### Opérateur ET (les bases à savoir)
+
+{{< video https://youtu.be/GBR_mq8KuWg >}}
+
+
+### Opérateur ET (exemples pratiques)
+
+{{< video https://youtu.be/2UuIN2anT6g >}}
+
+
+### Opérateur ET (notions avancées)
+
+{{< video https://youtu.be/9Y7nj9iFNVI >}}
+
+### Troncature* (bases)
+
+{{< video https://youtu.be/dvwL2wPrCMU >}}
+
+
+
+### Troncature* (exemples)
+
+{{< video https://youtu.be/uHKWFe_R9-4 >}}
+
+### Guillemets 
+
+{{< video https://youtu.be/V8M3-zZUhUs >}}
+
+
+### Opérateur OU
+
+{{< video https://youtu.be/pllftarPSyI >}}
+
+
+### Opérateur SAUF
+
+{{< video https://youtu.be/XDysGVgTMSE >}}
+
+
+
+### Conclusion
+
+{{< video https://youtu.be/bVrTYyX1DQU >}}
+
+
+## Pour aller plus loin
+
+Lire le [chapitre sur les opérateurs](https://pmartinolli.github.io/QMpRD/chapters/operateurs.html) dans mon *Manuel pratique de recherche documentaire*.

@@ -8,19 +8,25 @@ description: "Où l'on discute des pratiques de citation dans l'un des plus anci
 
 [**Billet en cours d'écriture**]{.smallcaps}
 
-Par où commencer quand on veut explorer les pratiques de citation dans l'histoire humaine ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ?
+Par où commencer quand on veut explorer les pratiques de citation dans l'histoire humaine ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l'excellente mise en contexte présente dans l'article de [Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-0). Nous allons découvrir non seulement les premières traces de références mais aussi :
+
+-   la naissance de l'auteur, que l'on peut considérer comme la première référence d'un texte;
+
+-   l'idée de propriété, voire de protection, associée au marquage d'un document;
+
+-   l'idée d'échange transactionnel, voire de reconnaissance de dette, dans le cadre d'un document signé.
 
 ## Introduction
 
-Avant d'arriver à *L'épopée* en question, on va mettre un peu les choses en contexte et nuancer la primauté de ce texte. Si les berceaux de l'humanité se trouvent en Afrique, on peut dire que les berceaux de la vie sociale en groupes denses se trouvent dans la région appelée le « Croissant fertile », ou la Mésopotamie.
+Si les berceaux de l'humanité se trouvent en Afrique, on peut dire que les berceaux de la vie sociale en groupes denses se trouvent dans la région appelée le « Croissant fertile », ou la Mésopotamie.
 
-Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont ensuite rayonner et révolutionner l'humanité : les sceaux et l'écriture.
+Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont ensuite rayonner et révolutionner l'humanité : les sceaux et l'écriture.
 
 ## Les sceaux : premiers marquages
 
-Les premiers sceaux de l'histoire apparaissent vers le VII^e^ millénaire av. J.-C. (entre l'an -7000 et -6001), au cours d'une période nommée [Hassuna](https://fr.wikipedia.org/wiki/P%C3%A9riode_de_Hassuna) et sur les sites archéologiques de [Bouqras](https://fr.wikipedia.org/wiki/Bouqras) et de [Tell es-Sawwan](https://fr.wikipedia.org/wiki/Tell_es-Sawwan).
+Les premiers sceaux de l'histoire apparaissent vers le VII^e^ millénaire av. J.-C. (entre l'an -7000 et -6001), au cours d'une période nommée Hassuna~[Q](https://www.wikidata.org/wiki/Q1588784)~ et sur les sites archéologiques de Bouqras~[Q](https://www.wikidata.org/wiki/Q4950065)~ (en Syrie) et de Tell es-Sawwan~[Q](https://www.wikidata.org/wiki/Q7697547)~ (en Irak).
 
-D'abord sous la forme de tampons, puis plus tard sous la forme de [sceaux-cylindres](https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie), ces outils permettent de sceller des denrées ou d'identifier des biens en y apposant une « signature ».
+D'abord sous la forme de [tampons](https://archive.org/details/firstimpressions0000coll/page/6/mode/2up), puis plus tard sous la forme de [sceaux-cylindres](https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie), ces outils permettent de sceller des denrées ou d'identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection.
 
 ## L'écriture : première fixation de l'information
 
@@ -30,23 +36,27 @@ Elle semble apparaître pour répondre à un besoin comptables et administratif 
 
 ## Tablette + Sceau : première référence de l'histoire
 
-Certaines tablettes d'écritures vont recevoir la marque de sceaux : ce sont les premières références de l'histoire. Celle exposée au [MET](https://www.metmuseum.org/art/collection/search/329081) date de -3100/-2900.
+Certaines tablettes d'écritures vont recevoir la marque de sceaux-cylindres : ce sont les premières références de l'histoire. Elles apparaissent à la période Uruk (-3500 à -3100). Il y en a une exposée au [MET](https://www.metmuseum.org/art/collection/search/329081) qui date de -3100/-2900.
 
-Ce type de référence est unique mais il peut être imprimée un nombre infini de fois de manière fiable. Chaque sceau est constituée d'un ensemble de symboles[^1] qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution.
+Cette empreinte de référence est unique mais il peut être imprimée sur des tablettes un nombre infini de fois de manière fiable. Chaque sceau est constituée d'un ensemble de symboles[^1] qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Notons une facette importante de cette référence que nous allons retrouver tout au long de l'histoire de la citation : une identité propre et nommée.
 
 [^1]: Ce sont ces symboles qui ont influencé les premiers caractères d'écriture.
 
-Notons une facette importante de cette référence que nous allons retrouver tout au long de l'histoire de la citation : une identité propre et nommée.
+Ainsi, en combinant ces deux technologies, nous avons désormais une information riche encodée dans un document, accompagnée d'une autre information qui fait une référence à une entité nommée en dehors du document. Outre le marquage de la propriété, les sceaux sur les documents ont servi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).
 
-Ainsi, en combinant ces deux technologies, nous avons désormais une information riche encodée dans un document, accompagnée d'une autre information qui fait une référence à une entité nommée en dehors du document.
+> At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. (Colon. 113-117)
+
+De manière intéressante, il semble que ces sceaux aient possédés des caractéristiques magiques de type amulette de protection. Elles étendaient la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). (Colon, 118)
 
 ## Les listes : premiers textes littéraires
 
-Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc. Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les [*Instructions de Shuruppak*](https://fr.wikipedia.org/wiki/Instructions_de_Shuruppak) est une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d'origines diverses et assemblés par les scribes. Ces derniers font débuter le texte par une référence explicite au chef de famille qui donne crédit au texte.
+Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc. Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les *Instructions de Shuruppak~[Q](https://www.wikidata.org/wiki/Q3823132)~* est une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d'origines diverses et assemblés par les scribes. Ces derniers font débuter le texte par une référence explicite au chef de famille qui donne crédit au texte.
 
 > In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land; Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land. Curuppag gave instructions to his son; Curuppag, the son of Ubara-Tutu gave instructions to his son Zi-ud-sura: My son, let me give you instructions: you should pay attention! Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! ([source](https://etcsl.orinst.ox.ac.uk/section5/tr561.htm))
 
 Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait. Cependant, les auteurs originaux des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n'est que plus tard (vers -2000) que, ceux-ci mentionnent leurs noms dans le colophon. Et encore, les rôles de copistes ou d'éditeurs ne sont pas spécifiés donc ce sont plus des mentions de propriété que d'autorialité ([Van De Mieroop](https://doi.org/10.1515/9781400874118)).
+
+Selon [Sövegjártó](https://doi.org/10.52093/hara-202201-00027-000), ce document aspire à une dimension historique puisque nous avons le nom de l'auteur celui de son père et celui de son fils. Cet élément de style se rapproche des listes des rois. D'autres listes d'instruction se sont développées, attribuées à des fermiers, des dirigeants, des figures légendaires, etc. selon les intentions éditoriales. Lorsqu'elles étaient attribuées à un fermier (ex: *Farmer's Instructions*~[Q](https://www.wikidata.org/wiki/Q137438077)~), c'était dans le but d'exprimer une sagesse populaire commune. Si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (ex: *Instructions of Ur-Ninurta*).
 
 ### De l'oralité à la textualité
 
@@ -119,6 +129,8 @@ L'ensemble de ces procédés de référence montre que *L'Épopée de Gilgamesh*
 
 ## Références
 
+Collon, Dominiques. *First impressions : cylinder seals in the ancient Near East 1988* . [https://archive.org/details/firstimpressions0000coll/page/6/mode/2up](#0){style="font-size: 11pt;"}
+
 Lion, Brigitte, ' Literacy and Gender', in Karen Radner, and Eleanor Robson (eds), *The Oxford Handbook of Cuneiform Culture*. 2011. Oxford Academic. <https://doi.org/10.1093/oxfordhb/9780199557301.013.0005>.
 
 Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
@@ -129,4 +141,4 @@ Halton, Charles et Saana Svärd, *Women’s Writing of Ancient Mesopotamia : An
 
 Van De Mieroop, M. 2016: *Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.* Princeton – Oxford. <https://doi.org/10.1515/978140087411>
 
-Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513> \
+Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>\
