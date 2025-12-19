@@ -24,11 +24,7 @@ description: "Liste de quelques matériels pédagogiques en libre accès, dével
 
 -   Martinolli, Pascal. 2023. « [Comment cerner l’essentiel de la conversation scientifique et repérer les courants de pensée dominants d’une discipline sur un sujet que l’on ne maîtrise pas ?](https://github.com/pmartinolli/SeFaireUneTete) ». Fiche pratique.
 
--   ♥ Martinolli, Pascal. 2023. « Capsules de formation sur les opérateurs logiques ».
-
-    -   [Capsule d’introduction](https://youtu.be/XXtGzSGLA8o)
-
-    -   [Série avancée](https://umontreal.ca.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=654420b3-e1fb-4522-9305-af5d01651a44).
+-   ♥ Martinolli, Pascal. 2023. « [Capsules de formation sur les opérateurs logiques](https://pmartinolli.github.io/blog/2025/viens-voir-booleens/) ». Série YouTube.
 
 -   Martinolli, Pascal. 2023. « [Capsules de formation à Zotero](https://www.youtube.com/playlist?list=PL1K-7kmyXRXEVQfM5WsWP28Rjib3Wd1tp) ». Série YouTube.
 
