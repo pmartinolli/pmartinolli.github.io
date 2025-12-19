@@ -24,39 +24,40 @@
 
 <section id="booléen" class="level2">
 <h2 class="anchored" data-anchor-id="booléen">Booléen ?</h2>
-<p>Maîtriser les booléens est la base pour interroger des systèmes informatiques, plus spécifiquemet des base de données bibliographiques ou des bases de documents.</p>
+<p>Maîtriser les opérateurs booléens est une compétence de base pour interroger des systèmes informatiques, plus spécifiquemet les base de données bibliographiques ou les bases de documents.</p>
 <p>Ce sont des opérateurs logiques que l’on place entre des mots à rechercher.</p>
-<p>L’arrivée de la recherche sémanantique et par «intelligence artificielle» générative offrent de nouvelles voies de repérage de documents mais la compréhension des booléens demeure une brique fondamentale à connaître.</p>
+<p>L’arrivée de la recherche sémantique et de l’intelligence artificielle générative offre de nouvelles voies de repérage de documents, mais la compréhension des opérateurs booléens demeure une brique fondamentale à connaître. Si vous voulez plus de contrôle sur l’interrogation des machines, alors commencez par apprendre leur utilisation.</p>
 </section>
-<section id="trop-long-pas-vu" class="level2">
-<h2 class="anchored" data-anchor-id="trop-long-pas-vu">Trop long pas vu</h2>
-<p>L’essentiel à savoir se trouve dans cette superbe capsule vidéo de 8 minutes :</p>
+<section id="trop-long-pas-lu-vu" class="level2">
+<h2 class="anchored" data-anchor-id="trop-long-pas-lu-vu">Trop long; pas <del>lu</del> vu</h2>
+<p>L’essentiel à savoir se trouve dans cette superbe capsule ultracondensée de 8 minutes :</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/XXtGzSGLA8o" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="exploration-en-détail" class="level2">
 <h2 class="anchored" data-anchor-id="exploration-en-détail">Exploration en détail</h2>
+<p>Prêt à vous instruire de manière approfondie sur chacun des opérateurs ? Voici une série de capsules qui, au coût minime de 45 minutes de votre vie, va vous donner plus de pouvoir sur les systèmes d’information.</p>
 <section id="introduction-aux-opérateurs-de-recherche" class="level3">
 <h3 class="anchored" data-anchor-id="introduction-aux-opérateurs-de-recherche">Introduction aux opérateurs de recherche</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ZrxkyXpt6fs" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="opérateur-et-les-bases-à-savoir" class="level3">
-<h3 class="anchored" data-anchor-id="opérateur-et-les-bases-à-savoir">Opérateur ET (les bases à savoir)</h3>
+<h3 class="anchored" data-anchor-id="opérateur-et-les-bases-à-savoir">Opérateur ET : les bases à savoir</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/GBR_mq8KuWg" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="opérateur-et-exemples-pratiques" class="level3">
-<h3 class="anchored" data-anchor-id="opérateur-et-exemples-pratiques">Opérateur ET (exemples pratiques)</h3>
+<h3 class="anchored" data-anchor-id="opérateur-et-exemples-pratiques">Opérateur ET : exemples pratiques</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/2UuIN2anT6g" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="opérateur-et-notions-avancées" class="level3">
-<h3 class="anchored" data-anchor-id="opérateur-et-notions-avancées">Opérateur ET (notions avancées)</h3>
+<h3 class="anchored" data-anchor-id="opérateur-et-notions-avancées">Opérateur ET : notions avancées</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/9Y7nj9iFNVI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
-<section id="troncature-bases" class="level3">
-<h3 class="anchored" data-anchor-id="troncature-bases">Troncature* (bases)</h3>
+<section id="troncature-les-bases" class="level3">
+<h3 class="anchored" data-anchor-id="troncature-les-bases">Troncature* : les bases</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/dvwL2wPrCMU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="troncature-exemples" class="level3">
-<h3 class="anchored" data-anchor-id="troncature-exemples">Troncature* (exemples)</h3>
+<h3 class="anchored" data-anchor-id="troncature-exemples">Troncature* : exemples</h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uHKWFe_R9-4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="guillemets" class="level3">
@@ -79,8 +80,13 @@
 <section id="pour-aller-plus-loin" class="level2">
 <h2 class="anchored" data-anchor-id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <p>Lire le <a href="https://pmartinolli.github.io/QMpRD/chapters/operateurs.html">chapitre sur les opérateurs</a> dans mon <em>Manuel pratique de recherche documentaire</em>.</p>
+<hr>
+<section id="colophon" class="level4">
+<h4 class="anchored" data-anchor-id="colophon">Colophon :</h4>
+<p>Le titre du billet est inspiré de la chanson <a href="https://fr.wikipedia.org/wiki/Les_Com%C3%A9diens_(chanson)"><em>Les Comédiens</em></a>, de Jacques Plante, interprétée par Charles Aznavour. Cette série de capsules est toujours utilisée dans la plupart de mes formations documentaires.</p>
 
 
+</section>
 </section>
 
  ]]></description>
@@ -167,17 +173,18 @@
 <blockquote class="blockquote">
 <p>In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land;&nbsp;Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land.&nbsp;Curuppag&nbsp;gave instructions to his son;&nbsp;Curuppag, the son of&nbsp;Ubara-Tutu&nbsp;gave instructions to his son&nbsp;Zi-ud-sura: My son, let me give you instructions: you should pay attention!&nbsp;Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! (<a href="https://etcsl.orinst.ox.ac.uk/section5/tr561.htm">source</a>)</p>
 </blockquote>
-<p>Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait. Cependant, les auteurs originaux des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n’est que plus tard (vers -2000) que, ceux-ci mentionnent leurs noms dans le colophon. Et encore, les rôles de copistes ou d’éditeurs ne sont pas spécifiés donc ce sont plus des mentions de propriété que d’autorialité (<a href="https://doi.org/10.1515/9781400874118">Van De Mieroop</a>).</p>
+<p>Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait. Cependant, les auteurs originaux des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n’est que plus tard (vers -2000) que, ceux-ci mentionnent leurs noms dans le colophon (les notes du scribe vers la fin du texte). Et encore, les rôles de copistes ou d’éditeurs ne sont pas spécifiés donc ce sont plus des mentions de propriété que d’autorialité (<a href="https://doi.org/10.1515/9781400874118">Van De Mieroop</a>).</p>
 <p>Selon <a href="https://doi.org/10.52093/hara-202201-00027-000">Sövegjártó</a>, ce document aspire à une dimension historique puisque nous avons le nom de l’auteur celui de son père et celui de son fils. Cet élément de style se rapproche des listes des rois. D’autres listes d’instruction se sont développées, attribuées à des fermiers, des dirigeants, des figures légendaires, etc. selon les intentions éditoriales. Lorsqu’elles étaient attribuées à un fermier (ex: <em>Farmer’s Instructions</em><sub><a href="https://www.wikidata.org/wiki/Q137438077">Q</a></sub>), c’était dans le but d’exprimer une sagesse populaire commune. Si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (ex: <em>Instructions of Ur-Ninurta</em>).</p>
 <section id="de-loralité-à-la-textualité" class="level3">
 <h3 class="anchored" data-anchor-id="de-loralité-à-la-textualité">De l’oralité à la textualité</h3>
 <p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<sup>2</sup>.</p>
-<p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» (<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005">Brigitte Lion</a>). Pour cette période, la prêtresse et princesse <a href="https://fr.wikipedia.org/wiki/Enheduana">Enheduana</a> fait exception car plusieurs textes sumériens lui sont attribués en tant que première et exclusive autrice de l’histoire (<a href="https://doi.org/10.1017/9781107280328">Halton &amp; Svärd</a>).</p>
+<p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» (<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005">Brigitte Lion</a>). Pour cette période, la prêtresse et princesse <a href="https://fr.wikipedia.org/wiki/Enheduana">Enheduana</a> fait exception car plusieurs textes sumériens (ex: <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire (Halton &amp; Svärd).</p>
+<p>Je n’ai pas trouvé de documents anciens qui citent explicitement une de ses oeuvres. Par contre, le <em>Kesh Temple Hymn</em> sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad</em>. On peut ainsi qu’une forme préliminaire de citation ait été l’incorporation dans un canon officiel de textes.</p>
 </section>
 <section id="naissance-de-lauteur-attribué" class="level3">
 <h3 class="anchored" data-anchor-id="naissance-de-lauteur-attribué">Naissance de l’auteur attribué</h3>
 <p>Selon Van der Toorn, il y a trois types d’autorialité : l’autorialité honorifique, où l’auteur attribue le texte au commanditaire ou au mécenne de l’oeuvre; la pseudoepigraphie, où l’auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l’autorialité attribuée.</p>
-<p><a href="https://doi.org/10.52093/hara-202201-00027-000">Szilvia Sövegjártó</a> suggère que l’autorialité a débuté sous la forme d’autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d’un auteur. Attribuer l’autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l’espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l’oeuvre et de son exécution. C’est seulement vers le premier millénaire avant J.-C. que l’idée d’attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques<sup>3</sup>. L’attribution à un auteur (<em>attributed authorship</em>) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l’espace une sélection de textes littéraires sumériens et de leur donner du contexte.</p>
+<p><a href="https://doi.org/10.52093/hara-202201-00027-000">Szilvia Sövegjártó</a> suggère que l’autorialité a débuté sous la forme d’autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d’un auteur. Attribuer l’autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l’espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l’oeuvre et de son exécution. C’est seulement vers le premier millénaire avant J.-C. que l’idée d’attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques<sup>3</sup>. L’attribution à un auteur (<em>attributed authorship</em>) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l’espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s’étend à la sphère privée.</p>
 <p><a href="https://doi.org/10.1163/9789004279421_002">Steineck et Schwermann</a> discutent de la place de l’auteur, de sa construction, de son attribution. D’une manière plus générale, il semble que l’attribution à une personne savante de plus en plus proche de la production du texte soit associée à l’apparition de notion d’individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.</p>
 </section>
 </section>
@@ -188,8 +195,7 @@
 <p>Au début, le roi est décrit en ces termes :</p>
 <blockquote class="blockquote">
 <p>He saw the Secret, discovered the Hidden,<br>
-he brought information of (the time) before the Flood. […]<br>
-</p>
+he brought information of (the time) before the Flood. […]</p>
 </blockquote>
 <p>Cette introduction fait référence à un ensemble d’informations existantes, un corpus que le roi et le narrateur est allé chercher dans le passé pour le ramener dans le présent.</p>
 <section id="graver-pour-être-cité" class="level3">

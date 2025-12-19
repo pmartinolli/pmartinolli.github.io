@@ -3,76 +3,74 @@ title: "Viens voir les booléens !"
 author: "Pascal Martinolli"
 date: "2025-12-18"
 categories: [HumanitésNumériques]
-description: "Où l'on revient aux bases de la recherche documentaire."
+description: "Où l'on revient aux bases de la recherche documentaire en s'instruisant sur les opérateurs de recherche qui permettent de combiner les mots-clés à chercher."
 format: html
 ---
 
 ## Booléen ?
 
-Maîtriser les booléens est la base pour interroger des systèmes informatiques, plus spécifiquemet des base de données bibliographiques ou des bases de documents.
+Maîtriser les opérateurs booléens est une compétence de base pour interroger des systèmes informatiques, plus spécifiquemet les base de données bibliographiques ou les bases de documents.
 
 Ce sont des opérateurs logiques que l'on place entre des mots à rechercher.
 
-L'arrivée de la recherche sémanantique et par «intelligence artificielle» générative offrent de nouvelles voies de repérage de documents mais la compréhension des booléens demeure une brique fondamentale à connaître.
+L'arrivée de la recherche sémantique et de l'intelligence artificielle générative offre de nouvelles voies de repérage de documents, mais la compréhension des opérateurs booléens demeure une brique fondamentale à connaître. Si vous voulez plus de contrôle sur l'interrogation des machines, alors commencez par apprendre leur utilisation.
 
-## Trop long pas vu
+## Trop long; pas ~~lu~~ vu
 
-L'essentiel à savoir se trouve dans cette superbe capsule vidéo de 8 minutes :
+L'essentiel à savoir se trouve dans cette superbe capsule ultracondensée de 8 minutes :
 
 {{< video https://www.youtube.com/embed/XXtGzSGLA8o >}}
 
 ## Exploration en détail
 
+Prêt à vous instruire de manière approfondie sur chacun des opérateurs ? Voici une série de capsules qui, au coût minime de 45 minutes de votre vie, va vous donner plus de pouvoir sur les systèmes d'information.
+
 ### Introduction aux opérateurs de recherche
 
 {{< video https://youtu.be/ZrxkyXpt6fs >}}
 
-
-### Opérateur ET (les bases à savoir)
+### Opérateur ET : les bases à savoir
 
 {{< video https://youtu.be/GBR_mq8KuWg >}}
 
-
-### Opérateur ET (exemples pratiques)
+### Opérateur ET : exemples pratiques
 
 {{< video https://youtu.be/2UuIN2anT6g >}}
 
-
-### Opérateur ET (notions avancées)
+### Opérateur ET : notions avancées
 
 {{< video https://youtu.be/9Y7nj9iFNVI >}}
 
-### Troncature* (bases)
+### Troncature\* : les bases
 
 {{< video https://youtu.be/dvwL2wPrCMU >}}
 
-
-
-### Troncature* (exemples)
+### Troncature\* : exemples
 
 {{< video https://youtu.be/uHKWFe_R9-4 >}}
 
-### Guillemets 
+### Guillemets
 
 {{< video https://youtu.be/V8M3-zZUhUs >}}
-
 
 ### Opérateur OU
 
 {{< video https://youtu.be/pllftarPSyI >}}
 
-
 ### Opérateur SAUF
 
 {{< video https://youtu.be/XDysGVgTMSE >}}
-
-
 
 ### Conclusion
 
 {{< video https://youtu.be/bVrTYyX1DQU >}}
 
-
 ## Pour aller plus loin
 
 Lire le [chapitre sur les opérateurs](https://pmartinolli.github.io/QMpRD/chapters/operateurs.html) dans mon *Manuel pratique de recherche documentaire*.
+
+------------------------------------------------------------------------
+
+#### Colophon : 
+
+Le titre du billet est inspiré de la chanson [*Les Comédiens*](https://fr.wikipedia.org/wiki/Les_Com%C3%A9diens_(chanson)), de Jacques Plante, interprétée par Charles Aznavour. Cette série de capsules est toujours utilisée dans la plupart de mes formations documentaires.
