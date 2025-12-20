@@ -8,25 +8,31 @@ description: "Où l'on discute des pratiques de citation dans l'un des plus anci
 
 [**Billet en cours d'écriture**]{.smallcaps}
 
-Par où commencer quand on veut explorer les pratiques de citation dans l'histoire humaine ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l'excellente mise en contexte présente dans l'article de [Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-0). Nous allons découvrir non seulement les premières traces de références mais aussi :
+Par où commencer quand on veut explorer les pratiques de citation ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l'excellente mise en contexte présente dans l'article de [Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-0) (marqué ^Sz^). Nous allons découvrir non seulement les premières traces de références dans :
 
--   la naissance de l'auteur, que l'on peut considérer comme la première référence d'un texte;
+-   les sceaux, première marque et renvoi extra-textuel ;
 
--   l'idée de propriété, voire de protection, associée au marquage d'un document;
+-   la naissance de l'auteur, la première référence d'un texte ;
 
--   l'idée d'échange transactionnel, voire de reconnaissance de dette, dans le cadre d'un document signé.
+-   la notion de propriété, voire de protection, associée au marquage d'un document ;
+
+-   la notion d'échange transactionnel, voire de reconnaissance de dette, dans le cadre d'un document signé ;
+
+-   Les premières compilations de textes.
 
 ## Introduction
 
-Si les berceaux de l'humanité se trouvent en Afrique, on peut dire que les berceaux de la vie sociale en groupes denses se trouvent dans la région appelée le « Croissant fertile », ou la Mésopotamie.
+Si les berceaux de l'humanité se trouvent en Afrique, alors les premiers berceaux de la vie sociale en groupes denses se trouvent probablement dans la région appelée le « Croissant fertile », c'est-à-dire la Mésopotamie.
 
-Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont ensuite rayonner et révolutionner l'humanité : les sceaux et l'écriture.
+Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont révolutionner l'humanité : les sceaux et l'écriture. Les premières marques d'attribution vont apparaître dans le sillon de ces deux inventions.
 
 ## Les sceaux : premiers marquages
 
-Les premiers sceaux de l'histoire apparaissent vers le VII^e^ millénaire av. J.-C. (entre l'an -7000 et -6001), au cours d'une période nommée Hassuna~[Q](https://www.wikidata.org/wiki/Q1588784)~ et sur les sites archéologiques de Bouqras~[Q](https://www.wikidata.org/wiki/Q4950065)~ (en Syrie) et de Tell es-Sawwan~[Q](https://www.wikidata.org/wiki/Q7697547)~ (en Irak).
+Les premiers sceaux de l'histoire apparaissent vers le VII^e^ millénaire av. J.-C. (entre l'an -7000 et -6001), au cours d'une période nommée Hassuna^[Q](https://www.wikidata.org/wiki/Q1588784)^ et sur les sites archéologiques de Bouqras^[Q](https://www.wikidata.org/wiki/Q4950065)^ (en Syrie) et de Tell es-Sawwan^[Q](https://www.wikidata.org/wiki/Q7697547)^ (en Irak).
 
-D'abord sous la forme de [tampons](https://archive.org/details/firstimpressions0000coll/page/6/mode/2up), puis plus tard sous la forme de [sceaux-cylindres](https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie), ces outils permettent de sceller des denrées ou d'identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection.
+D'abord sous la forme de tampons, puis aussi plus tard sous la forme de sceaux-cylindres^[Q](https://www.wikidata.org/wiki/Q1123756)^, ces outils permettent de sceller des denrées ou d'identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection^DC^.
+
+Chaque sceau est constituée d'un ensemble de symboles qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Ce sont ces symboles qui ont influencé les premiers caractères d'écriture^??^. **Ces caractéristiques vont se retrouver tout au long de l'histoire de la citation : une identité unique, nommée et matérialisée.**
 
 ## L'écriture : première fixation de l'information
 
@@ -36,37 +42,39 @@ Elle semble apparaître pour répondre à un besoin comptables et administratif 
 
 ## Tablette + Sceau : première référence de l'histoire
 
-Certaines tablettes d'écritures vont recevoir la marque de sceaux-cylindres : ce sont les premières références de l'histoire. Elles apparaissent à la période Uruk (-3500 à -3100). Il y en a une exposée au [MET](https://www.metmuseum.org/art/collection/search/329081) qui date de -3100/-2900.
+Pendant la période Uruk (-3500 à -3100), **certaines tablettes d'écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les premières références de l'histoire de l'écriture.** En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d'argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.
 
-Cette empreinte de référence est unique mais il peut être imprimée sur des tablettes un nombre infini de fois de manière fiable. Chaque sceau est constituée d'un ensemble de symboles[^1] qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Notons une facette importante de cette référence que nous allons retrouver tout au long de l'histoire de la citation : une identité propre et nommée.
+Outre le marquage de la propriété, les sceaux sur les documents servent aussi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).
 
-[^1]: Ce sont ces symboles qui ont influencé les premiers caractères d'écriture.
+> At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. ^DC113^
 
-Ainsi, en combinant ces deux technologies, nous avons désormais une information riche encodée dans un document, accompagnée d'une autre information qui fait une référence à une entité nommée en dehors du document. Outre le marquage de la propriété, les sceaux sur les documents ont servi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).
-
-> At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. (Colon. 113-117)
-
-De manière intéressante, il semble que ces sceaux aient possédés des caractéristiques magiques de type amulette de protection. Elles étendaient la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). (Colon, 118)
+De manière intéressante, il semble que ces sceaux soient aussi considérés comme des amulettes de protection magiques. En effet, c'est comme s'ils étendent le pouvoir de la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). ^DC118^
 
 ## Les listes : premiers textes littéraires
 
-Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc. Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les *Instructions de Shuruppak~[Q](https://www.wikidata.org/wiki/Q3823132)~* est une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d'origines diverses et assemblés par les scribes. Ces derniers font débuter le texte par une référence explicite au chef de famille qui donne crédit au texte.
+Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc.
+
+Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les *Instructions de Shuruppak*^[Q](https://www.wikidata.org/wiki/Q3823132)^ sont une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d'origines diverses et assemblés par des scribes. Ces derniers font débuter le texte par une référence nommée au chef de famille qui donne crédit au texte.
 
 > In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land; Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land. Curuppag gave instructions to his son; Curuppag, the son of Ubara-Tutu gave instructions to his son Zi-ud-sura: My son, let me give you instructions: you should pay attention! Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! ([source](https://etcsl.orinst.ox.ac.uk/section5/tr561.htm))
 
-Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait. Cependant, les auteurs originaux des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n'est que plus tard (vers -2000) que, ceux-ci mentionnent leurs noms dans le colophon (les notes du scribe vers la fin du texte). Et encore, les rôles de copistes ou d'éditeurs ne sont pas spécifiés donc ce sont plus des mentions de propriété que d'autorialité ([Van De Mieroop](https://doi.org/10.1515/9781400874118)).
+**Les références, nommées et ordonnées, sont suivies par les intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait.**
 
-Selon [Sövegjártó](https://doi.org/10.52093/hara-202201-00027-000), ce document aspire à une dimension historique puisque nous avons le nom de l'auteur celui de son père et celui de son fils. Cet élément de style se rapproche des listes des rois. D'autres listes d'instruction se sont développées, attribuées à des fermiers, des dirigeants, des figures légendaires, etc. selon les intentions éditoriales. Lorsqu'elles étaient attribuées à un fermier (ex: *Farmer's Instructions*~[Q](https://www.wikidata.org/wiki/Q137438077)~), c'était dans le but d'exprimer une sagesse populaire commune. Si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (ex: *Instructions of Ur-Ninurta*).
+Tous les auteurs originaux de chacun des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n'est que vers -2000 que les scribes mentionnent parfois leurs noms dans le colophon[^1] des textes. Cependant, c'est probablement plus une mention de propriété que d'autorialité car ils ne précisent pas leurs rôles de copistes ou d'éditeurs ^VdM^.
+
+[^1]: Colophon : les notes du scribe vers la fin du texte.
+
+Les *Instructions de Shuruppak* aspirent à une dimension historique car nous avons le nom de l'auteur celui de son père et celui de son fils. De plus, cette figure de style se rapproche de ce que l'on trouve dans les listes des rois. Par la suite, d'autres listes d'instructions se sont développées. **Selon les intentions éditoriales des scribes, elles étaient attribuées à des fermiers, à des dirigeants, à des figures légendaires, etc.** Par exemple, lorsqu'elles étaient attribuées à un fermier (par exemple *Farmer's Instructions*^[Q](https://www.wikidata.org/wiki/Q137438077)^), c'était dans le but d'exprimer une sagesse populaire commune. Tandis que si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (par exemple *Instructions of Ur-Ninurta*).^Sz^
 
 ### De l'oralité à la textualité
 
-La culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l'originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs *incipits*). L'identification des auteurs n'était pas spécialement recherchée. Cependant, pour donner un peu d'ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques[^2].
+La culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l'originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs *incipits*). L'identification des auteurs n'était pas spécialement recherchée. Cependant, pour donner un peu d'ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques[^2].^Sz^
 
 [^2]: Un processus semblable pourrait avoir eu lieu dans la Chine ancienne ([Zhang](https://doi.org/10.1515/978150150513)).
 
-Même dans la société babylonienne ancienne, l'autorialité n'était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l'original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d'auteurs uniques et originaux ne faisaient pas trop de sens \[ma trad.\]» ([Brigitte Lion](https://doi.org/10.1093/oxfordhb/9780199557301.013.0005)). Pour cette période, la prêtresse et princesse [Enheduana](https://fr.wikipedia.org/wiki/Enheduana) fait exception car plusieurs textes sumériens (ex: *Kesh Temple Hymn*^[Q](https://www.wikidata.org/wiki/Q5195547)^) lui sont attribués en tant que première et exclusive autrice de l'histoire ([Halton & Svärd](#0)).
+Même dans la société babylonienne ancienne, l'autorialité n'était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l'original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d'auteurs uniques et originaux ne faisaient pas trop de sens \[ma trad.\]» ^BL^. Pour cette période, la prêtresse et princesse Enheduana^[Q](https://www.wikidata.org/wiki/Q232505)^ fait exception car plusieurs textes sumériens (ex: *Kesh Temple Hymn*^[Q](https://www.wikidata.org/wiki/Q5195547)^) lui sont attribués en tant que première et exclusive autrice de l'histoire^H&S^.
 
-Je n'ai pas trouvé de documents anciens qui citent explicitement une de ses oeuvres. Par contre, le *Kesh Temple Hymn* sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés *The Decad*. On peut ainsi qu'une forme préliminaire de citation ait été l'incorporation dans un canon officiel de textes.
+Je n'ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le *Kesh Temple Hymn* sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés *The Decad^[Q](https://www.wikidata.org/wiki/Q5248677)^*. **On peut énoncé ainsi qu'une forme préliminaire de citation ou de mention ait été l'incorporation dans un canon officiel de textes.**
 
 ### Naissance de l'auteur attribué
 
@@ -82,7 +90,7 @@ Selon Van der Toorn, il y a trois types d'autorialité : l'autorialité honorifi
 
 Pour avoir les références textuelles les plus riches, il faut attendre l’affirmation de la forme littéraire du récit. En effet, les mentions, les références et les citations se multiplient et se complexifient avec le texte en récit. Il est possible que la structure intrinsèque du récit en plusieurs niveaux ou selon différents points de vue semble offre un terrain particulièrement propice au jeu des renvois et des échos textuels.
 
-Datant d'environ 2100 avant J.-C., [*L'Épopée de Gilgamesh*](https://fr.wikipedia.org/wiki/%C3%89pop%C3%A9e_de_Gilgamesh) est l'un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d'argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d'Uruk, un héros surhumain et un homme confronté à sa propre mortalité.
+Datant d'environ 2100 avant J.-C., *L'Épopée de Gilgamesh^[Q](https://www.wikidata.org/wiki/Q8272)^* est l'un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d'argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d'Uruk, un héros surhumain et un homme confronté à sa propre mortalité.
 
 Au début, le roi est décrit en ces termes :
 
@@ -131,16 +139,26 @@ L'ensemble de ces procédés de référence montre que *L'Épopée de Gilgamesh*
 
 ## Références
 
-Collon, Dominiques. *First impressions : cylinder seals in the ancient Near East 1988* . [https://archive.org/details/firstimpressions0000coll/page/6/mode/2up](#0){style="font-size: 11pt;"}
+^DC^ : Collon, Dominiques. *First impressions : cylinder seals in the ancient Near East 1988* . [https://archive.org/details/firstimpressions0000coll/page/6/mode/2up](#0){style="font-size: 11pt;"}
 
-Lion, Brigitte, ' Literacy and Gender', in Karen Radner, and Eleanor Robson (eds), *The Oxford Handbook of Cuneiform Culture*. 2011. Oxford Academic. <https://doi.org/10.1093/oxfordhb/9780199557301.013.0005>.
+^BL^ : Lion, Brigitte, ' Literacy and Gender', in Karen Radner, and Eleanor Robson (eds), *The Oxford Handbook of Cuneiform Culture*. 2011. Oxford Academic. <https://doi.org/10.1093/oxfordhb/9780199557301.013.0005>.
 
-Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
+^Sz^ : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
 
 Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
 
-Halton, Charles et Saana Svärd, *Women’s Writing of Ancient Mesopotamia : An Anthology of the Earliest Female Authors*, Cambridge et New York, Cambridge University Press, 2018. <https://doi.org/10.1017/9781107280328>
+^H&S^ : Halton, Charles et Saana Svärd, *Women’s Writing of Ancient Mesopotamia : An Anthology of the Earliest Female Authors*, Cambridge et New York, Cambridge University Press, 2018. <https://doi.org/10.1017/9781107280328>
 
-Van De Mieroop, M. 2016: *Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.* Princeton – Oxford. <https://doi.org/10.1515/978140087411>
+^VdM^ : Van De Mieroop, M. 2016: *Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.* Princeton – Oxford. <https://doi.org/10.1515/978140087411>
 
 Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>\
+
+## Éléments Wikidata améliorés 
+
+Dans le cadre de ce billet, de nombreux éléments Wikidata, marqué ^Q^, ont été créés ou améliorés.
+
+-   Epic of Gilgamesh (Q8272)
+
+-   Decad (Q5248677) : Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki's Journey to Nippur (Q137454373); Hymn to Inana (Q137454369) ; Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342)
+
+-   Instructions of Shuruppak (Q3823132); The Farmer's Instructions (Q137438077);

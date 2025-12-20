@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,21 +33,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-afa1767ab894c633a6efdfa517d42c1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d9598b56567d6db39481eb32cff34dbe.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,178 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    const darkModeDefault = queryPrefersDark.matches;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    queryPrefersDark.addEventListener("change", e => {
-      if(window.localStorage.getItem("quarto-color-scheme") !== null)
-        return;
-      const alternate = e.matches
-      toggleColorMode(alternate);
-      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
-      toggleGiscusIfUsed(alternate, darkModeDefault);
-    });
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -344,23 +169,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-
 <p><span class="smallcaps"><strong>Billet en cours d’écriture</strong></span></p>
-<p>Par où commencer quand on veut explorer les pratiques de citation dans l’histoire humaine ? On m’a toujours dit que le plus ancien texte littéraire était <em>L’épopée de Gilgamesh</em>, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l’excellente mise en contexte présente dans l’article de <a href="https://doi.org/10.52093/hara-202201-0">Szilvia Sövegjártó</a>. Nous allons découvrir non seulement les premières traces de références mais aussi :</p>
+<p>Par où commencer quand on veut explorer les pratiques de citation ? On m’a toujours dit que le plus ancien texte littéraire était <em>L’épopée de Gilgamesh</em>, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l’excellente mise en contexte présente dans l’article de <a href="https://doi.org/10.52093/hara-202201-0">Szilvia Sövegjártó</a> (marqué <sup>Sz</sup>). Nous allons découvrir non seulement les premières traces de références dans :</p>
 <ul>
-<li><p>la naissance de l’auteur, que l’on peut considérer comme la première référence d’un texte;</p></li>
-<li><p>l’idée de propriété, voire de protection, associée au marquage d’un document;</p></li>
-<li><p>l’idée d’échange transactionnel, voire de reconnaissance de dette, dans le cadre d’un document signé.</p></li>
+<li><p>les sceaux, première marque et renvoi extra-textuel ;</p></li>
+<li><p>la naissance de l’auteur, la première référence d’un texte ;</p></li>
+<li><p>la notion de propriété, voire de protection, associée au marquage d’un document ;</p></li>
+<li><p>la notion d’échange transactionnel, voire de reconnaissance de dette, dans le cadre d’un document signé ;</p></li>
+<li><p>Les premières compilations de textes.</p></li>
 </ul>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Si les berceaux de l’humanité se trouvent en Afrique, on peut dire que les berceaux de la vie sociale en groupes denses se trouvent dans la région appelée le « Croissant fertile », ou la Mésopotamie.</p>
-<p>Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont ensuite rayonner et révolutionner l’humanité : les sceaux et l’écriture.</p>
+<p>Si les berceaux de l’humanité se trouvent en Afrique, alors les premiers berceaux de la vie sociale en groupes denses se trouvent probablement dans la région appelée le « Croissant fertile », c’est-à-dire la Mésopotamie.</p>
+<p>Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont révolutionner l’humanité : les sceaux et l’écriture. Les premières marques d’attribution vont apparaître dans le sillon de ces deux inventions.</p>
 </section>
 <section id="les-sceaux-premiers-marquages" class="level2">
 <h2 class="anchored" data-anchor-id="les-sceaux-premiers-marquages">Les sceaux : premiers marquages</h2>
-<p>Les premiers sceaux de l’histoire apparaissent vers le VII<sup>e</sup>&nbsp;millénaire av. J.-C. (entre l’an -7000 et -6001), au cours d’une période nommée Hassuna<sub><a href="https://www.wikidata.org/wiki/Q1588784">Q</a></sub> et sur les sites archéologiques de Bouqras<sub><a href="https://www.wikidata.org/wiki/Q4950065">Q</a></sub> (en Syrie) et de Tell es-Sawwan<sub><a href="https://www.wikidata.org/wiki/Q7697547">Q</a></sub> (en Irak).</p>
-<p>D’abord sous la forme de <a href="https://archive.org/details/firstimpressions0000coll/page/6/mode/2up">tampons</a>, puis plus tard sous la forme de <a href="https://fr.wikipedia.org/wiki/D%C3%A9buts_de_l%27%C3%A9criture_en_M%C3%A9sopotamie">sceaux-cylindres</a>, ces outils permettent de sceller des denrées ou d’identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection.</p>
+<p>Les premiers sceaux de l’histoire apparaissent vers le VII<sup>e</sup>&nbsp;millénaire av. J.-C. (entre l’an -7000 et -6001), au cours d’une période nommée Hassuna<sup><a href="https://www.wikidata.org/wiki/Q1588784">Q</a></sup> et sur les sites archéologiques de Bouqras<sup><a href="https://www.wikidata.org/wiki/Q4950065">Q</a></sup> (en Syrie) et de Tell es-Sawwan<sup><a href="https://www.wikidata.org/wiki/Q7697547">Q</a></sup> (en Irak).</p>
+<p>D’abord sous la forme de tampons, puis aussi plus tard sous la forme de sceaux-cylindres<sup><a href="https://www.wikidata.org/wiki/Q1123756">Q</a></sup>, ces outils permettent de sceller des denrées ou d’identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection<sup>DC</sup>.</p>
+<p>Chaque sceau est constituée d’un ensemble de symboles qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Ce sont ces symboles qui ont influencé les premiers caractères d’écriture<sup>??</sup>. <strong>Ces caractéristiques vont se retrouver tout au long de l’histoire de la citation : une identité unique, nommée et matérialisée.</strong></p>
 </section>
 <section id="lécriture-première-fixation-de-linformation" class="level2">
 <h2 class="anchored" data-anchor-id="lécriture-première-fixation-de-linformation">L’écriture : première fixation de l’information</h2>
@@ -369,27 +196,28 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="tablette-sceau-première-référence-de-lhistoire" class="level2">
 <h2 class="anchored" data-anchor-id="tablette-sceau-première-référence-de-lhistoire">Tablette + Sceau : première référence de l’histoire</h2>
-<p>Certaines tablettes d’écritures vont recevoir la marque de sceaux-cylindres : ce sont les premières références de l’histoire. Elles apparaissent à la période Uruk (-3500 à -3100). Il y en a une exposée au <a href="https://www.metmuseum.org/art/collection/search/329081">MET</a> qui date de -3100/-2900.</p>
-<p>Cette empreinte de référence est unique mais il peut être imprimée sur des tablettes un nombre infini de fois de manière fiable. Chaque sceau est constituée d’un ensemble de symboles<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Notons une facette importante de cette référence que nous allons retrouver tout au long de l’histoire de la citation : une identité propre et nommée.</p>
-<p>Ainsi, en combinant ces deux technologies, nous avons désormais une information riche encodée dans un document, accompagnée d’une autre information qui fait une référence à une entité nommée en dehors du document. Outre le marquage de la propriété, les sceaux sur les documents ont servi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).</p>
+<p>Pendant la période Uruk (-3500 à -3100), <strong>certaines tablettes d’écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les premières références de l’histoire de l’écriture.</strong> En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d’argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.</p>
+<p>Outre le marquage de la propriété, les sceaux sur les documents servent aussi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).</p>
 <blockquote class="blockquote">
-<p>At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. (Colon. 113-117)</p>
+<p>At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. <sup>DC113</sup></p>
 </blockquote>
-<p>De manière intéressante, il semble que ces sceaux aient possédés des caractéristiques magiques de type amulette de protection. Elles étendaient la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). (Colon, 118)</p>
+<p>De manière intéressante, il semble que ces sceaux soient aussi considérés comme des amulettes de protection magiques. En effet, c’est comme s’ils étendent le pouvoir de la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). <sup>DC118</sup></p>
 </section>
 <section id="les-listes-premiers-textes-littéraires" class="level2">
 <h2 class="anchored" data-anchor-id="les-listes-premiers-textes-littéraires">Les listes : premiers textes littéraires</h2>
-<p>Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d’animaux, etc. Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les <em>Instructions de Shuruppak<sub><a href="https://www.wikidata.org/wiki/Q3823132">Q</a></sub></em> est une liste de sagesses, c’est-à-dire des conseils spirituels et moraux. Certains le définissent comme le plus anciens texte « littéraire ». Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d’origines diverses et assemblés par les scribes. Ces derniers font débuter le texte par une référence explicite au chef de famille qui donne crédit au texte.</p>
+<p>Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d’animaux, etc.</p>
+<p>Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les <em>Instructions de Shuruppak</em><sup><a href="https://www.wikidata.org/wiki/Q3823132">Q</a></sup> sont une liste de sagesses, c’est-à-dire des conseils spirituels et moraux. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d’origines diverses et assemblés par des scribes. Ces derniers font débuter le texte par une référence nommée au chef de famille qui donne crédit au texte.</p>
 <blockquote class="blockquote">
 <p>In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land;&nbsp;Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land.&nbsp;Curuppag&nbsp;gave instructions to his son;&nbsp;Curuppag, the son of&nbsp;Ubara-Tutu&nbsp;gave instructions to his son&nbsp;Zi-ud-sura: My son, let me give you instructions: you should pay attention!&nbsp;Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! (<a href="https://etcsl.orinst.ox.ac.uk/section5/tr561.htm">source</a>)</p>
 </blockquote>
-<p>Comme on peut le voir, les références sont nommées et présentées de manière ordonnée. Elles sont suivies des intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait. Cependant, les auteurs originaux des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n’est que plus tard (vers -2000) que, ceux-ci mentionnent leurs noms dans le colophon (les notes du scribe vers la fin du texte). Et encore, les rôles de copistes ou d’éditeurs ne sont pas spécifiés donc ce sont plus des mentions de propriété que d’autorialité (<a href="https://doi.org/10.1515/9781400874118">Van De Mieroop</a>).</p>
-<p>Selon <a href="https://doi.org/10.52093/hara-202201-00027-000">Sövegjártó</a>, ce document aspire à une dimension historique puisque nous avons le nom de l’auteur celui de son père et celui de son fils. Cet élément de style se rapproche des listes des rois. D’autres listes d’instruction se sont développées, attribuées à des fermiers, des dirigeants, des figures légendaires, etc. selon les intentions éditoriales. Lorsqu’elles étaient attribuées à un fermier (ex: <em>Farmer’s Instructions</em><sub><a href="https://www.wikidata.org/wiki/Q137438077">Q</a></sub>), c’était dans le but d’exprimer une sagesse populaire commune. Si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (ex: <em>Instructions of Ur-Ninurta</em>).</p>
+<p><strong>Les références, nommées et ordonnées, sont suivies par les intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait.</strong></p>
+<p>Tous les auteurs originaux de chacun des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n’est que vers -2000 que les scribes mentionnent parfois leurs noms dans le colophon<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> des textes. Cependant, c’est probablement plus une mention de propriété que d’autorialité car ils ne précisent pas leurs rôles de copistes ou d’éditeurs <sup>VdM</sup>.</p>
+<p>Les <em>Instructions de Shuruppak</em> aspirent à une dimension historique car nous avons le nom de l’auteur celui de son père et celui de son fils. De plus, cette figure de style se rapproche de ce que l’on trouve dans les listes des rois. Par la suite, d’autres listes d’instructions se sont développées. <strong>Selon les intentions éditoriales des scribes, elles étaient attribuées à des fermiers, à des dirigeants, à des figures légendaires, etc.</strong> Par exemple, lorsqu’elles étaient attribuées à un fermier (par exemple <em>Farmer’s Instructions</em><sup><a href="https://www.wikidata.org/wiki/Q137438077">Q</a></sup>), c’était dans le but d’exprimer une sagesse populaire commune. Tandis que si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (par exemple <em>Instructions of Ur-Ninurta</em>).<sup>Sz</sup></p>
 <section id="de-loralité-à-la-textualité" class="level3">
 <h3 class="anchored" data-anchor-id="de-loralité-à-la-textualité">De l’oralité à la textualité</h3>
-<p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» (<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005">Brigitte Lion</a>). Pour cette période, la prêtresse et princesse <a href="https://fr.wikipedia.org/wiki/Enheduana">Enheduana</a> fait exception car plusieurs textes sumériens (ex: <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire (<a href="#0">Halton &amp; Svärd</a>).</p>
-<p>Je n’ai pas trouvé de documents anciens qui citent explicitement une de ses oeuvres. Par contre, le <em>Kesh Temple Hymn</em> sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad</em>. On peut ainsi qu’une forme préliminaire de citation ait été l’incorporation dans un canon officiel de textes.</p>
+<p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.<sup>Sz</sup></p>
+<p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» <sup>BL</sup>. Pour cette période, la prêtresse et princesse Enheduana<sup><a href="https://www.wikidata.org/wiki/Q232505">Q</a></sup> fait exception car plusieurs textes sumériens (ex: <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire<sup>H&amp;S</sup>.</p>
+<p>Je n’ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le <em>Kesh Temple Hymn</em> sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad<sup><a href="https://www.wikidata.org/wiki/Q5248677">Q</a></sup></em>. <strong>On peut énoncé ainsi qu’une forme préliminaire de citation ou de mention ait été l’incorporation dans un canon officiel de textes.</strong></p>
 </section>
 <section id="naissance-de-lauteur-attribué" class="level3">
 <h3 class="anchored" data-anchor-id="naissance-de-lauteur-attribué">Naissance de l’auteur attribué</h3>
@@ -401,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="lépopée-de-gilgamesh" class="level2">
 <h2 class="anchored" data-anchor-id="lépopée-de-gilgamesh">L’épopée de Gilgamesh</h2>
 <p>Pour avoir les références textuelles les plus riches, il faut attendre l’affirmation de la forme littéraire du récit. En effet, les mentions, les références et les citations se multiplient et se complexifient avec le texte en récit. Il est possible que la structure intrinsèque du récit en plusieurs niveaux ou selon différents points de vue semble offre un terrain particulièrement propice au jeu des renvois et des échos textuels.</p>
-<p>Datant d’environ 2100 avant J.-C., <a href="https://fr.wikipedia.org/wiki/%C3%89pop%C3%A9e_de_Gilgamesh"><em>L’Épopée de Gilgamesh</em></a> est l’un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d’argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d’Uruk, un héros surhumain et un homme confronté à sa propre mortalité.</p>
+<p>Datant d’environ 2100 avant J.-C., <em>L’Épopée de Gilgamesh<sup><a href="https://www.wikidata.org/wiki/Q8272">Q</a></sup></em> est l’un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d’argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d’Uruk, un héros surhumain et un homme confronté à sa propre mortalité.</p>
 <p>Au début, le roi est décrit en ces termes :</p>
 <blockquote class="blockquote">
 <p>He saw the Secret, discovered the Hidden,<br>
@@ -446,14 +274,23 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 </section>
 <section id="références" class="level2">
 <h2 class="anchored" data-anchor-id="références">Références</h2>
-<p>Collon, Dominiques. <em>First impressions : cylinder seals in the ancient Near East 1988</em> . <a href="#0" style="font-size: 11pt;">https://archive.org/details/firstimpressions0000coll/page/6/mode/2up</a></p>
-<p>Lion, Brigitte,&nbsp;’ Literacy and Gender’,&nbsp;in Karen Radner, and Eleanor Robson (eds),&nbsp;<em>The Oxford Handbook of Cuneiform Culture</em>. 2011.&nbsp;Oxford Academic.&nbsp;<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005" class="uri">https://doi.org/10.1093/oxfordhb/9780199557301.013.0005</a>.</p>
-<p>Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. <em>Hungarian Assyriological Review</em> 3: 25–47. DOI: <a href="https://doi.org/10.52093/hara-202201-0" class="uri">https://doi.org/10.52093/hara-202201-0</a>. Assyriologie, libre accès, facile à lire.</p>
+<p><sup>DC</sup> : Collon, Dominiques. <em>First impressions : cylinder seals in the ancient Near East 1988</em> . <a href="#0" style="font-size: 11pt;">https://archive.org/details/firstimpressions0000coll/page/6/mode/2up</a></p>
+<p><sup>BL</sup> : Lion, Brigitte,&nbsp;’ Literacy and Gender’,&nbsp;in Karen Radner, and Eleanor Robson (eds),&nbsp;<em>The Oxford Handbook of Cuneiform Culture</em>. 2011.&nbsp;Oxford Academic.&nbsp;<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005" class="uri">https://doi.org/10.1093/oxfordhb/9780199557301.013.0005</a>.</p>
+<p><sup>Sz</sup> : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. <em>Hungarian Assyriological Review</em> 3: 25–47. DOI: <a href="https://doi.org/10.52093/hara-202201-0" class="uri">https://doi.org/10.52093/hara-202201-0</a>. Assyriologie, libre accès, facile à lire.</p>
 <p>Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): <em>That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century</em>. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <a href="https://doi.org/10.1163/9789004279421_002" class="uri">https://doi.org/10.1163/9789004279421_002</a>. Littérature comparée, libre accès, facile à lire.</p>
-<p>Halton, Charles et Saana Svärd, <em>Women’s Writing of Ancient Mesopotamia&nbsp;: An Anthology of the Earliest Female Authors</em>, Cambridge et New York, Cambridge University Press, 2018. <a href="https://doi.org/10.1017/9781107280328" class="uri">https://doi.org/10.1017/9781107280328</a></p>
-<p>Van De Mieroop, M. 2016: <em>Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.</em> Princeton – Oxford. <a href="https://doi.org/10.1515/978140087411" class="uri">https://doi.org/10.1515/978140087411</a></p>
+<p><sup>H&amp;S</sup> : Halton, Charles et Saana Svärd, <em>Women’s Writing of Ancient Mesopotamia&nbsp;: An Anthology of the Earliest Female Authors</em>, Cambridge et New York, Cambridge University Press, 2018. <a href="https://doi.org/10.1017/9781107280328" class="uri">https://doi.org/10.1017/9781107280328</a></p>
+<p><sup>VdM</sup> : Van De Mieroop, M. 2016: <em>Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.</em> Princeton – Oxford. <a href="https://doi.org/10.1515/978140087411" class="uri">https://doi.org/10.1515/978140087411</a></p>
 <p>Zhang, H. 2018: <em>Authorship and Text-making in Early China</em>. (Library of Sinology 2) Boston – Berlin. <a href="https://doi.org/10.1515/978150150513" class="uri">https://doi.org/10.1515/978150150513</a><br>
 </p>
+</section>
+<section id="éléments-wikidata-améliorés" class="level2">
+<h2 class="anchored" data-anchor-id="éléments-wikidata-améliorés">Éléments Wikidata améliorés</h2>
+<p>Dans le cadre de ce billet, de nombreux éléments Wikidata, marqué <sup>Q</sup>, ont été créés ou améliorés.</p>
+<ul>
+<li><p>Epic of Gilgamesh (Q8272)</p></li>
+<li><p>Decad (Q5248677) : Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki’s Journey to Nippur (Q137454373); Hymn to Inana (Q137454369) ; Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342)</p></li>
+<li><p>Instructions of Shuruppak (Q3823132); The Farmer’s Instructions (Q137438077);</p></li>
+</ul>
 
 
 </section>
@@ -462,262 +299,386 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Ce sont ces symboles qui ont influencé les premiers caractères d’écriture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Colophon : les notes du scribe vers la fin du texte.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Un processus semblable pourrait avoir eu lieu dans la Chine ancienne (<a href="https://doi.org/10.1515/978150150513">Zhang</a>).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Dans <em>Uruk List of Kings and Sages</em>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
         }
       }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
       return false;
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/pmartinolli\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/pmartinolli\.github\.io");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -725,161 +686,185 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
