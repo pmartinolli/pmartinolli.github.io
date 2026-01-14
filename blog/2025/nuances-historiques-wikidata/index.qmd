@@ -1,0 +1,55 @@
+---
+title: "Expressions des nuances historiques dans Wikidata"
+author: "Pascal Martinolli"
+date: "2025-12-26"
+categories: [citation, Wikidata, HumanitésNumériques, histoire, TTRPG]
+description: "Où l'on explore les limites de l'expression des nuances historiques dans le graphe actuel de Wikidata, des données liées hiérarchiques et de la découvrabilité de notions proches."
+format: html
+---
+
+## Le rôle des femmes dans la culture des jeux de salon
+
+Ces vacances de Noël, je suis tombé sur un excellent fil de discussion sur Blusky à propos de la place mal-reconnue des femmes dans les origines du jeu de rôle sur table.
+
+Pour simplifier la discussion entre Emily Friedman, Evan Torner (principalement), Meguey Baker et Wobu Palooza, voici un aperçu des sujets de la discussion. \[Les crochets sont mes extrapolations.\]
+
+1.  Remonter les origines du jeu de rôle sur table vers le wargame, le kriegsspiel et même les échecs est facile \[car il y a suffisament de traces historiques accessibles\].
+2.  Faire un inventaire de la culture (souvent féminine) des jeux de salon, ou parlour games, est plus difficile \[car les traces historiques ont été invisibilisées et les sources primaires sont plus difficiles à mettre en lien les unes avec les autres car il y a un fort élément non-documenté et peu de traces écrites\].
+
+## Faire un graphe chronologique généalogique des jeux
+
+Depuis une dizaine d'années, je cherche à trouver une manière visuelle et historique (dans le sens « avec des sources traçables ») de représenter l'histoire des jeux de rôles depuis leur création, mais aussi avant leur création, mais aussi des jeux de société en général.
+
+Wikidata s'est développé entre temps et je trouve que c'est une excellente plateforme pour y indexer les données de ces projets. Cependant, il reste de nombreuses difficultés si on veut produire ou suivre des données liées.
+
+### Difficile navigation hiérarchique
+
+Tout d'abord, comme les données s'indexent les unes les autres dans une direction, il peut être difficile d'accéder aux données et à leur hiérarchie :
+
+-   Si nous avons un élément de classe « jeu de société », il est facile de connaître sa classe immédiatement supérieure/générique (qui est « jeu social ») présentement et ainsi de suite, de sur-classes en sur-classes grâce à la propriété « sous-classe de ».
+
+    -   Par contre, il est difficile de repérer facilement les sous-classes de cet élément.
+
+    -   Construire des requêtes prenant en compte tous les sous-classes d'un élément sont un tout petit peu plus complexes à rédiger mais surtout elles sont souvent plus gourmandes en ressources.
+
+-   Une requête SPARQL pour vérifier toutes les utilisations d'un élément (donc repérer les sous-classes) :
+
+    ``` sql
+    SELECT ?node ?property WHERE {?node ?property wd:Q2144077 }
+    ```
+
+    [Essayez-le](https://query.wikidata.org/#SELECT%20%3Fnode%20%3Fproperty%20WHERE%20%7B%3Fnode%20%3Fproperty%20wd%3AQ2144077%20%7D)
+
+-   Parfois, je rencontre un élément d'une classe et sa sous-classe ont une indexation déséquilibrée.
+
+    -   Exemple : [charades](https://www.wikidata.org/wiki/Q2144077) est le terme générique pour toutes les charades (mimées ou non). Cet élément existe depuis longtemps et il a donc plein de propriétés de type identifiants vers d'autres bases de données. Cependant, mais le jeu des « [charade en action](https://www.wikidata.org/wiki/Q137591628) » ou charade mimée (*acting charade*), qui est la variante de la charade la plus notable, est peu indexée car il est plus récent.
+
+### Découvrabilité de notions proches
+
+-   Il y a des choses qui s'expriment mieux dans le langage que dans un graphe comme Wikidata. Par exemple :
+
+    > (...) Acting Charades in particular left a significant mark, appearing in novels like *Vanity Fair* and *Jane Eyre* and getting popularized among celebrities by authors like George Sand and H.G. Wells. ([Wobbu Palooza](https://wobbupalooza.neocities.org/charades))
+
+    Je m'interroge comment indexer ceci dans Wikidata pour qu'on puisse découvrir, en remontant la chaîne des idées sur les origines du wargame et du kriegsspiel, que H.G. Wells concepteur du fameux jeu Little Wars, adorait jouer aux charades en action. Il est possible de trouver ces idées en lisant des biographies plus ou moins détaillées de H.G. Wells (depuis la page Wikipédia jusqu'à la monographie) mais ce serait tellement fabuleux de pouvoir le codifier dans Wikidata et ensuite repérer des proximités semblables.
+
+-   Il en va de même pour deux concepteurs de jeu qui peuvent avoir vécu dans la même ville, avec une même catégorie d'âge ou sociale, mais dont on ne trouve aucune trace de leur collaboration dans les traces écrites directes (co-auteurs, remerciements, etc.). Il est difficile de repérer ce genre d'informations, même avec des données complètes.

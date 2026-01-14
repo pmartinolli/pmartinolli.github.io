@@ -129,13 +129,19 @@ Ce mécanisme littéraire puissant montre que le texte est capable de se référ
 
 Parfois l'inclusion d'un récit antérieur est directe et explicite. Par exemple, la narration de l'épisode du Déluge ([Tablette XI](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm)) ) par Utnapishtim est un récit antérieur enchâssé au sein de *L'épopée de Gilgamesh*.
 
-Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d'autres cultures comme celle de Grève antique par exemple.
+Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d'autres cultures comme celle de Grèce antique par exemple.
 
 ### Un récit synthétique
 
 L'ensemble de ces procédés de référence montre que *L'Épopée de Gilgamesh* fonctionne comme une tentative de fixation sélective d'un répertoire beaucoup plus vaste. Dans le contexte d'une culture largement orale qui teste des formes de stabilisation textuelle, elle présuppose une audience informée et dotée d'une mémoire culturelle communee. Ces différentes formes de références, incorporées dans un récit synthétique, sont des portes vers la culture mésopotamienne. Certaines portes nous sont invisibles et certaines sont fermées car nous sommes trop distant de ce passé et nous en avons perdu les clés.
 
 À cet égard, elle peut être rapprochée des récits homériques qui évoquent des mythes sans les développer, ou encore de textes médiévaux faisant référence à la Bible ou aux légendes sans les expliciter entièrement.
+
+## Avant et ailleurs 
+
+Il est possible que des marquages aient précédés les sceaux sur les objets dans l'histoire de l'humanité. Par exemple, on peut considérer les scarifications et les tatous comme des marquages fait sur le corps et qui renvoient à un sens au-delà de l'aspect esthétique (rite de passage, d'appartenance, d'identité ou de statut social). En Egypte, on a retrouvé des statuettes portant des marques de scarifications datant de -5000^[Q](https://www.wikidata.org/wiki/Q113485243)^ et des tatous datant au moins de -3000 ^[Q](https://www.wikidata.org/wiki/Q43006)^.
+
+Dans l'Amérique centrale pré-colombienne, les sceaux tampons et les sceaux à rouler (*sello*) ont existé probablement dès -1500^[Q](https://www.wikidata.org/wiki/Q137505110)^. Dans la Chine ancienne, les plus anciens sceaux tampons datent de la dynastie Shang (-1600 à -1046)^[Q](https://www.wikidata.org/wiki/Q3850202)^.
 
 ## Références
 
@@ -153,12 +159,24 @@ Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann,
 
 Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>\
 
-## Éléments Wikidata améliorés 
+## Éléments Wikidata 
 
-Dans le cadre de ce billet, de nombreux éléments Wikidata, marqué ^Q^, ont été créés ou améliorés.
+### Passerelles vers les sources
 
--   Epic of Gilgamesh (Q8272)
+Pour retracer les sources, vous pouvez consulter les propriétés de l'éléments Wikidata, marqué ^Q^, ou dérouler le menu *References* des valeurs à vérifier. Ou bien, vous pouvez descendre au bas de la page de l'élément et visiter les pages Wikipédia dans différents espaces linguistiques (fr, en, etc.).
 
--   Decad (Q5248677) : Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki's Journey to Nippur (Q137454373); Hymn to Inana (Q137454369) ; Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342)
+### Éléments améliorés
 
--   Instructions of Shuruppak (Q3823132); The Farmer's Instructions (Q137438077);
+Dans le cadre de ce billet, de nombreux éléments Wikidata ont été créés ou améliorés :
+
+-   Epic of Gilgamesh (Q8272); Decad (Q5248677);
+
+    -   Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki's Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342);
+
+    -   Instructions of Shuruppak (Q3823132); The Farmer's Instructions (Q137438077);
+
+    -   A balbale to Inana (Q137506645); Sumerian temple hymns (Q137506392); Hymn to Inana (Q137454369); The Exaltation of Inanna (Q105794259)
+
+-    roller seal (sello) (Q137505110) ; Asian seal (Q3850202) + seal material (Q11409101)
+
+-    scarification (Q570784); African scarification (Q113485243); tattooing (Q43006)

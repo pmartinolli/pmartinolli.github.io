@@ -1,0 +1,91 @@
+---
+title: "CSL Superstylin'"
+author: "Pascal Martinolli"
+date: "2026-01-06"
+categories: [Zotero]
+description: "Où l'on bricole un fichier de style CSL Chicago «notes de bas de page» 18th pour le franciser."
+---
+
+Ce billet est fortement inspiré du billet « [Bonnes pratiques pour la création d’un style CSL](https://zotero.hypotheses.org/5302) » du blogue Zotero francophone.
+
+## Traitement de base
+
+Je visite le dépôt des styles Zotero à [https://www.zotero.org/styles](#0)
+
+Je télécharge le style [Chicago Manual of Style 18th edition (notes and bibliography)](https://www.zotero.org/styles/chicago-notes-bibliography). Au passage, je note qu'il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.)
+
+Je renomme le fichier en : `chicago-notes-bibliography_FR-test.csl`
+
+J'ouvre le fichier et dans la balise <title></title> je modifie pour : `FR-test Chicago Manual of Style 18th edition (notes and bibliography)`
+
+Dans la balise <id></id> je modifie pour : `http://www.zotero.org/styles/chicago-notes-bibliography_FR-test`
+
+Dans la balise \<link re="self\> je modifie pour : `<link href="http://www.zotero.org/styles/chicago-notes-bibliography_FR-test" rel="self"/>`
+
+## Modifications \<locale\> spécifiques
+
+Après consultation du billet de Zotero francophone et après avoir demandé à Claude Ai « I want to change "edited by" in this CSL file by "sous la direction de" + joint le fichier CSL »
+
+Je rajoute une section \<locale\> après la section \<info\>
+
+Cette section devrait prendre le dessus sur tous les autres fichiers *locale* invoqués par ce style (ex: locale-fr-fr; locale-fr-ca; etc.).
+
+``` html
+  <locale xml:lang="fr">
+    <terms>
+      <term form="verb" name="editor">sous la direction de</term>
+      <term form="verb-short" name="editor">sous la dir. de</term>
+      <term name="in">dans</term>
+      <term name="presented at">présentée à</term>
+      <term name="in press">sous presse</term>
+      
+      <!-- Chicago omits 'by' from `verb-short` forms; it abbreviates only the most common roles -->
+      <term name="advance-online-publication">à paraître</term>
+      <term name="anonymous">anonyme</term>
+      <term form="verb-short" name="collection-editor">dir.</term>
+      <term form="short" name="collection-number">
+        <single>vol.</single>
+        <multiple>vols.</multiple>
+      </term>
+      <term form="verb-short" name="compiler">comp.</term>
+      <term form="verb-short" name="editor">dir.</term>
+      <term form="short" name="editor-translator">
+        <single>dir. et trad.</single>
+        <multiple>dir. et trad.</multiple>
+      </term>
+      <term form="short" name="editortranslator">
+        <single>dir. et trad.</single>
+        <multiple>dir. et trad.</multiple>
+      </term>
+      <term form="verb" name="editor-translator">sous la direction et la traduction de</term>
+      <term form="verb" name="editortranslator">sous la direction et la traduction de</term>
+      <term form="verb-short" name="editor-translator">sous la dir. et la trad. de</term>
+      <term form="verb-short" name="editortranslator">sous la dir. et la trad. de</term>
+      <term form="verb-short" name="illustrator">ill.</term>
+      <term form="short" name="legislation">Pub. L.</term>
+      <term name="manuscript">manuscrit</term>
+      <term name="original-work-published">initialement publié sous le titre</term>
+      <term form="short" name="paper-conference">comm.</term>
+      <!-- 'under' replaces 's.v.' from CMOS17 and earlier (CMOS18 14.130) -->
+      <term name="sub-verbo">sous</term>
+      <term form="short" name="sub-verbo">sous</term>
+      <term name="timestamp">à</term>
+      <term form="verb-short" name="translator">trad.</term>
+    </terms>
+    
+  </locale>
+```
+
+## Changement des deux points « : »
+
+En anglais, il suffit d'un espace après les deux points. En français, il faut un espace avant les deux points et un espace après les deux points.
+
+Dans le fichier CSL, ouvert dans un éditeur de texte comme Notepad++, je cherche `delimiter=": "` et je remplace par `delimiter=" : "`
+
+## Tests
+
+J'installe ce nouveau style dans une base de données Zotero de test, créée en lançant `zotero -p` avec le programme Exécuter de Windows.
+
+Dans cette base zotero, j'ai plusieurs types de documents différents pour plusieurs cas que je veux tester. Par exemple, un livre avec auteur et un livre sans auteur, etc.
+
+Je compare avec le [guide Chicago 18 en ligne](https://www.chicagomanualofstyle.org/book/ed18/frontmatter/toc.html) et avec la [traduction/adaptation française](https://boite-outils.bib.umontreal.ca/citer/chicago) par l'UdeM.

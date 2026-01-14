@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pascal Martinolli">
-<meta name="dcterms.date" content="2025-12-12">
-<meta name="description" content="Où l’on discute des pratiques de citation dans l’un des plus anciens texte de l’humanité, en le remettant en contexte.">
+<meta name="dcterms.date" content="2026-01-14">
+<meta name="description" content="Où l’on récupère les données brutes de la base de données des articles retirés de Retraction Watch pour en extraire des données sur une institution en particulier avec quelques visualisations.">
 
-<title>Citations dans L’épopée de Gilgamesh – Pascal Martinolli</title>
+<title>Aperçu local des articles retirés de Retraction Watch – Pascal Martinolli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -300,14 +335,14 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Citations dans L’épopée de Gilgamesh</h1>
+      <h1 class="title">Aperçu local des articles retirés de Retraction Watch</h1>
                   <div>
         <div class="description">
-          Où l’on discute des pratiques de citation dans l’un des plus anciens texte de l’humanité, en le remettant en contexte.
+          Où l’on récupère les données brutes de la base de données des articles retirés de Retraction Watch pour en extraire des données sur une institution en particulier avec quelques visualisations.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">citation</div>
+                <div class="quarto-category">HumanitésNumériques</div>
               </div>
                   </div>
   </div>
@@ -325,7 +360,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 12, 2025</p>
+        <p class="date">January 14, 2026</p>
       </div>
     </div>
     
@@ -345,158 +380,166 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><span class="smallcaps"><strong>Billet en cours d’écriture</strong></span></p>
-<p>Par où commencer quand on veut explorer les pratiques de citation ? On m’a toujours dit que le plus ancien texte littéraire était <em>L’épopée de Gilgamesh</em>, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l’excellente mise en contexte présente dans l’article de <a href="https://doi.org/10.52093/hara-202201-0">Szilvia Sövegjártó</a> (marqué <sup>Sz</sup>). Nous allons découvrir non seulement les premières traces de références dans :</p>
+<section id="retraction-watch" class="level2">
+<h2 class="anchored" data-anchor-id="retraction-watch">Retraction Watch</h2>
+<p><a href="https://retractionwatch.com/">Retraction Watch</a> une plateforme (blogue et base de données bibliographiques) crée par Ivan Oransky et Adam Marcus en 2010.</p>
+<p>Elle surveille, rapporte et analyse les rétractations d’articles scientifiques, ainsi que les problèmes d’intégrité dans la recherche (données frauduleuses, plagiat, etc.).</p>
+<p>Depuis 2023, elle verse ses données dans CrossRef. CrossRef donne accès à ces données via son API mais surtout dans notre cas aujourd’hui via un dépôt dans la forge logicielle GitLab à <a href="https://gitlab.com/crossref/retraction-watch-data" class="uri">https://gitlab.com/crossref/retraction-watch-data</a></p>
+</section>
+<section id="traitement-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="traitement-des-données">Traitement des données</h2>
 <ul>
-<li><p>les sceaux, première marque et renvoi extra-textuel ;</p></li>
-<li><p>la naissance de l’auteur, la première référence d’un texte ;</p></li>
-<li><p>la notion de propriété, voire de protection, associée au marquage d’un document ;</p></li>
-<li><p>la notion d’échange transactionnel, voire de reconnaissance de dette, dans le cadre d’un document signé ;</p></li>
-<li><p>Les premières compilations de textes.</p></li>
-</ul>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Si les berceaux de l’humanité se trouvent en Afrique, alors les premiers berceaux de la vie sociale en groupes denses se trouvent probablement dans la région appelée le « Croissant fertile », c’est-à-dire la Mésopotamie.</p>
-<p>Cette région a vu naître de nombreuses inventions sociales et technologiques : urbanisation, commerce, irrigation, agriculture, etc. Parmi celles-ci nous allons nous pencher sur deux innovations de technologies cognitives qui vont révolutionner l’humanité : les sceaux et l’écriture. Les premières marques d’attribution vont apparaître dans le sillon de ces deux inventions.</p>
-</section>
-<section id="les-sceaux-premiers-marquages" class="level2">
-<h2 class="anchored" data-anchor-id="les-sceaux-premiers-marquages">Les sceaux : premiers marquages</h2>
-<p>Les premiers sceaux de l’histoire apparaissent vers le VII<sup>e</sup>&nbsp;millénaire av. J.-C. (entre l’an -7000 et -6001), au cours d’une période nommée Hassuna<sup><a href="https://www.wikidata.org/wiki/Q1588784">Q</a></sup> et sur les sites archéologiques de Bouqras<sup><a href="https://www.wikidata.org/wiki/Q4950065">Q</a></sup> (en Syrie) et de Tell es-Sawwan<sup><a href="https://www.wikidata.org/wiki/Q7697547">Q</a></sup> (en Irak).</p>
-<p>D’abord sous la forme de tampons, puis aussi plus tard sous la forme de sceaux-cylindres<sup><a href="https://www.wikidata.org/wiki/Q1123756">Q</a></sup>, ces outils permettent de sceller des denrées ou d’identifier la propriétés des biens en y apposant une « signature » avant de les entreposer dans un grenier commun. Ces objets sont souvent faits de pierres importées. Ils sont portés, voire arborés de manière ostentible pour signaler le statut de son porteur propriétaire et aussi comme amulette de protection<sup>DC</sup>.</p>
-<p>Chaque sceau est constituée d’un ensemble de symboles qui sont sélectionnés et agencés pour représenter de manière abstraite une personne ou une institution. Ce sont ces symboles qui ont influencé les premiers caractères d’écriture<sup>??</sup>. <strong>Ces caractéristiques vont se retrouver tout au long de l’histoire de la citation : une identité unique, nommée et matérialisée.</strong></p>
-</section>
-<section id="lécriture-première-fixation-de-linformation" class="level2">
-<h2 class="anchored" data-anchor-id="lécriture-première-fixation-de-linformation">L’écriture : première fixation de l’information</h2>
-<p>Toujours en Mésopotamie, vers 3300 avant Jésus-Christ, des scribes sumériens inventent la technologie cognitive la plus connue de l’histoire humaine : l’écriture.</p>
-<p>Elle semble apparaître pour répondre à un besoin comptables et administratif de contrôle de ressources. Elle permet de fixer des informations immatérielles, principalement des quantités associées à des biens matériels, sur des tablettes d’argile.</p>
-</section>
-<section id="tablette-sceau-première-référence-de-lhistoire" class="level2">
-<h2 class="anchored" data-anchor-id="tablette-sceau-première-référence-de-lhistoire">Tablette + Sceau : première référence de l’histoire</h2>
-<p>Pendant la période Uruk (-3500 à -3100), <strong>certaines tablettes d’écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les premières références de l’histoire de l’écriture.</strong> En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d’argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.</p>
-<p>Outre le marquage de la propriété, les sceaux sur les documents servent aussi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).</p>
-<blockquote class="blockquote">
-<p>At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. <sup>DC113</sup></p>
-</blockquote>
-<p>De manière intéressante, il semble que ces sceaux soient aussi considérés comme des amulettes de protection magiques. En effet, c’est comme s’ils étendent le pouvoir de la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). <sup>DC118</sup></p>
-</section>
-<section id="les-listes-premiers-textes-littéraires" class="level2">
-<h2 class="anchored" data-anchor-id="les-listes-premiers-textes-littéraires">Les listes : premiers textes littéraires</h2>
-<p>Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d’animaux, etc.</p>
-<p>Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les <em>Instructions de Shuruppak</em><sup><a href="https://www.wikidata.org/wiki/Q3823132">Q</a></sup> sont une liste de sagesses, c’est-à-dire des conseils spirituels et moraux. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d’origines diverses et assemblés par des scribes. Ces derniers font débuter le texte par une référence nommée au chef de famille qui donne crédit au texte.</p>
-<blockquote class="blockquote">
-<p>In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land;&nbsp;Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land.&nbsp;Curuppag&nbsp;gave instructions to his son;&nbsp;Curuppag, the son of&nbsp;Ubara-Tutu&nbsp;gave instructions to his son&nbsp;Zi-ud-sura: My son, let me give you instructions: you should pay attention!&nbsp;Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! (<a href="https://etcsl.orinst.ox.ac.uk/section5/tr561.htm">source</a>)</p>
-</blockquote>
-<p><strong>Les références, nommées et ordonnées, sont suivies par les intention de citation : non seulement on mentionne les autorités mais on indique pourquoi on le fait.</strong></p>
-<p>Tous les auteurs originaux de chacun des proverbes sont perdus, ainsi que les scribes compilateurs. Ce n’est que vers -2000 que les scribes mentionnent parfois leurs noms dans le colophon<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> des textes. Cependant, c’est probablement plus une mention de propriété que d’autorialité car ils ne précisent pas leurs rôles de copistes ou d’éditeurs <sup>VdM</sup>.</p>
-<p>Les <em>Instructions de Shuruppak</em> aspirent à une dimension historique car nous avons le nom de l’auteur celui de son père et celui de son fils. De plus, cette figure de style se rapproche de ce que l’on trouve dans les listes des rois. Par la suite, d’autres listes d’instructions se sont développées. <strong>Selon les intentions éditoriales des scribes, elles étaient attribuées à des fermiers, à des dirigeants, à des figures légendaires, etc.</strong> Par exemple, lorsqu’elles étaient attribuées à un fermier (par exemple <em>Farmer’s Instructions</em><sup><a href="https://www.wikidata.org/wiki/Q137438077">Q</a></sup>), c’était dans le but d’exprimer une sagesse populaire commune. Tandis que si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (par exemple <em>Instructions of Ur-Ninurta</em>).<sup>Sz</sup></p>
-<section id="de-loralité-à-la-textualité" class="level3">
-<h3 class="anchored" data-anchor-id="de-loralité-à-la-textualité">De l’oralité à la textualité</h3>
-<p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.<sup>Sz</sup></p>
-<p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» <sup>BL</sup>. Pour cette période, la prêtresse et princesse Enheduana<sup><a href="https://www.wikidata.org/wiki/Q232505">Q</a></sup> fait exception car plusieurs textes sumériens (ex: <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire<sup>H&amp;S</sup>.</p>
-<p>Je n’ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le <em>Kesh Temple Hymn</em> sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad<sup><a href="https://www.wikidata.org/wiki/Q5248677">Q</a></sup></em>. <strong>On peut énoncé ainsi qu’une forme préliminaire de citation ou de mention ait été l’incorporation dans un canon officiel de textes.</strong></p>
-</section>
-<section id="naissance-de-lauteur-attribué" class="level3">
-<h3 class="anchored" data-anchor-id="naissance-de-lauteur-attribué">Naissance de l’auteur attribué</h3>
-<p>Selon Van der Toorn, il y a trois types d’autorialité : l’autorialité honorifique, où l’auteur attribue le texte au commanditaire ou au mécenne de l’oeuvre; la pseudoepigraphie, où l’auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l’autorialité attribuée.</p>
-<p><a href="https://doi.org/10.52093/hara-202201-00027-000">Szilvia Sövegjártó</a> suggère que l’autorialité a débuté sous la forme d’autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d’un auteur. Attribuer l’autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l’espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l’oeuvre et de son exécution. C’est seulement vers le premier millénaire avant J.-C. que l’idée d’attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. L’attribution à un auteur (<em>attributed authorship</em>) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l’espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s’étend à la sphère privée.</p>
-<p><a href="https://doi.org/10.1163/9789004279421_002">Steineck et Schwermann</a> discutent de la place de l’auteur, de sa construction, de son attribution. D’une manière plus générale, il semble que l’attribution à une personne savante de plus en plus proche de la production du texte soit associée à l’apparition de notion d’individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.</p>
-</section>
-</section>
-<section id="lépopée-de-gilgamesh" class="level2">
-<h2 class="anchored" data-anchor-id="lépopée-de-gilgamesh">L’épopée de Gilgamesh</h2>
-<p>Pour avoir les références textuelles les plus riches, il faut attendre l’affirmation de la forme littéraire du récit. En effet, les mentions, les références et les citations se multiplient et se complexifient avec le texte en récit. Il est possible que la structure intrinsèque du récit en plusieurs niveaux ou selon différents points de vue semble offre un terrain particulièrement propice au jeu des renvois et des échos textuels.</p>
-<p>Datant d’environ 2100 avant J.-C., <em>L’Épopée de Gilgamesh<sup><a href="https://www.wikidata.org/wiki/Q8272">Q</a></sup></em> est l’un des plus récits littéraires les plus anciens et les plus connus. Elle provient de la littérature sumérienne et a été écrite en akkadien sur des tablettes d’argile vers 1700–1600 av. J.-C. Cette épopée suit les aventures du roi Gilgamesh d’Uruk, un héros surhumain et un homme confronté à sa propre mortalité.</p>
-<p>Au début, le roi est décrit en ces termes :</p>
-<blockquote class="blockquote">
-<p>He saw the Secret, discovered the Hidden,<br>
-he brought information of (the time) before the Flood. […]</p>
-</blockquote>
-<p>Cette introduction fait référence à un ensemble d’informations existantes, un corpus que le roi et le narrateur est allé chercher dans le passé pour le ramener dans le présent.</p>
-<section id="graver-pour-être-cité" class="level3">
-<h3 class="anchored" data-anchor-id="graver-pour-être-cité">Graver pour être cité</h3>
-<p>Quelques lignes plus loin on retrouve cette phrase :</p>
-<blockquote class="blockquote">
-<p>He carved on a stone stela all of his toils [<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm">Tablette 1</a>]</p>
-</blockquote>
-<p>Le <a href="https://fr.wikipedia.org/wiki/Code_de_Hammurabi">Code de Hammurabi</a>, un texte de loin gravé dnas la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d’être recopiée, invoquée, mentionnée ou citée. Une sorte d’étalon métrique pour le monde social.</p>
-<p>Ce passage souligne l’importance pour les Mésopotamiens de fixer un texte sur une pierre publique pour lui conférer non seulement valeur, pérennité et autorité mais aussi pour permettre que des informations futures puissent se baser sur elle.</p>
-</section>
-<section id="mise-en-abîme-de-laudience" class="level3">
-<h3 class="anchored" data-anchor-id="mise-en-abîme-de-laudience">Mise en abîme de l’audience</h3>
-<p>Le récit de <em>L’Épopée</em> joue avec cette fixation matérielle en mettant en scène sa propre lecture sous la forme d’une auto-référence littéraire :</p>
-<blockquote class="blockquote">
-<p>Find the copper tablet box,<br>
-open the … of its lock of bronze,<br>
-undo the fastening of its secret opening.<br>
-Take and read out from the lapis lazuli tablet<br>
-how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm">Tablette 1</a>]</p>
-</blockquote>
-<p>Ce mécanisme littéraire puissant montre que le texte est capable de se référencer lui-même et de s’adresser directement à son lecteur en l’absorbant dans le récit.</p>
-</section>
-<section id="mentions-lacunaires-dépisodes-connus" class="level3">
-<h3 class="anchored" data-anchor-id="mentions-lacunaires-dépisodes-connus">Mentions lacunaires d’épisodes connus</h3>
-<p><em>L’épopée de Gilgamesh</em> apparaît comme une condensation de récits textuels et oraux antérieurs, souvent évoqués sans être pleinement développés. Ces allusions laissent entendre que l’audience connaît déjà ces épisodes et qu’une simple mention suffit à les convoquer. Ainsi, certains récits détaillant les relations entre dieux et humains ne sont pas explicitement inclus. On pourrait définir ces ellipses comme des références implicites qui renvoient à une mythologie partagée.</p>
-</section>
-<section id="inclusion-dun-récit-plus-ancien-dans-le-récit-actuel" class="level3">
-<h3 class="anchored" data-anchor-id="inclusion-dun-récit-plus-ancien-dans-le-récit-actuel">Inclusion d’un récit plus ancien dans le récit actuel</h3>
-<p>Parfois l’inclusion d’un récit antérieur est directe et explicite. Par exemple, la narration de l’épisode du Déluge (<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm">Tablette XI</a>) ) par Utnapishtim est un récit antérieur enchâssé au sein de <em>L’épopée de Gilgamesh</em>.</p>
-<p>Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d’autres cultures comme celle de Grèce antique par exemple.</p>
-</section>
-<section id="un-récit-synthétique" class="level3">
-<h3 class="anchored" data-anchor-id="un-récit-synthétique">Un récit synthétique</h3>
-<p>L’ensemble de ces procédés de référence montre que <em>L’Épopée de Gilgamesh</em> fonctionne comme une tentative de fixation sélective d’un répertoire beaucoup plus vaste. Dans le contexte d’une culture largement orale qui teste des formes de stabilisation textuelle, elle présuppose une audience informée et dotée d’une mémoire culturelle communee. Ces différentes formes de références, incorporées dans un récit synthétique, sont des portes vers la culture mésopotamienne. Certaines portes nous sont invisibles et certaines sont fermées car nous sommes trop distant de ce passé et nous en avons perdu les clés.</p>
-<p>À cet égard, elle peut être rapprochée des récits homériques qui évoquent des mythes sans les développer, ou encore de textes médiévaux faisant référence à la Bible ou aux légendes sans les expliciter entièrement.</p>
-</section>
-</section>
-<section id="avant-et-ailleurs" class="level2">
-<h2 class="anchored" data-anchor-id="avant-et-ailleurs">Avant et ailleurs</h2>
-<p>Il est possible que des marquages aient précédés les sceaux sur les objets dans l’histoire de l’humanité. Par exemple, on peut considérer les scarifications et les tatous comme des marquages fait sur le corps et qui renvoient à un sens au-delà de l’aspect esthétique (rite de passage, d’appartenance, d’identité ou de statut social). En Egypte, on a retrouvé des statuettes portant des marques de scarifications datant de -5000<sup><a href="https://www.wikidata.org/wiki/Q113485243">Q</a></sup> et des tatous datant au moins de -3000 <sup><a href="https://www.wikidata.org/wiki/Q43006">Q</a></sup>.</p>
-<p>Dans l’Amérique centrale pré-colombienne, les sceaux tampons et les sceaux à rouler (<em>sello</em>) ont existé probablement dès -1500<sup><a href="https://www.wikidata.org/wiki/Q137505110">Q</a></sup>. Dans la Chine ancienne, les plus anciens sceaux tampons datent de la dynastie Shang (-1600 à -1046)<sup><a href="https://www.wikidata.org/wiki/Q3850202">Q</a></sup>.</p>
-</section>
-<section id="références" class="level2">
-<h2 class="anchored" data-anchor-id="références">Références</h2>
-<p><sup>DC</sup> : Collon, Dominiques. <em>First impressions : cylinder seals in the ancient Near East 1988</em> . <a href="#0" style="font-size: 11pt;">https://archive.org/details/firstimpressions0000coll/page/6/mode/2up</a></p>
-<p><sup>BL</sup> : Lion, Brigitte,&nbsp;’ Literacy and Gender’,&nbsp;in Karen Radner, and Eleanor Robson (eds),&nbsp;<em>The Oxford Handbook of Cuneiform Culture</em>. 2011.&nbsp;Oxford Academic.&nbsp;<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005" class="uri">https://doi.org/10.1093/oxfordhb/9780199557301.013.0005</a>.</p>
-<p><sup>Sz</sup> : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. <em>Hungarian Assyriological Review</em> 3: 25–47. DOI: <a href="https://doi.org/10.52093/hara-202201-0" class="uri">https://doi.org/10.52093/hara-202201-0</a>. Assyriologie, libre accès, facile à lire.</p>
-<p>Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): <em>That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century</em>. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <a href="https://doi.org/10.1163/9789004279421_002" class="uri">https://doi.org/10.1163/9789004279421_002</a>. Littérature comparée, libre accès, facile à lire.</p>
-<p><sup>H&amp;S</sup> : Halton, Charles et Saana Svärd, <em>Women’s Writing of Ancient Mesopotamia&nbsp;: An Anthology of the Earliest Female Authors</em>, Cambridge et New York, Cambridge University Press, 2018. <a href="https://doi.org/10.1017/9781107280328" class="uri">https://doi.org/10.1017/9781107280328</a></p>
-<p><sup>VdM</sup> : Van De Mieroop, M. 2016: <em>Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.</em> Princeton – Oxford. <a href="https://doi.org/10.1515/978140087411" class="uri">https://doi.org/10.1515/978140087411</a></p>
-<p>Zhang, H. 2018: <em>Authorship and Text-making in Early China</em>. (Library of Sinology 2) Boston – Berlin. <a href="https://doi.org/10.1515/978150150513" class="uri">https://doi.org/10.1515/978150150513</a><br>
-</p>
-</section>
-<section id="éléments-wikidata" class="level2">
-<h2 class="anchored" data-anchor-id="éléments-wikidata">Éléments Wikidata</h2>
-<section id="passerelles-vers-les-sources" class="level3">
-<h3 class="anchored" data-anchor-id="passerelles-vers-les-sources">Passerelles vers les sources</h3>
-<p>Pour retracer les sources, vous pouvez consulter les propriétés de l’éléments Wikidata, marqué <sup>Q</sup>, ou dérouler le menu <em>References</em> des valeurs à vérifier. Ou bien, vous pouvez descendre au bas de la page de l’élément et visiter les pages Wikipédia dans différents espaces linguistiques (fr, en, etc.).</p>
-</section>
-<section id="éléments-améliorés" class="level3">
-<h3 class="anchored" data-anchor-id="éléments-améliorés">Éléments améliorés</h3>
-<p>Dans le cadre de ce billet, de nombreux éléments Wikidata ont été créés ou améliorés :</p>
+<li>Créer un dossier <code>RW_local</code> sur son ordinateur pour toutes les données du projet.</li>
+<li>Telécharger le fichier <code>retraction_watch.csv</code> et le placer dans le dossier <code>RW_local</code></li>
+<li>Ouvrir le logiciel R Studio
 <ul>
-<li><p>Epic of Gilgamesh (Q8272); Decad (Q5248677);</p>
-<ul>
-<li><p>Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki’s Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342);</p></li>
-<li><p>Instructions of Shuruppak (Q3823132); The Farmer’s Instructions (Q137438077);</p></li>
-<li><p>A balbale to Inana (Q137506645); Sumerian temple hymns (Q137506392); Hymn to Inana (Q137454369); The Exaltation of Inanna (Q105794259)</p></li>
+<li>Create a new R script</li>
+<li>Créer un fichier <code>main.R</code> dans le dossier <code>RW_local</code></li>
 </ul></li>
-<li><p>roller seal (sello) (Q137505110) ; Asian seal (Q3850202) + seal material (Q11409101)</p></li>
-<li><p>scarification (Q570784); African scarification (Q113485243); tattooing (Q43006)</p></li>
 </ul>
+<p>Copier-coller ce code dans le fichier <code>main.R</code> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/martinop/Downloads/RW_local"</span>)   </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remplacer par l'emplacement de votre dossier </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>retraction_watch <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"retraction_watch.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> retraction_watch</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_local <span class="ot">&lt;-</span> df[</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grepl</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"universite de montreal|university of montreal|U de Montreal|U of Montreal|UdeM"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remplacer par le nom et les alias de votre institution</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tolower</span>(<span class="fu">iconv</span>(df<span class="sc">$</span>Institution, <span class="at">to =</span> <span class="st">"ASCII//TRANSLIT"</span>)),  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ignore les majuscules et les accents</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignore.case =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Cliquer sur Run (ligne par ligne ou tout).</p>
+<p>Ce programme va charger les 68 000 enregistrements de la base et ne conserver que ceux dont la colonne Institution (des auteurs) contient les mots que vous avez demandé.</p>
+<p>Dans mon cas, il en reste 43. On peut le voir dans le menu Environment à droite (<em>43 obs. of 20 variables</em>).</p>
+</section>
+<section id="visualisations" class="level2">
+<h2 class="anchored" data-anchor-id="visualisations">Visualisations</h2>
+<section id="afficher-la-liste-de-tous-les-titres" class="level4">
+<h4 class="anchored" data-anchor-id="afficher-la-liste-de-tous-les-titres">Afficher la liste de tous les titres</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(df_local<span class="sc">$</span>Title, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphe-de-la-date-de-publication-originale" class="level4">
+<h4 class="anchored" data-anchor-id="graphe-de-la-date-de-publication-originale">Graphe de la date de publication originale</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert "MM/DD/YYYY 0:00" → Date</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_local<span class="sc">$</span>OriginalPaperDate <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(df_local<span class="sc">$</span>OriginalPaperDate,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">format =</span> <span class="st">"%m/%d/%Y %H:%M"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire l'année</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df_local<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">format</span>(df_local<span class="sc">$</span>OriginalPaperDate, <span class="st">"%Y"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw a histogram</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(df_local<span class="sc">$</span>year),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"UdeM – Original Paper Dates by Year"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Count"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">2</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphe-des-raisons-de-rétractations" class="level4">
+<h4 class="anchored" data-anchor-id="graphe-des-raisons-de-rétractations">Graphe des raisons de rétractations</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compter les occurrences des raisons</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>reason_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(df_local<span class="sc">$</span>Reason), <span class="at">decreasing =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plus d’espace pour les labels</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">4</span>, <span class="dv">2</span>))   <span class="co"># bottom, left, top, right (agrandir surtout à gauche)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot simple</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  reason_counts,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribution des raisons de rétractations"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Nombre"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ylab = "Raisons",</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.names =</span> .<span class="dv">8</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphe-des-auteurs" class="level4">
+<h4 class="anchored" data-anchor-id="graphe-des-auteurs">Graphe des auteurs</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire tous les auteurs, séparer par ";", nettoyer les espaces</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>all_authors <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(df_local<span class="sc">$</span>Author, <span class="st">";"</span>))   <span class="co"># sépare tous les auteurs</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>all_authors <span class="ot">&lt;-</span> <span class="fu">trimws</span>(all_authors)                     <span class="co"># retire les espaces</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>all_authors <span class="ot">&lt;-</span> all_authors[all_authors <span class="sc">!=</span> <span class="st">""</span>]          <span class="co"># enlève les vides</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compter la fréquence</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>author_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(all_authors)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Trier par fréquence décroissante</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>author_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(author_counts, <span class="at">decreasing =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuster les marges pour avoir de la place pour les noms</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co"># bottom, left, top, right</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot horizontal</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  author_counts,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,           <span class="co"># labels horizontaux</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.7</span>,   <span class="co"># taille des noms</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribution des auteurs"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Nombre"</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphe-des-revues" class="level4">
+<h4 class="anchored" data-anchor-id="graphe-des-revues">Graphe des revues</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nettoyer les journaux</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>all_journals <span class="ot">&lt;-</span> <span class="fu">trimws</span>(df_UdeM<span class="sc">$</span>Journal)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>all_journals <span class="ot">&lt;-</span> all_journals[all_journals <span class="sc">!=</span> <span class="st">""</span>]  <span class="co"># enlever vides</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compter la fréquence</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>journal_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(all_journals)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>journal_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(journal_counts, <span class="at">decreasing =</span> <span class="cn">FALSE</span>)   </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuster marges pour les labels</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co"># agrandir la marge gauche pour les noms</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot horizontal</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  journal_counts,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,           <span class="co"># labels horizontaux</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.7</span>,   <span class="co"># taille des noms</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribution des revues"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Nombre"</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphe-des-pays-des-auteurs" class="level4">
+<h4 class="anchored" data-anchor-id="graphe-des-pays-des-auteurs">Graphe des pays des auteurs</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire tous les pays, séparer par ";", nettoyer les espaces</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>all_countries <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(df_local<span class="sc">$</span>Country, <span class="st">";"</span>))   <span class="co"># sépare </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>all_countries <span class="ot">&lt;-</span> <span class="fu">trimws</span>(all_countries)                     <span class="co"># retire les espaces</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>all_countries <span class="ot">&lt;-</span> all_countries[all_countries <span class="sc">!=</span> <span class="st">""</span>]          <span class="co"># enlève les vides</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Compter la fréquence</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>country_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(all_countries)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Trier par fréquence décroissante</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>country_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(country_counts, <span class="at">decreasing =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuster les marges pour avoir de la place pour les noms</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co"># bottom, left, top, right</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot horizontal</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  country_counts,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,           <span class="co"># labels horizontaux</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.7</span>,   <span class="co"># taille des noms</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribution des pays"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Nombre"</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Colophon : les notes du scribe vers la fin du texte.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Un processus semblable pourrait avoir eu lieu dans la Chine ancienne (<a href="https://doi.org/10.1515/978150150513">Zhang</a>).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Dans <em>Uruk List of Kings and Sages</em>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="RSS feed : https://pmartinolli.github.io/blog.xml">
+<meta name="author" content="Pascal Martinolli">
+<meta name="dcterms.date" content="2025-12-26">
+<meta name="description" content="Où l’on explore les limites de l’expression des nuances historiques dans le graphe actuel de Wikidata, des données liées hiérarchiques et de la découvrabilité de notions proches.">
 
-<title>blog – Pascal Martinolli</title>
+<title>Expressions des nuances historiques dans Wikidata – Pascal Martinolli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,33 +23,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-afa1767ab894c633a6efdfa517d42c1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-afa1767ab894c633a6efdfa517d42c1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,70 +110,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
+<link rel="stylesheet" href="../../../styles.css">
+</head>
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Pascal Martinolli" href="blog.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -316,7 +293,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Pascal Martinolli</span>
     </a>
   </div>
@@ -327,23 +304,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects/index.html"> 
+    <a class="nav-link" href="../../../projects/index.html"> 
 <span class="menu-text">projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching/index.html"> 
+    <a class="nav-link" href="../../../teaching/index.html"> 
 <span class="menu-text">teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv/index.html"> 
+    <a class="nav-link" href="../../../cv/index.html"> 
 <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./ttrpg/index.html"> 
+    <a class="nav-link" href="../../../ttrpg/index.html"> 
 <span class="menu-text">ttrpg</span></a>
   </li>  
 </ul>
@@ -357,421 +334,103 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">Expressions des nuances historiques dans Wikidata</h1>
                   <div>
         <div class="description">
-          RSS feed : https://pmartinolli.github.io/blog.xml
+          Où l’on explore les limites de l’expression des nuances historiques dans le graphe actuel de Wikidata, des données liées hiérarchiques et de la découvrabilité de notions proches.
         </div>
       </div>
-                </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">citation</div>
+                <div class="quarto-category">Wikidata</div>
+                <div class="quarto-category">HumanitésNumériques</div>
+                <div class="quarto-category">histoire</div>
+                <div class="quarto-category">TTRPG</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pascal Martinolli </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 26, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="Y2l0YXRpb24=">citation <span class="quarto-category-count">(3)</span></div><div class="category" data-category="aGlzdG9pcmU=">histoire <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM=">HumanitésNumériques <span class="quarto-category-count">(6)</span></div><div class="category" data-category="T3BlblJlZmluZQ==">OpenRefine <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VFRSUEc=">TTRPG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="V2lraWRhdGE=">Wikidata <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V2lraXAlQzMlQTlkaWE=">Wikipédia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Wm90ZXJv">Zotero <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM=" data-listing-date-sort="1768366800000" data-listing-file-modified-sort="1768419768493" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="828">
-<div class="thumbnail"><a href="./blog/2026/retraction-watch-apercuLocal/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2026/retraction-watch-apercuLocal/index.html" class="no-external">Aperçu local des articles retirés de Retraction Watch</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2026/retraction-watch-apercuLocal/index.html" class="no-external">
-<p>Où l’on récupère les données brutes de la base de données des articles retirés de Retraction Watch pour en extraire des données sur une institution en particulier avec quelques visualisations.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2026/retraction-watch-apercuLocal/index.html" class="no-external">
-<div class="listing-date">
-Jan 14, 2026
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Wm90ZXJv" data-listing-date-sort="1767675600000" data-listing-file-modified-sort="1768421378696" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="672">
-<div class="thumbnail"><a href="./blog/2026/csl-mon-style/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2026/csl-mon-style/index.html" class="no-external">CSL Superstylin’</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Wm90ZXJv'); return false;">Zotero</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2026/csl-mon-style/index.html" class="no-external">
-<p>Où l’on bricole un fichier de style CSL Chicago «notes de bas de page» 18th pour le franciser.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2026/csl-mon-style/index.html" class="no-external">
-<div class="listing-date">
-Jan 6, 2026
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Y2l0YXRpb24lMkNXaWtpZGF0YSUyQ0h1bWFuaXQlQzMlQTlzTnVtJUMzJUE5cmlxdWVzJTJDaGlzdG9pcmUlMkNUVFJQRw==" data-listing-date-sort="1766725200000" data-listing-file-modified-sort="1766850014000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="693">
-<div class="thumbnail"><a href="./blog/2025/nuances-historiques-wikidata/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/nuances-historiques-wikidata/index.html" class="no-external">Expressions des nuances historiques dans Wikidata</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2l0YXRpb24='); return false;">citation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraWRhdGE='); return false;">Wikidata</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aGlzdG9pcmU='); return false;">histoire</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VFRSUEc='); return false;">TTRPG</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/nuances-historiques-wikidata/index.html" class="no-external">
-<p>Où l’on explore les limites de l’expression des nuances historiques dans le graphe actuel de Wikidata, des données liées hiérarchiques et de la découvrabilité de notions proches.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/nuances-historiques-wikidata/index.html" class="no-external">
-<div class="listing-date">
-Dec 26, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM=" data-listing-date-sort="1766034000000" data-listing-file-modified-sort="1766156257368" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258">
-<div class="thumbnail"><a href="./blog/2025/viens-voir-booleens/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/viens-voir-booleens/index.html" class="no-external">Viens voir les booléens !</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/viens-voir-booleens/index.html" class="no-external">
-<p>Où l’on revient aux bases de la recherche documentaire en s’instruisant sur les opérateurs de recherche qui permettent de combiner les mots-clés à chercher.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/viens-voir-booleens/index.html" class="no-external">
-<div class="listing-date">
-Dec 18, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="V2lraXAlQzMlQTlkaWE=" data-listing-date-sort="1765774800000" data-listing-file-modified-sort="1766161294678" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="314">
-<div class="thumbnail"><a href="./blog/2025/faut-il-elaguer-le-petit-mourre/index.html" class="no-external">
-
-<p class="card-img-top"><img src="blog\2025\faut-il-elaguer-le-petit-mourre\petit-mourre.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/faut-il-elaguer-le-petit-mourre/index.html" class="no-external">Faut-il élaguer le Petit Mourre ?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraXAlQzMlQTlkaWE='); return false;">Wikipédia</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/faut-il-elaguer-le-petit-mourre/index.html" class="no-external">
-<p>Où l’on se demande s’il est pertinent de supprimer ce dictionnaire d’histoire d’une bibliothèque de recherche à l’heure de Wikipédia et du tout accessible en ligne.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/faut-il-elaguer-le-petit-mourre/index.html" class="no-external">
-<div class="listing-date">
-Dec 15, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Y2l0YXRpb24=" data-listing-date-sort="1765515600000" data-listing-file-modified-sort="1766510177000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2772">
-<div class="thumbnail"><a href="./blog/2025/citations-in-gilgamesh/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/citations-in-gilgamesh/index.html" class="no-external">Citations dans L’épopée de Gilgamesh</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2l0YXRpb24='); return false;">citation</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/citations-in-gilgamesh/index.html" class="no-external">
-<p>Où l’on discute des pratiques de citation dans l’un des plus anciens texte de l’humanité, en le remettant en contexte.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/citations-in-gilgamesh/index.html" class="no-external">
-<div class="listing-date">
-Dec 12, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="" data-listing-date-sort="1764997200000" data-listing-file-modified-sort="1765241486000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
-<div class="thumbnail"><a href="./blog/2025/programmes-reinstallation/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/programmes-reinstallation/index.html" class="no-external">Programmes à réinstaller sur un nouvel ordinateur</a>
-</h3>
-<div class="listing-categories">
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/programmes-reinstallation/index.html" class="no-external">
-<p>Listes de tous les programmes à réinstaller dans le cas d’un passage à un nouvel ordinateur ou après un reformatage d’ordinateur.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/programmes-reinstallation/index.html" class="no-external">
-<div class="listing-date">
-Dec 6, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="V2lraWRhdGElMkNPcGVuUmVmaW5lJTJDSHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM=" data-listing-date-sort="1764478800000" data-listing-file-modified-sort="1765237778000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1735">
-<div class="thumbnail"><a href="./blog/2025/comment-faire-10-millions/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/comment-faire-10-millions/index.html" class="no-external">Comment faire 10 millions de contributions dans Wikidata sans se fatiguer ?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraWRhdGE='); return false;">Wikidata</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('T3BlblJlZmluZQ=='); return false;">OpenRefine</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/comment-faire-10-millions/index.html" class="no-external">
-<p>Flux de travail pour ajouter la langue à des articles avec DOI, via CrossRef, OpenRefine &amp; Quickstatements</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/comment-faire-10-millions/index.html" class="no-external">
-<div class="listing-date">
-Nov 30, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="Wm90ZXJvJTJDSHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM=" data-listing-date-sort="1761105600000" data-listing-file-modified-sort="1764732133125" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="855">
-<div class="thumbnail"><a href="./blog/2025/zotero-actions-tags-multiremplacement/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/zotero-actions-tags-multiremplacement/index.html" class="no-external">Modifier des références en lot dans Zotero</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Wm90ZXJv'); return false;">Zotero</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/zotero-actions-tags-multiremplacement/index.html" class="no-external">
-<p>Utilisation d’une extension avec un script dédié pour modifier tout champ de la notice.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/zotero-actions-tags-multiremplacement/index.html" class="no-external">
-<div class="listing-date">
-Oct 22, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="V2lraWRhdGE=" data-listing-date-sort="1759809600000" data-listing-file-modified-sort="1765054030000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2608">
-<div class="thumbnail"><a href="./blog/2025/indexation-sujet-wikidata/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/indexation-sujet-wikidata/index.html" class="no-external">Les propriétés thématiques dans Wikidata</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraWRhdGE='); return false;">Wikidata</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/indexation-sujet-wikidata/index.html" class="no-external">
-<p>Les propriétés thématiques sont souvent les mal-aimés du travail d’indexation des oeuvres artistiques. Qu’en est-il de Wikidata ? Plus une idée d’atelier Wikidata idéal ?</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/indexation-sujet-wikidata/index.html" class="no-external">
-<div class="listing-date">
-Oct 7, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-categories="V2lraWRhdGElMkNIdW1hbml0JUMzJUE5c051bSVDMyVBOXJpcXVlcw==" data-listing-date-sort="1759723200000" data-listing-file-modified-sort="1764731939894" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="316">
-<div class="thumbnail"><a href="./blog/2025/2025-annee-wikidata/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/2025-annee-wikidata/index.html" class="no-external">2025, année Wikidata ?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraWRhdGE='); return false;">Wikidata</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW5pdCVDMyVBOXNOdW0lQzMlQTlyaXF1ZXM='); return false;">HumanitésNumériques</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/2025-annee-wikidata/index.html" class="no-external">
-<p>Quelques points saillants et projets en cours autour de cet outil pertinent pour la science ouverte.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/2025-annee-wikidata/index.html" class="no-external">
-<div class="listing-date">
-Oct 6, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="Y2l0YXRpb24lMkNXaWtpZGF0YQ==" data-listing-date-sort="1758945600000" data-listing-file-modified-sort="1765053984000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110">
-<div class="thumbnail"><a href="./blog/2025/baudolino/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blog/2025/baudolino/index.html" class="no-external">Baudolino, « hallucinations » et livres imaginaires</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2l0YXRpb24='); return false;">citation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2lraWRhdGE='); return false;">Wikidata</div>
-
-</div>
-<div class="delink listing-description"><a href="./blog/2025/baudolino/index.html" class="no-external">
-<p>Comment on part de faux livres dans un roman comme précurseurs de hallucinations des LLMs, puis comment nous explorons l’apparition de références à des livres imaginaires comme un seuil dans l’histoire de la pratique des citations.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blog/2025/baudolino/index.html" class="no-external">
-<div class="listing-date">
-Sep 27, 2025
-</div>
-<div class="listing-author">
-Pascal Martinolli
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<section id="le-rôle-des-femmes-dans-la-culture-des-jeux-de-salon" class="level2">
+<h2 class="anchored" data-anchor-id="le-rôle-des-femmes-dans-la-culture-des-jeux-de-salon">Le rôle des femmes dans la culture des jeux de salon</h2>
+<p>Ces vacances de Noël, je suis tombé sur un excellent fil de discussion sur Blusky à propos de la place mal-reconnue des femmes dans les origines du jeu de rôle sur table.</p>
+<p>Pour simplifier la discussion entre Emily Friedman, Evan Torner (principalement), Meguey Baker et Wobu Palooza, voici un aperçu des sujets de la discussion. [Les crochets sont mes extrapolations.]</p>
+<ol type="1">
+<li>Remonter les origines du jeu de rôle sur table vers le wargame, le kriegsspiel et même les échecs est facile [car il y a suffisament de traces historiques accessibles].</li>
+<li>Faire un inventaire de la culture (souvent féminine) des jeux de salon, ou parlour games, est plus difficile [car les traces historiques ont été invisibilisées et les sources primaires sont plus difficiles à mettre en lien les unes avec les autres car il y a un fort élément non-documenté et peu de traces écrites].</li>
+</ol>
+</section>
+<section id="faire-un-graphe-chronologique-généalogique-des-jeux" class="level2">
+<h2 class="anchored" data-anchor-id="faire-un-graphe-chronologique-généalogique-des-jeux">Faire un graphe chronologique généalogique des jeux</h2>
+<p>Depuis une dizaine d’années, je cherche à trouver une manière visuelle et historique (dans le sens « avec des sources traçables ») de représenter l’histoire des jeux de rôles depuis leur création, mais aussi avant leur création, mais aussi des jeux de société en général.</p>
+<p>Wikidata s’est développé entre temps et je trouve que c’est une excellente plateforme pour y indexer les données de ces projets. Cependant, il reste de nombreuses difficultés si on veut produire ou suivre des données liées.</p>
+<section id="difficile-navigation-hiérarchique" class="level3">
+<h3 class="anchored" data-anchor-id="difficile-navigation-hiérarchique">Difficile navigation hiérarchique</h3>
+<p>Tout d’abord, comme les données s’indexent les unes les autres dans une direction, il peut être difficile d’accéder aux données et à leur hiérarchie :</p>
+<ul>
+<li><p>Si nous avons un élément de classe « jeu de société », il est facile de connaître sa classe immédiatement supérieure/générique (qui est « jeu social ») présentement et ainsi de suite, de sur-classes en sur-classes grâce à la propriété « sous-classe de ».</p>
+<ul>
+<li><p>Par contre, il est difficile de repérer facilement les sous-classes de cet élément.</p></li>
+<li><p>Construire des requêtes prenant en compte tous les sous-classes d’un élément sont un tout petit peu plus complexes à rédiger mais surtout elles sont souvent plus gourmandes en ressources.</p></li>
+</ul></li>
+<li><p>Une requête SPARQL pour vérifier toutes les utilisations d’un élément (donc repérer les sous-classes) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> ?node ?property <span class="kw">WHERE</span> {?node ?property wd<span class="ch">:Q2144077</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="https://query.wikidata.org/#SELECT%20%3Fnode%20%3Fproperty%20WHERE%20%7B%3Fnode%20%3Fproperty%20wd%3AQ2144077%20%7D">Essayez-le</a></p></li>
+<li><p>Parfois, je rencontre un élément d’une classe et sa sous-classe ont une indexation déséquilibrée.</p>
+<ul>
+<li>Exemple : <a href="https://www.wikidata.org/wiki/Q2144077">charades</a> est le terme générique pour toutes les charades (mimées ou non). Cet élément existe depuis longtemps et il a donc plein de propriétés de type identifiants vers d’autres bases de données. Cependant, mais le jeu des « <a href="https://www.wikidata.org/wiki/Q137591628">charade en action</a> » ou charade mimée (<em>acting charade</em>), qui est la variante de la charade la plus notable, est peu indexée car il est plus récent.</li>
+</ul></li>
+</ul>
+</section>
+<section id="découvrabilité-de-notions-proches" class="level3">
+<h3 class="anchored" data-anchor-id="découvrabilité-de-notions-proches">Découvrabilité de notions proches</h3>
+<ul>
+<li><p>Il y a des choses qui s’expriment mieux dans le langage que dans un graphe comme Wikidata. Par exemple :</p>
+<blockquote class="blockquote">
+<p>(…) Acting Charades in particular left a significant mark, appearing in novels like <em>Vanity Fair</em> and <em>Jane Eyre</em> and getting popularized among celebrities by authors like George Sand and H.G. Wells. (<a href="https://wobbupalooza.neocities.org/charades">Wobbu Palooza</a>)</p>
+</blockquote>
+<p>Je m’interroge comment indexer ceci dans Wikidata pour qu’on puisse découvrir, en remontant la chaîne des idées sur les origines du wargame et du kriegsspiel, que H.G. Wells concepteur du fameux jeu Little Wars, adorait jouer aux charades en action. Il est possible de trouver ces idées en lisant des biographies plus ou moins détaillées de H.G. Wells (depuis la page Wikipédia jusqu’à la monographie) mais ce serait tellement fabuleux de pouvoir le codifier dans Wikidata et ensuite repérer des proximités semblables.</p></li>
+<li><p>Il en va de même pour deux concepteurs de jeu qui peuvent avoir vécu dans la même ville, avec une même catégorie d’âge ou sociale, mais dont on ne trouve aucune trace de leur collaboration dans les traces écrites directes (co-auteurs, remerciements, etc.). Il est difficile de repérer ce genre d’informations, même avec des données complètes.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
