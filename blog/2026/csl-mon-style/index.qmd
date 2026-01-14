@@ -16,11 +16,11 @@ Je télécharge le style [Chicago Manual of Style 18th edition (notes and biblio
 
 Je renomme le fichier en : `chicago-notes-bibliography_FR-test.csl`
 
-J'ouvre le fichier et dans la balise <title></title> je modifie pour : `FR-test Chicago Manual of Style 18th edition (notes and bibliography)`
+J'ouvre le fichier et dans la balise `<title></title>` je modifie pour : `FR-test Chicago Manual of Style 18th edition (notes and bibliography)`
 
-Dans la balise <id></id> je modifie pour : `http://www.zotero.org/styles/chicago-notes-bibliography_FR-test`
+Dans la balise `<id></id>` je modifie pour : `http://www.zotero.org/styles/chicago-notes-bibliography_FR-test`
 
-Dans la balise \<link re="self\> je modifie pour : `<link href="http://www.zotero.org/styles/chicago-notes-bibliography_FR-test" rel="self"/>`
+Dans la balise `<link rel="self>` je modifie pour : `<link href="http://www.zotero.org/styles/chicago-notes-bibliography_FR-test" rel="self"/>`
 
 ## Modifications \<locale\> spécifiques
 

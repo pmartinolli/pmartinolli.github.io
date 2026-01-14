@@ -619,12 +619,9 @@ font-style: inherit;">"Nombre"</span></span>
 <p>Je visite le dépôt des styles Zotero à https://www.zotero.org/styles</p>
 <p>Je télécharge le style <a href="https://www.zotero.org/styles/chicago-notes-bibliography">Chicago Manual of Style 18th edition (notes and bibliography)</a>. Au passage, je note qu’il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.)</p>
 <p>Je renomme le fichier en : <code>chicago-notes-bibliography_FR-test.csl</code></p>
-J’ouvre le fichier et dans la balise
-<title>
-</title>
-<p>je modifie pour : <code>FR-test Chicago Manual of Style 18th edition (notes and bibliography)</code></p>
-<p>Dans la balise <id></id> je modifie pour : <code>http://www.zotero.org/styles/chicago-notes-bibliography_FR-test</code></p>
-<p>Dans la balise &lt;link re=“self&gt; je modifie pour : <code>&lt;link href="http://www.zotero.org/styles/chicago-notes-bibliography_FR-test" rel="self"/&gt;</code></p>
+<p>J’ouvre le fichier et dans la balise <code>&lt;title&gt;&lt;/title&gt;</code> je modifie pour : <code>FR-test Chicago Manual of Style 18th edition (notes and bibliography)</code></p>
+<p>Dans la balise <code>&lt;id&gt;&lt;/id&gt;</code> je modifie pour : <code>http://www.zotero.org/styles/chicago-notes-bibliography_FR-test</code></p>
+<p>Dans la balise <code>&lt;link rel="self&gt;</code> je modifie pour : <code>&lt;link href="http://www.zotero.org/styles/chicago-notes-bibliography_FR-test" rel="self"/&gt;</code></p>
 </section>
 <section id="modifications-locale-spécifiques" class="level2">
 <h2 class="anchored" data-anchor-id="modifications-locale-spécifiques">Modifications &lt;locale&gt; spécifiques</h2>
