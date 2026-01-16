@@ -1,36 +1,5 @@
----
-title: "Aperçu local des articles retirés de Retraction Watch"
-author: "Pascal Martinolli"
-date: "2026-01-14"
-categories: [HumanitésNumériques]
-description: "Où l'on récupère les données brutes de la base de données des articles retirés de Retraction Watch pour en extraire des données sur une institution en particulier avec quelques visualisations."
----
 
-## Retraction Watch
-
-[Retraction Watch](https://retractionwatch.com/) une plateforme (blogue et base de données bibliographiques) crée par Ivan Oransky et Adam Marcus en 2010.
-
-Elle surveille, rapporte et analyse les rétractations d'articles scientifiques, ainsi que les problèmes d'intégrité dans la recherche (données frauduleuses, plagiat, etc.).
-
-Depuis 2023, elle verse ses données dans CrossRef. CrossRef donne accès à ces données via son API mais surtout dans notre cas aujourd'hui via un dépôt dans la forge logicielle GitLab à <https://gitlab.com/crossref/retraction-watch-data>
-
-## Que va-t-on faire ?
-
-On va récupérer les données, extraire celles d'une institution seulement et faire quelques visualisations dans le logiciel R Studio.
-
-## Traitement des données
-
--   Créer un dossier `RW_local` sur son ordinateur pour toutes les données du projet.
--   Telécharger le fichier `retraction_watch.csv` et le placer dans le dossier `RW_local`
--   Ouvrir le logiciel R Studio
-    -   Create a new R script
-    -   Créer un fichier `main.R` dans le dossier `RW_local`
-
-Copier-coller ce code dans le fichier `main.R` :
-
-``` r
-setwd("C:/Users/martinop/Downloads/RW_local")   
-# remplacer par l'emplacement de votre dossier 
+setwd("C:/Users/martinop/Downloads/RW_local")   # remplacer par l'emplacement de votre dossier 
 
 retraction_watch <- read.csv("retraction_watch.csv")
 df <- retraction_watch
@@ -38,31 +7,14 @@ df <- retraction_watch
 df_local <- df[
   grepl(
     "universite de montreal|university of montreal|U de Montreal|U of Montreal|UdeM",
-    # remplacer par le nom et les alias de votre institution
-    tolower(iconv(df$Institution, to = "ASCII//TRANSLIT")),  
-    # ignore les majuscules et les accents
+    tolower(iconv(df$Institution, to = "ASCII//TRANSLIT")),  # ignore capitalization + strip accents
     ignore.case = TRUE
   ),
 ]
-```
 
-Cliquer sur Run (ligne par ligne ou tout).
-
-Ce programme va charger les 68 000 enregistrements de la base et ne conserver que ceux dont la colonne Institution (des auteurs) contient les mots que vous avez demandé.
-
-Dans mon cas, il en reste 43. On peut le voir dans le menu Environment à droite (*43 obs. of 20 variables*).
-
-## Visualisations
-
-#### Afficher la liste de tous les titres
-
-``` r
+# afficher la liste des titres 
 cat(paste(df_local$Title, collapse = "\n"))
-```
 
-#### Graphe de la date de publication originale
-
-``` r
 # Convert "MM/DD/YYYY 0:00" → Date
 df_local$OriginalPaperDate <- as.Date(df_local$OriginalPaperDate,
                                      format = "%m/%d/%Y %H:%M")
@@ -72,16 +24,13 @@ df_local$year <- format(df_local$OriginalPaperDate, "%Y")
 # Draw a histogram
 barplot(
   table(df_local$year),
-  main = "UdeM – Original Paper Dates by Year",
+  main = "Original Paper Dates by Year",
   xlab = "Year",
   ylab = "Count",
   las = 2
 )
-```
 
-#### Graphe des raisons de rétractations
 
-``` r
 # Compter les occurrences des raisons
 reason_counts <- sort(table(df_local$Reason), decreasing = FALSE)
 
@@ -94,15 +43,12 @@ barplot(
   horiz = TRUE,
   main = "Distribution des raisons de rétractations",
   xlab = "Nombre",
-  #ylab = "Raisons",
+  ylab = "Raisons",
   las = 1,
   cex.names = .8
 )
-```
 
-#### Graphe des auteurs
 
-``` r
 
 # Extraire tous les auteurs, séparer par ";", nettoyer les espaces
 all_authors <- unlist(strsplit(df_local$Author, ";"))   # sépare tous les auteurs
@@ -127,13 +73,12 @@ barplot(
   main = "Distribution des auteurs",
   xlab = "Nombre"
 )
-```
 
-#### Graphe des revues
 
-``` r
+
+
 # Nettoyer les journaux
-all_journals <- trimws(df_UdeM$Journal)
+all_journals <- trimws(df_local$Journal)
 all_journals <- all_journals[all_journals != ""]  # enlever vides
 
 # Compter la fréquence
@@ -152,11 +97,10 @@ barplot(
   main = "Distribution des revues",
   xlab = "Nombre"
 )
-```
 
-#### Graphe des pays des auteurs
 
-``` r
+
+
 # Extraire tous les pays, séparer par ";", nettoyer les espaces
 all_countries <- unlist(strsplit(df_local$Country, ";"))   # sépare 
 all_countries <- trimws(all_countries)                     # retire les espaces
@@ -180,8 +124,3 @@ barplot(
   main = "Distribution des pays",
   xlab = "Nombre"
 )
-```
-
-#### Script au complet
-
-Fichier [main.R](main.R)

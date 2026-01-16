@@ -28,6 +28,10 @@
 <p>Elle surveille, rapporte et analyse les rétractations d’articles scientifiques, ainsi que les problèmes d’intégrité dans la recherche (données frauduleuses, plagiat, etc.).</p>
 <p>Depuis 2023, elle verse ses données dans CrossRef. CrossRef donne accès à ces données via son API mais surtout dans notre cas aujourd’hui via un dépôt dans la forge logicielle GitLab à <a href="https://gitlab.com/crossref/retraction-watch-data" class="uri">https://gitlab.com/crossref/retraction-watch-data</a></p>
 </section>
+<section id="que-va-t-on-faire" class="level2">
+<h2 class="anchored" data-anchor-id="que-va-t-on-faire">Que va-t-on faire ?</h2>
+<p>On va récupérer les données, extraire celles d’une institution seulement et faire quelques visualisations dans le logiciel R Studio.</p>
+</section>
 <section id="traitement-des-données" class="level2">
 <h2 class="anchored" data-anchor-id="traitement-des-données">Traitement des données</h2>
 <ul>
@@ -592,6 +596,10 @@ font-style: inherit;">xlab =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Nombre"</span></span>
 <span id="cb7-23">)</span></code></pre></div></div>
+</section>
+<section id="script-au-complet" class="level4">
+<h4 class="anchored" data-anchor-id="script-au-complet">Script au complet</h4>
+<p>Fichier <a href="main.R">main.R</a></p>
 
 
 </section>
@@ -613,11 +621,11 @@ font-style: inherit;">"Nombre"</span></span>
 
 
 
-<p>Ce billet est fortement inspiré du billet « <a href="https://zotero.hypotheses.org/5302">Bonnes pratiques pour la création d’un style CSL</a> » du blogue Zotero francophone.</p>
+<p>Ce billet est fortement inspiré du billet « <a href="https://zotero.hypotheses.org/5302">Bonnes pratiques pour la création d’un style CSL</a> » de Frédérique Flamerie et Laure Mellifluo du blogue Zotero francophone.</p>
 <section id="traitement-de-base" class="level2">
 <h2 class="anchored" data-anchor-id="traitement-de-base">Traitement de base</h2>
 <p>Je visite le dépôt des styles Zotero à https://www.zotero.org/styles</p>
-<p>Je télécharge le style <a href="https://www.zotero.org/styles/chicago-notes-bibliography">Chicago Manual of Style 18th edition (notes and bibliography)</a>. Au passage, je note qu’il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.)</p>
+<p>Je télécharge le style <a href="https://www.zotero.org/styles/chicago-notes-bibliography">Chicago Manual of Style 18th edition (notes and bibliography)</a>. Au passage, je note qu’il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.).</p>
 <p>Je renomme le fichier en : <code>chicago-notes-bibliography_FR-test.csl</code></p>
 <p>J’ouvre le fichier et dans la balise <code>&lt;title&gt;&lt;/title&gt;</code> je modifie pour : <code>FR-test Chicago Manual of Style 18th edition (notes and bibliography)</code></p>
 <p>Dans la balise <code>&lt;id&gt;&lt;/id&gt;</code> je modifie pour : <code>http://www.zotero.org/styles/chicago-notes-bibliography_FR-test</code></p>
@@ -1594,6 +1602,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 </item>
 <item>
   <title>Faut-il élaguer le Petit Mourre ?</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2025/faut-il-elaguer-le-petit-mourre/</link>
   <description><![CDATA[ 
 

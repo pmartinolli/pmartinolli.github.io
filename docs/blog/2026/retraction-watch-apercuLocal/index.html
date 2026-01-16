@@ -386,6 +386,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Elle surveille, rapporte et analyse les rétractations d’articles scientifiques, ainsi que les problèmes d’intégrité dans la recherche (données frauduleuses, plagiat, etc.).</p>
 <p>Depuis 2023, elle verse ses données dans CrossRef. CrossRef donne accès à ces données via son API mais surtout dans notre cas aujourd’hui via un dépôt dans la forge logicielle GitLab à <a href="https://gitlab.com/crossref/retraction-watch-data" class="uri">https://gitlab.com/crossref/retraction-watch-data</a></p>
 </section>
+<section id="que-va-t-on-faire" class="level2">
+<h2 class="anchored" data-anchor-id="que-va-t-on-faire">Que va-t-on faire ?</h2>
+<p>On va récupérer les données, extraire celles d’une institution seulement et faire quelques visualisations dans le logiciel R Studio.</p>
+</section>
 <section id="traitement-des-données" class="level2">
 <h2 class="anchored" data-anchor-id="traitement-des-données">Traitement des données</h2>
 <ul>
@@ -534,6 +538,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribution des pays"</span>,</span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Nombre"</span></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="script-au-complet" class="level4">
+<h4 class="anchored" data-anchor-id="script-au-complet">Script au complet</h4>
+<p>Fichier <a href="main.R">main.R</a></p>
 
 
 </section>

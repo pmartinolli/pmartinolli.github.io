@@ -2,6 +2,7 @@
 title: "Faut-il élaguer le Petit Mourre ?"
 format: html
 date: "2025-12-15"
+author: "Pascal Martinolli"
 categories: [Wikipédia]
 description: "Où l'on se demande s'il est pertinent de supprimer ce dictionnaire d'histoire d'une bibliothèque de recherche à l'heure de Wikipédia et du tout accessible en ligne."
 ---

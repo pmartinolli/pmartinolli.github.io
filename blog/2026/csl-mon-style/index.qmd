@@ -6,13 +6,13 @@ categories: [Zotero]
 description: "Où l'on bricole un fichier de style CSL Chicago «notes de bas de page» 18th pour le franciser."
 ---
 
-Ce billet est fortement inspiré du billet « [Bonnes pratiques pour la création d’un style CSL](https://zotero.hypotheses.org/5302) » du blogue Zotero francophone.
+Ce billet est fortement inspiré du billet « [Bonnes pratiques pour la création d’un style CSL](https://zotero.hypotheses.org/5302) » de Frédérique Flamerie et Laure Mellifluo du blogue Zotero francophone.
 
 ## Traitement de base
 
 Je visite le dépôt des styles Zotero à [https://www.zotero.org/styles](#0)
 
-Je télécharge le style [Chicago Manual of Style 18th edition (notes and bibliography)](https://www.zotero.org/styles/chicago-notes-bibliography). Au passage, je note qu'il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.)
+Je télécharge le style [Chicago Manual of Style 18th edition (notes and bibliography)](https://www.zotero.org/styles/chicago-notes-bibliography). Au passage, je note qu'il y a beaucoup de variantes du style qui permettent de faire les choses différemment (avec URL, avec mention des archives, etc.).
 
 Je renomme le fichier en : `chicago-notes-bibliography_FR-test.csl`
 
