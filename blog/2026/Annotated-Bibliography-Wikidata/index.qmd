@@ -1,0 +1,78 @@
+---
+title: "Indexer si une oeuvre possède une bibliographies annotées dans Wikidata"
+format: html
+author: "Pascal Martinolli"
+date: "2026-01-19"
+categories: [TTRPG, Wikidata]
+description: "Où l'on indexe dans Wikidata si des jeux de rôle possèdent une bibliographie ou une bibliographie annotée."
+---
+
+{{< bsky "https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r" >}}
+
+En lisant le message de [Dr. Emily Friedman](https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r) sur Bluesky, je me suis souvenu que j'avais des données de recherche sous le coude et que j'avais sous-estimé leur intérêt. Je vais donc progressivement indexer les données dans Wikidata.
+
+## Bibliographie ou pas
+
+Je vais indiquer si tel jeu ou telle édition de jeu possède :
+
+-   une bibliographie (une liste simple d'oeuvres)
+-   ou une bibliographie annotée (une liste d'oeuvres commentées).
+
+Pour cela j'utilise la propriété `uses (P2283)` avec la valeur :
+
+-   *bibliography* [Q1631107](https://www.wikidata.org/wiki/Q1631107)
+-   ou *annotated bibliography* [Q4769616](https://www.wikidata.org/wiki/Q4769616)
+
+Ensuite, je rajoute le nombre d'oeuvres présentes. J'utilise la propriété `Number of records (P4876)` pour cela. Ce nombre reflète l'ensemble des oeuvres citées dans le jeu. Il se peut que des oeuvres comptées soient hors de la bibliographie ou de la bibliographie annotée, par exemple dans une référence isolée dans le texte (*in line citation*).
+
+Enfin, j'utilise aussi `Page(s) (P304)` dans *References* pour indiquer la page ou l'intervalle de page où se trouve la bibliographie dans le jeu.
+
+Je n'ai pas (encore) trouvé comment indiquer élégament qu'un jeu ne possède pas de bibliographie.
+
+Exemples :
+
+-   [*10.000*](https://www.wikidata.org/wiki/Q68028056)
+-   [*7th Sea (1st edition)*](https://www.wikidata.org/wiki/Q110883344)
+-   [*Against the Darkmaster*](https://www.wikidata.org/wiki/Q106036541)
+
+## SPARQL
+
+Voici la requête pour afficher toutes les données :
+
+``` sql
+
+SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
+  # Find items where P2283 (uses) is either Q4769616 or Q1631107
+  ?item p:P2283 ?statement.
+  # items is a TTRPG 
+  ?item wdt:P31 wd:Q1643932.
+  ?statement ps:P2283 ?uses.
+  FILTER(?uses IN (wd:Q4769616, wd:Q1631107))
+  
+  # Optional: Get qualifier P4876 (number of records)
+  OPTIONAL { ?statement pq:P4876 ?NbOfRecords. }
+  
+  # Optional: Get reference P304 (page(s))
+  OPTIONAL {
+    ?statement prov:wasDerivedFrom ?reference.
+    ?reference pr:P304 ?AtPages.
+  }
+  
+  # Get labels for display
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+```
+
+[Essayez-le](https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q4769616%20or%20Q1631107%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%23%20items%20is%20a%20TTRPG%20%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ1643932.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
+
+## Points notables
+
+Le jeu le plus remarquable pour son énorme bibliographie annotée est [*A Game of Thrones d20*](https://www.wikidata.org/wiki/Q677281) (2005) qui contient un essai complet sur la fantasy avec 379 références à l'intérieur du livre de règles.
+
+```{=html}
+<!-- Pour intégrer le post Bluesky, je suis allé dans le terminal du projet Quarto et j'ai lancé : 
+
+quarto install extension sellorm/quarto-social-embeds
+
+source : https://quarto-social-embeds.sellorm.com/ -->
+```
