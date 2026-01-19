@@ -1,5 +1,5 @@
 ---
-title: "Indexer si une oeuvre possède une bibliographies annotées dans Wikidata"
+title: "Indexer une oeuvre ayant une bibliographie annotée dans Wikidata"
 format: html
 author: "Pascal Martinolli"
 date: "2026-01-19"
@@ -16,7 +16,7 @@ En lisant le message de [Dr. Emily Friedman](https://bsky.app/profile/friede.bsk
 Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
 -   une bibliographie (une liste simple d'oeuvres)
--   ou une bibliographie annotée (une liste d'oeuvres commentées).
+-   ou une bibliographie annotée (une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés).
 
 Pour cela j'utilise la propriété `uses (P2283)` avec la valeur :
 
@@ -27,7 +27,7 @@ Ensuite, je rajoute le nombre d'oeuvres présentes. J'utilise la propriété `Nu
 
 Enfin, j'utilise aussi `Page(s) (P304)` dans *References* pour indiquer la page ou l'intervalle de page où se trouve la bibliographie dans le jeu.
 
-Je n'ai pas (encore) trouvé comment indiquer élégament qu'un jeu ne possède pas de bibliographie.
+Je n'ai pas (encore) trouvé comment indiquer élégamment qu'un jeu ne possède pas de bibliographie.
 
 Exemples :
 
@@ -67,7 +67,7 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
 
 ## Points notables
 
-Le jeu le plus remarquable pour son énorme bibliographie annotée est [*A Game of Thrones d20*](https://www.wikidata.org/wiki/Q677281) (2005) qui contient un essai complet sur la fantasy avec 379 références à l'intérieur du livre de règles.
+Le jeu le plus remarquable pour son énorme bibliographie annotée est [*A Game of Thrones d20*](https://www.wikidata.org/wiki/Q677281) (2005) qui contient un essai complet sur la fantasy avec 379 références à l'intérieur du livre de règles (pp. 21-35).
 
 ```{=html}
 <!-- Pour intégrer le post Bluesky, je suis allé dans le terminal du projet Quarto et j'ai lancé : 
