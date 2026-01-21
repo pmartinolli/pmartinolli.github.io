@@ -19,10 +19,10 @@ Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
 -   ou une **bibliographie annotée** : une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. Elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque élément est mentionné spécifiquement pour soutenir une attribution.
 
-    ![Exemple de bibliographie annotée (Apocalypse World 1)](apocalypseWorld-ex.png)
+    ![Exemple de bibliographie annotée (Apocalypse World 1)](apocalypseWorld-ex.png){width="500"}
 
 -   ou des **références dans le texte** : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le discours pour l'illustrer ou pour donner des exemples, mais ces mentions ne sont pas listées systématiquement et pourquoi elles sont utilisées spécifiquement. Ou bien, il y a très peu de références dans le jeu et donc ce ne sont pas vraiment des listes/énumérations.\
-    ![Exemple de référence dans le texte (Aquelarre 3)](aquelarre3.png)
+    ![Exemple de référence dans le texte (Aquelarre 3)](aquelarre3.png){width="500"}
 
 Pour cela j'utilise la propriété `uses (P2283)` avec la valeur :
 
@@ -72,11 +72,17 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
 }
 ```
 
-[Essayez-le](https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q4769616%20or%20Q1631107%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
+[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q4769616%20or%20Q1631107%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
 
 ## Points notables
 
 Le jeu le plus remarquable pour son énorme bibliographie annotée est [*A Game of Thrones d20*](https://www.wikidata.org/wiki/Q677281) (2005) qui contient un essai complet sur la fantasy avec 379 références à l'intérieur du livre de règles (pp. 21-35).
+
+Le plus ancien jeu avec des références dans le texte est *OD&D* (1974) avec des attributions moyennement reconnaissante envers la campagne de Blackmoor de Dave Arneson, matrice du game design des jeux de rôle tels que nous les connaissons aujourd'hui.
+
+Rapidement, les premiers jeux tels que *Tunnels & Trolls* ou *RuneQuest* ont cité D&D avant d'arrêter. Voir mon billet sur les [*Ceases & Desists*](https://jdr.hypotheses.org/1199) sur le sujet.
+
+Le jeu le plus ancien avec une bibliographie est \[à déterminer\]. Avec une bibliographie annotée \[à déterminer\].
 
 ## Épigraphes
 
@@ -98,7 +104,7 @@ J'avais utilisé aussi la propriété uses avec comme valeur :
 
 Exemple : [7th Sea (1st edition)](https://www.wikidata.org/wiki/Q110883344)
 
-### Requête pour tout afficher
+#### Requête pour afficher l'indexation des épigraphes
 
 ``` sql
 
@@ -118,7 +124,7 @@ SELECT ?epigraph ?epigraphLabel ?usesLabel ?quantity WHERE {
 }
 ```
 
-[Essayez-le](https://query.wikidata.org/#SELECT%20%3Fepigraph%20%3FepigraphLabel%20%3FusesLabel%20%3Fquantity%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20%0A%20%20%3Fepigraph%20wdt%3AP31%20wd%3AQ1643932.%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q669777%20%28epigraph%29%20or%20Q18011336%20%28fictional%20quotation%29%0A%20%20%3Fepigraph%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ669777%2C%20wd%3AQ18011336%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P1114%20%28quantity%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP1114%20%3Fquantity.%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
+[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fepigraph%20%3FepigraphLabel%20%3FusesLabel%20%3Fquantity%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20%0A%20%20%3Fepigraph%20wdt%3AP31%20wd%3AQ1643932.%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q669777%20%28epigraph%29%20or%20Q18011336%20%28fictional%20quotation%29%0A%20%20%3Fepigraph%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ669777%2C%20wd%3AQ18011336%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P1114%20%28quantity%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP1114%20%3Fquantity.%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
 
 ```{=html}
 <!-- Pour intégrer le post Bluesky, je suis allé dans le terminal du projet Quarto et j'ai lancé : 
