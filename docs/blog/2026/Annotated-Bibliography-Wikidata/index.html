@@ -389,13 +389,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="bibliographie-ou-pas">Bibliographie ou pas</h2>
 <p>Je vais indiquer si tel jeu ou telle édition de jeu possède :</p>
 <ul>
-<li>une bibliographie (une liste simple d’oeuvres)</li>
-<li>ou une bibliographie annotée (une énumération commentée d’oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés).</li>
+<li><p>une <strong>bibliographie</strong> : une liste simple d’oeuvres</p></li>
+<li><p>ou une <strong>bibliographie annotée</strong> : une énumération commentée d’oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. Elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque élément est mentionné spécifiquement pour soutenir une attribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="apocalypseWorld-ex.png" class="img-fluid figure-img"></p>
+<figcaption>Exemple de bibliographie annotée (Apocalypse World 1)</figcaption>
+</figure>
+</div></li>
+<li><p>ou des <strong>références dans le texte</strong> : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le discours pour l’illustrer ou pour donner des exemples, mais ces mentions ne sont pas listées systématiquement et pourquoi elles sont utilisées spécifiquement. Ou bien, il y a très peu de références dans le jeu et donc ce ne sont pas vraiment des listes/énumérations.<br>
+<img src="aquelarre3.png" class="img-fluid" alt="Exemple de référence dans le texte (Aquelarre 3)"></p></li>
 </ul>
 <p>Pour cela j’utilise la propriété <code>uses (P2283)</code> avec la valeur :</p>
 <ul>
 <li><em>bibliography</em> <a href="https://www.wikidata.org/wiki/Q1631107">Q1631107</a></li>
 <li>ou <em>annotated bibliography</em> <a href="https://www.wikidata.org/wiki/Q4769616">Q4769616</a></li>
+<li>ou <em>inline reference</em> <a href="https://www.wikidata.org/wiki/Q137842886">Q137842886</a></li>
 </ul>
 <p>Ensuite, je rajoute le nombre d’oeuvres présentes. J’utilise la propriété <code>Number of records (P4876)</code> pour cela. Ce nombre reflète l’ensemble des oeuvres citées dans le jeu. Il se peut que des oeuvres comptées soient hors de la bibliographie ou de la bibliographie annotée, par exemple dans une référence isolée dans le texte (<em>in line citation</em>).</p>
 <p>Enfin, j’utilise aussi <code>Page(s) (P304)</code> dans <em>References</em> pour indiquer la page ou l’intervalle de page où se trouve la bibliographie dans le jeu.</p>
@@ -416,10 +425,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">VALUES</span> ?TTRPGset {wd<span class="ch">:Q1643932</span> wd<span class="ch">:Q71631512</span>}</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ?item wdt<span class="ch">:P31</span> ?TTRPGset.</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  # Find items <span class="kw">where</span> P2283 (uses) <span class="kw">is</span> either Q4769616 <span class="kw">or</span> Q1631107</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  # Find items <span class="kw">where</span> P2283 (uses) <span class="kw">is</span> either bibliography <span class="kw">or</span> annotated bib. <span class="kw">or</span> inline <span class="fu">ref</span>.</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ?item p<span class="ch">:P2283</span> ?statement.</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  ?statement ps<span class="ch">:P2283</span> ?uses.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FILTER</span>(?uses <span class="kw">IN</span> (wd<span class="ch">:Q4769616</span>, wd<span class="ch">:Q1631107</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FILTER</span>(?uses <span class="kw">IN</span> (wd<span class="ch">:Q4769616</span>, wd<span class="ch">:Q1631107</span>, wd<span class="ch">:Q137842886</span>))</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  # Optional: Get qualifier P4876 (<span class="dt">number</span> <span class="kw">of</span> records)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  OPTIONAL { ?statement pq<span class="ch">:P4876</span> ?NbOfRecords. }</span>

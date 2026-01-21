@@ -15,13 +15,20 @@ En lisant le message de [Dr. Emily Friedman](https://bsky.app/profile/friede.bsk
 
 Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
--   une bibliographie (une liste simple d'oeuvres)
--   ou une bibliographie annotée (une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés).
+-   une **bibliographie** : une liste simple d'oeuvres
+
+-   ou une **bibliographie annotée** : une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. Elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque élément est mentionné spécifiquement pour soutenir une attribution.
+
+    ![Exemple de bibliographie annotée (Apocalypse World 1)](apocalypseWorld-ex.png)
+
+-   ou des **références dans le texte** : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le discours pour l'illustrer ou pour donner des exemples, mais ces mentions ne sont pas listées systématiquement et pourquoi elles sont utilisées spécifiquement. Ou bien, il y a très peu de références dans le jeu et donc ce ne sont pas vraiment des listes/énumérations.\
+    ![Exemple de référence dans le texte (Aquelarre 3)](aquelarre3.png)
 
 Pour cela j'utilise la propriété `uses (P2283)` avec la valeur :
 
 -   *bibliography* [Q1631107](https://www.wikidata.org/wiki/Q1631107)
 -   ou *annotated bibliography* [Q4769616](https://www.wikidata.org/wiki/Q4769616)
+-   ou *inline reference* [Q137842886](https://www.wikidata.org/wiki/Q137842886)
 
 Ensuite, je rajoute le nombre d'oeuvres présentes. J'utilise la propriété `Number of records (P4876)` pour cela. Ce nombre reflète l'ensemble des oeuvres citées dans le jeu. Il se peut que des oeuvres comptées soient hors de la bibliographie ou de la bibliographie annotée, par exemple dans une référence isolée dans le texte (*in line citation*).
 
@@ -46,10 +53,10 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
   VALUES ?TTRPGset {wd:Q1643932 wd:Q71631512}
   ?item wdt:P31 ?TTRPGset.
 
-  # Find items where P2283 (uses) is either Q4769616 or Q1631107
+  # Find items where P2283 (uses) is either bibliography or annotated bib. or inline ref.
   ?item p:P2283 ?statement.
   ?statement ps:P2283 ?uses.
-  FILTER(?uses IN (wd:Q4769616, wd:Q1631107))
+  FILTER(?uses IN (wd:Q4769616, wd:Q1631107, wd:Q137842886))
   
   # Optional: Get qualifier P4876 (number of records)
   OPTIONAL { ?statement pq:P4876 ?NbOfRecords. }
@@ -71,7 +78,7 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
 
 Le jeu le plus remarquable pour son énorme bibliographie annotée est [*A Game of Thrones d20*](https://www.wikidata.org/wiki/Q677281) (2005) qui contient un essai complet sur la fantasy avec 379 références à l'intérieur du livre de règles (pp. 21-35).
 
-## Épigraphes 
+## Épigraphes
 
 J'avais commencé à indexer la présence d'épigraphes dans les jeux de rôle sur table.
 
@@ -112,8 +119,6 @@ SELECT ?epigraph ?epigraphLabel ?usesLabel ?quantity WHERE {
 ```
 
 [Essayez-le](https://query.wikidata.org/#SELECT%20%3Fepigraph%20%3FepigraphLabel%20%3FusesLabel%20%3Fquantity%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20%0A%20%20%3Fepigraph%20wdt%3AP31%20wd%3AQ1643932.%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q669777%20%28epigraph%29%20or%20Q18011336%20%28fictional%20quotation%29%0A%20%20%3Fepigraph%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ669777%2C%20wd%3AQ18011336%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P1114%20%28quantity%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP1114%20%3Fquantity.%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
-
-
 
 ```{=html}
 <!-- Pour intégrer le post Bluesky, je suis allé dans le terminal du projet Quarto et j'ai lancé : 
