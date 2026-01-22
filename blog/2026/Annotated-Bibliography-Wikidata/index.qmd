@@ -25,11 +25,13 @@ Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
     ![Exemple de références dans le texte (*Aquelarre*, 3 ed.)](aquelarre3.png){width="500"}
 
--   ou des *notes de marge* : des petits blocs de texte présentés en annotation dans les marges ;
+-   ou des **notes de marge** : des petits blocs de texte présentés en annotation dans les marges. NB : contrairement aux 3 premiers éléments, ces *marginalia* ne contiennent pas forcément des références. ;
 
--   ou des *notes de bas de page* : des petits blocs de texte présentés en annotation dans le bas des pages.
+-   ou des **notes de bas de page** : des petits blocs de texte présentés en annotation dans le bas des pages. NB : contrairement aux 3 premiers éléments, ces notes de bas de page ne contiennent pas forcément des références. 
 
-Pour cela, dans Wikidata j'utilise la propriété `uses (P2283)` avec la valeur :
+#### Indexation
+
+Pour indexer ces éléments, dans Wikidata j'utilise la propriété `uses (P2283)` avec la valeur :
 
 -   *bibliography* [Q1631107](https://www.wikidata.org/wiki/Q1631107)
 -   ou *annotated bibliography* [Q4769616](https://www.wikidata.org/wiki/Q4769616)
@@ -49,7 +51,7 @@ Je n'ai pas (encore) trouvé comment indiquer élégamment qu'un jeu ne possède
 -   [*7th Sea (1st edition)*](https://www.wikidata.org/wiki/Q110883344)
 -   [*Against the Darkmaster*](https://www.wikidata.org/wiki/Q106036541)
 
-## SPARQL
+#### SPARQL
 
 Voici la requête pour afficher toutes les données :
 
