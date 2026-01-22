@@ -1,5 +1,5 @@
 ---
-title: "Publications"
+title: "publications"
 format: html
 description: "Une sélection de mes emplois, diplômes, activités, compétences et publications, présentés en listes hiérarchiques et icônées."
 bibliography: bibliography.bib
@@ -13,23 +13,23 @@ citeproc: true
 
 #### Bibliothécaire
 
-+-------------+---------------------------------------------------------------+
-| 2008-...    | **Université de Montréal**, Montréal, Canada\                 |
-|             | - Pour l'histoire et pour la formation\                       |
-|             | - Humanités numériques : fouille de texte, numérisation,\     |
-|             | indexation; Thesaurus et ontologies; Visualisation de données |
-+-------------+---------------------------------------------------------------+
++--------------+---------------------------------------------------------------+
+| 2008-...     | **Université de Montréal**, Montréal, Canada\                 |
+|              | - Pour l'histoire et pour la formation\                       |
+|              | - Humanités numériques : fouille de texte, numérisation,\     |
+|              | indexation; Thesaurus et ontologies; Visualisation de données |
++--------------+---------------------------------------------------------------+
 
 #### Documentaliste
 
-+-------------+-------------------------------------------------------------------+
-| 2002-2008   | Université de Montréal, Montréal, Canada\                         |
-|             | - Département des sciences économiques\                           |
-|             | - École de relations industrielles                                |
-+-------------+-------------------------------------------------------------------+
-| Avant 2002  | Electricité de France (Direction de la stratégie), Paris, France\ |
-|             | Les Echos (*Lettres professionnelles*), Paris, France             |
-+-------------+-------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------+
+| 2002-2008    | Université de Montréal, Montréal, Canada\                         |
+|              | - Département des sciences économiques\                           |
+|              | - École de relations industrielles                                |
++--------------+-------------------------------------------------------------------+
+| Avant 2002   | Electricité de France (Direction de la stratégie), Paris, France\ |
+|              | Les Echos (*Lettres professionnelles*), Paris, France             |
++--------------+-------------------------------------------------------------------+
 
 ### Diplômes
 

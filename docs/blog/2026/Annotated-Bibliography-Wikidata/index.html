@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../cv/index.html"> 
-<span class="menu-text">Publications</span></a>
+<span class="menu-text">publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../ttrpg/index.html"> 
@@ -404,12 +404,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Exemple de références dans le texte (<em>Aquelarre</em>, 3 ed.)</figcaption>
 </figure>
 </div></li>
+<li><p>ou des <em>notes de marge</em> : des petits blocs de texte présentés en annotation dans les marges ;</p></li>
+<li><p>ou des <em>notes de bas de page</em> : des petits blocs de texte présentés en annotation dans le bas des pages.</p></li>
 </ul>
 <p>Pour cela, dans Wikidata j’utilise la propriété <code>uses (P2283)</code> avec la valeur :</p>
 <ul>
 <li><em>bibliography</em> <a href="https://www.wikidata.org/wiki/Q1631107">Q1631107</a></li>
 <li>ou <em>annotated bibliography</em> <a href="https://www.wikidata.org/wiki/Q4769616">Q4769616</a></li>
 <li>ou <em>inline reference</em> <a href="https://www.wikidata.org/wiki/Q137842886">Q137842886</a></li>
+<li>ou <em>marginalia</em> <a href="https://www.wikidata.org/wiki/Q1572441">Q1572441</a></li>
+<li>ou <em>footnote</em> <a href="https://www.wikidata.org/wiki/Q25424643">Q25424643</a></li>
 </ul>
 <p>Ensuite, dans les <em>qualifiers</em>, je rajoute le nombre d’oeuvres présentes avec la propriété <code>Number of records (P4876)</code>. Dans le cas où j’ai listé plusieurs types de bibliographie, ce nombre compte le nombre spécifique de référence de chaque type (ex: bibliography = 12; inline = 5). Dans le cas où j’ai fait une généralité, ce nombre reflète le total (ex: bibliography = 12+5 = 17).</p>
 <p>Enfin, j’utilise aussi <code>Page(s) (P304)</code> dans <em>References</em> pour indiquer la page ou l’intervalle de page où se trouve la bibliographie dans le jeu.</p>
@@ -432,10 +436,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">VALUES</span> ?TTRPGset {wd<span class="ch">:Q1643932</span> wd<span class="ch">:Q71631512</span>}</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ?item wdt<span class="ch">:P31</span> ?TTRPGset.</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  # Find items <span class="kw">where</span> P2283 (uses) <span class="kw">is</span> either bibliography <span class="kw">or</span> annotated bib. <span class="kw">or</span> inline <span class="fu">ref</span>.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  # Find items <span class="kw">where</span> P2283 (uses) <span class="kw">is</span> either bibliography <span class="kw">or</span> annotated bib. <span class="kw">or</span> inline <span class="fu">ref</span>. <span class="kw">or</span> marginalia <span class="kw">or</span> footnote</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ?item p<span class="ch">:P2283</span> ?statement.</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  ?statement ps<span class="ch">:P2283</span> ?uses.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FILTER</span>(?uses <span class="kw">IN</span> (wd<span class="ch">:Q4769616</span>, wd<span class="ch">:Q1631107</span>, wd<span class="ch">:Q137842886</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FILTER</span>(?uses <span class="kw">IN</span> (wd<span class="ch">:Q4769616</span>, wd<span class="ch">:Q1631107</span>, wd<span class="ch">:Q137842886</span>, wd<span class="ch">:Q1572441</span> , wd<span class="ch">:Q25424643</span>))</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  # Optional: Get qualifier P4876 (<span class="dt">number</span> <span class="kw">of</span> records)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  OPTIONAL { ?statement pq<span class="ch">:P4876</span> ?NbOfRecords. }</span>
@@ -449,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  # Get labels <span class="cf">for</span> display</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  SERVICE wikibase<span class="ch">:label</span> { bd<span class="ch">:serviceParam</span> wikibase<span class="ch">:language</span> <span class="ot">"[AUTO_LANGUAGE],en"</span>. }</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20bibliography%20or%20annotated%20bib.%20or%20inline%20ref.%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%2C%20wd%3AQ137842886%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D">Essayez-la</a></p>
+<p><a href="https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20bibliography%20or%20annotated%20bib.%20or%20inline%20ref.%20or%20marginalia%20or%20footnote%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%2C%20wd%3AQ137842886%2C%20wd%3AQ1572441%20%2C%20wd%3AQ25424643%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D">Essayez-la</a></p>
 </section>
 <section id="points-notables" class="level2">
 <h2 class="anchored" data-anchor-id="points-notables">Points notables</h2>
