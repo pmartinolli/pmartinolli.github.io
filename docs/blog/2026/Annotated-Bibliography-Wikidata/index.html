@@ -384,37 +384,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><blockquote class="bluesky-embed blockquote" data-bluesky-uri="at://did:plc:h5slgmcxfehhdfclzoe2wye6/app.bsky.feed.post/3mchl3jt72c2r" data-bluesky-cid="bafyreiafq6mybl6toqsga3s4psvrrdypif3womfcovs42hars77zerta2q"><p lang="en">On the hunt for TTRPGs with annotated ludographies/bibliographies in their text. (In other words, not *just* a list of inspirations)
 
 (Bonus points for in-line citations or marginal notes that credit other texts/games/people)</p>— <a href="https://bsky.app/profile/did:plc:h5slgmcxfehhdfclzoe2wye6?ref_src=embed">Dr. Emily Friedman (@friede.bsky.social)</a> <a href="https://bsky.app/profile/did:plc:h5slgmcxfehhdfclzoe2wye6/post/3mchl3jt72c2r?ref_src=embed">2026-01-15T12:21:17.781Z</a></blockquote><script async="" src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script><p></p>
-<p>En lisant le message de <a href="https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r">Dr.&nbsp;Emily Friedman</a> sur Bluesky, je me suis souvenu que j’avais des données de recherche sous le coude et que j’avais sous-estimé leur intérêt. Je vais donc progressivement indexer les données dans Wikidata.</p>
+<p>En lisant le message de <a href="https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r">Dr.&nbsp;Emily Friedman</a> sur Bluesky, je me suis souvenu que j’avais des données de recherche sous le coude. Comme j’avais sous-estimé leur intérêt, je ne les avais jamais versé en ligne. Je vais donc rattraper ce retard et progressivement indexer les données dans Wikidata dans les prochains mois.</p>
 <section id="bibliographie-ou-pas" class="level2">
 <h2 class="anchored" data-anchor-id="bibliographie-ou-pas">Bibliographie ou pas</h2>
 <p>Je vais indiquer si tel jeu ou telle édition de jeu possède :</p>
 <ul>
-<li><p>une <strong>bibliographie</strong> : une liste simple d’oeuvres</p></li>
-<li><p>ou une <strong>bibliographie annotée</strong> : une énumération commentée d’oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. Elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque élément est mentionné spécifiquement pour soutenir une attribution.</p>
+<li><p>une <strong>bibliographie</strong> : une liste simple d’oeuvres ;</p></li>
+<li><p>ou une <strong>bibliographie annotée</strong> : une énumération commentée d’oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. En effet, elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque jeu mentionné doit être accompagné d’un commentaire ou d’une annotation spécifique à celui-ci (le plus souvent pour indiquer son apport au jeu) ;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="apocalypseWorld-ex.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Exemple de bibliographie annotée (Apocalypse World 1)</figcaption>
+<figcaption>Exemple de bibliographie annotée (<em>Apocalypse World</em> 1st edition)</figcaption>
 </figure>
 </div></li>
-<li><p>ou des <strong>références dans le texte</strong> : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le discours pour l’illustrer ou pour donner des exemples, mais ces mentions ne sont pas listées systématiquement et pourquoi elles sont utilisées spécifiquement. Ou bien, il y a très peu de références dans le jeu et donc ce ne sont pas vraiment des listes/énumérations.<br>
-<img src="aquelarre3.png" class="img-fluid" width="500" alt="Exemple de référence dans le texte (Aquelarre 3)"></p></li>
+<li><p>ou des <strong>références dans le texte</strong> : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le texte pour illustrer le discours ou l’argumentation ou pour donner des exemples. Ces mentions listées ne sont pas commentées systématiquement ou spécifiquement. On peut aussi aussi utiliser ceci dans les cas où seulement quelques oeuvres sont mentionnées ;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aquelarre3.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Exemple de références dans le texte (<em>Aquelarre</em>, 3 ed.)</figcaption>
+</figure>
+</div></li>
 </ul>
-<p>Pour cela j’utilise la propriété <code>uses (P2283)</code> avec la valeur :</p>
+<p>Pour cela, dans Wikidata j’utilise la propriété <code>uses (P2283)</code> avec la valeur :</p>
 <ul>
 <li><em>bibliography</em> <a href="https://www.wikidata.org/wiki/Q1631107">Q1631107</a></li>
 <li>ou <em>annotated bibliography</em> <a href="https://www.wikidata.org/wiki/Q4769616">Q4769616</a></li>
 <li>ou <em>inline reference</em> <a href="https://www.wikidata.org/wiki/Q137842886">Q137842886</a></li>
 </ul>
-<p>Ensuite, je rajoute le nombre d’oeuvres présentes. J’utilise la propriété <code>Number of records (P4876)</code> pour cela. Ce nombre reflète l’ensemble des oeuvres citées dans le jeu. Il se peut que des oeuvres comptées soient hors de la bibliographie ou de la bibliographie annotée, par exemple dans une référence isolée dans le texte (<em>in line citation</em>).</p>
+<p>Ensuite, dans les <em>qualifiers</em>, je rajoute le nombre d’oeuvres présentes avec la propriété <code>Number of records (P4876)</code>. Dans le cas où j’ai listé plusieurs types de bibliographie, ce nombre compte le nombre spécifique de référence de chaque type (ex: bibliography = 12; inline = 5). Dans le cas où j’ai fait une généralité, ce nombre reflète le total (ex: bibliography = 12+5 = 17).</p>
 <p>Enfin, j’utilise aussi <code>Page(s) (P304)</code> dans <em>References</em> pour indiquer la page ou l’intervalle de page où se trouve la bibliographie dans le jeu.</p>
 <p>Je n’ai pas (encore) trouvé comment indiquer élégamment qu’un jeu ne possède pas de bibliographie.</p>
-<p>Exemples :</p>
+<section id="exemples-dindexations" class="level4">
+<h4 class="anchored" data-anchor-id="exemples-dindexations">Exemples d’indexations</h4>
 <ul>
 <li><a href="https://www.wikidata.org/wiki/Q68028056"><em>10.000</em></a></li>
 <li><a href="https://www.wikidata.org/wiki/Q110883344"><em>7th Sea (1st edition)</em></a></li>
 <li><a href="https://www.wikidata.org/wiki/Q106036541"><em>Against the Darkmaster</em></a></li>
 </ul>
+</section>
 </section>
 <section id="sparql" class="level2">
 <h2 class="anchored" data-anchor-id="sparql">SPARQL</h2>
@@ -447,14 +454,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="points-notables" class="level2">
 <h2 class="anchored" data-anchor-id="points-notables">Points notables</h2>
 <p>Le jeu le plus remarquable pour son énorme bibliographie annotée est <a href="https://www.wikidata.org/wiki/Q677281"><em>A Game of Thrones d20</em></a> (2005) qui contient un essai complet sur la fantasy avec 379 références à l’intérieur du livre de règles (pp.&nbsp;21-35).</p>
-<p>Le plus ancien jeu avec des références dans le texte est <em>OD&amp;D</em> (1974) avec des attributions moyennement reconnaissante envers la campagne de Blackmoor de Dave Arneson, matrice du game design des jeux de rôle tels que nous les connaissons aujourd’hui.</p>
-<p>Rapidement, les premiers jeux tels que <em>Tunnels &amp; Trolls</em> ou <em>RuneQuest</em> ont cité D&amp;D avant d’arrêter. Voir mon billet sur les <a href="https://jdr.hypotheses.org/1199"><em>Ceases &amp; Desists</em></a> sur le sujet.</p>
-<p>Le jeu le plus ancien avec une bibliographie est [à déterminer]. Avec une bibliographie annotée [à déterminer].</p>
+<p>Le plus ancien jeu avec des références dans le texte est <em>D&amp;D</em> (1974), avec une attribution <em>médiocrement</em> reconnaissante envers la campagne de <a href="https://jdr.hypotheses.org/1434">Blackmoor</a> de Dave Arneson, matrice du game design des jeux de rôle sur table tels que nous les connaissons aujourd’hui.</p>
+<p>Rapidement, les premiers jeux tels que <em>Tunnels &amp; Trolls</em> ou <em>RuneQuest</em> ont cité <em>D&amp;D</em> avant d’arrêter. Voir mon billet sur les <em>Ceases &amp; Desists</em> (en <a href="https://jdr.hypotheses.org/1199">français</a>, in <a href="http://zotrpg.blogspot.com/2020/08/cease-desist-orders-and-citation.html">English</a>) sur le sujet.</p>
+<p>Le jeu le plus ancien avec une bibliographie est [à déterminer]. Le jeu le plus ancien avec une bibliographie annotée est [à déterminer].</p>
 </section>
 <section id="épigraphes" class="level2">
 <h2 class="anchored" data-anchor-id="épigraphes">Épigraphes</h2>
 <p>J’avais commencé à indexer la présence d’épigraphes dans les jeux de rôle sur table.</p>
-<p>J’avais utilisé aussi la propriété uses avec comme valeur :</p>
+<p>J’avais aussi utilisé la propriété <code>uses</code> avec comme valeur :</p>
 <ul>
 <li><p><em>epigraph</em> <a href="https://www.wikidata.org/wiki/Q669777">(Q669777</a>) avec comme qualifiers :</p>
 <ul>
@@ -467,7 +474,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>has characteristic</em> (P1552) = <em>in-universe perspective</em> (<a href="https://www.wikidata.org/wiki/Q96102813">Q96102813</a>)</p></li>
 </ul></li>
 </ul>
-<p>Exemple : <a href="https://www.wikidata.org/wiki/Q110883344">7th Sea (1st edition)</a></p>
+<section id="exemple" class="level4">
+<h4 class="anchored" data-anchor-id="exemple">Exemple</h4>
+<ul>
+<li><a href="https://www.wikidata.org/wiki/Q110883344">7th Sea (1st edition)</a></li>
+</ul>
+</section>
 <section id="requête-pour-afficher-lindexation-des-épigraphes" class="level4">
 <h4 class="anchored" data-anchor-id="requête-pour-afficher-lindexation-des-épigraphes">Requête pour afficher l’indexation des épigraphes</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
