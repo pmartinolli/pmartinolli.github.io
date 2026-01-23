@@ -29,6 +29,10 @@ Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
 -   ou des **notes de bas de page** : des petits blocs de texte présentés en annotation dans le bas des pages. NB : contrairement aux 3 premiers éléments, ces notes de bas de page ne contiennent pas forcément des références. 
 
+- ou des **filmographies** : des **listes de films** ; ou des **listes de musiques** ou de groupes ; ou des **listes de jeux vidéo**.
+
+Je pense que je rajouterai automatiquement des **ludographies** à partir des citations de jeux de rôles déjà faites. 
+
 #### Indexation
 
 Pour indexer ces éléments, dans Wikidata j'utilise la propriété `uses (P2283)` avec la valeur :
@@ -38,6 +42,10 @@ Pour indexer ces éléments, dans Wikidata j'utilise la propriété `uses (P2283
 -   ou *inline reference* [Q137842886](https://www.wikidata.org/wiki/Q137842886)
 -   ou *marginalia* [Q1572441](https://www.wikidata.org/wiki/Q1572441)
 -   ou *footnote* [Q25424643](https://www.wikidata.org/wiki/Q25424643)
+- ou *filmography* [Q1371849](https://www.wikidata.org/wiki/Q1371849)
+- ou *list of music references* [Q19220511](https://www.wikidata.org/wiki/Q19220511)
+- ou *bibliographical list of video games* [Q137859315](https://www.wikidata.org/wiki/Q137859315)
+- ou *ludography* [Q60586493](https://www.wikidata.org/wiki/Q60586493)
 
 Ensuite, dans les *qualifiers*, je rajoute le nombre d'oeuvres présentes avec la propriété `Number of records (P4876)`. Dans le cas où j'ai listé plusieurs types de bibliographie, ce nombre compte le nombre spécifique de référence de chaque type (ex: bibliography = 12; inline = 5). Dans le cas où j'ai fait une généralité, ce nombre reflète le total (ex: bibliography = 12+5 = 17).
 
@@ -62,10 +70,10 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
   VALUES ?TTRPGset {wd:Q1643932 wd:Q71631512}
   ?item wdt:P31 ?TTRPGset.
 
-  # Find items where P2283 (uses) is either bibliography or annotated bib. or inline ref. or marginalia or footnote
+  # Find items where P2283 (uses) is either bibliography or annotated bib. or inline ref. or marginalia or footnote...
   ?item p:P2283 ?statement.
   ?statement ps:P2283 ?uses.
-  FILTER(?uses IN (wd:Q4769616, wd:Q1631107, wd:Q137842886, wd:Q1572441 , wd:Q25424643))
+  FILTER(?uses IN (wd:Q4769616, wd:Q1631107, wd:Q137842886, wd:Q1572441, wd:Q25424643, wd:Q1371849, wd:Q19220511, wd:Q137859315, wd:Q60586493))
   
   # Optional: Get qualifier P4876 (number of records)
   OPTIONAL { ?statement pq:P4876 ?NbOfRecords. }
@@ -81,7 +89,7 @@ SELECT ?item ?itemLabel ?usesLabel ?NbOfRecords ?AtPages WHERE {
 }
 ```
 
-[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20bibliography%20or%20annotated%20bib.%20or%20inline%20ref.%20or%20marginalia%20or%20footnote%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%2C%20wd%3AQ137842886%2C%20wd%3AQ1572441%20%2C%20wd%3AQ25424643%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
+[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20bibliography%20or%20annotated%20bib.%20or%20inline%20ref.%20or%20marginalia%20or%20footnote...%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%2C%20wd%3AQ137842886%2C%20wd%3AQ1572441%2C%20wd%3AQ25424643%2C%20wd%3AQ1371849%2C%20wd%3AQ19220511%2C%20wd%3AQ137859315%2C%20wd%3AQ60586493%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D)
 
 ## Points notables
 
