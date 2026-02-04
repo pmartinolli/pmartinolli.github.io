@@ -8,7 +8,7 @@ description: "Où l'on discute des pratiques de citation dans l'un des plus anci
 
 [**Billet en cours d'écriture**]{.smallcaps}
 
-Par où commencer quand on veut explorer les pratiques de citation ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l'excellente mise en contexte présente dans l'article de [Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-0) (marqué ^Sz^). Nous allons découvrir non seulement les premières traces de références dans :
+Par où commencer quand on veut explorer les pratiques de citation ? On m'a toujours dit que le plus ancien texte littéraire était *L'épopée de Gilgamesh*, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l'excellente mise en contexte présente dans l'article de Szilvia Sövegjártó (marqué ^[Sz](https://doi.org/10.52093/hara-202201-0)^). Nous allons découvrir non seulement les premières traces de références dans :
 
 -   les sceaux, première marque et renvoi extra-textuel ;
 
@@ -42,7 +42,7 @@ Elle semble apparaître pour répondre à un besoin comptables et administratif 
 
 ## Tablette + Sceau : première référence de l'histoire
 
-Pendant la période Uruk (-3500 à -3100), **certaines tablettes d'écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les premières références de l'histoire de l'écriture.** En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d'argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.
+Pendant la période Uruk (-3500 à -3100), certaines tablettes d'écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les **premières références de l'histoire de l'écriture.** En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d'argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.
 
 Outre le marquage de la propriété, les sceaux sur les documents servent aussi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).
 
@@ -50,9 +50,11 @@ Outre le marquage de la propriété, les sceaux sur les documents servent aussi 
 
 De manière intéressante, il semble que ces sceaux soient aussi considérés comme des amulettes de protection magiques. En effet, c'est comme s'ils étendent le pouvoir de la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). ^DC118^
 
-## Les listes : premiers textes littéraires
+## Les listes : premiers textes avec référence à d'autres textes
 
 Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc.
+
+Une liste très ancienne le catalogue de Nibru de Ur III (N1)^[Q](https://www.wikidata.org/wiki/Q137969092)^ date de -2100 à -2000. Il s'agit d'une liste d'entrées qui représentent des noms, des oeuvres et des objets que le scribe enregistrait \[à [vérifier](https://etcsl.orinst.ox.ac.uk/section0/b011.htm)\]. Ce type de document, commun dans la tradition scribale, **pourrait être considéré comme le premier document de l'histoire qui mentionne un autre document**, voire plusieurs autres documents listés de manière ordonnée. Une sorte d'ancêtre des catalogue et ou des bases de données actuelles.
 
 Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les *Instructions de Shuruppak*^[Q](https://www.wikidata.org/wiki/Q3823132)^ sont une liste de sagesses, c'est-à-dire des conseils spirituels et moraux. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d'origines diverses et assemblés par des scribes. Ces derniers font débuter le texte par une référence nommée au chef de famille qui donne crédit au texte.
 
@@ -68,7 +70,7 @@ Les *Instructions de Shuruppak* aspirent à une dimension historique car nous av
 
 ### De l'oralité à la textualité
 
-La culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l'originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs *incipits*). L'identification des auteurs n'était pas spécialement recherchée. Cependant, pour donner un peu d'ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques[^2].^Sz^
+La culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La copie des documents est venue plus tard et progressivement. La copie était anonyme et elle primait sur l'originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs *incipits*). L'identification des auteurs n'était pas spécialement recherchée. Cependant, pour donner un peu d'ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques[^2].^Sz\ +\ FBR^
 
 [^2]: Un processus semblable pourrait avoir eu lieu dans la Chine ancienne ([Zhang](https://doi.org/10.1515/978150150513)).
 
@@ -78,13 +80,13 @@ Je n'ai pas trouvé de documents anciens qui citent explicitement une des oeuvre
 
 ### Naissance de l'auteur attribué
 
-Selon Van der Toorn, il y a trois types d'autorialité : l'autorialité honorifique, où l'auteur attribue le texte au commanditaire ou au mécenne de l'oeuvre; la pseudoepigraphie, où l'auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l'autorialité attribuée.
+Selon Van der Toorn^VdT^, il y a trois types d'autorialité : l'autorialité honorifique, où l'auteur attribue le texte au commanditaire ou au mécenne de l'oeuvre; la pseudoepigraphie, où l'auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l'autorialité attribuée.
 
-[Szilvia Sövegjártó](https://doi.org/10.52093/hara-202201-00027-000) suggère que l'autorialité a débuté sous la forme d'autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d'un auteur. Attribuer l'autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l'espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l'oeuvre et de son exécution. C'est seulement vers le premier millénaire avant J.-C. que l'idée d'attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques[^3]. L'attribution à un auteur (*attributed authorship*) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l'espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s'étend à la sphère privée.
+Szilvia Sövegjártó^[Sz](https://doi.org/10.52093/hara-202201-0)^ suggère que l'autorialité a débuté sous la forme d'autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d'un auteur. Attribuer l'autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l'espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l'oeuvre et de son exécution. C'est seulement vers le premier millénaire avant J.-C. que l'idée d'attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques[^3]. L'attribution à un auteur (*attributed authorship*) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l'espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s'étend à la sphère privée.
 
 [^3]: Dans *Uruk List of Kings and Sages*.
 
-[Steineck et Schwermann](https://doi.org/10.1163/9789004279421_002) discutent de la place de l'auteur, de sa construction, de son attribution. D'une manière plus générale, il semble que l'attribution à une personne savante de plus en plus proche de la production du texte soit associée à l'apparition de notion d'individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.
+Steineck et Schwermann^[SnS](https://doi.org/10.1163/9789004279421_002)^ discutent de la place de l'auteur, de sa construction, de son attribution. D'une manière plus générale, il semble que l'attribution à une personne savante de plus en plus proche de la production du texte soit associée à l'apparition de notion d'individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.
 
 ## L'épopée de Gilgamesh
 
@@ -105,7 +107,7 @@ Quelques lignes plus loin on retrouve cette phrase :
 
 > He carved on a stone stela all of his toils \[[Tablette 1](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm)\]
 
-Le [Code de Hammurabi](https://fr.wikipedia.org/wiki/Code_de_Hammurabi), un texte de loin gravé dnas la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d'être recopiée, invoquée, mentionnée ou citée. Une sorte d'étalon métrique pour le monde social.
+Le [Code de Hammurabi](https://fr.wikipedia.org/wiki/Code_de_Hammurabi), un texte de loi gravé dans la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d'être recopiée, invoquée, mentionnée ou citée. Une sorte d'étalon métrique pour le monde social.
 
 Ce passage souligne l'importance pour les Mésopotamiens de fixer un texte sur une pierre publique pour lui conférer non seulement valeur, pérennité et autorité mais aussi pour permettre que des informations futures puissent se baser sur elle.
 
@@ -127,7 +129,7 @@ Ce mécanisme littéraire puissant montre que le texte est capable de se référ
 
 ### Inclusion d'un récit plus ancien dans le récit actuel
 
-Parfois l'inclusion d'un récit antérieur est directe et explicite. Par exemple, la narration de l'épisode du Déluge ([Tablette XI](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm)) ) par Utnapishtim est un récit antérieur enchâssé au sein de *L'épopée de Gilgamesh*.
+Parfois l'inclusion d'un récit antérieur est directe et explicite. Par exemple, la narration de l'épisode du Déluge ([Tablette XI](https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm)) par Utnapishtim est un récit antérieur enchâssé au sein de *L'épopée de Gilgamesh*.
 
 Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d'autres cultures comme celle de Grèce antique par exemple.
 
@@ -137,7 +139,7 @@ L'ensemble de ces procédés de référence montre que *L'Épopée de Gilgamesh*
 
 À cet égard, elle peut être rapprochée des récits homériques qui évoquent des mythes sans les développer, ou encore de textes médiévaux faisant référence à la Bible ou aux légendes sans les expliciter entièrement.
 
-## Avant et ailleurs 
+## Avant et ailleurs
 
 Il est possible que des marquages aient précédés les sceaux sur les objets dans l'histoire de l'humanité. Par exemple, on peut considérer les scarifications et les tatous comme des marquages fait sur le corps et qui renvoient à un sens au-delà de l'aspect esthétique (rite de passage, d'appartenance, d'identité ou de statut social). En Egypte, on a retrouvé des statuettes portant des marques de scarifications datant de -5000^[Q](https://www.wikidata.org/wiki/Q113485243)^ et des tatous datant au moins de -3000 ^[Q](https://www.wikidata.org/wiki/Q43006)^.
 
@@ -151,15 +153,17 @@ Dans l'Amérique centrale pré-colombienne, les sceaux tampons et les sceaux à 
 
 ^Sz^ : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
 
-Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
+^SnS^Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
 
 ^H&S^ : Halton, Charles et Saana Svärd, *Women’s Writing of Ancient Mesopotamia : An Anthology of the Earliest Female Authors*, Cambridge et New York, Cambridge University Press, 2018. <https://doi.org/10.1017/9781107280328>
 
 ^VdM^ : Van De Mieroop, M. 2016: *Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.* Princeton – Oxford. <https://doi.org/10.1515/978140087411>
 
-Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>\
+Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>
 
-## Éléments Wikidata 
+^FBR^ : Foster BR. Authorship in Cuneiform Literature. In: Berensmeyer I, Buelens G, Demoor M, eds. *The Cambridge Handbook of Literary Authorship*. Cambridge University Press; 2019:13-26. <https://doi.org/10.1017/9781316717516.002>\
+
+## Éléments Wikidata
 
 ### Passerelles vers les sources
 
@@ -171,12 +175,12 @@ Dans le cadre de ce billet, de nombreux éléments Wikidata ont été créés ou
 
 -   Epic of Gilgamesh (Q8272); Decad (Q5248677);
 
-    -   Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki's Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342);
+    -   Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki's Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342);  Ur III catalogue from Nibru (N1) (Q137969092);
 
     -   Instructions of Shuruppak (Q3823132); The Farmer's Instructions (Q137438077);
 
     -   A balbale to Inana (Q137506645); Sumerian temple hymns (Q137506392); Hymn to Inana (Q137454369); The Exaltation of Inanna (Q105794259)
 
--    roller seal (sello) (Q137505110) ; Asian seal (Q3850202) + seal material (Q11409101)
+-   roller seal (sello) (Q137505110) ; Asian seal (Q3850202) + seal material (Q11409101)
 
--    scarification (Q570784); African scarification (Q113485243); tattooing (Q43006)
+-   scarification (Q570784); African scarification (Q113485243); tattooing (Q43006)

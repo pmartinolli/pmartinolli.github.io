@@ -9,14 +9,13 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed : https://pmartinolli.github.io/blog.xml</description>
-<generator>quarto-1.8.26</generator>
+<generator>quarto-1.6.39</generator>
 <lastBuildDate>Mon, 19 Jan 2026 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Indexer une oeuvre ayant une bibliographie annotée dans Wikidata</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/Annotated-Bibliography-Wikidata/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -79,7 +78,7 @@
 <section id="sparql" class="level4">
 <h4 class="anchored" data-anchor-id="sparql">SPARQL</h4>
 <p>Voici la requête pour afficher toutes les données :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"></span>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"></span>
 <span id="cb1-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -194,7 +193,7 @@ background-color: null;
 font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"[AUTO_LANGUAGE],en"</span>. }</span>
-<span id="cb1-23">}</span></code></pre></div></div>
+<span id="cb1-23">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3FusesLabel%20%3FNbOfRecords%20%3FAtPages%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20or%20a%20TTRPG%20supplement%0A%20%20VALUES%20%3FTTRPGset%20%7Bwd%3AQ1643932%20wd%3AQ71631512%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3FTTRPGset.%0A%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20bibliography%20or%20annotated%20bib.%20or%20inline%20ref.%20or%20marginalia%20or%20footnote...%0A%20%20%3Fitem%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ4769616%2C%20wd%3AQ1631107%2C%20wd%3AQ137842886%2C%20wd%3AQ1572441%2C%20wd%3AQ25424643%2C%20wd%3AQ1371849%2C%20wd%3AQ19220511%2C%20wd%3AQ137859315%2C%20wd%3AQ60586493%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P4876%20%28number%20of%20records%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP4876%20%3FNbOfRecords.%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20reference%20P304%20%28page%28s%29%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20prov%3AwasDerivedFrom%20%3Freference.%0A%20%20%20%20%3Freference%20pr%3AP304%20%3FAtPages.%0A%20%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D">Essayez-la</a></p>
 </section>
 </section>
@@ -229,7 +228,7 @@ font-style: inherit;">"[AUTO_LANGUAGE],en"</span>. }</span>
 </section>
 <section id="requête-pour-afficher-lindexation-des-épigraphes" class="level4">
 <h4 class="anchored" data-anchor-id="requête-pour-afficher-lindexation-des-épigraphes">Requête pour afficher l’indexation des épigraphes</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
 <span id="cb2-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -292,7 +291,7 @@ background-color: null;
 font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"[AUTO_LANGUAGE],en"</span>. }</span>
-<span id="cb2-15">}</span></code></pre></div></div>
+<span id="cb2-15">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fepigraph%20%3FepigraphLabel%20%3FusesLabel%20%3Fquantity%20WHERE%20%7B%0A%20%20%23%20items%20is%20a%20TTRPG%20%0A%20%20%3Fepigraph%20wdt%3AP31%20wd%3AQ1643932.%0A%20%20%23%20Find%20items%20where%20P2283%20%28uses%29%20is%20either%20Q669777%20%28epigraph%29%20or%20Q18011336%20%28fictional%20quotation%29%0A%20%20%3Fepigraph%20p%3AP2283%20%3Fstatement.%0A%20%20%3Fstatement%20ps%3AP2283%20%3Fuses.%0A%20%20FILTER%28%3Fuses%20IN%20%28wd%3AQ669777%2C%20wd%3AQ18011336%29%29%0A%20%20%0A%20%20%23%20Optional%3A%20Get%20qualifier%20P1114%20%28quantity%29%0A%20%20OPTIONAL%20%7B%20%3Fstatement%20pq%3AP1114%20%3Fquantity.%20%7D%0A%20%20%0A%20%20%23%20Get%20labels%20for%20display%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D">Essayez-la</a></p>
 <!-- Pour intégrer le post Bluesky, je suis allé dans le terminal du projet Quarto et j'ai lancé : 
 
@@ -320,7 +319,6 @@ source : https://quarto-social-embeds.sellorm.com/ -->
 
 
 
-
 <section id="retraction-watch" class="level2">
 <h2 class="anchored" data-anchor-id="retraction-watch">Retraction Watch</h2>
 <p><a href="https://retractionwatch.com/">Retraction Watch</a> une plateforme (blogue et base de données bibliographiques) crée par Ivan Oransky et Adam Marcus en 2010.</p>
@@ -343,7 +341,7 @@ source : https://quarto-social-embeds.sellorm.com/ -->
 </ul></li>
 </ul>
 <p>Copier-coller ce code dans le fichier <code>main.R</code> :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">setwd</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -395,7 +393,7 @@ font-style: inherit;">ignore.case =</span> <span class="cn" style="color: #8f590
 background-color: null;
 font-style: inherit;">TRUE</span></span>
 <span id="cb1-14">  ),</span>
-<span id="cb1-15">]</span></code></pre></div></div>
+<span id="cb1-15">]</span></code></pre></div>
 <p>Cliquer sur Run (ligne par ligne ou tout).</p>
 <p>Ce programme va charger les 68 000 enregistrements de la base et ne conserver que ceux dont la colonne Institution (des auteurs) contient les mots que vous avez demandé.</p>
 <p>Dans mon cas, il en reste 43. On peut le voir dans le menu Environment à droite (<em>43 obs. of 20 variables</em>).</p>
@@ -404,7 +402,7 @@ font-style: inherit;">TRUE</span></span>
 <h2 class="anchored" data-anchor-id="visualisations">Visualisations</h2>
 <section id="afficher-la-liste-de-tous-les-titres" class="level4">
 <h4 class="anchored" data-anchor-id="afficher-la-liste-de-tous-les-titres">Afficher la liste de tous les titres</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cat</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -418,11 +416,11 @@ font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"</span>))</span></code></pre></div></div>
+font-style: inherit;">"</span>))</span></code></pre></div>
 </section>
 <section id="graphe-de-la-date-de-publication-originale" class="level4">
 <h4 class="anchored" data-anchor-id="graphe-de-la-date-de-publication-originale">Graphe de la date de publication originale</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Convert "MM/DD/YYYY 0:00" → Date</span></span>
 <span id="cb3-2">df_local<span class="sc" style="color: #5E5E5E;
@@ -485,11 +483,11 @@ background-color: null;
 font-style: inherit;">las =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb3-14">)</span></code></pre></div></div>
+<span id="cb3-14">)</span></code></pre></div>
 </section>
 <section id="graphe-des-raisons-de-rétractations" class="level4">
 <h4 class="anchored" data-anchor-id="graphe-des-raisons-de-rétractations">Graphe des raisons de rétractations</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Compter les occurrences des raisons</span></span>
 <span id="cb4-2">reason_counts <span class="ot" style="color: #003B4F;
@@ -562,11 +560,11 @@ background-color: null;
 font-style: inherit;">cex.names =</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span></span>
-<span id="cb4-16">)</span></code></pre></div></div>
+<span id="cb4-16">)</span></code></pre></div>
 </section>
 <section id="graphe-des-auteurs" class="level4">
 <h4 class="anchored" data-anchor-id="graphe-des-auteurs">Graphe des auteurs</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"></span>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"></span>
 <span id="cb5-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extraire tous les auteurs, séparer par ";", nettoyer les espaces</span></span>
@@ -679,11 +677,11 @@ background-color: null;
 font-style: inherit;">xlab =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Nombre"</span></span>
-<span id="cb5-24">)</span></code></pre></div></div>
+<span id="cb5-24">)</span></code></pre></div>
 </section>
 <section id="graphe-des-revues" class="level4">
 <h4 class="anchored" data-anchor-id="graphe-des-revues">Graphe des revues</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Nettoyer les journaux</span></span>
 <span id="cb6-2">all_journals <span class="ot" style="color: #003B4F;
@@ -778,11 +776,11 @@ background-color: null;
 font-style: inherit;">xlab =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Nombre"</span></span>
-<span id="cb6-20">)</span></code></pre></div></div>
+<span id="cb6-20">)</span></code></pre></div>
 </section>
 <section id="graphe-des-pays-des-auteurs" class="level4">
 <h4 class="anchored" data-anchor-id="graphe-des-pays-des-auteurs">Graphe des pays des auteurs</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extraire tous les pays, séparer par ";", nettoyer les espaces</span></span>
 <span id="cb7-2">all_countries <span class="ot" style="color: #003B4F;
@@ -894,7 +892,7 @@ background-color: null;
 font-style: inherit;">xlab =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Nombre"</span></span>
-<span id="cb7-23">)</span></code></pre></div></div>
+<span id="cb7-23">)</span></code></pre></div>
 </section>
 <section id="script-au-complet" class="level4">
 <h4 class="anchored" data-anchor-id="script-au-complet">Script au complet</h4>
@@ -919,7 +917,6 @@ font-style: inherit;">"Nombre"</span></span>
 
 
 
-
 <p>Ce billet est fortement inspiré du billet « <a href="https://zotero.hypotheses.org/5302">Bonnes pratiques pour la création d’un style CSL</a> » de Frédérique Flamerie et Laure Mellifluo du blogue Zotero francophone.</p>
 <section id="traitement-de-base" class="level2">
 <h2 class="anchored" data-anchor-id="traitement-de-base">Traitement de base</h2>
@@ -935,7 +932,7 @@ font-style: inherit;">"Nombre"</span></span>
 <p>Après consultation du billet de Zotero francophone et après avoir demandé à Claude Ai « I want to change “edited by” in this CSL file by “sous la direction de” + joint le fichier CSL »</p>
 <p>Je rajoute une section &lt;locale&gt; après la section &lt;info&gt;</p>
 <p>Cette section devrait prendre le dessus sur tous les autres fichiers <em>locale</em> invoqués par ce style (ex: locale-fr-fr; locale-fr-ca; etc.).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1">  <span class="dt" style="color: #AD0000;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">&lt;</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1721,7 +1718,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">locale</span><span class="dt" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">&gt;</span></span></code></pre></div></div>
+font-style: inherit;">&gt;</span></span></code></pre></div>
 </section>
 <section id="changement-des-deux-points" class="level2">
 <h2 class="anchored" data-anchor-id="changement-des-deux-points">Changement des deux points « : »</h2>
@@ -1752,7 +1749,6 @@ font-style: inherit;">&gt;</span></span></code></pre></div></div>
 
 
 
-
 <section id="le-rôle-des-femmes-dans-la-culture-des-jeux-de-salon" class="level2">
 <h2 class="anchored" data-anchor-id="le-rôle-des-femmes-dans-la-culture-des-jeux-de-salon">Le rôle des femmes dans la culture des jeux de salon</h2>
 <p>Ces vacances de Noël, je suis tombé sur un excellent fil de discussion sur Blusky à propos de la place mal-reconnue des femmes dans les origines du jeu de rôle sur table.</p>
@@ -1776,7 +1772,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div></div>
 <li><p>Construire des requêtes prenant en compte tous les sous-classes d’un élément sont un tout petit peu plus complexes à rédiger mais surtout elles sont souvent plus gourmandes en ressources.</p></li>
 </ul></li>
 <li><p>Une requête SPARQL pour vérifier toutes les utilisations d’un élément (donc repérer les sous-classes) :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">SELECT</span> ?node ?property <span class="kw" style="color: #003B4F;
@@ -1784,7 +1780,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">WHERE</span> {?node ?property wd<span class="ch" style="color: #20794D;
 background-color: null;
-font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
+font-style: inherit;">:Q2144077</span> }</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fnode%20%3Fproperty%20WHERE%20%7B%3Fnode%20%3Fproperty%20wd%3AQ2144077%20%7D">Essayez-le</a></p></li>
 <li><p>Parfois, je rencontre un élément d’une classe et sa sous-classe ont une indexation déséquilibrée.</p>
 <ul>
@@ -1821,7 +1817,6 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2025/viens-voir-booleens/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -1909,11 +1904,10 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 
 
 
-
 <p>Yacine m’a posé une question intéressante : est-ce qu’un <em>Petit Mourre : Dictionnaire encyclopédique d’histoire</em> est un ouvrage pertinent ? Ce document de type tertiaire est volumineux et il a presque complètement disparu des étagères des bibliothèques universitaires. L’information qu’on y trouve est très synthétique et factuelle. Elle est complètement redondante avec ce que l’on peut trouver en ligne. On pense aux pages Wikipédia par exemple.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://archive.org/details/dictionnaireency0000mour_t2i3/page/4908/mode/2up"><img src="https://pmartinolli.github.io/blog/2025/faut-il-elaguer-le-petit-mourre/petit-mourre.png" class="img-fluid figure-img"></a></p>
+<p><a href="https://archive.org/details/dictionnaireency0000mour_t2i3/page/4908/mode/2up"><img src="https://pmartinolli.github.io/blog/2025/faut-il-elaguer-le-petit-mourre/petit-mourre.png" class="img-fluid figure-img" alt="Extrait du Petit Mourre, capture de l’aperçu de Internet Archive"></a></p>
 <figcaption>Extrait du Petit Mourre, capture de l’aperçu de Internet Archive</figcaption>
 </figure>
 </div>
@@ -1940,9 +1934,8 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 
 
 
-
 <p><span class="smallcaps"><strong>Billet en cours d’écriture</strong></span></p>
-<p>Par où commencer quand on veut explorer les pratiques de citation ? On m’a toujours dit que le plus ancien texte littéraire était <em>L’épopée de Gilgamesh</em>, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l’excellente mise en contexte présente dans l’article de <a href="https://doi.org/10.52093/hara-202201-0">Szilvia Sövegjártó</a> (marqué <sup>Sz</sup>). Nous allons découvrir non seulement les premières traces de références dans :</p>
+<p>Par où commencer quand on veut explorer les pratiques de citation ? On m’a toujours dit que le plus ancien texte littéraire était <em>L’épopée de Gilgamesh</em>, alors pourquoi commencer par là ? Pour rédiger ce billet, je me suis basé sur l’excellente mise en contexte présente dans l’article de Szilvia Sövegjártó (marqué <sup><a href="https://doi.org/10.52093/hara-202201-0">Sz</a></sup>). Nous allons découvrir non seulement les premières traces de références dans :</p>
 <ul>
 <li><p>les sceaux, première marque et renvoi extra-textuel ;</p></li>
 <li><p>la naissance de l’auteur, la première référence d’un texte ;</p></li>
@@ -1968,16 +1961,17 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 </section>
 <section id="tablette-sceau-première-référence-de-lhistoire" class="level2">
 <h2 class="anchored" data-anchor-id="tablette-sceau-première-référence-de-lhistoire">Tablette + Sceau : première référence de l’histoire</h2>
-<p>Pendant la période Uruk (-3500 à -3100), <strong>certaines tablettes d’écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les premières références de l’histoire de l’écriture.</strong> En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d’argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.</p>
+<p>Pendant la période Uruk (-3500 à -3100), certaines tablettes d’écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les <strong>premières références de l’histoire de l’écriture.</strong> En effet, en combinant ces deux technologies, nous avons désormais une information riche encodée sur une tablette d’argile, associée avec une autre information qui fait une référence à une entité nommée en dehors du document.</p>
 <p>Outre le marquage de la propriété, les sceaux sur les documents servent aussi de signatures sur les contrats, les traités ou les lettres (très rare dans Early Dynastic et Akkadian times, plus courant en Ur III times).</p>
 <blockquote class="blockquote">
 <p>At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents. <sup>DC113</sup></p>
 </blockquote>
 <p>De manière intéressante, il semble que ces sceaux soient aussi considérés comme des amulettes de protection magiques. En effet, c’est comme s’ils étendent le pouvoir de la protection de la propriété à la protection de la personne (contre les fausses couches, la magie noire, le démon de la maladie, etc.). <sup>DC118</sup></p>
 </section>
-<section id="les-listes-premiers-textes-littéraires" class="level2">
-<h2 class="anchored" data-anchor-id="les-listes-premiers-textes-littéraires">Les listes : premiers textes littéraires</h2>
+<section id="les-listes-premiers-textes-avec-référence-à-dautres-textes" class="level2">
+<h2 class="anchored" data-anchor-id="les-listes-premiers-textes-avec-référence-à-dautres-textes">Les listes : premiers textes avec référence à d’autres textes</h2>
 <p>Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d’animaux, etc.</p>
+<p>Une liste très ancienne le catalogue de Nibru de Ur III (N1)<sup><a href="https://www.wikidata.org/wiki/Q137969092">Q</a></sup> date de -2100 à -2000. Il s’agit d’une liste d’entrées qui représentent des noms, des oeuvres et des objets que le scribe enregistrait [à <a href="https://etcsl.orinst.ox.ac.uk/section0/b011.htm">vérifier</a>]. Ce type de document, commun dans la tradition scribale, <strong>pourrait être considéré comme le premier document de l’histoire qui mentionne un autre document</strong>, voire plusieurs autres documents listés de manière ordonnée. Une sorte d’ancêtre des catalogue et ou des bases de données actuelles.</p>
 <p>Certaines listes commencent à devenir sémantiquement plus complexes. Par exemple, les <em>Instructions de Shuruppak</em><sup><a href="https://www.wikidata.org/wiki/Q3823132">Q</a></sup> sont une liste de sagesses, c’est-à-dire des conseils spirituels et moraux. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes courts d’origines diverses et assemblés par des scribes. Ces derniers font débuter le texte par une référence nommée au chef de famille qui donne crédit au texte.</p>
 <blockquote class="blockquote">
 <p>In those days, in those far remote days, in those nights, in those faraway nights, in those years, in those far remote years, at that time the wise one who knew how to speak in elaborate words lived in the Land;&nbsp;Curuppag, the wise one, who knew how to speak with elaborate words lived in the Land.&nbsp;Curuppag&nbsp;gave instructions to his son;&nbsp;Curuppag, the son of&nbsp;Ubara-Tutu&nbsp;gave instructions to his son&nbsp;Zi-ud-sura: My son, let me give you instructions: you should pay attention!&nbsp;Zi-ud-sura, let me speak a word to you: you should pay attention! Do not neglect my instructions! Do not transgress the words I speak! The instructions of an old man are precious; you should comply with them! (<a href="https://etcsl.orinst.ox.ac.uk/section5/tr561.htm">source</a>)</p>
@@ -1987,15 +1981,15 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 <p>Les <em>Instructions de Shuruppak</em> aspirent à une dimension historique car nous avons le nom de l’auteur celui de son père et celui de son fils. De plus, cette figure de style se rapproche de ce que l’on trouve dans les listes des rois. Par la suite, d’autres listes d’instructions se sont développées. <strong>Selon les intentions éditoriales des scribes, elles étaient attribuées à des fermiers, à des dirigeants, à des figures légendaires, etc.</strong> Par exemple, lorsqu’elles étaient attribuées à un fermier (par exemple <em>Farmer’s Instructions</em><sup><a href="https://www.wikidata.org/wiki/Q137438077">Q</a></sup>), c’était dans le but d’exprimer une sagesse populaire commune. Tandis que si elles étaient attribuées à un dieu alors les proverbes avaient un rôle normatif dans la société (par exemple <em>Instructions of Ur-Ninurta</em>).<sup>Sz</sup></p>
 <section id="de-loralité-à-la-textualité" class="level3">
 <h3 class="anchored" data-anchor-id="de-loralité-à-la-textualité">De l’oralité à la textualité</h3>
-<p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie anonyme des documents est venue plus tard et progressivement. La copie primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<sup>2</sup>.<sup>Sz</sup></p>
+<p>La culture scribale des sociétés sumériennes et akkadiennes se basait d’abord sur la transmission orale du savoir. La copie des documents est venue plus tard et progressivement. La copie était anonyme et elle primait sur l’originalité. Les documents étaient identifiés par leur premiers paragraphes (leurs <em>incipits</em>). L’identification des auteurs n’était pas spécialement recherchée. Cependant, pour donner un peu d’ordre au chaos des textes, les scribes ont probablement donné des attributions occasionnelles à des figures légendaires ou historiques<sup>2</sup>.<sup>Sz&nbsp;+&nbsp;FBR</sup></p>
 <p>Même dans la société babylonienne ancienne, l’autorialité n’était pas un enjeu. Probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l’original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d’auteurs uniques et originaux ne faisaient pas trop de sens [ma trad.]» <sup>BL</sup>. Pour cette période, la prêtresse et princesse Enheduana<sup><a href="https://www.wikidata.org/wiki/Q232505">Q</a></sup> fait exception car plusieurs textes sumériens (ex: <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire<sup>H&amp;S</sup>.</p>
 <p>Je n’ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le <em>Kesh Temple Hymn</em> sera intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad<sup><a href="https://www.wikidata.org/wiki/Q5248677">Q</a></sup></em>. <strong>On peut énoncé ainsi qu’une forme préliminaire de citation ou de mention ait été l’incorporation dans un canon officiel de textes.</strong></p>
 </section>
 <section id="naissance-de-lauteur-attribué" class="level3">
 <h3 class="anchored" data-anchor-id="naissance-de-lauteur-attribué">Naissance de l’auteur attribué</h3>
-<p>Selon Van der Toorn, il y a trois types d’autorialité : l’autorialité honorifique, où l’auteur attribue le texte au commanditaire ou au mécenne de l’oeuvre; la pseudoepigraphie, où l’auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l’autorialité attribuée.</p>
-<p><a href="https://doi.org/10.52093/hara-202201-00027-000">Szilvia Sövegjártó</a> suggère que l’autorialité a débuté sous la forme d’autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d’un auteur. Attribuer l’autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l’espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l’oeuvre et de son exécution. C’est seulement vers le premier millénaire avant J.-C. que l’idée d’attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques<sup>3</sup>. L’attribution à un auteur (<em>attributed authorship</em>) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l’espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s’étend à la sphère privée.</p>
-<p><a href="https://doi.org/10.1163/9789004279421_002">Steineck et Schwermann</a> discutent de la place de l’auteur, de sa construction, de son attribution. D’une manière plus générale, il semble que l’attribution à une personne savante de plus en plus proche de la production du texte soit associée à l’apparition de notion d’individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.</p>
+<p>Selon Van der Toorn<sup>VdT</sup>, il y a trois types d’autorialité : l’autorialité honorifique, où l’auteur attribue le texte au commanditaire ou au mécenne de l’oeuvre; la pseudoepigraphie, où l’auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l’autorialité attribuée.</p>
+<p>Szilvia Sövegjártó<sup><a href="https://doi.org/10.52093/hara-202201-0">Sz</a></sup> suggère que l’autorialité a débuté sous la forme d’autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d’un auteur. Attribuer l’autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l’espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l’oeuvre et de son exécution. C’est seulement vers le premier millénaire avant J.-C. que l’idée d’attribution des textes littéraires doit être faite aux savants et non aux dirigeants ou aux personnages historiques<sup>3</sup>. L’attribution à un auteur (<em>attributed authorship</em>) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l’espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s’étend à la sphère privée.</p>
+<p>Steineck et Schwermann<sup><a href="https://doi.org/10.1163/9789004279421_002">SnS</a></sup> discutent de la place de l’auteur, de sa construction, de son attribution. D’une manière plus générale, il semble que l’attribution à une personne savante de plus en plus proche de la production du texte soit associée à l’apparition de notion d’individualité dans la société. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.</p>
 </section>
 </section>
 <section id="lépopée-de-gilgamesh" class="level2">
@@ -2014,7 +2008,7 @@ he brought information of (the time) before the Flood. […]</p>
 <blockquote class="blockquote">
 <p>He carved on a stone stela all of his toils [<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab1.htm">Tablette 1</a>]</p>
 </blockquote>
-<p>Le <a href="https://fr.wikipedia.org/wiki/Code_de_Hammurabi">Code de Hammurabi</a>, un texte de loin gravé dnas la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d’être recopiée, invoquée, mentionnée ou citée. Une sorte d’étalon métrique pour le monde social.</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Code_de_Hammurabi">Code de Hammurabi</a>, un texte de loi gravé dans la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d’être recopiée, invoquée, mentionnée ou citée. Une sorte d’étalon métrique pour le monde social.</p>
 <p>Ce passage souligne l’importance pour les Mésopotamiens de fixer un texte sur une pierre publique pour lui conférer non seulement valeur, pérennité et autorité mais aussi pour permettre que des informations futures puissent se baser sur elle.</p>
 </section>
 <section id="mise-en-abîme-de-laudience" class="level3">
@@ -2035,7 +2029,7 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 </section>
 <section id="inclusion-dun-récit-plus-ancien-dans-le-récit-actuel" class="level3">
 <h3 class="anchored" data-anchor-id="inclusion-dun-récit-plus-ancien-dans-le-récit-actuel">Inclusion d’un récit plus ancien dans le récit actuel</h3>
-<p>Parfois l’inclusion d’un récit antérieur est directe et explicite. Par exemple, la narration de l’épisode du Déluge (<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm">Tablette XI</a>) ) par Utnapishtim est un récit antérieur enchâssé au sein de <em>L’épopée de Gilgamesh</em>.</p>
+<p>Parfois l’inclusion d’un récit antérieur est directe et explicite. Par exemple, la narration de l’épisode du Déluge (<a href="https://www.ancienttexts.org/library/mesopotamian/gilgamesh/tab11.htm">Tablette XI</a>) par Utnapishtim est un récit antérieur enchâssé au sein de <em>L’épopée de Gilgamesh</em>.</p>
 <p>Le récit du Déluge a une fonction importante car il référence et explique une catastrophe fondatrice du passé. De plus, il est une mise en abîme littéraire en invitant à une réflexion sur la survie. Si l’homme ne peut être immortel, son histoire racontée oralement ou fixée dans un texte, elle, peut l’être. On retrouve cette sublimation de la peur de la mort par le récit glorieux dans d’autres cultures comme celle de Grèce antique par exemple.</p>
 </section>
 <section id="un-récit-synthétique" class="level3">
@@ -2054,10 +2048,11 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 <p><sup>DC</sup> : Collon, Dominiques. <em>First impressions : cylinder seals in the ancient Near East 1988</em> . https://archive.org/details/firstimpressions0000coll/page/6/mode/2up</p>
 <p><sup>BL</sup> : Lion, Brigitte,&nbsp;’ Literacy and Gender’,&nbsp;in Karen Radner, and Eleanor Robson (eds),&nbsp;<em>The Oxford Handbook of Cuneiform Culture</em>. 2011.&nbsp;Oxford Academic.&nbsp;<a href="https://doi.org/10.1093/oxfordhb/9780199557301.013.0005" class="uri">https://doi.org/10.1093/oxfordhb/9780199557301.013.0005</a>.</p>
 <p><sup>Sz</sup> : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. <em>Hungarian Assyriological Review</em> 3: 25–47. DOI: <a href="https://doi.org/10.52093/hara-202201-0" class="uri">https://doi.org/10.52093/hara-202201-0</a>. Assyriologie, libre accès, facile à lire.</p>
-<p>Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): <em>That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century</em>. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <a href="https://doi.org/10.1163/9789004279421_002" class="uri">https://doi.org/10.1163/9789004279421_002</a>. Littérature comparée, libre accès, facile à lire.</p>
+<p><sup>SnS</sup>Steineck, Raji C. – Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): <em>That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century</em>. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <a href="https://doi.org/10.1163/9789004279421_002" class="uri">https://doi.org/10.1163/9789004279421_002</a>. Littérature comparée, libre accès, facile à lire.</p>
 <p><sup>H&amp;S</sup> : Halton, Charles et Saana Svärd, <em>Women’s Writing of Ancient Mesopotamia&nbsp;: An Anthology of the Earliest Female Authors</em>, Cambridge et New York, Cambridge University Press, 2018. <a href="https://doi.org/10.1017/9781107280328" class="uri">https://doi.org/10.1017/9781107280328</a></p>
 <p><sup>VdM</sup> : Van De Mieroop, M. 2016: <em>Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.</em> Princeton – Oxford. <a href="https://doi.org/10.1515/978140087411" class="uri">https://doi.org/10.1515/978140087411</a></p>
-<p>Zhang, H. 2018: <em>Authorship and Text-making in Early China</em>. (Library of Sinology 2) Boston – Berlin. <a href="https://doi.org/10.1515/978150150513" class="uri">https://doi.org/10.1515/978150150513</a><br>
+<p>Zhang, H. 2018: <em>Authorship and Text-making in Early China</em>. (Library of Sinology 2) Boston – Berlin. <a href="https://doi.org/10.1515/978150150513" class="uri">https://doi.org/10.1515/978150150513</a></p>
+<p><sup>FBR</sup> : Foster BR. Authorship in Cuneiform Literature. In: Berensmeyer I, Buelens G, Demoor M, eds.&nbsp;<em>The Cambridge Handbook of Literary Authorship</em>. Cambridge University Press; 2019:13-26. <a href="https://doi.org/10.1017/9781316717516.002" class="uri">https://doi.org/10.1017/9781316717516.002</a><br>
 </p>
 </section>
 <section id="éléments-wikidata" class="level2">
@@ -2072,7 +2067,7 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 <ul>
 <li><p>Epic of Gilgamesh (Q8272); Decad (Q5248677);</p>
 <ul>
-<li><p>Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki’s Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342);</p></li>
+<li><p>Kesh temple hymn (Q5195547) ; Song of the hoe (Q7561191) ; Hymn to Enlil (Q5956769) ; Hymn to Shulgi (Q137454320) ; Lipit-Estar A (Q137454335) ; Enki’s Journey to Nippur (Q137454373); Inana and Ebih (Q137454380); Nungal A (Q137454404); Gilgamesh and Huwawa (Q86724342); &nbsp;Ur III catalogue from Nibru (N1)&nbsp;(Q137969092);</p></li>
 <li><p>Instructions of Shuruppak (Q3823132); The Farmer’s Instructions (Q137438077);</p></li>
 <li><p>A balbale to Inana (Q137506645); Sumerian temple hymns (Q137506392); Hymn to Inana (Q137454369); The Exaltation of Inanna (Q105794259)</p></li>
 </ul></li>
@@ -2107,22 +2102,15 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 
 
 
-
 <section id="internet" class="level3">
 
 <ul>
 <li><a href="https://www.firefox.com/">Firefox</a>
 <ul>
 <li>Synchroniser Firefox avec mon compte</li>
-<li>Supprimer les fonctions IA de FF : Disable the AI chatbot: Go to Settings and select Firefox Labs. Deselect the AI chatbot box (and everything else if there is).</li>
-<li>Disable smart tab features: Open a new tab and type <code>about:config</code> in the address bar.
-<ul>
-<li>Search for <code>browser.tabs.groups.smart.enabled</code>. Double-click the entry to change its value to <code>false</code>.</li>
-<li>Search for and set the following preferences to <code>false</code> : <code>browser.ml.enable</code> &amp; <code>browser.ml.chat.enabled</code></li>
-</ul></li>
 <li>Installer les extensions suivantes :
 <ul>
-<li>uBlock Origin : pour bloquer la publicité</li>
+<li>uBlock Origin : pour bloquer la publicité + Supprimer les<a href="https://github.com/Stevoisiak/Stevos-GenAI-Blocklist/">fonctions IA</a> de FF</li>
 <li>Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: besoin de se connecter une fois à Internet Archive avec son compte.</li>
 <li>Zotero Connector (voir plus bas)</li>
 </ul></li>
@@ -2154,6 +2142,7 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 <li>Edit &gt; Show Paint dialog</li>
 </ul></li>
 <li><a href="https://www.cdisplayex.com/">CDisplayEx</a> pour lire des BDs</li>
+<li><a href="https://www.videolan.org/vlc/">VLC</a> pour lire les vidéo et audio</li>
 <li><a href="https://filezilla-project.org/">FileZilla</a> pour transférer des fichiers par FTP</li>
 <li><a href="https://www.rssowl.org/">RSSOwl</a> pour collectionner et lire des alertes RSS</li>
 <li><a href="https://www.7-zip.org/">7-Zip</a> pour faire des fichiers compressés</li>
@@ -2245,7 +2234,6 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 
 
 
-
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>J’ai trouvé un filon inexploité dans le <em>Wikidata gnoming</em>, une activité consistant à mettre son bonnet et descendre dans les données avec sa petite pioche pour y miner des informations. Ce filon est la propriété <em>language</em> (P407) manquante dans beaucoup de <em>scholarly articles</em> qui ont été versés à la va-vite. Selon moi, ces données mal-versées sont une forme de vandalisme. En effet, elles encombrent Wikidata de données peu cohérentes, peu pertinentes et surtout de mauvaise qualité. Les contributeurs Wikidata et la fondation Wikimédia ont exprimé leur consternation aux <a href="https://www.wikidata.org/wiki/Wikidata_talk:Requests_for_comment/Mass-editing_policy">données versées en masse</a>. La conséquence la plus déplorable a été la division du contenu de Wikidata en <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split">deux graphes</a> pour séparer les <em>scholarly articles</em> (qui constituent la majorité des ajouts en masse) du reste de Wikidata.</p>
@@ -2266,7 +2254,7 @@ how Gilgamesh went through every hardship. [<a href="https://www.ancienttexts.or
 <section id="repérer-les-p407-manquants" class="level3">
 <h3 class="anchored" data-anchor-id="repérer-les-p407-manquants">Repérer les P407 manquants</h3>
 <p>Je lance une requête SPARQL pour repérer tous les <em>scholarly articles</em> qui n’ont pas de <em>language</em> (P407). La requête est faite auprès de Qlever car c’est trop long avec service de Wikidata (et donc ça échoue car ça dépasse 1 minute).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1">PREFIX wikibase: <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1">PREFIX wikibase: <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span>http:<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2358,7 +2346,7 @@ font-weight: bold;
 font-style: inherit;">EXISTS</span> { ?item wdt<span class="ch" style="color: #20794D;
 background-color: null;
 font-style: inherit;">:P407</span> ?language. }.</span>
-<span id="cb1-13">}</span></code></pre></div></div>
+<span id="cb1-13">}</span></code></pre></div>
 <p><a href="https://qlever.dev/wikidata/z2V4IN">Try it</a></p>
 <p><em>Download</em> &gt; <em>Download result as CSV</em> : <code>input.csv</code></p>
 <p>Cela me produit une liste au format CSV qui contient deux colonnes :</p>
@@ -2366,16 +2354,16 @@ font-style: inherit;">:P407</span> ?language. }.</span>
 <li>Une colonne QID de l’article</li>
 <li>Une colonne avec le DOI de l’article</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb2-1">qid,doi</span>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb2-1">qid,doi</span>
 <span id="cb2-2">Q132142173,10.1086/1000006</span>
-<span id="cb2-3">Q113847548,10.1086/100002</span></code></pre></div></div>
+<span id="cb2-3">Q113847548,10.1086/100002</span></code></pre></div>
 <p>Ce fichier peut peser 150 MB ou plus.</p>
 </section>
 </section>
 <section id="récupérer-la-langue-dans-crossref" class="level2">
 <h2 class="anchored" data-anchor-id="récupérer-la-langue-dans-crossref">Récupérer la langue dans CrossRef</h2>
 <p>Je lance le script Python ci-dessous. Ce script nommé <code>QueryCrossrefAPI_withCSVofQIDnDOI_forLanguage.py</code> (sic) est placé dans le même dossier que le fichier <code>input.csv</code>. Grâce à l’API de Crossref, il va chercher le fichier JSON de l’article, correspondant au DOI de l’article. Ensuite, il extrait seulement la valeur (<em>value</em>) de la clé (<em>key</em>) <code>message.language</code>. Cette API de CrossRef est ouverte à tous alors pour ne pas la surcharger de demande, il est une bonne pratique d’ajouter un <code>time.sleep(0.05)</code> pour espacer les demandes.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> csv</span>
 <span id="cb3-2"><span class="im" style="color: #00769E;
@@ -2684,23 +2672,23 @@ font-style: inherit;">"</span>)</span>
 background-color: null;
 font-style: inherit;">"input.csv"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></div>
+font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div>
 <p>Cela me produit un fichier <code>output_languages.csv</code>, placé lui aussi dans le même dossier que les autres fichiers.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb4-1">qid,language</span>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb4-1">qid,language</span>
 <span id="cb4-2">Q59230317,en</span>
 <span id="cb4-3">Q59230331,en</span>
 <span id="cb4-4">Q59230333,en</span>
-<span id="cb4-5">Q60206758,en</span></code></pre></div></div>
+<span id="cb4-5">Q60206758,en</span></code></pre></div>
 </section>
 <section id="transformer-le-code-de-langue-en-qid" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-le-code-de-langue-en-qid">Transformer le code de langue en QID</h2>
 <p>Dans cette étape, je transforme les codes de langue <code>en</code>, <code>fr</code>, <code>es</code>, etc. dans leurs identifiants Wikidata correspondants. Par exemple, <code>en</code> devient Q1860 pour <em>English</em>. Pour cela, j’utilise OpenRefine et une méthode nommée «<a href="https://doi.org/10.46430/phfr0038">processus de réconciliation</a>».</p>
 <p>Je réconcilie la colonne <code>language</code> avec la valeur <code>modern language (Q1288568)</code>. Je créé une nouvelle colonne basée sur les valeurs réconciliées que je nomme <code>P407</code>. Puis, une fois terminé, j’exporte seulement les colonnes <code>qid</code> et <code>P407</code> au format CSV.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1">qid,P407</span>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1">qid,P407</span>
 <span id="cb5-2">Q115754644,Q1860</span>
 <span id="cb5-3">Q98205420,Q1860</span>
 <span id="cb5-4">Q91441407,Q1860</span>
-<span id="cb5-5">Q91287237,Q1860</span></code></pre></div></div>
+<span id="cb5-5">Q91287237,Q1860</span></code></pre></div>
 <p>Astuces : ne pas dépasser 1,5 million de lignes car OpenRefine commence à souffrir. Ne pas hésiter à supprimer les cellules vides de la colonne <code>language</code>, voire supprimer (ie. <em>Filter</em>) les cellules contenant le terme <code>error</code> or <code>http</code>.</p>
 </section>
 <section id="verser-dans-wikidata" class="level2">
@@ -2714,11 +2702,11 @@ font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></
 <li>Ne rien activer dans les boutons du dessous</li>
 <li><em>Enter your command here…</em> : copier-coller ceci (courant sur 150 000 lignes ou moins)</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb6-1">qid,P407</span>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb6-1">qid,P407</span>
 <span id="cb6-2">Q115754644,Q1860</span>
 <span id="cb6-3">Q98205420,Q1860</span>
 <span id="cb6-4">Q91441407,Q1860</span>
-<span id="cb6-5">Q91287237,Q1860</span></code></pre></div></div>
+<span id="cb6-5">Q91287237,Q1860</span></code></pre></div>
 <ul>
 <li>Cliquer sur <em>Create</em>.</li>
 <li>Attendre 10 minutes environ. Puis cliquer sur <em>Run Batch</em>.</li>
@@ -2748,7 +2736,6 @@ font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2025/zotero-actions-tags-multiremplacement/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -2869,7 +2856,6 @@ font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></
 
 
 
-
 <p>Historiquement, les pratiques de catalogage et de traitement documentaire d’oeuvres artistiques ont toujours été très réticentes à utiliser une indexation thématique pour interpréter et ajouter des mots-clés décrivant le sujet principal ou les sujets secondaires représentés. Par exemple, elles sont exclues de l’<a href="https://www.bnf.fr/fr/indexation-sujet-les-referentiels-utilises-par-la-bnf">indexation analytique</a> de la BNF :</p>
 <blockquote class="blockquote">
 <p>« L’indexation analytique par matière s’applique aux seules œuvres documentaires. En sont généralement exclus les œuvres littéraires et les textes classiques, philosophiques ou religieux. Cependant, dans les cas particuliers de fonds spécialisés de telles œuvres pourront être indexées. » (norme AFNOR Z 44-070).</p>
@@ -2957,7 +2943,7 @@ font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></
 <section id="utilisation-de-ces-propriétés-dans-wikidata" class="level4">
 <h4 class="anchored" data-anchor-id="utilisation-de-ces-propriétés-dans-wikidata">Utilisation de ces propriétés dans Wikidata</h4>
 <p><a href="https://query.wikidata.org/#SELECT%20DISTINCT%0A%20%20%28COUNT%28DISTINCT%20%3Fsong%29%20AS%20%3FtotalSongs%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP921%29%20AS%20%3FsongsWithP921%29%0A%20%20%28COUNT%28DISTINCT%20%3FsongWithP136%29%20AS%20%3FsongWithP136%29%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P921%20%28main%20subject%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A1269%20%3Fsubject%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP921%29%0A%20%20%7D%0A%20%20%0A%20%20%23%20Optional%3A%20check%20if%20song%20has%20P136%20%28genre%29%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fsong%20wdt%3A180%20%3Fgenre%20.%0A%20%20%20%20BIND%28%3Fsong%20AS%20%3FsongWithP136%29%0A%20%20%7D%0A%7D">Compter</a> combien est-ce qu’il y a de chansons dans Wikidata et combien de ces chansons possèdent au moins une propriété thématique.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"># <span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"># <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Count</span> total songs <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -3071,7 +3057,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">AS</span> ?songWithP136)</span>
 <span id="cb1-25">  }</span>
-<span id="cb1-26">}</span></code></pre></div></div>
+<span id="cb1-26">}</span></code></pre></div>
 <ul>
 <li>Résultats du 7 octobre 2025: Nombre de chansons au total = 214 538
 <ul>
@@ -3084,7 +3070,7 @@ font-style: inherit;">AS</span> ?songWithP136)</span>
 </section>
 <section id="lister-tous-les-thèmes-de-chansons" class="level4">
 <h4 class="anchored" data-anchor-id="lister-tous-les-thèmes-de-chansons">Lister tous les thèmes de chansons</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"># <span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"># <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">List</span> <span class="kw" style="color: #003B4F;
@@ -3153,7 +3139,7 @@ background-color: null;
 font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
-<span id="cb2-13">}</span></code></pre></div></div>
+<span id="cb2-13">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#%23%20List%20all%20the%20topics%20of%20songs%0ASELECT%20DISTINCT%20%3Fsong%20%3FsongLabel%20%3Fsubject%20%3FsubjectLabel%0AWHERE%20%7B%0A%20%20VALUES%20%3FsongType%20%7Bwd%3AQ7366%20%20%20%20%20%20%20%23%20song%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ105543609%20%20%23%20musical%20work%2Fcomposition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ207628%20%20%20%20%20%23%20composed%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2188189%20%20%20%20%23%20musical%20work%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ7302866%20%20%20%20%23%20audio%20track%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D.%0A%20%20%3Fsong%20wdt%3AP31%20%3FsongType.%0A%20%20%3Fsong%20wdt%3AP921%20%3Fsubject.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A">try it</a></p>
 <p>Il y en a 2395 à ce jour.</p>
 </section>
@@ -3315,7 +3301,6 @@ font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
 
 
 
-
 <p>Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.</p>
 <p>Dans les prochains jours, 3 articles vont être publiés sur le sujet :</p>
 <ul>
@@ -3353,7 +3338,6 @@ font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
 
 
 
-
 <section id="baudolino-invente-des-livres-que-personne-ne-trouve" class="level2">
 <h2 class="anchored" data-anchor-id="baudolino-invente-des-livres-que-personne-ne-trouve">Baudolino invente des livres que personne ne trouve</h2>
 <p>En lisant <a href="https://fr.wikipedia.org/wiki/Baudolino"><em>Baudolino</em></a> de Umberto Eco, je suis tombé sur ce passage que je trouve le plus drôle du livre.</p>
@@ -3375,7 +3359,7 @@ font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
 <h2 class="anchored" data-anchor-id="petite-revue-de-données-wikimédienne">Petite revue de données Wikimédienne</h2>
 <p>En parcourant la <a href="https://en.wikipedia.org/wiki/Imaginary_book">liste Wikipédia</a> des livres et de collections de livres imaginaires, je remarque que Rabelais est absent, alors qu’il semble être le premier (ou un des premiers) à avoir créé une liste de livres imaginaires. De plus, il n’y a pas de traduction française de la page (à faire). La page sur la<a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27abbaye_de_Saint-Victor">librairie de Saint-Victor</a> n’existe qu’en français. Il existe une page en anglais, français, russe et japonais des livres du <a href="https://en.wikipedia.org/wiki/List_of_Cthulhu_Mythos_books">Mythe de Cthulhu</a>.</p>
 <p>Quant à Wikidata, elle manque aussi de plusieurs éléments.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">SELECT</span> ?livre_fictionnel ?livre_fictionnelLabel <span class="kw" style="color: #003B4F;
@@ -3396,7 +3380,7 @@ background-color: null;
 font-style: inherit;">:P31</span> wd<span class="ch" style="color: #20794D;
 background-color: null;
 font-style: inherit;">:Q74574</span>.</span>
-<span id="cb1-4">}</span></code></pre></div></div>
+<span id="cb1-4">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Flivre_fictionnel%20%3Flivre_fictionnelLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%20%20%3Flivre_fictionnel%20wdt%3AP31%20wd%3AQ74574.%0A%7D%0A">try it</a>. Il y en avait 100 en octobre 2025.</p>
 <section id="livres-imaginaires-potentiels" class="level3">
 <h3 class="anchored" data-anchor-id="livres-imaginaires-potentiels">Livres imaginaires potentiels</h3>

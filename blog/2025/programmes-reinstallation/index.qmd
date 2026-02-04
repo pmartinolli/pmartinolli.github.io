@@ -11,12 +11,8 @@ description: "Listes de tous les programmes à réinstaller dans le cas d'un pas
 
 -   [Firefox](https://www.firefox.com/)
     -   Synchroniser Firefox avec mon compte
-    -   Supprimer les fonctions IA de FF : Disable the AI chatbot: Go to Settings and select Firefox Labs. Deselect the AI chatbot box (and everything else if there is).
-    -   Disable smart tab features: Open a new tab and type `about:config` in the address bar.
-        -   Search for `browser.tabs.groups.smart.enabled`. Double-click the entry to change its value to `false`.
-        -   Search for and set the following preferences to `false` : `browser.ml.enable` & `browser.ml.chat.enabled`
     -   Installer les extensions suivantes :
-        -   uBlock Origin : pour bloquer la publicité
+        -   uBlock Origin : pour bloquer la publicité + Supprimer les[fonctions IA](https://github.com/Stevoisiak/Stevos-GenAI-Blocklist/) de FF
         -   Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: besoin de se connecter une fois à Internet Archive avec son compte.
         -   Zotero Connector (voir plus bas)
 -   [Chrome](https://play.google.com)
@@ -38,6 +34,7 @@ description: "Listes de tous les programmes à réinstaller dans le cas d'un pas
     -   OCR avec Tesseract
     -   Edit \> Show Paint dialog
 -   [CDisplayEx](https://www.cdisplayex.com/) pour lire des BDs
+-   [VLC](https://www.videolan.org/vlc/) pour lire les vidéo et audio
 -   [FileZilla](https://filezilla-project.org/) pour transférer des fichiers par FTP
 -   [RSSOwl](https://www.rssowl.org/) pour collectionner et lire des alertes RSS
 -   [7-Zip](https://www.7-zip.org/) pour faire des fichiers compressés
@@ -77,7 +74,7 @@ description: "Listes de tous les programmes à réinstaller dans le cas d'un pas
 -   [Ghostscript GPL](https://ghostscript.com/releases/gsdnld.html) : pour les PDF
 -   [NVU](https://www.nvu.com/) pour éditer des pages html
 
-### Télécharger 
+### Télécharger
 
 -   [wget](https://www.gnu.org/software/wget/)
 -   [HTTrack](https://www.httrack.com/)
