@@ -64,7 +64,7 @@ Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptab
 
 Une liste très ancienne le catalogue de Nibru de Ur III (N1)^[Q](https://www.wikidata.org/wiki/Q137969092)^ date de -2100 à -2000. Il s'agit d'une liste d'entrées qui représentent des noms, des oeuvres et des objets que le scribe enregistrait \[à [vérifier](https://etcsl.orinst.ox.ac.uk/section0/b011.htm)\]. Ce type de document, commun dans la tradition scribale, **pourrait être considéré comme le premier document de l'histoire qui mentionne un autre document**, voire plusieurs autres documents listés de manière ordonnée. Une sorte d'ancêtre des catalogue et ou des bases de données actuelles.
 
-![[Tablette HS1360](https://commons.wikimedia.org/wiki/File:HS_1360_03_front.png) via Wikimedia Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)](https://upload.wikimedia.org/wikipedia/commons/2/22/HS_1360_03_front.png){width="107"}
+![[Tablette HS1360](https://commons.wikimedia.org/wiki/File:HS_1360_03_front.png) via Wikimedia Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)](HS_1360_03_front.png){fig-align="center" width="150"}
 
 Dans ces listes, les oeuvres sont listées grâce à leurs *incipits*, c'est à direleurs premiers paragraphes. En effet, c'est une période où les documents n'ont pas encore de titre et l'incipit est utilisé comme clé de référence pour pointer vers un document. C'est l'ancêtre des citations abrégées (auteur-date par exemple) et des bibliographies.
 
