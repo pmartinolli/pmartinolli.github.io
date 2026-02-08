@@ -12,8 +12,8 @@ description: "Listes de tous les programmes à réinstaller dans le cas d'un pas
 -   [Firefox](https://www.firefox.com/)
     -   Synchroniser Firefox avec mon compte
     -   Installer les extensions suivantes :
-        -   uBlock Origin : pour bloquer la publicité + Supprimer les[fonctions IA](https://github.com/Stevoisiak/Stevos-GenAI-Blocklist/) de FF
-        -   Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: besoin de se connecter une fois à Internet Archive avec son compte.
+        -   uBlock Origin : pour bloquer la publicité + Supprimer les [fonctions IA](https://github.com/Stevoisiak/Stevos-GenAI-Blocklist/) de FF
+        -   Wayback Machine : pour archiver des pages web et retrouver des pages disparues. NB: il faut se connecter au moins une fois à Internet Archive avec son compte pour créer un lien entre l'extension et Wayback Machine.
         -   Zotero Connector (voir plus bas)
 -   [Chrome](https://play.google.com)
     -   Synchronize Chrome with G account
