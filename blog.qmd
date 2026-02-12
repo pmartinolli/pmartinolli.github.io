@@ -1,6 +1,6 @@
 ---
 title: "blog"
-description: "RSS feed : https://pmartinolli.github.io/blog.xml"
+description: "RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml<br/>Autre microblogue de mes lectures : https://tinyurl.com/lefiltre"
 listing:
   contents: blog
   feed: true
