@@ -1,0 +1,178 @@
+---
+title: "Dépots de données de recherche en histoire"
+format: html
+author: "Pascal Martinolli"
+date: "2026-02-18"
+categories: [HumanitésNumériques]
+description: "Où l'on explore des voies pour diffuser des données de recherche en histoire."
+---
+
+## Données de recherche
+
+Ce sont des données produites lors d'un projet de recherche. Le chercheur peut choisir de les diffuser en ligne, partiellement ou complètement, sur un serveur pérenne dédié.
+
+Les intentions sont principalement :
+
+-   la **reproductibilité** et l'intégrité de la démarche de recherche puisqu'on peut télécharger les données et les vérifier.
+-   la **réutilisation** des données puisque d'autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.
+-   l'amélioration de la **découvrabilité** de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d'articles ou autres) mais aussi leurs données brutes.
+
+C'est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et de techniques d'archivage digitales.
+
+Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment est-ce que les données sont gérées (pas forcément diffusées) avec une **plan de gestion des données de recherche** détaillé et explicite.
+
+## État de la question
+
+Tout d'abord, contrairement à d'autres disciplines comme les sciences naturelles, il n'y a **pas de dépôt** de données de recherche **spécialisé en histoire**. Cela est dommage car des métadonnées de description spécifiques à l'histoire ainsi que des protocoles d'échanges ou d'accès aux données pourraient être développés pour les besoins des historiens.
+
+Ainsi, la plupart des données historiques que les historien.nes souhaitent partager se trouvent dans des dépôts généralistes, ou des dépôts institutionnels, ou des sites dédiés.
+
+### Peu de diffusion ?
+
+En 2026, les chercheurs en histoire diffusent peu leurs données de recherche.
+
+Il est possible que les chercheurs sous-estiment la réutilisabilité des données de recherche dans le sens où ils pensent qu'ils ont « épuisé » leur corpus et qu'il n'y a rien d'autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l'utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l'édition scientifique de livres d'alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).
+
+Il est aussi possible que les chercheurs soient retenus pour des raisons de confidentialité ou de droit d'auteur. Par exemple, pour l'histoire récente ou immédiate, l'histoire orale, etc.
+
+Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et investit beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc.
+
+### Diffusion par dépôt peu adaptée ?
+
+Les chercheurs en histoire diffusent parfois leurs données de recherche dans des bases de données « vivantes » qui évoluent au fil du temps. En effet, la modèle classique du dépôt de données en science est de « vitrifier » des données une fois que le projet de recherche est terminé. Or, en histoire, on n'a parfois besoin de continuellement accéder, modifier, ajouter des données. Donc le modèle classique de dépôt n'est pas adapté.
+
+D'autres chercheurs peuvent diffuser sur des sites « vitrines » qui exposent une partie de leurs données sous la forme d'un site web.
+
+## Dépôts institutionnels
+
+Idéalement, le chercheur va repérer si son institution propose un dépôt de données de recherche institutionnel. Cela lui garantit un support, un accompagnement, de la formation et un prix inclus.
+
+### Borealis
+
+Pour l'[Université de Montréal](https://stockage-recherche.umontreal.ca/), le dépôt principal s'appelle [Borealis](https://borealisdata.ca/dataverse/montreal). Il est basé sur la plateforme Dataverse.
+
+On peut chercher à travers [tous les dépôts Borealis](https://borealisdata.ca/dataverse.xhtml) du Canada.
+
+-   `Sujet : Arts et sciences humaines`
+
+-   ou bien Boîte de recherche = [`histoire`](https://borealisdata.ca/dataverse/dv/?q=histoire)
+
+-   Exemples :
+
+    -   [*Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871*](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX).
+
+    -   [The Canadian Peoples 1871-1921 census data](https://borealisdata.ca/dataverse/TCPCensusData)
+
+    -   [Dave Leip US Election Data](https://borealisdata.ca/dataverse/dave_leip_us_elections)
+
+    -   [Slave Routes Datasets, 1650s - 1860s](https://doi.org/10.7910/DVN/6HLXO3)
+
+### FRDR-DFDR
+
+Il existe aussi la plateforme [FRDR-DFDR](https://www.frdr-dfdr.ca).
+
+-   Explorer en allant dans la [recherche avancée](https://www.frdr-dfdr.ca/repo/search?advanced_search=true) puis Domaine de recherche puis [*Histoire, archéologie et études connexes*](https://www.frdr-dfdr.ca/repo/search?advanced_search=true&lang=fr&sort_by=score&order=desc&advanced_search_field_1=crdc&advanced_search_value_1=RDF601*)
+
+-   Exemple :
+
+    -   [Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania](https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2)
+
+## Dépôt généralistes
+
+Les dépôts généralistes sont souvent gérés par des organismes non-gouvernementaux ou para-universitaires. Ils offrent la plupart des services habituels requis :
+
+-   Dépôts de gros volumes de données
+
+-   Versionnage des fichiers
+
+-   Garanti d'un stockage pérenne
+
+-   Création d'identifiants uniques (DOI, handle, etc.)
+
+-   Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.
+
+Exemples de dépôts généralistes :
+
+### Zenodo
+
+-   [Zenodo](https://zenodo.org/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resources Types = dataset`
+
+-   Boîte de recherche : `histoire OR history OR historical`
+
+-   Résultats : environ 60+ en 2026
+
+-   Exemples :
+
+    -   [Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786](https://doi.org/10.5281/zenodo.1217600)
+
+    -   [Virginia Girls' Reformatory Admissions Database 1910-1938](https://doi.org/10.5281/zenodo.3872018)
+
+### OSF
+
+-   [OSF](https://osf.io/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resource Type = dataset`
+
+-   Subject = Arts & Humanities
+
+-   Boîte de recherche : `history`
+
+-   Résultats : environ 7+ en 2026
+
+### Figshare
+
+-   [FigShare](https://figshare.com/) est un dépôt généraliste.
+
+-   Browse : [History, Heritage & Archeology](https://figshare.com/categories/History_heritage_and_archaeology/27244) ; [Indigenous studies](https://figshare.com/categories/Indigenous_studies/27775) ; ou autres
+
+## Autres voies
+
+### Forges logicielles 
+
+-   Exemples : Github, Gitlab ou Codeberg
+
+-   Les forges logicielles ne sont pas des dépôts pérennes pour des données de recherche.
+
+-   Elles sont cependant utiles pour collaborer et travailler en commun sur des données, voire de s'initier au partage de données.
+
+-   Exemples :
+
+    -   [Timeline of Electoral Parties in the Republic of Ireland](https://github.com/Aonrud/Irish-Electoral-Parties)
+
+### Plateformes dédiées
+
+-   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France (service Nakala par exemple)
+
+    -   Exemples :
+
+        -   [CARo - Corpus des actes royaux du Moyen-Âge](https://caro.huma-num.fr/)
+
+        -   [Guide de sources en histoire sociale des Européens en Algérie (1830-1962)](https://europalg.huma-num.fr/)
+
+-   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques
+
+### Wikidata, WikiCommons
+
+-   Wikidata peut héberger des métadonnées, tandis que WikiCommons peut héberger des données brutes (tableaux de données, images, etc.)
+
+-   Exemples :
+
+    -   [Données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)
+
+    -   [Numérisation de tablettes mésopotamiennes](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
+
+## Formations à la GDR en histoire
+
+Lorsque je donne des ateliers sur la GDR en histoire, voici le plan de ma formation (1 heure environ) :
+
+-   Pourquoi la GDR en histoire ?
+
+-   Rédiger un plan de gestion de données de recherche
+
+-   Les 4 étages de la fusée (ou du gateau) :
+
+    -   Base : stockage et sauvegarde (123, nommages de fichiers, zip, confidentialité infonuagique)
+
+    -   Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)
+
+    -   Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, LOD, etc.)
+
+    -   Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)

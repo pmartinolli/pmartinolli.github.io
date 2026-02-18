@@ -10,7 +10,182 @@
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Mon, 19 Jan 2026 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Feb 2026 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dépots de données de recherche en histoire</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2026/depot-donnees-histoire/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="données-de-recherche" class="level2">
+<h2 class="anchored" data-anchor-id="données-de-recherche">Données de recherche</h2>
+<p>Ce sont des données produites lors d’un projet de recherche. Le chercheur peut choisir de les diffuser en ligne, partiellement ou complètement, sur un serveur pérenne dédié.</p>
+<p>Les intentions sont principalement :</p>
+<ul>
+<li>la <strong>reproductibilité</strong> et l’intégrité de la démarche de recherche puisqu’on peut télécharger les données et les vérifier.</li>
+<li>la <strong>réutilisation</strong> des données puisque d’autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.</li>
+<li>l’amélioration de la <strong>découvrabilité</strong> de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d’articles ou autres) mais aussi leurs données brutes.</li>
+</ul>
+<p>C’est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d’hébergement de grands volumes d’information et de techniques d’archivage digitales.</p>
+<p>Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment est-ce que les données sont gérées (pas forcément diffusées) avec une <strong>plan de gestion des données de recherche</strong> détaillé et explicite.</p>
+</section>
+<section id="état-de-la-question" class="level2">
+<h2 class="anchored" data-anchor-id="état-de-la-question">État de la question</h2>
+<p>Tout d’abord, contrairement à d’autres disciplines comme les sciences naturelles, il n’y a <strong>pas de dépôt</strong> de données de recherche <strong>spécialisé en histoire</strong>. Cela est dommage car des métadonnées de description spécifiques à l’histoire ainsi que des protocoles d’échanges ou d’accès aux données pourraient être développés pour les besoins des historiens.</p>
+<p>Ainsi, la plupart des données historiques que les historien.nes souhaitent partager se trouvent dans des dépôts généralistes, ou des dépôts institutionnels, ou des sites dédiés.</p>
+<section id="peu-de-diffusion" class="level3">
+<h3 class="anchored" data-anchor-id="peu-de-diffusion">Peu de diffusion ?</h3>
+<p>En 2026, les chercheurs en histoire diffusent peu leurs données de recherche.</p>
+<p>Il est possible que les chercheurs sous-estiment la réutilisabilité des données de recherche dans le sens où ils pensent qu’ils ont « épuisé » leur corpus et qu’il n’y a rien d’autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l’utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l’édition scientifique de livres d’alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).</p>
+<p>Il est aussi possible que les chercheurs soient retenus pour des raisons de confidentialité ou de droit d’auteur. Par exemple, pour l’histoire récente ou immédiate, l’histoire orale, etc.</p>
+<p>Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu’ils ont produit, travaillé et investit beaucoup de valeur. On pense à des transcriptions de documents anciens, d’annotation de corpus, etc.</p>
+</section>
+<section id="diffusion-par-dépôt-peu-adaptée" class="level3">
+<h3 class="anchored" data-anchor-id="diffusion-par-dépôt-peu-adaptée">Diffusion par dépôt peu adaptée ?</h3>
+<p>Les chercheurs en histoire diffusent parfois leurs données de recherche dans des bases de données « vivantes » qui évoluent au fil du temps. En effet, la modèle classique du dépôt de données en science est de « vitrifier » des données une fois que le projet de recherche est terminé. Or, en histoire, on n’a parfois besoin de continuellement accéder, modifier, ajouter des données. Donc le modèle classique de dépôt n’est pas adapté.</p>
+<p>D’autres chercheurs peuvent diffuser sur des sites « vitrines » qui exposent une partie de leurs données sous la forme d’un site web.</p>
+</section>
+</section>
+<section id="dépôts-institutionnels" class="level2">
+<h2 class="anchored" data-anchor-id="dépôts-institutionnels">Dépôts institutionnels</h2>
+<p>Idéalement, le chercheur va repérer si son institution propose un dépôt de données de recherche institutionnel. Cela lui garantit un support, un accompagnement, de la formation et un prix inclus.</p>
+<section id="borealis" class="level3">
+<h3 class="anchored" data-anchor-id="borealis">Borealis</h3>
+<p>Pour l’<a href="https://stockage-recherche.umontreal.ca/">Université de Montréal</a>, le dépôt principal s’appelle <a href="https://borealisdata.ca/dataverse/montreal">Borealis</a>. Il est basé sur la plateforme Dataverse.</p>
+<p>On peut chercher à travers <a href="https://borealisdata.ca/dataverse.xhtml">tous les dépôts Borealis</a> du Canada.</p>
+<ul>
+<li><p><code>Sujet : Arts et sciences humaines</code></p></li>
+<li><p>ou bien Boîte de recherche = <a href="https://borealisdata.ca/dataverse/dv/?q=histoire"><code>histoire</code></a></p></li>
+<li><p>Exemples :</p>
+<ul>
+<li><p><a href="https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX"><em>Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871</em></a>.</p></li>
+<li><p><a href="https://borealisdata.ca/dataverse/TCPCensusData">The Canadian Peoples 1871-1921 census data</a></p></li>
+<li><p><a href="https://borealisdata.ca/dataverse/dave_leip_us_elections">Dave Leip US Election Data</a></p></li>
+<li><p><a href="https://doi.org/10.7910/DVN/6HLXO3">Slave Routes Datasets, 1650s - 1860s</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="frdr-dfdr" class="level3">
+<h3 class="anchored" data-anchor-id="frdr-dfdr">FRDR-DFDR</h3>
+<p>Il existe aussi la plateforme <a href="https://www.frdr-dfdr.ca">FRDR-DFDR</a>.</p>
+<ul>
+<li><p>Explorer en allant dans la <a href="https://www.frdr-dfdr.ca/repo/search?advanced_search=true">recherche avancée</a> puis Domaine de recherche puis <a href="https://www.frdr-dfdr.ca/repo/search?advanced_search=true&amp;lang=fr&amp;sort_by=score&amp;order=desc&amp;advanced_search_field_1=crdc&amp;advanced_search_value_1=RDF601*"><em>Histoire, archéologie et études connexes</em></a></p></li>
+<li><p>Exemple :</p>
+<ul>
+<li><a href="https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2">Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania</a></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="dépôt-généralistes" class="level2">
+<h2 class="anchored" data-anchor-id="dépôt-généralistes">Dépôt généralistes</h2>
+<p>Les dépôts généralistes sont souvent gérés par des organismes non-gouvernementaux ou para-universitaires. Ils offrent la plupart des services habituels requis :</p>
+<ul>
+<li><p>Dépôts de gros volumes de données</p></li>
+<li><p>Versionnage des fichiers</p></li>
+<li><p>Garanti d’un stockage pérenne</p></li>
+<li><p>Création d’identifiants uniques (DOI, handle, etc.)</p></li>
+<li><p>Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.</p></li>
+</ul>
+<p>Exemples de dépôts généralistes :</p>
+<section id="zenodo" class="level3">
+<h3 class="anchored" data-anchor-id="zenodo">Zenodo</h3>
+<ul>
+<li><p><a href="https://zenodo.org/">Zenodo</a> est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par <code>Resources Types = dataset</code></p></li>
+<li><p>Boîte de recherche : <code>histoire OR history OR historical</code></p></li>
+<li><p>Résultats : environ 60+ en 2026</p></li>
+<li><p>Exemples :</p>
+<ul>
+<li><p><a href="https://doi.org/10.5281/zenodo.1217600">Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786</a></p></li>
+<li><p><a href="https://doi.org/10.5281/zenodo.3872018">Virginia Girls’ Reformatory Admissions Database 1910-1938</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="osf" class="level3">
+<h3 class="anchored" data-anchor-id="osf">OSF</h3>
+<ul>
+<li><p><a href="https://osf.io/">OSF</a> est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par <code>Resource Type = dataset</code></p></li>
+<li><p>Subject = Arts &amp; Humanities</p></li>
+<li><p>Boîte de recherche : <code>history</code></p></li>
+<li><p>Résultats : environ 7+ en 2026</p></li>
+</ul>
+</section>
+<section id="figshare" class="level3">
+<h3 class="anchored" data-anchor-id="figshare">Figshare</h3>
+<ul>
+<li><p><a href="https://figshare.com/">FigShare</a> est un dépôt généraliste.</p></li>
+<li><p>Browse : <a href="https://figshare.com/categories/History_heritage_and_archaeology/27244">History, Heritage &amp; Archeology</a> ; <a href="https://figshare.com/categories/Indigenous_studies/27775">Indigenous studies</a> ; ou autres</p></li>
+</ul>
+</section>
+</section>
+<section id="autres-voies" class="level2">
+<h2 class="anchored" data-anchor-id="autres-voies">Autres voies</h2>
+<section id="forges-logicielles" class="level3">
+<h3 class="anchored" data-anchor-id="forges-logicielles">Forges logicielles</h3>
+<ul>
+<li><p>Exemples : Github, Gitlab ou Codeberg</p></li>
+<li><p>Les forges logicielles ne sont pas des dépôts pérennes pour des données de recherche.</p></li>
+<li><p>Elles sont cependant utiles pour collaborer et travailler en commun sur des données, voire de s’initier au partage de données.</p></li>
+<li><p>Exemples :</p>
+<ul>
+<li><a href="https://github.com/Aonrud/Irish-Electoral-Parties">Timeline of Electoral Parties in the Republic of Ireland</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="plateformes-dédiées" class="level3">
+<h3 class="anchored" data-anchor-id="plateformes-dédiées">Plateformes dédiées</h3>
+<ul>
+<li><p><a href="https://www.huma-num.fr/">Huma-Num</a> : Pour les chercheurs de France (service Nakala par exemple)</p>
+<ul>
+<li><p>Exemples :</p>
+<ul>
+<li><p><a href="https://caro.huma-num.fr/">CARo - Corpus des actes royaux du Moyen-Âge</a></p></li>
+<li><p><a href="https://europalg.huma-num.fr/">Guide de sources en histoire sociale des Européens en Algérie (1830-1962)</a></p></li>
+</ul></li>
+</ul></li>
+<li><p>Service <a href="https://bib.umontreal.ca/recherche/diffuser/kerko/">Kerko UdeM</a> : pour diffuser des données bibliographiques</p></li>
+</ul>
+</section>
+<section id="wikidata-wikicommons" class="level3">
+<h3 class="anchored" data-anchor-id="wikidata-wikicommons">Wikidata, WikiCommons</h3>
+<ul>
+<li><p>Wikidata peut héberger des métadonnées, tandis que WikiCommons peut héberger des données brutes (tableaux de données, images, etc.)</p></li>
+<li><p>Exemples :</p>
+<ul>
+<li><p><a href="https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html">Données météorologiques du Canada</a></p></li>
+<li><p><a href="https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets">Numérisation de tablettes mésopotamiennes</a></p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="formations-à-la-gdr-en-histoire" class="level2">
+<h2 class="anchored" data-anchor-id="formations-à-la-gdr-en-histoire">Formations à la GDR en histoire</h2>
+<p>Lorsque je donne des ateliers sur la GDR en histoire, voici le plan de ma formation (1 heure environ) :</p>
+<ul>
+<li><p>Pourquoi la GDR en histoire ?</p></li>
+<li><p>Rédiger un plan de gestion de données de recherche</p></li>
+<li><p>Les 4 étages de la fusée (ou du gateau) :</p>
+<ul>
+<li><p>Base : stockage et sauvegarde (123, nommages de fichiers, zip, confidentialité infonuagique)</p></li>
+<li><p>Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)</p></li>
+<li><p>Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, LOD, etc.)</p></li>
+<li><p>Sommet : pérennité et diffusion (rayonnement, droit d’auteur, identifiants pérennes, préservation, archivage, etc.)</p></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>HumanitésNumériques</category>
+  <guid>https://pmartinolli.github.io/blog/2026/depot-donnees-histoire/</guid>
+  <pubDate>Wed, 18 Feb 2026 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Indexer une oeuvre ayant une bibliographie annotée dans Wikidata</title>
   <dc:creator>Pascal Martinolli</dc:creator>
