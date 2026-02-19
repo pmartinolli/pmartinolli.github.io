@@ -31,15 +31,15 @@ Ainsi, la plupart des données historiques que les historien.nes souhaitent part
 
 En 2026, les chercheurs en histoire diffusent peu leurs données de recherche.
 
-Il est possible que les chercheurs sous-estiment la réutilisabilité des données de recherche dans le sens où ils pensent qu'ils ont « épuisé » leur corpus et qu'il n'y a rien d'autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l'utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l'édition scientifique de livres d'alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).
+Il est possible que les chercheurs sous-estiment la **réutilisabilité** des données de recherche dans le sens où ils pensent qu'ils ont « épuisé » leur corpus et qu'il n'y a rien d'autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l'utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l'édition scientifique de livres d'alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).
 
-Il est aussi possible que les chercheurs soient retenus pour des raisons de confidentialité ou de droit d'auteur. Par exemple, pour l'histoire récente ou immédiate, l'histoire orale, etc.
+Il est aussi possible que les chercheurs soient retenus pour des raisons de **confidentialité** ou de **droit d'auteur**. Par exemple, pour l'histoire récente ou immédiate, l'histoire orale, etc.
 
-Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et investit beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc.
+Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et **investit** beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc.
 
 ### Diffusion par dépôt peu adaptée ?
 
-Les chercheurs en histoire diffusent parfois leurs données de recherche dans des bases de données « vivantes » qui évoluent au fil du temps. En effet, la modèle classique du dépôt de données en science est de « vitrifier » des données une fois que le projet de recherche est terminé. Or, en histoire, on n'a parfois besoin de continuellement accéder, modifier, ajouter des données. Donc le modèle classique de dépôt n'est pas adapté.
+Les chercheurs en histoire diffusent parfois leurs données de recherche dans des **bases de données « vivantes »** qui évoluent au fil du temps. En effet, la modèle classique du dépôt de données en science est de « vitrifier » des données une fois que le projet de recherche est terminé. Or, en histoire, on n'a parfois besoin de continuellement accéder, modifier, ajouter des données. Donc le modèle classique de dépôt n'est pas adapté.
 
 D'autres chercheurs peuvent diffuser sur des sites « vitrines » qui exposent une partie de leurs données sous la forme d'un site web.
 
@@ -125,13 +125,13 @@ Exemples de dépôts généralistes :
 
 ## Autres voies
 
-### Forges logicielles 
+### Forges logicielles
 
--   Exemples : Github, Gitlab ou Codeberg
+-   Exemples : [Github](https://github.com/), [Gitlab](https://about.gitlab.com/), [Codeberg](https://codeberg.org/) ou [Framagit](https://docs.framasoft.org/fr/gitlab/index.html)
 
--   Les forges logicielles ne sont pas des dépôts pérennes pour des données de recherche.
+-   **Les forges logicielles ne sont pas des dépôts pérennes** pour des données de recherche.
 
--   Elles sont cependant utiles pour collaborer et travailler en commun sur des données, voire de s'initier au partage de données.
+-   Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
 
 -   Exemples :
 
@@ -151,17 +151,17 @@ Exemples de dépôts généralistes :
 
 ### Wikidata, WikiCommons
 
--   Wikidata peut héberger des métadonnées, tandis que WikiCommons peut héberger des données brutes (tableaux de données, images, etc.)
+-   [Wikidata](https://www.wikidata.org/) peut héberger des métadonnées, tandis que [WikiCommons](https://commons.wikimedia.org/) peut héberger des données brutes (tableaux de données, images, etc.)
 
 -   Exemples :
 
-    -   [Données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)
+    -   [100 ans](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)
 
-    -   [Numérisation de tablettes mésopotamiennes](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
+    -   [Numérisation de milliers de tablettes mésopotamiennes](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
 
 ## Formations à la GDR en histoire
 
-Lorsque je donne des ateliers sur la GDR en histoire, voici le plan de ma formation (1 heure environ) :
+Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), voici le plan de ma formation (1 heure environ) :
 
 -   Pourquoi la GDR en histoire ?
 
@@ -176,3 +176,5 @@ Lorsque je donne des ateliers sur la GDR en histoire, voici le plan de ma format
     -   Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, LOD, etc.)
 
     -   Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)
+
+-   Exemples, questions, discussions.
