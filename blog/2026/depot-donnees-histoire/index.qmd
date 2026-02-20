@@ -21,7 +21,7 @@ Les intentions sont principalement :
 
 C'est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et de techniques d'archivage digitales.
 
-Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment est-ce que les données sont gérées (pas forcément diffusées) avec une **plan de gestion des données de recherche** détaillé et explicite.
+Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment les données sont gérées (pas forcément diffusées) avec un **plan de gestion des données de recherche** détaillé et explicite.
 
 ## État de la question
 
@@ -37,9 +37,9 @@ Il est possible que les chercheurs sous-estiment la **réutilisabilité** des do
 
 Il est aussi possible que les chercheurs soient retenus de diffuser des données de recherche pour des raisons de **confidentialité**, **d'éthique** ou de **droits d'auteur** complexes. Par exemple, pour l'histoire récente ou immédiate, pour l'histoire orale, etc. En effet, toutes les données historiques ne sont pas partageables car « *there is a default colonialist worldview around openness that has been rightfully contested » (*Milligan 2022 ; voir aussi Christen 2011).
 
-Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et **investit** beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc. Ces données sont souvent qualitatives, non numériques et demandant beaucoup de contexte pour chaque élément. Cela les rend plus couteuses ou plus **difficiles à partager** que des données standardisées tabulées par exemple.
+Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produites, sur lesquelles ils ont travaillé et dans lesquelles ils ont **investit** beaucoup de temps et de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc. Ces données sont souvent qualitatives, non numériques et demandent beaucoup de contexte pour chaque élément. Cela les rend plus coûteuses ou plus **difficiles à partager** que des données standardisées tabulées par exemple.
 
-Il semblerait que, dans le domaine de la recherche historique, il y ait peu de prépublications (*preprint*) et plus généralement **peu de diffusion avant la publication** officielle finale (« no spoilers ». En effet, il y a une grande valorarisation de l'originalité et une crainte forte de **se faire dérober ses résultats** (*scooping*). Ainsi, par association, il est possible que ce comportement influence l'attitude après la publication.
+Il semblerait que, dans le domaine de la recherche historique, il y ait peu de prépublications (*preprint*) et plus généralement **peu de diffusion avant la publication** officielle finale (« *no spoilers* »). En effet, il y a une grande valorarisation de l'originalité et une crainte forte de **se faire dérober ses résultats** (*scooping*). Ainsi, par association, il est possible que ce comportement influence l'attitude après la publication.
 
 > *Traditionally, historians would keep this information private while preparing their book, dissertation, or article. They would then keep it mostly private afterwards. This was partly due to fears around being ‘scooped’, still a pressing problem today, as well as seeing it as the fruits of ‘their’ labour. There was also no easy way to share data. In other words, research data in raw form was essentially unpublishable* (Milligan 2022)*.*
 
@@ -99,7 +99,7 @@ Les dépôts généralistes sont souvent gérés par des organismes non-gouverne
 
 -   Versionnage des fichiers
 
--   Garanti d'un stockage pérenne
+-   Garantie d'un stockage pérenne
 
 -   Création d'identifiants uniques (DOI, handle, etc.)
 
@@ -185,13 +185,13 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
 
 -   Rédiger un plan de gestion de données de recherche
 
--   Les 4 étages de la fusée (ou du gateau) :
+-   Les 4 étages de la fusée (ou du gâteau) :
 
-    -   Base : stockage et sauvegarde (123, nommages de fichiers, zip, confidentialité infonuagique)
+    -   Base : stockage et sauvegarde (123, nommage de fichiers, zip, confidentialité infonuagique)
 
     -   Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)
 
-    -   Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, LOD, etc.)
+    -   Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, données ouvertes liées, etc.)
 
     -   Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)
 
@@ -199,13 +199,13 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
 
 ## Prospectives
 
-Ian Milligan pense que la numérisation du travail de l'historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.
+Ian Milligan (2022) pense que la numérisation du travail de l'historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.
 
 > *... both due to historians increasingly wanting to engage communities as well as firmer direction from granting agencies* (...) *the increasing professional recognition of these deliverables will hopefully shift the conversation.*
 
 Il soutient avec le Centre for History and New Media (2017) que la simple **visualisation** des données peut contribuer à la conversation scientifique, tout comme un article ou un livre. Il utilise l'exemple de la [cartographie animée en ligne](https://cblevins.github.io/paper-trails/) (+dataset) des relais postaux aux États-Unis qui accompagna la sortie du livre (Blevins 2021).
 
-Milligan mentionne aussi **l'hésitation à citer les jeux de données**, un problème récurrent de la science ouverte (avec l'hésitation à citer les logiciels, etc.).
+Milligan (2022) mentionne aussi **l'hésitation à citer les jeux de données**, un problème récurrent de la science ouverte (avec l'hésitation à citer les logiciels, etc.).
 
 > *A related concern is the hesitation to cite datasets.* *This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.*
 
@@ -218,3 +218,7 @@ Christen, Kimberly, ‘Opening Archives: Respectful Repatriation’, *American A
 Centre for History and New Media, *Digital History & Argument white paper*, George Mason University, 2017. <https://rrchnm.org/portfolio-item/digital-history-argument-white-paper/>
 
 Milligan, Ian. *The Transformation of Historical Research in the Digital Age*. Cambridge: Cambridge University Press, 2022 <https://doi.org/10.1017/9781009026055>
+
+---
+
+Remerciements : Nino Gabrielli pour la relecture du billet.

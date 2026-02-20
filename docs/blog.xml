@@ -828,7 +828,7 @@ font-style: inherit;">"fr,en"</span>.</span>
 <li>l’amélioration de la <strong>découvrabilité</strong> de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d’articles ou autres) mais aussi leurs données brutes.</li>
 </ul>
 <p>C’est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d’hébergement de grands volumes d’information et de techniques d’archivage digitales.</p>
-<p>Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment est-ce que les données sont gérées (pas forcément diffusées) avec une <strong>plan de gestion des données de recherche</strong> détaillé et explicite.</p>
+<p>Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment les données sont gérées (pas forcément diffusées) avec un <strong>plan de gestion des données de recherche</strong> détaillé et explicite.</p>
 </section>
 <section id="état-de-la-question" class="level2">
 <h2 class="anchored" data-anchor-id="état-de-la-question">État de la question</h2>
@@ -839,8 +839,8 @@ font-style: inherit;">"fr,en"</span>.</span>
 <p>En 2026, les chercheurs en histoire diffusent peu leurs données de recherche.</p>
 <p>Il est possible que les chercheurs sous-estiment la <strong>réutilisabilité</strong> des données de recherche dans le sens où ils pensent qu’ils ont « épuisé » leur corpus et qu’il n’y a rien d’autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l’utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l’édition scientifique de livres d’alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).</p>
 <p>Il est aussi possible que les chercheurs soient retenus de diffuser des données de recherche pour des raisons de <strong>confidentialité</strong>, <strong>d’éthique</strong> ou de <strong>droits d’auteur</strong> complexes. Par exemple, pour l’histoire récente ou immédiate, pour l’histoire orale, etc. En effet, toutes les données historiques ne sont pas partageables car « <em>there is a default colonialist worldview around openness that has been rightfully contested » (</em>Milligan 2022 ; voir aussi Christen 2011).</p>
-<p>Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu’ils ont produit, travaillé et <strong>investit</strong> beaucoup de valeur. On pense à des transcriptions de documents anciens, d’annotation de corpus, etc. Ces données sont souvent qualitatives, non numériques et demandant beaucoup de contexte pour chaque élément. Cela les rend plus couteuses ou plus <strong>difficiles à partager</strong> que des données standardisées tabulées par exemple.</p>
-<p>Il semblerait que, dans le domaine de la recherche historique, il y ait peu de prépublications (<em>preprint</em>) et plus généralement <strong>peu de diffusion avant la publication</strong> officielle finale (« no spoilers ». En effet, il y a une grande valorarisation de l’originalité et une crainte forte de <strong>se faire dérober ses résultats</strong> (<em>scooping</em>). Ainsi, par association, il est possible que ce comportement influence l’attitude après la publication.</p>
+<p>Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu’ils ont produites, sur lesquelles ils ont travaillé et dans lesquelles ils ont <strong>investit</strong> beaucoup de temps et de valeur. On pense à des transcriptions de documents anciens, d’annotation de corpus, etc. Ces données sont souvent qualitatives, non numériques et demandent beaucoup de contexte pour chaque élément. Cela les rend plus coûteuses ou plus <strong>difficiles à partager</strong> que des données standardisées tabulées par exemple.</p>
+<p>Il semblerait que, dans le domaine de la recherche historique, il y ait peu de prépublications (<em>preprint</em>) et plus généralement <strong>peu de diffusion avant la publication</strong> officielle finale (« <em>no spoilers</em> »). En effet, il y a une grande valorarisation de l’originalité et une crainte forte de <strong>se faire dérober ses résultats</strong> (<em>scooping</em>). Ainsi, par association, il est possible que ce comportement influence l’attitude après la publication.</p>
 <blockquote class="blockquote">
 <p><em>Traditionally, historians would keep this information private while preparing their book, dissertation, or article. They would then keep it mostly private afterwards. This was partly due to fears around being ‘scooped’, still a pressing problem today, as well as seeing it as the fruits of ‘their’ labour. There was also no easy way to share data. In other words, research data in raw form was essentially unpublishable</em> (Milligan 2022)<em>.</em></p>
 </blockquote>
@@ -898,7 +898,7 @@ font-style: inherit;">"fr,en"</span>.</span>
 <ul>
 <li><p>Dépôts de gros volumes de données</p></li>
 <li><p>Versionnage des fichiers</p></li>
-<li><p>Garanti d’un stockage pérenne</p></li>
+<li><p>Garantie d’un stockage pérenne</p></li>
 <li><p>Création d’identifiants uniques (DOI, handle, etc.)</p></li>
 <li><p>Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.</p></li>
 <li><p>Il existe un inventaire des dépôts de données : <a href="https://www.re3data.org/"><strong>Re3data</strong></a>(chercher avec le mot-clé <code>history</code>)</p></li>
@@ -988,11 +988,11 @@ font-style: inherit;">"fr,en"</span>.</span>
 <ul>
 <li><p>Pourquoi la GDR en histoire ?</p></li>
 <li><p>Rédiger un plan de gestion de données de recherche</p></li>
-<li><p>Les 4 étages de la fusée (ou du gateau) :</p>
+<li><p>Les 4 étages de la fusée (ou du gâteau) :</p>
 <ul>
-<li><p>Base : stockage et sauvegarde (123, nommages de fichiers, zip, confidentialité infonuagique)</p></li>
+<li><p>Base : stockage et sauvegarde (123, nommage de fichiers, zip, confidentialité infonuagique)</p></li>
 <li><p>Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)</p></li>
-<li><p>Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, LOD, etc.)</p></li>
+<li><p>Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, données ouvertes liées, etc.)</p></li>
 <li><p>Sommet : pérennité et diffusion (rayonnement, droit d’auteur, identifiants pérennes, préservation, archivage, etc.)</p></li>
 </ul></li>
 <li><p>Exemples, questions, discussions.</p></li>
@@ -1000,12 +1000,12 @@ font-style: inherit;">"fr,en"</span>.</span>
 </section>
 <section id="prospectives" class="level2">
 <h2 class="anchored" data-anchor-id="prospectives">Prospectives</h2>
-<p>Ian Milligan pense que la numérisation du travail de l’historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.</p>
+<p>Ian Milligan (2022) pense que la numérisation du travail de l’historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.</p>
 <blockquote class="blockquote">
 <p><em>… both due to historians increasingly wanting to engage communities as well as firmer direction from granting agencies</em> (…) <em>the increasing professional recognition of these deliverables will hopefully shift the conversation.</em></p>
 </blockquote>
 <p>Il soutient avec le Centre for History and New Media (2017) que la simple <strong>visualisation</strong> des données peut contribuer à la conversation scientifique, tout comme un article ou un livre. Il utilise l’exemple de la <a href="https://cblevins.github.io/paper-trails/">cartographie animée en ligne</a> (+dataset) des relais postaux aux États-Unis qui accompagna la sortie du livre (Blevins 2021).</p>
-<p>Milligan mentionne aussi <strong>l’hésitation à citer les jeux de données</strong>, un problème récurrent de la science ouverte (avec l’hésitation à citer les logiciels, etc.).</p>
+<p>Milligan (2022) mentionne aussi <strong>l’hésitation à citer les jeux de données</strong>, un problème récurrent de la science ouverte (avec l’hésitation à citer les logiciels, etc.).</p>
 <blockquote class="blockquote">
 <p><em>A related concern is the hesitation to cite datasets.</em> <em>This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.</em></p>
 </blockquote>
@@ -1016,6 +1016,8 @@ font-style: inherit;">"fr,en"</span>.</span>
 <p>Christen, Kimberly, ‘Opening Archives: Respectful Repatriation’, <em>American Archivist</em>, 74, no. 1 (2011), 185–210. <a href="https://www.jstor.org/stable/23079006" class="uri">https://www.jstor.org/stable/23079006</a></p>
 <p>Centre for History and New Media, <em>Digital History &amp; Argument white paper</em>, George Mason University, 2017. <a href="https://rrchnm.org/portfolio-item/digital-history-argument-white-paper/" class="uri">https://rrchnm.org/portfolio-item/digital-history-argument-white-paper/</a></p>
 <p>Milligan, Ian. <em>The Transformation of Historical Research in the Digital Age</em>. Cambridge: Cambridge University Press, 2022 <a href="https://doi.org/10.1017/9781009026055" class="uri">https://doi.org/10.1017/9781009026055</a></p>
+<hr>
+<p>Remerciements : Nino Gabrielli pour la relecture du billet.</p>
 
 
 </section>
