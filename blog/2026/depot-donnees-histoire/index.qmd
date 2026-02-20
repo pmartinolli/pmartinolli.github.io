@@ -4,8 +4,10 @@ format: html
 author: "Pascal Martinolli"
 date: "2026-02-18"
 categories: [HumanitésNumériques]
-description: "Où l'on explore des voies pour diffuser des données de recherche en histoire."
+description: "Où l'on explore des voies et des pratiques pour diffuser des données de recherche en histoire."
 ---
+
+Outre des rencontres individuelles avec des chercheuses et des chercheurs en histoire, ce billet a été écrit avec [*The Transformation of Historical Research in the Digital Age*](https://doi.org/10.1017/9781009026055) de Milligan (2022, *open access*).
 
 ## Données de recherche
 
@@ -33,15 +35,23 @@ En 2026, les chercheurs en histoire diffusent peu leurs données de recherche.
 
 Il est possible que les chercheurs sous-estiment la **réutilisabilité** des données de recherche dans le sens où ils pensent qu'ils ont « épuisé » leur corpus et qu'il n'y a rien d'autres à dire de significatif sur le sujet. Le cas où il pourrait y avoir une pertinence serait l'utilisation du corpus mais avec une autre méthode de recherche (par exemple, après avoir fait une histoire de l'édition scientifique de livres d'alchimie, un autre chercheur fait une étude des pratiques de citation des livres entre eux).
 
-Il est aussi possible que les chercheurs soient retenus pour des raisons de **confidentialité** ou de **droit d'auteur**. Par exemple, pour l'histoire récente ou immédiate, l'histoire orale, etc.
+Il est aussi possible que les chercheurs soient retenus de diffuser des données de recherche pour des raisons de **confidentialité**, **d'éthique** ou de **droits d'auteur** complexes. Par exemple, pour l'histoire récente ou immédiate, pour l'histoire orale, etc. En effet, toutes les données historiques ne sont pas partageables car « *there is a default colonialist worldview around openness that has been rightfully contested » (*Milligan 2022 ; voir aussi Christen 2011).
 
-Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et **investit** beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc.
+Il est aussi possible que les chercheurs ne veuillent pas donner accès à des données qu'ils ont produit, travaillé et **investit** beaucoup de valeur. On pense à des transcriptions de documents anciens, d'annotation de corpus, etc. Ces données sont souvent qualitatives, non numériques et demandant beaucoup de contexte pour chaque élément. Cela les rend plus couteuses ou plus **difficiles à partager** que des données standardisées tabulées par exemple.
+
+Il semblerait que, dans le domaine de la recherche historique, il y ait peu de prépublications (*preprint*) et plus généralement **peu de diffusion avant la publication** officielle finale (« no spoilers ». En effet, il y a une grande valorarisation de l'originalité et une crainte forte de **se faire dérober ses résultats** (*scooping*). Ainsi, par association, il est possible que ce comportement influence l'attitude après la publication.
+
+> *Traditionally, historians would keep this information private while preparing their book, dissertation, or article. They would then keep it mostly private afterwards. This was partly due to fears around being ‘scooped’, still a pressing problem today, as well as seeing it as the fruits of ‘their’ labour. There was also no easy way to share data. In other words, research data in raw form was essentially unpublishable* (Milligan 2022)*.*
 
 ### Diffusion par dépôt peu adaptée ?
 
 Les chercheurs en histoire diffusent parfois leurs données de recherche dans des **bases de données « vivantes »** qui évoluent au fil du temps. En effet, la modèle classique du dépôt de données en science est de « vitrifier » des données une fois que le projet de recherche est terminé. Or, en histoire, on n'a parfois besoin de continuellement accéder, modifier, ajouter des données. Donc le modèle classique de dépôt n'est pas adapté.
 
-D'autres chercheurs peuvent diffuser sur des sites « vitrines » qui exposent une partie de leurs données sous la forme d'un site web.
+D'autres chercheurs peuvent diffuser sur des sites « vitrines » qui exposent une partie de leurs données sous la forme d'un site web avec des visualisations plus ou moins pérennes.
+
+> *Datasets will likely be preserved in multiple places, including by the Internet Archive in its periodic internet crawls. Interactive visualizations have shorter lifespans as underlying software packages sunset and end, and it is more difficult to preserve dynamic web content.* (Milligan 2022)
+
+Quels que soient les dépôts ou les plateformes, **leur accès et leur** **découvrabilité sont souvent difficiles** (case de recherche unique, peu de navigation par collections, métadonnées limitées, peu/pas d'intéropérabilité). Cela n'aide pas à inciter les historien.nes à y déposer leurs données.
 
 ## Dépôts institutionnels
 
@@ -57,25 +67,29 @@ On peut chercher à travers [tous les dépôts Borealis](https://borealisdata.ca
 
 -   ou bien Boîte de recherche = [`histoire`](https://borealisdata.ca/dataverse/dv/?q=histoire)
 
--   Exemples :
+-   Exemples : [*Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871*](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX)*.*
 
-    -   [*Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871*](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX).
+    -   [*The Canadian Peoples 1871-1921 census data*](https://borealisdata.ca/dataverse/TCPCensusData)
 
-    -   [The Canadian Peoples 1871-1921 census data](https://borealisdata.ca/dataverse/TCPCensusData)
+    -   [*Dave Leip US Election Data*](https://borealisdata.ca/dataverse/dave_leip_us_elections)
 
-    -   [Dave Leip US Election Data](https://borealisdata.ca/dataverse/dave_leip_us_elections)
-
-    -   [Slave Routes Datasets, 1650s - 1860s](https://doi.org/10.7910/DVN/6HLXO3)
+    -   [*Slave Routes Datasets, 1650s - 1860s*](https://doi.org/10.7910/DVN/6HLXO3)
 
 ### FRDR-DFDR
 
 Il existe aussi la plateforme [FRDR-DFDR](https://www.frdr-dfdr.ca).
 
--   Explorer en allant dans la [recherche avancée](https://www.frdr-dfdr.ca/repo/search?advanced_search=true) puis Domaine de recherche puis [*Histoire, archéologie et études connexes*](https://www.frdr-dfdr.ca/repo/search?advanced_search=true&lang=fr&sort_by=score&order=desc&advanced_search_field_1=crdc&advanced_search_value_1=RDF601*)
+-   Explorer en allant dans la [recherche avancée](https://www.frdr-dfdr.ca/repo/search?advanced_search=true) puis Domaine de recherche puis [Histoire, archéologie et études connexes](https://www.frdr-dfdr.ca/repo/search?advanced_search=true&lang=fr&sort_by=score&order=desc&advanced_search_field_1=crdc&advanced_search_value_1=RDF601*)
 
--   Exemple :
+-   Exemple : [*Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania*](https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2)
 
-    -   [Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania](https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2)
+### ICPSR
+
+-   L'[ICPSR](https://www.icpsr.umich.edu/) est un consortium d'institutions de recherche qui offre de nombreuses collections dont celle du *Journal of Economic History.*Un chercheur peut faire un dépôt personnel sans frais ([*self-published*](https://www.icpsr.umich.edu/sites/icpsr/manage-data/deposit)).
+
+    -   Exemples : [*Knowledge Diffusion and Intellectual Change: When Chinese Literati Met European Jesuits*](https://www.icpsr.umich.edu/sites/jeh/view/studies/132821)
+
+    -   [*The Her in Inheritance: How Marriage Matching Has Always Mattered, Quebec 1800–1970*](https://www.icpsr.umich.edu/sites/jeh/view/studies/301485)
 
 ## Dépôt généralistes
 
@@ -91,6 +105,8 @@ Les dépôts généralistes sont souvent gérés par des organismes non-gouverne
 
 -   Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.
 
+-   Il existe un inventaire des dépôts de données : [**Re3data**](https://www.re3data.org/)(chercher avec le mot-clé `history`)
+
 Exemples de dépôts généralistes :
 
 ### Zenodo
@@ -101,11 +117,9 @@ Exemples de dépôts généralistes :
 
 -   Résultats : environ 60+ en 2026
 
--   Exemples :
+-   Exemples : [*Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786*](https://doi.org/10.5281/zenodo.1217600)
 
-    -   [Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786](https://doi.org/10.5281/zenodo.1217600)
-
-    -   [Virginia Girls' Reformatory Admissions Database 1910-1938](https://doi.org/10.5281/zenodo.3872018)
+    -   [*Virginia Girls' Reformatory Admissions Database 1910-1938*](https://doi.org/10.5281/zenodo.3872018)
 
 ### OSF
 
@@ -123,6 +137,12 @@ Exemples de dépôts généralistes :
 
 -   Browse : [History, Heritage & Archeology](https://figshare.com/categories/History_heritage_and_archaeology/27244) ; [Indigenous studies](https://figshare.com/categories/Indigenous_studies/27775) ; ou autres
 
+### QDR
+
+-   [Qualitative Data Repository](https://qdr.syr.edu/) contient des données de sciences sociales et humaines.
+    -   Exemples : [*“Russia: The politics and psychology of overcommitment,” in: The ideology of the offensive: Military decision making and the disasters of 1914*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6KW5CXS)
+    -   [*Pedagogical Materials on International Politics and Cold War History*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6IQTIML)
+
 ## Autres voies
 
 ### Forges logicielles
@@ -133,19 +153,17 @@ Exemples de dépôts généralistes :
 
 -   Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
 
--   Exemples :
+-   Exemples : [*Timeline of Electoral Parties in the Republic of Ireland*](https://github.com/Aonrud/Irish-Electoral-Parties)
 
-    -   [Timeline of Electoral Parties in the Republic of Ireland](https://github.com/Aonrud/Irish-Electoral-Parties)
+    -   [*Paper Trails: The US Post and the Making of the American West*](https://cblevins.github.io/paper-trails/) (voir plus bas)
 
 ### Plateformes dédiées
 
 -   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France (service Nakala par exemple)
 
-    -   Exemples :
+    -   Exemples : [*CARo - Corpus des actes royaux du Moyen-Âge*](https://caro.huma-num.fr/)
 
-        -   [CARo - Corpus des actes royaux du Moyen-Âge](https://caro.huma-num.fr/)
-
-        -   [Guide de sources en histoire sociale des Européens en Algérie (1830-1962)](https://europalg.huma-num.fr/)
+        -   [*Guide de sources en histoire sociale des Européens en Algérie (1830-1962)*](https://europalg.huma-num.fr/)
 
 -   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques
 
@@ -155,9 +173,9 @@ Exemples de dépôts généralistes :
 
 -   Exemples :
 
-    -   [100 ans](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)
+    -   [*100 ans*](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) *de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)*
 
-    -   [Numérisation de milliers de tablettes mésopotamiennes](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
+    -   [*Numérisation de milliers de tablettes mésopotamiennes*](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
 
 ## Formations à la GDR en histoire
 
@@ -178,3 +196,25 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
     -   Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)
 
 -   Exemples, questions, discussions.
+
+## Prospectives
+
+Ian Milligan pense que la numérisation du travail de l'historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.
+
+> *... both due to historians increasingly wanting to engage communities as well as firmer direction from granting agencies* (...) *the increasing professional recognition of these deliverables will hopefully shift the conversation.*
+
+Il soutient avec le Centre for History and New Media (2017) que la simple **visualisation** des données peut contribuer à la conversation scientifique, tout comme un article ou un livre. Il utilise l'exemple de la [cartographie animée en ligne](https://cblevins.github.io/paper-trails/) (+dataset) des relais postaux aux États-Unis qui accompagna la sortie du livre (Blevins 2021).
+
+Milligan mentionne aussi **l'hésitation à citer les jeux de données**, un problème récurrent de la science ouverte (avec l'hésitation à citer les logiciels, etc.).
+
+> *A related concern is the hesitation to cite datasets.* *This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.*
+
+## Bibliographie
+
+Blevins, Cameron, *Paper Trails: The US Post and the Making of the American West.* New York: Oxford University Press, 2021. <https://cblevins.github.io/us-post-offices/>
+
+Christen, Kimberly, ‘Opening Archives: Respectful Repatriation’, *American Archivist*, 74, no. 1 (2011), 185–210. <https://www.jstor.org/stable/23079006>
+
+Centre for History and New Media, *Digital History & Argument white paper*, George Mason University, 2017. <https://rrchnm.org/portfolio-item/digital-history-argument-white-paper/>
+
+Milligan, Ian. *The Transformation of Historical Research in the Digital Age*. Cambridge: Cambridge University Press, 2022 <https://doi.org/10.1017/9781009026055>
