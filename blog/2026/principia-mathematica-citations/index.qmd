@@ -226,19 +226,60 @@ WHERE {
 Ensuite, on exporte le résultat au format tsv ou csv, on supprime les deux premières colonnes pour ne garder que la colonne `qualifierValue`. On fait un peu de ménage dedans :
 
 -   sans `Mr.` ou `Dr.` ou `M.`
+-   sans initiales, ni extensions du nom (`Pappus of Alexandria` devient `Pappus`)
 -   supprimer les troncatures emboîtées pour éviter les doubles comptages (ex: pour `Samuel Colepress` et `Colepress` : ne garder que `Colepress`)
+
+Cela donne [names.csv](names.csv)
 
 ### Code modifié
 
-à faire
+Remplacer la variable `target_names` plus haut par :
+
+``` python
+
+target_names = [
+"Horrox", "Egyptians", "Romans", "Anaximander", "Pythagoreans", "Numa Pompilius", "Democritus", "Eudoxus", "Calippus", "Crabtrie", "Marius", "Townley", "Romer", "Ricciolus", "Kircher", "Pappus", "Halley", "Royal Society", "Galileo", "Wren", "Wallis", "Huygens", "Huygenian", "Hugenius", "Mariotte", "Euclid", "Hook", "Hooke", "Apollonius", "Archimedes", "Snellius", "Des Cartes", "Grimaldus", "Collins", "Slusius", "Huddens", "Desaguliers", "Sauveur", "Copernicus", "Copernican", "Borelli", "Townly", "Cassini", "Pound", "Kepler", "Keplerian", "Bullialdus", "Ptolemy", "Vendelin", "Street", "Tycho", "Mercator", "Norwood", "Picart", "Richer", "Varin", "des Hayes", "Couplet", "Feuillé", "de la Hire", "Colepress", "Sturmy", "Machin", "Pemberton", "Flamsted", "Hevelius", "Cysatus", "Bayer", "Kirch", "Julius Cæsar", "Ponthæus", "Cellius", "Galletius", "Ango", "Storer", "Montenari", "Zimmerman", "Estancius", "Simeon", "Matthew Paris", "Aristotle", "Auzout", "Petit", "Gottignies", "Bradley", "Hipparchus", "Cornelius Gemma", "God", "Pocock", "John", "Moses", "Aaron", "Pythagoras", "Cicer.", "Thales", "Anaxagoros", "Virgil", "Philo Allegor.", "Aratus", "St. Paul", "David", "Solomon", "Job", "Jeremiah", "Pharaoh", "Philolaus", "Aristarchus", "Plato"
+]
+```
+
+Le code et le corpus se trouvent à l'adresse XXX.
 
 ### Contrôle (manuel)
 
-Avec Notepad++
+Avec Notepad++, utiliser quelques noms pour les compter manuellement (Fonction Rechercher + Compter) et vérifier que le code fonctionne.
 
 ### Résultats
 
-à produire
+``` texinfo
+##### Analysis Results #####
+Total Citations Found: 574
+Unique Scientists Cited: 105
+
+Top 10 Most Cited Scientists:
+  God: 65
+  Halley: 32
+  Kepler: 29
+  Royal Society: 26
+  Flamsted: 24
+  Hevelius: 21
+  Huygens: 20
+  Hook: 19
+  Hooke: 16
+  Montenari: 15
+
+##### Statistical Test Results #####
+KS Test Statistic: 0.3040
+KS Test p-value: 1.4816e-47
+Result: The distribution of names is significantly different from Uniform (p < 0.05).
+
+Mean Distance between citations: 2502.37 characters
+Variance of Distances: 74249546.11
+Dispersion Metric (Var/Mean of distances): 29671.65
+Coefficient of Variation (Std/Mean): 3.44
+Interpretation: CV > 1 suggests clustering/burstiness.
+```
+
+![](figures.png)
 
 ## Plus de contexte!
 

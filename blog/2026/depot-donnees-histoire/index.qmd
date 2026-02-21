@@ -19,7 +19,7 @@ Les intentions sont principalement :
 -   la **réutilisation** des données puisque d'autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.
 -   l'amélioration de la **découvrabilité** de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d'articles ou autres) mais aussi leurs données brutes.
 
-C'est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et de techniques d'archivage digitales.
+Même si elle existe depuis longtemps dans certains domaines (aéronautique, nucléaire,...), c'est une mode récente de la publication scientifique qui est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et de techniques d'archivage digitales.
 
 Les organismes de financement demandent de plus en plus cette dimension, ou du moins de détailler comment les données sont gérées (pas forcément diffusées) avec un **plan de gestion des données de recherche** détaillé et explicite.
 
@@ -197,6 +197,8 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
 
 -   Exemples, questions, discussions.
 
+-   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples pour l'histoire](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm).
+
 ## Prospectives
 
 Ian Milligan (2022) pense que la numérisation du travail de l'historien.ne est en train de changer les pratiques vers plus de partage de données de recherche.
@@ -209,6 +211,10 @@ Milligan (2022) mentionne aussi **l'hésitation à citer les jeux de données**,
 
 > *A related concern is the hesitation to cite datasets.* *This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.*
 
+Il est aussi possible de publier des data papers qui accompagnent un versement de données de recherche. C'est ce que fait la revue [*Data & Corpus*](https://dc.episciences.org/) (exemple avec [*The Jean Nicolas Database. The French Rebellion, 1661-1789*](https://dc.episciences.org/articles/15892)).
+
+Enfin, une autre possibilité consiste à publier les données de recherche en même temps que la publication scientifique. Cela demande une plateforme avancée. C'est le pari ambitieux qu'a fait la revue [*Journal of Digital History*](https://journalofdigitalhistory.org/) puisqu'on y trouve des articles révisés par les pairs, avec les données de recherche, les visualisations et le code source (exemple avec [*Gaming the Qing Mandarinate: Digital Approaches to a Nineteenth-Century Chinese Board Game*](https://journalofdigitalhistory.org/en/article/boXXEPfnFTRe)).
+
 ## Bibliographie
 
 Blevins, Cameron, *Paper Trails: The US Post and the Making of the American West.* New York: Oxford University Press, 2021. <https://cblevins.github.io/us-post-offices/>
@@ -219,6 +225,6 @@ Centre for History and New Media, *Digital History & Argument white paper*, Geor
 
 Milligan, Ian. *The Transformation of Historical Research in the Digital Age*. Cambridge: Cambridge University Press, 2022 <https://doi.org/10.1017/9781009026055>
 
----
+------------------------------------------------------------------------
 
 Remerciements : Nino Gabrielli pour la relecture du billet.
