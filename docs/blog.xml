@@ -993,7 +993,7 @@ font-style: inherit;">"Aristarchus"</span>, <span class="st" style="color: #2079
 background-color: null;
 font-style: inherit;">"Plato"</span></span>
 <span id="cb3-4">]</span></code></pre></div>
-<p>Le code et le corpus se trouvent à l’adresse XXX.</p>
+<p>Voir le <a href="https://pmartinolli.github.io/code/principia-mathematica/main.py">code</a> modifié et le <a href="https://pmartinolli.github.io/code/principia-mathematica/corpus.txt">corpus</a> associé.</p>
 </section>
 <section id="contrôle-manuel" class="level3">
 <h3 class="anchored" data-anchor-id="contrôle-manuel">Contrôle (manuel)</h3>
@@ -1048,6 +1048,7 @@ font-style: inherit;">"Plato"</span></span>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/depot-donnees-histoire/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1246,8 +1247,8 @@ font-style: inherit;">"Plato"</span></span>
 <blockquote class="blockquote">
 <p><em>A related concern is the hesitation to cite datasets.</em> <em>This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.</em></p>
 </blockquote>
-<p>Il est aussi possible de publier des data papers qui accompagnent un versement de données de recherche. C’est ce que fait la revue <a href="https://dc.episciences.org/"><em>Data &amp; Corpus</em></a> (exemple avec <a href="https://dc.episciences.org/articles/15892"><em>The Jean Nicolas Database. The French Rebellion, 1661-1789</em></a>).</p>
-<p>Enfin, une autre possibilité consiste à publier les données de recherche en même temps que la publication scientifique. Cela demande une plateforme avancée. C’est le pari ambitieux qu’a fait la revue <a href="https://journalofdigitalhistory.org/"><em>Journal of Digital History</em></a> puisqu’on y trouve des articles révisés par les pairs, avec les données de recherche, les visualisations et le code source (exemple avec <a href="https://journalofdigitalhistory.org/en/article/boXXEPfnFTRe"><em>Gaming the Qing Mandarinate: Digital Approaches to a Nineteenth-Century Chinese Board Game</em></a>).</p>
+<p>Il est aussi possible de publier des <em>data papers</em> qui accompagnent un versement de données de recherche. C’est ce que fait la revue <a href="https://dc.episciences.org/"><em>Data &amp; Corpus</em></a> (exemple avec <a href="https://dc.episciences.org/articles/15892"><em>The Jean Nicolas Database. The French Rebellion, 1661-1789</em></a>).</p>
+<p>Enfin, une autre possibilité consiste à publier les données de recherche en même temps que la publication scientifique des résultats. Cela demande une plateforme avancée. C’est le pari ambitieux qu’a fait la revue <a href="https://journalofdigitalhistory.org/"><em>Journal of Digital History</em></a> puisqu’on y trouve des articles révisés par les pairs, avec les données de recherche, avec les visualisations et avec le code source (exemple avec <a href="https://journalofdigitalhistory.org/en/article/boXXEPfnFTRe"><em>Gaming the Qing Mandarinate: Digital Approaches to a Nineteenth-Century Chinese Board Game</em></a>).</p>
 </section>
 <section id="bibliographie" class="level2">
 <h2 class="anchored" data-anchor-id="bibliographie">Bibliographie</h2>

@@ -242,7 +242,7 @@ target_names = [
 ]
 ```
 
-Le code et le corpus se trouvent à l'adresse XXX.
+Voir le [code](https://pmartinolli.github.io/code/principia-mathematica/main.py) modifié et le [corpus](https://pmartinolli.github.io/code/principia-mathematica/corpus.txt) associé.
 
 ### Contrôle (manuel)
 
