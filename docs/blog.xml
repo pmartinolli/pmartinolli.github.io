@@ -9,13 +9,14 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.8.26</generator>
 <lastBuildDate>Thu, 19 Feb 2026 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Pratiques de citation dans Principia Mathematica</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/principia-mathematica-citations/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -78,7 +79,7 @@
 <p>The citations of historical scientific authorities (e.g., Kepler, Galileo, Euclid, Descartes) are not uniformly distributed but appear in distinct bursts, suggesting that Newton engages with specific intellectual lineages in concentrated thematic blocks rather than continuously. (<a href="https://autodiscovery.allen.ai/runs/2b2c27fe-d02c-4f3e-9cc7-b8557a2cd781?exp=2">source</a>)</p>
 </blockquote>
 <p>De manière plus intéressante encore, AA fournit le code Python pour produire cette déclaration. Le voici :</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
 <span id="cb1-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
@@ -252,7 +253,14 @@ font-style: inherit;"># Use regex with word boundaries for robustness</span></sp
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -260,7 +268,13 @@ font-style: inherit;">'|'</span>.join(target_names) <span class="op" style="colo
 background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r')\b'</span></span>
+font-style: inherit;">r'</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
 <span id="cb1-37">matches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -713,13 +727,13 @@ background-color: null;
 font-style: inherit;">"Frequency"</span>)</span>
 <span id="cb1-126"></span>
 <span id="cb1-127">plt.tight_layout()</span>
-<span id="cb1-128">plt.show()</span></code></pre></div>
+<span id="cb1-128">plt.show()</span></code></pre></div></div>
 <p>Comme on peut le voir, il suffit de changer le contenu de la variable <code>target_names</code> avec tous les noms que l’on veut pour regénérer un nouveau résultat testant la présence d’entités nommées tout le long du texte.</p>
 </section>
 <section id="extraire-les-noms-de-wikidata" class="level3">
 <h3 class="anchored" data-anchor-id="extraire-les-noms-de-wikidata">Extraire les noms de Wikidata</h3>
 <p>On va extraire tous les qualifiants de <code>acknowledges</code> avec :</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
 <span id="cb2-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -758,7 +772,7 @@ font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"fr,en"</span>.</span>
 <span id="cb2-13">  }</span>
-<span id="cb2-14">}</span></code></pre></div>
+<span id="cb2-14">}</span></code></pre></div></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fvalue%20%3FvalueLabel%20%3FqualifierValue%0AWHERE%20%7B%0A%20%20wd%3AQ205921%20p%3AP7137%20%3Fstatement%20.%0A%20%20%3Fstatement%20ps%3AP7137%20%3Fvalue%20.%0A%20%20%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20pq%3AP1932%20%3FqualifierValue%20.%0A%20%20%7D%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22fr%2Cen%22.%0A%20%20%7D%0A%7D">Essayez-la</a></p>
 <p>Ensuite, on exporte le résultat au format tsv ou csv, on supprime les deux premières colonnes pour ne garder que la colonne <code>qualifierValue</code>. On fait un peu de ménage dedans :</p>
 <ul>
@@ -771,7 +785,7 @@ font-style: inherit;">"fr,en"</span>.</span>
 <section id="code-modifié" class="level3">
 <h3 class="anchored" data-anchor-id="code-modifié">Code modifié</h3>
 <p>Remplacer la variable <code>target_names</code> plus haut par :</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
 <span id="cb3-2">target_names <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
@@ -992,16 +1006,16 @@ background-color: null;
 font-style: inherit;">"Aristarchus"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Plato"</span></span>
-<span id="cb3-4">]</span></code></pre></div>
+<span id="cb3-4">]</span></code></pre></div></div>
 <p>Voir le <a href="https://pmartinolli.github.io/code/principia-mathematica/main.py">code</a> modifié et le <a href="https://pmartinolli.github.io/code/principia-mathematica/corpus.txt">corpus</a> associé.</p>
 </section>
 <section id="contrôle-manuel" class="level3">
 <h3 class="anchored" data-anchor-id="contrôle-manuel">Contrôle (manuel)</h3>
-<p>Avec Notepad++, utiliser quelques noms pour les compter manuellement (Fonction Rechercher + Compter) et vérifier que le code fonctionne.</p>
+<p>Avec Notepad++, utiliser quelques noms pour les compter manuellement quelques entités nommées dans le corpus (Fonction Rechercher + Compter) et vérifier que le code fonctionne.</p>
 </section>
 <section id="résultats" class="level3">
 <h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
 <span id="cb4-2">Total Citations Found: 574</span>
 <span id="cb4-3">Unique Scientists Cited: 105</span>
 <span id="cb4-4"></span>
@@ -1026,13 +1040,14 @@ font-style: inherit;">"Plato"</span></span>
 <span id="cb4-23">Variance of Distances: 74249546.11</span>
 <span id="cb4-24">Dispersion Metric (Var/Mean of distances): 29671.65</span>
 <span id="cb4-25">Coefficient of Variation (Std/Mean): 3.44</span>
-<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div>
+<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div></div>
 <p><img src="https://pmartinolli.github.io/blog/2026/principia-mathematica-citations/figures.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="plus-de-contexte" class="level2">
 <h2 class="anchored" data-anchor-id="plus-de-contexte">Plus de contexte!</h2>
-<p>Cette analyse en aveugle des <em>Principia</em> a besoin d’être contextualisé par la lecture de la conversation scientifique historique sur le sujet (l’historiographie). On pourra bientôt lire le livre (fin 2026) <a href="https://press.princeton.edu/books/hardcover/9780691287782/the-winding-trail-to-newtons-principia-mathematica"><em>The Winding Trail to Newton’s Principia Mathematica</em></a> de Jed Z. Buchwald et Mordechai Feingold. En attendant, on pourrait lire d’<a href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0,5&amp;inst=3940701053777478036&amp;q=feingold+buchwald">autres travaux</a> sur le même sujet par ses deux auteurs.</p>
+<p>Cette analyse avec peu de connaissances préalables des <em>Principia</em> a besoin d’être contextualisée par la lecture de la conversation scientifique historique sur le sujet (l’historiographie).</p>
+<p>On pourra bientôt lire le livre (fin 2026) <a href="https://press.princeton.edu/books/hardcover/9780691287782/the-winding-trail-to-newtons-principia-mathematica"><em>The Winding Trail to Newton’s Principia Mathematica</em></a> de Jed Z. Buchwald et Mordechai Feingold. En attendant, on pourrait lire d’<a href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0,5&amp;inst=3940701053777478036&amp;q=feingold+buchwald">autres travaux</a> sur le même sujet par ses deux auteurs.</p>
 
 
 </section>
@@ -1247,8 +1262,8 @@ font-style: inherit;">"Plato"</span></span>
 <blockquote class="blockquote">
 <p><em>A related concern is the hesitation to cite datasets.</em> <em>This is both part of the previously discussed tendency to ignore source mediation, as well as an implicit tendency to see data provision as ‘service’ and not properly constituted research.</em></p>
 </blockquote>
-<p>Il est aussi possible de publier des <em>data papers</em> qui accompagnent un versement de données de recherche. C’est ce que fait la revue <a href="https://dc.episciences.org/"><em>Data &amp; Corpus</em></a> (exemple avec <a href="https://dc.episciences.org/articles/15892"><em>The Jean Nicolas Database. The French Rebellion, 1661-1789</em></a>).</p>
-<p>Enfin, une autre possibilité consiste à publier les données de recherche en même temps que la publication scientifique des résultats. Cela demande une plateforme avancée. C’est le pari ambitieux qu’a fait la revue <a href="https://journalofdigitalhistory.org/"><em>Journal of Digital History</em></a> puisqu’on y trouve des articles révisés par les pairs, avec les données de recherche, avec les visualisations et avec le code source (exemple avec <a href="https://journalofdigitalhistory.org/en/article/boXXEPfnFTRe"><em>Gaming the Qing Mandarinate: Digital Approaches to a Nineteenth-Century Chinese Board Game</em></a>).</p>
+<p>Il est aussi possible de publier un <strong><em>data paper</em></strong>, c’est-à-dire un article révisé par les pairs qui accompagne un versement de données de recherche. C’est ce que fait la revue <a href="https://dc.episciences.org/"><em>Data &amp; Corpus</em></a> (exemple avec <a href="https://dc.episciences.org/articles/15892"><em>The Jean Nicolas Database. The French Rebellion, 1661-1789</em></a>). Alors qu’un article classique consiste à rapporter des hypothèses et des conclusions, le <a href="https://www.gbif.org/fr/data-papers">but</a> principal d’un <em>data paper</em> est de décrire des données et les circonstances de leur collection.</p>
+<p>Enfin, une autre possibilité consiste à <strong>publier les données de recherche en même temps que la publication scientifique</strong> des résultats. Cela demande une plateforme avancée. C’est le pari ambitieux qu’a fait la revue <a href="https://journalofdigitalhistory.org/"><em>Journal of Digital History</em></a> puisqu’on y trouve des articles révisés par les pairs, avec les données de recherche, avec les visualisations et avec le code source (exemple avec <a href="https://journalofdigitalhistory.org/en/article/boXXEPfnFTRe"><em>Gaming the Qing Mandarinate: Digital Approaches to a Nineteenth-Century Chinese Board Game</em></a>).</p>
 </section>
 <section id="bibliographie" class="level2">
 <h2 class="anchored" data-anchor-id="bibliographie">Bibliographie</h2>

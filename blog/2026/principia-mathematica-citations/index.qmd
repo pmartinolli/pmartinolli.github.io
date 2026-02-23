@@ -3,7 +3,7 @@ title: "Pratiques de citation dans Principia Mathematica"
 author: "Pascal Martinolli"
 date: "2026-02-19"
 categories: [HumanitésNumériques, citation]
-description: "Où l'on décrit les pratiques de citation dans Philosophiæ Naturalis Principia Mathematica, une oeuvre majeure de l'histoire des sciences par Isaac Newton (1687). Avec une méthode d'annotation manuelle indexée dans Wikidata et une méthode de traitement automatique du langage initée dans AstaLab AutoDiscovery."
+description: "Où l'on décrit les pratiques de citation dans Philosophiæ Naturalis Principia Mathematica, une oeuvre majeure de l'histoire des sciences par Isaac Newton (1687). Avec une méthode d'annotation manuelle indexée dans Wikidata et une méthode de traitement automatique du langage, testée avec du code Python généré par AstaLab AutoDiscovery."
 format: html
 ---
 
@@ -246,7 +246,7 @@ Voir le [code](https://pmartinolli.github.io/code/principia-mathematica/main.py)
 
 ### Contrôle (manuel)
 
-Avec Notepad++, utiliser quelques noms pour les compter manuellement (Fonction Rechercher + Compter) et vérifier que le code fonctionne.
+Avec Notepad++, utiliser quelques noms pour les compter manuellement quelques entités nommées dans le corpus (Fonction Rechercher + Compter) et vérifier que le code fonctionne.
 
 ### Résultats
 
@@ -283,4 +283,6 @@ Interpretation: CV > 1 suggests clustering/burstiness.
 
 ## Plus de contexte!
 
-Cette analyse en aveugle des *Principia* a besoin d'être contextualisé par la lecture de la conversation scientifique historique sur le sujet (l'historiographie). On pourra bientôt lire le livre (fin 2026) [*The Winding Trail to Newton's Principia Mathematica*](https://press.princeton.edu/books/hardcover/9780691287782/the-winding-trail-to-newtons-principia-mathematica) de Jed Z. Buchwald et Mordechai Feingold. En attendant, on pourrait lire d'[autres travaux](https://scholar.google.fr/scholar?hl=en&as_sdt=0,5&inst=3940701053777478036&q=feingold+buchwald) sur le même sujet par ses deux auteurs.
+Cette analyse avec peu de connaissances préalables des *Principia* a besoin d'être contextualisée par la lecture de la conversation scientifique historique sur le sujet (l'historiographie).
+
+On pourra bientôt lire le livre (fin 2026) [*The Winding Trail to Newton's Principia Mathematica*](https://press.princeton.edu/books/hardcover/9780691287782/the-winding-trail-to-newtons-principia-mathematica) de Jed Z. Buchwald et Mordechai Feingold. En attendant, on pourrait lire d'[autres travaux](https://scholar.google.fr/scholar?hl=en&as_sdt=0,5&inst=3940701053777478036&q=feingold+buchwald) sur le même sujet par ses deux auteurs.
