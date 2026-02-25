@@ -44,21 +44,47 @@
 <ul>
 <li>des bases de données généralistes
 <ul>
-<li><em>Google Scholar</em></li>
-<li><em>OpenAlex</em></li>
-<li><em>JSTOR</em></li>
+<li><a href="https://scholar.google.com/"><em>Google Scholar</em></a></li>
+<li><a href="https://openalex.org/"><em>OpenAlex</em></a></li>
+<li><a href="https://www.jstor.org/"><em>JSTOR</em></a></li>
 </ul></li>
 <li>des bases de données bibliographiques disciplinaires
 <ul>
 <li><em>Historical Abstracts</em></li>
 <li><em>America : History &amp; Life</em></li>
 </ul></li>
-<li>d’autres bases de données
+</ul>
+<p>Pour aller plus loin et faire un travail avancé de recherche bibliographique, on pourrait aussi chercher dans :</p>
+<ul>
+<li>d’autres bases de données ou plateformes
 <ul>
 <li>dans d’autres disciplines</li>
 <li><em>Web of Science</em></li>
-<li><em>Isidore</em></li>
-<li>des plateformes au complet (tout <em>ProQuest</em>, tout <em>EBSCO</em>, tout <em>Érudit</em>, etc.)</li>
+<li><a href="https://isidore.science/"><em>Isidore</em></a> <em>(contient <a href="https://www.openedition.org/">OpenEdition</a>)</em></li>
+<li>tout <em>ProQuest</em></li>
+<li>tout <em>EBSCO</em></li>
+<li>tout <a href="https://www.erudit.org/"><em>Érudit</em></a></li>
+<li>tout <a href="https://shs.cairn.info/">CAIRN</a></li>
+<li>tout <a href="https://www.persee.fr/">Persée</a>,</li>
+<li>etc.</li>
+</ul></li>
+<li>des périodiques spécialisés dans les comptes-rendus de lecture :
+<ul>
+<li><a href="https://www.choicereviews.org/">Choice Reviews</a></li>
+<li><a href="https://www.apa.org/pubs/databases/psyccritiques">APA PsycCritiques</a></li>
+<li><a href="https://www.nybooks.com/">New York Book Review</a></li>
+<li><a href="https://www.lrb.co.uk/">London Review of Books</a></li>
+<li><a href="https://www.the-tls.com/">The Times Literary Supplement</a></li>
+<li><a href="https://lareviewofbooks.org/">Los Angeles Review of Books</a></li>
+<li>etc.</li>
+</ul></li>
+<li>des comptes-rendus de livres dans des périodiques généralistes
+<ul>
+<li><a href="https://harpers.org/">Harpers</a></li>
+<li><a href="https://www.theatlantic.com/">The Atlantic</a></li>
+<li><a href="https://www.newyorker.com/">The New Yorker</a></li>
+<li><a href="https://www.lemonde.fr/livres/">Le Monde des livres</a></li>
+<li>etc.</li>
 </ul></li>
 </ul>
 <p>Pour chaque outil choisi, chercher uniquement dans le champ Titre/Title avec le nom du chercheur sous la forme <code>Prénom Nom</code> ou sous la forme <code>"Prénom Nom"</code>. Notez que certains outils ont des subtilités d’utilisation et que celles-ci peuvent changer d’une année à l’autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document.</p>
@@ -94,6 +120,8 @@
 </ul>
 </blockquote>
 <p>Le <em>Journal citation reports</em> (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d’impact (4 maximum). <em>SCImago</em> ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme <em>Claude</em> ou <em>ChatGPT</em> car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.</p>
+<hr>
+<p>Remerciements pour leur aide : Virginie Paquet, Dominic Desaulniers.</p>
 
 
 </section>

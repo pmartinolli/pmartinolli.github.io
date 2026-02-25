@@ -28,17 +28,39 @@ Un autre volet de valorisation de leur recherche porte sur le rayonnement de leu
 Établir une liste de bases de données et de plateformes à interroger pour chercher des comptes-rendus de lecture. Cette liste devrait contenir :
 
 -   des bases de données généralistes
-    -   *Google Scholar*
-    -   *OpenAlex*
-    -   *JSTOR*
+    -   [*Google Scholar*](https://scholar.google.com/)
+    -   [*OpenAlex*](https://openalex.org/)
+    -   [*JSTOR*](https://www.jstor.org/)
 -   des bases de données bibliographiques disciplinaires
     -   *Historical Abstracts*
     -   *America : History & Life*
--   d'autres bases de données
+
+Pour aller plus loin et faire un travail avancé de recherche bibliographique, on pourrait aussi chercher dans :
+
+-   d'autres bases de données ou plateformes
     -   dans d'autres disciplines
     -   *Web of Science*
-    -   *Isidore*
-    -   des plateformes au complet (tout *ProQuest*, tout *EBSCO*, tout *Érudit*, etc.)
+    -   [*Isidore*](https://isidore.science/) *(contient [OpenEdition](https://www.openedition.org/))*
+    -   tout *ProQuest*
+    -   tout *EBSCO*
+    -   tout [*Érudit*](https://www.erudit.org/)
+    -   tout [CAIRN](https://shs.cairn.info/)
+    -   tout [Persée](https://www.persee.fr/),
+    -   etc.
+-   des périodiques spécialisés dans les comptes-rendus de lecture :
+    -   [Choice Reviews](https://www.choicereviews.org/)
+    -   [APA PsycCritiques](https://www.apa.org/pubs/databases/psyccritiques)
+    -   [New York Book Review](https://www.nybooks.com/)
+    -   [London Review of Books](https://www.lrb.co.uk/)
+    -   [The Times Literary Supplement](https://www.the-tls.com/)
+    -   [Los Angeles Review of Books](https://lareviewofbooks.org/)
+    -   etc.
+-   des comptes-rendus de livres dans des périodiques généralistes
+    -   [Harpers](https://harpers.org/)
+    -   [The Atlantic](https://www.theatlantic.com/)
+    -   [The New Yorker](https://www.newyorker.com/)
+    -   [Le Monde des livres](https://www.lemonde.fr/livres/)
+    -   etc.
 
 Pour chaque outil choisi, chercher uniquement dans le champ Titre/Title avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document.
 
@@ -69,3 +91,7 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 > -   etc.
 
 Le *Journal citation reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d'impact (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.
+
+---
+
+Remerciements pour leur aide : Virginie Paquet, Dominic Desaulniers.
