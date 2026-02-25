@@ -4,12 +4,12 @@ format: html
 author: "Pascal Martinolli"
 date: "2026-02-25"
 categories: [HumanitésNumériques, histoire, Zotero]
-description: "Où l'on construit notre propre indicateur bibliométrique pour valoriser la production scientifique en histoire via les livres en établissant un protocole de collecte et de traitement des références bibliographiques de comptes-rendus de lecture."
+description: "Où l'on construit notre propre indicateur bibliométrique pour valoriser la production scientifique en histoire via les livres avec un protocole simple de collecte, de traitement et de présentation des comptes-rendus de lecture."
 ---
 
 ## Importance des comptes-rendus en histoire
 
-Les comptes-rendus de lecture sont un type de publication scientifique important pour la recherche historique. Par exemple, pour la célèbre revue des *Annales d'histoire économique et sociale*, fondée en 1929 par Marc Bloch et Lucien Febvre, elle permet non seulement de sélectionner les meilleurs ouvrages publiés mais surtout elle permet de **prolonger la conversation scientifique** critique sur le sujet traité. Ce format soutient la méthodologie « histoire-problème », théorisée par les *Annales*, qui vise à remplacer l'histoire événementielle par une analyse centrée sur des questions précises posées au passé.
+Les comptes-rendus de lecture sont un type de publication scientifique important pour la recherche historique. Par exemple, pour la célèbre revue des *Annales d'histoire économique et sociale*, fondée en 1929 par Marc Bloch et Lucien Febvre, elle permet non seulement de sélectionner les meilleurs ouvrages publiés mais surtout elle permet de **prolonger la conversation scientifique** critique sur le sujet traité. Ce format soutient la méthodologie « histoire-problème », théorisée par les *Annales*, qui vise à remplacer l'histoire événementielle par une analyse centrée sur des questions précises posées au passé (Müller 1997).
 
 > « Une large place est également accordée, dans les pages de la revue, à l’examen et à la critique de la production scientifique récente sous forme de comptes rendus et d’analyses approfondies d’ouvrages marquants, à travers des notes critiques et des forums. » ([source](https://annales.ehess.fr/)) (écouter aussi [Paroles d'histoire](https://youtu.be/KkIR6yovndo?t=2440) à 00:40:00).
 
@@ -75,7 +75,7 @@ Pour aller plus loin et faire un travail avancé de recherche bibliographique, o
 
 Pour chaque outil choisi, chercher uniquement dans le champ `Titre/Title` avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié.
 
-## Collectionner les comptes-rendus 
+## Collectionner les comptes-rendus
 
 Collecter toutes les références aux comptes-rendus dans Zotero. Pour cela :
 
@@ -103,6 +103,12 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 
 Le *Journal citation reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d'impact (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* pour récupérer les JIF par revues car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.
 
-------------------------------------------------------------------------
+## Bibliographie
+
+Loez, André. « La fabrique des Annales : épisode 1 ». *Paroles d'histoire*, no. 79/1, 2024. <https://www.youtube.com/watch?v=KkIR6yovndo>
+
+Müller, Bertrand. « Lucien Febvre e la politica della recensione ». *Storiografia*, vol. 1, 1997, 159-176.
+
+---
 
 Remerciements pour leur aide : Virginie Paquet, Dominic Desaulniers.

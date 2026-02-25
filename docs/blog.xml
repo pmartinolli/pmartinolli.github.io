@@ -24,7 +24,7 @@
 
 <section id="importance-des-comptes-rendus-en-histoire" class="level2">
 <h2 class="anchored" data-anchor-id="importance-des-comptes-rendus-en-histoire">Importance des comptes-rendus en histoire</h2>
-<p>Les comptes-rendus de lecture sont un type de publication scientifique important pour la recherche historique. Par exemple, pour la célèbre revue des <em>Annales d’histoire économique et sociale</em>, fondée en 1929 par Marc Bloch et Lucien Febvre, elle permet non seulement de sélectionner les meilleurs ouvrages publiés mais surtout elle permet de <strong>prolonger la conversation scientifique</strong> critique sur le sujet traité. Ce format soutient la méthodologie « histoire-problème », théorisée par les <em>Annales</em>, qui vise à remplacer l’histoire événementielle par une analyse centrée sur des questions précises posées au passé.</p>
+<p>Les comptes-rendus de lecture sont un type de publication scientifique important pour la recherche historique. Par exemple, pour la célèbre revue des <em>Annales d’histoire économique et sociale</em>, fondée en 1929 par Marc Bloch et Lucien Febvre, elle permet non seulement de sélectionner les meilleurs ouvrages publiés mais surtout elle permet de <strong>prolonger la conversation scientifique</strong> critique sur le sujet traité. Ce format soutient la méthodologie « histoire-problème », théorisée par les <em>Annales</em>, qui vise à remplacer l’histoire événementielle par une analyse centrée sur des questions précises posées au passé (Müller 1997).</p>
 <blockquote class="blockquote">
 <p>« Une large place est également accordée, dans les pages de la revue, à l’examen et à la critique de la production scientifique récente sous forme de comptes rendus et d’analyses approfondies d’ouvrages marquants, à travers des notes critiques et des forums. » (<a href="https://annales.ehess.fr/">source</a>) (écouter aussi <a href="https://youtu.be/KkIR6yovndo?t=2440">Paroles d’histoire</a> à 00:40:00).</p>
 </blockquote>
@@ -128,11 +128,16 @@
 </ul>
 </blockquote>
 <p>Le <em>Journal citation reports</em> (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d’impact (4 maximum). <em>SCImago</em> ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme <em>Claude</em> ou <em>ChatGPT</em> pour récupérer les JIF par revues car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.</p>
+</section>
+</section>
+<section id="bibliographie" class="level2">
+<h2 class="anchored" data-anchor-id="bibliographie">Bibliographie</h2>
+<p>Loez, André. « La fabrique des Annales : épisode 1 ». <em>Paroles d’histoire</em>, no. 79/1, 2024. <a href="https://www.youtube.com/watch?v=KkIR6yovndo" class="uri">https://www.youtube.com/watch?v=KkIR6yovndo</a></p>
+<p>Müller, Bertrand. « Lucien Febvre e la politica della recensione ». <em>Storiografia</em>, vol.&nbsp;1, 1997, 159-176.</p>
 <hr>
 <p>Remerciements pour leur aide : Virginie Paquet, Dominic Desaulniers.</p>
 
 
-</section>
 </section>
 
  ]]></description>
