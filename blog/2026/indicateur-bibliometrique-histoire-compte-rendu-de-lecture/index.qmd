@@ -1,0 +1,71 @@
+---
+title: "Construire un indicateur bibliométrique pour l'histoire avec les comptes-rendus de lecture"
+format: html
+author: "Pascal Martinolli"
+date: "2026-02-25"
+categories: [HumanitésNumériques]
+description: "Où l'on construit notre propre indicateur bibliométrique pour valoriser la production scientifique en histoire via les livres en établissant un protocole de collecte et de traitement des références bibliographiques de comptes-rendus de lecture."
+---
+
+## Importance des comptes-rendus de lecture
+
+Les comptes-rendus de lecture sont un type de publication scientifique important pour la recherche historique. Par exemple, pour la célèbre revue des *Annales d'histoire économique et sociale*, fondée en 1929 par Marc Bloch et Lucien Febvre, elle permet non seulement de sélectionner les meilleurs ouvrages publiés mais surtout elle permet de prolonger la conversation scientifique critique sur le sujet traité. Ce format soutient la méthodologie « histoire-problème », théorisée par les *Annales*, qui vise à remplacer l'histoire événementielle par une analyse centrée sur des questions précises posées au passé.
+
+> « Une large place est également accordée, dans les pages de la revue, à l’examen et à la critique de la production scientifique récente sous forme de comptes rendus et d’analyses approfondies d’ouvrages marquants, à travers des notes critiques et des forums. » ([source](https://annales.ehess.fr/)) (écouter aussi [Paroles d'histoire](https://youtu.be/KkIR6yovndo?t=2440) à 00:40:00).
+
+## Invisibilité des comptes-rendus
+
+Les comptes-rendus de lecture sont relativement peu ou mal valorisés dans les bases de données bibliographiques. Déjà sous la forme de papier, il était difficile d'identifier quel livre avait été critiqué et commenté. Cela ne s'est pas amélioré avec le passage à l'électronique. Par exemple, il est courant d'avoir une référence bibliographique complète d'un livre, dans un style bibliographique aléatoire, parfois avec des problèmes d'accentuation, parfois avec le prix,... le tout dans un seul champ Titre. Souvent les étudiants débutants pensent que la référence bibliographique correspond au livre.
+
+## Indicateurs bibliométriques
+
+Les chercheurs ont de plus en plus besoin de valoriser leur production scientifique. Celle-ci se manifeste principalement par la liste de toutes les publications significatives que ceux-ci ont produite, principalement sous la forme d'articles révisés par les pairs, de chapitres dans des ouvrages collectifs ou sous la forme de monographies.
+
+Un autre volet de valorisation de leur recherche porte sur le rayonnement de leur recherche. Pour cela, de nombreux indicateurs existent : nombre de citations, nombre de mentions médiatiques (altmetrics), etc. Or j'ai remarqué que dans ce volet il y avait un grand absent : le **nombre de comptes-rendus de lecture des livres publiés par les chercheurs**. Cela est probablement dû au fait que ce type de document n'est important que pour la discipline de l'histoire et des disciplines annexes (histoire de l'art, etc.). Je pense que passer à côté de cette dimension est dommageable pour la valorisation de la recherche en histoire. Voici donc un protocole pour recenser, collectionner et présenter ces données.
+
+## Recenser les comptes-rendus de lecture
+
+Établir une liste de bases de données et de plateformes à interroger pour chercher des comptes-rendus de lecture. Cette liste devrait contenir :
+
+-   des bases de données généralistes
+    -   *Google Scholar*
+    -   *OpenAlex*
+    -   *JSTOR*
+-   des bases de données bibliographiques disciplinaires
+    -   *Historical Abstracts*
+    -   *America : History & Life*
+-   d'autres bases de données
+    -   dans d'autres disciplines
+    -   *Web of Science*
+    -   *Isidore*
+    -   des plateformes au complet (tout *ProQuest*, tout *EBSCO*, tout *Érudit*, etc.)
+
+Pour chaque outil choisi, chercher uniquement dans le champ Titre/Title avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document.
+
+## Collectionner les comptes-rendus de lecture
+
+Collecter toutes les références aux comptes-rendus dans Zotero. Pour cela :
+
+1.  Créer une collection nommée `Prénom Nom` du chercheur
+2.  Créer une sous-collection pour chaque outil interrogé, nommé par le nom de l'outil
+3.  Verser les comptes-rendus dans les collections correspondantes.
+4.  Quand la récolte est terminée, dédoublonner les comptes-rendus avec le plugin [Zoplicate](https://github.com/ChenglongMa/zoplicate) (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
+    -   Fusionner les doublons avec Zoplicate/Doublons
+    -   Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Années, puis par Créateur, puis par Publication. Clic-droit \> Fusionner les documents.
+
+## Présenter les données
+
+Une manière simple de présenter les résultats de l'investigation bibliométrique est de rédiger un court paragraphe expliquant l'importance des comptes-rendus de lecture et de décrire l'impression générale de l'investigation. Ensuite, lister les revues par ordre descendant de *Journal Impact Factor* (JIF), suivi par le nombre de comptes-rendus entre parenthèses et le JIF. Pour quelques revues avec un haut JIF : les mettre en gras ou avec un astérisque avec une légende expliquant ce marquage. Il est aussi possible d'ajouter un tableau avec le nombre de comptes-rendus par année de publication.
+
+### Exemple
+
+> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos publications de livres ont reçu au moins 28 comptes-rendus de lecture**, une dimension importante de la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF) marquées en gras. En voici un aperçu :
+>
+> -   **American Historical Review (2 comptes-rendus) - JIF = 1.2**
+> -   **British Journal for the History of Science (1) – 1.2**
+> -   **Isis (4) - 0.9**
+> -   **History of Science (1) - 0.8**
+> -   History & Memory (4) - 0.3
+> -   etc.
+
+Le *Journal citation reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d'impact (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.

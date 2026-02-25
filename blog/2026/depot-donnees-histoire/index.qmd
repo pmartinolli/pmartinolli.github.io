@@ -19,15 +19,15 @@ Les intentions sont principalement :
 -   la **réutilisation** des données puisque d'autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.
 -   l'amélioration de la **découvrabilité** de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d'articles ou autres) mais aussi leurs données brutes.
 
-Même si elle existe depuis longtemps dans certains domaines (aéronautique, nucléaire,...), c'est une mode récente de la publication scientifique. Elle est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et par les techniques d'archivage digitales.
+Même si elle existe depuis longtemps dans certains domaines (aéronautique, nucléaire,...), c'est une « mode » récente de la publication scientifique. Elle est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et par les techniques d'archivage digitales. Elle s'inscrit plus largement dans le prolongement des valeurs de partage et de reproductibilité de la science.
 
-Les organismes de financement demandent de plus en plus d'aller dans cette direction. Pour le moment, ils insistent surtout sur comment les données sont gérées (et pas forcément diffusées) avec un **plan de gestion des données de recherche** détaillé et explicite.
+Ainsi, les organismes de financement demandent de plus en plus d'aller dans cette direction. Pour le moment, ils insistent principalement sur la description explicite et détaillée de comment les données sont gérées (et pas forcément diffusées) avec un **plan de gestion des données de recherche**. Pour le moment, pour le volet diffusion, les organismes de financement sont moins exigeants mais cela pourrait changer dans l'avenir.
 
 ## État de la question
 
-Tout d'abord, contrairement à d'autres disciplines comme les sciences naturelles, il n'y a **pas de dépôt** de données de recherche **spécialisé en histoire**. Cela est dommage car des métadonnées de description, spécifiques à l'histoire, ainsi que des protocoles d'échanges ou d'accès aux données pourraient être développés pour les besoins des historien.nes.
+Tout d'abord, contrairement à d'autres disciplines comme les sciences naturelles ou les sciences sociales ou même l'archéologie, il n'y a **pas de dépôt** de données de recherche **spécialisé en histoire**. Cela est dommage car des métadonnées de description, spécifiques à l'histoire, ainsi que des protocoles d'échanges ou d'accès aux données pourraient être développés pour les besoins des historien.nes.
 
-Ainsi, la plupart des données historiques que les historien.nes souhaitent partager se trouvent dans des dépôts généralistes, ou des dépôts institutionnels, ou des sites dédiés.
+Ainsi, la plupart des données historiques que les historien.nes souhaitent partager se trouvent dans des dépôts institutionnels, ou des dépôts généralistes, ou des sites dédiés.
 
 ### Peu de diffusion ?
 
@@ -85,7 +85,7 @@ Il existe aussi la plateforme [FRDR-DFDR](https://www.frdr-dfdr.ca).
 
 ### ICPSR
 
--   L'[ICPSR](https://www.icpsr.umich.edu/) est un consortium d'institutions de recherche qui offre de nombreuses collections dont celle du *Journal of Economic History.*Un chercheur peut faire un dépôt personnel sans frais ([*self-published*](https://www.icpsr.umich.edu/sites/icpsr/manage-data/deposit)).
+-   L'[ICPSR](https://www.icpsr.umich.edu/) est un consortium d'institutions de recherche en sciences sociales qui offre de nombreuses collections dont celle du *Journal of Economic History.*Un chercheur peut faire un dépôt personnel sans frais ([*self-published*](https://www.icpsr.umich.edu/sites/icpsr/manage-data/deposit)).
 
     -   Exemples : [*Knowledge Diffusion and Intellectual Change: When Chinese Literati Met European Jesuits*](https://www.icpsr.umich.edu/sites/jeh/view/studies/132821)
 
@@ -149,9 +149,7 @@ Exemples de dépôts généralistes :
 
 -   Exemples : [Github](https://github.com/), [Gitlab](https://about.gitlab.com/), [Codeberg](https://codeberg.org/) ou [Framagit](https://docs.framasoft.org/fr/gitlab/index.html)
 
--   **Les forges logicielles ne sont pas des dépôts pérennes** pour des données de recherche.
-
--   Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
+-   **Les forges logicielles ne sont pas des dépôts pérennes** pour des données de recherche. Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
 
 -   Exemples : [*Timeline of Electoral Parties in the Republic of Ireland*](https://github.com/Aonrud/Irish-Electoral-Parties)
 
@@ -197,7 +195,7 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
 
 -   Exemples, questions, discussions.
 
--   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples pour l'histoire](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm).
+-   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples ](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm)pour rédiger un plan de gestion de données de recherche en histoire.
 
 ## Prospectives
 
