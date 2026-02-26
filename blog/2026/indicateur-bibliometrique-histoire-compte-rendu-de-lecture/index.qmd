@@ -92,10 +92,10 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 
 ### Exemple
 
-> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos publications de livres ont reçu au moins 28 comptes-rendus de lecture dans des revues à comité de lecture** et 5 comptes-rendus dans des journaux ou magazines influents, un type de document important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
+> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos livres ont été commentées dans au moins 28 comptes-rendus de lecture publiés dans des revues révisées par les pairs** et 5 comptes-rendus dans des journaux ou magazines influents. Les comptes-rendus sont un type de publication important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
 >
 > |  |  |  |
-> |-------------------------------------|----------------|-------------------|
+> |------------------------------------|------------------|-------------------|
 > | *Revue* | *JIF* | *Nb de comptes-rendus* |
 > | **American Historical Review** | **1.2** | **2** |
 > | **British Journal for the History of Science** | **1.2** | **1** |
@@ -109,13 +109,13 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 
 ## Astuces
 
-Le *Journal citation reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur JIF (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec un indicateur atroce, le h-index, donc à éviter).
+Le *Journal Citation Reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur JIF (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec un indicateur atroce, le h-index, donc à éviter).
 
-Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local.
+Si on fait souvent cette évaluation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local.
 
-En cas de non accès au JCR, visiter le site web des revues. En effet, si une revue possède un JIF, alors elle affichera un JCR récent sur son site.
+En cas de non accès au JCR (car il est *paywalled*), je suggère de visiter le site web des revues. En effet, si une revue possède un JIF, alors il y a de grandes chances qu'elle affiche un JCR récent sur son site.
 
-Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* pour récupérer les JIF par revues car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.
+Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* pour récupérer les JIF par revues car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête. La construction de cet indicateur est une tâche que l'on veut minutieuse et exacte, donc ne la sabotons pas avec un traitement inadapté.
 
 ## Bibliographie
 
