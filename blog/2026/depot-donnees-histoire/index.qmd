@@ -157,21 +157,25 @@ Exemples de dépôts généralistes :
 
 ### Plateformes dédiées
 
+La plupart des plateformes dédiées proposent des sites web navigables ou des bases de données interrogeables. Cela ne correspond pas tout à fait à l'esprit des données de recherche qui devraient être facilement disponibles au téléchargement en intégralité sous la forme de fichiers de formats ouverts et bien documentés (selon les principes [FAIR](https://www.frdr-dfdr.ca/docs/fr/principes_fair/)), avec une garantie de pérennité.
+
 -   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France (service Nakala par exemple)
 
     -   Exemples : [*CARo - Corpus des actes royaux du Moyen-Âge*](https://caro.huma-num.fr/)
 
         -   [*Guide de sources en histoire sociale des Européens en Algérie (1830-1962)*](https://europalg.huma-num.fr/)
 
--   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques
+-   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques via des bibliothèques de références partagées Zotero.
+
+-   Site web dédié : par exemple l'[Index Thomisticus](https://www.corpusthomisticum.org/), la transcription de l'oeuvre intégrale de Thomas d'Aquin par le Père Busa s.j., premier projet d'humanité numérique datant de 1949, a été mis sous CD-ROM en 1989 et en ligne en 2025 mais il n'y a pas de manière de tout télécharger d'un coup (hors *web scrapping*).
 
 ### Wikidata, WikiCommons
 
--   [Wikidata](https://www.wikidata.org/) peut héberger des métadonnées, tandis que [WikiCommons](https://commons.wikimedia.org/) peut héberger des données brutes (tableaux de données, images, etc.)
+-   [Wikidata](https://www.wikidata.org/) peut héberger des métadonnées, tandis que [WikiCommons](https://commons.wikimedia.org/) peut héberger des données brutes (tableaux de données, images, etc.). Les données sont téléchageables en lot (*dump*) ou par requêtes plus ou moins facilement. Les formats sont ouverts et souvent interopérables. Les données sont plus ou moins décrites avec des métadonnées.
 
 -   Exemples :
 
-    -   [*100 ans*](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) *de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)*
+    -   [*100 ans*](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) *de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)* (les stations météo sont sur Wikidata, les tableaux de données météo sont dans Wikimédia Commons).
 
     -   [*Numérisation de milliers de tablettes mésopotamiennes*](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
 
@@ -195,7 +199,7 @@ Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), vo
 
 -   Exemples, questions, discussions.
 
--   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples ](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm)pour rédiger un plan de gestion de données de recherche en histoire.
+-   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm)pour rédiger un plan de gestion de données de recherche en histoire.
 
 ## Prospectives
 
