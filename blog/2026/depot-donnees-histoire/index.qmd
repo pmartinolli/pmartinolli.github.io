@@ -3,7 +3,7 @@ title: "Dépôts de données de recherche en histoire"
 format: html
 author: "Pascal Martinolli"
 date: "2026-02-18"
-categories: [HumanitésNumériques, Histoire]
+categories: [HumanitésNumériques, histoire]
 description: "Où l'on explore des voies et des pratiques pour diffuser des données de recherche pour les disciplines de l'histoire, illustrées par de nombreux exemples."
 ---
 
