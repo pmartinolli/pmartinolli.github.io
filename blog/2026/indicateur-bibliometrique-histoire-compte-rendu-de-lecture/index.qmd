@@ -92,14 +92,20 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 
 ### Exemple
 
-> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos publications de livres ont reçu au moins 28 comptes-rendus de lecture**, un type de document important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
+> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos publications de livres ont reçu au moins 28 comptes-rendus de lecture dans des revues à comité de lecture** et 5 comptes-rendus dans des journaux ou magazines influents, un type de document important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
 >
-> -   **American Historical Review (2 comptes-rendus) - JIF = 1.2**
-> -   **British Journal for the History of Science (1) – 1.2**
-> -   **Isis (4) - 0.9**
-> -   **History of Science (1) - 0.8**
-> -   History & Memory (4) - 0.3
-> -   etc.
+> |  |  |  |
+> |-----------------------------------------|----------|----------------------|
+> | *Revue* | *JIF* | *Nb de comptes-rendus* |
+> | **American Historical Review** | **1.2** | **2** |
+> | **British Journal for the History of Science** | **1.2** | **1** |
+> | **Isis** | **0.9** | **4** |
+> | **History of Science** | **0.8** | **1** |
+> | History of European Ideas | 0.5 | 1 |
+> | Intellectual History Review | 0.5 | 1 |
+> | History & Memory | 0.3 | 3 |
+> | autres revues à comité de lecture |  | 15 |
+> | journaux et magazines influents |  | 5 |
 
 Le *Journal citation reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur Facteur d'impact (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec le h-index donc à éviter). Si on fait souvent cette manipulation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local. Ne pas utiliser les outils IAg généralistes comme *Claude* ou *ChatGPT* pour récupérer les JIF par revues car 1) cela ne fonctionne pas, et 2) par nature, cela produit des résultats inexacts pour ce type de requête.
 
@@ -109,6 +115,6 @@ Loez, André. « La fabrique des Annales : épisode 1 ». *Paroles d'histoire*, 
 
 Müller, Bertrand. « Lucien Febvre e la politica della recensione ». *Storiografia*, vol. 1, 1997, 159-176.
 
----
+------------------------------------------------------------------------
 
 Remerciements pour leur aide : Virginie Paquet, Dominic Desaulniers.
