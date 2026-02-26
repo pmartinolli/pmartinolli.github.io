@@ -1195,7 +1195,7 @@ font-style: inherit;">"Plato"</span></span>
   <pubDate>Thu, 19 Feb 2026 05:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Dépots de données de recherche en histoire</title>
+  <title>Dépôts de données de recherche en histoire</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/depot-donnees-histoire/</link>
   <description><![CDATA[ 
@@ -1416,6 +1416,7 @@ font-style: inherit;">"Plato"</span></span>
 
  ]]></description>
   <category>HumanitésNumériques</category>
+  <category>Histoire</category>
   <guid>https://pmartinolli.github.io/blog/2026/depot-donnees-histoire/</guid>
   <pubDate>Wed, 18 Feb 2026 05:00:00 GMT</pubDate>
 </item>

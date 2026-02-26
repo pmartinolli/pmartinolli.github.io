@@ -1,10 +1,10 @@
 ---
-title: "Dépots de données de recherche en histoire"
+title: "Dépôts de données de recherche en histoire"
 format: html
 author: "Pascal Martinolli"
 date: "2026-02-18"
-categories: [HumanitésNumériques]
-description: "Où l'on explore des voies et des pratiques pour diffuser des données de recherche en histoire."
+categories: [HumanitésNumériques, Histoire]
+description: "Où l'on explore des voies et des pratiques pour diffuser des données de recherche pour les disciplines de l'histoire, illustrées par de nombreux exemples."
 ---
 
 Outre des rencontres individuelles avec des chercheuses et des chercheurs en histoire, ce billet a été écrit avec [*The Transformation of Historical Research in the Digital Age*](https://doi.org/10.1017/9781009026055) de Milligan (2022, *open access*).
