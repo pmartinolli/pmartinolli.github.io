@@ -92,10 +92,10 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 
 ### Exemple
 
-> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *Web of Science*, *Google Scholar* et *JSTOR*, **vos livres ont été commentées dans au moins 28 comptes-rendus de lecture publiés dans des revues révisées par les pairs** et 5 comptes-rendus dans des journaux ou magazines influents. Les comptes-rendus sont un type de publication important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
+> Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *OpenAlex*, *Google Scholar* et *JSTOR*, **vos livres ont été commentés dans au moins 28 comptes-rendus de lecture publiés dans des revues révisées par les pairs** et 5 comptes-rendus dans des journaux ou magazines influents. Les comptes-rendus sont un type de publication important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent souvent de revues prestigieuses, c’est-à-dire avec un haut *Journal Impact Factor* (JIF), marquées en gras. En voici un aperçu :
 >
 > |  |  |  |
-> |------------------------------------|------------------|-------------------|
+> |-----------------------------------|------------------|-------------------|
 > | *Revue* | *JIF* | *Nb de comptes-rendus* |
 > | **American Historical Review** | **1.2** | **2** |
 > | **British Journal for the History of Science** | **1.2** | **1** |
