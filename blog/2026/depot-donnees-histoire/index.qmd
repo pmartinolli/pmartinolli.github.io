@@ -159,11 +159,13 @@ Exemples de dépôts généralistes :
 
 La plupart des plateformes dédiées proposent des sites web navigables ou des bases de données interrogeables. Cela ne correspond pas tout à fait à l'esprit des données de recherche qui devraient être facilement disponibles au téléchargement en intégralité sous la forme de fichiers de formats ouverts et bien documentés (selon les principes [FAIR](https://www.frdr-dfdr.ca/docs/fr/principes_fair/)), avec une garantie de pérennité.
 
--   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France (service Nakala par exemple)
+-   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France
 
     -   Exemples : [*CARo - Corpus des actes royaux du Moyen-Âge*](https://caro.huma-num.fr/)
 
         -   [*Guide de sources en histoire sociale des Européens en Algérie (1830-1962)*](https://europalg.huma-num.fr/)
+
+    -   NB : le service [Nakala](https://humanum.hypotheses.org/16199) de Huma-Num offre une solution d'hébergement complète de données de recherche liées à des publications.
 
 -   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques via des bibliothèques de références partagées Zotero.
 
