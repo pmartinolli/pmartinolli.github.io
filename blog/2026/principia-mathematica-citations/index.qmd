@@ -11,7 +11,9 @@ format: html
 
 ## *Principia Mathematica*, c'est quoi ?
 
-*Philosophiæ Naturalis Principia Mathematica*^[Q](https://www.wikidata.org/wiki/Q205921)^ de Isaac Newton (1687) est une oeuvre majeure dans l'histoire des sciences. Tout ce que j'en sais avant de débuter ce projet c'est que les lois mathématiques qui y figurent servent à décrire le monde physique, principalement le mouvement des astres et la gravitation. De plus, je me souviens que Newton y développe sa propre méthode de calcul infinitésimal (dérivé+intégral) en concurrence avec Liebniz sur qui est le premier.
+*Philosophiæ Naturalis Principia Mathematica*^Q^ de Isaac Newton (1687) est une oeuvre majeure dans l'histoire des sciences. Tout ce que j'en sais avant de débuter ce projet c'est que les lois mathématiques qui y figurent servent à décrire le monde physique, principalement le mouvement des astres et la gravitation. De plus, je me souviens que Newton y développe sa propre méthode de calcul infinitésimal (dérivé+intégral) en concurrence avec Liebniz sur qui est le premier.
+
+[![Exemplaire de la BLRCS de l'UdeM](principia-mathematica-pageGarde.png){fig-alt="Page de garde des Principia Mathematica"}](https://umontreal.on.worldcat.org/oclc/869576311)
 
 ## Pratiques de citation
 
@@ -310,7 +312,7 @@ On pourrait comparer les **différentes éditions** des *Principia* pour observe
 
 En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (65x) et Newton n'utilise pas de formules toutes faites ou stéréotypées à son égard. Chaque mention est une insertion originale et argumentée dans le texte. De plus, Dieu est mentionné aux mêmes endroits du texte que la plupart des autres entités nommées (essentiellement des savants et des observateurs), c'est-à-dire au début et à la fin du texte. Dieu fait partie intégrante de l'écosystème discursif, au même titre que les savants et que les astronomes-observateurs.
 
-Ensuite, **Edmond** **Halley** (32x) qui finança cette oeuvre et les travaux de Newton. D'ailleurs, le livre commence par un épigraphe de Halley.
+Ensuite, **Edmond** **Halley** (32x) qui finança cette oeuvre et les travaux de Newton. Les *Principia* commencent par un prologue de deux pages de Halley. Je note que dans l'édition [WikiSource](#0) de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).
 
 > Nec fas est proprius mortali attingere Divos. — [Halley.]{.smallcaps}
 
