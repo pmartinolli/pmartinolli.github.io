@@ -995,7 +995,7 @@ font-style: inherit;">"Anaximander"</span>, <span class="st" style="color: #2079
 background-color: null;
 font-style: inherit;">"Pythagoreans"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Numa Pompilius"</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">"Pompilius"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Democritus"</span>, <span class="st" style="color: #20794D;
 background-color: null;
@@ -1179,8 +1179,6 @@ font-style: inherit;">"Anaxagoros"</span>, <span class="st" style="color: #20794
 background-color: null;
 font-style: inherit;">"Virgil"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Philo Allegor."</span>, <span class="st" style="color: #20794D;
-background-color: null;
 font-style: inherit;">"Aratus"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"St. Paul"</span>, <span class="st" style="color: #20794D;
@@ -1199,7 +1197,9 @@ font-style: inherit;">"Philolaus"</span>, <span class="st" style="color: #20794D
 background-color: null;
 font-style: inherit;">"Aristarchus"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Plato"</span></span>
+font-style: inherit;">"Plato"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Leibnitz"</span>,</span>
 <span id="cb3-4">]</span></code></pre></div></div>
 <p>Voir le <a href="https://pmartinolli.github.io/code/principia-mathematica/main.py">code</a> modifié et le <a href="https://pmartinolli.github.io/code/principia-mathematica/corpus.txt">corpus</a> associé.</p>
 </section>
@@ -1210,10 +1210,10 @@ font-style: inherit;">"Plato"</span></span>
 <section id="résultats" class="level3">
 <h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
-<span id="cb4-2">Total Citations Found: 574</span>
-<span id="cb4-3">Unique Scientists Cited: 105</span>
+<span id="cb4-2">Total Named Entities Found: 591</span>
+<span id="cb4-3">Unique Named Entities Mentioned: 106</span>
 <span id="cb4-4"></span>
-<span id="cb4-5">Top 10 Most Cited Scientists:</span>
+<span id="cb4-5">Top 10 Most Mentioned Named Entities:</span>
 <span id="cb4-6">  God: 65</span>
 <span id="cb4-7">  Halley: 32</span>
 <span id="cb4-8">  Kepler: 29</span>
@@ -1222,29 +1222,46 @@ font-style: inherit;">"Plato"</span></span>
 <span id="cb4-11">  Hevelius: 21</span>
 <span id="cb4-12">  Huygens: 20</span>
 <span id="cb4-13">  Hook: 19</span>
-<span id="cb4-14">  Hooke: 16</span>
-<span id="cb4-15">  Montenari: 15</span>
+<span id="cb4-14">  Leibnitz: 17</span>
+<span id="cb4-15">  Hooke: 16</span>
 <span id="cb4-16"></span>
 <span id="cb4-17">##### Statistical Test Results #####</span>
-<span id="cb4-18">KS Test Statistic: 0.3040</span>
-<span id="cb4-19">KS Test p-value: 1.4816e-47</span>
+<span id="cb4-18">KS Test Statistic: 0.2893</span>
+<span id="cb4-19">KS Test p-value: 2.7514e-44</span>
 <span id="cb4-20">Result: The distribution of names is significantly different from Uniform (p &lt; 0.05).</span>
 <span id="cb4-21"></span>
-<span id="cb4-22">Mean Distance between citations: 2502.37 characters</span>
-<span id="cb4-23">Variance of Distances: 74249546.11</span>
-<span id="cb4-24">Dispersion Metric (Var/Mean of distances): 29671.65</span>
-<span id="cb4-25">Coefficient of Variation (Std/Mean): 3.44</span>
+<span id="cb4-22">Mean Distance between Mentions: 2430.27 characters</span>
+<span id="cb4-23">Variance of Distances: 72255621.25</span>
+<span id="cb4-24">Dispersion Metric (Var/Mean of distances): 29731.51</span>
+<span id="cb4-25">Coefficient of Variation (Std/Mean): 3.50</span>
 <span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div></div>
-<p><img src="https://pmartinolli.github.io/blog/2026/principia-mathematica-citations/figures.png" class="img-fluid"></p>
+<p><img src="https://pmartinolli.github.io/code/principia-mathematica/figure.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="et-maintenant" class="level2">
 <h2 class="anchored" data-anchor-id="et-maintenant">Et maintenant ?</h2>
 <section id="keyword-in-context" class="level4">
 <h4 class="anchored" data-anchor-id="keyword-in-context"><em>Keyword in Context</em></h4>
-<p>On pourrait modifier le code pour générer un index avec tous les mots-clés cherchés en contexte (<em>Keyword in Context</em> ou <em>KWIC</em>) et ainsi comprendre comment ils sont utilisés dans le texte.</p>
+<p>On pourrait créer un nouveau code pour générer un index avec tous les mots-clés cherchés en contexte (<em>Keyword in Context</em> ou <em>KWIC</em>) et ainsi comprendre comment ils sont utilisés dans le texte.</p>
 <p>On peut y ajouter un graphique qui indique à quel endroit est-ce que les mots sont repérés.</p>
 <p>Voici le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic.py">code</a> et le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic_index.html">résultat</a>.</p>
+</section>
+<section id="pourquoi-faire-ça" class="level4">
+<h4 class="anchored" data-anchor-id="pourquoi-faire-ça">Pourquoi faire ça ?</h4>
+<ol type="1">
+<li>Pour agir comme <strong>contrôle</strong> du traitement du corpus et vérifier que tout à bien été repéré. En effet, certaines entités nommées peuvent avoir été oubliées lors du traitement manuel et. comme les entitées nommées sont souvent menrionnées à côté d’autres entités nommées, cela peut aider à repérer des manquants.</li>
+<li>Mieux <strong>repérer les oeuvres citées</strong>. En effet, dans l’immense majorité des cas, le titre d’une oeuvre est accompagnée de son auteur (avant ou après le titre).</li>
+<li>Pour comprendre comment les entités nommées sont <strong>utilisées</strong> :
+<ol type="1">
+<li>on mentionne une personne pour ses idées (découvertes, équations, théories, etc.) ou pour ses observations astronomiques ?</li>
+<li>En début ou en fin de corpus ?</li>
+<li>Autres.</li>
+</ol></li>
+</ol>
+</section>
+<section id="autres-pistes" class="level4">
+<h4 class="anchored" data-anchor-id="autres-pistes">Autres pistes</h4>
+<p>On pourrait comparer les <strong>différentes éditions</strong> des <em>Principia</em> pour observer quelles sont entités nommées qui disparaissent, ou qui apparaissent. Et pourquoi ?</p>
 </section>
 </section>
 <section id="commentaires" class="level2">
@@ -1258,9 +1275,10 @@ font-style: inherit;">"Plato"</span></span>
 <blockquote class="blockquote">
 <p>What Des-Cartes did was a good step. You have added much several ways, &amp; especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. (<a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">+</a>)</p>
 </blockquote>
-<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (29x), un savant de la génération précédente décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations.</p>
+<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (29x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations. <strong>Huygens</strong> (20x) rencontrera Newton deux ans après la publication des <em>Principia</em> en visitant Londres.</p>
 <p>La <strong>Royal Society</strong> (26x), à laquelle Newton est membre, est mentionnée de nombreuse fois. Il en deviendra Président en 1703.</p>
 <p><strong>John Flamsteed</strong> (24x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
+<p><strong>Leibniz</strong> est mentionné (17x). Ils entreront dans un <a href="https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy">conflit</a> célèbre après la publication des <em>Principia</em> pour savoir qui des deux a inventé le calcul infinitésimal.</p>
 </section>
 <section id="plus-de-contexte" class="level2">
 <h2 class="anchored" data-anchor-id="plus-de-contexte">Plus de contexte!</h2>
