@@ -9,13 +9,15 @@ format: html
 
 [Billet en cours de rédaction]{.smallcaps}
 
-## *Principia Mathematica*
+## *Principia Mathematica*, c'est quoi ?
 
 *Philosophiæ Naturalis Principia Mathematica*^[Q](https://www.wikidata.org/wiki/Q205921)^ de Isaac Newton (1687) est une oeuvre majeure dans l'histoire des sciences. Tout ce que j'en sais avant de débuter ce projet c'est que les lois mathématiques qui y figurent servent à décrire le monde physique, principalement le mouvement des astres et la gravitation. De plus, je me souviens que Newton y développe sa propre méthode de calcul infinitésimal (dérivé+intégral) en concurrence avec Liebniz sur qui est le premier.
 
 ## Pratiques de citation
 
 *Principia* est un objet littéraire et scientifique idéal pour étudier les pratiques de citation que l'on y trouve car 1) on peut observer comment Newton cite ceux qui l'on précédé et tenter d'expliquer pourquoi; et 2) cette oeuvre a été lue et étudiée par un très grand nombre de scientifiques dans les siècles qui ont suivi (impact).
+
+Je me sers de cette étude descriptive comme exercice de méthodologie pour le décorticage d'une oeuvre littéraire et de ses pratiques de citation. Le but est de dégager des bonnes pratiques, des questions, des enjeux, des découvertes, etc.
 
 ## Méthode 1 : annotation manuelle
 
@@ -246,7 +248,7 @@ Voir le [code](https://pmartinolli.github.io/code/principia-mathematica/main.py)
 
 ### Contrôle (manuel)
 
-Avec Notepad++, utiliser quelques noms pour les compter manuellement quelques entités nommées dans le corpus (Fonction Rechercher + Compter) et vérifier que le code fonctionne.
+Avec un éditeur de texte comme Notepad++, utiliser quelques noms pour compter manuellement quelques entités nommées dans le corpus (Fonction Rechercher + Compter) et ainsi vérifier que le code fonctionne et compte bien les choses.
 
 ### Résultats
 
@@ -281,8 +283,36 @@ Interpretation: CV > 1 suggests clustering/burstiness.
 
 ![](figures.png)
 
+## Et maintenant ?
+
+#### *Keyword in Context*
+
+On pourrait modifier le code pour générer un index avec tous les mots-clés cherchés en contexte (*Keyword in Context* ou *KWIC*) et ainsi comprendre comment ils sont utilisés dans le texte.
+
+On peut y ajouter un graphique qui indique à quel endroit est-ce que les mots sont repérés.
+
+Voici le [code](https://pmartinolli.github.io/code/principia-mathematica/kwic.py) et le [résultat](https://pmartinolli.github.io/code/principia-mathematica/kwic_index.html).
+
+## Commentaires
+
+En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (65x) et Newton n'utilise pas de formules toutes faites ou stéréotypées à son égard. Chaque mention est une insertion originale et argumentée dans le texte. De plus, Dieu est mentionné aux mêmes endroits du texte que la plupart des autres entités nommées (essentiellement des savants et des observateurs), c'est-à-dire au début et à la fin du texte. Dieu fait partie intégrante de l'écosystème discursif, au même titre que les savants et que les astronomes-observateurs.
+
+Ensuite, **Edmond** **Halley** (32x) qui finança cette oeuvre et les travaux de Newton. D'ailleurs, le livre commence par un épigraphe de Halley.
+
+> Nec fas est proprius mortali attingere Divos. — [Halley.]{.smallcaps}
+
+**Robert Hooke** (16x), que parfois Newton orthographie « *Hook »* (19x), est aussi beaucoup mentionné. Les deux savants se [disputaient](https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/) sur l'originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :
+
+> What Des-Cartes did was a good step. You have added much several ways, & especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. ([+](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants))
+
+Newton a construit sa mécanique céleste sur les travaux de **Johannes Kepler** (29x), un savant de la génération précédente décédé 13 ans avant la naissance de Newton. **Johannes** **Hevelius** (21x), que Newton n'a pas connu non plus et qui décède l'année de publication des *Principia,* a été visité par Halley. Il est mentionné pour ses observations.
+
+La **Royal Society** (26x), à laquelle Newton est membre, est mentionnée de nombreuse fois. Il en deviendra Président en 1703.
+
+**John Flamsteed** (24x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les *Principia*. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un [scandale](https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/).
+
 ## Plus de contexte!
 
-Cette analyse avec peu de connaissances préalables des *Principia* a besoin d'être contextualisée par la lecture de la conversation scientifique historique sur le sujet (l'historiographie).
+Bien évidemment, cette analyse avec peu de connaissances préalables des *Principia* a besoin d'être contextualisée par la lecture de la conversation scientifique historique sur le sujet (l'historiographie).
 
 On pourra bientôt lire le livre (fin 2026) [*The Winding Trail to Newton's Principia Mathematica*](https://press.princeton.edu/books/hardcover/9780691287782/the-winding-trail-to-newtons-principia-mathematica) de Jed Z. Buchwald et Mordechai Feingold. En attendant, on pourrait lire d'[autres travaux](https://scholar.google.fr/scholar?hl=en&as_sdt=0,5&inst=3940701053777478036&q=feingold+buchwald) sur le même sujet par ses deux auteurs.
