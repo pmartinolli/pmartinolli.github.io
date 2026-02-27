@@ -11,9 +11,9 @@ format: html
 
 ## *Principia Mathematica*, c'est quoi ?
 
-*Philosophiæ Naturalis Principia Mathematica*^Q^ de Isaac Newton (1687) est une oeuvre majeure dans l'histoire des sciences. Tout ce que j'en sais avant de débuter ce projet c'est que les lois mathématiques qui y figurent servent à décrire le monde physique, principalement le mouvement des astres et la gravitation. De plus, je me souviens que Newton y développe sa propre méthode de calcul infinitésimal (dérivé+intégral) en concurrence avec Liebniz sur qui est le premier.
+*Philosophiæ Naturalis Principia Mathematica*^Q^ de Isaac Newton (1687) est une oeuvre majeure dans l'histoire des sciences. Avant de commencer ce projet, je sais que les lois mathématiques présentées dans ce texte permettent de décrire le monde physique, en particulier le mouvement des corps célestes et la gravitation. Par ailleurs, je me souviens que Newton y élabore sa propre méthode de calcul infinitésimal (comprenant dérivés et intégrales), en rivalité avec Leibniz pour la primauté de cette découverte. Je n'en sais pas plus et je vais découvrir le sujet au fur et à mesure.
 
-[![Exemplaire de la [BLRCS](https://umontreal.on.worldcat.org/oclc/869576311) de l'UdeM (remerciements à Noémie Charest-Bourdon et Éric Bouchard)](principia-mathematica-pageGarde.png){fig-alt="Page de garde des Principia Mathematica"}](https://umontreal.on.worldcat.org/oclc/869576311)
+[![Exemplaire de la BLRCS de l'UdeM (remerciements à Noémie Charest-Bourdon et Éric Bouchard)](principia-mathematica-pageGarde.png){fig-alt="Page de garde des Principia Mathematica"}](https://umontreal.on.worldcat.org/oclc/869576311)
 
 ## Pratiques de citation
 
