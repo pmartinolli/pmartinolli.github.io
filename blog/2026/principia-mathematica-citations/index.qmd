@@ -689,11 +689,13 @@ Interpretation: CV > 1 → clustering / burstiness.
 
 #### En image
 
-![](https://pmartinolli.github.io/code/principia-mathematica/figure-v2.png){width="500" height="21"}
+![](https://pmartinolli.github.io/code/principia-mathematica/figure-v2.png)
 
-#### Réécriture du code pour l'affichage localisé des noms en html
+Hélas ce code n'est pas parfait car il compte deux fois les variantes d'un nom.
 
-De plus, en cas de variante comme `Hooke` et `Dr. Hooke`, il ne compte qu'une fois.
+#### Réécriture du code la localisation unique des noms en html
+
+On localise où se trouve le nom dans le corpus et, en cas de variante, comme `Hooke` et `Dr. Hooke`, il ne compte qu'une fois.
 
 ``` python
 # -*- coding: utf-8 -*-
