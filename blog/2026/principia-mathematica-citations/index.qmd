@@ -62,7 +62,7 @@ On découvre et on mémorise naturellement des tendances. Par exemple :
 -   Galilée, dont les *Principia* prolongent les travaux, n'est pas beaucoup cité ;
 -   Il y a une section de citations bibliques ;
 
-## Méthode 2 : traitement automatisé 
+## Méthode 2 : traitement automatisé
 
 ### AstaLab AutoDiscovery
 
@@ -1046,13 +1046,13 @@ Avec aussi un [script qui compte](https://pmartinolli.github.io/code/principia-m
 
 ## Commentaires
 
-En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (32x) et les mentions sont très concentrées.
+En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (29x) et les mentions sont très concentrées.
 
 Ensuite, **Edmond** **Halley** (24x) qui finança cette oeuvre et les travaux de Newton. Les *Principia* commencent par un prologue de deux pages de Halley. Je note que dans l'édition [WikiSource](#0) de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).
 
 > Nec fas est proprius mortali attingere Divos. — [Halley.]{.smallcaps}
 
-**Robert Hooke** (26x), que parfois Newton orthographie « *Hook »* (7x), est aussi beaucoup mentionné. Les deux savants se [disputaient](https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/) sur l'originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :
+**Robert Hooke** (14x), que parfois Newton orthographie « *Hook »* (7x), est aussi beaucoup mentionné. Les deux savants se [disputaient](https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/) sur l'originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :
 
 > What Des-Cartes did was a good step. You have added much several ways, & especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. ([+](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants))
 
