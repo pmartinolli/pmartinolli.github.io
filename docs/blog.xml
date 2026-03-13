@@ -1965,9 +1965,802 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </ul></li>
 <li><p>Non repérés dans la version latine :</p>
 <ul>
-<li>Slusius</li>
+<li><code>Slusius</code> (mal OCRisé + en latin, car rédigé comme <code>Siufii</code> au lieu de <code>Slufii</code>)</li>
 </ul></li>
 </ul>
+<p>J’interrompt ici le travail pour recomposer les scripts. Il me faut un tableau qui regroupe tous les alias/synonymes et les compte pour un seul. Il faut aussi intervertir les s et les f.</p>
+</section>
+<section id="regrouper-les-alias-de-noms" class="level4">
+<h4 class="anchored" data-anchor-id="regrouper-les-alias-de-noms">Regrouper les alias de noms</h4>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb6-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb6-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb6-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb6-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> csv</span>
+<span id="cb6-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> scipy.stats <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> kstest</span>
+<span id="cb6-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Counter, defaultdict</span>
+<span id="cb6-8"></span>
+<span id="cb6-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Load entity definitions from CSV ────────────────────────────────────────</span></span>
+<span id="cb6-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Expected columns: value (Wikidata ID), valueLabel (canonical label), qualifierValue (alias)</span></span>
+<span id="cb6-11">csv_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(os.path.dirname(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__file__</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query.csv"</span>)</span>
+<span id="cb6-12"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> os.path.exists(csv_path):</span>
+<span id="cb6-13">    csv_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query.csv"</span></span>
+<span id="cb6-14"></span>
+<span id="cb6-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Build mappings:  alias → entity_id,  entity_id → canonical label</span></span>
+<span id="cb6-16">alias_to_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># alias string  → Wikidata ID</span></span>
+<span id="cb6-17">id_to_label <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Wikidata ID   → canonical label</span></span>
+<span id="cb6-18">id_to_aliases <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> defaultdict(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Wikidata ID → list of aliases</span></span>
+<span id="cb6-19"></span>
+<span id="cb6-20"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(csv_path, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb6-21">    reader <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> csv.DictReader(f)</span>
+<span id="cb6-22">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> row <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> reader:</span>
+<span id="cb6-23">        entity_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'value'</span>].strip().replace(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"http://www.wikidata.org/entity/"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)</span>
+<span id="cb6-24">        label     <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'valueLabel'</span>].strip()</span>
+<span id="cb6-25">        alias     <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'qualifierValue'</span>].strip()</span>
+<span id="cb6-26"></span>
+<span id="cb6-27">        id_to_label[entity_id] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> label</span>
+<span id="cb6-28">        id_to_aliases[entity_id].append(alias)</span>
+<span id="cb6-29">        alias_to_id[alias] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> entity_id   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># last alias row wins if duplicated</span></span>
+<span id="cb6-30"></span>
+<span id="cb6-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># All unique aliases to search for</span></span>
+<span id="cb6-32">all_aliases <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(alias_to_id.keys())</span>
+<span id="cb6-33"></span>
+<span id="cb6-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Load corpus ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-35">filename <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"corpus.txt"</span></span>
+<span id="cb6-36">filepath <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".."</span>, filename)</span>
+<span id="cb6-37"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> os.path.exists(filepath):</span>
+<span id="cb6-38">    filepath <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> filename</span>
+<span id="cb6-39">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> os.path.exists(filepath):</span>
+<span id="cb6-40">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Error: File </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>filename<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> not found."</span>)</span>
+<span id="cb6-41">        exit(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-42"></span>
+<span id="cb6-43"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Loading dataset from: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>filepath<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-44"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(filepath, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'r'</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>, errors<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ignore'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb6-45">    text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb6-46"></span>
+<span id="cb6-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Find occurrences ─────────────────────────────────────────────────────────</span></span>
+<span id="cb6-48"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Identifying name occurrences..."</span>)</span>
+<span id="cb6-49"></span>
+<span id="cb6-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sort aliases longest-first so longer strings match before shorter substrings</span></span>
+<span id="cb6-51">sorted_aliases <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(all_aliases, key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>, reverse<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb6-52">escaped <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [re.escape(a) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> sorted_aliases]</span>
+<span id="cb6-53">pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'|'</span>.join(escaped) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r')\b'</span></span>
+<span id="cb6-54"></span>
+<span id="cb6-55">matches <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(re.finditer(pattern, text, re.IGNORECASE))</span>
+<span id="cb6-56"></span>
+<span id="cb6-57">occurrences <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># character positions</span></span>
+<span id="cb6-58">found_ids   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># entity ID for each match</span></span>
+<span id="cb6-59"></span>
+<span id="cb6-60"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> match <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> matches:</span>
+<span id="cb6-61">    matched_alias <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> match.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-62">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Look up entity ID (case-insensitive fallback)</span></span>
+<span id="cb6-63">    entity_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> alias_to_id.get(matched_alias)</span>
+<span id="cb6-64">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> entity_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">is</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb6-65">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> alias, eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> alias_to_id.items():</span>
+<span id="cb6-66">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> alias.lower() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> matched_alias.lower():</span>
+<span id="cb6-67">                entity_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> eid</span>
+<span id="cb6-68">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="cb6-69">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> entity_id:</span>
+<span id="cb6-70">        occurrences.append(match.start())</span>
+<span id="cb6-71">        found_ids.append(entity_id)</span>
+<span id="cb6-72"></span>
+<span id="cb6-73"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> occurrences:</span>
+<span id="cb6-74">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"No target names found in the text."</span>)</span>
+<span id="cb6-75">    exit()</span>
+<span id="cb6-76"></span>
+<span id="cb6-77">positions      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.array(occurrences)</span>
+<span id="cb6-78">total_length   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(text)</span>
+<span id="cb6-79">normalized_pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> positions <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> total_length</span>
+<span id="cb6-80"></span>
+<span id="cb6-81"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── KS Test ──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-82">stat, p_value <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> kstest(normalized_pos, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'uniform'</span>)</span>
+<span id="cb6-83"></span>
+<span id="cb6-84"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Dispersion of inter-mention distances ────────────────────────────────────</span></span>
+<span id="cb6-85">intervals <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.diff(positions)</span>
+<span id="cb6-86"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(intervals) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb6-87">    mean_interval      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.mean(intervals)</span>
+<span id="cb6-88">    var_interval       <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.var(intervals, ddof<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-89">    dispersion_metric  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> var_interval <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> mean_interval</span>
+<span id="cb6-90">    cv                 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.std(intervals, ddof<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> mean_interval</span>
+<span id="cb6-91"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb6-92">    mean_interval <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> var_interval <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dispersion_metric <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb6-93"></span>
+<span id="cb6-94"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Count mentions per entity ID ─────────────────────────────────────────────</span></span>
+<span id="cb6-95">id_counts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Counter(found_ids)</span>
+<span id="cb6-96"></span>
+<span id="cb6-97"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Print results ─────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-98"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">##### Analysis Results #####"</span>)</span>
+<span id="cb6-99"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Total Named Entity Mentions: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(positions)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-100"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Unique Entities Mentioned:   </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(id_counts)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-101"></span>
+<span id="cb6-102"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Top 10 Most Mentioned Entities (grouped by ID):"</span>)</span>
+<span id="cb6-103"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> entity_id, count <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> id_counts.most_common(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>):</span>
+<span id="cb6-104">    label   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> id_to_label.get(entity_id, entity_id)</span>
+<span id="cb6-105">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#aliases = ', '.join(id_to_aliases[entity_id])</span></span>
+<span id="cb6-106">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"  [</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>entity_id<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">] </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>label<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> (</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>count<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">x)"</span>)</span>
+<span id="cb6-107"></span>
+<span id="cb6-108"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">##### Statistical Test Results #####"</span>)</span>
+<span id="cb6-109"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"KS Test Statistic: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>stat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-110"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"KS Test p-value:   </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>p_value<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4e}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-111"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> p_value <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>:</span>
+<span id="cb6-112">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Result: Distribution significantly differs from Uniform (p &lt; 0.05)."</span>)</span>
+<span id="cb6-113"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb6-114">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Result: Distribution is consistent with Uniform."</span>)</span>
+<span id="cb6-115"></span>
+<span id="cb6-116"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Mean Distance between Mentions: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mean_interval<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> characters"</span>)</span>
+<span id="cb6-117"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Variance of Distances:          </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>var_interval<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-118"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Dispersion Metric (Var/Mean):   </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>dispersion_metric<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-119"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Coefficient of Variation:       </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>cv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb6-120"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span>   cv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Interpretation: CV &gt; 1 → clustering / burstiness."</span>)</span>
+<span id="cb6-121"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> cv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Interpretation: CV &lt; 1 → regularity."</span>)</span>
+<span id="cb6-122"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Interpretation: CV ~ 1 → random Poisson process."</span>)</span>
+<span id="cb6-123"></span>
+<span id="cb6-124"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Visualisations ────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-125">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>))</span>
+<span id="cb6-126"></span>
+<span id="cb6-127">plt.subplot(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-128">plt.eventplot(positions, orientation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'horizontal'</span>, colors<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>, linewidths<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb6-129">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Rug Plot of Scientific Authority Mentions"</span>)</span>
+<span id="cb6-130">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Position in Text (Characters)"</span>)</span>
+<span id="cb6-131">plt.yticks([])</span>
+<span id="cb6-132">plt.xlim(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, total_length)</span>
+<span id="cb6-133"></span>
+<span id="cb6-134">plt.subplot(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb6-135">plt.hist(positions, bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'skyblue'</span>, edgecolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>)</span>
+<span id="cb6-136">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Histogram of Mentions Density"</span>)</span>
+<span id="cb6-137">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Position in Text (Characters)"</span>)</span>
+<span id="cb6-138">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Frequency"</span>)</span>
+<span id="cb6-139"></span>
+<span id="cb6-140">plt.tight_layout()</span>
+<span id="cb6-141">plt.savefig(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'figure-v2.png'</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'png'</span>, dpi<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>)</span>
+<span id="cb6-142">plt.show()</span></code></pre></div>
+<p>Le code se <a href="https://pmartinolli.github.io/code/principia-mathematica/main-v2-avecAliases.py">trouve ici</a>, le fichier <a href="https://pmartinolli.github.io/code/principia-mathematica/query.csv">query.csv</a> est issu de la requête SPARQL plus haut.</p>
+</section>
+<section id="résultats-1" class="level4">
+<h4 class="anchored" data-anchor-id="résultats-1">Résultats</h4>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb7-1">##### Analysis Results #####</span>
+<span id="cb7-2">Total Named Entity Mentions: 450</span>
+<span id="cb7-3">Unique Entities Mentioned:   99</span>
+<span id="cb7-4"></span>
+<span id="cb7-5">Top 10 Most Mentioned Entities (grouped by ID):</span>
+<span id="cb7-6">  [Q47434] Edmond Halley (32x)</span>
+<span id="cb7-7">  [Q8963] Johannes Kepler (30x)</span>
+<span id="cb7-8">  [Q46830] Robert Hooke (30x)</span>
+<span id="cb7-9">  [Q123885] Royal Society (26x)</span>
+<span id="cb7-10">  [Q57963] Johannes Hevelius (21x)</span>
+<span id="cb7-11">  [Q9047] Gottfried Wilhelm Leibniz (17x)</span>
+<span id="cb7-12">  [Q242388] John Flamsteed (16x)</span>
+<span id="cb7-13">  [Q39599] Christiaan Huygens (15x)</span>
+<span id="cb7-14">  [Q44015] John the Apostle (14x)</span>
+<span id="cb7-15">  [Q36620] Tycho Brahe (12x)</span>
+<span id="cb7-16"></span>
+<span id="cb7-17">##### Statistical Test Results #####</span>
+<span id="cb7-18">KS Test Statistic: 0.2869</span>
+<span id="cb7-19">KS Test p-value:   2.7854e-33</span>
+<span id="cb7-20">Result: Distribution significantly differs from Uniform (p &lt; 0.05).</span>
+<span id="cb7-21"></span>
+<span id="cb7-22">Mean Distance between Mentions: 3193.45 characters</span>
+<span id="cb7-23">Variance of Distances:          93656620.51</span>
+<span id="cb7-24">Dispersion Metric (Var/Mean):   29327.70</span>
+<span id="cb7-25">Coefficient of Variation:       3.03</span>
+<span id="cb7-26">Interpretation: CV &gt; 1 → clustering / burstiness.</span></code></pre></div>
+</section>
+<section id="en-image" class="level4">
+<h4 class="anchored" data-anchor-id="en-image">En image</h4>
+<p><img src="https://pmartinolli.github.io/code/principia-mathematica/figure-v2.png" width="500" height="21"></p>
+</section>
+<section id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html" class="level4">
+<h4 class="anchored" data-anchor-id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html">Réécriture du code pour l’affichage localisé des noms en html</h4>
 </section>
 </section>
 <section id="commentaires" class="level2">
