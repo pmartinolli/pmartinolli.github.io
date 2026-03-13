@@ -3,7 +3,7 @@ title: "Pratiques de citation dans Principia Mathematica"
 author: "Pascal Martinolli"
 date: "2026-02-19"
 categories: [HumanitésNumériques, citation]
-description: "Où l'on décrit les pratiques de citation dans Philosophiæ Naturalis Principia Mathematica, une oeuvre majeure de l'histoire des sciences par Isaac Newton (1687). Avec une méthode d'annotation manuelle indexée dans Wikidata et une méthode de traitement automatique du langage, testée avec du code Python généré par AstaLab AutoDiscovery."
+description: "Où l'on décrit les pratiques de citation dans Philosophiæ Naturalis Principia Mathematica, une oeuvre majeure de l'histoire des sciences par Isaac Newton (1687). On combine une méthode d'annotation manuelle pour indexer les entités nommées (personnes et institutions) dans Wikidata, puis des méthodes de comptage par algorithmes en Python."
 format: html
 ---
 
@@ -37,9 +37,9 @@ Si on veut calculer qui est cité et combien de fois et où, il faut extraire to
 
 ### Avantages
 
-Cela permet de parcourir tout le document et de découvrir progressivement des tendances et se faire une culture sur les éléments mentionnés. Parfois, le repérage d'un astronome a été un vrai défi pour repérer qui pouvait être tel ou tel personnage cité.
+Cela permet de parcourir tout le document et de découvrir progressivement des tendances et se faire une culture personnelle des éléments mentionnés. Par exemple, le repérage d'astronomes du XVIIe a été un vrai défi pour repérer qui pouvait être tel ou tel personnage cité.
 
-Par 9 fois, il m'a fallu créer de nouveaux éléments Wikidata pour des entités (personnes ou travaux) qui n'existaient pas encore dans Wikidata :
+Plusieurs fois, il m'a fallu créer de nouveaux éléments Wikidata pour des entités (personnes ou travaux) qui n'existaient pas encore dans Wikidata :
 
 -   Legum Allegoriæ (Q138348789)
 -   Valentinus Estancius (Q138341375)
@@ -50,6 +50,7 @@ Par 9 fois, il m'a fallu créer de nouveaux éléments Wikidata pour des entité
 -   Conics (Q138296602)
 -   The two Books of Apollonius Pergaeus... (Q138296556)
 -   Ephemerides novae motuum coelestium (Q138354676)
+-   De Lucis natura et proprietate (Q138568343)
 
 On découvre et on mémorise naturellement des tendances. Par exemple :
 
@@ -61,7 +62,7 @@ On découvre et on mémorise naturellement des tendances. Par exemple :
 -   Galilée, dont les *Principia* prolongent les travaux, n'est pas beaucoup cité ;
 -   Il y a une section de citations bibliques ;
 
-## Méthode 2 : traitement automatisé par IAg
+## Méthode 2 : traitement automatisé 
 
 ### AstaLab AutoDiscovery
 
@@ -202,7 +203,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Comme on peut le voir, il suffit de changer le contenu de la variable `target_names` avec tous les noms que l'on veut pour regénérer un nouveau résultat testant la présence d'entités nommées tout le long du texte.
+C'est un code rudimentaire mais il permet de jouer un peu avec le corpus. Comme on peut le voir, il suffit de changer le contenu de la variable `target_names` avec tous les noms que l'on veut pour regénérer un nouveau résultat testant la présence d'entités nommées tout le long du texte.
 
 ### Extraire les noms de Wikidata
 
@@ -220,12 +221,12 @@ WHERE {
   }
   
   SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "fr,en".
+    bd:serviceParam wikibase:language "en".
   }
 }
 ```
 
-[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fvalue%20%3FvalueLabel%20%3FqualifierValue%0AWHERE%20%7B%0A%20%20wd%3AQ205921%20p%3AP7137%20%3Fstatement%20.%0A%20%20%3Fstatement%20ps%3AP7137%20%3Fvalue%20.%0A%20%20%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20pq%3AP1932%20%3FqualifierValue%20.%0A%20%20%7D%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22fr%2Cen%22.%0A%20%20%7D%0A%7D)
+[Essayez-la](https://query.wikidata.org/#SELECT%20%3Fvalue%20%3FvalueLabel%20%3FqualifierValue%0AWHERE%20%7B%0A%20%20wd%3AQ205921%20p%3AP7137%20%3Fstatement%20.%0A%20%20%3Fstatement%20ps%3AP7137%20%3Fvalue%20.%0A%20%20%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20pq%3AP1932%20%3FqualifierValue%20.%0A%20%20%7D%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%0A%20%20%7D%0A%7D)
 
 Ensuite, on exporte le résultat au format tsv ou csv, on supprime les deux premières colonnes pour ne garder que la colonne `qualifierValue`. On fait un peu de ménage dedans :
 
@@ -256,30 +257,30 @@ Avec un éditeur de texte comme Notepad++, utiliser quelques noms pour compter m
 
 ``` texinfo
 ##### Analysis Results #####
-Total Named Entities Found: 591
-Unique Named Entities Mentioned: 106
+Total Named Entities Found: 433
+Unique Named Entities Mentioned: 105
 
 Top 10 Most Mentioned Named Entities:
-  God: 65
-  Halley: 32
-  Kepler: 29
-  Royal Society: 26
+  God: 32
+  Halley: 24
   Flamsted: 24
   Hevelius: 21
-  Huygens: 20
   Hook: 19
-  Leibnitz: 17
-  Hooke: 16
+  Kepler: 19
+  Huygens: 16
+  Montenari: 15
+  Cassini: 12
+  Galileo: 11
 
 ##### Statistical Test Results #####
-KS Test Statistic: 0.2893
-KS Test p-value: 2.7514e-44
+KS Test Statistic: 0.4501
+KS Test p-value: 1.4120e-80
 Result: The distribution of names is significantly different from Uniform (p < 0.05).
 
-Mean Distance between Mentions: 2430.27 characters
-Variance of Distances: 72255621.25
-Dispersion Metric (Var/Mean of distances): 29731.51
-Coefficient of Variation (Std/Mean): 3.50
+Mean Distance between Mentions: 3023.94 characters
+Variance of Distances: 96545741.47
+Dispersion Metric (Var/Mean of distances): 31927.11
+Coefficient of Variation (Std/Mean): 3.25
 Interpretation: CV > 1 suggests clustering/burstiness.
 ```
 
@@ -293,7 +294,7 @@ On pourrait créer un nouveau code pour générer un index avec tous les mots-cl
 
 On peut y ajouter un graphique qui indique à quel endroit est-ce que les mots sont repérés.
 
-Voici le [code](https://pmartinolli.github.io/code/principia-mathematica/kwic.py) et le [résultat](https://pmartinolli.github.io/code/principia-mathematica/kwic_index.html).
+Voici un premier [code](#0) et son [résultat](#0).
 
 #### Pourquoi faire ça ?
 
@@ -485,7 +486,7 @@ if __name__ == "__main__":
     )
 ```
 
-Ensuite, on y cherche les entités nommées à partir de l'indexation Wikidata faite sur la version en anglais. C'est un peu plus facile de trouver les entités nommées comme ceci car elles « sautent plus aux yeux » en anglais qu'en latin (pour moi qui ait oublié mon latin depuis 35 ans). Notons cependant que les entitées nommées sont en italiques dans le texte original, ce qui aide tout de même.
+Ensuite, on y cherche les entités nommées à partir de l'indexation Wikidata faite sur la version en anglais. C'est un peu plus facile de trouver les entités nommées comme ceci car elles « sautent plus aux yeux » en anglais qu'en latin (pour moi qui ait oublié mon latin depuis 35 ans). Notons cependant que les entitées nommées sont souvent en italiques dans le texte latin, ce qui aide tout de même.
 
 Quelques remarques :
 
@@ -508,182 +509,36 @@ J'interrompt ici le travail pour recomposer les scripts. Il me faut un tableau q
 
 #### Regrouper les aliases de noms
 
-``` python
-# Author : Pascaliensis, with Claude Sonnet 4.6
-import numpy as np
-import matplotlib.pyplot as plt
-import re
-import os
-import csv
-from scipy.stats import kstest
-from collections import Counter, defaultdict
-
-# ── Load entity definitions from CSV ────────────────────────────────────────
-# Expected columns: value (Wikidata ID), valueLabel (canonical label), qualifierValue (alias)
-csv_path = os.path.join(os.path.dirname(__file__), "query.csv")
-if not os.path.exists(csv_path):
-    csv_path = "query.csv"
-
-# Build mappings:  alias → entity_id,  entity_id → canonical label
-alias_to_id = {}          # alias string  → Wikidata ID
-id_to_label = {}          # Wikidata ID   → canonical label
-id_to_aliases = defaultdict(list)  # Wikidata ID → list of aliases
-
-with open(csv_path, newline='', encoding='utf-8') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        entity_id = row['value'].strip().replace("http://www.wikidata.org/entity/","")
-        label     = row['valueLabel'].strip()
-        alias     = row['qualifierValue'].strip()
-
-        id_to_label[entity_id] = label
-        id_to_aliases[entity_id].append(alias)
-        alias_to_id[alias] = entity_id   # last alias row wins if duplicated
-
-# All unique aliases to search for
-all_aliases = list(alias_to_id.keys())
-
-# ── Load corpus ──────────────────────────────────────────────────────────────
-filename = "corpus.txt"
-filepath = os.path.join("..", filename)
-if not os.path.exists(filepath):
-    filepath = filename
-    if not os.path.exists(filepath):
-        print(f"Error: File {filename} not found.")
-        exit(1)
-
-print(f"Loading dataset from: {filepath}")
-with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-    text = f.read()
-
-# ── Find occurrences ─────────────────────────────────────────────────────────
-print("Identifying name occurrences...")
-
-# Sort aliases longest-first so longer strings match before shorter substrings
-sorted_aliases = sorted(all_aliases, key=len, reverse=True)
-escaped = [re.escape(a) for a in sorted_aliases]
-pattern = r'\b(' + '|'.join(escaped) + r')\b'
-
-matches = list(re.finditer(pattern, text, re.IGNORECASE))
-
-occurrences = []       # character positions
-found_ids   = []       # entity ID for each match
-
-for match in matches:
-    matched_alias = match.group(1)
-    # Look up entity ID (case-insensitive fallback)
-    entity_id = alias_to_id.get(matched_alias)
-    if entity_id is None:
-        for alias, eid in alias_to_id.items():
-            if alias.lower() == matched_alias.lower():
-                entity_id = eid
-                break
-    if entity_id:
-        occurrences.append(match.start())
-        found_ids.append(entity_id)
-
-if not occurrences:
-    print("No target names found in the text.")
-    exit()
-
-positions      = np.array(occurrences)
-total_length   = len(text)
-normalized_pos = positions / total_length
-
-# ── KS Test ──────────────────────────────────────────────────────────────────
-stat, p_value = kstest(normalized_pos, 'uniform')
-
-# ── Dispersion of inter-mention distances ────────────────────────────────────
-intervals = np.diff(positions)
-if len(intervals) > 0:
-    mean_interval      = np.mean(intervals)
-    var_interval       = np.var(intervals, ddof=1)
-    dispersion_metric  = var_interval / mean_interval
-    cv                 = np.std(intervals, ddof=1) / mean_interval
-else:
-    mean_interval = var_interval = dispersion_metric = cv = 0
-
-# ── Count mentions per entity ID ─────────────────────────────────────────────
-id_counts = Counter(found_ids)
-
-# ── Print results ─────────────────────────────────────────────────────────────
-print("\n##### Analysis Results #####")
-print(f"Total Named Entity Mentions: {len(positions)}")
-print(f"Unique Entities Mentioned:   {len(id_counts)}")
-
-print("\nTop 10 Most Mentioned Entities (grouped by ID):")
-for entity_id, count in id_counts.most_common(10):
-    label   = id_to_label.get(entity_id, entity_id)
-    #aliases = ', '.join(id_to_aliases[entity_id])
-    print(f"  [{entity_id}] {label} ({count}x)")
-
-print("\n##### Statistical Test Results #####")
-print(f"KS Test Statistic: {stat:.4f}")
-print(f"KS Test p-value:   {p_value:.4e}")
-if p_value < 0.05:
-    print("Result: Distribution significantly differs from Uniform (p < 0.05).")
-else:
-    print("Result: Distribution is consistent with Uniform.")
-
-print(f"\nMean Distance between Mentions: {mean_interval:.2f} characters")
-print(f"Variance of Distances:          {var_interval:.2f}")
-print(f"Dispersion Metric (Var/Mean):   {dispersion_metric:.2f}")
-print(f"Coefficient of Variation:       {cv:.2f}")
-if   cv > 1: print("Interpretation: CV > 1 → clustering / burstiness.")
-elif cv < 1: print("Interpretation: CV < 1 → regularity.")
-else:        print("Interpretation: CV ~ 1 → random Poisson process.")
-
-# ── Visualisations ────────────────────────────────────────────────────────────
-plt.figure(figsize=(15, 6))
-
-plt.subplot(1, 2, 1)
-plt.eventplot(positions, orientation='horizontal', colors='black', linewidths=0.5)
-plt.title("Rug Plot of Scientific Authority Mentions")
-plt.xlabel("Position in Text (Characters)")
-plt.yticks([])
-plt.xlim(0, total_length)
-
-plt.subplot(1, 2, 2)
-plt.hist(positions, bins=50, color='skyblue', edgecolor='black', alpha=0.7)
-plt.title("Histogram of Mentions Density")
-plt.xlabel("Position in Text (Characters)")
-plt.ylabel("Frequency")
-
-plt.tight_layout()
-plt.savefig('figure-v2.png', format='png', dpi=300)
-plt.show()
-```
-
 Le code se [trouve ici](https://pmartinolli.github.io/code/principia-mathematica/main-v2-avecAliases.py), le fichier [query.csv](https://pmartinolli.github.io/code/principia-mathematica/query.csv) est issu de la requête SPARQL plus haut.
 
 #### Résultats
 
 ``` texinfo
 ##### Analysis Results #####
-Total Named Entity Mentions: 450
-Unique Entities Mentioned:   99
+Total Named Entity Mentions: 385
+Unique Entities Mentioned:   98
 
 Top 10 Most Mentioned Entities (grouped by ID):
-  [Q47434] Edmond Halley (32x)
-  [Q8963] Johannes Kepler (30x)
-  [Q46830] Robert Hooke (30x)
-  [Q123885] Royal Society (26x)
+  [Q190] God (32x)
+  [Q46830] Robert Hooke (26x)
+  [Q47434] Edmond Halley (24x)
   [Q57963] Johannes Hevelius (21x)
-  [Q9047] Gottfried Wilhelm Leibniz (17x)
+  [Q8963] Johannes Kepler (20x)
   [Q242388] John Flamsteed (16x)
   [Q39599] Christiaan Huygens (15x)
-  [Q44015] John the Apostle (14x)
-  [Q36620] Tycho Brahe (12x)
+  [Q14279] Giovanni Domenico Cassini (12x)
+  [Q307] Galileo Galilei (11x)
+  [Q36620] Tycho Brahe (10x)
 
 ##### Statistical Test Results #####
-KS Test Statistic: 0.2869
-KS Test p-value:   2.7854e-33
+KS Test Statistic: 0.4320
+KS Test p-value:   8.3047e-66
 Result: Distribution significantly differs from Uniform (p < 0.05).
 
-Mean Distance between Mentions: 3193.45 characters
-Variance of Distances:          93656620.51
-Dispersion Metric (Var/Mean):   29327.70
-Coefficient of Variation:       3.03
+Mean Distance between Mentions: 3401.93 characters
+Variance of Distances:          107880204.92
+Dispersion Metric (Var/Mean):   31711.43
+Coefficient of Variation:       3.05
 Interpretation: CV > 1 → clustering / burstiness.
 ```
 
@@ -691,11 +546,11 @@ Interpretation: CV > 1 → clustering / burstiness.
 
 ![](https://pmartinolli.github.io/code/principia-mathematica/figure-v2.png)
 
-Hélas ce code n'est pas parfait car il compte deux fois les variantes d'un nom.
+Hélas, ce code n'est pas parfait car il compte deux fois les variantes d'un nom.
 
 #### Réécriture du code la localisation unique des noms en html
 
-On localise où se trouve le nom dans le corpus et, en cas de variante, comme `Hooke` et `Dr. Hooke`, il ne compte qu'une fois.
+On localise où se trouve le nom dans le corpus et, en cas de variante, comme `Hooke` et `Dr. Hooke`, on ne compte qu'une fois.
 
 ``` python
 # -*- coding: utf-8 -*-
@@ -1191,23 +1046,23 @@ Avec aussi un [script qui compte](https://pmartinolli.github.io/code/principia-m
 
 ## Commentaires
 
-En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (65x) et Newton n'utilise pas de formules toutes faites ou stéréotypées à son égard. Chaque mention est une insertion originale et argumentée dans le texte. De plus, Dieu est mentionné aux mêmes endroits du texte que la plupart des autres entités nommées (essentiellement des savants et des observateurs), c'est-à-dire au début et à la fin du texte. Dieu fait partie intégrante de l'écosystème discursif, au même titre que les savants et que les astronomes-observateurs.
+En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (32x) et les mentions sont très concentrées.
 
-Ensuite, **Edmond** **Halley** (32x) qui finança cette oeuvre et les travaux de Newton. Les *Principia* commencent par un prologue de deux pages de Halley. Je note que dans l'édition [WikiSource](#0) de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).
+Ensuite, **Edmond** **Halley** (24x) qui finança cette oeuvre et les travaux de Newton. Les *Principia* commencent par un prologue de deux pages de Halley. Je note que dans l'édition [WikiSource](#0) de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).
 
 > Nec fas est proprius mortali attingere Divos. — [Halley.]{.smallcaps}
 
-**Robert Hooke** (19x), que parfois Newton orthographie « *Hook »* (11x), est aussi beaucoup mentionné. Les deux savants se [disputaient](https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/) sur l'originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :
+**Robert Hooke** (26x), que parfois Newton orthographie « *Hook »* (7x), est aussi beaucoup mentionné. Les deux savants se [disputaient](https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/) sur l'originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :
 
 > What Des-Cartes did was a good step. You have added much several ways, & especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. ([+](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants))
 
-Newton a construit sa mécanique céleste sur les travaux de **Johannes Kepler** (30x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. **Johannes** **Hevelius** (21x), que Newton n'a pas connu non plus et qui décède l'année de publication des *Principia,* a été visité par Halley. Il est mentionné pour ses observations. **Huygens** (14x) rencontrera Newton deux ans après la publication des *Principia* en visitant Londres.
+Newton a construit sa mécanique céleste sur les travaux de **Johannes Kepler** (20x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. **Johannes** **Hevelius** (21x), que Newton n'a pas connu non plus et qui décède l'année de publication des *Principia,* a été visité par Halley. Il est mentionné pour ses observations. **Huygens** (15x) rencontrera Newton deux ans après la publication des *Principia* en visitant Londres.
 
-La **Royal Society** (26x), à laquelle Newton est membre, est mentionnée de nombreuse fois. Il en deviendra Président en 1703.
+La **Royal Society**, à laquelle Newton est membre, est mentionnée (3x). Il en deviendra Président en 1703.
 
 **John Flamsteed** (16x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les *Principia*. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un [scandale](https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/).
 
-**Leibniz** est mentionné (17x). Ils entreront dans un [conflit](https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy) célèbre après la publication des *Principia* pour savoir qui des deux a inventé le calcul infinitésimal.
+**Leibniz** n'est pas mentionné (0x). Ils entreront dans un [conflit](https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy) célèbre après la publication des *Principia* pour savoir qui des deux a inventé le calcul infinitésimal.
 
 ## Plus de contexte!
 
