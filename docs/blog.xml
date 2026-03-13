@@ -1970,86 +1970,89 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </ul>
 <p>J’interrompt ici le travail pour recomposer les scripts. Il me faut un tableau qui regroupe tous les alias/synonymes et les compte pour un seul. Il faut aussi intervertir les s et les f.</p>
 </section>
-<section id="regrouper-les-alias-de-noms" class="level4">
-<h4 class="anchored" data-anchor-id="regrouper-les-alias-de-noms">Regrouper les alias de noms</h4>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+<section id="regrouper-les-aliases-de-noms" class="level4">
+<h4 class="anchored" data-anchor-id="regrouper-les-aliases-de-noms">Regrouper les aliases de noms</h4>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Author : Pascaliensis, with Claude Sonnet 4.6</span></span>
+<span id="cb6-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> np</span>
-<span id="cb6-2"><span class="im" style="color: #00769E;
+<span id="cb6-3"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> plt</span>
-<span id="cb6-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> re</span>
 <span id="cb6-4"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> os</span>
+font-style: inherit;">import</span> re</span>
 <span id="cb6-5"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> csv</span>
+font-style: inherit;">import</span> os</span>
 <span id="cb6-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> csv</span>
+<span id="cb6-7"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> scipy.stats <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> kstest</span>
-<span id="cb6-7"><span class="im" style="color: #00769E;
+<span id="cb6-8"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Counter, defaultdict</span>
-<span id="cb6-8"></span>
-<span id="cb6-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ── Load entity definitions from CSV ────────────────────────────────────────</span></span>
+<span id="cb6-9"></span>
 <span id="cb6-10"><span class="co" style="color: #5E5E5E;
 background-color: null;
+font-style: inherit;"># ── Load entity definitions from CSV ────────────────────────────────────────</span></span>
+<span id="cb6-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
 font-style: inherit;"># Expected columns: value (Wikidata ID), valueLabel (canonical label), qualifierValue (alias)</span></span>
-<span id="cb6-11">csv_path <span class="op" style="color: #5E5E5E;
+<span id="cb6-12">csv_path <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> os.path.join(os.path.dirname(<span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">__file__</span>), <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query.csv"</span>)</span>
-<span id="cb6-12"><span class="cf" style="color: #003B4F;
+<span id="cb6-13"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">not</span> os.path.exists(csv_path):</span>
-<span id="cb6-13">    csv_path <span class="op" style="color: #5E5E5E;
+<span id="cb6-14">    csv_path <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query.csv"</span></span>
-<span id="cb6-14"></span>
-<span id="cb6-15"><span class="co" style="color: #5E5E5E;
+<span id="cb6-15"></span>
+<span id="cb6-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Build mappings:  alias → entity_id,  entity_id → canonical label</span></span>
-<span id="cb6-16">alias_to_id <span class="op" style="color: #5E5E5E;
+<span id="cb6-17">alias_to_id <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {}          <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># alias string  → Wikidata ID</span></span>
-<span id="cb6-17">id_to_label <span class="op" style="color: #5E5E5E;
+<span id="cb6-18">id_to_label <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {}          <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Wikidata ID   → canonical label</span></span>
-<span id="cb6-18">id_to_aliases <span class="op" style="color: #5E5E5E;
+<span id="cb6-19">id_to_aliases <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> defaultdict(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>)  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Wikidata ID → list of aliases</span></span>
-<span id="cb6-19"></span>
-<span id="cb6-20"><span class="cf" style="color: #003B4F;
+<span id="cb6-20"></span>
+<span id="cb6-21"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">with</span> <span class="bu" style="color: null;
@@ -2065,17 +2068,17 @@ background-color: null;
 font-style: inherit;">'utf-8'</span>) <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> f:</span>
-<span id="cb6-21">    reader <span class="op" style="color: #5E5E5E;
+<span id="cb6-22">    reader <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> csv.DictReader(f)</span>
-<span id="cb6-22">    <span class="cf" style="color: #003B4F;
+<span id="cb6-23">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> row <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> reader:</span>
-<span id="cb6-23">        entity_id <span class="op" style="color: #5E5E5E;
+<span id="cb6-24">        entity_id <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
 background-color: null;
@@ -2084,67 +2087,67 @@ background-color: null;
 font-style: inherit;">"http://www.wikidata.org/entity/"</span>,<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">""</span>)</span>
-<span id="cb6-24">        label     <span class="op" style="color: #5E5E5E;
+<span id="cb6-25">        label     <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'valueLabel'</span>].strip()</span>
-<span id="cb6-25">        alias     <span class="op" style="color: #5E5E5E;
+<span id="cb6-26">        alias     <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'qualifierValue'</span>].strip()</span>
-<span id="cb6-26"></span>
-<span id="cb6-27">        id_to_label[entity_id] <span class="op" style="color: #5E5E5E;
+<span id="cb6-27"></span>
+<span id="cb6-28">        id_to_label[entity_id] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> label</span>
-<span id="cb6-28">        id_to_aliases[entity_id].append(alias)</span>
-<span id="cb6-29">        alias_to_id[alias] <span class="op" style="color: #5E5E5E;
+<span id="cb6-29">        id_to_aliases[entity_id].append(alias)</span>
+<span id="cb6-30">        alias_to_id[alias] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> entity_id   <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># last alias row wins if duplicated</span></span>
-<span id="cb6-30"></span>
-<span id="cb6-31"><span class="co" style="color: #5E5E5E;
+<span id="cb6-31"></span>
+<span id="cb6-32"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># All unique aliases to search for</span></span>
-<span id="cb6-32">all_aliases <span class="op" style="color: #5E5E5E;
+<span id="cb6-33">all_aliases <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(alias_to_id.keys())</span>
-<span id="cb6-33"></span>
-<span id="cb6-34"><span class="co" style="color: #5E5E5E;
+<span id="cb6-34"></span>
+<span id="cb6-35"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Load corpus ──────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-35">filename <span class="op" style="color: #5E5E5E;
+<span id="cb6-36">filename <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"corpus.txt"</span></span>
-<span id="cb6-36">filepath <span class="op" style="color: #5E5E5E;
+<span id="cb6-37">filepath <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> os.path.join(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">".."</span>, filename)</span>
-<span id="cb6-37"><span class="cf" style="color: #003B4F;
+<span id="cb6-38"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">not</span> os.path.exists(filepath):</span>
-<span id="cb6-38">    filepath <span class="op" style="color: #5E5E5E;
+<span id="cb6-39">    filepath <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> filename</span>
-<span id="cb6-39">    <span class="cf" style="color: #003B4F;
+<span id="cb6-40">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">not</span> os.path.exists(filepath):</span>
-<span id="cb6-40">        <span class="bu" style="color: null;
+<span id="cb6-41">        <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2155,11 +2158,11 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;"> not found."</span>)</span>
-<span id="cb6-41">        exit(<span class="dv" style="color: #AD0000;
+<span id="cb6-42">        exit(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb6-42"></span>
-<span id="cb6-43"><span class="bu" style="color: null;
+<span id="cb6-43"></span>
+<span id="cb6-44"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2170,7 +2173,7 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-44"><span class="cf" style="color: #003B4F;
+<span id="cb6-45"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">with</span> <span class="bu" style="color: null;
@@ -2188,23 +2191,23 @@ background-color: null;
 font-style: inherit;">'ignore'</span>) <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> f:</span>
-<span id="cb6-45">    text <span class="op" style="color: #5E5E5E;
+<span id="cb6-46">    text <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> f.read()</span>
-<span id="cb6-46"></span>
-<span id="cb6-47"><span class="co" style="color: #5E5E5E;
+<span id="cb6-47"></span>
+<span id="cb6-48"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Find occurrences ─────────────────────────────────────────────────────────</span></span>
-<span id="cb6-48"><span class="bu" style="color: null;
+<span id="cb6-49"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Identifying name occurrences..."</span>)</span>
-<span id="cb6-49"></span>
-<span id="cb6-50"><span class="co" style="color: #5E5E5E;
+<span id="cb6-50"></span>
+<span id="cb6-51"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Sort aliases longest-first so longer strings match before shorter substrings</span></span>
-<span id="cb6-51">sorted_aliases <span class="op" style="color: #5E5E5E;
+<span id="cb6-52">sorted_aliases <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
@@ -2217,7 +2220,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>)</span>
-<span id="cb6-52">escaped <span class="op" style="color: #5E5E5E;
+<span id="cb6-53">escaped <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [re.escape(a) <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -2226,7 +2229,7 @@ font-style: inherit;">for</span> a <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> sorted_aliases]</span>
-<span id="cb6-53">pattern <span class="op" style="color: #5E5E5E;
+<span id="cb6-54">pattern <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
@@ -2239,43 +2242,43 @@ background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">r')\b'</span></span>
-<span id="cb6-54"></span>
-<span id="cb6-55">matches <span class="op" style="color: #5E5E5E;
+<span id="cb6-55"></span>
+<span id="cb6-56">matches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(re.finditer(pattern, text, re.IGNORECASE))</span>
-<span id="cb6-56"></span>
-<span id="cb6-57">occurrences <span class="op" style="color: #5E5E5E;
+<span id="cb6-57"></span>
+<span id="cb6-58">occurrences <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []       <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># character positions</span></span>
-<span id="cb6-58">found_ids   <span class="op" style="color: #5E5E5E;
+<span id="cb6-59">found_ids   <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []       <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># entity ID for each match</span></span>
-<span id="cb6-59"></span>
-<span id="cb6-60"><span class="cf" style="color: #003B4F;
+<span id="cb6-60"></span>
+<span id="cb6-61"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> match <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> matches:</span>
-<span id="cb6-61">    matched_alias <span class="op" style="color: #5E5E5E;
+<span id="cb6-62">    matched_alias <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> match.group(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb6-62">    <span class="co" style="color: #5E5E5E;
+<span id="cb6-63">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Look up entity ID (case-insensitive fallback)</span></span>
-<span id="cb6-63">    entity_id <span class="op" style="color: #5E5E5E;
+<span id="cb6-64">    entity_id <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> alias_to_id.get(matched_alias)</span>
-<span id="cb6-64">    <span class="cf" style="color: #003B4F;
+<span id="cb6-65">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> entity_id <span class="kw" style="color: #003B4F;
@@ -2284,77 +2287,77 @@ font-weight: bold;
 font-style: inherit;">is</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">None</span>:</span>
-<span id="cb6-65">        <span class="cf" style="color: #003B4F;
+<span id="cb6-66">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> alias, eid <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> alias_to_id.items():</span>
-<span id="cb6-66">            <span class="cf" style="color: #003B4F;
+<span id="cb6-67">            <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> alias.lower() <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> matched_alias.lower():</span>
-<span id="cb6-67">                entity_id <span class="op" style="color: #5E5E5E;
+<span id="cb6-68">                entity_id <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> eid</span>
-<span id="cb6-68">                <span class="cf" style="color: #003B4F;
+<span id="cb6-69">                <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">break</span></span>
-<span id="cb6-69">    <span class="cf" style="color: #003B4F;
+<span id="cb6-70">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> entity_id:</span>
-<span id="cb6-70">        occurrences.append(match.start())</span>
-<span id="cb6-71">        found_ids.append(entity_id)</span>
-<span id="cb6-72"></span>
-<span id="cb6-73"><span class="cf" style="color: #003B4F;
+<span id="cb6-71">        occurrences.append(match.start())</span>
+<span id="cb6-72">        found_ids.append(entity_id)</span>
+<span id="cb6-73"></span>
+<span id="cb6-74"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">not</span> occurrences:</span>
-<span id="cb6-74">    <span class="bu" style="color: null;
+<span id="cb6-75">    <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"No target names found in the text."</span>)</span>
-<span id="cb6-75">    exit()</span>
-<span id="cb6-76"></span>
-<span id="cb6-77">positions      <span class="op" style="color: #5E5E5E;
+<span id="cb6-76">    exit()</span>
+<span id="cb6-77"></span>
+<span id="cb6-78">positions      <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.array(occurrences)</span>
-<span id="cb6-78">total_length   <span class="op" style="color: #5E5E5E;
+<span id="cb6-79">total_length   <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(text)</span>
-<span id="cb6-79">normalized_pos <span class="op" style="color: #5E5E5E;
+<span id="cb6-80">normalized_pos <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> positions <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> total_length</span>
-<span id="cb6-80"></span>
-<span id="cb6-81"><span class="co" style="color: #5E5E5E;
+<span id="cb6-81"></span>
+<span id="cb6-82"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── KS Test ──────────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-82">stat, p_value <span class="op" style="color: #5E5E5E;
+<span id="cb6-83">stat, p_value <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> kstest(normalized_pos, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'uniform'</span>)</span>
-<span id="cb6-83"></span>
-<span id="cb6-84"><span class="co" style="color: #5E5E5E;
+<span id="cb6-84"></span>
+<span id="cb6-85"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Dispersion of inter-mention distances ────────────────────────────────────</span></span>
-<span id="cb6-85">intervals <span class="op" style="color: #5E5E5E;
+<span id="cb6-86">intervals <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.diff(positions)</span>
-<span id="cb6-86"><span class="cf" style="color: #003B4F;
+<span id="cb6-87"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="bu" style="color: null;
@@ -2364,22 +2367,22 @@ background-color: null;
 font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>:</span>
-<span id="cb6-87">    mean_interval      <span class="op" style="color: #5E5E5E;
+<span id="cb6-88">    mean_interval      <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.mean(intervals)</span>
-<span id="cb6-88">    var_interval       <span class="op" style="color: #5E5E5E;
+<span id="cb6-89">    var_interval       <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.var(intervals, ddof<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb6-89">    dispersion_metric  <span class="op" style="color: #5E5E5E;
+<span id="cb6-90">    dispersion_metric  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> var_interval <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> mean_interval</span>
-<span id="cb6-90">    cv                 <span class="op" style="color: #5E5E5E;
+<span id="cb6-91">    cv                 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.std(intervals, ddof<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2388,11 +2391,11 @@ background-color: null;
 font-style: inherit;">1</span>) <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> mean_interval</span>
-<span id="cb6-91"><span class="cf" style="color: #003B4F;
+<span id="cb6-92"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">else</span>:</span>
-<span id="cb6-92">    mean_interval <span class="op" style="color: #5E5E5E;
+<span id="cb6-93">    mean_interval <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> var_interval <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2403,18 +2406,18 @@ background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span></span>
-<span id="cb6-93"></span>
-<span id="cb6-94"><span class="co" style="color: #5E5E5E;
+<span id="cb6-94"></span>
+<span id="cb6-95"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Count mentions per entity ID ─────────────────────────────────────────────</span></span>
-<span id="cb6-95">id_counts <span class="op" style="color: #5E5E5E;
+<span id="cb6-96">id_counts <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Counter(found_ids)</span>
-<span id="cb6-96"></span>
-<span id="cb6-97"><span class="co" style="color: #5E5E5E;
+<span id="cb6-97"></span>
+<span id="cb6-98"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Print results ─────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-98"><span class="bu" style="color: null;
+<span id="cb6-99"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2423,7 +2426,7 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">##### Analysis Results #####"</span>)</span>
-<span id="cb6-99"><span class="bu" style="color: null;
+<span id="cb6-100"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2436,7 +2439,7 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-100"><span class="bu" style="color: null;
+<span id="cb6-101"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2449,8 +2452,8 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-101"></span>
-<span id="cb6-102"><span class="bu" style="color: null;
+<span id="cb6-102"></span>
+<span id="cb6-103"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2459,7 +2462,7 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">Top 10 Most Mentioned Entities (grouped by ID):"</span>)</span>
-<span id="cb6-103"><span class="cf" style="color: #003B4F;
+<span id="cb6-104"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> entity_id, count <span class="kw" style="color: #003B4F;
@@ -2468,13 +2471,13 @@ font-weight: bold;
 font-style: inherit;">in</span> id_counts.most_common(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>):</span>
-<span id="cb6-104">    label   <span class="op" style="color: #5E5E5E;
+<span id="cb6-105">    label   <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> id_to_label.get(entity_id, entity_id)</span>
-<span id="cb6-105">    <span class="co" style="color: #5E5E5E;
+<span id="cb6-106">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#aliases = ', '.join(id_to_aliases[entity_id])</span></span>
-<span id="cb6-106">    <span class="bu" style="color: null;
+<span id="cb6-107">    <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2497,8 +2500,8 @@ background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">x)"</span>)</span>
-<span id="cb6-107"></span>
-<span id="cb6-108"><span class="bu" style="color: null;
+<span id="cb6-108"></span>
+<span id="cb6-109"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -2507,7 +2510,7 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">##### Statistical Test Results #####"</span>)</span>
-<span id="cb6-109"><span class="bu" style="color: null;
+<span id="cb6-110"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2518,7 +2521,7 @@ background-color: null;
 font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-110"><span class="bu" style="color: null;
+<span id="cb6-111"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2529,7 +2532,7 @@ background-color: null;
 font-style: inherit;">:.4e}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-111"><span class="cf" style="color: #003B4F;
+<span id="cb6-112"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> p_value <span class="op" style="color: #5E5E5E;
@@ -2537,22 +2540,22 @@ background-color: null;
 font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.05</span>:</span>
-<span id="cb6-112">    <span class="bu" style="color: null;
+<span id="cb6-113">    <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Result: Distribution significantly differs from Uniform (p &lt; 0.05)."</span>)</span>
-<span id="cb6-113"><span class="cf" style="color: #003B4F;
+<span id="cb6-114"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">else</span>:</span>
-<span id="cb6-114">    <span class="bu" style="color: null;
+<span id="cb6-115">    <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Result: Distribution is consistent with Uniform."</span>)</span>
-<span id="cb6-115"></span>
-<span id="cb6-116"><span class="bu" style="color: null;
+<span id="cb6-116"></span>
+<span id="cb6-117"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2567,7 +2570,7 @@ background-color: null;
 font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;"> characters"</span>)</span>
-<span id="cb6-117"><span class="bu" style="color: null;
+<span id="cb6-118"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2578,7 +2581,7 @@ background-color: null;
 font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-118"><span class="bu" style="color: null;
+<span id="cb6-119"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2589,7 +2592,7 @@ background-color: null;
 font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-119"><span class="bu" style="color: null;
+<span id="cb6-120"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -2600,7 +2603,7 @@ background-color: null;
 font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>)</span>
-<span id="cb6-120"><span class="cf" style="color: #003B4F;
+<span id="cb6-121"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span>   cv <span class="op" style="color: #5E5E5E;
@@ -2612,7 +2615,7 @@ background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Interpretation: CV &gt; 1 → clustering / burstiness."</span>)</span>
-<span id="cb6-121"><span class="cf" style="color: #003B4F;
+<span id="cb6-122"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">elif</span> cv <span class="op" style="color: #5E5E5E;
@@ -2624,7 +2627,7 @@ background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Interpretation: CV &lt; 1 → regularity."</span>)</span>
-<span id="cb6-122"><span class="cf" style="color: #003B4F;
+<span id="cb6-123"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">else</span>:        <span class="bu" style="color: null;
@@ -2632,26 +2635,26 @@ background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Interpretation: CV ~ 1 → random Poisson process."</span>)</span>
-<span id="cb6-123"></span>
-<span id="cb6-124"><span class="co" style="color: #5E5E5E;
+<span id="cb6-124"></span>
+<span id="cb6-125"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ── Visualisations ────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-125">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+<span id="cb6-126">plt.figure(figsize<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>))</span>
-<span id="cb6-126"></span>
-<span id="cb6-127">plt.subplot(<span class="dv" style="color: #AD0000;
+<span id="cb6-127"></span>
+<span id="cb6-128">plt.subplot(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb6-128">plt.eventplot(positions, orientation<span class="op" style="color: #5E5E5E;
+<span id="cb6-129">plt.eventplot(positions, orientation<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -2664,25 +2667,25 @@ background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.5</span>)</span>
-<span id="cb6-129">plt.title(<span class="st" style="color: #20794D;
+<span id="cb6-130">plt.title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Rug Plot of Scientific Authority Mentions"</span>)</span>
-<span id="cb6-130">plt.xlabel(<span class="st" style="color: #20794D;
+<span id="cb6-131">plt.xlabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Position in Text (Characters)"</span>)</span>
-<span id="cb6-131">plt.yticks([])</span>
-<span id="cb6-132">plt.xlim(<span class="dv" style="color: #AD0000;
+<span id="cb6-132">plt.yticks([])</span>
+<span id="cb6-133">plt.xlim(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, total_length)</span>
-<span id="cb6-133"></span>
-<span id="cb6-134">plt.subplot(<span class="dv" style="color: #AD0000;
+<span id="cb6-134"></span>
+<span id="cb6-135">plt.subplot(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>)</span>
-<span id="cb6-135">plt.hist(positions, bins<span class="op" style="color: #5E5E5E;
+<span id="cb6-136">plt.hist(positions, bins<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2699,18 +2702,18 @@ background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.7</span>)</span>
-<span id="cb6-136">plt.title(<span class="st" style="color: #20794D;
+<span id="cb6-137">plt.title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Histogram of Mentions Density"</span>)</span>
-<span id="cb6-137">plt.xlabel(<span class="st" style="color: #20794D;
+<span id="cb6-138">plt.xlabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Position in Text (Characters)"</span>)</span>
-<span id="cb6-138">plt.ylabel(<span class="st" style="color: #20794D;
+<span id="cb6-139">plt.ylabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Frequency"</span>)</span>
-<span id="cb6-139"></span>
-<span id="cb6-140">plt.tight_layout()</span>
-<span id="cb6-141">plt.savefig(<span class="st" style="color: #20794D;
+<span id="cb6-140"></span>
+<span id="cb6-141">plt.tight_layout()</span>
+<span id="cb6-142">plt.savefig(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'figure-v2.png'</span>, <span class="bu" style="color: null;
 background-color: null;
@@ -2723,7 +2726,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">300</span>)</span>
-<span id="cb6-142">plt.show()</span></code></pre></div>
+<span id="cb6-143">plt.show()</span></code></pre></div>
 <p>Le code se <a href="https://pmartinolli.github.io/code/principia-mathematica/main-v2-avecAliases.py">trouve ici</a>, le fichier <a href="https://pmartinolli.github.io/code/principia-mathematica/query.csv">query.csv</a> est issu de la requête SPARQL plus haut.</p>
 </section>
 <section id="résultats-1" class="level4">
@@ -2761,6 +2764,2348 @@ font-style: inherit;">300</span>)</span>
 </section>
 <section id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html" class="level4">
 <h4 class="anchored" data-anchor-id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html">Réécriture du code pour l’affichage localisé des noms en html</h4>
+<p>De plus, en cas de variante comme <code>Hooke</code> et <code>Dr. Hooke</code>, il ne compte qu’une fois.</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># author : pascaliensis with Claude Sonnet 4.6</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">KWIC (Keywords in Context) Index Generator</span></span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">Reads corpus.txt and query.csv, then produces a styled HTML index grouped by</span></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">canonical entity (Wikidata ID), merging all aliases under the same entry.</span></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">Includes a dispersion plot showing where each entity appears in the corpus.</span></span>
+<span id="cb8-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-9"></span>
+<span id="cb8-10"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb8-11"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> html</span>
+<span id="cb8-12"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> csv</span>
+<span id="cb8-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb8-14"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> defaultdict</span>
+<span id="cb8-15"></span>
+<span id="cb8-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Configuration ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-17">CORPUS_FILE   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"corpus.txt"</span></span>
+<span id="cb8-18">CSV_FILE      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query.csv"</span></span>
+<span id="cb8-19">OUTPUT_FILE   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kwic_index-v2.html"</span></span>
+<span id="cb8-20">CONTEXT_WINDOW <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># characters on each side of the keyword</span></span>
+<span id="cb8-21">CASE_SENSITIVE <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set True to match exact case only</span></span>
+<span id="cb8-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ──────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-23"></span>
+<span id="cb8-24">COLORS <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb8-25">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#c0392b"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#2471a3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#1e8449"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#d4ac0d"</span>,</span>
+<span id="cb8-26">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#7d3c98"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#ca6f1e"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#117a65"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#2e4057"</span>,</span>
+<span id="cb8-27">]</span>
+<span id="cb8-28"></span>
+<span id="cb8-29"></span>
+<span id="cb8-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Load entity definitions from CSV ─────────────────────────────────────────</span></span>
+<span id="cb8-31"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> load_entities(csv_path: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>]:</span>
+<span id="cb8-32">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    Returns:</span></span>
+<span id="cb8-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        id_to_label   : {entity_id: canonical_label}</span></span>
+<span id="cb8-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        id_to_aliases : {entity_id: [alias, ...]}   (insertion-ordered, no dupes)</span></span>
+<span id="cb8-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        alias_to_id   : {alias: entity_id}</span></span>
+<span id="cb8-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    """</span></span>
+<span id="cb8-38">    id_to_label   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="cb8-39">    id_to_aliases <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> defaultdict(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>)</span>
+<span id="cb8-40">    alias_to_id   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="cb8-41"></span>
+<span id="cb8-42">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(csv_path, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb8-43">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> row <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> csv.DictReader(f):</span>
+<span id="cb8-44">            eid   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'value'</span>].strip()</span>
+<span id="cb8-45">            label <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'valueLabel'</span>].strip()</span>
+<span id="cb8-46">            alias <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> row[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'qualifierValue'</span>].strip()</span>
+<span id="cb8-47"></span>
+<span id="cb8-48">            id_to_label[eid] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> label</span>
+<span id="cb8-49">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> alias <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> id_to_aliases[eid]:   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># no duplicate aliases per entity</span></span>
+<span id="cb8-50">                id_to_aliases[eid].append(alias)</span>
+<span id="cb8-51">            alias_to_id[alias] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> eid              <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># last row wins on true collision</span></span>
+<span id="cb8-52"></span>
+<span id="cb8-53">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> id_to_label, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>(id_to_aliases), alias_to_id</span>
+<span id="cb8-54"></span>
+<span id="cb8-55"></span>
+<span id="cb8-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Corpus loading ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-57"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> load_corpus(path: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb8-58">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(path, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>, errors<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ignore'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb8-59">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> f.read()</span>
+<span id="cb8-60"></span>
+<span id="cb8-61"></span>
+<span id="cb8-62"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Find occurrences for all aliases, grouped by entity ID ───────────────────</span></span>
+<span id="cb8-63"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> find_all_occurrences(</span>
+<span id="cb8-64">    corpus: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>,</span>
+<span id="cb8-65">    id_to_aliases: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-66">    alias_to_id: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-67">    window: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>,</span>
+<span id="cb8-68">    case_sensitive: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span>,</span>
+<span id="cb8-69">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>:</span>
+<span id="cb8-70">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-71"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    Returns {entity_id: [(left, matched_alias, right, char_pos), ...]}</span></span>
+<span id="cb8-72"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    sorted by char_pos within each entity.</span></span>
+<span id="cb8-73"></span>
+<span id="cb8-74"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    Uses a single combined pass (all aliases sorted longest-first) so that a</span></span>
+<span id="cb8-75"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    longer alias like "Mr. Horrox" is consumed before the shorter "Horrox" can</span></span>
+<span id="cb8-76"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    match the same text — no double-counting.</span></span>
+<span id="cb8-77"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    """</span></span>
+<span id="cb8-78">    flags <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> case_sensitive <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> re.IGNORECASE</span>
+<span id="cb8-79"></span>
+<span id="cb8-80">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sort all aliases longest-first so longer strings match before substrings</span></span>
+<span id="cb8-81">    all_pairs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(</span>
+<span id="cb8-82">        [(alias, eid) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> eid, aliases <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> id_to_aliases.items() <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> alias <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> aliases],</span>
+<span id="cb8-83">        key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(x[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]),</span>
+<span id="cb8-84">        reverse<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>,</span>
+<span id="cb8-85">    )</span>
+<span id="cb8-86">    alias_to_eid <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {alias: eid <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> alias, eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> all_pairs}</span>
+<span id="cb8-87"></span>
+<span id="cb8-88">    pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">compile</span>(</span>
+<span id="cb8-89">        <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'|'</span>.join(re.escape(a) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a, _ <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> all_pairs) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r')\b'</span>,</span>
+<span id="cb8-90">        flags,</span>
+<span id="cb8-91">    )</span>
+<span id="cb8-92"></span>
+<span id="cb8-93">    results <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> defaultdict(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>)</span>
+<span id="cb8-94"></span>
+<span id="cb8-95">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> m <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> pattern.finditer(corpus):</span>
+<span id="cb8-96">        matched   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb8-97">        entity_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> alias_to_eid.get(matched)</span>
+<span id="cb8-98">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> entity_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">is</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb8-99">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> alias, eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> alias_to_eid.items():</span>
+<span id="cb8-100">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> alias.lower() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> matched.lower():</span>
+<span id="cb8-101">                    entity_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> eid</span>
+<span id="cb8-102">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="cb8-103">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> entity_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">is</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb8-104">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">continue</span></span>
+<span id="cb8-105"></span>
+<span id="cb8-106">        start, end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> m.start(), m.end()</span>
+<span id="cb8-107">        left  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> corpus[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> window): start]</span>
+<span id="cb8-108">        right <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> corpus[end: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">min</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(corpus), end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> window)]</span>
+<span id="cb8-109"></span>
+<span id="cb8-110">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> window <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb8-111">            left <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'^\S+'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, left)</span>
+<span id="cb8-112">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> window <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(corpus):</span>
+<span id="cb8-113">            right <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'\S+$'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, right)</span>
+<span id="cb8-114"></span>
+<span id="cb8-115">        results[entity_id].append((left, matched, right, start))</span>
+<span id="cb8-116"></span>
+<span id="cb8-117">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> results:</span>
+<span id="cb8-118">        results[eid].sort(key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> t: t[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>])</span>
+<span id="cb8-119"></span>
+<span id="cb8-120">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>(results)</span>
+<span id="cb8-121"></span>
+<span id="cb8-122"></span>
+<span id="cb8-123"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── HTML helpers ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-124"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> render_passage(left: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, match: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, right: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb8-125">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> esc(text: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb8-126">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> html.escape(text).replace(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'&lt;br&gt;</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>)</span>
+<span id="cb8-127">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> esc(left) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;mark class="kw-highlight"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>escape(match)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/mark&gt;'</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> esc(right)</span>
+<span id="cb8-128"></span>
+<span id="cb8-129"></span>
+<span id="cb8-130"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Dispersion SVG ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-131"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> build_dispersion_svg(</span>
+<span id="cb8-132">    data: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-133">    entity_ids: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>,</span>
+<span id="cb8-134">    id_to_label: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-135">    corpus_len: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>,</span>
+<span id="cb8-136">    colors: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>,</span>
+<span id="cb8-137">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb8-138">    n      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(entity_ids)</span>
+<span id="cb8-139">    W      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">760</span></span>
+<span id="cb8-140">    row_h  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">36</span></span>
+<span id="cb8-141">    pad_l  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">160</span></span>
+<span id="cb8-142">    pad_r  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span></span>
+<span id="cb8-143">    pad_t  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span></span>
+<span id="cb8-144">    pad_b  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span></span>
+<span id="cb8-145">    dot_r  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span></span>
+<span id="cb8-146"></span>
+<span id="cb8-147">    total_w <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> W <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pad_r</span>
+<span id="cb8-148">    total_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pad_b</span>
+<span id="cb8-149"></span>
+<span id="cb8-150">    lines <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb8-151">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;svg xmlns="http://www.w3.org/2000/svg" '</span></span>
+<span id="cb8-152">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'width="100%" viewBox="0 0 </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total_w<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-153">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'style="display:block;font-family:</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\'</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Source Serif 4</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\'</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">,Georgia,serif;"&gt;'</span>,</span>
+<span id="cb8-154">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;rect width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total_w<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" height="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="#f0ead8" rx="6"/&gt;'</span>,</span>
+<span id="cb8-155">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="18" font-size="11" fill="#7a6a52" '</span></span>
+<span id="cb8-156">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'letter-spacing="1" text-anchor="start"&gt;DISPERSION PLOT&lt;/text&gt;'</span>,</span>
+<span id="cb8-157">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-158">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> W<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" stroke="#c8b89a" stroke-width="1"/&gt;'</span>,</span>
+<span id="cb8-159">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-160">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;0%&lt;/text&gt;'</span>,</span>
+<span id="cb8-161">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> W<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-162">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;100%&lt;/text&gt;'</span>,</span>
+<span id="cb8-163">    ]</span>
+<span id="cb8-164"></span>
+<span id="cb8-165">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> pct <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">75</span>):</span>
+<span id="cb8-166">        gx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(W <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> pct <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb8-167">        lines <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> [</span>
+<span id="cb8-168">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;line x1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>gx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y1="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" x2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>gx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y2="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-169">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'stroke="#c8b89a" stroke-width="1" stroke-dasharray="3,3"/&gt;'</span>,</span>
+<span id="cb8-170">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>gx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-171">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pct<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">%&lt;/text&gt;'</span>,</span>
+<span id="cb8-172">        ]</span>
+<span id="cb8-173"></span>
+<span id="cb8-174">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(entity_ids):</span>
+<span id="cb8-175">        color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> colors[i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(colors)]</span>
+<span id="cb8-176">        cy    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> row_h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb8-177">        label <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> id_to_label.get(eid, eid)</span>
+<span id="cb8-178"></span>
+<span id="cb8-179">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb8-180">            lines.append(</span>
+<span id="cb8-181">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;rect x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> row_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-182">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'width="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>W<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" height="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>row_h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" fill="rgba(0,0,0,0.03)"/&gt;'</span></span>
+<span id="cb8-183">            )</span>
+<span id="cb8-184"></span>
+<span id="cb8-185">        lines.append(</span>
+<span id="cb8-186">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;text x="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" y="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>cy <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" font-size="12" '</span></span>
+<span id="cb8-187">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'fill="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>color<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" text-anchor="end" font-weight="600"&gt;'</span></span>
+<span id="cb8-188">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>escape(label)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/text&gt;'</span></span>
+<span id="cb8-189">        )</span>
+<span id="cb8-190"></span>
+<span id="cb8-191">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (_, _, _, pos) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> data.get(eid, []):</span>
+<span id="cb8-192">            cx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pad_l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(W <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> corpus_len)</span>
+<span id="cb8-193">            lines.append(</span>
+<span id="cb8-194">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;circle cx="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>cx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" cy="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>cy<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" r="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>dot_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" '</span></span>
+<span id="cb8-195">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'fill="</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>color<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" opacity="0.85"&gt;'</span></span>
+<span id="cb8-196">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;title&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>escape(label)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> @ </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>pos<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>corpus_len<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> '</span></span>
+<span id="cb8-197">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'(</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span> corpus_len<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">%)&lt;/title&gt;'</span></span>
+<span id="cb8-198">                <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;/circle&gt;'</span></span>
+<span id="cb8-199">            )</span>
+<span id="cb8-200"></span>
+<span id="cb8-201">    lines.append(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'&lt;/svg&gt;'</span>)</span>
+<span id="cb8-202">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>.join(lines)</span>
+<span id="cb8-203"></span>
+<span id="cb8-204"></span>
+<span id="cb8-205"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Full HTML page ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-206"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> build_html(</span>
+<span id="cb8-207">    corpus: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>,</span>
+<span id="cb8-208">    data: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-209">    id_to_label: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-210">    id_to_aliases: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb8-211">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb8-212">    corpus_len <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(corpus)</span>
+<span id="cb8-213"></span>
+<span id="cb8-214">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sort entities by descending occurrence count</span></span>
+<span id="cb8-215">    entity_ids <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(data.keys(), key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> eid: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(data[eid]), reverse<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb8-216">    total      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(v) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> v <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> data.values())</span>
+<span id="cb8-217"></span>
+<span id="cb8-218">    dispersion_svg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> build_dispersion_svg(</span>
+<span id="cb8-219">        data, entity_ids, id_to_label, corpus_len, COLORS</span>
+<span id="cb8-220">    )</span>
+<span id="cb8-221"></span>
+<span id="cb8-222">    sections_html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb8-223">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, eid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(entity_ids):</span>
+<span id="cb8-224">        occurrences <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[eid]</span>
+<span id="cb8-225">        count       <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(occurrences)</span>
+<span id="cb8-226">        color       <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> COLORS[i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(COLORS)]</span>
+<span id="cb8-227">        label       <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> id_to_label.get(eid, eid)</span>
+<span id="cb8-228">        aliases     <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> id_to_aliases.get(eid, [])</span>
+<span id="cb8-229"></span>
+<span id="cb8-230">        alias_pills <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" "</span>.join(</span>
+<span id="cb8-231">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'&lt;span class="alias-pill"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>escape(a)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/span&gt;'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> aliases</span>
+<span id="cb8-232">        )</span>
+<span id="cb8-233"></span>
+<span id="cb8-234">        entries_html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb8-235">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> occurrences:</span>
+<span id="cb8-236">            entries_html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'&lt;p class="empty"&gt;&lt;em&gt;Aucune occurrence trouvée.&lt;/em&gt;&lt;/p&gt;'</span></span>
+<span id="cb8-237">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb8-238">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> j, (left, match, right, _pos) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(occurrences):</span>
+<span id="cb8-239">                passage <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> render_passage(left, match, right)</span>
+<span id="cb8-240">                entries_html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"""</span></span>
+<span id="cb8-241"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;div class="entry"&gt;</span></span>
+<span id="cb8-242"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            &lt;span class="entry-num"&gt;#</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/span&gt;</span></span>
+<span id="cb8-243"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            &lt;p class="passage"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>passage<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/p&gt;</span></span>
+<span id="cb8-244"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;/div&gt;"""</span></span>
+<span id="cb8-245"></span>
+<span id="cb8-246">        sections_html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"""</span></span>
+<span id="cb8-247"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;section class="kw-section" style="--kw-color:</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>color<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&gt;</span></span>
+<span id="cb8-248"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;h2 class="kw-heading"&gt;</span></span>
+<span id="cb8-249"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            &lt;span class="kw-name"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>escape(label)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/span&gt;</span></span>
+<span id="cb8-250"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            &lt;span class="kw-count"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>count<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> occurrence</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'s'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/span&gt;</span></span>
+<span id="cb8-251"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;/h2&gt;</span></span>
+<span id="cb8-252"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;div class="alias-bar"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>alias_pills<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/div&gt;</span></span>
+<span id="cb8-253"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;div class="entries"&gt;</span></span>
+<span id="cb8-254"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>entries_html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb8-255"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        &lt;/div&gt;</span></span>
+<span id="cb8-256"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    &lt;/section&gt;"""</span></span>
+<span id="cb8-257"></span>
+<span id="cb8-258">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"""&lt;!DOCTYPE html&gt;</span></span>
+<span id="cb8-259"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;html lang="fr"&gt;</span></span>
+<span id="cb8-260"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;head&gt;</span></span>
+<span id="cb8-261"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;meta charset="UTF-8"&gt;</span></span>
+<span id="cb8-262"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></span>
+<span id="cb8-263"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;title&gt;KWIC Index&lt;/title&gt;</span></span>
+<span id="cb8-264"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&amp;display=swap" rel="stylesheet"&gt;</span></span>
+<span id="cb8-265"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;style&gt;</span></span>
+<span id="cb8-266"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  :root </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-267"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --ink:       #1a1410;</span></span>
+<span id="cb8-268"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --paper:     #f8f4ec;</span></span>
+<span id="cb8-269"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --cream:     #f0ead8;</span></span>
+<span id="cb8-270"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --rule:      #c8b89a;</span></span>
+<span id="cb8-271"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --accent:    #8b3a0f;</span></span>
+<span id="cb8-272"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --highlight: #e8c547;</span></span>
+<span id="cb8-273"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    --section:   #2c1a0e;</span></span>
+<span id="cb8-274"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-275"></span>
+<span id="cb8-276"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  *, *::before, *::after </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> box-sizing: border-box; margin: 0; padding: 0; </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-277"></span>
+<span id="cb8-278"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  body </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-279"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-family: 'Source Serif 4', Georgia, serif;</span></span>
+<span id="cb8-280"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--paper);</span></span>
+<span id="cb8-281"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: var(--ink);</span></span>
+<span id="cb8-282"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: 15px;</span></span>
+<span id="cb8-283"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    line-height: 1.75;</span></span>
+<span id="cb8-284"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-285"></span>
+<span id="cb8-286"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  header </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-287"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--section);</span></span>
+<span id="cb8-288"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #f8f4ec;</span></span>
+<span id="cb8-289"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: 2.5rem 3rem 2rem;</span></span>
+<span id="cb8-290"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-bottom: 4px solid var(--accent);</span></span>
+<span id="cb8-291"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-292"></span>
+<span id="cb8-293"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  header h1 </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-294"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-295"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: 2.4rem;</span></span>
+<span id="cb8-296"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-weight: 700;</span></span>
+<span id="cb8-297"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    letter-spacing: .02em;</span></span>
+<span id="cb8-298"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: .4rem;</span></span>
+<span id="cb8-299"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-300"></span>
+<span id="cb8-301"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  header .subtitle </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> font-size: .9rem; opacity: .7; font-style: italic; </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-302"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  header .stats </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-303"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-top: 1rem;</span></span>
+<span id="cb8-304"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: .82rem;</span></span>
+<span id="cb8-305"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    opacity: .8;</span></span>
+<span id="cb8-306"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    letter-spacing: .06em;</span></span>
+<span id="cb8-307"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    text-transform: uppercase;</span></span>
+<span id="cb8-308"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-309"></span>
+<span id="cb8-310"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .dispersion-wrap </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-311"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    max-width: 960px;</span></span>
+<span id="cb8-312"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin: 2rem auto 0;</span></span>
+<span id="cb8-313"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: 0 2rem;</span></span>
+<span id="cb8-314"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-315"></span>
+<span id="cb8-316"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .dispersion-wrap h2 </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-317"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-318"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: 1.1rem;</span></span>
+<span id="cb8-319"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: var(--accent);</span></span>
+<span id="cb8-320"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: .8rem;</span></span>
+<span id="cb8-321"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-top: 2px solid var(--rule);</span></span>
+<span id="cb8-322"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding-top: .8rem;</span></span>
+<span id="cb8-323"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-324"></span>
+<span id="cb8-325"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  main </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-326"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    max-width: 820px;</span></span>
+<span id="cb8-327"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin: 0 auto;</span></span>
+<span id="cb8-328"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: 2.5rem 2rem 5rem;</span></span>
+<span id="cb8-329"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-330"></span>
+<span id="cb8-331"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .kw-section </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-332"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: 3rem;</span></span>
+<span id="cb8-333"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-top: 3px solid var(--kw-color, var(--accent));</span></span>
+<span id="cb8-334"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding-top: 1.2rem;</span></span>
+<span id="cb8-335"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-336"></span>
+<span id="cb8-337"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .kw-heading </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-338"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-339"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: 1.4rem;</span></span>
+<span id="cb8-340"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-weight: 700;</span></span>
+<span id="cb8-341"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: var(--kw-color, var(--accent));</span></span>
+<span id="cb8-342"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: .5rem;</span></span>
+<span id="cb8-343"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    display: flex;</span></span>
+<span id="cb8-344"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    align-items: baseline;</span></span>
+<span id="cb8-345"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    gap: .8rem;</span></span>
+<span id="cb8-346"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-347"></span>
+<span id="cb8-348"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .kw-count </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-349"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-family: 'Source Serif 4', serif;</span></span>
+<span id="cb8-350"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: .8rem;</span></span>
+<span id="cb8-351"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-weight: 400;</span></span>
+<span id="cb8-352"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-style: italic;</span></span>
+<span id="cb8-353"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #888;</span></span>
+<span id="cb8-354"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-355"></span>
+<span id="cb8-356"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .alias-bar </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-357"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    display: flex;</span></span>
+<span id="cb8-358"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    flex-wrap: wrap;</span></span>
+<span id="cb8-359"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    gap: .35rem;</span></span>
+<span id="cb8-360"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: 1rem;</span></span>
+<span id="cb8-361"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-362"></span>
+<span id="cb8-363"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .alias-pill </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-364"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: .72rem;</span></span>
+<span id="cb8-365"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--cream);</span></span>
+<span id="cb8-366"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border: 1px solid var(--rule);</span></span>
+<span id="cb8-367"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #666;</span></span>
+<span id="cb8-368"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: .1em .55em;</span></span>
+<span id="cb8-369"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-radius: 20px;</span></span>
+<span id="cb8-370"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-style: italic;</span></span>
+<span id="cb8-371"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    letter-spacing: .02em;</span></span>
+<span id="cb8-372"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-373"></span>
+<span id="cb8-374"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .entry </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-375"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    position: relative;</span></span>
+<span id="cb8-376"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    margin-bottom: 1.4rem;</span></span>
+<span id="cb8-377"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: .9rem 1.1rem .9rem 2.8rem;</span></span>
+<span id="cb8-378"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--cream);</span></span>
+<span id="cb8-379"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-left: 3px solid var(--rule);</span></span>
+<span id="cb8-380"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-radius: 0 4px 4px 0;</span></span>
+<span id="cb8-381"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    transition: border-color .15s;</span></span>
+<span id="cb8-382"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-383"></span>
+<span id="cb8-384"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .entry:hover </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> border-left-color: var(--kw-color, var(--accent)); </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-385"></span>
+<span id="cb8-386"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .entry-num </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-387"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    position: absolute;</span></span>
+<span id="cb8-388"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    left: .6rem;</span></span>
+<span id="cb8-389"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    top: .9rem;</span></span>
+<span id="cb8-390"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: .72rem;</span></span>
+<span id="cb8-391"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #aaa;</span></span>
+<span id="cb8-392"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-style: italic;</span></span>
+<span id="cb8-393"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    user-select: none;</span></span>
+<span id="cb8-394"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-395"></span>
+<span id="cb8-396"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .passage </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> font-size: .93rem; line-height: 1.8; color: #3a2e22; </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-397"></span>
+<span id="cb8-398"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  mark.kw-highlight </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-399"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--highlight);</span></span>
+<span id="cb8-400"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: var(--section);</span></span>
+<span id="cb8-401"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-weight: 700;</span></span>
+<span id="cb8-402"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: .05em .3em;</span></span>
+<span id="cb8-403"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-radius: 2px;</span></span>
+<span id="cb8-404"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    box-shadow: 0 1px 3px rgba(0,0,0,.12);</span></span>
+<span id="cb8-405"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-406"></span>
+<span id="cb8-407"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .passage::before, .passage::after </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-408"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    content: '…';</span></span>
+<span id="cb8-409"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #bbb;</span></span>
+<span id="cb8-410"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-style: italic;</span></span>
+<span id="cb8-411"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-412"></span>
+<span id="cb8-413"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  .empty </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> color: #999; font-style: italic; padding-left: .5rem; </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-414"></span>
+<span id="cb8-415"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  footer </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">{{</span></span>
+<span id="cb8-416"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    text-align: center;</span></span>
+<span id="cb8-417"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    padding: 1.2rem;</span></span>
+<span id="cb8-418"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    font-size: .78rem;</span></span>
+<span id="cb8-419"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    color: #999;</span></span>
+<span id="cb8-420"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    border-top: 1px solid var(--rule);</span></span>
+<span id="cb8-421"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    background: var(--cream);</span></span>
+<span id="cb8-422"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}}</span></span>
+<span id="cb8-423"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/style&gt;</span></span>
+<span id="cb8-424"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/head&gt;</span></span>
+<span id="cb8-425"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;body&gt;</span></span>
+<span id="cb8-426"></span>
+<span id="cb8-427"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;header&gt;</span></span>
+<span id="cb8-428"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;h1&gt;KWIC Index&lt;/h1&gt;</span></span>
+<span id="cb8-429"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;p class="subtitle"&gt;Keywords in Context — fenêtre ±</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>CONTEXT_WINDOW<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> caractères&lt;/p&gt;</span></span>
+<span id="cb8-430"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;p class="stats"&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> occurrence</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'s'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> total <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> &amp;nbsp;·&amp;nbsp; </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(entity_ids)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> entité</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'s'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(entity_ids) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/p&gt;</span></span>
+<span id="cb8-431"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/header&gt;</span></span>
+<span id="cb8-432"></span>
+<span id="cb8-433"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;div class="dispersion-wrap"&gt;</span></span>
+<span id="cb8-434"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  &lt;h2&gt;Dispersion dans le corpus&lt;/h2&gt;</span></span>
+<span id="cb8-435"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>dispersion_svg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb8-436"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/div&gt;</span></span>
+<span id="cb8-437"></span>
+<span id="cb8-438"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;main&gt;</span></span>
+<span id="cb8-439"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>sections_html<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb8-440"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/main&gt;</span></span>
+<span id="cb8-441"></span>
+<span id="cb8-442"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;footer&gt;Généré automatiquement depuis &lt;code&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>CORPUS_FILE<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/code&gt; · entités depuis &lt;code&gt;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>CSV_FILE<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/code&gt;&lt;/footer&gt;</span></span>
+<span id="cb8-443"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/body&gt;</span></span>
+<span id="cb8-444"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;/html&gt;"""</span></span>
+<span id="cb8-445"></span>
+<span id="cb8-446"></span>
+<span id="cb8-447"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ── Entry point ───────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-448"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> main():</span>
+<span id="cb8-449">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Resolve file paths</span></span>
+<span id="cb8-450">    base      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.dirname(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__file__</span>)</span>
+<span id="cb8-451">    csv_path  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, CSV_FILE)</span>
+<span id="cb8-452">    corp_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, CORPUS_FILE)</span>
+<span id="cb8-453"></span>
+<span id="cb8-454">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> os.path.exists(corp_path):</span>
+<span id="cb8-455">        corp_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'..'</span>, CORPUS_FILE)</span>
+<span id="cb8-456">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> os.path.exists(csv_path):</span>
+<span id="cb8-457">        csv_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'..'</span>, CSV_FILE)</span>
+<span id="cb8-458"></span>
+<span id="cb8-459">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Loading entities from : </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>csv_path<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb8-460">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Loading corpus from   : </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>corp_path<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb8-461"></span>
+<span id="cb8-462">    id_to_label, id_to_aliases, alias_to_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> load_entities(csv_path)</span>
+<span id="cb8-463">    corpus <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> load_corpus(corp_path)</span>
+<span id="cb8-464"></span>
+<span id="cb8-465">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"  </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(id_to_label)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> entities, </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(alias_to_id)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> aliases total"</span>)</span>
+<span id="cb8-466">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Searching corpus..."</span>)</span>
+<span id="cb8-467"></span>
+<span id="cb8-468">    data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> find_all_occurrences(</span>
+<span id="cb8-469">        corpus, id_to_aliases, alias_to_id, CONTEXT_WINDOW, CASE_SENSITIVE</span>
+<span id="cb8-470">    )</span>
+<span id="cb8-471"></span>
+<span id="cb8-472">    total_hits <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(v) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> v <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> data.values())</span>
+<span id="cb8-473">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"  </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total_hits<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> occurrences found across </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(data)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> entities"</span>)</span>
+<span id="cb8-474"></span>
+<span id="cb8-475">    html_output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> build_html(corpus, data, id_to_label, id_to_aliases)</span>
+<span id="cb8-476"></span>
+<span id="cb8-477">    out_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, OUTPUT_FILE)</span>
+<span id="cb8-478">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(out_path, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'w'</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb8-479">        f.write(html_output)</span>
+<span id="cb8-480"></span>
+<span id="cb8-481">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"✓ Index KWIC généré : </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>out_path<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb8-482"></span>
+<span id="cb8-483"></span>
+<span id="cb8-484"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__name__</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"__main__"</span>:</span>
+<span id="cb8-485">    main()</span></code></pre></div>
+<p>Le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic_index-v2.html">résultat</a> (toujours très joli, en html).</p>
+<p>Avec aussi un <a href="https://pmartinolli.github.io/code/principia-mathematica/count_aliases.py">script qui compte</a> et met les données dans un <a href="https://pmartinolli.github.io/code/principia-mathematica/alias_counts.csv">tableau</a>.</p>
 </section>
 </section>
 <section id="commentaires" class="level2">
@@ -2770,13 +5115,13 @@ font-style: inherit;">300</span>)</span>
 <blockquote class="blockquote">
 <p>Nec fas est proprius mortali attingere Divos. — <span class="smallcaps">Halley.</span></p>
 </blockquote>
-<p><strong>Robert Hooke</strong> (16x), que parfois Newton orthographie « <em>Hook »</em> (19x), est aussi beaucoup mentionné. Les deux savants se <a href="https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/">disputaient</a> sur l’originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :</p>
+<p><strong>Robert Hooke</strong> (19x), que parfois Newton orthographie « <em>Hook »</em> (11x), est aussi beaucoup mentionné. Les deux savants se <a href="https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/">disputaient</a> sur l’originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :</p>
 <blockquote class="blockquote">
 <p>What Des-Cartes did was a good step. You have added much several ways, &amp; especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. (<a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">+</a>)</p>
 </blockquote>
-<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (29x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations. <strong>Huygens</strong> (20x) rencontrera Newton deux ans après la publication des <em>Principia</em> en visitant Londres.</p>
+<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (30x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations. <strong>Huygens</strong> (14x) rencontrera Newton deux ans après la publication des <em>Principia</em> en visitant Londres.</p>
 <p>La <strong>Royal Society</strong> (26x), à laquelle Newton est membre, est mentionnée de nombreuse fois. Il en deviendra Président en 1703.</p>
-<p><strong>John Flamsteed</strong> (24x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
+<p><strong>John Flamsteed</strong> (16x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
 <p><strong>Leibniz</strong> est mentionné (17x). Ils entreront dans un <a href="https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy">conflit</a> célèbre après la publication des <em>Principia</em> pour savoir qui des deux a inventé le calcul infinitésimal.</p>
 </section>
 <section id="plus-de-contexte" class="level2">

@@ -683,150 +683,151 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </ul>
 <p>J’interrompt ici le travail pour recomposer les scripts. Il me faut un tableau qui regroupe tous les alias/synonymes et les compte pour un seul. Il faut aussi intervertir les s et les f.</p>
 </section>
-<section id="regrouper-les-alias-de-noms" class="level4">
-<h4 class="anchored" data-anchor-id="regrouper-les-alias-de-noms">Regrouper les alias de noms</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kstest</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter, defaultdict</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Load entity definitions from CSV ────────────────────────────────────────</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected columns: value (Wikidata ID), valueLabel (canonical label), qualifierValue (alias)</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>csv_path <span class="op">=</span> os.path.join(os.path.dirname(<span class="va">__file__</span>), <span class="st">"query.csv"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(csv_path):</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    csv_path <span class="op">=</span> <span class="st">"query.csv"</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Build mappings:  alias → entity_id,  entity_id → canonical label</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>alias_to_id <span class="op">=</span> {}          <span class="co"># alias string  → Wikidata ID</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>id_to_label <span class="op">=</span> {}          <span class="co"># Wikidata ID   → canonical label</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>id_to_aliases <span class="op">=</span> defaultdict(<span class="bu">list</span>)  <span class="co"># Wikidata ID → list of aliases</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(csv_path, newline<span class="op">=</span><span class="st">''</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    reader <span class="op">=</span> csv.DictReader(f)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        entity_id <span class="op">=</span> row[<span class="st">'value'</span>].strip().replace(<span class="st">"http://www.wikidata.org/entity/"</span>,<span class="st">""</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        label     <span class="op">=</span> row[<span class="st">'valueLabel'</span>].strip()</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        alias     <span class="op">=</span> row[<span class="st">'qualifierValue'</span>].strip()</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        id_to_label[entity_id] <span class="op">=</span> label</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        id_to_aliases[entity_id].append(alias)</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        alias_to_id[alias] <span class="op">=</span> entity_id   <span class="co"># last alias row wins if duplicated</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># All unique aliases to search for</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>all_aliases <span class="op">=</span> <span class="bu">list</span>(alias_to_id.keys())</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Load corpus ──────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">"corpus.txt"</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>filepath <span class="op">=</span> os.path.join(<span class="st">".."</span>, filename)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(filepath):</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    filepath <span class="op">=</span> filename</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(filepath):</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: File </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss"> not found."</span>)</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>        exit(<span class="dv">1</span>)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loading dataset from: </span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>, errors<span class="op">=</span><span class="st">'ignore'</span>) <span class="im">as</span> f:</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> f.read()</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Find occurrences ─────────────────────────────────────────────────────────</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Identifying name occurrences..."</span>)</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort aliases longest-first so longer strings match before shorter substrings</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>sorted_aliases <span class="op">=</span> <span class="bu">sorted</span>(all_aliases, key<span class="op">=</span><span class="bu">len</span>, reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>escaped <span class="op">=</span> [re.escape(a) <span class="cf">for</span> a <span class="kw">in</span> sorted_aliases]</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'\b('</span> <span class="op">+</span> <span class="st">'|'</span>.join(escaped) <span class="op">+</span> <span class="vs">r')\b'</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> <span class="bu">list</span>(re.finditer(pattern, text, re.IGNORECASE))</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>occurrences <span class="op">=</span> []       <span class="co"># character positions</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>found_ids   <span class="op">=</span> []       <span class="co"># entity ID for each match</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> match <span class="kw">in</span> matches:</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>    matched_alias <span class="op">=</span> match.group(<span class="dv">1</span>)</span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Look up entity ID (case-insensitive fallback)</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>    entity_id <span class="op">=</span> alias_to_id.get(matched_alias)</span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entity_id <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> alias, eid <span class="kw">in</span> alias_to_id.items():</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> alias.lower() <span class="op">==</span> matched_alias.lower():</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>                entity_id <span class="op">=</span> eid</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entity_id:</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>        occurrences.append(match.start())</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        found_ids.append(entity_id)</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> occurrences:</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No target names found in the text."</span>)</span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>    exit()</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>positions      <span class="op">=</span> np.array(occurrences)</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>total_length   <span class="op">=</span> <span class="bu">len</span>(text)</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>normalized_pos <span class="op">=</span> positions <span class="op">/</span> total_length</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co"># ── KS Test ──────────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> kstest(normalized_pos, <span class="st">'uniform'</span>)</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Dispersion of inter-mention distances ────────────────────────────────────</span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>intervals <span class="op">=</span> np.diff(positions)</span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(intervals) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    mean_interval      <span class="op">=</span> np.mean(intervals)</span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    var_interval       <span class="op">=</span> np.var(intervals, ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    dispersion_metric  <span class="op">=</span> var_interval <span class="op">/</span> mean_interval</span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    cv                 <span class="op">=</span> np.std(intervals, ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> mean_interval</span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    mean_interval <span class="op">=</span> var_interval <span class="op">=</span> dispersion_metric <span class="op">=</span> cv <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Count mentions per entity ID ─────────────────────────────────────────────</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>id_counts <span class="op">=</span> Counter(found_ids)</span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Print results ─────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">##### Analysis Results #####"</span>)</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Named Entity Mentions: </span><span class="sc">{</span><span class="bu">len</span>(positions)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Unique Entities Mentioned:   </span><span class="sc">{</span><span class="bu">len</span>(id_counts)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 10 Most Mentioned Entities (grouped by ID):"</span>)</span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entity_id, count <span class="kw">in</span> id_counts.most_common(<span class="dv">10</span>):</span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    label   <span class="op">=</span> id_to_label.get(entity_id, entity_id)</span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>    <span class="co">#aliases = ', '.join(id_to_aliases[entity_id])</span></span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  [</span><span class="sc">{</span>entity_id<span class="sc">}</span><span class="ss">] </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">x)"</span>)</span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">##### Statistical Test Results #####"</span>)</span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KS Test Statistic: </span><span class="sc">{</span>stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KS Test p-value:   </span><span class="sc">{</span>p_value<span class="sc">:.4e}</span><span class="ss">"</span>)</span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Result: Distribution significantly differs from Uniform (p &lt; 0.05)."</span>)</span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Result: Distribution is consistent with Uniform."</span>)</span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Mean Distance between Mentions: </span><span class="sc">{</span>mean_interval<span class="sc">:.2f}</span><span class="ss"> characters"</span>)</span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of Distances:          </span><span class="sc">{</span>var_interval<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dispersion Metric (Var/Mean):   </span><span class="sc">{</span>dispersion_metric<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient of Variation:       </span><span class="sc">{</span>cv<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>   cv <span class="op">&gt;</span> <span class="dv">1</span>: <span class="bu">print</span>(<span class="st">"Interpretation: CV &gt; 1 → clustering / burstiness."</span>)</span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> cv <span class="op">&lt;</span> <span class="dv">1</span>: <span class="bu">print</span>(<span class="st">"Interpretation: CV &lt; 1 → regularity."</span>)</span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:        <span class="bu">print</span>(<span class="st">"Interpretation: CV ~ 1 → random Poisson process."</span>)</span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Visualisations ────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>plt.eventplot(positions, orientation<span class="op">=</span><span class="st">'horizontal'</span>, colors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Rug Plot of Scientific Authority Mentions"</span>)</span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Position in Text (Characters)"</span>)</span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, total_length)</span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>plt.hist(positions, bins<span class="op">=</span><span class="dv">50</span>, color<span class="op">=</span><span class="st">'skyblue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Mentions Density"</span>)</span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Position in Text (Characters)"</span>)</span>
-<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'figure-v2.png'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="regrouper-les-aliases-de-noms" class="level4">
+<h4 class="anchored" data-anchor-id="regrouper-les-aliases-de-noms">Regrouper les aliases de noms</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Author : Pascaliensis, with Claude Sonnet 4.6</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kstest</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter, defaultdict</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Load entity definitions from CSV ────────────────────────────────────────</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected columns: value (Wikidata ID), valueLabel (canonical label), qualifierValue (alias)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>csv_path <span class="op">=</span> os.path.join(os.path.dirname(<span class="va">__file__</span>), <span class="st">"query.csv"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(csv_path):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    csv_path <span class="op">=</span> <span class="st">"query.csv"</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Build mappings:  alias → entity_id,  entity_id → canonical label</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>alias_to_id <span class="op">=</span> {}          <span class="co"># alias string  → Wikidata ID</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>id_to_label <span class="op">=</span> {}          <span class="co"># Wikidata ID   → canonical label</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>id_to_aliases <span class="op">=</span> defaultdict(<span class="bu">list</span>)  <span class="co"># Wikidata ID → list of aliases</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(csv_path, newline<span class="op">=</span><span class="st">''</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    reader <span class="op">=</span> csv.DictReader(f)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        entity_id <span class="op">=</span> row[<span class="st">'value'</span>].strip().replace(<span class="st">"http://www.wikidata.org/entity/"</span>,<span class="st">""</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        label     <span class="op">=</span> row[<span class="st">'valueLabel'</span>].strip()</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        alias     <span class="op">=</span> row[<span class="st">'qualifierValue'</span>].strip()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        id_to_label[entity_id] <span class="op">=</span> label</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        id_to_aliases[entity_id].append(alias)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        alias_to_id[alias] <span class="op">=</span> entity_id   <span class="co"># last alias row wins if duplicated</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># All unique aliases to search for</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>all_aliases <span class="op">=</span> <span class="bu">list</span>(alias_to_id.keys())</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Load corpus ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">"corpus.txt"</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>filepath <span class="op">=</span> os.path.join(<span class="st">".."</span>, filename)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(filepath):</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    filepath <span class="op">=</span> filename</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(filepath):</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: File </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss"> not found."</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        exit(<span class="dv">1</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loading dataset from: </span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>, errors<span class="op">=</span><span class="st">'ignore'</span>) <span class="im">as</span> f:</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> f.read()</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Find occurrences ─────────────────────────────────────────────────────────</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Identifying name occurrences..."</span>)</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort aliases longest-first so longer strings match before shorter substrings</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>sorted_aliases <span class="op">=</span> <span class="bu">sorted</span>(all_aliases, key<span class="op">=</span><span class="bu">len</span>, reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>escaped <span class="op">=</span> [re.escape(a) <span class="cf">for</span> a <span class="kw">in</span> sorted_aliases]</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'\b('</span> <span class="op">+</span> <span class="st">'|'</span>.join(escaped) <span class="op">+</span> <span class="vs">r')\b'</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> <span class="bu">list</span>(re.finditer(pattern, text, re.IGNORECASE))</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>occurrences <span class="op">=</span> []       <span class="co"># character positions</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>found_ids   <span class="op">=</span> []       <span class="co"># entity ID for each match</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> match <span class="kw">in</span> matches:</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>    matched_alias <span class="op">=</span> match.group(<span class="dv">1</span>)</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Look up entity ID (case-insensitive fallback)</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>    entity_id <span class="op">=</span> alias_to_id.get(matched_alias)</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entity_id <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> alias, eid <span class="kw">in</span> alias_to_id.items():</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> alias.lower() <span class="op">==</span> matched_alias.lower():</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>                entity_id <span class="op">=</span> eid</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entity_id:</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        occurrences.append(match.start())</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        found_ids.append(entity_id)</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> occurrences:</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No target names found in the text."</span>)</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    exit()</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>positions      <span class="op">=</span> np.array(occurrences)</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>total_length   <span class="op">=</span> <span class="bu">len</span>(text)</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>normalized_pos <span class="op">=</span> positions <span class="op">/</span> total_length</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co"># ── KS Test ──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> kstest(normalized_pos, <span class="st">'uniform'</span>)</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Dispersion of inter-mention distances ────────────────────────────────────</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>intervals <span class="op">=</span> np.diff(positions)</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(intervals) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    mean_interval      <span class="op">=</span> np.mean(intervals)</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    var_interval       <span class="op">=</span> np.var(intervals, ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    dispersion_metric  <span class="op">=</span> var_interval <span class="op">/</span> mean_interval</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    cv                 <span class="op">=</span> np.std(intervals, ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> mean_interval</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    mean_interval <span class="op">=</span> var_interval <span class="op">=</span> dispersion_metric <span class="op">=</span> cv <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Count mentions per entity ID ─────────────────────────────────────────────</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>id_counts <span class="op">=</span> Counter(found_ids)</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Print results ─────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">##### Analysis Results #####"</span>)</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Named Entity Mentions: </span><span class="sc">{</span><span class="bu">len</span>(positions)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Unique Entities Mentioned:   </span><span class="sc">{</span><span class="bu">len</span>(id_counts)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 10 Most Mentioned Entities (grouped by ID):"</span>)</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entity_id, count <span class="kw">in</span> id_counts.most_common(<span class="dv">10</span>):</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>    label   <span class="op">=</span> id_to_label.get(entity_id, entity_id)</span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>    <span class="co">#aliases = ', '.join(id_to_aliases[entity_id])</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  [</span><span class="sc">{</span>entity_id<span class="sc">}</span><span class="ss">] </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">x)"</span>)</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">##### Statistical Test Results #####"</span>)</span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KS Test Statistic: </span><span class="sc">{</span>stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KS Test p-value:   </span><span class="sc">{</span>p_value<span class="sc">:.4e}</span><span class="ss">"</span>)</span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Result: Distribution significantly differs from Uniform (p &lt; 0.05)."</span>)</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Result: Distribution is consistent with Uniform."</span>)</span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Mean Distance between Mentions: </span><span class="sc">{</span>mean_interval<span class="sc">:.2f}</span><span class="ss"> characters"</span>)</span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of Distances:          </span><span class="sc">{</span>var_interval<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dispersion Metric (Var/Mean):   </span><span class="sc">{</span>dispersion_metric<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient of Variation:       </span><span class="sc">{</span>cv<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>   cv <span class="op">&gt;</span> <span class="dv">1</span>: <span class="bu">print</span>(<span class="st">"Interpretation: CV &gt; 1 → clustering / burstiness."</span>)</span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> cv <span class="op">&lt;</span> <span class="dv">1</span>: <span class="bu">print</span>(<span class="st">"Interpretation: CV &lt; 1 → regularity."</span>)</span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:        <span class="bu">print</span>(<span class="st">"Interpretation: CV ~ 1 → random Poisson process."</span>)</span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Visualisations ────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>plt.eventplot(positions, orientation<span class="op">=</span><span class="st">'horizontal'</span>, colors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Rug Plot of Scientific Authority Mentions"</span>)</span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Position in Text (Characters)"</span>)</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, total_length)</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>plt.hist(positions, bins<span class="op">=</span><span class="dv">50</span>, color<span class="op">=</span><span class="st">'skyblue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Mentions Density"</span>)</span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Position in Text (Characters)"</span>)</span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'figure-v2.png'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le code se <a href="https://pmartinolli.github.io/code/principia-mathematica/main-v2-avecAliases.py">trouve ici</a>, le fichier <a href="https://pmartinolli.github.io/code/principia-mathematica/query.csv">query.csv</a> est issu de la requête SPARQL plus haut.</p>
 </section>
 <section id="résultats-1" class="level4">
@@ -864,6 +865,494 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </section>
 <section id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html" class="level4">
 <h4 class="anchored" data-anchor-id="réécriture-du-code-pour-laffichage-localisé-des-noms-en-html">Réécriture du code pour l’affichage localisé des noms en html</h4>
+<p>De plus, en cas de variante comme <code>Hooke</code> et <code>Dr. Hooke</code>, il ne compte qu’une fois.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># author : pascaliensis with Claude Sonnet 4.6</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">KWIC (Keywords in Context) Index Generator</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">Reads corpus.txt and query.csv, then produces a styled HTML index grouped by</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">canonical entity (Wikidata ID), merging all aliases under the same entry.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">Includes a dispersion plot showing where each entity appears in the corpus.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> html</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Configuration ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>CORPUS_FILE   <span class="op">=</span> <span class="st">"corpus.txt"</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>CSV_FILE      <span class="op">=</span> <span class="st">"query.csv"</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE   <span class="op">=</span> <span class="st">"kwic_index-v2.html"</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>CONTEXT_WINDOW <span class="op">=</span> <span class="dv">300</span>    <span class="co"># characters on each side of the keyword</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>CASE_SENSITIVE <span class="op">=</span> <span class="va">True</span>  <span class="co"># set True to match exact case only</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ──────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>COLORS <span class="op">=</span> [</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#c0392b"</span>, <span class="st">"#2471a3"</span>, <span class="st">"#1e8449"</span>, <span class="st">"#d4ac0d"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#7d3c98"</span>, <span class="st">"#ca6f1e"</span>, <span class="st">"#117a65"</span>, <span class="st">"#2e4057"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Load entity definitions from CSV ─────────────────────────────────────────</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_entities(csv_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">dict</span>, <span class="bu">dict</span>, <span class="bu">dict</span>]:</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">        id_to_label   : {entity_id: canonical_label}</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">        id_to_aliases : {entity_id: [alias, ...]}   (insertion-ordered, no dupes)</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">        alias_to_id   : {alias: entity_id}</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    id_to_label   <span class="op">=</span> {}</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    id_to_aliases <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    alias_to_id   <span class="op">=</span> {}</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(csv_path, newline<span class="op">=</span><span class="st">''</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row <span class="kw">in</span> csv.DictReader(f):</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            eid   <span class="op">=</span> row[<span class="st">'value'</span>].strip()</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> row[<span class="st">'valueLabel'</span>].strip()</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            alias <span class="op">=</span> row[<span class="st">'qualifierValue'</span>].strip()</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>            id_to_label[eid] <span class="op">=</span> label</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> alias <span class="kw">not</span> <span class="kw">in</span> id_to_aliases[eid]:   <span class="co"># no duplicate aliases per entity</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>                id_to_aliases[eid].append(alias)</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>            alias_to_id[alias] <span class="op">=</span> eid              <span class="co"># last row wins on true collision</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> id_to_label, <span class="bu">dict</span>(id_to_aliases), alias_to_id</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Corpus loading ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_corpus(path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(path, encoding<span class="op">=</span><span class="st">'utf-8'</span>, errors<span class="op">=</span><span class="st">'ignore'</span>) <span class="im">as</span> f:</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> f.read()</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Find occurrences for all aliases, grouped by entity ID ───────────────────</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_all_occurrences(</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>    corpus: <span class="bu">str</span>,</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>    id_to_aliases: <span class="bu">dict</span>,</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    alias_to_id: <span class="bu">dict</span>,</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>    window: <span class="bu">int</span>,</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>    case_sensitive: <span class="bu">bool</span>,</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns {entity_id: [(left, matched_alias, right, char_pos), ...]}</span></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="co">    sorted by char_pos within each entity.</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="co">    Uses a single combined pass (all aliases sorted longest-first) so that a</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="co">    longer alias like "Mr. Horrox" is consumed before the shorter "Horrox" can</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="co">    match the same text — no double-counting.</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>    flags <span class="op">=</span> <span class="dv">0</span> <span class="cf">if</span> case_sensitive <span class="cf">else</span> re.IGNORECASE</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sort all aliases longest-first so longer strings match before substrings</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>    all_pairs <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>        [(alias, eid) <span class="cf">for</span> eid, aliases <span class="kw">in</span> id_to_aliases.items() <span class="cf">for</span> alias <span class="kw">in</span> aliases],</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>        key<span class="op">=</span><span class="kw">lambda</span> x: <span class="bu">len</span>(x[<span class="dv">0</span>]),</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>        reverse<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>    alias_to_eid <span class="op">=</span> {alias: eid <span class="cf">for</span> alias, eid <span class="kw">in</span> all_pairs}</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> re.<span class="bu">compile</span>(</span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>        <span class="vs">r'\b('</span> <span class="op">+</span> <span class="st">'|'</span>.join(re.escape(a) <span class="cf">for</span> a, _ <span class="kw">in</span> all_pairs) <span class="op">+</span> <span class="vs">r')\b'</span>,</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>        flags,</span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> m <span class="kw">in</span> pattern.finditer(corpus):</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>        matched   <span class="op">=</span> m.group(<span class="dv">1</span>)</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>        entity_id <span class="op">=</span> alias_to_eid.get(matched)</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> entity_id <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> alias, eid <span class="kw">in</span> alias_to_eid.items():</span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> alias.lower() <span class="op">==</span> matched.lower():</span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>                    entity_id <span class="op">=</span> eid</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> entity_id <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>        start, end <span class="op">=</span> m.start(), m.end()</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>        left  <span class="op">=</span> corpus[<span class="bu">max</span>(<span class="dv">0</span>, start <span class="op">-</span> window): start]</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> corpus[end: <span class="bu">min</span>(<span class="bu">len</span>(corpus), end <span class="op">+</span> window)]</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> start <span class="op">-</span> window <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> re.sub(<span class="vs">r'^\S+'</span>, <span class="st">''</span>, left)</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> end <span class="op">+</span> window <span class="op">&lt;</span> <span class="bu">len</span>(corpus):</span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> re.sub(<span class="vs">r'\S+$'</span>, <span class="st">''</span>, right)</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>        results[entity_id].append((left, matched, right, start))</span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> eid <span class="kw">in</span> results:</span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>        results[eid].sort(key<span class="op">=</span><span class="kw">lambda</span> t: t[<span class="dv">3</span>])</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(results)</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a><span class="co"># ── HTML helpers ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> render_passage(left: <span class="bu">str</span>, match: <span class="bu">str</span>, right: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> esc(text: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> html.escape(text).replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'&lt;br&gt;</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> esc(left) <span class="op">+</span> <span class="ss">f'&lt;mark class="kw-highlight"&gt;</span><span class="sc">{</span>html<span class="sc">.</span>escape(match)<span class="sc">}</span><span class="ss">&lt;/mark&gt;'</span> <span class="op">+</span> esc(right)</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Dispersion SVG ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_dispersion_svg(</span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>    data: <span class="bu">dict</span>,</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>    entity_ids: <span class="bu">list</span>,</span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a>    id_to_label: <span class="bu">dict</span>,</span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>    corpus_len: <span class="bu">int</span>,</span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>    colors: <span class="bu">list</span>,</span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>    n      <span class="op">=</span> <span class="bu">len</span>(entity_ids)</span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>    W      <span class="op">=</span> <span class="dv">760</span></span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>    row_h  <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>    pad_l  <span class="op">=</span> <span class="dv">160</span></span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>    pad_r  <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>    pad_t  <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>    pad_b  <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>    dot_r  <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>    total_w <span class="op">=</span> pad_l <span class="op">+</span> W <span class="op">+</span> pad_r</span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>    total_h <span class="op">=</span> pad_t <span class="op">+</span> n <span class="op">*</span> row_h <span class="op">+</span> pad_b</span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> [</span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;svg xmlns="http://www.w3.org/2000/svg" '</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'width="100%" viewBox="0 0 </span><span class="sc">{</span>total_w<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>total_h<span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'style="display:block;font-family:</span><span class="ch">\'</span><span class="ss">Source Serif 4</span><span class="ch">\'</span><span class="ss">,Georgia,serif;"&gt;'</span>,</span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;rect width="</span><span class="sc">{</span>total_w<span class="sc">}</span><span class="ss">" height="</span><span class="sc">{</span>total_h<span class="sc">}</span><span class="ss">" fill="#f0ead8" rx="6"/&gt;'</span>,</span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;text x="</span><span class="sc">{</span>pad_l<span class="sc">}</span><span class="ss">" y="18" font-size="11" fill="#7a6a52" '</span></span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'letter-spacing="1" text-anchor="start"&gt;DISPERSION PLOT&lt;/text&gt;'</span>,</span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;line x1="</span><span class="sc">{</span>pad_l<span class="sc">}</span><span class="ss">" y1="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h<span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'x2="</span><span class="sc">{</span>pad_l <span class="op">+</span> W<span class="sc">}</span><span class="ss">" y2="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h<span class="sc">}</span><span class="ss">" stroke="#c8b89a" stroke-width="1"/&gt;'</span>,</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;text x="</span><span class="sc">{</span>pad_l<span class="sc">}</span><span class="ss">" y="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h <span class="op">+</span> <span class="dv">14</span><span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;0%&lt;/text&gt;'</span>,</span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'&lt;text x="</span><span class="sc">{</span>pad_l <span class="op">+</span> W<span class="sc">}</span><span class="ss">" y="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h <span class="op">+</span> <span class="dv">14</span><span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;100%&lt;/text&gt;'</span>,</span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pct <span class="kw">in</span> (<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>):</span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>        gx <span class="op">=</span> pad_l <span class="op">+</span> <span class="bu">int</span>(W <span class="op">*</span> pct <span class="op">/</span> <span class="dv">100</span>)</span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>        lines <span class="op">+=</span> [</span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'&lt;line x1="</span><span class="sc">{</span>gx<span class="sc">}</span><span class="ss">" y1="</span><span class="sc">{</span>pad_t<span class="sc">}</span><span class="ss">" x2="</span><span class="sc">{</span>gx<span class="sc">}</span><span class="ss">" y2="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h<span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'stroke="#c8b89a" stroke-width="1" stroke-dasharray="3,3"/&gt;'</span>,</span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'&lt;text x="</span><span class="sc">{</span>gx<span class="sc">}</span><span class="ss">" y="</span><span class="sc">{</span>pad_t <span class="op">+</span> n <span class="op">*</span> row_h <span class="op">+</span> <span class="dv">14</span><span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'font-size="9" fill="#aaa" text-anchor="middle"&gt;</span><span class="sc">{</span>pct<span class="sc">}</span><span class="ss">%&lt;/text&gt;'</span>,</span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, eid <span class="kw">in</span> <span class="bu">enumerate</span>(entity_ids):</span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> colors[i <span class="op">%</span> <span class="bu">len</span>(colors)]</span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>        cy    <span class="op">=</span> pad_t <span class="op">+</span> i <span class="op">*</span> row_h <span class="op">+</span> row_h <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> id_to_label.get(eid, eid)</span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a>            lines.append(</span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'&lt;rect x="</span><span class="sc">{</span>pad_l<span class="sc">}</span><span class="ss">" y="</span><span class="sc">{</span>pad_t <span class="op">+</span> i <span class="op">*</span> row_h<span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'width="</span><span class="sc">{</span>W<span class="sc">}</span><span class="ss">" height="</span><span class="sc">{</span>row_h<span class="sc">}</span><span class="ss">" fill="rgba(0,0,0,0.03)"/&gt;'</span></span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>        lines.append(</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'&lt;text x="</span><span class="sc">{</span>pad_l <span class="op">-</span> <span class="dv">8</span><span class="sc">}</span><span class="ss">" y="</span><span class="sc">{</span>cy <span class="op">+</span> <span class="dv">4</span><span class="sc">}</span><span class="ss">" font-size="12" '</span></span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'fill="</span><span class="sc">{</span>color<span class="sc">}</span><span class="ss">" text-anchor="end" font-weight="600"&gt;'</span></span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>html<span class="sc">.</span>escape(label)<span class="sc">}</span><span class="ss">&lt;/text&gt;'</span></span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (_, _, _, pos) <span class="kw">in</span> data.get(eid, []):</span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>            cx <span class="op">=</span> pad_l <span class="op">+</span> <span class="bu">int</span>(W <span class="op">*</span> pos <span class="op">/</span> corpus_len)</span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>            lines.append(</span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'&lt;circle cx="</span><span class="sc">{</span>cx<span class="sc">}</span><span class="ss">" cy="</span><span class="sc">{</span>cy<span class="sc">}</span><span class="ss">" r="</span><span class="sc">{</span>dot_r<span class="sc">}</span><span class="ss">" '</span></span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'fill="</span><span class="sc">{</span>color<span class="sc">}</span><span class="ss">" opacity="0.85"&gt;'</span></span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'&lt;title&gt;</span><span class="sc">{</span>html<span class="sc">.</span>escape(label)<span class="sc">}</span><span class="ss"> @ </span><span class="sc">{</span>pos<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>corpus_len<span class="sc">}</span><span class="ss"> '</span></span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'(</span><span class="sc">{</span><span class="dv">100</span> <span class="op">*</span> pos <span class="op">//</span> corpus_len<span class="sc">}</span><span class="ss">%)&lt;/title&gt;'</span></span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f'&lt;/circle&gt;'</span></span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>    lines.append(<span class="st">'&lt;/svg&gt;'</span>)</span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join(lines)</span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Full HTML page ────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_html(</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>    corpus: <span class="bu">str</span>,</span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>    data: <span class="bu">dict</span>,</span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>    id_to_label: <span class="bu">dict</span>,</span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>    id_to_aliases: <span class="bu">dict</span>,</span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>    corpus_len <span class="op">=</span> <span class="bu">len</span>(corpus)</span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sort entities by descending occurrence count</span></span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>    entity_ids <span class="op">=</span> <span class="bu">sorted</span>(data.keys(), key<span class="op">=</span><span class="kw">lambda</span> eid: <span class="bu">len</span>(data[eid]), reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a>    total      <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> data.values())</span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>    dispersion_svg <span class="op">=</span> build_dispersion_svg(</span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>        data, entity_ids, id_to_label, corpus_len, COLORS</span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>    sections_html <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, eid <span class="kw">in</span> <span class="bu">enumerate</span>(entity_ids):</span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>        occurrences <span class="op">=</span> data[eid]</span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>        count       <span class="op">=</span> <span class="bu">len</span>(occurrences)</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a>        color       <span class="op">=</span> COLORS[i <span class="op">%</span> <span class="bu">len</span>(COLORS)]</span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a>        label       <span class="op">=</span> id_to_label.get(eid, eid)</span>
+<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a>        aliases     <span class="op">=</span> id_to_aliases.get(eid, [])</span>
+<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a>        alias_pills <span class="op">=</span> <span class="st">" "</span>.join(</span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'&lt;span class="alias-pill"&gt;</span><span class="sc">{</span>html<span class="sc">.</span>escape(a)<span class="sc">}</span><span class="ss">&lt;/span&gt;'</span> <span class="cf">for</span> a <span class="kw">in</span> aliases</span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a>        entries_html <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> occurrences:</span>
+<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a>            entries_html <span class="op">=</span> <span class="st">'&lt;p class="empty"&gt;&lt;em&gt;Aucune occurrence trouvée.&lt;/em&gt;&lt;/p&gt;'</span></span>
+<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j, (left, match, right, _pos) <span class="kw">in</span> <span class="bu">enumerate</span>(occurrences):</span>
+<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a>                passage <span class="op">=</span> render_passage(left, match, right)</span>
+<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a>                entries_html <span class="op">+=</span> <span class="ss">f"""</span></span>
+<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;div class="entry"&gt;</span></span>
+<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a><span class="ss">            &lt;span class="entry-num"&gt;#</span><span class="sc">{</span>j <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">&lt;/span&gt;</span></span>
+<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a><span class="ss">            &lt;p class="passage"&gt;</span><span class="sc">{</span>passage<span class="sc">}</span><span class="ss">&lt;/p&gt;</span></span>
+<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;/div&gt;"""</span></span>
+<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a>        sections_html <span class="op">+=</span> <span class="ss">f"""</span></span>
+<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;section class="kw-section" style="--kw-color:</span><span class="sc">{</span>color<span class="sc">}</span><span class="ss">"&gt;</span></span>
+<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;h2 class="kw-heading"&gt;</span></span>
+<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a><span class="ss">            &lt;span class="kw-name"&gt;</span><span class="sc">{</span>html<span class="sc">.</span>escape(label)<span class="sc">}</span><span class="ss">&lt;/span&gt;</span></span>
+<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a><span class="ss">            &lt;span class="kw-count"&gt;</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> occurrence</span><span class="sc">{</span><span class="st">'s'</span> <span class="cf">if</span> count <span class="op">!=</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">''</span><span class="sc">}</span><span class="ss">&lt;/span&gt;</span></span>
+<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;/h2&gt;</span></span>
+<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;div class="alias-bar"&gt;</span><span class="sc">{</span>alias_pills<span class="sc">}</span><span class="ss">&lt;/div&gt;</span></span>
+<span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;div class="entries"&gt;</span></span>
+<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>entries_html<span class="sc">}</span></span>
+<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;/div&gt;</span></span>
+<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;/section&gt;"""</span></span>
+<span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"""&lt;!DOCTYPE html&gt;</span></span>
+<span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;html lang="fr"&gt;</span></span>
+<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;head&gt;</span></span>
+<span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;meta charset="UTF-8"&gt;</span></span>
+<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></span>
+<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;title&gt;KWIC Index&lt;/title&gt;</span></span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&amp;display=swap" rel="stylesheet"&gt;</span></span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;style&gt;</span></span>
+<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a><span class="ss">  :root </span><span class="ch">{{</span></span>
+<span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a><span class="ss">    --ink:       #1a1410;</span></span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a><span class="ss">    --paper:     #f8f4ec;</span></span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a><span class="ss">    --cream:     #f0ead8;</span></span>
+<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a><span class="ss">    --rule:      #c8b89a;</span></span>
+<span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a><span class="ss">    --accent:    #8b3a0f;</span></span>
+<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a><span class="ss">    --highlight: #e8c547;</span></span>
+<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a><span class="ss">    --section:   #2c1a0e;</span></span>
+<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-275"><a href="#cb8-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a><span class="ss">  *, *::before, *::after </span><span class="ch">{{</span><span class="ss"> box-sizing: border-box; margin: 0; padding: 0; </span><span class="ch">}}</span></span>
+<span id="cb8-277"><a href="#cb8-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-278"><a href="#cb8-278" aria-hidden="true" tabindex="-1"></a><span class="ss">  body </span><span class="ch">{{</span></span>
+<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-family: 'Source Serif 4', Georgia, serif;</span></span>
+<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--paper);</span></span>
+<span id="cb8-281"><a href="#cb8-281" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: var(--ink);</span></span>
+<span id="cb8-282"><a href="#cb8-282" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: 15px;</span></span>
+<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a><span class="ss">    line-height: 1.75;</span></span>
+<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-285"><a href="#cb8-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-286"><a href="#cb8-286" aria-hidden="true" tabindex="-1"></a><span class="ss">  header </span><span class="ch">{{</span></span>
+<span id="cb8-287"><a href="#cb8-287" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--section);</span></span>
+<span id="cb8-288"><a href="#cb8-288" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #f8f4ec;</span></span>
+<span id="cb8-289"><a href="#cb8-289" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: 2.5rem 3rem 2rem;</span></span>
+<span id="cb8-290"><a href="#cb8-290" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-bottom: 4px solid var(--accent);</span></span>
+<span id="cb8-291"><a href="#cb8-291" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-292"><a href="#cb8-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-293"><a href="#cb8-293" aria-hidden="true" tabindex="-1"></a><span class="ss">  header h1 </span><span class="ch">{{</span></span>
+<span id="cb8-294"><a href="#cb8-294" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-295"><a href="#cb8-295" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: 2.4rem;</span></span>
+<span id="cb8-296"><a href="#cb8-296" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-weight: 700;</span></span>
+<span id="cb8-297"><a href="#cb8-297" aria-hidden="true" tabindex="-1"></a><span class="ss">    letter-spacing: .02em;</span></span>
+<span id="cb8-298"><a href="#cb8-298" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: .4rem;</span></span>
+<span id="cb8-299"><a href="#cb8-299" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-300"><a href="#cb8-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-301"><a href="#cb8-301" aria-hidden="true" tabindex="-1"></a><span class="ss">  header .subtitle </span><span class="ch">{{</span><span class="ss"> font-size: .9rem; opacity: .7; font-style: italic; </span><span class="ch">}}</span></span>
+<span id="cb8-302"><a href="#cb8-302" aria-hidden="true" tabindex="-1"></a><span class="ss">  header .stats </span><span class="ch">{{</span></span>
+<span id="cb8-303"><a href="#cb8-303" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-top: 1rem;</span></span>
+<span id="cb8-304"><a href="#cb8-304" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: .82rem;</span></span>
+<span id="cb8-305"><a href="#cb8-305" aria-hidden="true" tabindex="-1"></a><span class="ss">    opacity: .8;</span></span>
+<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a><span class="ss">    letter-spacing: .06em;</span></span>
+<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a><span class="ss">    text-transform: uppercase;</span></span>
+<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-309"><a href="#cb8-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a><span class="ss">  .dispersion-wrap </span><span class="ch">{{</span></span>
+<span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a><span class="ss">    max-width: 960px;</span></span>
+<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin: 2rem auto 0;</span></span>
+<span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: 0 2rem;</span></span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a><span class="ss">  .dispersion-wrap h2 </span><span class="ch">{{</span></span>
+<span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: 1.1rem;</span></span>
+<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: var(--accent);</span></span>
+<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: .8rem;</span></span>
+<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-top: 2px solid var(--rule);</span></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding-top: .8rem;</span></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a><span class="ss">  main </span><span class="ch">{{</span></span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a><span class="ss">    max-width: 820px;</span></span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin: 0 auto;</span></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: 2.5rem 2rem 5rem;</span></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a><span class="ss">  .kw-section </span><span class="ch">{{</span></span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: 3rem;</span></span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-top: 3px solid var(--kw-color, var(--accent));</span></span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding-top: 1.2rem;</span></span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a><span class="ss">  .kw-heading </span><span class="ch">{{</span></span>
+<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-family: 'Playfair Display', Georgia, serif;</span></span>
+<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: 1.4rem;</span></span>
+<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-weight: 700;</span></span>
+<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: var(--kw-color, var(--accent));</span></span>
+<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: .5rem;</span></span>
+<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a><span class="ss">    display: flex;</span></span>
+<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a><span class="ss">    align-items: baseline;</span></span>
+<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a><span class="ss">    gap: .8rem;</span></span>
+<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a><span class="ss">  .kw-count </span><span class="ch">{{</span></span>
+<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-family: 'Source Serif 4', serif;</span></span>
+<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: .8rem;</span></span>
+<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-weight: 400;</span></span>
+<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-style: italic;</span></span>
+<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #888;</span></span>
+<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a><span class="ss">  .alias-bar </span><span class="ch">{{</span></span>
+<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a><span class="ss">    display: flex;</span></span>
+<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a><span class="ss">    flex-wrap: wrap;</span></span>
+<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a><span class="ss">    gap: .35rem;</span></span>
+<span id="cb8-360"><a href="#cb8-360" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: 1rem;</span></span>
+<span id="cb8-361"><a href="#cb8-361" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-362"><a href="#cb8-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-363"><a href="#cb8-363" aria-hidden="true" tabindex="-1"></a><span class="ss">  .alias-pill </span><span class="ch">{{</span></span>
+<span id="cb8-364"><a href="#cb8-364" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: .72rem;</span></span>
+<span id="cb8-365"><a href="#cb8-365" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--cream);</span></span>
+<span id="cb8-366"><a href="#cb8-366" aria-hidden="true" tabindex="-1"></a><span class="ss">    border: 1px solid var(--rule);</span></span>
+<span id="cb8-367"><a href="#cb8-367" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #666;</span></span>
+<span id="cb8-368"><a href="#cb8-368" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: .1em .55em;</span></span>
+<span id="cb8-369"><a href="#cb8-369" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-radius: 20px;</span></span>
+<span id="cb8-370"><a href="#cb8-370" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-style: italic;</span></span>
+<span id="cb8-371"><a href="#cb8-371" aria-hidden="true" tabindex="-1"></a><span class="ss">    letter-spacing: .02em;</span></span>
+<span id="cb8-372"><a href="#cb8-372" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-373"><a href="#cb8-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-374"><a href="#cb8-374" aria-hidden="true" tabindex="-1"></a><span class="ss">  .entry </span><span class="ch">{{</span></span>
+<span id="cb8-375"><a href="#cb8-375" aria-hidden="true" tabindex="-1"></a><span class="ss">    position: relative;</span></span>
+<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a><span class="ss">    margin-bottom: 1.4rem;</span></span>
+<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: .9rem 1.1rem .9rem 2.8rem;</span></span>
+<span id="cb8-378"><a href="#cb8-378" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--cream);</span></span>
+<span id="cb8-379"><a href="#cb8-379" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-left: 3px solid var(--rule);</span></span>
+<span id="cb8-380"><a href="#cb8-380" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-radius: 0 4px 4px 0;</span></span>
+<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a><span class="ss">    transition: border-color .15s;</span></span>
+<span id="cb8-382"><a href="#cb8-382" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-383"><a href="#cb8-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-384"><a href="#cb8-384" aria-hidden="true" tabindex="-1"></a><span class="ss">  .entry:hover </span><span class="ch">{{</span><span class="ss"> border-left-color: var(--kw-color, var(--accent)); </span><span class="ch">}}</span></span>
+<span id="cb8-385"><a href="#cb8-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a><span class="ss">  .entry-num </span><span class="ch">{{</span></span>
+<span id="cb8-387"><a href="#cb8-387" aria-hidden="true" tabindex="-1"></a><span class="ss">    position: absolute;</span></span>
+<span id="cb8-388"><a href="#cb8-388" aria-hidden="true" tabindex="-1"></a><span class="ss">    left: .6rem;</span></span>
+<span id="cb8-389"><a href="#cb8-389" aria-hidden="true" tabindex="-1"></a><span class="ss">    top: .9rem;</span></span>
+<span id="cb8-390"><a href="#cb8-390" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: .72rem;</span></span>
+<span id="cb8-391"><a href="#cb8-391" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #aaa;</span></span>
+<span id="cb8-392"><a href="#cb8-392" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-style: italic;</span></span>
+<span id="cb8-393"><a href="#cb8-393" aria-hidden="true" tabindex="-1"></a><span class="ss">    user-select: none;</span></span>
+<span id="cb8-394"><a href="#cb8-394" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-395"><a href="#cb8-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-396"><a href="#cb8-396" aria-hidden="true" tabindex="-1"></a><span class="ss">  .passage </span><span class="ch">{{</span><span class="ss"> font-size: .93rem; line-height: 1.8; color: #3a2e22; </span><span class="ch">}}</span></span>
+<span id="cb8-397"><a href="#cb8-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-398"><a href="#cb8-398" aria-hidden="true" tabindex="-1"></a><span class="ss">  mark.kw-highlight </span><span class="ch">{{</span></span>
+<span id="cb8-399"><a href="#cb8-399" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--highlight);</span></span>
+<span id="cb8-400"><a href="#cb8-400" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: var(--section);</span></span>
+<span id="cb8-401"><a href="#cb8-401" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-weight: 700;</span></span>
+<span id="cb8-402"><a href="#cb8-402" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: .05em .3em;</span></span>
+<span id="cb8-403"><a href="#cb8-403" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-radius: 2px;</span></span>
+<span id="cb8-404"><a href="#cb8-404" aria-hidden="true" tabindex="-1"></a><span class="ss">    box-shadow: 0 1px 3px rgba(0,0,0,.12);</span></span>
+<span id="cb8-405"><a href="#cb8-405" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-406"><a href="#cb8-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-407"><a href="#cb8-407" aria-hidden="true" tabindex="-1"></a><span class="ss">  .passage::before, .passage::after </span><span class="ch">{{</span></span>
+<span id="cb8-408"><a href="#cb8-408" aria-hidden="true" tabindex="-1"></a><span class="ss">    content: '…';</span></span>
+<span id="cb8-409"><a href="#cb8-409" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #bbb;</span></span>
+<span id="cb8-410"><a href="#cb8-410" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-style: italic;</span></span>
+<span id="cb8-411"><a href="#cb8-411" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-412"><a href="#cb8-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-413"><a href="#cb8-413" aria-hidden="true" tabindex="-1"></a><span class="ss">  .empty </span><span class="ch">{{</span><span class="ss"> color: #999; font-style: italic; padding-left: .5rem; </span><span class="ch">}}</span></span>
+<span id="cb8-414"><a href="#cb8-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-415"><a href="#cb8-415" aria-hidden="true" tabindex="-1"></a><span class="ss">  footer </span><span class="ch">{{</span></span>
+<span id="cb8-416"><a href="#cb8-416" aria-hidden="true" tabindex="-1"></a><span class="ss">    text-align: center;</span></span>
+<span id="cb8-417"><a href="#cb8-417" aria-hidden="true" tabindex="-1"></a><span class="ss">    padding: 1.2rem;</span></span>
+<span id="cb8-418"><a href="#cb8-418" aria-hidden="true" tabindex="-1"></a><span class="ss">    font-size: .78rem;</span></span>
+<span id="cb8-419"><a href="#cb8-419" aria-hidden="true" tabindex="-1"></a><span class="ss">    color: #999;</span></span>
+<span id="cb8-420"><a href="#cb8-420" aria-hidden="true" tabindex="-1"></a><span class="ss">    border-top: 1px solid var(--rule);</span></span>
+<span id="cb8-421"><a href="#cb8-421" aria-hidden="true" tabindex="-1"></a><span class="ss">    background: var(--cream);</span></span>
+<span id="cb8-422"><a href="#cb8-422" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="ch">}}</span></span>
+<span id="cb8-423"><a href="#cb8-423" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/style&gt;</span></span>
+<span id="cb8-424"><a href="#cb8-424" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/head&gt;</span></span>
+<span id="cb8-425"><a href="#cb8-425" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;body&gt;</span></span>
+<span id="cb8-426"><a href="#cb8-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-427"><a href="#cb8-427" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;header&gt;</span></span>
+<span id="cb8-428"><a href="#cb8-428" aria-hidden="true" tabindex="-1"></a><span class="ss">  &lt;h1&gt;KWIC Index&lt;/h1&gt;</span></span>
+<span id="cb8-429"><a href="#cb8-429" aria-hidden="true" tabindex="-1"></a><span class="ss">  &lt;p class="subtitle"&gt;Keywords in Context — fenêtre ±</span><span class="sc">{</span>CONTEXT_WINDOW<span class="sc">}</span><span class="ss"> caractères&lt;/p&gt;</span></span>
+<span id="cb8-430"><a href="#cb8-430" aria-hidden="true" tabindex="-1"></a><span class="ss">  &lt;p class="stats"&gt;</span><span class="sc">{</span>total<span class="sc">}</span><span class="ss"> occurrence</span><span class="sc">{</span><span class="st">'s'</span> <span class="cf">if</span> total <span class="op">!=</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">''</span><span class="sc">}</span><span class="ss"> &amp;nbsp;·&amp;nbsp; </span><span class="sc">{</span><span class="bu">len</span>(entity_ids)<span class="sc">}</span><span class="ss"> entité</span><span class="sc">{</span><span class="st">'s'</span> <span class="cf">if</span> <span class="bu">len</span>(entity_ids) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">''</span><span class="sc">}</span><span class="ss">&lt;/p&gt;</span></span>
+<span id="cb8-431"><a href="#cb8-431" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/header&gt;</span></span>
+<span id="cb8-432"><a href="#cb8-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-433"><a href="#cb8-433" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div class="dispersion-wrap"&gt;</span></span>
+<span id="cb8-434"><a href="#cb8-434" aria-hidden="true" tabindex="-1"></a><span class="ss">  &lt;h2&gt;Dispersion dans le corpus&lt;/h2&gt;</span></span>
+<span id="cb8-435"><a href="#cb8-435" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="sc">{</span>dispersion_svg<span class="sc">}</span></span>
+<span id="cb8-436"><a href="#cb8-436" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
+<span id="cb8-437"><a href="#cb8-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-438"><a href="#cb8-438" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;main&gt;</span></span>
+<span id="cb8-439"><a href="#cb8-439" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>sections_html<span class="sc">}</span></span>
+<span id="cb8-440"><a href="#cb8-440" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/main&gt;</span></span>
+<span id="cb8-441"><a href="#cb8-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-442"><a href="#cb8-442" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;footer&gt;Généré automatiquement depuis &lt;code&gt;</span><span class="sc">{</span>CORPUS_FILE<span class="sc">}</span><span class="ss">&lt;/code&gt; · entités depuis &lt;code&gt;</span><span class="sc">{</span>CSV_FILE<span class="sc">}</span><span class="ss">&lt;/code&gt;&lt;/footer&gt;</span></span>
+<span id="cb8-443"><a href="#cb8-443" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/body&gt;</span></span>
+<span id="cb8-444"><a href="#cb8-444" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/html&gt;"""</span></span>
+<span id="cb8-445"><a href="#cb8-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-446"><a href="#cb8-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-447"><a href="#cb8-447" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Entry point ───────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-448"><a href="#cb8-448" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb8-449"><a href="#cb8-449" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Resolve file paths</span></span>
+<span id="cb8-450"><a href="#cb8-450" aria-hidden="true" tabindex="-1"></a>    base      <span class="op">=</span> os.path.dirname(<span class="va">__file__</span>)</span>
+<span id="cb8-451"><a href="#cb8-451" aria-hidden="true" tabindex="-1"></a>    csv_path  <span class="op">=</span> os.path.join(base, CSV_FILE)</span>
+<span id="cb8-452"><a href="#cb8-452" aria-hidden="true" tabindex="-1"></a>    corp_path <span class="op">=</span> os.path.join(base, CORPUS_FILE)</span>
+<span id="cb8-453"><a href="#cb8-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-454"><a href="#cb8-454" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(corp_path):</span>
+<span id="cb8-455"><a href="#cb8-455" aria-hidden="true" tabindex="-1"></a>        corp_path <span class="op">=</span> os.path.join(base, <span class="st">'..'</span>, CORPUS_FILE)</span>
+<span id="cb8-456"><a href="#cb8-456" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(csv_path):</span>
+<span id="cb8-457"><a href="#cb8-457" aria-hidden="true" tabindex="-1"></a>        csv_path <span class="op">=</span> os.path.join(base, <span class="st">'..'</span>, CSV_FILE)</span>
+<span id="cb8-458"><a href="#cb8-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-459"><a href="#cb8-459" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading entities from : </span><span class="sc">{</span>csv_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-460"><a href="#cb8-460" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading corpus from   : </span><span class="sc">{</span>corp_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-461"><a href="#cb8-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-462"><a href="#cb8-462" aria-hidden="true" tabindex="-1"></a>    id_to_label, id_to_aliases, alias_to_id <span class="op">=</span> load_entities(csv_path)</span>
+<span id="cb8-463"><a href="#cb8-463" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> load_corpus(corp_path)</span>
+<span id="cb8-464"><a href="#cb8-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-465"><a href="#cb8-465" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span><span class="bu">len</span>(id_to_label)<span class="sc">}</span><span class="ss"> entities, </span><span class="sc">{</span><span class="bu">len</span>(alias_to_id)<span class="sc">}</span><span class="ss"> aliases total"</span>)</span>
+<span id="cb8-466"><a href="#cb8-466" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Searching corpus..."</span>)</span>
+<span id="cb8-467"><a href="#cb8-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-468"><a href="#cb8-468" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> find_all_occurrences(</span>
+<span id="cb8-469"><a href="#cb8-469" aria-hidden="true" tabindex="-1"></a>        corpus, id_to_aliases, alias_to_id, CONTEXT_WINDOW, CASE_SENSITIVE</span>
+<span id="cb8-470"><a href="#cb8-470" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-471"><a href="#cb8-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-472"><a href="#cb8-472" aria-hidden="true" tabindex="-1"></a>    total_hits <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> data.values())</span>
+<span id="cb8-473"><a href="#cb8-473" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>total_hits<span class="sc">}</span><span class="ss"> occurrences found across </span><span class="sc">{</span><span class="bu">len</span>(data)<span class="sc">}</span><span class="ss"> entities"</span>)</span>
+<span id="cb8-474"><a href="#cb8-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-475"><a href="#cb8-475" aria-hidden="true" tabindex="-1"></a>    html_output <span class="op">=</span> build_html(corpus, data, id_to_label, id_to_aliases)</span>
+<span id="cb8-476"><a href="#cb8-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-477"><a href="#cb8-477" aria-hidden="true" tabindex="-1"></a>    out_path <span class="op">=</span> os.path.join(base, OUTPUT_FILE)</span>
+<span id="cb8-478"><a href="#cb8-478" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(out_path, <span class="st">'w'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
+<span id="cb8-479"><a href="#cb8-479" aria-hidden="true" tabindex="-1"></a>        f.write(html_output)</span>
+<span id="cb8-480"><a href="#cb8-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-481"><a href="#cb8-481" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"✓ Index KWIC généré : </span><span class="sc">{</span>out_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-482"><a href="#cb8-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-483"><a href="#cb8-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-484"><a href="#cb8-484" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb8-485"><a href="#cb8-485" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic_index-v2.html">résultat</a> (toujours très joli, en html).</p>
+<p>Avec aussi un <a href="https://pmartinolli.github.io/code/principia-mathematica/count_aliases.py">script qui compte</a> et met les données dans un <a href="https://pmartinolli.github.io/code/principia-mathematica/alias_counts.csv">tableau</a>.</p>
 </section>
 </section>
 <section id="commentaires" class="level2">
@@ -873,13 +1362,13 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <blockquote class="blockquote">
 <p>Nec fas est proprius mortali attingere Divos. — <span class="smallcaps">Halley.</span></p>
 </blockquote>
-<p><strong>Robert Hooke</strong> (16x), que parfois Newton orthographie « <em>Hook »</em> (19x), est aussi beaucoup mentionné. Les deux savants se <a href="https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/">disputaient</a> sur l’originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :</p>
+<p><strong>Robert Hooke</strong> (19x), que parfois Newton orthographie « <em>Hook »</em> (11x), est aussi beaucoup mentionné. Les deux savants se <a href="https://www.themarginalian.org/2016/02/16/newton-standing-on-the-shoulders-of-giants/">disputaient</a> sur l’originalité de découvertes mutuelles. Anecdotiquement il paraîtrait que, comme Hooke était petite taille, Newton aurait choisit cette fameuse expression dans une lettre :</p>
 <blockquote class="blockquote">
 <p>What Des-Cartes did was a good step. You have added much several ways, &amp; especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the sholders of Giants. (<a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">+</a>)</p>
 </blockquote>
-<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (29x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations. <strong>Huygens</strong> (20x) rencontrera Newton deux ans après la publication des <em>Principia</em> en visitant Londres.</p>
+<p>Newton a construit sa mécanique céleste sur les travaux de <strong>Johannes Kepler</strong> (30x), un savant de la génération précédente, décédé 13 ans avant la naissance de Newton. <strong>Johannes</strong> <strong>Hevelius</strong> (21x), que Newton n’a pas connu non plus et qui décède l’année de publication des <em>Principia,</em> a été visité par Halley. Il est mentionné pour ses observations. <strong>Huygens</strong> (14x) rencontrera Newton deux ans après la publication des <em>Principia</em> en visitant Londres.</p>
 <p>La <strong>Royal Society</strong> (26x), à laquelle Newton est membre, est mentionnée de nombreuse fois. Il en deviendra Président en 1703.</p>
-<p><strong>John Flamsteed</strong> (24x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
+<p><strong>John Flamsteed</strong> (16x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
 <p><strong>Leibniz</strong> est mentionné (17x). Ils entreront dans un <a href="https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy">conflit</a> célèbre après la publication des <em>Principia</em> pour savoir qui des deux a inventé le calcul infinitésimal.</p>
 </section>
 <section id="plus-de-contexte" class="level2">
