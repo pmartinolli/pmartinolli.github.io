@@ -9,7 +9,7 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.8.26</generator>
 <lastBuildDate>Wed, 25 Feb 2026 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Construire un indicateur bibliométrique pour l’histoire avec les comptes-rendus de lecture</title>
@@ -214,6 +214,7 @@
 
 
 
+
 <p><span class="smallcaps">Billet en cours de rédaction</span></p>
 <section id="principia-mathematica-cest-quoi" class="level2">
 <h2 class="anchored" data-anchor-id="principia-mathematica-cest-quoi"><em>Principia Mathematica</em>, c’est quoi ?</h2>
@@ -279,7 +280,7 @@
 <p>The citations of historical scientific authorities (e.g., Kepler, Galileo, Euclid, Descartes) are not uniformly distributed but appear in distinct bursts, suggesting that Newton engages with specific intellectual lineages in concentrated thematic blocks rather than continuously. (<a href="https://autodiscovery.allen.ai/runs/2b2c27fe-d02c-4f3e-9cc7-b8557a2cd781?exp=2">source</a>)</p>
 </blockquote>
 <p>De manière plus intéressante encore, AA fournit le code Python pour produire cette déclaration. Le voici :</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
 <span id="cb1-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
@@ -453,7 +454,14 @@ font-style: inherit;"># Use regex with word boundaries for robustness</span></sp
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -461,7 +469,13 @@ font-style: inherit;">'|'</span>.join(target_names) <span class="op" style="colo
 background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r')\b'</span></span>
+font-style: inherit;">r'</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
 <span id="cb1-37">matches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -914,13 +928,13 @@ background-color: null;
 font-style: inherit;">"Frequency"</span>)</span>
 <span id="cb1-126"></span>
 <span id="cb1-127">plt.tight_layout()</span>
-<span id="cb1-128">plt.show()</span></code></pre></div>
+<span id="cb1-128">plt.show()</span></code></pre></div></div>
 <p>C’est un code rudimentaire mais il permet de jouer un peu avec le corpus. Comme on peut le voir, il suffit de changer le contenu de la variable <code>target_names</code> avec tous les noms que l’on veut pour regénérer un nouveau résultat testant la présence d’entités nommées tout le long du texte.</p>
 </section>
 <section id="extraire-les-noms-de-wikidata" class="level3">
 <h3 class="anchored" data-anchor-id="extraire-les-noms-de-wikidata">Extraire les noms de Wikidata</h3>
 <p>On va extraire tous les qualifiants de <code>acknowledges</code> avec :</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
 <span id="cb2-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -959,7 +973,7 @@ font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"en"</span>.</span>
 <span id="cb2-13">  }</span>
-<span id="cb2-14">}</span></code></pre></div>
+<span id="cb2-14">}</span></code></pre></div></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fvalue%20%3FvalueLabel%20%3FqualifierValue%0AWHERE%20%7B%0A%20%20wd%3AQ205921%20p%3AP7137%20%3Fstatement%20.%0A%20%20%3Fstatement%20ps%3AP7137%20%3Fvalue%20.%0A%20%20%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20pq%3AP1932%20%3FqualifierValue%20.%0A%20%20%7D%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%0A%20%20%7D%0A%7D">Essayez-la</a></p>
 <p>Ensuite, on exporte le résultat au format tsv ou csv, on supprime les deux premières colonnes pour ne garder que la colonne <code>qualifierValue</code>. On fait un peu de ménage dedans :</p>
 <ul>
@@ -972,7 +986,7 @@ font-style: inherit;">"en"</span>.</span>
 <section id="code-modifié" class="level3">
 <h3 class="anchored" data-anchor-id="code-modifié">Code modifié</h3>
 <p>Remplacer la variable <code>target_names</code> plus haut par :</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
 <span id="cb3-2">target_names <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
@@ -1193,7 +1207,7 @@ background-color: null;
 font-style: inherit;">"Plato"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Leibnitz"</span>,</span>
-<span id="cb3-4">]</span></code></pre></div>
+<span id="cb3-4">]</span></code></pre></div></div>
 <p>Voir le <a href="https://pmartinolli.github.io/code/principia-mathematica/main.py">code</a> modifié et le <a href="https://pmartinolli.github.io/code/principia-mathematica/corpus.txt">corpus</a> associé.</p>
 </section>
 <section id="contrôle-manuel" class="level3">
@@ -1202,7 +1216,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 </section>
 <section id="résultats" class="level3">
 <h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
 <span id="cb4-2">Total Named Entities Found: 433</span>
 <span id="cb4-3">Unique Named Entities Mentioned: 105</span>
 <span id="cb4-4"></span>
@@ -1227,7 +1241,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 <span id="cb4-23">Variance of Distances: 96545741.47</span>
 <span id="cb4-24">Dispersion Metric (Var/Mean of distances): 31927.11</span>
 <span id="cb4-25">Coefficient of Variation (Std/Mean): 3.25</span>
-<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div>
+<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div></div>
 <p><img src="https://pmartinolli.github.io/code/principia-mathematica/figure.png" class="img-fluid"></p>
 </section>
 </section>
@@ -1256,7 +1270,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 <h4 class="anchored" data-anchor-id="remontons-aux-sources-originales">Remontons aux sources originales</h4>
 <p>On pourrait comparer les <strong>différentes éditions</strong> des <em>Principia</em> pour observer quelles sont entités nommées qui disparaissent, ou qui apparaissent. Et pourquoi ? Nous avons débuté avec une version anglaise (la première édition américaine), remontons à la version presque-originale en latin : la version génèvoise de Le Seur &amp; Jacquier de 1739.</p>
 <p>On passe les PDF des trois volumes à travers le code suivant (qui fait un OCR basé sur Tesseract) :</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
 <span id="cb5-2"><span class="co" style="color: #5E5E5E;
@@ -1952,7 +1966,7 @@ background-color: null;
 font-style: inherit;">True</span>,  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Force OCR even though it's marked as Tagged PDF</span></span>
-<span id="cb5-172">    )</span></code></pre></div>
+<span id="cb5-172">    )</span></code></pre></div></div>
 <p>Ensuite, on y cherche les entités nommées à partir de l’indexation Wikidata faite sur la version en anglais. C’est un peu plus facile de trouver les entités nommées comme ceci car elles « sautent plus aux yeux » en anglais qu’en latin (pour moi qui ait oublié mon latin depuis 35 ans). Notons cependant que les entitées nommées sont souvent en italiques dans le texte latin, ce qui aide tout de même.</p>
 <p>Quelques remarques :</p>
 <ul>
@@ -1977,7 +1991,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </section>
 <section id="résultats-1" class="level4">
 <h4 class="anchored" data-anchor-id="résultats-1">Résultats</h4>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb6-1">##### Analysis Results #####</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb6-1">##### Analysis Results #####</span>
 <span id="cb6-2">Total Named Entity Mentions: 385</span>
 <span id="cb6-3">Unique Entities Mentioned:   98</span>
 <span id="cb6-4"></span>
@@ -2002,7 +2016,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <span id="cb6-23">Variance of Distances:          107880204.92</span>
 <span id="cb6-24">Dispersion Metric (Var/Mean):   31711.43</span>
 <span id="cb6-25">Coefficient of Variation:       3.05</span>
-<span id="cb6-26">Interpretation: CV &gt; 1 → clustering / burstiness.</span></code></pre></div>
+<span id="cb6-26">Interpretation: CV &gt; 1 → clustering / burstiness.</span></code></pre></div></div>
 </section>
 <section id="en-image" class="level4">
 <h4 class="anchored" data-anchor-id="en-image">En image</h4>
@@ -2012,7 +2026,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <section id="réécriture-du-code-la-localisation-unique-des-noms-en-html" class="level4">
 <h4 class="anchored" data-anchor-id="réécriture-du-code-la-localisation-unique-des-noms-en-html">Réécriture du code la localisation unique des noms en html</h4>
 <p>On localise où se trouve le nom dans le corpus et, en cas de variante, comme <code>Hooke</code> et <code>Dr. Hooke</code>, on ne compte qu’une fois.</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -2383,7 +2397,14 @@ background-color: null;
 font-style: inherit;">compile</span>(</span>
 <span id="cb7-89">        <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -2397,7 +2418,13 @@ font-style: inherit;">in</span> all_pairs) <span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r')\b'</span>,</span>
+font-style: inherit;">r'</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\b</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>,</span>
 <span id="cb7-90">        flags,</span>
 <span id="cb7-91">    )</span>
 <span id="cb7-92"></span>
@@ -2501,7 +2528,13 @@ font-style: inherit;">0</span>:</span>
 background-color: null;
 font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'^\S+'</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">^\S</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span>, left)</span>
 <span id="cb7-112">        <span class="cf" style="color: #003B4F;
@@ -2518,7 +2551,15 @@ font-style: inherit;">len</span>(corpus):</span>
 background-color: null;
 font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'\S+$'</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\S</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">$</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span>, right)</span>
 <span id="cb7-114"></span>
@@ -4350,9 +4391,360 @@ background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"__main__"</span>:</span>
-<span id="cb7-485">    main()</span></code></pre></div>
+<span id="cb7-485">    main()</span></code></pre></div></div>
 <p>Le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic_index-v2.html">résultat</a> (toujours très joli, en html).</p>
 <p>Avec aussi un <a href="https://pmartinolli.github.io/code/principia-mathematica/count_aliases.py">script qui compte</a> et met les données dans un <a href="https://pmartinolli.github.io/code/principia-mathematica/alias_counts.csv">tableau</a>.</p>
+</section>
+<section id="extraction-automatique-dentités-nommées" class="level4">
+<h4 class="anchored" data-anchor-id="extraction-automatique-dentités-nommées">Extraction automatique d’entités nommées</h4>
+<p>J’utilise <a href="https://urchade.github.io/GLiNER/">GLiNER</a> pour extraire automatiquement les entitées nommées (personnes et organisations seulement). Le code ci-dessous produit un fichier .csv en 40 minutes environ.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">Created on Fri Mar 13 11:35:15 2026</span></span>
+<span id="cb8-4"></span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@author: pascaliensis, with Gemini </span></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb8-7"></span>
+<span id="cb8-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Installation: pip install gliner</span></span>
+<span id="cb8-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># https://github.com/urchade/GLiNER</span></span>
+<span id="cb8-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># https://urchade.github.io/GLiNER/</span></span>
+<span id="cb8-11"></span>
+<span id="cb8-12"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> gliner <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> GLiNER</span>
+<span id="cb8-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb8-14"></span>
+<span id="cb8-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">########## Importing the model #############</span></span>
+<span id="cb8-16">model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> GLiNER.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"urchade/gliner_base"</span>)</span>
+<span id="cb8-17"></span>
+<span id="cb8-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">########## Importing the data ##############</span></span>
+<span id="cb8-19">CORPUS_FILE <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"corpus.txt"</span></span>
+<span id="cb8-20">base      <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.dirname(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__file__</span>)</span>
+<span id="cb8-21">corp_path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(base, CORPUS_FILE)</span>
+<span id="cb8-22"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(corp_path, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>, errors<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ignore'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb8-23">    text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb8-24"></span>
+<span id="cb8-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">########### Define the labels you want to extract ####</span></span>
+<span id="cb8-26">labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"person"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"organization"</span>]</span>
+<span id="cb8-27"></span>
+<span id="cb8-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">########## Processing the data by chunks #############</span></span>
+<span id="cb8-29"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> get_chunks_with_offsets(text, chunk_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">384</span>, overlap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>):</span>
+<span id="cb8-30">    chunks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb8-31">    start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb8-32">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(text):</span>
+<span id="cb8-33">        end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> chunk_size</span>
+<span id="cb8-34">        chunks.append((text[start:end], start))</span>
+<span id="cb8-35">        start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> (chunk_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> overlap)</span>
+<span id="cb8-36">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> chunks</span>
+<span id="cb8-37"></span>
+<span id="cb8-38"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> process_large_text(large_text, model, labels):</span>
+<span id="cb8-39">    chunks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_chunks_with_offsets(large_text)</span>
+<span id="cb8-40">    all_extracted_entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb8-41">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> chunk_text, global_start <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> chunks:</span>
+<span id="cb8-42">        entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model.predict_entities(chunk_text, labels)</span>
+<span id="cb8-43">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> ent <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> entities:</span>
+<span id="cb8-44">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convertir en position globale</span></span>
+<span id="cb8-45">            global_ent <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb8-46">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'start'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'start'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> global_start,</span>
+<span id="cb8-47">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'end'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'end'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> global_start,</span>
+<span id="cb8-48">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'label'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'label'</span>],</span>
+<span id="cb8-49">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>]</span>
+<span id="cb8-50">            }</span>
+<span id="cb8-51">            all_extracted_entities.append(global_ent)</span>
+<span id="cb8-52"></span>
+<span id="cb8-53">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Dédoublonnage simple (par position exacte)</span></span>
+<span id="cb8-54">    unique_entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> { (e[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'start'</span>], e[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'end'</span>], e[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'label'</span>]): e <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> e <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> all_extracted_entities }.values()</span>
+<span id="cb8-55">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Trier par position de départ</span></span>
+<span id="cb8-56">    final_entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(unique_entities, key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: x[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'start'</span>])</span>
+<span id="cb8-57">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> final_entities</span>
+<span id="cb8-58"></span>
+<span id="cb8-59">extracted_entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> process_large_text(text, model, labels)</span>
+<span id="cb8-60"></span>
+<span id="cb8-61"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">########## Exporting in CSV #############</span></span>
+<span id="cb8-62"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> csv</span>
+<span id="cb8-63"></span>
+<span id="cb8-64">output_file <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"entities_extracted.csv"</span></span>
+<span id="cb8-65"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Configuration des colonnes (Header)</span></span>
+<span id="cb8-66">fieldnames <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'type'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'startPosition'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'endPosition'</span>]</span>
+<span id="cb8-67"></span>
+<span id="cb8-68"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(output_file, mode<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'w'</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>, newline<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb8-69">    writer <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> csv.DictWriter(f, fieldnames<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>fieldnames)</span>
+<span id="cb8-70">    </span>
+<span id="cb8-71">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Écriture de l'en-tête</span></span>
+<span id="cb8-72">    writer.writeheader()</span>
+<span id="cb8-73">    </span>
+<span id="cb8-74">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Écriture des données</span></span>
+<span id="cb8-75">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> ent <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> extracted_entities:</span>
+<span id="cb8-76">        writer.writerow({</span>
+<span id="cb8-77">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'type'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'label'</span>],</span>
+<span id="cb8-78">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>: ent.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 'text' est souvent déjà dans la sortie GLiNER</span></span>
+<span id="cb8-79">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'startPosition'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'start'</span>],</span>
+<span id="cb8-80">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'endPosition'</span>: ent[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'end'</span>]</span>
+<span id="cb8-81">        })</span>
+<span id="cb8-82"></span>
+<span id="cb8-83"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Fichier CSV généré avec succès : </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>output_file<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div></div>
 </section>
 </section>
 <section id="commentaires" class="level2">
