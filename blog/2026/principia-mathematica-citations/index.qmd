@@ -1215,7 +1215,6 @@ df_text = pd.concat([df_text, new_rows], ignore_index=True)
 
 ######### Export the compared data ##############
 df_text.to_csv("entities_extracted_compared.csv", index=False)
-
 ```
 
 En bout de course, le fichier `entities_extracted_compared.csv` compare les entités extraites et les recompte dans le corpus. Je note qu'entre la colonne `NER_count` (issue de GLiNER) et la colonne `corpus_count` (recomptage) il y a peu de différences. Cela veut dire que GLiNER a plutôt bien fonctionné.
@@ -1241,17 +1240,37 @@ Ai-je manqué de repérer des entités nommées qui ont été repérées par GLi
 
 Y a-t-il des données que j'ai repéré manuellement et qui n'ont pas été repérées par GLiNER ? Je regarde dans `entities_extracted_compared.csv` s'il y a des lignes à la fin avec comme valeur `ManualOverNER`. C'est difficile à voir car j'ai mélangé les valeurs avec le version originale latine et il y a des formes redondantes. Cependant, manuellement j'en avais repéré quelques uns que GLiNER n'a pas trouvé :
 
-- Ciceron
-- Job
-- Simon Marius
-- Townley
-- Keplerian
+-   Ciceron
+-   Job
+-   Simon Marius
+-   Townley
+-   Keplerian
 
 Une fois la vérification faites, je rajoute les entitées nommées repérées par GLiNET à Wikidata et je relance tous les scripts pour mettre à jour les données.
 
 ## Commentaires
 
-En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (29x) et les mentions sont très concentrées.
+#### Des motifs récurrents pour la science
+
+Dans les *Principia*, j'observe des manières de citer que l'on trouve encore de nos jours.
+
+Newton invite toute l'Europe des astronomes dans son oeuvre. C'est comme voir une immense conférence dont il serait le chef d'orchestre. [Lorsque l'on cite en science](https://www.hughrundle.net/does-clarivate-understand-what-citations-are-for/), c'est pour soutenir une information factuelle ou bien pour invoquer une contribution théorique. On peut voir ces deux modes dans les *Principia* : d'un côté, les astronomes sont mentionnés pour leurs observations ; d'un autre côté, les mathématiciens et les astronomes sont mentionnés pour leurs contributions calculatoires, physiques et théoriques.
+
+Un ensemble de règles typographiques et de présentation est en place pour inclure les citations :
+
+-   Il y a des références abrégées à décoder (voir le Archimède plus haut en illustration).
+
+-   L'oeil peut être guidé à repérer les références et les mentions de personnes avec l'utilisation typographique d'italiques et de majuscules.
+
+-   En latin, c'est plus complexe à repérer en raison des déclinaisons de noms.
+
+-   Les références sont parfois utilisées dans les notes de bas de pages.
+
+-   Souvent les citations sont regroupées dans des sections ou des parties distinctes du document (introduction et conclusion principalement).
+
+#### Mentions des entités nommées
+
+En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un **Dieu** créateur et ordonateur. En effet, Dieu est l'entité nommée la plus mentionnée (29x) et les mentions sont très concentrées. Il y a de nombreuses mentions « formulées » de Dieu (par exemple « my God, your God, the God of Israel, the God of Gods, and Lord of Lords ») mais aussi des mentions plus simples de Dieu. Toutes les mentions sont rassemblées dans le même paragraphe/section.
 
 Ensuite, **Edmond** **Halley** (24x) qui finança cette oeuvre et les travaux de Newton. Les *Principia* commencent par un prologue de deux pages de Halley. Je note que dans l'édition [WikiSource](#0) de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).
 

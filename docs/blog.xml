@@ -5088,7 +5088,22 @@ font-style: inherit;">False</span>)</span></code></pre></div>
 </section>
 <section id="commentaires" class="level2">
 <h2 class="anchored" data-anchor-id="commentaires">Commentaires</h2>
-<p>En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un <strong>Dieu</strong> créateur et ordonateur. En effet, Dieu est l’entité nommée la plus mentionnée (29x) et les mentions sont très concentrées.</p>
+<section id="des-motifs-récurrents-pour-la-science" class="level4">
+<h4 class="anchored" data-anchor-id="des-motifs-récurrents-pour-la-science">Des motifs récurrents pour la science</h4>
+<p>Dans les <em>Principia</em>, j’observe des manières de citer que l’on trouve encore de nos jours.</p>
+<p>Newton invite toute l’Europe des astronomes dans son oeuvre. C’est comme voir une immense conférence dont il serait le chef d’orchestre. <a href="https://www.hughrundle.net/does-clarivate-understand-what-citations-are-for/">Lorsque l’on cite en science</a>, c’est pour soutenir une information factuelle ou bien pour invoquer une contribution théorique. On peut voir ces deux modes dans les <em>Principia</em> : d’un côté, les astronomes sont mentionnés pour leurs observations ; d’un autre côté, les mathématiciens et les astronomes sont mentionnés pour leurs contributions calculatoires, physiques et théoriques.</p>
+<p>Un ensemble de règles typographiques et de présentation est en place pour inclure les citations :</p>
+<ul>
+<li><p>Il y a des références abrégées à décoder (voir le Archimède plus haut en illustration).</p></li>
+<li><p>L’oeil peut être guidé à repérer les références et les mentions de personnes avec l’utilisation typographique d’italiques et de majuscules.</p></li>
+<li><p>En latin, c’est plus complexe à repérer en raison des déclinaisons de noms.</p></li>
+<li><p>Les références sont parfois utilisées dans les notes de bas de pages.</p></li>
+<li><p>Souvent les citations sont regroupées dans des sections ou des parties distinctes du document (introduction et conclusion principalement).</p></li>
+</ul>
+</section>
+<section id="mentions-des-entités-nommées" class="level4">
+<h4 class="anchored" data-anchor-id="mentions-des-entités-nommées">Mentions des entités nommées</h4>
+<p>En ne connaissant rien du sujet, on peut découvrir que Newton semble croire honnêtement en un <strong>Dieu</strong> créateur et ordonateur. En effet, Dieu est l’entité nommée la plus mentionnée (29x) et les mentions sont très concentrées. Il y a de nombreuses mentions « formulées » de Dieu (par exemple « my God, your God, the God of Israel, the God of Gods, and Lord of Lords ») mais aussi des mentions plus simples de Dieu. Toutes les mentions sont rassemblées dans le même paragraphe/section.</p>
 <p>Ensuite, <strong>Edmond</strong> <strong>Halley</strong> (24x) qui finança cette oeuvre et les travaux de Newton. Les <em>Principia</em> commencent par un prologue de deux pages de Halley. Je note que dans l’édition WikiSource de la version américaine (1846), ces deux pages se sont transformées en un tout petit épigraphe (qui correspond à la dernière ligne du prologue écrit par Halley, bizarre).</p>
 <blockquote class="blockquote">
 <p>Nec fas est proprius mortali attingere Divos. — <span class="smallcaps">Halley.</span></p>
@@ -5101,6 +5116,7 @@ font-style: inherit;">False</span>)</span></code></pre></div>
 <p>La <strong>Royal Society</strong>, à laquelle Newton est membre, est mentionnée (3x). Il en deviendra Président en 1703.</p>
 <p><strong>John Flamsteed</strong> (16x) fut mis sous pression par Newton pour livrer des données confidentielles sur les observations de la Lune pour les <em>Principia</em>. Plus tard, Newton publiera les données incomplètes et sans autorisation ce qui créera un <a href="https://mathshistory.st-andrews.ac.uk/Extras/Flamsteed_Newton/">scandale</a>.</p>
 <p><strong>Leibniz</strong> n’est pas mentionné (0x). Ils entreront dans un <a href="https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy">conflit</a> célèbre après la publication des <em>Principia</em> pour savoir qui des deux a inventé le calcul infinitésimal.</p>
+</section>
 </section>
 <section id="plus-de-contexte" class="level2">
 <h2 class="anchored" data-anchor-id="plus-de-contexte">Plus de contexte!</h2>
