@@ -9,7 +9,7 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.8.26</generator>
+<generator>quarto-1.6.39</generator>
 <lastBuildDate>Wed, 25 Feb 2026 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Construire un indicateur bibliométrique pour l’histoire avec les comptes-rendus de lecture</title>
@@ -214,7 +214,6 @@
 
 
 
-
 <p><span class="smallcaps">Billet en cours de rédaction</span></p>
 <section id="principia-mathematica-cest-quoi" class="level2">
 <h2 class="anchored" data-anchor-id="principia-mathematica-cest-quoi"><em>Principia Mathematica</em>, c’est quoi ?</h2>
@@ -280,7 +279,7 @@
 <p>The citations of historical scientific authorities (e.g., Kepler, Galileo, Euclid, Descartes) are not uniformly distributed but appear in distinct bursts, suggesting that Newton engages with specific intellectual lineages in concentrated thematic blocks rather than continuously. (<a href="https://autodiscovery.allen.ai/runs/2b2c27fe-d02c-4f3e-9cc7-b8557a2cd781?exp=2">source</a>)</p>
 </blockquote>
 <p>De manière plus intéressante encore, AA fournit le code Python pour produire cette déclaration. Le voici :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"></span>
 <span id="cb1-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
@@ -454,14 +453,7 @@ font-style: inherit;"># Use regex with word boundaries for robustness</span></sp
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\b</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">(</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -469,13 +461,7 @@ font-style: inherit;">'|'</span>.join(target_names) <span class="op" style="colo
 background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">)</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\b</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span></span>
+font-style: inherit;">r')\b'</span></span>
 <span id="cb1-37">matches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -928,13 +914,13 @@ background-color: null;
 font-style: inherit;">"Frequency"</span>)</span>
 <span id="cb1-126"></span>
 <span id="cb1-127">plt.tight_layout()</span>
-<span id="cb1-128">plt.show()</span></code></pre></div></div>
+<span id="cb1-128">plt.show()</span></code></pre></div>
 <p>C’est un code rudimentaire mais il permet de jouer un peu avec le corpus. Comme on peut le voir, il suffit de changer le contenu de la variable <code>target_names</code> avec tous les noms que l’on veut pour regénérer un nouveau résultat testant la présence d’entités nommées tout le long du texte.</p>
 </section>
 <section id="extraire-les-noms-de-wikidata" class="level3">
 <h3 class="anchored" data-anchor-id="extraire-les-noms-de-wikidata">Extraire les noms de Wikidata</h3>
 <p>On va extraire tous les qualifiants de <code>acknowledges</code> avec :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"></span>
 <span id="cb2-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -973,7 +959,7 @@ font-style: inherit;">:language</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">"en"</span>.</span>
 <span id="cb2-13">  }</span>
-<span id="cb2-14">}</span></code></pre></div></div>
+<span id="cb2-14">}</span></code></pre></div>
 <p><a href="https://query.wikidata.org/#SELECT%20%3Fvalue%20%3FvalueLabel%20%3FqualifierValue%0AWHERE%20%7B%0A%20%20wd%3AQ205921%20p%3AP7137%20%3Fstatement%20.%0A%20%20%3Fstatement%20ps%3AP7137%20%3Fvalue%20.%0A%20%20%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fstatement%20pq%3AP1932%20%3FqualifierValue%20.%0A%20%20%7D%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%0A%20%20%7D%0A%7D">Essayez-la</a></p>
 <p>Ensuite, on exporte le résultat au format tsv ou csv, on supprime les deux premières colonnes pour ne garder que la colonne <code>qualifierValue</code>. On fait un peu de ménage dedans :</p>
 <ul>
@@ -986,7 +972,7 @@ font-style: inherit;">"en"</span>.</span>
 <section id="code-modifié" class="level3">
 <h3 class="anchored" data-anchor-id="code-modifié">Code modifié</h3>
 <p>Remplacer la variable <code>target_names</code> plus haut par :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
 <span id="cb3-2">target_names <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
@@ -1207,7 +1193,7 @@ background-color: null;
 font-style: inherit;">"Plato"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Leibnitz"</span>,</span>
-<span id="cb3-4">]</span></code></pre></div></div>
+<span id="cb3-4">]</span></code></pre></div>
 <p>Voir le <a href="https://pmartinolli.github.io/code/principia-mathematica/main.py">code</a> modifié et le <a href="https://pmartinolli.github.io/code/principia-mathematica/corpus.txt">corpus</a> associé.</p>
 </section>
 <section id="contrôle-manuel" class="level3">
@@ -1216,7 +1202,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 </section>
 <section id="résultats" class="level3">
 <h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb4-1">##### Analysis Results #####</span>
 <span id="cb4-2">Total Named Entities Found: 433</span>
 <span id="cb4-3">Unique Named Entities Mentioned: 105</span>
 <span id="cb4-4"></span>
@@ -1241,7 +1227,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 <span id="cb4-23">Variance of Distances: 96545741.47</span>
 <span id="cb4-24">Dispersion Metric (Var/Mean of distances): 31927.11</span>
 <span id="cb4-25">Coefficient of Variation (Std/Mean): 3.25</span>
-<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div></div>
+<span id="cb4-26">Interpretation: CV &gt; 1 suggests clustering/burstiness.</span></code></pre></div>
 <p><img src="https://pmartinolli.github.io/code/principia-mathematica/figure.png" class="img-fluid"></p>
 </section>
 </section>
@@ -1270,7 +1256,7 @@ font-style: inherit;">"Leibnitz"</span>,</span>
 <h4 class="anchored" data-anchor-id="remontons-aux-sources-originales">Remontons aux sources originales</h4>
 <p>On pourrait comparer les <strong>différentes éditions</strong> des <em>Principia</em> pour observer quelles sont entités nommées qui disparaissent, ou qui apparaissent. Et pourquoi ? Nous avons débuté avec une version anglaise (la première édition américaine), remontons à la version presque-originale en latin : la version génèvoise de Le Seur &amp; Jacquier de 1739.</p>
 <p>On passe les PDF des trois volumes à travers le code suivant (qui fait un OCR basé sur Tesseract) :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
 <span id="cb5-2"><span class="co" style="color: #5E5E5E;
@@ -1966,7 +1952,7 @@ background-color: null;
 font-style: inherit;">True</span>,  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Force OCR even though it's marked as Tagged PDF</span></span>
-<span id="cb5-172">    )</span></code></pre></div></div>
+<span id="cb5-172">    )</span></code></pre></div>
 <p>Ensuite, on y cherche les entités nommées à partir de l’indexation Wikidata faite sur la version en anglais. C’est un peu plus facile de trouver les entités nommées comme ceci car elles « sautent plus aux yeux » en anglais qu’en latin (pour moi qui ait oublié mon latin depuis 35 ans). Notons cependant que les entitées nommées sont souvent en italiques dans le texte latin, ce qui aide tout de même.</p>
 <p>Quelques remarques :</p>
 <ul>
@@ -1991,7 +1977,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 </section>
 <section id="résultats-1" class="level4">
 <h4 class="anchored" data-anchor-id="résultats-1">Résultats</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb6-1">##### Analysis Results #####</span>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb6-1">##### Analysis Results #####</span>
 <span id="cb6-2">Total Named Entity Mentions: 385</span>
 <span id="cb6-3">Unique Entities Mentioned:   98</span>
 <span id="cb6-4"></span>
@@ -2016,7 +2002,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <span id="cb6-23">Variance of Distances:          107880204.92</span>
 <span id="cb6-24">Dispersion Metric (Var/Mean):   31711.43</span>
 <span id="cb6-25">Coefficient of Variation:       3.05</span>
-<span id="cb6-26">Interpretation: CV &gt; 1 → clustering / burstiness.</span></code></pre></div></div>
+<span id="cb6-26">Interpretation: CV &gt; 1 → clustering / burstiness.</span></code></pre></div>
 </section>
 <section id="en-image" class="level4">
 <h4 class="anchored" data-anchor-id="en-image">En image</h4>
@@ -2026,7 +2012,7 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <section id="réécriture-du-code-la-localisation-unique-des-noms-en-html" class="level4">
 <h4 class="anchored" data-anchor-id="réécriture-du-code-la-localisation-unique-des-noms-en-html">Réécriture du code la localisation unique des noms en html</h4>
 <p>On localise où se trouve le nom dans le corpus et, en cas de variante, comme <code>Hooke</code> et <code>Dr. Hooke</code>, on ne compte qu’une fois.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -2397,14 +2383,7 @@ background-color: null;
 font-style: inherit;">compile</span>(</span>
 <span id="cb7-89">        <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\b</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">(</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">r'\b('</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -2418,13 +2397,7 @@ font-style: inherit;">in</span> all_pairs) <span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">+</span> <span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">)</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\b</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>,</span>
+font-style: inherit;">r')\b'</span>,</span>
 <span id="cb7-90">        flags,</span>
 <span id="cb7-91">    )</span>
 <span id="cb7-92"></span>
@@ -2528,13 +2501,7 @@ font-style: inherit;">0</span>:</span>
 background-color: null;
 font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">^\S</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">r'^\S+'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span>, left)</span>
 <span id="cb7-112">        <span class="cf" style="color: #003B4F;
@@ -2551,15 +2518,7 @@ font-style: inherit;">len</span>(corpus):</span>
 background-color: null;
 font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
 background-color: null;
-font-style: inherit;">r'</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\S</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">$</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>, <span class="st" style="color: #20794D;
+font-style: inherit;">r'\S+$'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span>, right)</span>
 <span id="cb7-114"></span>
@@ -4391,14 +4350,14 @@ background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"__main__"</span>:</span>
-<span id="cb7-485">    main()</span></code></pre></div></div>
+<span id="cb7-485">    main()</span></code></pre></div>
 <p>Le <a href="https://pmartinolli.github.io/code/principia-mathematica/kwic_index-v2.html">résultat</a> (toujours très joli, en html).</p>
 <p>Avec aussi un <a href="https://pmartinolli.github.io/code/principia-mathematica/count_aliases.py">script qui compte</a> et met les données dans un <a href="https://pmartinolli.github.io/code/principia-mathematica/alias_counts.csv">tableau</a>.</p>
 </section>
 <section id="extraction-automatique-dentités-nommées" class="level4">
 <h4 class="anchored" data-anchor-id="extraction-automatique-dentités-nommées">Extraction automatique d’entités nommées</h4>
 <p>J’utilise <a href="https://urchade.github.io/GLiNER/">GLiNER</a> pour extraire automatiquement les entitées nommées (personnes et organisations seulement). Le code ci-dessous produit un fichier .csv en 40 minutes environ.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
 <span id="cb8-2"><span class="co" style="color: #5E5E5E;
@@ -4744,7 +4703,387 @@ font-style: inherit;">{</span>output_file<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div></div>
+font-style: inherit;">"</span>)</span></code></pre></div>
+<p>Ensuite, je traite le fichier .csv en le manipulant dans un dataframe pour supprimer les doublons, les entrées non pertinentes, etc.</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -*- coding: utf-8 -*-</span></span>
+<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb9-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">Created on Fri Mar 13 14:52:19 2026</span></span>
+<span id="cb9-4"></span>
+<span id="cb9-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@author: pascaliensis with Claude Sonnet 4.6</span></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb9-7"></span>
+<span id="cb9-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb9-9"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb9-10"></span>
+<span id="cb9-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load CSV with correct types</span></span>
+<span id="cb9-12">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"entities_extracted.csv"</span>, dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"startPosition"</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"endPosition"</span>: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>})</span>
+<span id="cb9-13"></span>
+<span id="cb9-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Normalize line breaks (\r\n, \r, \n) to a single space</span></span>
+<span id="cb9-15">df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.replace(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"\r\n|\r|\n"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" "</span>, regex<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb9-16"></span>
+<span id="cb9-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove rows where the count of a-z letters (case-insensitive) is 3 or less</span></span>
+<span id="cb9-18">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.count(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"[a-zA-Z]"</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>]</span>
+<span id="cb9-19"></span>
+<span id="cb9-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove rows containing specific words (truncated before and after)</span></span>
+<span id="cb9-21">exclude <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LEMME"</span>, </span>
+<span id="cb9-22">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LEMMA"</span>,</span>
+<span id="cb9-23">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SCHOLIUM"</span>, </span>
+<span id="cb9-24">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cor."</span>, </span>
+<span id="cb9-25">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Q.E.D."</span>,</span>
+<span id="cb9-26">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"COROLLARY"</span>,</span>
+<span id="cb9-27">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Prop."</span>,</span>
+<span id="cb9-28">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Theor"</span>,</span>
+<span id="cb9-29">           <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lem"</span>,</span>
+<span id="cb9-30">           ]</span>
+<span id="cb9-31">pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"|"</span>.join(re.escape(word) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> word <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> exclude)</span>
+<span id="cb9-32">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.contains(pattern, na<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)]</span>
+<span id="cb9-33"></span>
+<span id="cb9-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove rows where text starts by small cap</span></span>
+<span id="cb9-35">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.match(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"[A-Z]"</span>)]</span>
+<span id="cb9-36"></span>
+<span id="cb9-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For each group with the same startPosition, keep only the row with the longest text</span></span>
+<span id="cb9-38">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (</span>
+<span id="cb9-39">    df.assign(text_len<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>())</span>
+<span id="cb9-40">      .sort_values(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text_len"</span>, ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb9-41">      .drop_duplicates(subset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"startPosition"</span>, keep<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"first"</span>)</span>
+<span id="cb9-42">      .drop(columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text_len"</span>)</span>
+<span id="cb9-43">      .reset_index(drop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb9-44">)</span>
+<span id="cb9-45"></span>
+<span id="cb9-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#print(df)</span></span>
+<span id="cb9-47"></span>
+<span id="cb9-48"></span>
+<span id="cb9-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#df.to_csv("entities_extracted_cleaned.csv", index=False)</span></span>
+<span id="cb9-50"></span>
+<span id="cb9-51"></span>
+<span id="cb9-52">df_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>]]</span>
+<span id="cb9-53"></span>
+<span id="cb9-54"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># regroup and count rows with same text value</span></span>
+<span id="cb9-55">df_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (</span>
+<span id="cb9-56">    df.groupby(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, as_index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb9-57">      .agg(NER_count<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"count"</span>))</span>
+<span id="cb9-58">      .sort_values(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NER_count"</span>, ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb9-59">      .reset_index(drop<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb9-60">)</span>
+<span id="cb9-61"></span>
+<span id="cb9-62"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># count how many time the text is present in the original corpus</span></span>
+<span id="cb9-63"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"corpus.txt"</span>, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf-8"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb9-64">    corpus <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb9-65">df_text[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"corpus_count"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_text[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">apply</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: corpus.count(x))</span>
+<span id="cb9-66"></span>
+<span id="cb9-67"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">####### Check if there is Named entities found by hand and not by NER</span></span>
+<span id="cb9-68"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># read query.csv and add rows for qualifierValues not already in df_text</span></span>
+<span id="cb9-69">df_query <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query.csv"</span>)</span>
+<span id="cb9-70">existing <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span>(df_text[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>])</span>
+<span id="cb9-71">new_rows <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_query[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>df_query[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qualifierValue"</span>].isin(existing)][[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qualifierValue"</span>]].drop_duplicates()</span>
+<span id="cb9-72">new_rows <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> new_rows.rename(columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qualifierValue"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>})</span>
+<span id="cb9-73">new_rows[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"onlyManual"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ManualOverNER"</span></span>
+<span id="cb9-74"></span>
+<span id="cb9-75">df_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.concat([df_text, new_rows], ignore_index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb9-76"></span>
+<span id="cb9-77"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">######### Export the compared data ##############</span></span>
+<span id="cb9-78">df_text.to_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"entities_extracted_compared.csv"</span>, index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span></code></pre></div>
+<p>En bout de course, le fichier <code>entities_extracted_compared.csv</code> compare les entités extraites et les recompte dans le corpus. Je note qu’entre la colonne <code>NER_count</code> (issue de GLiNER) et la colonne <code>corpus_count</code> (recomptage) il y a peu de différences. Cela veut dire que GLiNER a plutôt bien fonctionné.</p>
+<p>Ai-je manqué de repérer des entités nommées qui ont été repérées par GLiNER ? Oui :</p>
+<ul>
+<li>L’observatoire royal de Paris</li>
+<li>Royal observatory of Greenwich</li>
+<li>ancient Greeks</li>
+<li>Vesta</li>
+<li>Collège de La Flèche</li>
+<li>Trinity College</li>
+<li>Flavius Lampadius</li>
+<li>Justinien</li>
+<li>Robert Kirk</li>
+<li>Robert Boyle</li>
+<li>La Dioptrique</li>
+<li>La Géométrie</li>
+<li>Chaldeans</li>
+<li>Rufius Gennadius Probus Orestes</li>
+<li>Regiomontanus</li>
+<li>Anglo-Saxon Chronicle</li>
+</ul>
+<p>Y a-t-il des données que j’ai repéré manuellement et qui n’ont pas été repérées par GLiNER ? Je regarde dans <code>entities_extracted_compared.csv</code> s’il y a des lignes à la fin avec comme valeur <code>ManualOverNER</code>. C’est difficile à voir car j’ai mélangé les valeurs avec le version originale latine et il y a des formes redondantes. Cependant, manuellement j’en avais repéré quelques uns que GLiNER n’a pas trouvé :</p>
+<ul>
+<li>Ciceron</li>
+<li>Job</li>
+<li>Simon Marius</li>
+<li>Townley</li>
+<li>Keplerian</li>
+</ul>
+<p>Une fois la vérification faites, je rajoute les entitées nommées repérées par GLiNET à Wikidata et je relance tous les scripts pour mettre à jour les données.</p>
 </section>
 </section>
 <section id="commentaires" class="level2">
