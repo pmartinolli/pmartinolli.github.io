@@ -1,0 +1,264 @@
+---
+title: "Snakes & Ladders : Python, Anaconda, etc. installe-moi ça!"
+author: "Pascal Martinolli"
+date: "2026-3-16"
+categories: [HumanitésNumériques]
+description: "Où je tente de comprendre comment installer un environnement et des programmes pour travailler avec Python."
+---
+
+## Introduction
+
+Je me suis remis à la programmation sans connaissances à jour dans le domaine, par exemple la notion d'« environnement » m’était totalement inconnue. Pendant deux ans j’ai écrit des programmes Python sans en utiliser. Maintenant que certaines installations posent problème, j’en perçois les limites. Même si je n’y connais rien, voici la marche à suivre pour installer et faire fonctionner un environnement.
+
+## Installation
+
+J'installa **Miniconda**, une version simplifiée de Anaconda (cliquer sur [Download Miniconda Installer](https://www.anaconda.com/download) tout en bas de la page).
+
+Une fois fait, je lance avec Windows \> Start \> Anaconda Powershell Prompt (en mode administrateur)
+
+Puis, je créé un **environnement** : `conda create --name pascaliensis`
+
+Puis, j'active l'environnement : `conda activate pascaliensis`
+
+Pas la peine d'installer **Python** car il est inclus dans Miniconda.
+
+Puis, j'installe **Spyder** : `conda install spyder`
+
+Puis, je lance Spyder : `spyder`
+
+Si le **package** Python existe dans conda, je l'installe dans conda car il semble que ce soit mieux géré. Exemple : `conda install pandas`
+
+Si le package python n'existe pas dans conda, je l'installe dans Spyder avec pip. Exemple : `pip install pymupdf`
+
+Enfin, je ferme l'environnement : `conda deactivate`
+
+## Toutes les fois suivantes
+
+Windows \> Start \> Anaconda Powershell Prompt (en mode administrateur) :
+
+`conda activate pascaliensis`
+
+Puis, je lance Spyder : `spyder`
+
+Je travaille dedans.
+
+Enfin, je ferme l'environnement : `conda deactivate`
+
+## Exemple avec OCRmyPDF
+
+[OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) est un script python qui permet (entre autre) de rajouter une couche d'OCR sur des PDF. Le script suivant le fait en lot sur un dossier et tous ses sous-dossiers contenant des PDF.
+
+Créer un dossier `/test-orcrmypdf` avec un sous-dossier `/corpus`. Dans ce sous-dossier, déposer les PDF (dans d'autres sous-dossiers si vous voulez).
+
+Dans Spyder \> Project \> Create new project \> Existing directory : sélectionner `/test-orcrmypdf` + Create.
+
+À la racine du projet (cliquer-droit sur `/test-orcrmypdf` \> new), créer un nouveau fichier (New python file) nommé `main.py`. Dans ce fichier, copier-coller le code ci-dessous :
+
+``` python
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov 27 21:49:37 2025
+@author: pascaliensis, with Claude Sonnet 4.2
+"""
+
+# pip install ocrmypdf
+# pip install ghostscript ???
+
+import ocrmypdf
+import tempfile
+import os
+import shutil
+from pathlib import Path
+
+def check_dependencies():
+    """Check if required dependencies are installed."""
+    missing = []
+    
+    # Check Tesseract
+    if not shutil.which('pytesseract'):
+        missing.append('Tesseract OCR')
+    
+    # Check Ghostscript (gs on Linux/Mac, gswin64c or gswin32c on Windows)
+    gs_names = ['gs', 'gswin64c', 'gswin32c']
+    if not any(shutil.which(gs) for gs in gs_names):
+        missing.append('Ghostscript')
+    
+    if missing:
+        deps_str = ' and '.join(missing)
+        raise Exception(
+            f"Missing dependencies: {deps_str}\n\n"
+            f"Installation instructions:\n"
+            f"- Ghostscript: https://ghostscript.com/releases/gsdnld.html\n"
+            f"- Tesseract: https://github.com/UB-Mannheim/tesseract/wiki\n"
+            f"After installation, restart your Python environment."
+        )
+
+
+def process_pdf_with_ocr(input_pdf_path, 
+                         output_pdf_path, 
+                         language, 
+                         deskew=True, remove_background=False, 
+                         force_ocr=False, skip_text=False, redo_ocr=False,
+                         check_deps=True, **kwargs):
+    """
+    Process a PDF with OCRmyPDF to add an OCR text layer.
+    
+    Parameters:
+    -----------
+    input_pdf_path : str or Path
+        Path to the input PDF file
+    output_pdf_path : str or Path, optional
+        Path for the output PDF. If None, creates a temporary file
+    language : str, default='eng'
+        OCR language code (e.g., 'eng', 'fra', 'spa', 'deu')
+    deskew : bool, default=True
+        Whether to deskew crooked pages
+    remove_background : bool, default=False
+        Whether to remove background from pages
+    force_ocr : bool, default=False
+        Force OCR even if PDF already has text (keeps existing text + OCR)
+    skip_text : bool, default=False
+        Skip OCR on pages that already have text
+    redo_ocr : bool, default=False
+        Remove existing text and redo OCR from scratch
+    check_deps : bool, default=True
+        Whether to check for dependencies before processing
+    **kwargs : dict
+        Additional OCRmyPDF parameters
+        
+    Returns:
+    --------
+    str : Path to the output PDF file
+    
+    Notes:
+    ------
+    - force_ocr: Use for scanned PDFs incorrectly marked as having text
+    - skip_text: Use to only OCR image-only pages in mixed PDFs  
+    - redo_ocr: Use to replace poor quality existing text with new OCR
+    
+    Example:
+    --------
+    >>> # For a scanned PDF marked as Tagged PDF
+    >>> output = process_pdf_with_ocr('input.pdf', 'output.pdf', force_ocr=True)
+    >>> print(f"OCR processed PDF saved to: {output}")
+    """
+    
+    # Check dependencies first
+    if check_deps:
+        check_dependencies()
+    
+    # Convert input path to Path object
+    input_path = Path(input_pdf_path)
+    
+    # Validate input file exists
+    if not input_path.exists():
+        raise FileNotFoundError(f"Input PDF not found: {input_pdf_path}")
+    
+    # Handle output path
+    if output_pdf_path is None:
+        # Create temporary file if no output path specified
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.pdf')
+        output_path = temp_file.name
+        temp_file.close()
+    else:
+        output_path = str(output_pdf_path)
+    
+    try:
+        # Run OCRmyPDF
+        ocrmypdf.ocr(
+            input_path,
+            output_path,
+            language=language,
+            deskew=deskew,
+            remove_background=remove_background,
+            force_ocr=force_ocr,
+            skip_text=skip_text,
+            redo_ocr=redo_ocr,
+            **kwargs
+        )
+        
+        print(f"✓ OCR processing complete: {output_path}")
+        return output_path
+        
+    except ocrmypdf.exceptions.PriorOcrFoundError:
+        print("⚠ PDF already contains OCR text layer")
+        return str(input_path)
+    
+    except ocrmypdf.exceptions.MissingDependencyError as e:
+        # Clean up temp file if created
+        if output_pdf_path is None and os.path.exists(output_path):
+            os.unlink(output_path)
+        
+        error_msg = str(e)
+        if 'ghostscript' in error_msg.lower() or 'gs' in error_msg.lower():
+            raise Exception(
+                "Ghostscript not found!\n\n"
+                "Install from: https://ghostscript.com/releases/gsdnld.html\n"
+                "After installation, restart your Python environment."
+            )
+        elif 'tesseract' in error_msg.lower():
+            raise Exception(
+                "Tesseract OCR not found!\n\n"
+                "Install from: https://github.com/UB-Mannheim/tesseract/wiki\n"
+                "After installation, restart your Python environment."
+            )
+        else:
+            raise Exception(f"Missing dependency: {error_msg}")
+        
+    except Exception as e:
+        # Clean up temp file if created and error occurred
+        if output_pdf_path is None and os.path.exists(output_path):
+            os.unlink(output_path)
+        raise Exception(f"OCR processing failed: {str(e)}")
+
+
+# for processing all pdf in a directory and sudbir
+
+def process_all_pdfs_in_directory(root_directory):
+    # Supported PDF extensions
+    extension = ".pdf"
+    
+    # Walk through the directory and its subdirectories
+    for root, dirs, files in os.walk(root_directory):
+        for file in files:
+            if file.lower().endswith(extension):
+                # Skip files that were already processed by this script
+                if file.lower().endswith(f"_ocr{extension}"):
+                    continue
+
+                input_path = os.path.join(root, file)
+                
+                # Create an output path (e.g., "myfile_ocr.pdf")
+                file_base = os.path.splitext(file)[0]
+                output_filename = f"{file_base}_ocr{extension}"
+                output_path = os.path.join(root, output_filename)
+
+                print(f"--- Processing: {input_path} ---")
+                
+                try:
+                    # Call your specific OCR function
+                    process_pdf_with_ocr(
+                        input_path, 
+                        output_path,
+                        language='eng+fra', 
+                        deskew=True,
+                        rotate_pages=True,
+                        optimize=1,
+                        force_ocr=True,
+                    )
+                
+                    print(f"Successfully processed: {output_filename}")
+
+                except Exception as e:
+                    print(f"Error processing {file}: {e}")
+
+if __name__ == "__main__":
+    # Specify the path to your corpus here
+    target_dir = './corpus'
+    
+    if os.path.exists(target_dir):
+        process_all_pdfs_in_directory(target_dir)
+    else:
+        print(f"Directory not found: {target_dir}")    
+        
+```
