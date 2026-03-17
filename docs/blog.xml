@@ -49,6 +49,11 @@
 </section>
 <section id="exemple-avec-ocrmypdf" class="level2">
 <h2 class="anchored" data-anchor-id="exemple-avec-ocrmypdf">Exemple avec OCRmyPDF</h2>
+<p>Depuis Windows, installer <a href="https://ghostscript.com/releases/gsdnld.html">Ghostscript</a>.</p>
+<p>Depuis Windows, installer <a href="https://github.com/UB-Mannheim/tesseract/wiki">Tesseract</a>. Cocher les 4 cases sur la première fenêtre. Ajouter toutes les langues que vous voulez dans la personnalisation de l’installation.</p>
+<p>Dans Environnement &gt; Spyder : <code>pip install gs</code></p>
+<p>Puis <code>pip install pytesseract</code></p>
+<p>Puis <code>pip install ocrmypdf</code></p>
 <p><a href="https://github.com/ocrmypdf/OCRmyPDF">OCRmyPDF</a> est un script python qui permet (entre autre) de rajouter une couche d’OCR sur des PDF. Le script suivant le fait en lot sur un dossier et tous ses sous-dossiers contenant des PDF.</p>
 <p>Créer un dossier <code>/test-orcrmypdf</code> avec un sous-dossier <code>/corpus</code>. Dans ce sous-dossier, déposer les PDF (dans d’autres sous-dossiers si vous voulez).</p>
 <p>Dans Spyder &gt; Project &gt; Create new project &gt; Existing directory : sélectionner <code>/test-orcrmypdf</code> + Create.</p>
@@ -74,7 +79,7 @@ background-color: null;
 font-style: inherit;"># pip install ocrmypdf</span></span>
 <span id="cb1-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># pip install ghostscript ???</span></span>
+font-style: inherit;"># pip install gs</span></span>
 <span id="cb1-9"></span>
 <span id="cb1-10"><span class="im" style="color: #00769E;
 background-color: null;
@@ -6053,6 +6058,1072 @@ font-style: inherit;">False</span>)</span></code></pre></div></div>
 </ul>
 <p>Une fois la vérification faites, je rajoute les entitées nommées repérées par GLiNET à Wikidata et je relance tous les scripts pour mettre à jour les données.</p>
 </section>
+</section>
+<section id="autre-méthode-extraction-des-italiques" class="level2">
+<h2 class="anchored" data-anchor-id="autre-méthode-extraction-des-italiques">Autre méthode : extraction des italiques</h2>
+<p>J’aimerai vérifier la pertinence d’extraire des chaînes de caractères en italiques dans des textes structurés (html, xml, rtf, markdown, etc.).</p>
+<p>Pour tester cette idée, le récupère sur Wikisource la <a href="https://la.wikisource.org/wiki/Philosophiae_Naturalis_Principia_Mathematica">version latine</a> des <em>Principia</em> (de très bonne qualité) car elle contient les italiques. J’exporte les données au format rtf.</p>
+<p>J’utilise ensuite le script ci-dessous pour extraire les italiques :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#pip install pandas beautifulsoup4 lxml python-docx ebooklib pymupdf</span></span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb10-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb10-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb10-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> bs4 <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> BeautifulSoup</span>
+<span id="cb10-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> docx <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Document</span>
+<span id="cb10-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> ebooklib <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> epub</span>
+<span id="cb10-9"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> ebooklib</span>
+<span id="cb10-10"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> fitz</span>
+<span id="cb10-11"></span>
+<span id="cb10-12"></span>
+<span id="cb10-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># HTML / XML / TEI</span></span>
+<span id="cb10-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-16"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_html_like(text, filetype):</span>
+<span id="cb10-17"></span>
+<span id="cb10-18">    soup <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> BeautifulSoup(text, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lxml"</span>)</span>
+<span id="cb10-19">    plain <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> soup.get_text()</span>
+<span id="cb10-20"></span>
+<span id="cb10-21">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-22">    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb10-23"></span>
+<span id="cb10-24">    tags <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> soup.find_all([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"i"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"em"</span>])</span>
+<span id="cb10-25"></span>
+<span id="cb10-26">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tei"</span>:</span>
+<span id="cb10-27">        tags <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> soup.find_all(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hi"</span>, {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rend"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"italic"</span>})</span>
+<span id="cb10-28"></span>
+<span id="cb10-29">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tag <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tags:</span>
+<span id="cb10-30">        s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tag.get_text()</span>
+<span id="cb10-31">        start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plain.find(s, pos)</span>
+<span id="cb10-32"></span>
+<span id="cb10-33">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb10-34">            spans.append((s, start, start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(s)))</span>
+<span id="cb10-35">            pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(s)</span>
+<span id="cb10-36"></span>
+<span id="cb10-37">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-38"></span>
+<span id="cb10-39"></span>
+<span id="cb10-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-41"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Markdown</span></span>
+<span id="cb10-42"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-43"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_markdown(text):</span>
+<span id="cb10-44"></span>
+<span id="cb10-45">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-46">    pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*?</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\*</span><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">_</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*?</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">_"</span></span>
+<span id="cb10-47"></span>
+<span id="cb10-48">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> m <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> re.finditer(pattern, text):</span>
+<span id="cb10-49">        s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">or</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb10-50">        spans.append((s, m.start(), m.end()))</span>
+<span id="cb10-51"></span>
+<span id="cb10-52">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-53"></span>
+<span id="cb10-54"></span>
+<span id="cb10-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># DOCX</span></span>
+<span id="cb10-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-58"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_docx(path):</span>
+<span id="cb10-59"></span>
+<span id="cb10-60">    doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Document(path)</span>
+<span id="cb10-61"></span>
+<span id="cb10-62">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-63">    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb10-64"></span>
+<span id="cb10-65">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> p <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> doc.paragraphs:</span>
+<span id="cb10-66">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> run <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> p.runs:</span>
+<span id="cb10-67"></span>
+<span id="cb10-68">            t <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> run.text</span>
+<span id="cb10-69"></span>
+<span id="cb10-70">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> run.italic <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> t.strip():</span>
+<span id="cb10-71">                spans.append((t, pos, pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(t)))</span>
+<span id="cb10-72"></span>
+<span id="cb10-73">            pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(t)</span>
+<span id="cb10-74"></span>
+<span id="cb10-75">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-76"></span>
+<span id="cb10-77"></span>
+<span id="cb10-78"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-79"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># EPUB</span></span>
+<span id="cb10-80"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-81"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_epub(path):</span>
+<span id="cb10-82"></span>
+<span id="cb10-83">    book <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> epub.read_epub(path)</span>
+<span id="cb10-84"></span>
+<span id="cb10-85">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-86">    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb10-87"></span>
+<span id="cb10-88">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> item <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> book.get_items():</span>
+<span id="cb10-89"></span>
+<span id="cb10-90">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> item.get_type() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> ebooklib.ITEM_DOCUMENT:</span>
+<span id="cb10-91"></span>
+<span id="cb10-92">            html <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> item.get_content()</span>
+<span id="cb10-93">            soup <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> BeautifulSoup(html, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lxml"</span>)</span>
+<span id="cb10-94"></span>
+<span id="cb10-95">            plain <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> soup.get_text()</span>
+<span id="cb10-96"></span>
+<span id="cb10-97">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tag <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> soup.find_all([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"i"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"em"</span>]):</span>
+<span id="cb10-98"></span>
+<span id="cb10-99">                s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tag.get_text()</span>
+<span id="cb10-100">                start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plain.find(s)</span>
+<span id="cb10-101"></span>
+<span id="cb10-102">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb10-103">                    spans.append((s, pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> start, pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(s)))</span>
+<span id="cb10-104"></span>
+<span id="cb10-105">            pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(plain)</span>
+<span id="cb10-106"></span>
+<span id="cb10-107">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-108"></span>
+<span id="cb10-109"></span>
+<span id="cb10-110"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-111"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># RTF</span></span>
+<span id="cb10-112"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-113"></span>
+<span id="cb10-114"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_rtf(text):</span>
+<span id="cb10-115">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Début de l'extraction RTF"</span>)</span>
+<span id="cb10-116">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-117"></span>
+<span id="cb10-118">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Cette regex cherche soit :</span></span>
+<span id="cb10-119">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1. \i suivi de texte jusqu'à \i0</span></span>
+<span id="cb10-120">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 2. Une accolade ouvrante { suivie de \i et du texte jusqu'à l'accolade fermante }</span></span>
+<span id="cb10-121">    pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">i</span>(?:(?:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\s</span><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">?=</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\s</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">)</span>)<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*?</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">i0</span><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span>(?:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\s</span><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">?=</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\s</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">)</span>)<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[^{}]</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\}</span>)<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb10-122"></span>
+<span id="cb10-123">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> m <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> re.finditer(pattern, text, re.DOTALL):</span>
+<span id="cb10-124">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># On récupère le groupe qui n'est pas None (soit le format \i...\i0, soit {\i...})</span></span>
+<span id="cb10-125">        content <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">is</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> m.group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb10-126">        </span>
+<span id="cb10-127">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> content:</span>
+<span id="cb10-128">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Nettoyage optionnel des autres balises RTF résiduelles à l'intérieur</span></span>
+<span id="cb10-129">            clean_content <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[a-z0-9]</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\s</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">?</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, content)</span>
+<span id="cb10-130">            spans.append((clean_content.strip(), m.start(), m.end()))</span>
+<span id="cb10-131"></span>
+<span id="cb10-132">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-133"></span>
+<span id="cb10-134"></span>
+<span id="cb10-135"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-136"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># PDF (font detection)</span></span>
+<span id="cb10-137"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-138"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse_pdf(path):</span>
+<span id="cb10-139"></span>
+<span id="cb10-140">    doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fitz.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(path)</span>
+<span id="cb10-141"></span>
+<span id="cb10-142">    spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-143">    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb10-144"></span>
+<span id="cb10-145">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> page <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> doc:</span>
+<span id="cb10-146"></span>
+<span id="cb10-147">        blocks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> page.get_text(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dict"</span>)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blocks"</span>]</span>
+<span id="cb10-148"></span>
+<span id="cb10-149">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> block <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> blocks:</span>
+<span id="cb10-150"></span>
+<span id="cb10-151">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> line <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> block.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lines"</span>, []):</span>
+<span id="cb10-152"></span>
+<span id="cb10-153">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> span <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> line.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"spans"</span>, []):</span>
+<span id="cb10-154"></span>
+<span id="cb10-155">                    font <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> span[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"font"</span>]</span>
+<span id="cb10-156">                    text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> span[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>]</span>
+<span id="cb10-157"></span>
+<span id="cb10-158">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Italic"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> font <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">or</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Oblique"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> font:</span>
+<span id="cb10-159"></span>
+<span id="cb10-160">                        spans.append((text, pos, pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(text)))</span>
+<span id="cb10-161"></span>
+<span id="cb10-162">                    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(text)</span>
+<span id="cb10-163"></span>
+<span id="cb10-164">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> spans</span>
+<span id="cb10-165"></span>
+<span id="cb10-166"></span>
+<span id="cb10-167"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-168"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Main extractor</span></span>
+<span id="cb10-169"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-170"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> extract_italics(path, filetype):</span>
+<span id="cb10-171"></span>
+<span id="cb10-172">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> filetype <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"html"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"xml"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tei"</span>]:</span>
+<span id="cb10-173">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(path, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf8"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb10-174">            text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb10-175">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_html_like(text, filetype)</span>
+<span id="cb10-176"></span>
+<span id="cb10-177">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"markdown"</span>:</span>
+<span id="cb10-178">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(path, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf8"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb10-179">            text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb10-180">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_markdown(text)</span>
+<span id="cb10-181"></span>
+<span id="cb10-182">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"docx"</span>:</span>
+<span id="cb10-183">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_docx(path)</span>
+<span id="cb10-184"></span>
+<span id="cb10-185">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"epub"</span>:</span>
+<span id="cb10-186">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_epub(path)</span>
+<span id="cb10-187"></span>
+<span id="cb10-188">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rtf"</span>:</span>
+<span id="cb10-189">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(path, encoding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"utf-8"</span>, errors<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ignore"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb10-190">            text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb10-191">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_rtf(text)</span>
+<span id="cb10-192">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(text)</span>
+<span id="cb10-193"></span>
+<span id="cb10-194">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> filetype <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pdf"</span>:</span>
+<span id="cb10-195">        spans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse_pdf(path)</span>
+<span id="cb10-196"></span>
+<span id="cb10-197">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb10-198">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">raise</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">ValueError</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unsupported format"</span>)</span>
+<span id="cb10-199"></span>
+<span id="cb10-200">    df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.DataFrame(spans, columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>])</span>
+<span id="cb10-201">    df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"file"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.basename(path)</span>
+<span id="cb10-202">    df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"format"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> filetype</span>
+<span id="cb10-203"></span>
+<span id="cb10-204">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> df[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"file"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"format"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>]]</span>
+<span id="cb10-205"></span>
+<span id="cb10-206"></span>
+<span id="cb10-207"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-208"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Corpus processor</span></span>
+<span id="cb10-209"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ----------------------------</span></span>
+<span id="cb10-210"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> extract_italics_corpus(folder):</span>
+<span id="cb10-211"></span>
+<span id="cb10-212">    formats <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb10-213">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".html"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"html"</span>,</span>
+<span id="cb10-214">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".xml"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"xml"</span>,</span>
+<span id="cb10-215">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".tei"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tei"</span>,</span>
+<span id="cb10-216">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".md"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"markdown"</span>,</span>
+<span id="cb10-217">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".docx"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"docx"</span>,</span>
+<span id="cb10-218">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".epub"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"epub"</span>,</span>
+<span id="cb10-219">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".rtf"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rtf"</span>,</span>
+<span id="cb10-220">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".pdf"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pdf"</span></span>
+<span id="cb10-221">    }</span>
+<span id="cb10-222"></span>
+<span id="cb10-223">    all_tables <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb10-224"></span>
+<span id="cb10-225">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> root, dirs, files <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> os.walk(folder):</span>
+<span id="cb10-226"></span>
+<span id="cb10-227">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> f <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> files:</span>
+<span id="cb10-228"></span>
+<span id="cb10-229">            ext <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.splitext(f)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>].lower()</span>
+<span id="cb10-230"></span>
+<span id="cb10-231">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> ext <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> formats:</span>
+<span id="cb10-232"></span>
+<span id="cb10-233">                path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.join(root, f)</span>
+<span id="cb10-234">                fmt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> formats[ext]</span>
+<span id="cb10-235"></span>
+<span id="cb10-236">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">try</span>:</span>
+<span id="cb10-237">                    df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> extract_italics(path, fmt)</span>
+<span id="cb10-238">                    all_tables.append(df)</span>
+<span id="cb10-239"></span>
+<span id="cb10-240">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Exception</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> e:</span>
+<span id="cb10-241">                    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"error:"</span>, f, e)</span>
+<span id="cb10-242"></span>
+<span id="cb10-243">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> all_tables:</span>
+<span id="cb10-244">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> pd.concat(all_tables, ignore_index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb10-245"></span>
+<span id="cb10-246">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> pd.DataFrame(columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"file"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"format"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>])</span>
+<span id="cb10-247"></span>
+<span id="cb10-248"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Single file</span></span>
+<span id="cb10-249"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#df = extract_italics("article.xml", "xml")</span></span>
+<span id="cb10-250"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#print(df)</span></span>
+<span id="cb10-251"></span>
+<span id="cb10-252"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Whole corpus</span></span>
+<span id="cb10-253">dfc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> extract_italics_corpus(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"my_corpus"</span>)</span>
+<span id="cb10-254"></span>
+<span id="cb10-255">dfc.to_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"italic_spans.csv"</span>, index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span></code></pre></div></div>
+<p>Inconvénient : le script fonctionne mais les données en rtf ne contiennent pas toutes les italiques pertinentes. Comme je ne trouve pas de transcription en ligne avec les italiques, il faudrait donc repartir du PDF avec un OCR qui reconnaît les italiques. Il paraît que <a href="https://github.com/scribeocr/scribeocr" class="uri">https://github.com/scribeocr/scribeocr</a> sait le faire.</p>
 </section>
 <section id="commentaires" class="level2">
 <h2 class="anchored" data-anchor-id="commentaires">Commentaires</h2>

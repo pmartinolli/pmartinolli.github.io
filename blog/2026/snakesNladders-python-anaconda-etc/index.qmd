@@ -46,6 +46,16 @@ Enfin, je ferme l'environnement : `conda deactivate`
 
 ## Exemple avec OCRmyPDF
 
+Depuis Windows, installer [Ghostscript](https://ghostscript.com/releases/gsdnld.html).
+
+Depuis Windows, installer [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki). Cocher les 4 cases sur la première fenêtre. Ajouter toutes les langues que vous voulez dans la personnalisation de l'installation.
+
+Dans Environnement \> Spyder : `pip install gs`
+
+Puis `pip install pytesseract`
+
+Puis `pip install ocrmypdf`
+
 [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) est un script python qui permet (entre autre) de rajouter une couche d'OCR sur des PDF. Le script suivant le fait en lot sur un dossier et tous ses sous-dossiers contenant des PDF.
 
 Créer un dossier `/test-orcrmypdf` avec un sous-dossier `/corpus`. Dans ce sous-dossier, déposer les PDF (dans d'autres sous-dossiers si vous voulez).
@@ -62,7 +72,7 @@ Created on Thu Nov 27 21:49:37 2025
 """
 
 # pip install ocrmypdf
-# pip install ghostscript ???
+# pip install gs
 
 import ocrmypdf
 import tempfile

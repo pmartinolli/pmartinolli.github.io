@@ -1586,6 +1586,268 @@ Ainsi qu’une référence à <em>De Lucis natura et proprietate</em><sup><a hre
 <p>Une fois la vérification faites, je rajoute les entitées nommées repérées par GLiNET à Wikidata et je relance tous les scripts pour mettre à jour les données.</p>
 </section>
 </section>
+<section id="autre-méthode-extraction-des-italiques" class="level2">
+<h2 class="anchored" data-anchor-id="autre-méthode-extraction-des-italiques">Autre méthode : extraction des italiques</h2>
+<p>J’aimerai vérifier la pertinence d’extraire des chaînes de caractères en italiques dans des textes structurés (html, xml, rtf, markdown, etc.).</p>
+<p>Pour tester cette idée, le récupère sur Wikisource la <a href="https://la.wikisource.org/wiki/Philosophiae_Naturalis_Principia_Mathematica">version latine</a> des <em>Principia</em> (de très bonne qualité) car elle contient les italiques. J’exporte les données au format rtf.</p>
+<p>J’utilise ensuite le script ci-dessous pour extraire les italiques :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pip install pandas beautifulsoup4 lxml python-docx ebooklib pymupdf</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> docx <span class="im">import</span> Document</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ebooklib <span class="im">import</span> epub</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ebooklib</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fitz</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># HTML / XML / TEI</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_html_like(text, filetype):</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> BeautifulSoup(text, <span class="st">"lxml"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    plain <span class="op">=</span> soup.get_text()</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    tags <span class="op">=</span> soup.find_all([<span class="st">"i"</span>, <span class="st">"em"</span>])</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filetype <span class="op">==</span> <span class="st">"tei"</span>:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        tags <span class="op">+=</span> soup.find_all(<span class="st">"hi"</span>, {<span class="st">"rend"</span>: <span class="st">"italic"</span>})</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tag <span class="kw">in</span> tags:</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> tag.get_text()</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> plain.find(s, pos)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> start <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>            spans.append((s, start, start <span class="op">+</span> <span class="bu">len</span>(s)))</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>            pos <span class="op">=</span> start <span class="op">+</span> <span class="bu">len</span>(s)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_markdown(text):</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> <span class="vs">r"</span><span class="ch">\*</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="ch">\*</span><span class="cf">|</span><span class="vs">_</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="vs">_"</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> m <span class="kw">in</span> re.finditer(pattern, text):</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> m.group(<span class="dv">1</span>) <span class="kw">or</span> m.group(<span class="dv">2</span>)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>        spans.append((s, m.start(), m.end()))</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co"># DOCX</span></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_docx(path):</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    doc <span class="op">=</span> Document(path)</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> doc.paragraphs:</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> run <span class="kw">in</span> p.runs:</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>            t <span class="op">=</span> run.text</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> run.italic <span class="kw">and</span> t.strip():</span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>                spans.append((t, pos, pos <span class="op">+</span> <span class="bu">len</span>(t)))</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>            pos <span class="op">+=</span> <span class="bu">len</span>(t)</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="co"># EPUB</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_epub(path):</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>    book <span class="op">=</span> epub.read_epub(path)</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> book.get_items():</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> item.get_type() <span class="op">==</span> ebooklib.ITEM_DOCUMENT:</span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>            html <span class="op">=</span> item.get_content()</span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>            soup <span class="op">=</span> BeautifulSoup(html, <span class="st">"lxml"</span>)</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>            plain <span class="op">=</span> soup.get_text()</span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> tag <span class="kw">in</span> soup.find_all([<span class="st">"i"</span>, <span class="st">"em"</span>]):</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>                s <span class="op">=</span> tag.get_text()</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>                start <span class="op">=</span> plain.find(s)</span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> start <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>                    spans.append((s, pos <span class="op">+</span> start, pos <span class="op">+</span> start <span class="op">+</span> <span class="bu">len</span>(s)))</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>            pos <span class="op">+=</span> <span class="bu">len</span>(plain)</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="co"># RTF</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_rtf(text):</span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Début de l'extraction RTF"</span>)</span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cette regex cherche soit :</span></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. \i suivi de texte jusqu'à \i0</span></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Une accolade ouvrante { suivie de \i et du texte jusqu'à l'accolade fermante }</span></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> <span class="vs">r"</span><span class="ch">\\</span><span class="vs">i</span>(?:(?:<span class="dv">\s</span><span class="cf">|</span><span class="ex">(</span><span class="fu">?=</span><span class="pp">[^</span><span class="dv">\s</span><span class="pp">]</span><span class="ex">)</span>)<span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="ch">\\</span><span class="vs">i0</span><span class="cf">|</span>(?:<span class="dv">\s</span><span class="cf">|</span><span class="ex">(</span><span class="fu">?=</span><span class="pp">[^</span><span class="dv">\s</span><span class="pp">]</span><span class="ex">)</span>)<span class="kw">(</span><span class="pp">[^{}]</span><span class="op">*</span><span class="kw">)</span><span class="ch">\}</span>)<span class="vs">"</span></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> m <span class="kw">in</span> re.finditer(pattern, text, re.DOTALL):</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>        <span class="co"># On récupère le groupe qui n'est pas None (soit le format \i...\i0, soit {\i...})</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> m.group(<span class="dv">1</span>) <span class="cf">if</span> m.group(<span class="dv">1</span>) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> m.group(<span class="dv">2</span>)</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> content:</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Nettoyage optionnel des autres balises RTF résiduelles à l'intérieur</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>            clean_content <span class="op">=</span> re.sub(<span class="vs">r"</span><span class="ch">\\</span><span class="pp">[a-z0-9]</span><span class="op">+</span><span class="dv">\s</span><span class="op">?</span><span class="vs">"</span>, <span class="st">""</span>, content)</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>            spans.append((clean_content.strip(), m.start(), m.end()))</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="co"># PDF (font detection)</span></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_pdf(path):</span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>    doc <span class="op">=</span> fitz.<span class="bu">open</span>(path)</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> []</span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> page <span class="kw">in</span> doc:</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a>        blocks <span class="op">=</span> page.get_text(<span class="st">"dict"</span>)[<span class="st">"blocks"</span>]</span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> block <span class="kw">in</span> blocks:</span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> line <span class="kw">in</span> block.get(<span class="st">"lines"</span>, []):</span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> span <span class="kw">in</span> line.get(<span class="st">"spans"</span>, []):</span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a>                    font <span class="op">=</span> span[<span class="st">"font"</span>]</span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>                    text <span class="op">=</span> span[<span class="st">"text"</span>]</span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="st">"Italic"</span> <span class="kw">in</span> font <span class="kw">or</span> <span class="st">"Oblique"</span> <span class="kw">in</span> font:</span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>                        spans.append((text, pos, pos <span class="op">+</span> <span class="bu">len</span>(text)))</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>                    pos <span class="op">+=</span> <span class="bu">len</span>(text)</span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spans</span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Main extractor</span></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_italics(path, filetype):</span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filetype <span class="kw">in</span> [<span class="st">"html"</span>, <span class="st">"xml"</span>, <span class="st">"tei"</span>]:</span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(path, encoding<span class="op">=</span><span class="st">"utf8"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> f.read()</span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_html_like(text, filetype)</span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filetype <span class="op">==</span> <span class="st">"markdown"</span>:</span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(path, encoding<span class="op">=</span><span class="st">"utf8"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> f.read()</span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_markdown(text)</span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filetype <span class="op">==</span> <span class="st">"docx"</span>:</span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_docx(path)</span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filetype <span class="op">==</span> <span class="st">"epub"</span>:</span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_epub(path)</span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filetype <span class="op">==</span> <span class="st">"rtf"</span>:</span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(path, encoding<span class="op">=</span><span class="st">"utf-8"</span>, errors<span class="op">=</span><span class="st">"ignore"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> f.read()</span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_rtf(text)</span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(text)</span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filetype <span class="op">==</span> <span class="st">"pdf"</span>:</span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> parse_pdf(path)</span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Unsupported format"</span>)</span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(spans, columns<span class="op">=</span>[<span class="st">"string"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>])</span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"file"</span>] <span class="op">=</span> os.path.basename(path)</span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"format"</span>] <span class="op">=</span> filetype</span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df[[<span class="st">"file"</span>, <span class="st">"format"</span>, <span class="st">"string"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>]]</span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="co"># Corpus processor</span></span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_italics_corpus(folder):</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a>    formats <span class="op">=</span> {</span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>        <span class="st">".html"</span>: <span class="st">"html"</span>,</span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>        <span class="st">".xml"</span>: <span class="st">"xml"</span>,</span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>        <span class="st">".tei"</span>: <span class="st">"tei"</span>,</span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>        <span class="st">".md"</span>: <span class="st">"markdown"</span>,</span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>        <span class="st">".docx"</span>: <span class="st">"docx"</span>,</span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>        <span class="st">".epub"</span>: <span class="st">"epub"</span>,</span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>        <span class="st">".rtf"</span>: <span class="st">"rtf"</span>,</span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>        <span class="st">".pdf"</span>: <span class="st">"pdf"</span></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>    all_tables <span class="op">=</span> []</span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> root, dirs, files <span class="kw">in</span> os.walk(folder):</span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a>            ext <span class="op">=</span> os.path.splitext(f)[<span class="dv">1</span>].lower()</span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ext <span class="kw">in</span> formats:</span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a>                path <span class="op">=</span> os.path.join(root, f)</span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a>                fmt <span class="op">=</span> formats[ext]</span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>                    df <span class="op">=</span> extract_italics(path, fmt)</span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>                    all_tables.append(df)</span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="st">"error:"</span>, f, e)</span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> all_tables:</span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.concat(all_tables, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">"file"</span>,<span class="st">"format"</span>,<span class="st">"string"</span>,<span class="st">"start"</span>,<span class="st">"end"</span>])</span>
+<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Single file</span></span>
+<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a><span class="co">#df = extract_italics("article.xml", "xml")</span></span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a><span class="co">#print(df)</span></span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a><span class="co"># Whole corpus</span></span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a>dfc <span class="op">=</span> extract_italics_corpus(<span class="st">"my_corpus"</span>)</span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a>dfc.to_csv(<span class="st">"italic_spans.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Inconvénient : le script fonctionne mais les données en rtf ne contiennent pas toutes les italiques pertinentes. Comme je ne trouve pas de transcription en ligne avec les italiques, il faudrait donc repartir du PDF avec un OCR qui reconnaît les italiques. Il paraît que <a href="https://github.com/scribeocr/scribeocr" class="uri">https://github.com/scribeocr/scribeocr</a> sait le faire.</p>
+</section>
 <section id="commentaires" class="level2">
 <h2 class="anchored" data-anchor-id="commentaires">Commentaires</h2>
 <section id="des-motifs-récurrents-pour-la-science" class="level4">
