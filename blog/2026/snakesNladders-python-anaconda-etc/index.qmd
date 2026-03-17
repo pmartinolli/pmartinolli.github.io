@@ -46,6 +46,8 @@ Enfin, je ferme l'environnement : `conda deactivate`
 
 ## Exemple avec OCRmyPDF
 
+Créer un dossier `/test-orcrmypdf` avec un sous-dossier `/corpus`. Dans ce sous-dossier, déposer les PDF (dans d'autres sous-dossiers si vous voulez).
+
 Depuis Windows, installer [Ghostscript](https://ghostscript.com/releases/gsdnld.html).
 
 Depuis Windows, installer [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki). Cocher les 4 cases sur la première fenêtre. Ajouter toutes les langues que vous voulez dans la personnalisation de l'installation.
@@ -57,8 +59,6 @@ Puis `pip install pytesseract`
 Puis `pip install ocrmypdf`
 
 [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) est un script python qui permet (entre autre) de rajouter une couche d'OCR sur des PDF. Le script suivant le fait en lot sur un dossier et tous ses sous-dossiers contenant des PDF.
-
-Créer un dossier `/test-orcrmypdf` avec un sous-dossier `/corpus`. Dans ce sous-dossier, déposer les PDF (dans d'autres sous-dossiers si vous voulez).
 
 Dans Spyder \> Project \> Create new project \> Existing directory : sélectionner `/test-orcrmypdf` + Create.
 
@@ -72,7 +72,8 @@ Created on Thu Nov 27 21:49:37 2025
 """
 
 # pip install ocrmypdf
-# pip install gs
+# pip install ghostscript 
+# pip install tesseract
 
 import ocrmypdf
 import tempfile
@@ -88,7 +89,7 @@ def check_dependencies():
     if not shutil.which('pytesseract'):
         missing.append('Tesseract OCR')
     
-    # Check Ghostscript (gs on Linux/Mac, gswin64c or gswin32c on Windows)
+    # Check Ghostscript 
     gs_names = ['gs', 'gswin64c', 'gswin32c']
     if not any(shutil.which(gs) for gs in gs_names):
         missing.append('Ghostscript')
@@ -107,9 +108,12 @@ def check_dependencies():
 def process_pdf_with_ocr(input_pdf_path, 
                          output_pdf_path, 
                          language, 
-                         deskew=True, remove_background=False, 
-                         force_ocr=False, skip_text=False, redo_ocr=False,
-                         check_deps=True, **kwargs):
+                         remove_background, 
+                         force_ocr, 
+                         check_deps, 
+                         optimize=0,
+                         deskew=True, 
+                         **kwargs):
     """
     Process a PDF with OCRmyPDF to add an OCR text layer.
     
@@ -127,10 +131,6 @@ def process_pdf_with_ocr(input_pdf_path,
         Whether to remove background from pages
     force_ocr : bool, default=False
         Force OCR even if PDF already has text (keeps existing text + OCR)
-    skip_text : bool, default=False
-        Skip OCR on pages that already have text
-    redo_ocr : bool, default=False
-        Remove existing text and redo OCR from scratch
     check_deps : bool, default=True
         Whether to check for dependencies before processing
     **kwargs : dict
@@ -146,11 +146,6 @@ def process_pdf_with_ocr(input_pdf_path,
     - skip_text: Use to only OCR image-only pages in mixed PDFs  
     - redo_ocr: Use to replace poor quality existing text with new OCR
     
-    Example:
-    --------
-    >>> # For a scanned PDF marked as Tagged PDF
-    >>> output = process_pdf_with_ocr('input.pdf', 'output.pdf', force_ocr=True)
-    >>> print(f"OCR processed PDF saved to: {output}")
     """
     
     # Check dependencies first
@@ -182,8 +177,6 @@ def process_pdf_with_ocr(input_pdf_path,
             deskew=deskew,
             remove_background=remove_background,
             force_ocr=force_ocr,
-            skip_text=skip_text,
-            redo_ocr=redo_ocr,
             **kwargs
         )
         
@@ -232,7 +225,7 @@ def process_all_pdfs_in_directory(root_directory):
     for root, dirs, files in os.walk(root_directory):
         for file in files:
             if file.lower().endswith(extension):
-                # Skip files that were already processed by this script
+                # Skip files that were already processed 
                 if file.lower().endswith(f"_ocr{extension}"):
                     continue
 
@@ -240,6 +233,7 @@ def process_all_pdfs_in_directory(root_directory):
                 
                 # Create an output path (e.g., "myfile_ocr.pdf")
                 file_base = os.path.splitext(file)[0]
+                # Supprimer _ocr si on veut écraser l'ancien PDF
                 output_filename = f"{file_base}_ocr{extension}"
                 output_path = os.path.join(root, output_filename)
 
@@ -249,12 +243,14 @@ def process_all_pdfs_in_directory(root_directory):
                     # Call your specific OCR function
                     process_pdf_with_ocr(
                         input_path, 
-                        output_path,
-                        language='eng+fra', 
+                        output_path, 
+                        language='ita', 
                         deskew=True,
                         rotate_pages=True,
-                        optimize=1,
+                        optimize=0,   # Don't touch the scanned pages
                         force_ocr=True,
+                        remove_background=False, 
+                        check_deps=True, 
                     )
                 
                     print(f"Successfully processed: {output_filename}")
