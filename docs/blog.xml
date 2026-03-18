@@ -768,7 +768,7 @@ font-style: inherit;"># Call your specific OCR function</span></span>
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'ita'</span>, </span>
+font-style: inherit;">'lat+ita+fra+eng'</span>, </span>
 <span id="cb1-181">                        deskew<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
