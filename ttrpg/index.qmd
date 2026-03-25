@@ -64,6 +64,8 @@ This project aims to gather all academic and para-academic works related to tabl
 
 -   ♥ A [Zotero](https://www.zotero.org/groups/446523) open access bibliography on scholarly studies of TTRPG (updated weekly) or [BibTeX](https://drive.google.com/file/d/0BwGfcq6CsQ6lUVVaVkdWSmZqVG8/view?usp=sharing&resourcekey=0-xGz9RZe2p6KQxOXy4EMVyQ) (updated yearly).
 
+    -   As [one HTML browsable file](https://pmartinolli.github.io/code/zotero-viewer/academicTTRPG.html) (updated March 2026)
+
     -   A [working paper (fr/en)](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) about it.
 
     -   Martinolli, Pascal. 2024. «  [*ZoteroJSnalysis* : Analyzing your Zotero library of references with Javascript](https://observablehq.com/@pascaliensis/zoterojsnalysis) ». ObservableHQ.
