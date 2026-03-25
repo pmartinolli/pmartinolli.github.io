@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "blog/2026/miniKerko/index.html",
+    "href": "blog/2026/miniKerko/index.html",
+    "title": "Interface local pour visualiser une bibliothèque Zotero’",
+    "section": "",
+    "text": "Les Bib/UdeM et UQÀM ont développé des offres de service autour de l’interface Kerko, conçu par David Lesieur, qui permet de visualiser une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en open source mais… il faut un serveur pour la faire tourner."
+  },
+  {
+    "objectID": "blog/2026/miniKerko/index.html#kerko-kézako",
+    "href": "blog/2026/miniKerko/index.html#kerko-kézako",
+    "title": "Interface local pour visualiser une bibliothèque Zotero’",
+    "section": "",
+    "text": "Les Bib/UdeM et UQÀM ont développé des offres de service autour de l’interface Kerko, conçu par David Lesieur, qui permet de visualiser une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en open source mais… il faut un serveur pour la faire tourner."
+  },
+  {
+    "objectID": "blog/2026/miniKerko/index.html#mon-mini-kerko",
+    "href": "blog/2026/miniKerko/index.html#mon-mini-kerko",
+    "title": "Interface local pour visualiser une bibliothèque Zotero’",
+    "section": "Mon « mini-Kerko »",
+    "text": "Mon « mini-Kerko »\nJ’ai donc vibe codé un fichier HTML qui utilise une exportation Zotero au format RDF et qui l’affiche dans un navigateur grâce à du JavaScript.\nJe l’ai conçu autour d’un besoin personnel : peu de collections et surtout des marqueurs. Seules les collections qui sont nommées avec un chiffre et un point (comme “1. label” ou “2. titre”) sont affichées en facette à gauche. Seuls les marqueurs qui débutent avec un “_” et un “=” sont affichés dans les facettes à droite.\nPage html + Exemple de bibliothèque"
+  }
+]

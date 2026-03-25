@@ -1,26 +1,24 @@
 ---
-title: "Zotero Viewer, un interface local pour visualiser une bibliothèque Zotero'"
+title: "Zotero RDF Viewer, un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML"
 author: "Pascal Martinolli"
 date: "2026-03-20"
 categories: [Zotero]
-description: "Où l'on bricole une page HTML en JavaScript qui visualise une bibliothèque Zotero exportée au format Zotero RDF, qui peut être intégrée dans la page ou chargée sous forme de fichier. Où l'on produit une sorte de «mini-Kerko» fixe et local."
+description: "Où l'on bricole une page HTML en JavaScript qui visualise une bibliothèque Zotero exportée au format Zotero RDF, intégrée dans la page ou chargée sous forme de fichier. Où l'on produit une sorte de « mini-Kerko » fixe et local pour des besoins simples."
 ---
 
-## « Mini-Kerko » ? Kézako ?
+## Zotero RDF Viewer
 
-Les [Bib/UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) et [UQÀM](https://uqam-ca.libguides.com/rayonnement/kerko) ont développé des offres de service autour de l'interface [Kerko](https://whiskyechobravo.github.io/kerko/latest/), conçu par David Lesieur, qui permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L'application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en *open source* mais... il faut un serveur pour la faire tourner.
+J'ai *vibe codé* un fichier HTML portable qui utilise une exportation Zotero RDF ponctuelle et qui l'affiche avec des facettes dans un navigateur grâce à du JavaScript.
 
-## Zotero Viewer
+Télécharger ou visualiser [**Zotero RDF Viewer**](https://pmartinolli.github.io/code/zotero-rdf-viewer/) avec environ 300 références RDF embarquées dans la page.
 
-J'ai donc *vibe codé* un fichier HTML qui utilise une exportation a un moment *t* depuis Zotero au format RDF et qui l'affiche dans un navigateur grâce à du JavaScript.
-
-[**Zotero Viewer**](https://pmartinolli.github.io/code/zotero-viewer/zotero-viewer.html) avec environ 300 références RDF embarquées dans la page.
-
-Une autre version customisée avec la [base *academicTTRPG*](https://pmartinolli.github.io/code/zotero-viewer/academicTTRPG.html) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
+Une autre version customisée avec la base [*academicTTRPG*](https://pmartinolli.github.io/academicTTRPG/) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
 
 ## Fonctionnalités
 
 -   Je l'ai conçu autour d'un besoin personnel : peu de collections et beaucoup de marqueurs.
+
+-   Portable : on a une bibliothèque de références complète et navigable dans un seul fichier HTML, à déposer en ligne ou à utiliser sur son disque dur.
 
 -   On peut fournir un fichier RDF ou bien avoir des données RDF embarquées dans le code de la page HTML \> Javascript \> dans la constante `DEFAULT_RDF`
 
@@ -42,10 +40,20 @@ NB: il y avait des caractères tick ' dans les notices bibliographiques. Il a fa
 
 ## Utilités
 
--   Diffuser une bibliothèque de références Zotero plus ergonomique qu'un groupe partagé en ligne.
+-   Partager une bibliothèque de références Zotero plus ergonomique qu'un groupe partagé en ligne.
 
 -   Diffuser des bibliographies de plan de cours, de projets de recherche, de mémoires ou thèses, etc.
 
--   Aide au nettoyage des données bibliographiques ou au survol rapide d'une base de données Zotero.
+-   Aider au nettoyage des données bibliographiques ou au survol rapide d'une base de données Zotero.
 
--   Peut servir de base à une analyse quantitative de sa base de références dans le cas d'une revue de littérature (projet à venir, réutilisant les algorithmes de [ZoteroRanalysis](https://github.com/pmartinolli/ZoteroRnalysis))
+-   Servir de base à une analyse quantitative de sa base de références dans le cas d'une revue de littérature (projet à venir, réutilisant les algorithmes de [ZoteroRanalysis](https://github.com/pmartinolli/ZoteroRnalysis))
+
+## Crédits 
+
+#### « Mini-Kerko » ? Kézako ?
+
+Je me suis fortement inspiré de l'interface [Kerko](https://whiskyechobravo.github.io/kerko/latest/) pour produire cet outil. Les [Bib/UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) et [UQÀM](https://uqam-ca.libguides.com/rayonnement/kerko) ont développé des offres de service autour de cette application conçue par **David Lesieur**. Elle permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L'application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en *open source* par son auteur mais... il faut un serveur pour la faire tourner.
+
+#### Mais aussi 
+
+Je me souviens avoir consulté il y a quelques années une application semblable nommée [Rudolf Geyer Catalog](https://github.com/LWCvL/RudolfGeyerCatalog) par **L.W. Cornelis van Lit**, "The Digital Orientalist". J'avais tenté d'en faire une adaptation pas super fameuse jusqu'à aujourd'hui.

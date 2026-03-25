@@ -12,7 +12,7 @@
 <generator>quarto-1.8.26</generator>
 <lastBuildDate>Fri, 20 Mar 2026 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Zotero Viewer, un interface local pour visualiser une bibliothèque Zotero’</title>
+  <title>Zotero RDF Viewer, un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/zotero-rdf-viewer/</link>
   <description><![CDATA[ 
@@ -22,20 +22,17 @@
 
 
 
-<section id="mini-kerko-kézako" class="level2">
-<h2 class="anchored" data-anchor-id="mini-kerko-kézako">« Mini-Kerko » ? Kézako ?</h2>
-<p>Les <a href="https://bib.umontreal.ca/recherche/diffuser/kerko/">Bib/UdeM</a> et <a href="https://uqam-ca.libguides.com/rayonnement/kerko">UQÀM</a> ont développé des offres de service autour de l’interface <a href="https://whiskyechobravo.github.io/kerko/latest/">Kerko</a>, conçu par David Lesieur, qui permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en <em>open source</em> mais… il faut un serveur pour la faire tourner.</p>
-</section>
-<section id="zotero-viewer" class="level2">
-<h2 class="anchored" data-anchor-id="zotero-viewer">Zotero Viewer</h2>
-<p>J’ai donc <em>vibe codé</em> un fichier HTML qui utilise une exportation a un moment <em>t</em> depuis Zotero au format RDF et qui l’affiche dans un navigateur grâce à du JavaScript.</p>
-<p><a href="https://pmartinolli.github.io/code/zotero-viewer/zotero-viewer.html"><strong>Zotero Viewer</strong></a> avec environ 300 références RDF embarquées dans la page.</p>
-<p>Une autre version customisée avec la <a href="https://pmartinolli.github.io/code/zotero-viewer/academicTTRPG.html">base <em>academicTTRPG</em></a> complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.</p>
+<section id="zotero-rdf-viewer" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-rdf-viewer">Zotero RDF Viewer</h2>
+<p>J’ai <em>vibe codé</em> un fichier HTML portable qui utilise une exportation Zotero RDF ponctuelle et qui l’affiche avec des facettes dans un navigateur grâce à du JavaScript.</p>
+<p>Télécharger ou visualiser <a href="https://pmartinolli.github.io/code/zotero-rdf-viewer/"><strong>Zotero RDF Viewer</strong></a> avec environ 300 références RDF embarquées dans la page.</p>
+<p>Une autre version customisée avec la base <a href="https://pmartinolli.github.io/academicTTRPG/"><em>academicTTRPG</em></a> complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.</p>
 </section>
 <section id="fonctionnalités" class="level2">
 <h2 class="anchored" data-anchor-id="fonctionnalités">Fonctionnalités</h2>
 <ul>
 <li><p>Je l’ai conçu autour d’un besoin personnel : peu de collections et beaucoup de marqueurs.</p></li>
+<li><p>Portable : on a une bibliothèque de références complète et navigable dans un seul fichier HTML, à déposer en ligne ou à utiliser sur son disque dur.</p></li>
 <li><p>On peut fournir un fichier RDF ou bien avoir des données RDF embarquées dans le code de la page HTML &gt; Javascript &gt; dans la constante <code>DEFAULT_RDF</code></p></li>
 <li><p>Seules les collections qui sont nommées avec un chiffre et un point (comme “1. label” ou “2. titre”) sont affichées en facette à gauche.</p></li>
 <li><p>Facettes automatiques sur les types de document.</p></li>
@@ -50,13 +47,24 @@
 <section id="utilités" class="level2">
 <h2 class="anchored" data-anchor-id="utilités">Utilités</h2>
 <ul>
-<li><p>Diffuser une bibliothèque de références Zotero plus ergonomique qu’un groupe partagé en ligne.</p></li>
+<li><p>Partager une bibliothèque de références Zotero plus ergonomique qu’un groupe partagé en ligne.</p></li>
 <li><p>Diffuser des bibliographies de plan de cours, de projets de recherche, de mémoires ou thèses, etc.</p></li>
-<li><p>Aide au nettoyage des données bibliographiques ou au survol rapide d’une base de données Zotero.</p></li>
-<li><p>Peut servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRanalysis</a>)</p></li>
+<li><p>Aider au nettoyage des données bibliographiques ou au survol rapide d’une base de données Zotero.</p></li>
+<li><p>Servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRanalysis</a>)</p></li>
 </ul>
+</section>
+<section id="crédits" class="level2">
+<h2 class="anchored" data-anchor-id="crédits">Crédits</h2>
+<section id="mini-kerko-kézako" class="level4">
+<h4 class="anchored" data-anchor-id="mini-kerko-kézako">« Mini-Kerko » ? Kézako ?</h4>
+<p>Je me suis fortement inspiré de l’interface <a href="https://whiskyechobravo.github.io/kerko/latest/">Kerko</a> pour produire cet outil. Les <a href="https://bib.umontreal.ca/recherche/diffuser/kerko/">Bib/UdeM</a> et <a href="https://uqam-ca.libguides.com/rayonnement/kerko">UQÀM</a> ont développé des offres de service autour de cette application conçue par <strong>David Lesieur</strong>. Elle permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en <em>open source</em> par son auteur mais… il faut un serveur pour la faire tourner.</p>
+</section>
+<section id="mais-aussi" class="level4">
+<h4 class="anchored" data-anchor-id="mais-aussi">Mais aussi</h4>
+<p>Je me souviens avoir consulté il y a quelques années une application semblable nommée <a href="https://github.com/LWCvL/RudolfGeyerCatalog">Rudolf Geyer Catalog</a> par <strong>L.W. Cornelis van Lit</strong>, “The Digital Orientalist”. J’avais tenté d’en faire une adaptation pas super fameuse jusqu’à aujourd’hui.</p>
 
 
+</section>
 </section>
 
  ]]></description>
