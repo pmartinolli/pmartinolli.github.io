@@ -58,7 +58,7 @@
 <section id="futurs" class="level2">
 <h2 class="anchored" data-anchor-id="futurs">Futurs</h2>
 <ul>
-<li><p>Ce projet peut servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRanalysis</a>).</p></li>
+<li><p>Ce projet peut servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRnalysis</a>).</p></li>
 <li><p>Développement à explorer : récupérer les données par API.</p></li>
 </ul>
 </section>

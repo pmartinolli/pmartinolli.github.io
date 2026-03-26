@@ -50,7 +50,7 @@ NB: il y avait des caractères *tick* ' dans les notices bibliographiques. Il m'
 
 ## Futurs
 
--   Ce projet peut servir de base à une analyse quantitative de sa base de références dans le cas d'une revue de littérature (projet à venir, réutilisant les algorithmes de [ZoteroRanalysis](https://github.com/pmartinolli/ZoteroRnalysis)).
+-   Ce projet peut servir de base à une analyse quantitative de sa base de références dans le cas d'une revue de littérature (projet à venir, réutilisant les algorithmes de [ZoteroRnalysis](https://github.com/pmartinolli/ZoteroRnalysis)).
 
 -   Développement à explorer : récupérer les données par API.
 
