@@ -58,13 +58,13 @@ This project seeks to map the evolution of game design throughout the history of
 
 [![](ttttrpg-snapshot.png){fig-align="center" width="425"}](https://pmartinolli.github.io/assets/img/ttttrpg-snapshot.png)
 
-### «academicTTRPG» bibliography
+### «academicTTRPG» Bibliography
 
 This project aims to gather all academic and para-academic works related to tabletop role-playing games.
 
 -   ♥ A [Zotero](https://www.zotero.org/groups/446523) open access bibliography on scholarly studies of TTRPG (updated weekly) or [BibTeX](https://drive.google.com/file/d/0BwGfcq6CsQ6lUVVaVkdWSmZqVG8/view?usp=sharing&resourcekey=0-xGz9RZe2p6KQxOXy4EMVyQ) (updated yearly).
 
-    -   ♥ As [one HTML portable and browsable file](https://pmartinolli.github.io/code/zotero-viewer/academicTTRPG.html) (11 Mo, updated March 2026)
+    -   ♥ As [one HTML portable and browsable file](https://pmartinolli.github.io/academicTTRPG) (11 Mo, updated March 2026)
 
     -   A [working paper (fr/en)](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) about it.
 
@@ -72,7 +72,7 @@ This project aims to gather all academic and para-academic works related to tabl
 
     -   Martinolli, Pascal. 2023. « [*ZoteroRnalysis*: analyze a Zotero library of references with R Studio & with reconciled data from Wikidata/OpenRefine](https://github.com/pmartinolli/ZoteroRnalysis) ». GitHub.
 
-### Scholarly character sheet
+### Scholarly Character Sheet
 
 This teaching aid is designed to enhance clarity, engagement, and self-reflection in a graduate seminar on library instruction.
 
@@ -102,7 +102,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
     -   [Roleplayification](http://zotrpg.blogspot.com/2016/12/roleplayification-specific-kind-of.html)
 
-### TTRPG coding & data contributions
+### TTRPG Coding & Data Contributions
 
 -   ♥ Martinolli, Pascal. 2025. « [TTRPG OWL. An anthology of game designs in tabletop role-playing games](https://pmartinolli.github.io/TTRPG_OWL/) ».
 
@@ -116,7 +116,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 -   Martinolli, Pascal. 2015-now [Wikidata](https://www.wikidata.org/wiki/User:Pmartinolli/OtSoCG) “gnoming” on TTRPG items & ontologies. [1M+](https://www.wikidata.org/wiki/Special:Contributions/Pmartinolli) contributions in 2025.
 
-### Game studies papers
+### Game Studies Papers
 
 -   ♥ Martinolli, Pascal. 2024. « [Almost 50 Years of Academic Research on Tabletop Role-Playing Games: Historical Evolution and Bibliometric Analysis](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) ».
 
@@ -150,7 +150,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
     -   [Créer une ontologie de *game designs*](https://jdr.hypotheses.org/2144). [Phylomémétique](https://jdr.hypotheses.org/901) des jeux ?
 
-### Blog posts in English
+### Blog Posts in English
 
 -   Martinolli, Pascal. 2016-now [*ZOtRPG !*](http://zotrpg.blogspot.com/) Blog about scholarly projects and academic references on tabletop role-playing games.
 
@@ -166,7 +166,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
     -   Role-playing game groups as [hunter-gatherer bands](http://zotrpg.blogspot.com/2017/06/role-playing-game-groups-as-hunter.html); [Anthropology](http://zotrpg.blogspot.com/2017/04/anthropology-and-role-playing-games.html) & RPG
 
-### Conferences & activities
+### Conferences & Activities
 
 -   Martinolli, Pascal. 2022. « Curating tabletop role-playing game citation practices in Wikidata ». Dans *LD4 Wikidata Affinity Group*. WikiProject Linked Data for Production/Practical Wikidata for Librarians.
 
