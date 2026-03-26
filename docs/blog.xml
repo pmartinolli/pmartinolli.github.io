@@ -12,7 +12,7 @@
 <generator>quarto-1.6.39</generator>
 <lastBuildDate>Wed, 25 Mar 2026 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Zotero RDF Viewer : un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
+  <title>Zotero RDF Viewer : une interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/zotero-rdf-viewer/</link>
   <description><![CDATA[ 
@@ -25,7 +25,7 @@
 <h2 class="anchored" data-anchor-id="zotero-rdf-viewer">Zotero RDF Viewer</h2>
 <p>J’ai <em>vibe codé</em> un fichier HTML portable qui utilise une exportation Zotero RDF ponctuelle et qui l’affiche avec des facettes dans un navigateur grâce à du JavaScript.</p>
 <p>Télécharger ou visualiser <a href="https://pmartinolli.github.io/code/zotero-rdf-viewer/"><strong>Zotero RDF Viewer</strong></a> avec environ 300 références RDF embarquées dans la page.</p>
-<p>Une autre version customisée avec la base <a href="https://pmartinolli.github.io/academicTTRPG/"><em>academicTTRPG</em></a> complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.</p>
+<p>Une autre version personnalisée avec la base <em>academicTTRPG</em> complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.</p>
 </section>
 <section id="utilités" class="level2">
 <h2 class="anchored" data-anchor-id="utilités">Utilités</h2>
@@ -44,9 +44,9 @@
 </ul></li>
 <li><p>Je l’ai conçu autour d’un besoin personnel : peu de collections et beaucoup de marqueurs.</p>
 <ul>
-<li><p>Seules les collections qui sont nommées avec un chiffre et un point (comme “1. label” ou “2. titre”) sont affichées en facette à gauche. Elles se cumulent avec des AND.</p></li>
+<li><p>Seules les collections qui sont nommées avec un chiffre et un point (comme <code>1. label</code> ou <code>2. titre</code>) sont affichées en facette à gauche. Elles se cumulent avec des AND.</p></li>
 <li><p>Facettes automatiques sur les types de document. Elles se cumulent avec des OR.</p></li>
-<li><p>Seuls les marqueurs qui débutent avec un “_” et un “=” sont affichés dans les facettes à droite. Ordre d’affichage : _ en majuscules, puis _ en minuscules, puis =. Elles se cumulent avec des AND.</p></li>
+<li><p>Seuls les marqueurs qui débutent avec un <code>_</code> et un <code>=</code> sont affichés dans les facettes à droite. Elles se cumulent avec des AND.</p></li>
 </ul></li>
 <li><p>Case de recherche avec troncature à gauche et à droite sur tous les champs.</p></li>
 <li><p>Affichage de la notice bibliographique (presque) complète en déroulé (<em>collapsible</em>).</p></li>

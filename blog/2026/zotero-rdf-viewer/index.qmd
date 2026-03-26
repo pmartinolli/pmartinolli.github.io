@@ -1,5 +1,5 @@
 ---
-title: "Zotero RDF Viewer : un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML"
+title: "Zotero RDF Viewer : une interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML"
 author:
       - name: "Pascal Martinolli"
         orcid: "0000-0003-0122-5300"
@@ -14,7 +14,7 @@ J'ai *vibe codé* un fichier HTML portable qui utilise une exportation Zotero RD
 
 Télécharger ou visualiser [**Zotero RDF Viewer**](https://pmartinolli.github.io/code/zotero-rdf-viewer/) avec environ 300 références RDF embarquées dans la page.
 
-Une autre version customisée avec la base [*academicTTRPG*](https://pmartinolli.github.io/academicTTRPG/) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
+Une autre version personnalisée avec la base [*academicTTRPG*](#0) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
 
 ## Utilités
 
@@ -32,11 +32,11 @@ Une autre version customisée avec la base [*academicTTRPG*](https://pmartinolli
 
 -   Je l'ai conçu autour d'un besoin personnel : peu de collections et beaucoup de marqueurs.
 
-    -   Seules les collections qui sont nommées avec un chiffre et un point (comme "1. label" ou "2. titre") sont affichées en facette à gauche. Elles se cumulent avec des AND.
+    -   Seules les collections qui sont nommées avec un chiffre et un point (comme `1. label` ou `2. titre`) sont affichées en facette à gauche. Elles se cumulent avec des AND.
 
     -   Facettes automatiques sur les types de document. Elles se cumulent avec des OR.
 
-    -   Seuls les marqueurs qui débutent avec un "\_" et un "=" sont affichés dans les facettes à droite. Ordre d'affichage : \_ en majuscules, puis \_ en minuscules, puis =. Elles se cumulent avec des AND.
+    -   Seuls les marqueurs qui débutent avec un `_` et un `=` sont affichés dans les facettes à droite. Elles se cumulent avec des AND.
 
 -   Case de recherche avec troncature à gauche et à droite sur tous les champs.
 
