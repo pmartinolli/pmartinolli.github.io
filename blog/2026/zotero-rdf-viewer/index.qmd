@@ -14,7 +14,7 @@ J'ai *vibe codé* un fichier HTML portable qui utilise une exportation Zotero RD
 
 Télécharger ou visualiser [**Zotero RDF Viewer**](https://pmartinolli.github.io/code/zotero-rdf-viewer/) avec environ 300 références RDF embarquées dans la page.
 
-Une autre version personnalisée avec la base [*academicTTRPG*](#0) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
+Une autre version personnalisée avec la base [*academicTTRPG*](https://pmartinolli.github.io/academicTTRPG/) complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.
 
 ## Utilités
 
