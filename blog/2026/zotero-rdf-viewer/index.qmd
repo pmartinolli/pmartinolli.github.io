@@ -1,6 +1,8 @@
 ---
 title: "Zotero RDF Viewer : un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML"
-author: "Pascal Martinolli"
+author:
+      - name: "Pascal Martinolli"
+        orcid: "0000-0003-0122-5300"
 date: "2026-03-25"
 categories: [Zotero, HumanitésNumériques]
 description: "Où l'on bricole une page HTML en JavaScript qui visualise une bibliothèque Zotero exportée au format Zotero RDF, intégrée dans la page ou chargée sous forme de fichier. Où l'on produit une sorte de « mini-Kerko » fixe et local pour des besoins simples."
