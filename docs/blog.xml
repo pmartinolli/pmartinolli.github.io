@@ -9,14 +9,13 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.8.26</generator>
-<lastBuildDate>Fri, 20 Mar 2026 04:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.39</generator>
+<lastBuildDate>Wed, 25 Mar 2026 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Zotero RDF Viewer, un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
+  <title>Zotero RDF Viewer : un interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/zotero-rdf-viewer/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -28,40 +27,50 @@
 <p>Télécharger ou visualiser <a href="https://pmartinolli.github.io/code/zotero-rdf-viewer/"><strong>Zotero RDF Viewer</strong></a> avec environ 300 références RDF embarquées dans la page.</p>
 <p>Une autre version customisée avec la base <a href="https://pmartinolli.github.io/academicTTRPG/"><em>academicTTRPG</em></a> complète, soit plus de 4000 références nettoyées et indexées sur les jeux de rôle sur table. Ça prend du temps à charger mais ça tient la route.</p>
 </section>
-<section id="fonctionnalités" class="level2">
-<h2 class="anchored" data-anchor-id="fonctionnalités">Fonctionnalités</h2>
-<ul>
-<li><p>Je l’ai conçu autour d’un besoin personnel : peu de collections et beaucoup de marqueurs.</p></li>
-<li><p>Portable : on a une bibliothèque de références complète et navigable dans un seul fichier HTML, à déposer en ligne ou à utiliser sur son disque dur.</p></li>
-<li><p>On peut fournir un fichier RDF ou bien avoir des données RDF embarquées dans le code de la page HTML &gt; Javascript &gt; dans la constante <code>DEFAULT_RDF</code></p></li>
-<li><p>Seules les collections qui sont nommées avec un chiffre et un point (comme “1. label” ou “2. titre”) sont affichées en facette à gauche.</p></li>
-<li><p>Facettes automatiques sur les types de document.</p></li>
-<li><p>Seuls les marqueurs qui débutent avec un “_” et un “=” sont affichés dans les facettes à droite. Ordre : _MAJUSCULES _minuscules =divers</p></li>
-<li><p>Case de recherche avec troncature à gauche et à droite sur tous les champs.</p></li>
-<li><p>Affichage de la fiche (presque) complète en déroulé (<em>collapsible</em>).</p></li>
-<li><p>Tri par date.</p></li>
-<li><p>Mode jour/nuit.</p></li>
-</ul>
-<p>NB: il y avait des caractères tick ’ dans les notices bibliographiques. Il a fallu les remplacer par des apostrophes pour ne pas faire boguer la constante recevant la longue chaîne de caractère en RDF.</p>
-</section>
 <section id="utilités" class="level2">
 <h2 class="anchored" data-anchor-id="utilités">Utilités</h2>
 <ul>
-<li><p>Partager une bibliothèque de références Zotero plus ergonomique qu’un groupe partagé en ligne.</p></li>
-<li><p>Diffuser des bibliographies de plan de cours, de projets de recherche, de mémoires ou thèses, etc.</p></li>
+<li><p>Partager une bibliothèque de références Zotero de manière simple.</p></li>
+<li><p>Diffuser des bibliographies de plans de cours, de projets de recherche, de mémoires ou de thèses, etc.</p></li>
 <li><p>Aider au nettoyage des données bibliographiques ou au survol rapide d’une base de données Zotero.</p></li>
-<li><p>Servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRanalysis</a>)</p></li>
+</ul>
+</section>
+<section id="fonctionnalités" class="level2">
+<h2 class="anchored" data-anchor-id="fonctionnalités">Fonctionnalités</h2>
+<ul>
+<li><p>Portable : on a une bibliothèque de références complète et navigable dans un seul fichier HTML, à déposer en ligne ou à utiliser sur son disque dur.</p>
+<ul>
+<li>On peut fournir un fichier RDF ou bien avoir des données RDF embarquées dans le code de la page HTML &gt; Javascript &gt; dans la constante <code>DEFAULT_RDF</code></li>
+</ul></li>
+<li><p>Je l’ai conçu autour d’un besoin personnel : peu de collections et beaucoup de marqueurs.</p>
+<ul>
+<li><p>Seules les collections qui sont nommées avec un chiffre et un point (comme “1. label” ou “2. titre”) sont affichées en facette à gauche. Elles se cumulent avec des AND.</p></li>
+<li><p>Facettes automatiques sur les types de document. Elles se cumulent avec des OR.</p></li>
+<li><p>Seuls les marqueurs qui débutent avec un “_” et un “=” sont affichés dans les facettes à droite. Ordre d’affichage : _ en majuscules, puis _ en minuscules, puis =. Elles se cumulent avec des AND.</p></li>
+</ul></li>
+<li><p>Case de recherche avec troncature à gauche et à droite sur tous les champs.</p></li>
+<li><p>Affichage de la notice bibliographique (presque) complète en déroulé (<em>collapsible</em>).</p></li>
+<li><p>Tri par date.</p></li>
+<li><p>Mode jour/nuit.</p></li>
+</ul>
+<p>NB: il y avait des caractères <em>tick</em> ’ dans les notices bibliographiques. Il m’a fallu les remplacer par des apostrophes dans la base de données Zotero originale et réexporter le tout pour ne pas faire boguer la constante <code>DEFAULT_RDF</code> recevant la longue chaîne de caractère en RDF.</p>
+</section>
+<section id="futurs" class="level2">
+<h2 class="anchored" data-anchor-id="futurs">Futurs</h2>
+<ul>
+<li><p>Ce projet peut servir de base à une analyse quantitative de sa base de références dans le cas d’une revue de littérature (projet à venir, réutilisant les algorithmes de <a href="https://github.com/pmartinolli/ZoteroRnalysis">ZoteroRanalysis</a>).</p></li>
+<li><p>Développement à explorer : récupérer les données par API.</p></li>
 </ul>
 </section>
 <section id="crédits" class="level2">
 <h2 class="anchored" data-anchor-id="crédits">Crédits</h2>
 <section id="mini-kerko-kézako" class="level4">
 <h4 class="anchored" data-anchor-id="mini-kerko-kézako">« Mini-Kerko » ? Kézako ?</h4>
-<p>Je me suis fortement inspiré de l’interface <a href="https://whiskyechobravo.github.io/kerko/latest/">Kerko</a> pour produire cet outil. Les <a href="https://bib.umontreal.ca/recherche/diffuser/kerko/">Bib/UdeM</a> et <a href="https://uqam-ca.libguides.com/rayonnement/kerko">UQÀM</a> ont développé des offres de service autour de cette application conçue par <strong>David Lesieur</strong>. Elle permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en <em>open source</em> par son auteur mais… il faut un serveur pour la faire tourner.</p>
+<p>Je me suis fortement inspiré de l’interface <a href="https://whiskyechobravo.github.io/kerko/latest/">Kerko</a> pour produire cet outil. Les <a href="https://bib.umontreal.ca/recherche/diffuser/kerko/">Bib/UdeM</a> et <a href="https://uqam-ca.libguides.com/rayonnement/kerko">UQÀM</a> ont développé des offres de service autour de cette application conçue par <strong>David Lesieur</strong>. Elle permet de visualiser dynamiquement une bibliothèque partagée Zotero. Le code est superbe. L’application est paramétrable à loisir (facettes pour les collections, etc.). Elle est généreusement offerte en <em>open source</em> par son auteur mais… il faut un serveur pour la faire fonctionner, ce qui n’est pas à la portée de tout le monde (moi par exemple).</p>
 </section>
 <section id="mais-aussi" class="level4">
 <h4 class="anchored" data-anchor-id="mais-aussi">Mais aussi</h4>
-<p>Je me souviens avoir consulté il y a quelques années une application semblable nommée <a href="https://github.com/LWCvL/RudolfGeyerCatalog">Rudolf Geyer Catalog</a> par <strong>L.W. Cornelis van Lit</strong>, “The Digital Orientalist”. J’avais tenté d’en faire une adaptation pas super fameuse jusqu’à aujourd’hui.</p>
+<p>Je me souviens avoir consulté il y a quelques années une application semblable nommée <a href="https://github.com/LWCvL/RudolfGeyerCatalog">Rudolf Geyer Catalog</a> par <strong>L.W. Cornelis van Lit</strong>, “The Digital Orientalist”. J’avais tenté d’en faire une adaptation pas super fameuse.</p>
 
 
 </section>
@@ -69,8 +78,9 @@
 
  ]]></description>
   <category>Zotero</category>
+  <category>HumanitésNumériques</category>
   <guid>https://pmartinolli.github.io/blog/2026/zotero-rdf-viewer/</guid>
-  <pubDate>Fri, 20 Mar 2026 04:00:00 GMT</pubDate>
+  <pubDate>Wed, 25 Mar 2026 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Snakes &amp; Ladders : Python, Anaconda, etc. installe-moi ça!</title>

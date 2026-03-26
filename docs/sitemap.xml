@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://pmartinolli.github.io/blog.html</loc>
-    <lastmod>2026-02-11T23:51:49.251Z</lastmod>
+    <lastmod>2026-02-11T23:51:49.000Z</lastmod>
   </url>
   <url>
     <loc>https://pmartinolli.github.io/blog/2026/snakesNladders-python-anaconda-etc/index.html</loc>
@@ -86,7 +86,7 @@
   </url>
   <url>
     <loc>https://pmartinolli.github.io/blog/2026/zotero-rdf-viewer/index.html</loc>
-    <lastmod>2026-03-25T20:03:29.593Z</lastmod>
+    <lastmod>2026-03-26T01:08:55.770Z</lastmod>
   </url>
   <url>
     <loc>https://pmartinolli.github.io/cv/index.html</loc>
@@ -99,5 +99,9 @@
   <url>
     <loc>https://pmartinolli.github.io/teaching/index.html</loc>
     <lastmod>2025-12-19T16:23:04.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pmartinolli.github.io/blog/2026/miniKerko/index.html</loc>
+    <lastmod>2026-03-25T20:03:29.000Z</lastmod>
   </url>
 </urlset>
