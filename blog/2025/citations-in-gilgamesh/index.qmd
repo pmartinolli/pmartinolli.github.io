@@ -104,6 +104,12 @@ Pour cette période, la prêtresse et princesse Enheduana^[Q](https://www.wikida
 
 Je n'ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le *Kesh Temple Hymn* est intégré au programme de formation des scribes dans un ensemble de dix textes nommés *The Decad^[Q](https://www.wikidata.org/wiki/Q5248677)^*. **On peut énoncé ainsi qu'une forme préliminaire de citation ou de mention à une oeuvre en tant que tel (et non à un document d'inventaire) ait été l'incorporation dans un canon officiel de textes.**
 
+#### Citer pour soutenir, commenter, critiquer
+
+J'ai trouvé (pour le moment) que les premières citations pour soutenir son propos, pour commenter ou critiquer des textes passés soient dans le domaine de la médecine.
+
+J'ai découvert que des chercheurs (comme Stol en 1992^WmG43^) ont remarqué des correspondances dans des tablettes du *Traité akkadien de diagnostics et pronostics médicaux*^Q^ , une compilation du XIe siècle de tablettes pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d'*incipits*. Cela placerait **la médecine comme domaine le plus ancien qui utilise les références** pour cette fonction. Malgré que le *Traité* soit emprunt de magie, il tente d'apporter de la rationalité au traitement médical et **les références pourraient soutenir cette intention rationnelle**.
+
 ### Naissance de l'auteur attribué
 
 Selon Van der Toorn^VdT^, il y a trois types d'autorialité : l'autorialité honorifique, où l'auteur attribue le texte au commanditaire ou au mécenne de l'oeuvre; la pseudoepigraphie, où l'auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l'autorialité attribuée.
@@ -181,21 +187,25 @@ Les marquages corporels pourraient faire parti de ces traces anciennes. Par exem
 
 ^DC^ : Collon, Dominiques. *First impressions : cylinder seals in the ancient Near East 1988* . [https://archive.org/details/firstimpressions0000coll/page/6/mode/2up](#0){style="font-size: 11pt;"}
 
-^BL^ : Lion, Brigitte, ' Literacy and Gender', in Karen Radner, and Eleanor Robson (eds), *The Oxford Handbook of Cuneiform Culture*. 2011. Oxford Academic. <https://doi.org/10.1093/oxfordhb/9780199557301.013.0005>.
+^BL^ : Lion, Brigitte, ' Literacy and Gender', in Karen Radner, and Eleanor Robson (eds), *The Oxford Handbook of Cuneiform Culture*. 2011. Oxford Academic. <https://doi.org/10.1093/oxfordhb/9780199557301.013.0005>
 
-^Sz^ : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
-
-^SnS^ : Steineck, Raji C. et Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
+^FBR^ : Foster BR. Authorship in Cuneiform Literature. In: Berensmeyer I, Buelens G, Demoor M, eds. *The Cambridge Handbook of Literary Authorship*. Cambridge University Press; 2019:13-26. <https://doi.org/10.1017/9781316717516.002>
 
 ^H&S^ : Halton, Charles et Saana Svärd, *Women’s Writing of Ancient Mesopotamia : An Anthology of the Earliest Female Authors*, Cambridge et New York, Cambridge University Press, 2018. <https://doi.org/10.1017/9781107280328>
 
 ^KnC^ :  Kelley K, Cartolano M, Ferrara S. Seals and signs: tracing the origins of writing in ancient South-west Asia. *Antiquity*. 2025;99(403):64-82. <https://doi.org/10.15184/aqy.2024.165>
 
+^SnS^ : Steineck, Raji C. et Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): *That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century*. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <https://doi.org/10.1163/9789004279421_002>. Littérature comparée, libre accès, facile à lire.
+
+^Sz^ : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. *Hungarian Assyriological Review* 3: 25–47. DOI: <https://doi.org/10.52093/hara-202201-0>. Assyriologie, libre accès, facile à lire.
+
 ^VdM^ : Van De Mieroop, M. 2016: *Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.* Princeton – Oxford. <https://doi.org/10.1515/978140087411>
+
+^WmG^ : William McGrath, 2016, *The Diagnostic Series SA.GIG: Ancient Innovations and Adaptations*, MA thesis U Toronto. <http://hdl.handle.net/1807/75359>
 
 Zhang, H. 2018: *Authorship and Text-making in Early China*. (Library of Sinology 2) Boston – Berlin. <https://doi.org/10.1515/978150150513>
 
-^FBR^ : Foster BR. Authorship in Cuneiform Literature. In: Berensmeyer I, Buelens G, Demoor M, eds. *The Cambridge Handbook of Literary Authorship*. Cambridge University Press; 2019:13-26. <https://doi.org/10.1017/9781316717516.002>\
+\
 
 ## Éléments Wikidata
 
