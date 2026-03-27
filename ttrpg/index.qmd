@@ -8,7 +8,7 @@ description: "Tabletop role-playing games publications, working papers, studies 
 
 ![](OtSoCG_with_geom_conn_bundle.png){.float-end .ms-3 width="282"}This project explores how tabletop role-playing game works reference one another—through explicit citations, bibliographies, acknowledgements, thanks, tributes, and similar forms of intertextual connection.
 
--   ♥ Martinolli, Pascal. 2019-ongoing. « [On the Shoulders of Cloud Giants: citation practices in the tabletop role-playing game publishing industry](https://github.com/pmartinolli/OtSoCG) » : Combining Wikidata, SPARQL and R Studio to analyze the citation network of TTRPGs from 1974 to now.
+-   [♥]{style="color:red"} Martinolli, Pascal. 2019-ongoing. « [On the Shoulders of Cloud Giants: citation practices in the tabletop role-playing game publishing industry](https://github.com/pmartinolli/OtSoCG) » : Combining Wikidata, SPARQL and R Studio to analyze the citation network of TTRPGs from 1974 to now.
 
     -   ———. 2024. With JavaScript on [ObservableHQ](https://observablehq.com/@pascaliensis/on-the-shoulders-of-cloud-giants).
 
@@ -60,11 +60,11 @@ This project seeks to map the evolution of game design throughout the history of
 
 ### «academicTTRPG» Bibliography
 
-This project aims to gather all academic and para-academic works related to tabletop role-playing games.
+This project aims to gather all academic and para-academic works related to tabletop role-playing games. It is curated by Pascal Martinolli and [Michael Freudenthal](https://michael-freudenthal.fr/).
 
--   ♥ A [Zotero](https://www.zotero.org/groups/446523) open access bibliography on scholarly studies of TTRPG (updated weekly) or [BibTeX](https://drive.google.com/file/d/0BwGfcq6CsQ6lUVVaVkdWSmZqVG8/view?usp=sharing&resourcekey=0-xGz9RZe2p6KQxOXy4EMVyQ) (updated yearly).
+-   A [Zotero](https://www.zotero.org/groups/446523) open access bibliography on scholarly studies of TTRPG (updated weekly) or [BibTeX](https://drive.google.com/file/d/0BwGfcq6CsQ6lUVVaVkdWSmZqVG8/view?usp=sharing&resourcekey=0-xGz9RZe2p6KQxOXy4EMVyQ) (updated yearly).
 
-    -   ♥ As [one HTML portable and browsable file](https://pmartinolli.github.io/academicTTRPG) (11 Mo, updated March 2026)
+    -   [♥]{style="color:red"} As [one HTML portable and browsable file](https://pmartinolli.github.io/academicTTRPG) (11 Mo, updated March 2026)
 
     -   A [working paper (fr/en)](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) about it.
 
@@ -76,11 +76,9 @@ This project aims to gather all academic and para-academic works related to tabl
 
 This teaching aid is designed to enhance clarity, engagement, and self-reflection in a graduate seminar on library instruction.
 
--   ♥ Martinolli, Pascal. 2022. « [A Scholarly Character Sheet to Frame Learning Activities and Improve Engagement](https://journals.uu.se/IJRP/article/view/291) ». *International Journal of Role-Playing*, no 12 : 40-61. DOI : [10.33063/ijrp.vi12.291](https://journals.uu.se/IJRP/article/view/291). Explaining why and how to frame learning activities with a [TTRPG character sheet](https://github.com/pmartinolli/TM_SchoCharSheet).
+-   [♥]{style="color:red"} Martinolli, Pascal. 2022. « [A Scholarly Character Sheet to Frame Learning Activities and Improve Engagement](https://journals.uu.se/IJRP/article/view/291) ». *International Journal of Role-Playing*, no 12 : 40-61. DOI : [10.33063/ijrp.vi12.291](https://journals.uu.se/IJRP/article/view/291). Explaining why and how to frame learning activities with a [TTRPG character sheet](https://github.com/pmartinolli/TM_SchoCharSheet).
 
     ![](schocharsheet.png){width="480"}
-
-<!-- -->
 
 -   Martinolli, Pascal. 2021. « [La feuille de personnage du jeune chercheur : une activité pédagogique ludifiée pour améliorer l’engagement](https://hal.science/hal-04627635) ». Dans *Journée d’étude « Donjons & Labo : les lieux du jeu », Université de Grenoble Alpes, UMR Litt&Arts*. Grenoble.
 
@@ -104,7 +102,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 ### TTRPG Coding & Data Contributions
 
--   ♥ Martinolli, Pascal. 2025. « [TTRPG OWL. An anthology of game designs in tabletop role-playing games](https://pmartinolli.github.io/TTRPG_OWL/) ».
+-   [♥]{style="color:red"} Martinolli, Pascal. 2025. « [TTRPG OWL. An anthology of game designs in tabletop role-playing games](https://pmartinolli.github.io/TTRPG_OWL/) ».
 
     -   Martinolli, Pascal. 2025. « [WebProtégé Ontology Formatter : RDF-OWL to HTML tree with individuals](https://github.com/pmartinolli/TTRPG_OWL) ». Python.
 
@@ -118,7 +116,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 ### Game Studies Papers
 
--   ♥ Martinolli, Pascal. 2024. « [Almost 50 Years of Academic Research on Tabletop Role-Playing Games: Historical Evolution and Bibliometric Analysis](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) ».
+-   [♥]{style="color:red"} Martinolli, Pascal. 2024. « [Almost 50 Years of Academic Research on Tabletop Role-Playing Games: Historical Evolution and Bibliometric Analysis](https://pmartinolli.github.io/JDR50bibliometrie/index-english.html) ».
 
 -   Martinolli, Pascal. 2024. « Évolution historique et analyse bibliométrique de la recherche académique sur le jeu de rôle sur table dans les publications universitaires ». Colloque : “Vous êtes dans une taverne…” Retour sur cinquante ans de jeux de rôle, 27-28 mars 2024, Metz. Université de Lorraine.
 
@@ -156,7 +154,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 -   A selection of blog posts :
 
-    -   [Dante’s Inferno](https://zotrpg.blogspot.com/2021/09/dantes-inferno-in-tabletop-role-playing.html)
+    -   [Dante’s Inferno in TTRPG](https://zotrpg.blogspot.com/2021/09/dantes-inferno-in-tabletop-role-playing.html)
 
     -   [Starvation, famine and cannibalism in tabletop role-playing games](http://zotrpg.blogspot.com/2021/11/starvation-famine-and-cannibalism-in.html)
 
