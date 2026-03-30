@@ -9,7 +9,7 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.8.26</generator>
+<generator>quarto-1.6.39</generator>
 <lastBuildDate>Wed, 25 Mar 2026 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Zotero RDF Viewer : une interface portable pour visualiser une bibliothèque Zotero incorporée dans une page HTML</title>
@@ -9371,7 +9371,6 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 
 
 
-
 <p><span class="smallcaps"><strong>Billet en cours d’écriture</strong></span></p>
 <p>Depuis une dizaine d’années, je donne une formation « Citer ses sources » ouverte à tou.te.s à la Bibliothèque des lettres et sciences humaines de l’Université de Montréal. C’est l’une de mes formations préférées car cela parle de valeurs, de méthodes et surtout cela déconstruit le message traditionnel « il ne faut pas plagier » pour le remplacer par « <strong>pourquoi citer est existentiel pour la pensée humaine</strong> » (rien que ça). De plus, cela me permet d’exprimer pourquoi je pense que la citation est au coeur de nos métiers de la documentation et de l’information.</p>
 <p>Un jour, je me suis posé la question : et si une personne qui assiste à la formation me demande <strong>à quand remonte la première citation</strong>, alors que pourrais-je lui répondre ? Alors je me suis mis sur la route de l’histoire de la citation. En voici une carte postale.</p>
@@ -9422,6 +9421,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 <figcaption><a href="https://commons.wikimedia.org/wiki/File:HS_1360_03_front.png">Tablette HS1360</a> de la collection Hilprecht via Wikimedia Commons <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a></figcaption>
 </figure>
 </div>
+<p>Dans le même ordre et à la même époque (3e dynastie d’Ur), il y a aussi la tablette <a href="https://collections.peabody.yale.edu/search/Record/YPM-BC-017719">YBC3654</a> qui est un catalogue de chansons royales<sup>SNK</sup>.</p>
 <p>Dans ces listes, les oeuvres sont référencées grâce à leurs <strong><em>incipits</em></strong>, c’est à dire leur premier paragraphe ou leur première phrase. En effet, c’est une période où les documents n’ont pas encore de titre et l’<em>incipit</em> est utilisé comme clé pour pointer vers un document. L’<em>incipit</em> est l’ancêtre des citations abrégées, tout comme les mentions (auteur-date) ou comme les notes de bas de page le sont aujourd’hui. La liste d’<em>incipits</em> est l’ancêtre des bibliographies.</p>
 <p>Ce n’est évidemment pas l’idéal car plusieurs oeuvres peuvent commencer de la même manière. Malgré cela, les références sont facilement discernables avec la translitération du catalogue de Nibru (N2) datant de la période babylonienne ancienne<sup><a href="https://www.wikidata.org/wiki/Q138013643">Q</a></sup>. Les experts de ces cultures savent reconnaître les <em>incipits</em> les plus connus.</p>
 </section>
@@ -9456,13 +9456,13 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 <p>Pour cette période, la prêtresse et princesse Enheduana<sup><a href="https://www.wikidata.org/wiki/Q232505">Q</a></sup> fait exception car plusieurs textes sumériens (par exemple une version du <em>Kesh Temple Hymn</em><sup><a href="https://www.wikidata.org/wiki/Q5195547">Q</a></sup>) lui sont attribués en tant que première et exclusive autrice de l’histoire<sup>H&amp;S</sup>.</p>
 <p>Je n’ai pas trouvé de documents anciens qui citent explicitement une des oeuvres de Enheduana. Par contre, pendant la première dynastie de Babylone (-1880 à -1595), le <em>Kesh Temple Hymn</em> est intégré au programme de formation des scribes dans un ensemble de dix textes nommés <em>The Decad<sup><a href="https://www.wikidata.org/wiki/Q5248677">Q</a></sup></em>. Ainsi, <strong>une première intention de mention d’une oeuvre en tant que tel (et non à un document d’inventaire) ait été l’incorporation dans un canon officiel de textes.</strong></p>
 </section>
-<section id="citer-pour-participer-au-discours" class="level3">
-<h3 class="anchored" data-anchor-id="citer-pour-participer-au-discours">Citer pour participer au discours</h3>
-<p>J’ai trouvé (pour le moment) que <strong>les premières citations pour soutenir son propos, pour commenter ou critiquer des textes passés soient dans le domaine de la médecine</strong>.</p>
-<p>J’ai découvert que des chercheurs (comme Stol en 1992<sup>WmG43</sup>) ont remarqué des correspondances dans des tablettes du <em>Traité akkadien de diagnostics et pronostics médicaux</em><sup>Q</sup> , une compilation du XIe siècle de tablettes pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d’<em>incipits</em>. Cela placerait la médecine comme domaine le plus ancien qui utilise les références pour cette fonction. Malgré que le <em>Traité</em> soit emprunt de magie, il tente d’apporter de la rationalité au traitement médical et <strong>les références pourraient soutenir cette intention rationnelle</strong>.</p>
+<section id="canoniser-pour-sélectionner" class="level3">
+<h3 class="anchored" data-anchor-id="canoniser-pour-sélectionner">Canoniser pour sélectionner</h3>
+<p>M Stol<sup>Sto43+WmG47</sup>) a remarqué des correspondances dans de la quarantaine de tablettes du <em>Traité akkadien de diagnostics et pronostics médicaux</em><sup>Q</sup> , une compilation du XIe siècle de tablettes plus anciennes et éparses pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d’<em>incipits</em>. Cette compilation semble avoir été produite en réaction à des textes plus anciens qui ont été remaniés par le scribe Esagil-kīn-apli<sup><a href="https://www.wikidata.org/wiki/Q5396676">Q</a></sup>. Certaines tablettes contiennent la mention <em>ša pī ummâni</em> dans leur colophon, qui veut dire « D’après les anciens » et évoque une chaîne de transmission orale depuis des temps lointains.</p>
 </section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
+<section id="premiers-commentaires" class="level3">
+<h3 class="anchored" data-anchor-id="premiers-commentaires">Premiers commentaires</h3>
+<p>La première trace d’un commentaire d’un texte, et donc d’une mention d’une idée d’un texte dans un autre, date de -711. Il s’agit d’un commentaire religieux.</p>
 </section>
 </section>
 <section id="lépopée-de-gilgamesh" class="level2">
@@ -9527,7 +9527,9 @@ how Gilgamesh went through every hardship.</em> [Tablette 1<sup><a href="https:/
 <p><sup>H&amp;S</sup> : Halton, Charles et Saana Svärd, <em>Women’s Writing of Ancient Mesopotamia&nbsp;: An Anthology of the Earliest Female Authors</em>, Cambridge et New York, Cambridge University Press, 2018. <a href="https://doi.org/10.1017/9781107280328" class="uri">https://doi.org/10.1017/9781107280328</a></p>
 <p><sup>HmZ</sup> : Hanmo Zhang. 2018: <em>Authorship and Text-making in Early China</em>. De Gruyter. <a href="https://www.jstor.org/stable/j.ctvbkk21j" class="uri">https://www.jstor.org/stable/j.ctvbkk21j</a></p>
 <p><sup>KnC</sup> : &nbsp;Kelley K, Cartolano M, Ferrara S. Seals and signs: tracing the origins of writing in ancient South-west Asia. <em>Antiquity</em>. 2025;99(403):64-82. <a href="https://doi.org/10.15184/aqy.2024.165" class="uri">https://doi.org/10.15184/aqy.2024.165</a></p>
+<p><sup>SNK</sup> : Samuel Noah Kramer. 1942. “The Oldest Literary Catalogue: A Sumerian List of Literary Compositions Compiled about 2000 B. C.” Bulletin of the American Schools of Oriental Research 88: 10–19. <a href="https://doi.org/10.2307/1355474." class="uri">https://doi.org/10.2307/1355474.</a></p>
 <p><sup>SnS</sup> : Steineck, Raji C. et Schwermann, Christian. 2014: Introduction. In: Schwermann, Christian et Steineck, Raji C. (dir.): <em>That Wonderful Composite Called Author: Authorship in East Asian Literatures from the Beginnings to the Seventeenth Century</em>. (East Asian Comparative Literature and Culture 4) Leiden – Boston, 1–29. <a href="https://doi.org/10.1163/9789004279421_002" class="uri">https://doi.org/10.1163/9789004279421_002</a>. Littérature comparée, libre accès, facile à lire.</p>
+<p><sup>Sto</sup> : Stol, M. 1991-1992. Diagnosis and Therapy in Babylonian Medicine. <em>JEOL</em> 32: 42-65.</p>
 <p><sup>Sz</sup> : Sövegjártó, Szilvia. 2022: Originators in the Old Babylonian Sumerian literary tradition. <em>Hungarian Assyriological Review</em> 3: 25–47. DOI: <a href="https://doi.org/10.52093/hara-202201-0" class="uri">https://doi.org/10.52093/hara-202201-0</a>. Assyriologie, libre accès, facile à lire.</p>
 <p><sup>VdM</sup> : Van De Mieroop, M. 2016: <em>Philosophy before the Greeks: The Pursuit of Truth in Ancient Babylonia.</em> Princeton – Oxford. <a href="https://doi.org/10.1515/978140087411" class="uri">https://doi.org/10.1515/978140087411</a></p>
 <p><sup>WmG</sup> : William McGrath, 2016, <em>The Diagnostic Series SA.GIG: Ancient Innovations and Adaptations</em>, MA thesis U Toronto. <a href="http://hdl.handle.net/1807/75359" class="uri">http://hdl.handle.net/1807/75359</a></p>
