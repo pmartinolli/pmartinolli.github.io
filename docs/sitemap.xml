@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pmartinolli.github.io/ttrpg/index.html</loc>
-    <lastmod>2026-03-27T14:14:23.671Z</lastmod>
+    <lastmod>2026-04-02T01:53:12.304Z</lastmod>
   </url>
   <url>
     <loc>https://pmartinolli.github.io/projects/thesaurusPlusPlus/index.html</loc>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://pmartinolli.github.io/projects/index.html</loc>
-    <lastmod>2025-12-09T03:05:27.000Z</lastmod>
+    <lastmod>2026-04-02T02:02:00.736Z</lastmod>
   </url>
   <url>
     <loc>https://pmartinolli.github.io/teaching/index.html</loc>
@@ -103,5 +103,9 @@
   <url>
     <loc>https://pmartinolli.github.io/blog/2026/miniKerko/index.html</loc>
     <lastmod>2026-03-25T20:03:29.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pmartinolli.github.io/blog/2026/bar-llm/index.html</loc>
+    <lastmod>2026-04-02T01:50:46.234Z</lastmod>
   </url>
 </urlset>

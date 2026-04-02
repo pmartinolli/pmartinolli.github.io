@@ -173,3 +173,9 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 -   Sauvé, Mathieu-Robert. 2018. « [Donjons, dragons et Wikipédia à la Bibliothèque des lettres et sciences humaines](https://web.archive.org/web/20181108070834/https://nouvelles.umontreal.ca/article/2018/10/30/donjons-dragons-et-wikipedia-a-la-bibliotheque-des-lettres-et-sciences-humaines/) ». *UdeMNouvelles*, 30 octobre 2018, sect. Forum.
 
 -   Martinolli, Pascal et Sébastien Savard. 2018. Atelier Wikipédia pour la création de la page [Jeu de rôle sur table au Québec](https://fr.wikipedia.org/wiki/Jeu_de_r%C3%B4le_sur_table_au_Qu%C3%A9bec).
+
+### Projets 
+
+-   Dresser un parallèle entre l'évolution culturelle des logicielles et celles des jeux de rôle sur table. Billet de blogue ?
+-   Dessiner une carte des régions de France les plus citées dans les jeux de rôle.
+-   Publier le code de *CitationesLudorum*, un ensemble de scripts Python pour traiter un corpus numérisé de jeux de rôle sur table.

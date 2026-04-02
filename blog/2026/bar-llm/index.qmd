@@ -1,0 +1,33 @@
+---
+title: "Si Wikipédia est une bibliothèque, alors un LLM est un bar"
+author:
+      - name: "Pascal Martinolli"
+        orcid: "0000-0003-0122-5300"
+date: "2026-04-01"
+categories: [Formation]
+description: "Où l'on se donne un cadre de pensée pour les outils de clavardage IA génératifs généralistes."
+---
+
+## 1er avril
+
+Aujourd'hui je donnais le 4e atelier du séminaire PLU6058 qui contient une partie sur l'évaluation des sources. Hasard du calendrier, nous étions le 1er avril... la fête des tromperies... et donc aussi la fête de l'esprit critique. 
+
+Traditionnellement, ma présentation se base sur le Foutaisomètre et sur trois groupes de questions critiques : les questions sur l'auteur, celles sur l'éditeur et celles sur le contenu. 
+
+## Wikipédia
+
+L'atelier se termine en analysant une page Wikipédia avec ces trois questions : y a-t-il une dimension d'auteur (non) ? Y a-t-il une dimension d'éditeur (non) ? Et y a-t-il une dimension de contenu (oui mais avec des bémols qu'on liste) ? Bref, je conclus que ce n'est pas la peine de citer Wikipédia dans ses travaux et qu'on devrait (comme le dit William Marx), considérer Wikipédia comme une bibliothéque qui nous amène vers d'autres documents. Il ne faut pas s'y arrêter, au contraire elle doit nous lancer au dehors d'elle vers le monde. 
+
+## LLM
+
+On pourrait appliquer le même cadre de pensée pour un LLM (un modèle de langue, ou un outil de clavardage en ligne comme comme Claude, ChatGPT, Gemini ou Copilot). Selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s'y arrêter. Du coup, j'ai improvisé qu'on pouvait considérer un LLM comme un bar ou un pub. 
+
+Certes c'est bruyant ou confus et on y entend des choses absurdes. Mais on y entend aussi des choses qui nous font réfléchir. C'est plaisant car c'est intéractif, conversationnel, léger. On peut y échanger, et recevoir des bonnes idées.
+
+Mais le plus important c'est... **il faut en sortir** à un moment donné pour changer sa manière de travailler. Car si on n'y reste, on prend le risque de travailler en milieu clos, fermé, et donc non pertinent pour la démarche scientifique. On a besoin d'en sortir pour suivre des pistes, se confronter au monde extérieur complexe et sa réalité nuancée. Si on reste dans le bar, on est enfermé dans notre pensée (une bulle) et on ne voit pas les biais ou les limites de ce qu'on a trouvé mais qui n'est pas suffisant. La meilleure manière de savoir si on n'a suffisament fait le tour d'un sujet c'est de sortir et d'aller l'explorer du dehors. 
+
+## Bar
+
+Notons que de grandes découvertes ont commencé dans des pubs. Dans la culture populaire, le film *A Beautiful Mind* nous raconte comment John Nash élabore sa théorie des jeux autour d'une bière et d'une blonde dans un pub de Princeton. 
+
+Encore plus convaincante est l'étude « *[Bar Talk](https://economics.yale.edu/sites/default/files/bar_talk_10_19_ada-ns.pdf)* » de Michael Andrew (2019). Il a comparé le nombre de brevets déposés dans les comtés qui sont devenus "secs" (interdiction de l'alcool) par rapport à ceux restés "humides" pendant l'époque de la Prohibition aux États-Unis. Résultat : Dans les comtés ayant interdit les bars, le nombre de brevets a chuté de 15 %. En effet, ce n'est pas l'alcool lui-même qui boostait l'innovation, mais le lieu de rencontre. En fermant les bars, on a détruit les réseaux sociaux informels où les idées s'échangent librement entre personnes de disciplines différentes. On trouve aussi cette idée de « tiers lieu » qui favorise l'innovation avec le sociologue américain Ray Oldenburg (*The Great Good Place*, 1989). 

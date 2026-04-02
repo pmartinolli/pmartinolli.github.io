@@ -8,25 +8,31 @@ description: "Listes de projets sur lesquels je travaille ou sur lesquels je pen
 
 -   [Manuel de recherche documentaire](https://pmartinolli.github.io/QMpRD/) : pour le séminaire PLU6058.
 -   [Thesaurus++](thesaurusPlusPlus/index.html) : pour aider à organiser ses données de recherche.
+-   Adaptation de SIFT pour l'évaluation des sources.
+-   Évaluation d'outils IAg spécialisés pour la recherche documentaire.
+
+### Projets numériques en cours
+
+-   Codage du style Chicago 18 francisé UdeM en CSL pour Zotero.
+-   [ZotFlag](https://pmartinolli.github.io/ZotFlag/) : Conception d'une extension Zotero .xpi pour gérer les marqueurs.
 
 ### Projets Wikidata en cours
 
 -   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
 -   Histoire des mathématiques : pour tracer qui cite qui en [remontant les références](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html) du papier séminal sur la théorie des jeux.
+-   Travail sur les *Principae* de Newton et ses citations.
+-   Travail sur les tablettes mésopotamiennes et leurs citations.
 -   Liste de [revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) : pour mieux les repérer et les évaluer.
 
-### *TTRPG projects*
+### *Hobby*
 
--   [Tabletop role-playing games](../ttrpg/index.html) : pour le plaisir de pratiquer des méthodes digitales ou de sciences sociales sur le jeu de rôle sur table.
--   À faire :
-    -   Dresser un parallèle entre l'évolution culturelle des logicielles et celles des jeux de rôle sur table. Billet de blogue ?
-    -   Dessiner une carte des régions de France les plus citées dans les jeux de rôle.
-    -   Publier le code de *CitationesLudorum*, un ensemble de scripts Python pour traiter un corpus numérisé de jeux de rôle sur table.
+-   [*Tabletop role-playing games*](../ttrpg/index.html) *projects*
 
 ### Projets rêvés
 
 -   Créer un nouveau modèle générique de dataviz expliquant comment ajouter la dimension temporelle sur les graphes de relation.
--   Comment constituer un index consultable de tous les articles d'encyclopédie ? un métapédia ? ou un pédiapédia ?
+-   Comment constituer un index consultable et multidisciplinaire de tous les articles d'encyclopédie ? un métapédia ? ou un pédiapédia ?
+-   Faire un script qui extrait les citations à des travaux dans un texte brut non structuré. Basé sur les règles si possible (pas ou peu LLM).
 -   Faire une dataviz du *Manuscrit retrouvé à Saragosse* de Jan Potocki.
 -   Diffuser un plan de gestion de données de recherche modèle basé pour un projet de repérage de citations dans les kriegsspiels/wargames depuis le XVIIIe siècle.
 
