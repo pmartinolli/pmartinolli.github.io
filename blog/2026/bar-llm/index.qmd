@@ -14,7 +14,7 @@ Aujourd'hui, je viens de donner le 4e atelier du séminaire PLU6058 qui contient
 
 Traditionnellement, ma présentation se base sur le [Foutaisomètre](https://github.com/pmartinolli/foutaisometre) (10 ans déjà) et sur trois groupes de questions critiques : les questions sur l'auteur, celles sur l'éditeur et celles sur le contenu.
 
-Le modèle [SIFT](https://www.bbc.com/afrique/articles/c4g7le9w29no), mieux adapté pour les fausses nouvelles, est en cours d'adaptation pour améliorer l'approche critique (à suivre).
+Le modèle [SIFT](https://www.bbc.com/afrique/articles/c4g7le9w29no), mieux adapté pour les fausses nouvelles ou la mauvaise science relayée par les médias, est en cours d'adaptation pour améliorer l'approche critique (à suivre).
 
 ## Wikipédia
 

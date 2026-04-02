@@ -3,7 +3,7 @@ title: "Citations dans L'épopée de Gilgamesh"
 author: "Pascal Martinolli"
 date: "2025-12-12"
 categories: [citation]
-description: "Où l'on discute des pratiques de citation dans l'un des plus anciens texte de l'humanité, et où on découvre tout le contexte des premières attributions dans le monde mésopotamien ancien."
+description: "Où l'on discute des pratiques de citation et d'attribution dans les civilisations mésopotamiennes."
 ---
 
 [**Billet en cours d'écriture**]{.smallcaps}
@@ -26,9 +26,9 @@ Voici une synthèse de ce que j'ai trouvé. Nous allons découvrir les première
 
 -   les **sceaux**, premières marques de renvoi extra-textuel, associées aux notions de propriété d’un document et de protection personnelle ;
 
--   les tablettes contenant des **listes d’inventaire** d'autres tablettes de scribes, donc les premières références écrites à des oeuvres de l'histoire ;
+-   les tablettes contenant des **listes d’inventaire** d'autres tablettes de scribes, donc les premières références écrites à des oeuvres de l'histoire, puis d'autres types de listes ;
 
--   le passage de cultures orales à des cultures écrites, avec les premières **compilations** de textes, avec la naissance de l’« auteur » et les premières attributions textuelles.
+-   le passage de cultures orales à des cultures écrites, avec les premières **compilations** de textes et les premiers **commentaires**, avec la naissance de l’« auteur » et les premières attributions textuelles.
 
 ## Introduction
 
@@ -54,39 +54,39 @@ Elle semble apparaître pour répondre à un besoin comptables et administratif 
 
 Pendant la période Uruk (-3500 à -3100), certaines tablettes d'écritures reçoivent la marque de sceaux-cylindres. Je considère que ce sont les **premières références documentaires de l'histoire de l'écriture.** En effet, en combinant ces deux technologies, nous avons désormais une information riche, encodée sur une tablette d'argile, associée avec une autre information qui, comme nous l'avons mentionné précédemment, fait une référence à une entité nommée qui existe en dehors du document.
 
-Outre le marquage de la propriété, les sceaux sur les tablettes servent aussi de signatures pour des contrats, pour des traités et plus tard pour des lettres de correspondance.
+Outre le marquage de la propriété, les sceaux sur les tablettes servent aussi de signatures pour des contrats, pour des traités et plus tard pour des lettres de correspondance. Certains types de documents sont plutôt scellés par les envoyeurs (reçus administratifs, lettres, ventes, cadeaux, etc.), tandis que d'autres le sont plutôt par les receveurs (prêts par exemple).^DC113^
 
-> *At this period administrative documents such as receipts were generally sealed by the recipient, texts dealing with workers at Umma were sealed by an official, as were bullae and tablet-shaped labels, and letters were sealed by the sender. Legal texts include sales — generally sealed by the seller, loans — mostly sealed by the borrower, gifts — by the donor, and a few hire documents.* ^DC113^
-
-## Les listes : premiers textes avec références à d'autres textes
-
-### Listes de textes
+## Les listes
 
 Vers 2500 av. J.-C., un nouveau genre littéraire dérivé des pratiques comptables apparaît : la liste. Il en existe de toutes sortes : listes de rois, listes de lieux, listes d'animaux, etc.
 
-Une liste très ancienne, le catalogue de Nibru de Ur III (N1)^[Q](https://www.wikidata.org/wiki/Q137969092)^ , date de -2100 à -2000. Il s'agit d'une liste d'entrées qui représentent des noms, des oeuvres et des objets. On pense que le scribe les possède ou les gère et qu'il enregistre pour les contrôler. Ce type de document, commun dans la tradition scribale, **pourrait être considéré comme le premier document de l'histoire qui mentionne un autre document**, voire plusieurs autres documents listés de manière ordonnée. C'est une sorte d'ancêtre des catalogues et ou des bases de données actuelles.
+### Inventaires de textes
 
-![[Tablette HS1360](https://commons.wikimedia.org/wiki/File:HS_1360_03_front.png) de la collection Hilprecht via Wikimedia Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)](HS_1360_03_front.png){fig-align="center" width="150"}
+Les inventaires de textes sont les premiers documents textuels avec des références à d'autres textes.
 
-Dans le même ordre et à la même époque (3e dynastie d'Ur), il y a aussi la tablette [YBC3654](https://collections.peabody.yale.edu/search/Record/YPM-BC-017719) qui est un catalogue de chansons royales^SNK^.
+Le catalogue de Nibru de Ur III (N1)^[Q](https://www.wikidata.org/wiki/Q137969092)^ , datant de -2100 à -2000, semble être le plus ancien de cette catégorie. Il s'agit d'une liste d'entrées qui représentent des noms, des oeuvres et des objets. On pense que le scribe les possède ce qu'il liste ou bien qu'il les gère pour quelqu'un d'autre et qu'il enregistre de cette manière pour les contrôler. Ce type de document est commun dans la tradition scribale. Ce document en particulier **pourrait être considéré comme le premier document de l'histoire qui mentionne un autre document**. En fait, il liste même plusieurs autres documents de manière ordonnée. C'est l'ancêtre des catalogues et des bases de données actuelles.
 
-Dans ces listes, les oeuvres sont référencées grâce à leurs ***incipits***, c'est à dire leur premier paragraphe ou leur première phrase. En effet, c'est une période où les documents n'ont pas encore de titre et l'*incipit* est utilisé comme clé pour pointer vers un document. L'*incipit* est l'ancêtre des citations abrégées, tout comme les mentions (auteur-date) ou comme les notes de bas de page le sont aujourd'hui. La liste d'*incipits* est l'ancêtre des bibliographies.
+![[Tablette HS1360](https://commons.wikimedia.org/wiki/File:HS_1360_03_front.png) représentant le catalogue N1, collection Hilprecht via Wikimedia Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)](HS_1360_03_front.png){fig-align="center" width="150"}
 
-Ce n'est évidemment pas l'idéal car plusieurs oeuvres peuvent commencer de la même manière. Malgré cela, les références sont facilement discernables avec la translitération du catalogue de Nibru (N2) datant de la période babylonienne ancienne^[Q](https://www.wikidata.org/wiki/Q138013643)^. Les experts de ces cultures savent reconnaître les *incipits* les plus connus.
+Dans le même genre et à la même époque, il y a aussi la tablette [YBC3654](https://collections.peabody.yale.edu/search/Record/YPM-BC-017719) qui est un catalogue de chansons royales^SNK^. Ces chansons sont censées être rédigées dans d'autres tablettes.
+
+Dans ces listes, les oeuvres sont référencées grâce à leurs ***incipits***, c'est à dire leur premier paragraphe ou leur première phrase. En effet, c'est une période où les documents n'ont pas encore de titre. L'*incipit* est utilisé comme titre et ainsi comme clé d'accès pour pointer vers un document. On pourrait dire que l'*incipit* est l'ancêtre des citations abrégées telles que nous les voyons de nos jours sous la forme (auteur-date) ou numérotées ou comme notes de bas de page. De plus, on peut considérer une liste d'*incipits* comme un quasi-ancêtre des bibliographies.
+
+Cette technique n'est évidemment pas idéale car plusieurs oeuvres peuvent commencer de la même manière alors qu'elles sont des variantes. Malgré cela, les experts contemporains arrivent à retracer les références aux oeuvres correspondantes comme on le voit dans la translitération du *catalogue de Nibru (N2)* datant de la période babylonienne ancienne^[Q](https://www.wikidata.org/wiki/Q138013643)^. Cela nous amène à inférer que les scribes de ces époques savaient immédiatement reconnaître les *incipits* les plus connus. \[combien d'oeuvres majeures en circulation environ pour chaque époque?\]
 
 ### Listes de sagesses
 
-Certaines listes commencent à devenir sémantiquement plus complexes avec l'apparition des listes de sagesses, c'est-à-dire des conseils spirituels et moraux. Au même moment, les **attributions autoriales** de ces listes à des personnes deviennent aussi un enjeu.
+Certaines listes commencent à devenir sémantiquement plus complexes avec l'apparition des listes de sagesses, c'est-à-dire des conseils spirituels et moraux. Les listes de sagesse font partie de l'histoire de l'humanité : les Dix Commandements, les Béatitudes, les *commonplace books*, le Petit Livre rouge, etc. Au même moment, les **attributions autoriales** de ces listes à des personnes deviennent aussi un enjeu.
 
-Les *Instructions de Shuruppak*^[Q](https://www.wikidata.org/wiki/Q3823132)^ sont l'exemple typique de ces listes de sagesses car ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de proverbes anonymes et courts d'origines diverses et assemblés par des scribes.
+Les *Instructions de Shuruppak*^[Q](https://www.wikidata.org/wiki/Q3823132)^ sont l'exemple typique de ces listes de sagesses. Ce serait le texte littéraire le plus ancien attribué à une personne. Ce texte, écrit en sumérien, est une compilation de courts proverbes anonymes d'origines diverses et assemblés par des scribes.
 
 > *Tu ne dois pas maudire trop fortement car cela rebondira sur toi.*
 >
 > *Tu ne dois pas faire un jugement quand tu as bu de la bière.*
 
-Les scribes font débuter cette compilation par une référence nommée au chef de famille *Shuruppak* qui donne crédit au texte. Ces références à des **personnes d'autorité sont nommées et ordonnées**. Cela traduit probablement une aspiration à une dimension historique car nous avons le nom de l'auteur, celui de son père et celui de son fils. Cette figure de style se rapproche de ce que l'on trouve dans les listes des rois. Surtout, ces références nommées sont aussi suivies par des **intentions de citation.** Dans ce texte, c'est pour insister sur le fait qu'il faut absolument suivre ces instructions. Cette injonction est répétée cinq fois au début du texte, puis cinq fois au milieu du texte et encore cinq fois après selon la même formule.
+Les scribes font débuter cette compilation par une référence nommée au chef de famille *Shuruppak* qui donne crédit au texte, celui de son père et celui de son fils. Cette figure de style se rapproche de ce que l'on trouve dans les listes des rois.
 
-Les listes de sagesse font partie de l'histoire de l'humanité : les Dix Commandements, les Béatitudes, les *commonplace books*, le Petit Livre rouge, etc.
+Ces attributions nommées et ordonnées traduisent probablement une aspiration à une **dimension historique,** réelle, non mythique, de la liste de *Shuruppak^Sz^*. Surtout, ces références sont immédiatement suivies par des **intentions de citation.** En effet, dans le texte *Shuruppak* insiste fortement et personnellement sur le fait qu'il faut absolument suivre ces instructions. Cette injonction est répétée cinq fois au début du texte, puis cinq fois au milieu du texte et encore cinq fois après selon la même formule.
 
 #### De l'oralité à la textualité
 
@@ -94,21 +94,23 @@ Par la suite, d'autres listes d'instructions se sont développées. Selon les in
 
 #### Pas d'autorialité rigoureuse
 
-Même dans la société babylonienne ancienne, l'**identification des auteurs n'était pas spécialement recherchée**. C'est probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l'original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d'auteurs uniques et originaux ne faisaient pas trop de sens \[ma trad.\]» ^BL^
+Même dans la société babylonienne ancienne, l'**identification des auteurs-rédacteurs n'était pas spécialement recherchée**. C'est probablement parce que les textes étaient recopiés ou remémorés par des copistes qui faisaient parfois des modifications par rapport à l'original et donc participaient et se fondaient dans la chaîne de production du savoir. Dans ce contexte « La quête d'auteurs uniques et originaux ne faisaient pas trop de sens \[ma trad.\]» ^BL^
 
-En fait, tous les auteurs réels ou originaux de chacun des proverbes sont perdus, ainsi que les noms des scribes compilateurs. Même si elle a développé l'écrit, la culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La **copie était anonyme** et elle ne cherchait pas l'originalité. Ce n'est que vers -2000 que les scribes mentionnent parfois leurs noms dans le colophon[^3] des textes. Et encore, c'est probablement plus une mention de propriété que d'autorialité car ils ne précisent pas leurs rôles de copistes ou d'éditeurs ^VdM^. Probablement pour donner un peu d'ordre au chaos des textes, les scribes ont donné des attributions occasionnelles à des figures légendaires ou historiques.^Sz + FBR^. Un processus semblable pourrait avoir eu lieu dans la Chine ancienne^HmZ^.
+En fait, tous les auteurs réels ou originaux de chacun des proverbes sont perdus, ainsi que les noms des scribes compilateurs. Même si elle a développé l'écrit, la culture scribale des sociétés sumériennes et akkadiennes se basait d'abord sur la transmission orale du savoir. La **copie était anonyme** et elle ne cherchait pas l'originalité. Ce n'est que vers -2000 que les scribes mentionnent parfois leurs noms dans le colophon[^3] des textes. Et encore, c'est probablement plus une mention de propriété que d'autorialité car ils ne précisent pas leurs rôles de copistes ou d'éditeurs^VdM^.
 
 [^3]: Colophon : les notes du scribe vers la fin du texte.
 
+Probablement pour donner un peu d'ordre au chaos des textes, les scribes ont donné des attributions occasionnelles à des figures légendaires ou historiques.^Sz+FBR^. On pourrait dire qu'outre l'incipit, les premières attributions à des auteurs étaient une technique embryonnaire de **création de métadonnées**. Un processus semblable pourrait avoir eu lieu dans la Chine ancienne^HmZ^.
+
 #### Naissance de l'auteur attribué
 
-Selon Van der Toorn^VdT^, il y a trois types d'autorialité : l'autorialité honorifique, où l'auteur attribue le texte au commanditaire ou au mécenne de l'oeuvre; la pseudoepigraphie, où l'auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l'autorialité attribuée.
+Selon Van der Toorn^VdT^, il y a trois types d'autorialité : l'autorialité honorifique, où l'auteur attribue le texte au commanditaire ou au mécenne de l'oeuvre; la pseudoépigraphie, où l'auteur attribue le texte à une figure notable du passé pour donner plus de crédit au texte; et l'autorialité attribuée.
 
 Szilvia Sövegjártó^[Sz](https://doi.org/10.52093/hara-202201-0)^ suggère que l'autorialité a débuté sous la forme d'autorité honorifique avant de se déplacer vers une reconnaissance des accomplissements individuels d'un auteur. Attribuer l'autorialité à un dirigeant a une certaine logique puisque cela ancre le texte dans le temps et l'espace de manière certaine, et il reconnaît la participation du dirigeant dans la commande de l'oeuvre et de son exécution. C'est seulement vers le premier millénaire avant J.-C. que l'idée d'attribution des textes littéraires devrait être faite aux savants et non pas aux dirigeants ou aux personnages historiques[^4]. L'attribution à un auteur (*attributed authorship*) serait née dans la période Babylonienne ancienne du besoin de fixer dans le temps et l'espace une sélection de textes littéraires sumériens et de leur donner du contexte. De plus, à cette époque la production de documents s'étend à la sphère privée.
 
 [^4]: Dans *Uruk List of Kings and Sages*.
 
-Steineck et Schwermann^SnS^ discutent de la place de l'auteur, de sa construction, de son attribution. D'une manière plus générale, il semble que **l'attribution à une personne savante de plus en plus proche de la production du texte soit associée à l'apparition de notion d'individualité dans la société**. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.
+Steineck et Schwermann^SnS^ discutent de la place de l'auteur, de sa construction, de son attribution. D'une manière plus générale, il semble que **l'attribution à une personne savante de plus en plus proche de la production ou de l'éditorialisation du texte soit associée à l'apparition de notion d'individualité dans la société**. La valeur de ce travail savant se trouvait dans son originalité, ou dans sa médiation par sélection, traduction, compilation par contextualisation.
 
 ### Enheduana, une exceptionnelle dans le canon
 
@@ -118,11 +120,11 @@ Je n'ai pas trouvé de documents anciens qui citent explicitement une des oeuvre
 
 ### Canoniser pour sélectionner
 
-M Stol^Sto43+WmG47^) a remarqué des correspondances dans de la quarantaine de tablettes du *Traité akkadien de diagnostics et pronostics médicaux*^Q^ , une compilation du XIe siècle de tablettes plus anciennes et éparses pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d'*incipits*. Cette compilation semble avoir été produite en réaction à des textes plus anciens qui ont été remaniés par le scribe Esagil-kīn-apli^[Q](https://www.wikidata.org/wiki/Q5396676)^. Certaines tablettes contiennent la mention *ša pī ummâni* dans leur colophon, qui veut dire « D'après les anciens » et évoque une chaîne de transmission orale depuis des temps lointains.
+M Stol^Sto43+WmG47^ a remarqué des correspondances dans les tablettes du *Traité akkadien de diagnostics et pronostics médicaux*^Q^ , une compilation du XIe siècle d'une quarantaine de tablettes plus anciennes et éparses pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d'*incipits*. Cette compilation semble avoir été produite en réaction à des textes plus anciens qui ont été remaniés par le scribe Esagil-kīn-apli^[Q](https://www.wikidata.org/wiki/Q5396676)^. Certaines tablettes contiennent la mention *ša pī ummâni* dans leur colophon, qui veut dire « D'après les anciens » et évoque une chaîne de transmission orale depuis des temps lointains.
 
 ### Premiers commentaires
 
-La première trace d'un commentaire d'un texte, et donc d'une mention d'une idée d'un texte dans un autre, date de -711. Il s'agit d'un commentaire religieux.
+La première trace d'un commentaire d'un texte, et donc d'**une mention d'une idée d'un texte dans un autre**, date de -711. Il s'agit d'un commentaire religieux.
 
 ## L'épopée de Gilgamesh
 
