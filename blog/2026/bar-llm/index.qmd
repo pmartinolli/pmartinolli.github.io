@@ -5,7 +5,7 @@ author:
         orcid: "0000-0003-0122-5300"
 date: "2026-04-01"
 categories: [Formation]
-description: "Où l'on pense ChatGPT et compagnie comme des tiers lieux pour la recherche, c'est-à-dire des endroits où on peut passer mais dont on ne peut pas se contenter. Où l'on discute des inconnus inconnus et du syndrome du pont de La Joconde."
+description: "Où l'on pense les LLMs comme des tiers lieux pour la recherche, c'est-à-dire des endroits où on peut passer mais dont on ne peut pas se contenter. Où l'on discute des « inconnus inconnus » et du « syndrome du pont de La Joconde »."
 ---
 
 ## 1er avril
@@ -18,7 +18,7 @@ Le modèle [SIFT](https://www.bbc.com/afrique/articles/c4g7le9w29no), mieux adap
 
 ## Wikipédia
 
-L'atelier se termine en analysant une page Wikipédia avec ces trois questions : y a-t-il une dimension d'auteur (non) ? Y a-t-il une dimension d'éditeur (non) ? Et y a-t-il une dimension de contenu (oui mais avec des bémols qu'on liste) ?
+L'atelier se termine en analysant une page Wikipédia avec ces trois questions : y a-t-il une dimension d'auteur (quasi non) ? Y a-t-il une dimension d'éditeur (non) ? Et y a-t-il une dimension de contenu (oui, mais avec des bémols qu'on liste) ?
 
 Bref, j'en conclus qu'à partir de ces critères, cela explique pourquoi ce n'est pas la peine de citer Wikipédia dans ses travaux. Comme le dit William Marx, on devrait considérer Wikipédia comme une bibliothéque.
 
@@ -30,21 +30,29 @@ Wikipédia ou une bibliothèque doivent nous conduire vers d'autres documents. I
 
 On pourrait appliquer le même cadre de pensée pour un LLM (un modèle de langue, ou un outil de clavardage en ligne comme comme Claude, ChatGPT, Gemini ou Copilot). En effet, selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s'y arrêter. Du coup, pendant l'atelier, j'ai improvisé qu'on pouvait considérer un LLM comme un bar ou un pub.
 
-Certes, un bar c'est bruyant ou confus et on y entend des choses absurdes. Mais on y entend aussi des choses qui nous font réfléchir. C'est plaisant car c'est intéractif, conversationnel, léger. On peut y échanger et recevoir des bonnes idées.
+Certes, un bar c'est bruyant ou confus et on y entend des choses absurdes. Mais on peut aussi y entendre des choses qui nous font réfléchir, ou échanger et recevoir des bonnes idées. C'est un endroit plaisant car il y a de l'intéraction, des conversations, peu de sérieux.
 
-Mais le plus important c'est qu'... **il faut en sortir** à un moment donné et changer sa manière de travailler. Car si on n'y reste, on prend le risque de penser en milieu clos, fermé, et donc non pertinent pour la démarche scientifique. On est prisonier de nos échanges et de nos compétences limités (la fameuse bulle). On ne voit pas les biais ou les limites de ce qu'on a trouvé. On ne repère pas que ce n'est pas suffisant. On a besoin d'en sortir pour suivre des pistes, pour savoir si on n'a suffisament fait le tour d'un sujet, pour se confronter au monde extérieur complexe et sa réalité nuancée.
+Mais le plus important c'est qu'... **il faut en sortir** à un moment donné et changer sa manière de travailler. Car si on y reste :
+
+-   on prend le risque de penser en milieu clos, fermé, et donc non pertinent pour la démarche scientifique;
+
+-   on est prisonier de nos échanges et de nos compétences limités (la fameuse bulle);
+
+-   on ne voit pas les biais ou les limites de ce qu'on a trouvé;
+
+-   on ne repère pas que ce n'est pas suffisant. On a besoin d'en sortir pour suivre des pistes, pour savoir si on n'a suffisament fait le tour d'un sujet, pour se confronter au monde extérieur complexe et sa réalité nuancée.
 
 ## « Ce qu'on ne sait pas qu'on ne sait pas »
 
 Wikipédia (bibliothèque) et LLMs (bars) souffrent ainsi selon moi des mêmes problèmes.
 
-Le problème le plus simple est la vérification. Mais le vrai problème est ce que j'appelle le syndrome du « pont de La Joconde » (expression de moi, voir ci-dessous) qui consiste à **passer à côté de l'essentiel parce qu' « on ne sait pas l'étendue de tout ce qu'on ne sait pas »** (expression pas de moi, c'est un vieux problème de philosophie parfois appellé « [inconnu inconnu](https://fr.wikipedia.org/wiki/There_are_known_knowns) »). C'est un problème très courant pour les étudiant.es qui commencent à étudier un sujet qu'ils ne maîtrisent pas.
+Le problème le plus simple est la [vérification](https://danslesalgorithmes.net/stream/le-cout-cache-de-lia-cest-la-verification/). Mais le vrai problème profond est ce que j'appelle le syndrome du « pont de La Joconde » (voir ci-dessous) qui consiste à **passer à côté de l'essentiel parce qu' « on ne sait pas l'étendue de tout ce qu'on ne sait pas »** (un vieux problème de philosophie parfois appellé « [inconnu inconnu](https://fr.wikipedia.org/wiki/There_are_known_knowns) »). C'est un problème très courant pour les étudiant.es qui commencent à étudier un sujet qu'ils ne maîtrisent pas.
 
 ### Le « syndrome du pont de La Joconde » ?
 
-Dans mes formations, je présente le principal problème de « l'inconnu inconnu » de Wikipédia avec l'illustration ci-dessous. Je dis « Imaginez que vous devez étudier un sujet et que la page Wikipédia ne traite et présente le sujet qu'avec ceci : »
+Dans mes formations, je présente le principal problème de Wikipédia, le problème de « l'inconnu inconnu » avec l'illustration ci-dessous. Je dis « Imaginez que vous devez étudier un sujet et que la page Wikipédia ne traite et présente le sujet qu'avec ceci : »
 
-[![Cliquer pour voir le sujet au complet... au-delà du pont... ](pont-joconde.png)](https://en.wikipedia.org/wiki/Mona_Lisa#/media/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg)
+[![Cliquer pour voir le sujet au complet... au-delà du pont...](pont-joconde.png)](https://en.wikipedia.org/wiki/Mona_Lisa#/media/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg)
 
 ... on ne sait même pas qu'on est passé à côté de l'essentiel du sujet.
 
