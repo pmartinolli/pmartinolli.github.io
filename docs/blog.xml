@@ -9,7 +9,7 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.8.26</generator>
 <lastBuildDate>Wed, 01 Apr 2026 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Si Wikipédia est une bibliothèque, alors un LLM est un bar</title>
@@ -21,25 +21,49 @@
 
 
 
+
 <section id="er-avril" class="level2">
 <h2 class="anchored" data-anchor-id="er-avril">1er avril</h2>
-<p>Aujourd’hui je donnais le 4e atelier du séminaire PLU6058 qui contient une partie sur l’évaluation des sources. Hasard du calendrier, nous étions le 1er avril… la fête des tromperies… et donc aussi la fête de l’esprit critique.</p>
-<p>Traditionnellement, ma présentation se base sur le Foutaisomètre et sur trois groupes de questions critiques : les questions sur l’auteur, celles sur l’éditeur et celles sur le contenu.</p>
+<p>Aujourd’hui, je viens de donner le 4e atelier du séminaire PLU6058 qui contient une partie sur l’évaluation des sources. Hasard du calendrier, nous étions le 1er avril, la fête des tromperies… et donc aussi la <strong>fête de l’esprit critique</strong>.</p>
+<p>Traditionnellement, ma présentation se base sur le <a href="https://github.com/pmartinolli/foutaisometre">Foutaisomètre</a> (10 ans déjà) et sur trois groupes de questions critiques : les questions sur l’auteur, celles sur l’éditeur et celles sur le contenu.</p>
+<p>Le modèle <a href="https://www.bbc.com/afrique/articles/c4g7le9w29no">SIFT</a>, mieux adapté pour les fausses nouvelles, est en cours d’adaptation pour améliorer l’approche critique (à suivre).</p>
 </section>
 <section id="wikipédia" class="level2">
 <h2 class="anchored" data-anchor-id="wikipédia">Wikipédia</h2>
-<p>L’atelier se termine en analysant une page Wikipédia avec ces trois questions : y a-t-il une dimension d’auteur (non) ? Y a-t-il une dimension d’éditeur (non) ? Et y a-t-il une dimension de contenu (oui mais avec des bémols qu’on liste) ? Bref, je conclus que ce n’est pas la peine de citer Wikipédia dans ses travaux et qu’on devrait (comme le dit William Marx), considérer Wikipédia comme une bibliothéque qui nous amène vers d’autres documents. Il ne faut pas s’y arrêter, au contraire elle doit nous lancer au dehors d’elle vers le monde.</p>
+<p>L’atelier se termine en analysant une page Wikipédia avec ces trois questions : y a-t-il une dimension d’auteur (non) ? Y a-t-il une dimension d’éditeur (non) ? Et y a-t-il une dimension de contenu (oui mais avec des bémols qu’on liste) ?</p>
+<p>Bref, j’en conclus qu’à partir de ces critères, cela explique pourquoi ce n’est pas la peine de citer Wikipédia dans ses travaux. Comme le dit William Marx, on devrait considérer Wikipédia comme une bibliothéque.</p>
+<blockquote class="blockquote">
+<p>« Wikipédia fonctionne plus comme une bibliothèque en vérité que comme une encyclopédie à l’ancienne. » (<a href="https://www.youtube.com/watch?v=tewIpVhyU_I"><em>Les Bibliothèques invisibles</em></a>, William Marx, 2020, 00:43:00)</p>
+</blockquote>
+<p>Wikipédia ou une bibliothèque doivent nous conduire vers d’autres documents. Il ne faut pas s’y arrêter. Au contraire, elles doivent nous lancer au dehors d’elles, vers le monde.</p>
 </section>
 <section id="llm" class="level2">
 <h2 class="anchored" data-anchor-id="llm">LLM</h2>
-<p>On pourrait appliquer le même cadre de pensée pour un LLM (un modèle de langue, ou un outil de clavardage en ligne comme comme Claude, ChatGPT, Gemini ou Copilot). Selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s’y arrêter. Du coup, j’ai improvisé qu’on pouvait considérer un LLM comme un bar ou un pub.</p>
-<p>Certes c’est bruyant ou confus et on y entend des choses absurdes. Mais on y entend aussi des choses qui nous font réfléchir. C’est plaisant car c’est intéractif, conversationnel, léger. On peut y échanger, et recevoir des bonnes idées.</p>
-<p>Mais le plus important c’est… <strong>il faut en sortir</strong> à un moment donné pour changer sa manière de travailler. Car si on n’y reste, on prend le risque de travailler en milieu clos, fermé, et donc non pertinent pour la démarche scientifique. On a besoin d’en sortir pour suivre des pistes, se confronter au monde extérieur complexe et sa réalité nuancée. Si on reste dans le bar, on est enfermé dans notre pensée (une bulle) et on ne voit pas les biais ou les limites de ce qu’on a trouvé mais qui n’est pas suffisant. La meilleure manière de savoir si on n’a suffisament fait le tour d’un sujet c’est de sortir et d’aller l’explorer du dehors.</p>
+<p>On pourrait appliquer le même cadre de pensée pour un LLM (un modèle de langue, ou un outil de clavardage en ligne comme comme Claude, ChatGPT, Gemini ou Copilot). En effet, selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s’y arrêter. Du coup, pendant l’atelier, j’ai improvisé qu’on pouvait considérer un LLM comme un bar ou un pub.</p>
+<p>Certes, un bar c’est bruyant ou confus et on y entend des choses absurdes. Mais on y entend aussi des choses qui nous font réfléchir. C’est plaisant car c’est intéractif, conversationnel, léger. On peut y échanger et recevoir des bonnes idées.</p>
+<p>Mais le plus important c’est qu’… <strong>il faut en sortir</strong> à un moment donné et changer sa manière de travailler. Car si on n’y reste, on prend le risque de penser en milieu clos, fermé, et donc non pertinent pour la démarche scientifique. On est prisonier de nos échanges et de nos compétences limités (la fameuse bulle). On ne voit pas les biais ou les limites de ce qu’on a trouvé. On ne repère pas que ce n’est pas suffisant. On a besoin d’en sortir pour suivre des pistes, pour savoir si on n’a suffisament fait le tour d’un sujet, pour se confronter au monde extérieur complexe et sa réalité nuancée.</p>
 </section>
-<section id="bar" class="level2">
-<h2 class="anchored" data-anchor-id="bar">Bar</h2>
-<p>Notons que de grandes découvertes ont commencé dans des pubs. Dans la culture populaire, le film <em>A Beautiful Mind</em> nous raconte comment John Nash élabore sa théorie des jeux autour d’une bière et d’une blonde dans un pub de Princeton.</p>
-<p>Encore plus convaincante est l’étude « <em><a href="https://economics.yale.edu/sites/default/files/bar_talk_10_19_ada-ns.pdf">Bar Talk</a></em> » de Michael Andrew (2019). Il a comparé le nombre de brevets déposés dans les comtés qui sont devenus “secs” (interdiction de l’alcool) par rapport à ceux restés “humides” pendant l’époque de la Prohibition aux États-Unis. Résultat : Dans les comtés ayant interdit les bars, le nombre de brevets a chuté de 15 %. En effet, ce n’est pas l’alcool lui-même qui boostait l’innovation, mais le lieu de rencontre. En fermant les bars, on a détruit les réseaux sociaux informels où les idées s’échangent librement entre personnes de disciplines différentes. On trouve aussi cette idée de « tiers lieu » qui favorise l’innovation avec le sociologue américain Ray Oldenburg (<em>The Great Good Place</em>, 1989).</p>
+<section id="ce-quon-ne-sait-pas-quon-ne-sait-pas" class="level2">
+<h2 class="anchored" data-anchor-id="ce-quon-ne-sait-pas-quon-ne-sait-pas">« Ce qu’on ne sait pas qu’on ne sait pas »</h2>
+<p>Wikipédia (bibliothèque) et LLMs (bars) souffrent ainsi selon moi des mêmes problèmes.</p>
+<p>Le problème le plus simple est la vérification. Mais le vrai problème est ce que j’appelle le syndrome du « pont de La Joconde » (expression de moi, voir ci-dessous) qui consiste à <strong>passer à côté de l’essentiel parce qu’ « on ne sait pas l’étendue de tout ce qu’on ne sait pas »</strong> (expression pas de moi, c’est un vieux problème de philosophie parfois appellé « <a href="https://fr.wikipedia.org/wiki/There_are_known_knowns">inconnu inconnu</a> »). C’est un problème très courant pour les étudiant.es qui commencent à étudier un sujet qu’ils ne maîtrisent pas.</p>
+<section id="le-syndrome-du-pont-de-la-joconde" class="level3">
+<h3 class="anchored" data-anchor-id="le-syndrome-du-pont-de-la-joconde">Le « syndrome du pont de La Joconde » ?</h3>
+<p>Dans mes formations, je présente le principal problème de « l’inconnu inconnu » de Wikipédia avec l’illustration ci-dessous. Je dis « Imaginez que vous devez étudier un sujet et que la page Wikipédia ne traite et présente le sujet qu’avec ceci : »</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://en.wikipedia.org/wiki/Mona_Lisa#/media/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"><img src="https://pmartinolli.github.io/blog/2026/bar-llm/pont-joconde.png" class="img-fluid figure-img"></a></p>
+<figcaption>Cliquer pour voir le sujet au complet… au-delà du pont…</figcaption>
+</figure>
+</div>
+<p>… on ne sait même pas qu’on est passé à côté de l’essentiel du sujet.</p>
+<p>C’est un problème majeur avec Wikipédia si l’étudiant ne suit pas les liens vers les sources pour aller plus loin. Selon moi, ce problème est accentué avec les LLMs car ces derniers sont conçus pour maximiser l’engagement et donc pour qu’on « reste dans le bar ».</p>
+</section>
+</section>
+<section id="bar-bar" class="level2">
+<h2 class="anchored" data-anchor-id="bar-bar">Bar bar ?</h2>
+<p>Notons que de grandes découvertes ont commencé dans des bars. Dans la culture populaire, le film <em>A Beautiful Mind</em> nous raconte comment John Nash élabore sa théorie des jeux autour d’une bière et d’une blonde dans un pub de Princeton.</p>
+<p>Encore plus convaincante est l’étude « <a href="https://economics.yale.edu/sites/default/files/bar_talk_10_19_ada-ns.pdf"><em>Bar Talk</em></a> » de Michael Andrew (2019). Il a comparé le nombre de brevets déposés dans les comtés qui sont devenus “secs” (interdiction de l’alcool) par rapport à ceux restés “humides” pendant l’époque de la Prohibition aux États-Unis. Résultat : Dans les comtés ayant interdit les bars, le nombre de brevets a chuté de 15 %. En effet, ce n’est pas l’alcool lui-même qui boostait l’innovation, mais le lieu de rencontre. En fermant les bars, on a détruit les réseaux sociaux informels où les idées s’échangent librement entre personnes de disciplines différentes. On trouve aussi cette idée de « tiers lieu » qui favorise l’innovation avec le sociologue américain Ray Oldenburg (<em>The Great Good Place</em>, 1989).</p>
 
 
 </section>
