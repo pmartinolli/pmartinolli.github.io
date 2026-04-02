@@ -28,7 +28,9 @@ Wikipédia ou une bibliothèque doivent nous conduire vers d'autres documents. I
 
 ## LLM
 
-On pourrait appliquer le même cadre de pensée pour un LLM (un modèle de langue, ou un outil de clavardage en ligne comme comme Claude, ChatGPT, Gemini ou Copilot). En effet, selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s'y arrêter. Du coup, pendant l'atelier, j'ai improvisé qu'on pouvait considérer un LLM comme un bar ou un pub.
+On pourrait appliquer le même cadre de pensée pour un LLM. Ici, on peut définir un LLM au sens large : un modèle de langue, ou un outil de clavardage généraliste comme comme Claude, ChatGPT, Gemini ou Copilot, ou encore un outil IAg spécialisé comme Consensus, LeapSpace ou Undermind.
+
+En effet, selon moi, le principal problème de ces outils est le même que pour Wikipédia : il ne faut pas s'y arrêter. Du coup, pendant l'atelier, j'ai improvisé qu'on pouvait considérer un LLM comme un bar ou un pub.
 
 Certes, un bar c'est bruyant ou confus et on y entend des choses absurdes. Mais on peut aussi y entendre des choses qui nous font réfléchir, ou échanger et recevoir des bonnes idées. C'est un endroit plaisant car il y a de l'intéraction, des conversations, peu de sérieux.
 
