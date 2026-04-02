@@ -4,21 +4,25 @@ format: html
 description: "Listes de projets sur lesquels je travaille ou sur lesquels je pense travailler prochainement. Ils représentent les intérêts de recherche professionnels et amateurs, principalement l'organisation des connaissances, les jeux, la transmission culturelle, les liens de citation et les données ouvertes."
 ---
 
-### Projets pédagogiques en cours
+### Projets en cours
+
+#### Pédagogiques
 
 -   [Manuel de recherche documentaire](https://pmartinolli.github.io/QMpRD/) : pour le séminaire PLU6058.
 -   [Thesaurus++](thesaurusPlusPlus/index.html) : pour aider à organiser ses données de recherche.
 -   Adaptation de SIFT pour l'évaluation des sources.
 -   Évaluation d'outils IAg spécialisés pour la recherche documentaire.
 
-### Projets numériques en cours
+#### Numériques 
 
 -   Codage du style Chicago 18 francisé UdeM en CSL pour Zotero.
 -   [ZotFlag](https://pmartinolli.github.io/ZotFlag/) : Conception d'une extension Zotero .xpi pour gérer les marqueurs.
+-   Absorption de notions XML-TEI.
 
-### Projets Wikidata en cours
+#### Wikidata 
 
 -   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
+-   Organisation du volet Wikidata dans WikiSavoirs Canada 2026.
 -   Histoire des mathématiques : pour tracer qui cite qui en [remontant les références](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html) du papier séminal sur la théorie des jeux.
 -   Travail sur les *Principae* de Newton et ses citations.
 -   Travail sur les tablettes mésopotamiennes et leurs citations.
