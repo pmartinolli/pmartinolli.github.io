@@ -9,13 +9,14 @@
 <link>https://pmartinolli.github.io/blog.html</link>
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.8.26</generator>
 <lastBuildDate>Wed, 01 Apr 2026 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Si Wikipédia est une bibliothèque, alors un LLM est un bar</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/bar-llm/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -58,7 +59,7 @@
 <p>Dans mes formations, je présente le principal problème de Wikipédia, le problème de « l’inconnu inconnu » avec l’illustration ci-dessous. Je dis « Imaginez que vous devez étudier un sujet et que la page Wikipédia ne traite et présente le sujet qu’avec ceci : »</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://en.wikipedia.org/wiki/Mona_Lisa#/media/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"><img src="https://pmartinolli.github.io/blog/2026/bar-llm/pont-joconde.png" class="img-fluid figure-img" alt="Cliquer pour voir le sujet au complet… au-delà du pont…"></a></p>
+<p><a href="https://en.wikipedia.org/wiki/Mona_Lisa#/media/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"><img src="https://pmartinolli.github.io/blog/2026/bar-llm/pont-joconde.png" class="img-fluid figure-img"></a></p>
 <figcaption>Cliquer pour voir le sujet au complet… au-delà du pont…</figcaption>
 </figure>
 </div>
@@ -9439,6 +9440,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 
 
 
+
 <p><span class="smallcaps"><strong>Billet en cours d’écriture</strong></span></p>
 <p>Depuis une dizaine d’années, je donne une formation « Citer ses sources » ouverte à tou.te.s à la Bibliothèque des lettres et sciences humaines de l’Université de Montréal. C’est l’une de mes formations préférées car cela parle de valeurs, de méthodes et surtout cela déconstruit le message traditionnel « il ne faut pas plagier » pour le remplacer par « <strong>pourquoi citer est existentiel pour la pensée humaine</strong> » (rien que ça). De plus, cela me permet d’exprimer pourquoi je pense que la citation est au coeur de nos métiers de la documentation et de l’information.</p>
 <p>Un jour, je me suis posé la question : et si une personne qui assiste à la formation me demande <strong>à quand remonte la première citation</strong>, alors que pourrais-je lui répondre ? Alors je me suis mis sur la route de l’histoire de la citation. En voici une carte postale.</p>
@@ -9525,7 +9527,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 </section>
 <section id="canoniser-pour-sélectionner" class="level3">
 <h3 class="anchored" data-anchor-id="canoniser-pour-sélectionner">Canoniser pour sélectionner</h3>
-<p>M Stol<sup>Sto43+WmG47</sup> a remarqué des correspondances dans les tablettes du <em>Traité akkadien de diagnostics et pronostics médicaux</em><sup>Q</sup> , une compilation du XIe siècle d’une quarantaine de tablettes plus anciennes et éparses pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d’<em>incipits</em>. Cette compilation semble avoir été produite en réaction à des textes plus anciens qui ont été remaniés par le scribe Esagil-kīn-apli<sup><a href="https://www.wikidata.org/wiki/Q5396676">Q</a></sup>. Certaines tablettes contiennent la mention <em>ša pī ummâni</em> dans leur colophon, qui veut dire « D’après les anciens » et évoque une chaîne de transmission orale depuis des temps lointains.</p>
+<p>M Stol<sup>Sto43+WmG47</sup> a remarqué des correspondances dans les tablettes du <em>Traité akkadien de diagnostics et pronostics médicaux</em><sup><a href="https://www.wikidata.org/wiki/Q138806113">Q</a></sup> , une compilation de -1100c d’une quarantaine de tablettes plus anciennes et éparses pouvant remonter au IIe millénaire. Ces correspondances renvoient à des tablettes plus anciennes à travers les mentions d’<em>incipits</em>. Cette compilation semble avoir été produite en réaction à des textes plus anciens qui ont été remaniés par le scribe Esagil-kīn-apli<sup><a href="https://www.wikidata.org/wiki/Q5396676">Q</a></sup>. Certaines tablettes contiennent la mention <em>ša pī ummâni</em> dans leur colophon, qui veut dire « D’après les anciens » et évoque une chaîne de transmission orale depuis des temps lointains.</p>
 </section>
 <section id="premiers-commentaires" class="level3">
 <h3 class="anchored" data-anchor-id="premiers-commentaires">Premiers commentaires</h3>
@@ -9542,7 +9544,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 <p><em>Il a gravé sur une stèle de pierre tous ses hauts-faits</em> [Tablette 1<sup><a href="https://www.wikidata.org/wiki/Q8272">Q</a></sup>]</p>
 </blockquote>
 <p>Ce passage souligne l’importance pour les Mésopotamiens de fixer un texte sur une pierre pour lui conférer non seulement valeur, pérennité et autorité mais aussi pour permettre que des informations futures puissent se baser sur elle.</p>
-<p>En effet, le <a href="https://fr.wikipedia.org/wiki/Code_de_Hammurabi">Code de Hammurabi</a>, un texte de loi gravé dans la pierre, exposé publiquement et datant de la même période a les mêmes modalités. Il est conçu comme une référence accessible pouvant d’être recopiée, invoquée, mentionnée ou citée. Une sorte d’étalon métrique pour le monde social.</p>
+<p>En effet, le <a href="https://fr.wikipedia.org/wiki/Code_de_Hammurabi">Code de Hammurabi</a>, un texte de loi gravé dans la pierre, exposé publiquement et datant de -1750c a les mêmes modalités. Il est conçu comme une référence accessible pouvant d’être recopiée, invoquée, mentionnée ou citée. Une sorte d’étalon métrique pour le monde social.</p>
 <p>Cela change des tablettes d’argiles!</p>
 </section>
 <section id="mise-en-abîme-de-laudience" class="level3">
