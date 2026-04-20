@@ -1,7 +1,7 @@
 ---
 title: "publications"
 format: html
-description: "Une sélection de mes emplois, diplômes, activités, compétences et publications, présentés en listes hiérarchiques et icônées."
+description: "Une sélection de publications, emplois, diplômes, activités et compétences."
 bibliography: bibliography.bib
 csl: chicago-manual-of-style-mod_pascal.csl
 nocite: | 
@@ -9,27 +9,35 @@ nocite: |
 citeproc: true
 ---
 
+### Publications
+
+::: {#refs}
+:::
+
+------------------------------------------------------------------------
+
 ### Emplois
 
 #### Bibliothécaire
 
-+--------------+---------------------------------------------------------------+
-| 2008-...     | **Université de Montréal**, Montréal, Canada\                 |
-|              | - Pour l'histoire et pour la formation\                       |
-|              | - Humanités numériques : fouille de texte, numérisation,\     |
-|              | indexation; Thesaurus et ontologies; Visualisation de données |
-+--------------+---------------------------------------------------------------+
++---------------+----------------------------------------------------------------+
+| 2008-...      | **Université de Montréal**, Montréal, Canada\                  |
+|               | - Pour l'histoire, la linguistique et la traduction\           |
+|               | - Humanités numériques : fouille de texte, numérisation,\      |
+|               | indexation; Thesaurus et ontologies; Visualisation de données\ |
+|               | - Formation : cours crédités, ateliers, MOOCs                  |
++---------------+----------------------------------------------------------------+
 
 #### Documentaliste
 
-+--------------+-------------------------------------------------------------------+
-| 2002-2008    | Université de Montréal, Montréal, Canada\                         |
-|              | - Département des sciences économiques\                           |
-|              | - École de relations industrielles                                |
-+--------------+-------------------------------------------------------------------+
-| Avant 2002   | Electricité de France (Direction de la stratégie), Paris, France\ |
-|              | Les Echos (*Lettres professionnelles*), Paris, France             |
-+--------------+-------------------------------------------------------------------+
++---------------+-------------------------------------------------------------------+
+| 2002-2008     | Université de Montréal, Montréal, Canada\                         |
+|               | - Département des sciences économiques\                           |
+|               | - École de relations industrielles                                |
++---------------+-------------------------------------------------------------------+
+| Avant 2002    | Electricité de France (Direction de la stratégie), Paris, France\ |
+|               | Les Echos (*Lettres professionnelles*), Paris, France             |
++---------------+-------------------------------------------------------------------+
 
 ### Diplômes
 
@@ -90,7 +98,7 @@ citeproc: true
         -   LaTeX, BibTeX ★
         -   XML :
             -   TEI (débutant)
-            -   OWL/RDF ★
+            -   OWL/RDF ☆
             -   CSL ★
             -   SKOS ☆
     -   **Programmation** :
@@ -114,8 +122,3 @@ citeproc: true
         -   Transkribus ★
         -   GitHub ☆
         -   ObservableHQ ☆
-
-### Publications
-
-::: {#refs}
-:::

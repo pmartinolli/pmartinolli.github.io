@@ -20,13 +20,7 @@ description: "Tabletop role-playing games publications, working papers, studies 
 
         -   Wikidata \> SPARQL \> [R Studio](http://zotrpg.blogspot.com/2019/12/citations-practices-in-ttrpg-publishing.html)
 
-        -   [Ampersand, Assonances & Alliterations](http://zotrpg.blogspot.com/2019/09/ampersand-assonances-alliterations.html) : The Shape of Dungeons & Dragons’s Name
-
         -   [Dataviz with JS and Observable](http://zotrpg.blogspot.com/2024/06/on-shoulders-of-cloud-giants-dataviz.html)
-
-        -   [Cease & Desist](http://zotrpg.blogspot.com/2020/08/cease-desist-orders-and-citation.html)
-
-        -   Citation Practices in Games. [Why Citing or Not Citing ?](http://zotrpg.blogspot.com/2019/05/citation-practices-in-games-why-citing.html)
 
         -   [Building community](http://zotrpg.blogspot.com/2022/06/building-community-by-citing-each.html) by citing
 
@@ -132,9 +126,9 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 -   Sélection de quelques billets :
 
-    -   [L’*Enfer* de Dante](https://jdr.hypotheses.org/1476)
+    -   [L’*Enfer* de Dante](https://jdr.hypotheses.org/1476) dans les jeux de rôle
 
-    -   [Faim, famine et cannibalisme](https://jdr.hypotheses.org/1544)
+    -   [Faim, famine et cannibalisme](https://jdr.hypotheses.org/1544) dans les jeux de rôle sur table publiés
 
     -   Le JDR comme rituel d’[hospitalité et d’invitation](https://jdr.hypotheses.org/category/hospitalite).
 
@@ -142,7 +136,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
     -   [Les épigraphes](https://jdr.hypotheses.org/1332), [partie 2](https://jdr.hypotheses.org/1401), [partie 3](https://jdr.hypotheses.org/1661).
 
-    -   [Esperluettes, assonances & allitérations](https://jdr.hypotheses.org/1012) : Figures de style du nom Dungeons & Dragons
+    -   [Esperluettes, assonances & allitérations](https://jdr.hypotheses.org/1012) : Figures de style du nom *Dungeons & Dragons*
 
     -   [Faire communauté](https://jdr.hypotheses.org/1771) en citant. [Pourquoi citer](https://jdr.hypotheses.org/878) ou ne pas citer ?
 
@@ -174,7 +168,7 @@ This teaching aid is designed to enhance clarity, engagement, and self-reflectio
 
 -   Martinolli, Pascal et Sébastien Savard. 2018. Atelier Wikipédia pour la création de la page [Jeu de rôle sur table au Québec](https://fr.wikipedia.org/wiki/Jeu_de_r%C3%B4le_sur_table_au_Qu%C3%A9bec).
 
-### Projets 
+### Projets
 
 -   Dresser un parallèle entre l'évolution culturelle des logicielles et celles des jeux de rôle sur table. Billet de blogue ?
 -   Dessiner une carte des régions de France les plus citées dans les jeux de rôle.
