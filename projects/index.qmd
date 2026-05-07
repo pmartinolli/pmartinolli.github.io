@@ -13,13 +13,13 @@ description: "Listes de projets sur lesquels je travaille ou sur lesquels je pen
 -   Adaptation de SIFT pour l'évaluation des sources.
 -   Évaluation d'outils IAg spécialisés pour la recherche documentaire.
 
-#### Numériques 
+#### Numériques
 
 -   Codage du style Chicago 18 francisé UdeM en CSL pour Zotero.
 -   [ZotFlag](https://pmartinolli.github.io/ZotFlag/) : Conception d'une extension Zotero .xpi pour gérer les marqueurs.
 -   Absorption de notions XML-TEI.
 
-#### Wikidata 
+#### Wikidata
 
 -   [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9) : pour améliorer la découvrabilité des revues québécoises grâce à Wikidata.
 -   Organisation du volet Wikidata dans WikiSavoirs Canada 2026.
@@ -54,28 +54,52 @@ description: "Listes de projets sur lesquels je travaille ou sur lesquels je pen
 
 .
 
-### *in limbo* : projets terminés, oubliés, abandonnés, ajournés, en suspens
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+### *in limbo* : projets terminés, mi-cuits, oubliés, abandonnés, ajournés, en suspens
 
 -   **2020..**
-    -   [Bibliographie sélective « Essays on wargaming »](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5373960/). 2024-. En cours.
-    -   [Bibliographie sélective « Hunger, Famine and Starvation in Historical Perspective »](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5373408/). 2024-. En cours.
-    -   [Bibliographie exhaustive de Pierre Teilhard de Chardin](https://web.archive.org/web/20241203022121/https://www.zotero.org/groups/5115263/). 2023-. En cours
-    -   [Curation des chercheurs de l'UdeM sur Wikidata](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/UdeM). 2019-2022.
-    -   [*Predatory publishing and Wikidata*](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/Predatory_publishing_and_Wikidata). 2022
-    -   [Ontologies et valorisation du théâtre québécois sur Wikidata (avec le CQT)](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/User:Pmartinolli/CQT). 2022
+    -   [Bibliographie sélective « Essays on wargaming »](https://www.zotero.org/groups/5373960/). 2024-. En cours.
+    -   [Bibliographie sélective « Hunger, Famine and Starvation in Historical Perspective »](https://www.zotero.org/groups/5373408/). 2024-. En cours.
+    -   [Bibliographie exhaustive de Pierre Teilhard de Chardin](https://www.zotero.org/groups/5115263/). 2023-. En cours
+    -   [Curation des chercheurs de l'UdeM sur Wikidata](https://www.wikidata.org/wiki/User:Pmartinolli/UdeM). 2019-2022.
+    -   [*Predatory publishing and Wikidata*](https://www.wikidata.org/wiki/User:Pmartinolli/Predatory_publishing_and_Wikidata). 2022
+    -   [Ontologies et valorisation du théâtre québécois sur Wikidata (avec le CQT)](https://www.wikidata.org/wiki/User:Pmartinolli/CQT). 2022
 -   **2010..**
     -   Judge Bao card game. 2012-..
     -   *C'est cuit*, avec Roland D. 2015-..
-    -   [*Cultural transmissions in games*](https://web.archive.org/web/20241203022121/https://github.com/pmartinolli/TTGBG)& [WikiProject Board Games](https://web.archive.org/web/20241203022121/https://www.wikidata.org/wiki/Wikidata:WikiProject_Board_Games). 2016-..
-    -   [*Hogwarts 1899: Merry Christmas from Azkaban*](https://web.archive.org/web/20241203022121/https://pascaliensis.itch.io/hogwarts-1899-merry-christmas-from-azkaban). 2016.
-    -   [*Thesaurus-Rex*](https://web.archive.org/web/20241203022121/https://jdr.hypotheses.org/category/thesaurusrex), avec Thomas Munier et Sébastien Delfino. 2018.
-    -   [Ma bibliothèque est vaccinée](https://web.archive.org/web/20241203022121/https://mabibliothequeestvaccinee.blogspot.com/). 2019.
+    -   [*Cultural transmissions in games*](https://github.com/pmartinolli/TTGBG)& [WikiProject Board Games](https://www.wikidata.org/wiki/Wikidata:WikiProject_Board_Games). 2016-..
+    -   [*Hogwarts 1899: Merry Christmas from Azkaban*](https://pascaliensis.itch.io/hogwarts-1899-merry-christmas-from-azkaban). 2016.
+    -   [*Thesaurus-Rex*](https://jdr.hypotheses.org/category/thesaurusrex), avec Thomas Munier et Sébastien Delfino. 2018.
+    -   [Ma bibliothèque est vaccinée](https://mabibliothequeestvaccinee.blogspot.com/). 2019.
 -   **2000..**
-    -   [Numérisation et diffusion de plus de 1000 thèses et mémoires](https://web.archive.org/web/20241203022121/https://papyrus.bib.umontreal.ca/) du Département de sciences économiques et de l'École de relations industrielles de l'Université de Montréal. 2007.
-    -   [Yragael Saga](https://web.archive.org/web/20241203022121/http://yragael.free.fr/) \[[blog](https://web.archive.org/web/20241203022121/http://narcomancien.blogspot.ca/), [itchio](https://web.archive.org/web/20241203022121/https://pascaliensis.itch.io/)\] : fanfiction de fantasy, *French fantasy serial novel*. 2000-..
+    -   [Numérisation et diffusion de plus de 1000 thèses et mémoires](https://papyrus.bib.umontreal.ca/) du Département de sciences économiques et de l'École de relations industrielles de l'Université de Montréal. 2007.
+    -   [Yragael Saga](http://yragael.free.fr/) \[[blog](http://narcomancien.blogspot.ca/), [itchio](https://pascaliensis.itch.io/)\] : fanfiction de fantasy, *French fantasy serial novel*. 2000-..
     -   *Mutation de la distribution et des usages engendrés par la version électronique de publications de presse. L’exemple des Lettres professionnelles des Echos*. Mémoire de DESS (Institut national des techniques de la documentation du Conservatoire national des arts et métiers), sous la direction de Brigitte Guyot. 2001.
-    -   [« Lou pintre »](https://web.archive.org/web/20241203022121/http://loupintre.blogspot.com/) : peinture, *paintings*. 2004-2010.
-    -   [« Mangea lou libretoun »](https://web.archive.org/web/20241203022121/http://libretoun.blogspot.com/) : bandes dessinées courtes sur les bibliothèques, *library comic strips*. 2009-2011.
+    -   [« Lou pintre »](http://loupintre.blogspot.com/) : peinture, *paintings*. 2004-2010.
+    -   [« Mangea lou libretoun »](http://libretoun.blogspot.com/) : bandes dessinées courtes sur les bibliothèques, *library comic strips*. 2009-2011.
     -   *Le Fennec* : bande dessinée avec Christian F. 2010-..
 -   **1990..**
     -   Co-scénariste de *Razorbyk*, réalisé par Nicolas Fogliarini, 1995-1996.
