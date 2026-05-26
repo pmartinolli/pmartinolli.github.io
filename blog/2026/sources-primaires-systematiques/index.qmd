@@ -28,23 +28,23 @@ Selon [Wiggins](https://www.youtube.com/watch?v=5sJZJo2MkPM), voici les étapes 
 
 Un premier calibrage permet d'adapter les sources à la question de recherche :
 
--   Est-ce que le chercheur a explicité le type de sources qu'il souhaite ?
+- Est-ce que le chercheur a explicité le type de sources qu'il souhaite ?
 
--   Est-ce que les contraintes de sélection du corpus sont décrites ?
+- Est-ce que les contraintes de sélection du corpus sont décrites ?
 
--   Quels dépôts, fonds, séries ou collections sont visés ?
+- Quels dépôts, fonds, séries ou collections sont visés ?
 
 ### Méthode d'évaluation critique
 
 Ensuite, les sources repérées au fur et à mesure sont évaluées selon leurs qualités intrinsèques :
 
--   Est-ce que les sources sont complètes ? Comment les sources sont organisées ?
+- Est-ce que les sources sont complètes ? Comment les sources sont organisées ?
 
--   Quels sont les biais des sources ? Quels sont leurs silences ? ^Lee16^
+- Quels sont les biais des sources ? Quels sont leurs silences ? ^Lee16^
 
--   L'échantillon ou le choix de la source est-il représentatif de la question posée ? Comment ? Quelles règles gouvernent l’échantillonnage, la rétention et l’exclusion ? ^Lee16^
+- L'échantillon ou le choix de la source est-il représentatif de la question posée ? Comment ? Quelles règles gouvernent l’échantillonnage, la rétention et l’exclusion ? ^Lee16^
 
--   Existe-t-il d'autres sources ? Pourquoi n'ont-elle pas été incluses ?
+- Existe-t-il d'autres sources ? Pourquoi n'ont-elle pas été incluses ?
 
 ### Systématisation avec les méthodes numériques
 
@@ -60,35 +60,35 @@ Avec la lecture distante, il est possible de caractériser un ensemble documenta
 
 Selon Wiggins, la recherche en archives est une « boîte noire » car les historien.nes partagent peu :
 
--   L'origine de leur recherche (les préliminaires et les préparations);
+- L'origine de leur recherche (les préliminaires et les préparations);
 
--   Leurs stratégies de recherche pour sélectionner des archives à visiter et ensuite les stratégies de recherche utilisées dans ces archives;
+- Leurs stratégies de recherche pour sélectionner des archives à visiter et ensuite les stratégies de recherche utilisées dans ces archives;
 
--   La profondeur de leurs recherches;
+- La profondeur de leurs recherches;
 
--   Les recherches en archives (ou en musées ou autres) qui n'ont rien produites.
+- Les recherches en archives (ou en musées ou autres) qui n'ont rien produites.
 
 Selon Wiggins, même à l'âge numérique, c'est toujours une « boîte noire » :
 
--   Les index d'archives sont rares ou incomplets;
+- Les index d'archives sont rares ou incomplets;
 
--   Les descriptions des collections varient beaucoup;
+- Les descriptions des collections varient beaucoup;
 
--   « L'âge de l'abondance des sources » est mal distribué et c'est difficile de repérer cette mal-distribution.
+- « L'âge de l'abondance des sources » est mal distribué et c'est difficile de repérer cette mal-distribution.
 
 ### En quête de reproductibilité
 
 Selon Wiggins, les historiens ont longtemps ignoré la reproductibilité en science.
 
--   L'histoire se situe entre les humanités et les sciences sociales.
+- L'histoire se situe entre les humanités et les sciences sociales.
 
--   Les historien.nes collaborent rarement (ou du moins ils reconnaissent rarement leurs collaborateurs).
+- Les historien.nes collaborent rarement (ou du moins ils reconnaissent rarement leurs collaborateurs).
 
--   Les historien.nes ont désinvestit les discussions méthodologiques et la formation.
+- Les historien.nes ont désinvestit les discussions méthodologiques et la formation.
 
--   L'histoire est une science des traces, pas d'expériences.
+- L'histoire est une science des traces, pas d'expériences.
 
--   Les historien.nes n'ont pas fait la connexion entre les revues de littérature systématiques des sources secondaires et l'activité principale du domaine : la recherche en archives.
+- Les historien.nes n'ont pas fait la connexion entre les revues de littérature systématiques des sources secondaires et l'activité principale du domaine : la recherche en archives.
 
 ### 
 
