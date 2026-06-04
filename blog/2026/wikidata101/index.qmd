@@ -1,0 +1,82 @@
+---
+title: "Wikidata pour la recherche et l'enseignement"
+format: html
+---
+
+
+{{< video https://www.youtube.com/embed/yhe3wJ46xo4 >}}
+
+Capsule préparée pour la journée de réseautage WikiSavoirs 2026.
+
+## Liens cliquables de la capsule
+
+**Sur les épaules de géants**
+
+Je remercie [Simon Villeneuve](https://www.wikidata.org/wiki/Q78061707) pour m’avoir initié à Wikidata en 2019. 
+
+[_Nain sur les épaules d’un géant_](https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg#/media/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg). Détail d’un manuscrit allemand du XVe, _Library of Congress. [](https://lccn.loc.gov/50041709)_ [https://lccn.loc.gov/50041709](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons
+
+Resource Description Framework : [https://www.wikidata.org/wiki/Wikidata:RDF](https://www.wikidata.org/wiki/Wikidata:RDF)
+
+Visualiser les [procès en sorcellerie en Écosse](https://thinking.is.ed.ac.uk/wikidata-workshop/real-world-datasets-the-survey-of-scottish-witchcraft/)
+
+[Visualiser qui cite qui en histoire des sciences avant le XXe](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html)
+
+Trouver des traductions à partir d'ISBN : [https://www.zenodot.app/](https://www.zenodot.app/)
+
+[Scholia](https://scholia.toolforge.org/)
+
+[Bibliométrie COVID](https://journals.sagepub.com/doi/10.3233/SW-210444) + https://www.wikidata.org/wiki/Wikidata:WikiProject_Zika_Corpus + https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika + https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19
+
+[Enrichir ses données de recherche avec OpenRefine et Wikidata](https://doi.org/10.46430/phfr0038)
+
+[Nom de rue de Paris](https://mappingdiversity.eu/france/paris/)
+
+[Revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/)
+
+[Météo Canada](https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations)
+
+[Les pratiques de citation dans les jeux de rôle sur table](https://pmartinolli.github.io/ttrpg/)
+
+[Contribuer aux pages Wikipedia augmente la confiance du public dans ces organisations](https://www.psypost.org/updating-wikipedia-pages-boosts-public-trust-in-scientific-organizations-study-finds/)
+
+[Anthologia Graeca](https://anthologiagraeca.org/)
+
+[_Linked Ancient Greek and Latin_ (LAGL)](https://catalog.lagl.org/) 
+
+OCLC zone [024](https://www.loc.gov/marc/bibliographic/bd024.html) (code « wikidata » qui figure sur la [liste des sources officielles](https://www.loc.gov/standards/sourcelist/standard-identifier.html))
+
+[Dans PRIMO](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_\(English\)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity)
+
+[Dans OpenAlex](https://developers.openalex.org/api-reference/funders) 
+
+[Exemple Mir@bel](https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion)
+
+[Exemple Léonore](https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356)
+
+[Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:Réseau_Circé)
+
+[Oversight](https://www.wikidata.org/wiki/Wikidata:Oversight)
+
+[Ontologies avec Angryloki](https://angryloki.github.io/wikidata-graph-builder/?property=P279&item=Q1140363&iterations=2&mode=both)
+
+[_Limits_of_Wikidata_](https://www.wikidata.org/wiki/Wikidata:WikiProject_Limits_of_Wikidata)
+
+[Wikidata and the bibliography of life](https://peerj.com/articles/13712/)
+
+[Wikidata as a semantic framework for the gene wiki initiative](https://doi.org/10.1093/database/baw015) + ([_Gene Wiki initiative_](https://fr.wikipedia.org/wiki/Gene_Wiki))
+
+
+[Zotero + Cita -> Wikidata](https://zotero.hypotheses.org/5780)
+
+
+[ _Dump download_](https://www.wikidata.org/wiki/Wikidata:Database_download) (1 fois /semaine)
+
+[Wikibase](https://fr.wikipedia.org/wiki/Wikibase)
+
+Utiliser [Qlever](https://qlever.dev/)
+
+[Ajouter des _sujets principaux_ pour vos chansons favorites ?](https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/)
+---
+
+Remerciements à Émir Chouchane et Guillaume Viart pour la conception du [Studio vidéo](https://studio.bib.umontreal.ca/espaces/studiovideolsh), testé pour l'occasion.

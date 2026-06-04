@@ -11010,5 +11010,63 @@ font-style: inherit;">:Q74574</span>.</span>
   <guid>https://pmartinolli.github.io/blog/2025/baudolino/</guid>
   <pubDate>Sat, 27 Sep 2025 04:00:00 GMT</pubDate>
 </item>
+<item>
+  <title>Wikidata pour la recherche et l’enseignement</title>
+  <link>https://pmartinolli.github.io/blog/2026/wikidata101/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yhe3wJ46xo4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Capsule préparée pour la journée de réseautage WikiSavoirs 2026.</p>
+<section id="liens-cliquables-de-la-capsule" class="level2">
+<h2 class="anchored" data-anchor-id="liens-cliquables-de-la-capsule">Liens cliquables de la capsule</h2>
+<p><strong>Sur les épaules de géants</strong></p>
+<p>Je remercie <a href="https://www.wikidata.org/wiki/Q78061707">Simon Villeneuve</a> pour m’avoir initié à Wikidata en 2019.</p>
+<p><a href="https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg#/media/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg"><em>Nain sur les épaules d’un géant</em></a>. Détail d’un manuscrit allemand du XVe,&nbsp;<em>Library of Congress.&nbsp;<a href="https://lccn.loc.gov/50041709"></a></em>&nbsp;<a href="https://lccn.loc.gov/50041709">https://lccn.loc.gov/50041709</a>, Public domain, via Wikimedia Commons</p>
+<p>Resource Description Framework : <a href="https://www.wikidata.org/wiki/Wikidata:RDF">https://www.wikidata.org/wiki/Wikidata:RDF</a></p>
+<p>Visualiser les <a href="https://thinking.is.ed.ac.uk/wikidata-workshop/real-world-datasets-the-survey-of-scottish-witchcraft/">procès en sorcellerie en Écosse</a></p>
+<p><a href="https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html">Visualiser qui cite qui en histoire des sciences avant le XXe</a></p>
+<p>Trouver des traductions à partir d’ISBN : <a href="https://www.zenodot.app/">https://www.zenodot.app/</a></p>
+<p><a href="https://scholia.toolforge.org/">Scholia</a></p>
+<p><a href="https://journals.sagepub.com/doi/10.3233/SW-210444">Bibliométrie COVID</a> + https://www.wikidata.org/wiki/Wikidata:WikiProject_Zika_Corpus + https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika + https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19</p>
+<p><a href="https://doi.org/10.46430/phfr0038">Enrichir ses données de recherche avec OpenRefine et Wikidata</a></p>
+<p><a href="https://mappingdiversity.eu/france/paris/">Nom de rue de Paris</a></p>
+<p><a href="https://pmartinolli.github.io/code/revuesdhistoire/">Revues d’histoire</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations">Météo Canada</a></p>
+<p><a href="https://pmartinolli.github.io/ttrpg/">Les pratiques de citation dans les jeux de rôle sur table</a></p>
+<p><a href="https://www.psypost.org/updating-wikipedia-pages-boosts-public-trust-in-scientific-organizations-study-finds/">Contribuer aux pages Wikipedia augmente la confiance du public dans ces organisations</a></p>
+<p><a href="https://anthologiagraeca.org/">Anthologia Graeca</a></p>
+<p><a href="https://catalog.lagl.org/"><em>Linked Ancient Greek and Latin</em>&nbsp;(LAGL)</a>&nbsp;</p>
+<p>OCLC zone&nbsp;<a href="https://www.loc.gov/marc/bibliographic/bd024.html">024</a> (code «&nbsp;wikidata&nbsp;» qui figure sur la&nbsp;<a href="https://www.loc.gov/standards/sourcelist/standard-identifier.html">liste des sources officielles</a>)</p>
+<p><a href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity">Dans PRIMO</a></p>
+<p><a href="https://developers.openalex.org/api-reference/funders">Dans OpenAlex</a></p>
+<p><a href="https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion">Exemple Mir@bel</a></p>
+<p><a href="https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356">Exemple Léonore</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:Réseau_Circé">Réseau CIRCÉ</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:Oversight">Oversight</a></p>
+<p><a href="https://angryloki.github.io/wikidata-graph-builder/?property=P279&amp;item=Q1140363&amp;iterations=2&amp;mode=both">Ontologies avec Angryloki</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Limits_of_Wikidata"><em>Limits_of_Wikidata</em></a></p>
+<p><a href="https://peerj.com/articles/13712/">Wikidata and the bibliography of life</a></p>
+<p><a href="https://doi.org/10.1093/database/baw015">Wikidata as a semantic framework for the gene wiki initiative</a> + (<a href="https://fr.wikipedia.org/wiki/Gene_Wiki"><em>Gene Wiki initiative</em></a>)</p>
+<p><a href="https://zotero.hypotheses.org/5780">Zotero + Cita -&gt; Wikidata</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download"><em>Dump download</em></a>&nbsp;(1 fois /semaine)</p>
+<p><a href="https://fr.wikipedia.org/wiki/Wikibase">Wikibase</a></p>
+<p>Utiliser&nbsp;<a href="https://qlever.dev/">Qlever</a></p>
+</section>
+<section id="ajouter-des-sujets-principaux-pour-vos-chansons-favorites" class="level2">
+<h2 class="anchored" data-anchor-id="ajouter-des-sujets-principaux-pour-vos-chansons-favorites"><a href="https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/">Ajouter des&nbsp;<em>sujets principaux</em>&nbsp;pour vos chansons favorites ?</a></h2>
+<p>Remerciements à Émir Chouchane et Guillaume Viart pour la conception du <a href="https://studio.bib.umontreal.ca/espaces/studiovideolsh">Studio vidéo</a>, testé pour l’occasion.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://pmartinolli.github.io/blog/2026/wikidata101/</guid>
+  <pubDate>Thu, 04 Jun 2026 19:28:17 GMT</pubDate>
+</item>
 </channel>
 </rss>

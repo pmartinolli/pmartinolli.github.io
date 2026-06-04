@@ -6,35 +6,27 @@ draft: true
 
 Un collègue en sciences sociales m'a récemment demandé « si dans la recherche de sources primaires en histoire (archives, vieux quotidiens, etc.), les chercheurs s'en remettent à une méthodologie, à des lignes directrices, qui seraient en quelque sorte l'équivalent de la méthodologie employée dans les synthèses de connaissances (ex. [Arksey et O'Malley](https://doi.org/10.1080/1364557032000119616)). »
 
-Réponse courte : « Non, mais... »
+- Réponse courte : « Non, mais... »
 
-Réponse longue ci-dessous...
+- Réponse longue ci-dessous...
 
 ## Pas de méthode canonique unique et établie
 
-À ma connaissance, il n'existe pas en histoire un équivalent unique, canonique et stabilisé des protocoles de synthèse de connaissances comme celui d’Arksey et O’Malley pour l’identification et la sélection des sources primaires^Gri91^. Il y a plutôt une construction *ad hoc* d'un ensemble de méthodes composites, c'est-à-dire de méthodes hétérogènes mais assemblées dans un tout cohérent de manière structurée.
+À ma connaissance, il n'existe pas en histoire un équivalent unique, canonique et stabilisé des protocoles de synthèse de connaissances comme celui d’Arksey et O’Malley pour l’identification et la sélection des sources primaires^Gri91^.
+
+En histoire, la méthode de repérage des sources primaires est plurielle, marquée par les valeurs des études historiques, et seulement partiellement formalisée. Il y a une construction adaptée (*ad hoc*) d'un ensemble de méthodes composites, c'est-à-dire de méthodes hétérogènes mais assemblées dans un tout cohérent de manière structurée.
 
 ## Principaux ingrédients de ces méthodes composites
 
 ### Méthode classique « heuristique »
 
-La méthode classique d'identification et de sélection de sources primaires en histoire est de type [heuristique](https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8353442/methode-heuristique), dans le sens où elle est une investigation progressive, itérative et raisonnée d'une question en suivant des pistes au fur et à mesure. Une sorte de sérendipité contrôlée^Duf02^.
+La méthode classique d'identification et de sélection de sources primaires en histoire est de type [heuristique](https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8353442/methode-heuristique), dans le sens où elle est une investigation progressive, itérative et raisonnée d'une question en suivant des pistes au fur et à mesure et en les critiquant. Une sorte de sérendipité contrôlée^Duf02^.
 
-Selon [Wiggins](https://www.youtube.com/watch?v=5sJZJo2MkPM), voici les étapes principales :
+Selon [Wiggins](https://www.youtube.com/watch?v=5sJZJo2MkPM), voici les étapes principales des étapes d'investigation :
 
 1.  Questionner les chercheurs : direction de recherche, collègues, experts du domaine, bibliothécaires, archivistes.
-2.  Utiliser les bibliothèques
-3.  Consulter les bibliographies et les remerciements.
-
-Un premier calibrage permet d'adapter les sources à la question de recherche :
-
-- Est-ce que le chercheur a explicité le type de sources qu'il souhaite ?
-
-- Est-ce que les contraintes de sélection du corpus sont décrites ?
-
-- Quels dépôts, fonds, séries ou collections sont visés ?
-
-### Méthode d'évaluation critique
+2.  Utiliser les bibliothèques, les archives, les bases de données.
+3.  Consulter les documents : de maniere interne (contenu, références, etc...) et de manière externe ou latérale (contexte, autres documents, etc.).
 
 Ensuite, les sources repérées au fur et à mesure sont évaluées selon leurs qualités intrinsèques :
 
@@ -46,13 +38,27 @@ Ensuite, les sources repérées au fur et à mesure sont évaluées selon leurs 
 
 - Existe-t-il d'autres sources ? Pourquoi n'ont-elle pas été incluses ?
 
-### Systématisation avec les méthodes numériques
+### Méthodes numériques : plus de systématisation
 
 La formalisation est plus forte lorsque les historien.nes exploitent des archives numériques, des journaux numérisés, des instruments de construction de corpus électroniques, etc.
 
-Avec les requêtes documentaires, le texte intégral et les métadonnées, il est possible de documenter plus facilement la reformulation des logiques booléennes, les choix des synonymes, les repérages des entitées nommées, etc.
+D'une part, il est plus facile de documenter les démarches d'investigation numériques. Par exemple :
 
-Avec la lecture distante, il est possible de caractériser un ensemble documentaire selon des tendances.
+- Consigner les équations booléennes,
+
+- Listes les outils interrogés
+
+- Rassembler les synonymes choisis
+
+- Documenter les entités nommées identifiées, etc.
+
+D'autre part, les possibilités de la *lecture distante* (traitement numériques d'un grand volume de données)^Mor00^ demandent naturellement que les méthodes invoquées soient bien expliquées et documentées pour être scientifiquement robustes. Par exemple, avec la *lecture distante*, il est possible de :
+
+- Mieux caractériser un ensemble documentaire selon des tendances. Par exemple : calcul de nombre d'occurences et de co-occurences de mots, identification de motifs, etc.
+
+- Sortir d'un petit *canon* de textes sélectionnés pour traiter un ensemble plus large de documents.
+
+- Plus d'objectivité en s'éloignant de l'objet d'étude (tendances, sentiments, etc.).
 
 ## Problèmes culturels de la recherche historique
 
@@ -68,13 +74,13 @@ Selon Wiggins, la recherche en archives est une « boîte noire » car les histo
 
 - Les recherches en archives (ou en musées ou autres) qui n'ont rien produites.
 
-Selon Wiggins, même à l'âge numérique, c'est toujours une « boîte noire » :
+Toujours selon Wiggins, même à l'âge numérique, c'est toujours une « boîte noire » :
 
 - Les index d'archives sont rares ou incomplets;
 
 - Les descriptions des collections varient beaucoup;
 
-- « L'âge de l'abondance des sources » est mal distribué et c'est difficile de repérer cette mal-distribution.
+- « L'âge de l'abondance des sources » est mal distribué et il est difficile de repérer cette mal-distribution.
 
 ### En quête de reproductibilité
 
@@ -86,7 +92,7 @@ Selon Wiggins, les historiens ont longtemps ignoré la reproductibilité en scie
 
 - Les historien.nes ont désinvestit les discussions méthodologiques et la formation.
 
-- L'histoire est une science des traces, pas d'expériences.
+- L'histoire est une science des traces, pas une méthode expérimentale.
 
 - Les historien.nes n'ont pas fait la connexion entre les revues de littérature systématiques des sources secondaires et l'activité principale du domaine : la recherche en archives.
 
@@ -96,6 +102,8 @@ Selon Wiggins, les historiens ont longtemps ignoré la reproductibilité en scie
 
 Les clés de citations sont inspirées de celles crées par Undermind.ai qui a été testé avec cette recherche documentaire.
 
-Duf02 :
+**Duf02** : Duff, Wendy M. and Catherine A. (2002). "Johnson Accidentally Found on Purpose: Information-Seeking Behavior of Historians in Archives". *The Library Quarterly*, 72 (4), . <https://doi.org/10.1086/lq.72.4.40039793>
 
-Gri91 :
+**Gri91** : Susan Grigg. (1991). "Archival Practice and the Foundations of Historical Method", *Journal of American History*, (78) 1, 228–239, <https://doi.org/10.2307/2078095>
+
+**Mor00** : Moretti, Franco (2000). ["Conjectures on World Literature"](https://newleftreview.org/issues/II1/articles/franco-moretti-conjectures-on-world-literature). *New Left Review*. 1: 55. + Moretti, Franco (2000). ["The Slaughterhouse of Literature"](https://muse.jhu.edu/article/22852). *Modern Language Quarterly*. 61 (1): 207. [doi](https://en.wikipedia.org/wiki/Doi_(identifier) "Doi (identifier)"):[10.1215/00267929-61-1-207](https://doi.org/10.1215%2F00267929-61-1-207)
