@@ -6,18 +6,14 @@ author:
         orcid: "0000-0003-0122-5300"
 date: "2026-06-04"
 categories: [Wikidata, HumanitésNumériques]
-description: "Capsule présentant Wikidata aux participant.es de la 1ère journée WikiSavoirs 2026. Comment ça marche ? Quelques exemples d'utilisation en recherche. Quelques idées pour l'enseignement. Présentation d'enjeux, d'opportunités et de limites."
+description: "Capsule présentant Wikidata aux participant.es de la 1ère journée WikiSavoirs 2026. 1) Comment ça marche ? 2) Quelques exemples d'utilisations en recherche. 3) Quelques idées pour l'enseignement. 5) Présentation d'enjeux, d'opportunités et de limites."
 ---
-
 
 {{< video https://www.youtube.com/embed/yhe3wJ46xo4 >}}
 
+### Liens cliquables de la capsule
 
-## Liens cliquables de la capsule
-
-Sur les épaules de géants : Je remercie [Simon Villeneuve](https://www.wikidata.org/wiki/Q78061707) pour m’avoir initié à Wikidata en 2019. 
-
-[_Nain sur les épaules d’un géant_](https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg#/media/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg). Détail d’un manuscrit allemand du XVe, _Library of Congress. [](https://lccn.loc.gov/50041709)_ [https://lccn.loc.gov/50041709](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons
+Sur les épaules de géants : Je remercie [Simon Villeneuve](#0) pour m’avoir initié à Wikidata en 2019. [*Nain sur les épaules d’un géant*](#0). Détail d’un manuscrit allemand du XVe, [*Library of Congress*](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons.
 
 [Resource Description Framework](https://www.wikidata.org/wiki/Wikidata:RDF)
 
@@ -25,19 +21,19 @@ Visualiser les [procès en sorcellerie en Écosse](https://thinking.is.ed.ac.uk/
 
 Visualiser qui cite qui [en histoire des sciences avant le XXe](https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html)
 
-Trouver des traductions à partir d'ISBN : [https://www.zenodot.app/](https://www.zenodot.app/)
+Trouver des traductions à partir d'ISBN : <https://www.zenodot.app/>
 
 [Scholia](https://scholia.toolforge.org/)
 
-[Bibliométrie COVID](https://journals.sagepub.com/doi/10.3233/SW-210444) + https://www.wikidata.org/wiki/Wikidata:WikiProject_Zika_Corpus + https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika + https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19
+[Bibliométrie COVID](https://journals.sagepub.com/doi/10.3233/SW-210444) ([project](https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19))+ [Project Zika](https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika)
 
-[Enrichir ses données de recherche avec OpenRefine et Wikidata](https://doi.org/10.46430/phfr0038)
+Leçon *Programming historian* en français [Enrichir ses données de recherche avec OpenRefine et Wikidata](https://doi.org/10.46430/phfr0038)
 
 [Noms des rues de Paris](https://mappingdiversity.eu/france/paris/)
 
-[Revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/)
+[Revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) avec les données liées ouvertes
 
-[Météo Canada](https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations)
+Projet [Météo Canada](https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations)
 
 [Les pratiques de citation dans les jeux de rôle sur table](https://pmartinolli.github.io/ttrpg/)
 
@@ -45,15 +41,15 @@ Trouver des traductions à partir d'ISBN : [https://www.zenodot.app/](https://ww
 
 [Anthologia Graeca](https://anthologiagraeca.org/)
 
-[_Linked Ancient Greek and Latin_ (LAGL)](https://catalog.lagl.org/) 
+[*Linked Ancient Greek and Latin* (LAGL)](https://catalog.lagl.org/) 
 
 OCLC zone [024](https://www.loc.gov/marc/bibliographic/bd024.html) (code « Wikidata » qui figure sur la [liste des sources officielles](https://www.loc.gov/standards/sourcelist/standard-identifier.html))
 
-[Dans PRIMO](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_\(English\)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity)
+[Dans PRIMO](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity)
 
-[Dans OpenAlex](https://developers.openalex.org/api-reference/funders) 
+[Dans OpenAlex](https://developers.openalex.org/api-reference/funders)
 
-[Exemple Mir@bel](https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion)
+[Exemple Mir\@bel](https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion)
 
 [Exemple Léonore](https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356)
 
@@ -63,25 +59,28 @@ Wikidata [Oversight](https://www.wikidata.org/wiki/Wikidata:Oversight) pour masq
 
 [Ontologies avec Angryloki](https://angryloki.github.io/wikidata-graph-builder/?property=P279&item=Q1140363&iterations=2&mode=both)
 
-[_Limits_of_Wikidata_](https://www.wikidata.org/wiki/Wikidata:WikiProject_Limits_of_Wikidata)
+[*Limits_of_Wikidata*](https://www.wikidata.org/wiki/Wikidata:WikiProject_Limits_of_Wikidata)
 
 [Wikidata and the bibliography of life](https://peerj.com/articles/13712/)
 
-[Wikidata as a semantic framework for the gene wiki initiative](https://doi.org/10.1093/database/baw015) + ([_Gene Wiki initiative_](https://fr.wikipedia.org/wiki/Gene_Wiki))
+[Wikidata as a semantic framework for the gene wiki initiative](https://doi.org/10.1093/database/baw015) + ([*Gene Wiki initiative*](https://fr.wikipedia.org/wiki/Gene_Wiki))
 
-[Zotero + Cita -> Wikidata](https://zotero.hypotheses.org/5780)
+[Zotero + Cita -\> Wikidata](https://zotero.hypotheses.org/5780)
 
-[_Dump download_](https://www.wikidata.org/wiki/Wikidata:Database_download) (1 fois /semaine)
+[*Dump download*](https://www.wikidata.org/wiki/Wikidata:Database_download) (1 fois /semaine)
 
 [Wikibase](https://fr.wikipedia.org/wiki/Wikibase)
 
 [Qlever](https://qlever.dev/)
 
-[Ajouter des  sujets principaux  pour vos chansons favorites ?](https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/)
+[Ajouter des Sujets principaux pour vos chansons favorites ?](https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/)
 
+------------------------------------------------------------------------
 
----
+La capsule est une prolongation d'un [article écrit pour l'ACFAS](https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs) en 2020.
 
-Journée de formation et de réseautage sur les usages de Wikidata en bibliothèque. Initiative du Réseau WikiSavoirs et du Partenariat des bibliothèques universitaires du Québec (PBUQ).
+Je remercie mes collègues UdeM et du PBUQ, du Réseau CIRCÉ, de l'ACFAS et de Wikimédia Canada ainsi que les chercheuses et les chercheurs du Dép. d'histoire et du CRIHN pour nos discussions passionnées sur le sujet.
 
-Remerciements à Émir Chouchane et Guillaume Viart pour la conception du [Studio vidéo](https://studio.bib.umontreal.ca/espaces/studiovideolsh), testé pour l'occasion.
+La 1ère journée WikiSavoirs 2026 est une journée de formation et de réseautage sur les usages de Wikidata en bibliothèque. C'est une initiative du Réseau WikiSavoirs et du Partenariat des bibliothèques universitaires du Québec (PBUQ).
+
+Remerciements à Émir Chouchane et Guillaume Viart pour la conception du [Studio vidéo](https://studio.bib.umontreal.ca/espaces/studiovideolsh), testé à l'occasion de cette captation audiovisuelle.

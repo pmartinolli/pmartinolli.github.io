@@ -23,20 +23,19 @@
 
 
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yhe3wJ46xo4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<section id="liens-cliquables-de-la-capsule" class="level2">
-<h2 class="anchored" data-anchor-id="liens-cliquables-de-la-capsule">Liens cliquables de la capsule</h2>
-<p>Sur les épaules de géants : Je remercie <a href="https://www.wikidata.org/wiki/Q78061707">Simon Villeneuve</a> pour m’avoir initié à Wikidata en 2019.</p>
-<p><a href="https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg#/media/File:Library_of_Congress,_Rosenwald_4,_Bl._5r.jpg"><em>Nain sur les épaules d’un géant</em></a>. Détail d’un manuscrit allemand du XVe,&nbsp;<em>Library of Congress.&nbsp;<a href="https://lccn.loc.gov/50041709"></a></em>&nbsp;<a href="https://lccn.loc.gov/50041709">https://lccn.loc.gov/50041709</a>, Public domain, via Wikimedia Commons</p>
+<section id="liens-cliquables-de-la-capsule" class="level3">
+<h3 class="anchored" data-anchor-id="liens-cliquables-de-la-capsule">Liens cliquables de la capsule</h3>
+<p>Sur les épaules de géants : Je remercie Simon Villeneuve pour m’avoir initié à Wikidata en 2019. <em>Nain sur les épaules d’un géant</em>. Détail d’un manuscrit allemand du XVe, <a href="https://lccn.loc.gov/50041709"><em>Library of Congress</em></a>, Public domain, via Wikimedia Commons.</p>
 <p><a href="https://www.wikidata.org/wiki/Wikidata:RDF">Resource Description Framework</a></p>
 <p>Visualiser les <a href="https://thinking.is.ed.ac.uk/wikidata-workshop/real-world-datasets-the-survey-of-scottish-witchcraft/">procès en sorcellerie en Écosse</a></p>
 <p>Visualiser qui cite qui <a href="https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html">en histoire des sciences avant le XXe</a></p>
-<p>Trouver des traductions à partir d’ISBN : <a href="https://www.zenodot.app/">https://www.zenodot.app/</a></p>
+<p>Trouver des traductions à partir d’ISBN : <a href="https://www.zenodot.app/" class="uri">https://www.zenodot.app/</a></p>
 <p><a href="https://scholia.toolforge.org/">Scholia</a></p>
-<p><a href="https://journals.sagepub.com/doi/10.3233/SW-210444">Bibliométrie COVID</a> + https://www.wikidata.org/wiki/Wikidata:WikiProject_Zika_Corpus + https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika + https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19</p>
-<p><a href="https://doi.org/10.46430/phfr0038">Enrichir ses données de recherche avec OpenRefine et Wikidata</a></p>
+<p><a href="https://journals.sagepub.com/doi/10.3233/SW-210444">Bibliométrie COVID</a> (<a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19">project</a>)+ <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika">Project Zika</a></p>
+<p>Leçon <em>Programming historian</em> en français <a href="https://doi.org/10.46430/phfr0038">Enrichir ses données de recherche avec OpenRefine et Wikidata</a></p>
 <p><a href="https://mappingdiversity.eu/france/paris/">Noms des rues de Paris</a></p>
-<p><a href="https://pmartinolli.github.io/code/revuesdhistoire/">Revues d’histoire</a></p>
-<p><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations">Météo Canada</a></p>
+<p><a href="https://pmartinolli.github.io/code/revuesdhistoire/">Revues d’histoire</a> avec les données liées ouvertes</p>
+<p>Projet <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations">Météo Canada</a></p>
 <p><a href="https://pmartinolli.github.io/ttrpg/">Les pratiques de citation dans les jeux de rôle sur table</a></p>
 <p><a href="https://www.psypost.org/updating-wikipedia-pages-boosts-public-trust-in-scientific-organizations-study-finds/">Contribuer aux pages Wikipedia augmente la confiance du public dans ces organisations</a></p>
 <p><a href="https://anthologiagraeca.org/">Anthologia Graeca</a></p>
@@ -56,10 +55,12 @@
 <p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download"><em>Dump download</em></a> (1 fois /semaine)</p>
 <p><a href="https://fr.wikipedia.org/wiki/Wikibase">Wikibase</a></p>
 <p><a href="https://qlever.dev/">Qlever</a></p>
-<p><a href="https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/">Ajouter des sujets principaux pour vos chansons favorites ?</a></p>
+<p><a href="https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/">Ajouter des Sujets principaux pour vos chansons favorites ?</a></p>
 <hr>
-<p>Journée de formation et de réseautage sur les usages de Wikidata en bibliothèque. Initiative du Réseau WikiSavoirs et du Partenariat des bibliothèques universitaires du Québec (PBUQ).</p>
-<p>Remerciements à Émir Chouchane et Guillaume Viart pour la conception du <a href="https://studio.bib.umontreal.ca/espaces/studiovideolsh">Studio vidéo</a>, testé pour l’occasion.</p>
+<p>La capsule est une prolongation d’un <a href="https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs">article écrit pour l’ACFAS</a> en 2020.</p>
+<p>Je remercie mes collègues UdeM et du PBUQ, du Réseau CIRCÉ, de l’ACFAS et de Wikimédia Canada ainsi que les chercheuses et les chercheurs du Dép. d’histoire et du CRIHN pour nos discussions passionnées sur le sujet.</p>
+<p>La 1ère journée WikiSavoirs 2026 est une journée de formation et de réseautage sur les usages de Wikidata en bibliothèque. C’est une initiative du Réseau WikiSavoirs et du Partenariat des bibliothèques universitaires du Québec (PBUQ).</p>
+<p>Remerciements à Émir Chouchane et Guillaume Viart pour la conception du <a href="https://studio.bib.umontreal.ca/espaces/studiovideolsh">Studio vidéo</a>, testé à l’occasion de cette captation audiovisuelle.</p>
 
 
 </section>
