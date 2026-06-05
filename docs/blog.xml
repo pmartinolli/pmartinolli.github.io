@@ -26,25 +26,21 @@
 <section id="liens-cliquables-de-la-capsule" class="level3">
 <h3 class="anchored" data-anchor-id="liens-cliquables-de-la-capsule">Liens cliquables de la capsule</h3>
 <p>Je remercie Simon Villeneuve pour m’avoir initié à Wikidata en 2019. <em>Nain sur les épaules d’un géant</em>. Détail d’un manuscrit allemand du XVe, <a href="https://lccn.loc.gov/50041709"><em>Library of Congress</em></a>, Public domain, via Wikimedia Commons.</p>
-<p><a href="https://www.wikidata.org/wiki/Wikidata:RDF">Resource Description Framework</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:RDF">Resource Description Framework</a> : structure des triplets de données</p>
 <p>Visualiser les <a href="https://thinking.is.ed.ac.uk/wikidata-workshop/real-world-datasets-the-survey-of-scottish-witchcraft/">procès en sorcellerie en Écosse</a></p>
 <p>Visualiser qui cite qui <a href="https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html">en histoire des sciences avant le XXe</a></p>
 <p>Trouver des traductions à partir d’ISBN : <a href="https://www.zenodot.app/" class="uri">https://www.zenodot.app/</a></p>
-<p><a href="https://scholia.toolforge.org/">Scholia</a></p>
+<p><a href="https://scholia.toolforge.org/">Scholia</a> pour visualiser des métriques en science</p>
 <p><a href="https://journals.sagepub.com/doi/10.3233/SW-210444">Bibliométrie COVID</a> (<a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19">project</a>)+ <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika">Project Zika</a></p>
 <p>Leçon <em>Programming historian</em> en français <a href="https://doi.org/10.46430/phfr0038">Enrichir ses données de recherche avec OpenRefine et Wikidata</a></p>
-<p><a href="https://mappingdiversity.eu/france/paris/">Noms des rues de Paris</a></p>
+<p><a href="https://mappingdiversity.eu/france/paris/">Noms des rues de Paris</a> traitées avec Wikidata</p>
 <p><a href="https://pmartinolli.github.io/code/revuesdhistoire/">Revues d’histoire</a> avec les données liées ouvertes</p>
 <p>Projet <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Weather_observations">Météo Canada</a></p>
 <p><a href="https://pmartinolli.github.io/ttrpg/">Les pratiques de citation dans les jeux de rôle sur table</a></p>
 <p><a href="https://www.psypost.org/updating-wikipedia-pages-boosts-public-trust-in-scientific-organizations-study-finds/">Contribuer aux pages Wikipedia augmente la confiance du public dans ces organisations</a></p>
-<p><a href="https://anthologiagraeca.org/">Anthologia Graeca</a></p>
-<p><a href="https://catalog.lagl.org/"><em>Linked Ancient Greek and Latin</em>&nbsp;(LAGL)</a>&nbsp;</p>
-<p>OCLC zone&nbsp;<a href="https://www.loc.gov/marc/bibliographic/bd024.html">024</a> (code «&nbsp;Wikidata&nbsp;» qui figure sur la&nbsp;<a href="https://www.loc.gov/standards/sourcelist/standard-identifier.html">liste des sources officielles</a>)</p>
-<p><a href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity">Dans PRIMO</a></p>
-<p><a href="https://developers.openalex.org/api-reference/funders">Dans OpenAlex</a></p>
-<p><a href="https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion">Exemple Mir@bel</a></p>
-<p><a href="https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356">Exemple Léonore</a></p>
+<p><a href="https://anthologiagraeca.org/">Anthologia Graeca</a> enrichissant les données. Aussi <a href="https://catalog.lagl.org/"><em>Linked Ancient Greek and Latin</em>&nbsp;(LAGL)</a>&nbsp;</p>
+<p>OCLC zone&nbsp;<a href="https://www.loc.gov/marc/bibliographic/bd024.html">024</a> inexploitée (code «&nbsp;Wikidata&nbsp;» qui figure sur la&nbsp;<a href="https://www.loc.gov/standards/sourcelist/standard-identifier.html">liste des sources officielles</a>)</p>
+<p>Données liées « améliorées » dans <a href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity">PRIMO</a>, dans <a href="https://developers.openalex.org/api-reference/funders">OpenAlex</a>, dans <a href="https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion">Mir@bel</a>, dans <a href="https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356">Léonore</a></p>
 <p><a href="https://www.wikidata.org/wiki/Wikidata:Réseau_Circé">Réseau CIRCÉ</a></p>
 <p>Wikidata <a href="https://www.wikidata.org/wiki/Wikidata:Oversight">Oversight</a> pour masquer les propriétés problématiques</p>
 <p><a href="https://angryloki.github.io/wikidata-graph-builder/?property=P279&amp;item=Q1140363&amp;iterations=2&amp;mode=both">Ontologies avec Angryloki</a></p>
@@ -52,12 +48,11 @@
 <p><a href="https://peerj.com/articles/13712/">Wikidata and the bibliography of life</a></p>
 <p><a href="https://doi.org/10.1093/database/baw015">Wikidata as a semantic framework for the gene wiki initiative</a> + (<a href="https://fr.wikipedia.org/wiki/Gene_Wiki"><em>Gene Wiki initiative</em></a>)</p>
 <p><a href="https://zotero.hypotheses.org/5780">Zotero + Cita -&gt; Wikidata</a></p>
-<p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download"><em>Dump download</em></a> (1 fois /semaine)</p>
-<p><a href="https://fr.wikipedia.org/wiki/Wikibase">Wikibase</a></p>
-<p><a href="https://qlever.dev/">Qlever</a></p>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download"><em>Dump download</em></a> (1 fois /semaine) et <a href="https://fr.wikipedia.org/wiki/Wikibase">Wikibase</a></p>
+<p><a href="https://qlever.dev/">Qlever</a> pour lancer des requêtes plus dodues</p>
 <p><a href="https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/">Ajouter des Sujets principaux pour vos chansons favorites ?</a></p>
 <hr>
-<p>La capsule est une prolongation d’un <a href="https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs">article écrit pour l’ACFAS</a> en 2020.</p>
+<p>La capsule est une prolongation d’un <a href="https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs">article écrit pour l’ACFAS</a> en 2020 et de plusieurs <a href="http://hdl.handle.net/1866/24926">présentations</a>.</p>
 <p>Je remercie mes collègues UdeM et du PBUQ, du Réseau CIRCÉ, de l’ACFAS et de Wikimédia Canada ainsi que les chercheuses et les chercheurs du Dép. d’histoire et du CRIHN pour nos discussions passionnées sur le sujet.</p>
 <p>La 1ère journée WikiSavoirs 2026 est une journée de formation et de réseautage sur les usages de Wikidata en bibliothèque. C’est une initiative du Réseau WikiSavoirs et du Partenariat des bibliothèques universitaires du Québec (PBUQ).</p>
 <p>Remerciements à Émir Chouchane et Guillaume Viart pour la conception du <a href="https://studio.bib.umontreal.ca/espaces/studiovideolsh">Studio vidéo</a>, testé à l’occasion de cette captation audiovisuelle.</p>

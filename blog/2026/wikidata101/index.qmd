@@ -15,7 +15,7 @@ description: "Capsule « 101 » présentant Wikidata aux participant.es de la 1�
 
 Je remercie [Simon Villeneuve](#0) pour m’avoir initié à Wikidata en 2019. [*Nain sur les épaules d’un géant*](#0). Détail d’un manuscrit allemand du XVe, [*Library of Congress*](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons.
 
-[Resource Description Framework](https://www.wikidata.org/wiki/Wikidata:RDF)
+[Resource Description Framework](https://www.wikidata.org/wiki/Wikidata:RDF) : structure des triplets de données
 
 Visualiser les [procès en sorcellerie en Écosse](https://thinking.is.ed.ac.uk/wikidata-workshop/real-world-datasets-the-survey-of-scottish-witchcraft/)
 
@@ -23,13 +23,13 @@ Visualiser qui cite qui [en histoire des sciences avant le XXe](https://pmartino
 
 Trouver des traductions à partir d'ISBN : <https://www.zenodot.app/>
 
-[Scholia](https://scholia.toolforge.org/)
+[Scholia](https://scholia.toolforge.org/) pour visualiser des métriques en science
 
 [Bibliométrie COVID](https://journals.sagepub.com/doi/10.3233/SW-210444) ([project](https://www.wikidata.org/wiki/Wikidata:WikiProject_COVID-19))+ [Project Zika](https://www.wikidata.org/wiki/Wikidata:WikiProject_Medicine/Zika)
 
 Leçon *Programming historian* en français [Enrichir ses données de recherche avec OpenRefine et Wikidata](https://doi.org/10.46430/phfr0038)
 
-[Noms des rues de Paris](https://mappingdiversity.eu/france/paris/)
+[Noms des rues de Paris](https://mappingdiversity.eu/france/paris/) traitées avec Wikidata
 
 [Revues d'histoire](https://pmartinolli.github.io/code/revuesdhistoire/) avec les données liées ouvertes
 
@@ -39,19 +39,11 @@ Projet [Météo Canada](https://www.wikidata.org/wiki/Wikidata:WikiProject_Weath
 
 [Contribuer aux pages Wikipedia augmente la confiance du public dans ces organisations](https://www.psypost.org/updating-wikipedia-pages-boosts-public-trust-in-scientific-organizations-study-finds/)
 
-[Anthologia Graeca](https://anthologiagraeca.org/)
+[Anthologia Graeca](https://anthologiagraeca.org/) enrichissant les données. Aussi [*Linked Ancient Greek and Latin* (LAGL)](https://catalog.lagl.org/) 
 
-[*Linked Ancient Greek and Latin* (LAGL)](https://catalog.lagl.org/) 
+OCLC zone [024](https://www.loc.gov/marc/bibliographic/bd024.html) inexploitée (code « Wikidata » qui figure sur la [liste des sources officielles](https://www.loc.gov/standards/sourcelist/standard-identifier.html))
 
-OCLC zone [024](https://www.loc.gov/marc/bibliographic/bd024.html) (code « Wikidata » qui figure sur la [liste des sources officielles](https://www.loc.gov/standards/sourcelist/standard-identifier.html))
-
-[Dans PRIMO](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity)
-
-[Dans OpenAlex](https://developers.openalex.org/api-reference/funders)
-
-[Exemple Mir\@bel](https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion)
-
-[Exemple Léonore](https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356)
+Données liées « améliorées » dans [PRIMO](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/150End_User_Help/Searching_Linked_Open_Data_-_Person_Entity), dans [OpenAlex](https://developers.openalex.org/api-reference/funders), dans [Mir\@bel](https://reseau-mirabel.info/revue/2292/Societe-droit-et-religion), dans [Léonore](https://www.leonore.archives-nationales.culture.gouv.fr/ui/notice/370356)
 
 [Réseau CIRCÉ](https://www.wikidata.org/wiki/Wikidata:Réseau_Circé)
 
@@ -67,17 +59,15 @@ Wikidata [Oversight](https://www.wikidata.org/wiki/Wikidata:Oversight) pour masq
 
 [Zotero + Cita -\> Wikidata](https://zotero.hypotheses.org/5780)
 
-[*Dump download*](https://www.wikidata.org/wiki/Wikidata:Database_download) (1 fois /semaine)
+[*Dump download*](https://www.wikidata.org/wiki/Wikidata:Database_download) (1 fois /semaine) et [Wikibase](https://fr.wikipedia.org/wiki/Wikibase)
 
-[Wikibase](https://fr.wikipedia.org/wiki/Wikibase)
-
-[Qlever](https://qlever.dev/)
+[Qlever](https://qlever.dev/) pour lancer des requêtes plus dodues
 
 [Ajouter des Sujets principaux pour vos chansons favorites ?](https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/)
 
 ------------------------------------------------------------------------
 
-La capsule est une prolongation d'un [article écrit pour l'ACFAS](https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs) en 2020.
+La capsule est une prolongation d'un [article écrit pour l'ACFAS](https://www.acfas.ca/publications/magazine/2020/06/wikidata-outil-vous-chercheurs) en 2020 et de plusieurs [présentations](http://hdl.handle.net/1866/24926).
 
 Je remercie mes collègues UdeM et du PBUQ, du Réseau CIRCÉ, de l'ACFAS et de Wikimédia Canada ainsi que les chercheuses et les chercheurs du Dép. d'histoire et du CRIHN pour nos discussions passionnées sur le sujet.
 
