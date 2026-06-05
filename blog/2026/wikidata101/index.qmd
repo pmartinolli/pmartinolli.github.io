@@ -6,14 +6,14 @@ author:
         orcid: "0000-0003-0122-5300"
 date: "2026-06-04"
 categories: [Wikidata, HumanitésNumériques]
-description: "Capsule présentant Wikidata aux participant.es de la 1ère journée WikiSavoirs 2026. 1) Comment ça marche ? 2) Quelques exemples d'utilisations en recherche. 3) Quelques idées pour l'enseignement. 5) Présentation d'enjeux, d'opportunités et de limites."
+description: "Capsule « 101 » présentant Wikidata aux participant.es de la 1ère journée WikiSavoirs 2026 : principes et fonctionnement; quelques exemples d'utilisations en recherche et en enseignement; Enjeux, opportunités et limites."
 ---
 
 {{< video https://www.youtube.com/embed/yhe3wJ46xo4 >}}
 
 ### Liens cliquables de la capsule
 
-Sur les épaules de géants : Je remercie [Simon Villeneuve](#0) pour m’avoir initié à Wikidata en 2019. [*Nain sur les épaules d’un géant*](#0). Détail d’un manuscrit allemand du XVe, [*Library of Congress*](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons.
+Je remercie [Simon Villeneuve](#0) pour m’avoir initié à Wikidata en 2019. [*Nain sur les épaules d’un géant*](#0). Détail d’un manuscrit allemand du XVe, [*Library of Congress*](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons.
 
 [Resource Description Framework](https://www.wikidata.org/wiki/Wikidata:RDF)
 
