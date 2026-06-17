@@ -11,7 +11,11 @@ description: "Capsule « 101 » présentant Wikidata aux participant.es de la 1�
 
 {{< video https://www.youtube.com/embed/yhe3wJ46xo4 >}}
 
-### Liens cliquables de la capsule
+#### Document de présentation lors la journée WikiSavoirs 2026
+
+[Wikidata : un outil pour la découvrabilité des revues du Réseau CIRCÉ ?](wikidata-wikisavoirs20026pmartinolli.pdf)
+
+#### Liens cliquables de la capsule
 
 Je remercie [Simon Villeneuve](#0) pour m’avoir initié à Wikidata en 2019. [*Nain sur les épaules d’un géant*](#0). Détail d’un manuscrit allemand du XVe, [*Library of Congress*](https://lccn.loc.gov/50041709), Public domain, via Wikimedia Commons.
 
