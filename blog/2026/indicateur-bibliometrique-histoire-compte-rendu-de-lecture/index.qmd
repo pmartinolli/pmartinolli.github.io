@@ -37,41 +37,42 @@ Je pense que passer à côté de cette dimension est dommageable pour la valoris
 
 Établir une liste de bases de données et de plateformes à interroger pour chercher des comptes-rendus de lecture. Cette liste devrait contenir au moins :
 
--   Ces bases de données généralistes :
-    -   [*Google Scholar*](https://scholar.google.com/)
-    -   [*OpenAlex*](https://openalex.org/)
-    -   [*JSTOR*](https://www.jstor.org/)
--   Et toutes les bases de données bibliographiques disciplinaires :
-    -   *Historical Abstracts*
-    -   *America : History & Life*
-    -   etc.
+- Ces bases de données généralistes :
+  - [*Google Scholar*](https://scholar.google.com/)
+  - [*OpenAlex*](https://openalex.org/)
+  - [*JSTOR*](https://www.jstor.org/)
+  - [*Dimensions*](https://app.dimensions.ai/discover/publication)
+- Et toutes les bases de données bibliographiques disciplinaires :
+  - *Historical Abstracts*
+  - *America : History & Life*
+  - etc.
 
 Pour aller plus loin et faire un travail avancé de recherche bibliographique, on pourrait aussi chercher dans :
 
--   D'autres bases de données ou plateformes :
-    -   dans d'autres disciplines
-    -   *Web of Science*
-    -   [*Isidore*](https://isidore.science/) *(contient [OpenEdition](https://www.openedition.org/))*
-    -   tout *ProQuest*
-    -   tout *EBSCO*
-    -   tout [*Érudit*](https://www.erudit.org/)
-    -   tout [CAIRN](https://shs.cairn.info/)
-    -   tout [Persée](https://www.persee.fr/),
-    -   etc.
--   Des périodiques spécialisés dans les comptes-rendus de lecture :
-    -   [Choice Reviews](https://www.choicereviews.org/)
-    -   [APA PsycCritiques](https://www.apa.org/pubs/databases/psyccritiques)
-    -   [New York Book Review](https://www.nybooks.com/)
-    -   [London Review of Books](https://www.lrb.co.uk/)
-    -   [The Times Literary Supplement](https://www.the-tls.com/)
-    -   [Los Angeles Review of Books](https://lareviewofbooks.org/)
-    -   etc.
--   Des comptes-rendus de livres dans des périodiques généralistes :
-    -   [Harpers](https://harpers.org/)
-    -   [The Atlantic](https://www.theatlantic.com/)
-    -   [The New Yorker](https://www.newyorker.com/)
-    -   [Le Monde des livres](https://www.lemonde.fr/livres/)
-    -   etc.
+- D'autres bases de données ou plateformes :
+  - dans d'autres disciplines
+  - *Web of Science*
+  - [Isidore](https://isidore.science/) *(*contient *[OpenEdition](https://www.openedition.org/))*
+  - tout *ProQuest*
+  - tout *EBSCO*
+  - tout [Érudit](https://www.erudit.org/)
+  - tout [CAIRN](https://shs.cairn.info/)
+  - tout [Persée](https://www.persee.fr/),
+  - etc.
+- Des périodiques spécialisés dans les comptes-rendus de lecture :
+  - [*Choice Reviews*](https://www.choicereviews.org/)
+  - [*APA PsycCritiques*](https://www.apa.org/pubs/databases/psyccritiques)
+  - [*New York Book Review*](https://www.nybooks.com/)
+  - [*London Review of Books*](https://www.lrb.co.uk/)
+  - [*The Times Literary Supplement*](https://www.the-tls.com/)
+  - [*Los Angeles Review of Books*](https://lareviewofbooks.org/)
+  - etc.
+- Des comptes-rendus de livres dans des périodiques généralistes :
+  - [*Harpers*](https://harpers.org/)
+  - [*The Atlantic*](https://www.theatlantic.com/)
+  - [*The New Yorker*](https://www.newyorker.com/)
+  - [Le Monde des livres](https://www.lemonde.fr/livres/)
+  - etc.
 
 Pour chaque outil choisi, chercher uniquement dans le champ `Titre/Title` avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié.
 
@@ -83,8 +84,8 @@ Collecter toutes les références aux comptes-rendus dans Zotero. Pour cela :
 2.  Créer une sous-collection pour chaque outil interrogé, nommé avec le nom de l'outil.
 3.  Verser les comptes-rendus dans les collections correspondantes.
 4.  Quand la récolte est terminée, dédoublonner les comptes-rendus avec le plugin [Zoplicate](https://github.com/ChenglongMa/zoplicate) (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
-    -   Fusionner les doublons avec Zoplicate/Doublons.
-    -   Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Année, puis par Créateur, puis par Publication. Clic-droit \> Fusionner les documents.
+    - Fusionner les doublons avec Zoplicate/Doublons.
+    - Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Année, puis par Créateur, puis par Publication. Clic-droit \> Fusionner les documents.
 
 ## Présenter les données
 
@@ -95,7 +96,7 @@ Une manière simple de présenter les résultats de l'investigation bibliométri
 > Selon des recherches dans les deux principales bases de données en histoire (*America : History & Life* et *Historical Abstracts*) et avec des outils généralistes comme *OpenAlex*, *Google Scholar* et *JSTOR*, **vos livres ont été commentés dans au moins 28 comptes-rendus de lecture publiés dans des revues révisées par les pairs** et 5 comptes-rendus dans des journaux ou magazines influents. Les comptes-rendus sont un type de publication important pour la conversation scientifique en histoire. Ces comptes-rendus proviennent de revues importantes en histoire. Le *Journal Impact Factor* (JIF), indiqué dans le tableau ci-dessous, ne dit rien de la qualité des comptes-rendus car c'est un indicateur d'impact générique de la revue.
 >
 > |  |  |  |
-> |----------------------------------|------------------|-------------------|
+> |---------------------------------|-------------------|--------------------|
 > | *Revue* | *JIF* | *Nb de comptes-rendus* |
 > | **American Historical Review** | **1.2** | **2** |
 > | **British Journal for the History of Science** | **1.2** | **1** |
@@ -111,7 +112,7 @@ On peut également souligner la diversité des revues dans lesquelles les compte
 
 ## Astuces
 
-Le *Journal Citation Reports* (JCR) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur JIF (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec un indicateur atroce, le h-index, donc à éviter).
+Le *Journal Citation Reports* (*JCR*) ne permet pas de verser une liste de revues et de retourner celles-ci avec leur JIF (4 maximum). *SCImago* ne permet pas non plus de le faire en lot (6 maximum; mais avec un indicateur atroce, le h-index, donc à éviter).
 
 Si on fait souvent cette évaluation, il pourrait être judicieux de télécharger les listes des disciplines historiques du JCR et de faire des opérations de réconciliation sur son ordinateur en local.
 
