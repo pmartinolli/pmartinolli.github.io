@@ -61,7 +61,7 @@ Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases
 
 - **Agent rédaction** : Rédiger du texte. Cet aspect est aussi limité.
 
-### Agent recherche 
+### Agent recherche
 
 - La recherche utilise des opérateurs **booléens** classiques, une recherche **sémantique** et une exploration des liens de **citations** quand ceux-ci sont disponibles.
 
@@ -77,7 +77,7 @@ Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases
 
   - Avancé : Comme il n'y a pas de possibilité de supprimer des documents de *All papers* (et de virer les faux positifs) : Mettre sa sélection de documents dans *Starred* puis lancer un agent traitement sur cette vue.
 
-### Agent traitement : suggestions de demandes 
+### Agent traitement : suggestions de demandes
 
 Une fois les recherches terminées, voici quelques suggestions à lancer avec l'agent conversationnel de Undermind.
 
@@ -97,7 +97,7 @@ Une fois les recherches terminées, voici quelques suggestions à lancer avec l'
 
 - « Quel est le papier le plus cité ? • Quels sont les auteurs ou les équipes qui reviennent le plus souvent ? • Quelles sont les sources de financement des études ? • Quels sont les enjeux inter ou multidisciplinaires ? »
 
-#### Synthèse globale du sujet avec l’ensemble des documents 
+#### Synthèse globale du sujet avec l’ensemble des documents
 
 - Fiabilité = moyenne [voire basse]{.underline}
 
@@ -105,7 +105,7 @@ Une fois les recherches terminées, voici quelques suggestions à lancer avec l'
 
 - « Sur quels points la plupart des experts sont d’accord ? Et sur quels points ils ne sont pas d’accord • Quelles sont les principales limites des études ? • Quelles sont les résultats les plus robustes ? • Quels sont les aspects les plus/moins explorés ? • Quelles seraient les questions de recherche les plus prometteuses ? • Est ce que l’ensemble des documents repérés fait le tour de la question ? »
 
-#### Exemple de flux de travail 
+#### Exemple de flux de travail
 
 1.  Lancer une ou plusieurs recherches sur un sujet.
 
@@ -143,9 +143,9 @@ Permet de réduire la « friction » des chercheurs débutants avec les outils d
 
 Bref, toutes les fonctionnalités qui permettent de pousser vers les sources et de mieux les traiter sont pertinentes.
 
-## Problèmes des outils IAgen 
+## Problèmes des outils IAgen
 
-### Limites de nature  
+### Limites de nature
 
 Par leur nature conversationnelle, ces types d'outils peuvent garder l'engagement de l'utilisateur à l'intérieur de l'outil sans les pousser vers les sources (ce problème de méthode de travail n'est pas unique à Undermind). Exemples :
 
@@ -163,7 +163,7 @@ Par leur nature conversationnelle, ces types d'outils peuvent garder l'engagemen
 
 Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller vers les sources sont à rejeter.
 
-### Limites de fonctionnement  
+### Limites de fonctionnement
 
 - Effet « boîte noire » : même si les données de Semantic Scholar sont ouvertes, nous n'avons pas accès aux algorithmes de Undermind pour des raisons de concurrence commerciale intense. Cette non-transparence est éloignée de la reproductibilité scientifique.
 
@@ -203,7 +203,7 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 - Demander à Undermind d'étendre ses métadonnées à plus de notices sur l'histoire (surtout pour les livres). Pour l'instant, de tous les outils de ce type que j'ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités.
 
-## Réflexions sur l'IA générative et l'histoire 
+## Réflexions sur l'IA générative et l'histoire
 
 - Par nature, les algorithmes génératifs applatissent les nuances, les aspérités, les achoppements, etc. Or faire de l'histoire, n'est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?
 
@@ -211,9 +211,11 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 - Les outils IA peuvent être des outils bloqués sur la [lecture distante](#0). Il faut les forcer à faire de la « [lecture télescopique](#0) » pour se rapprocher des sources.
 
----
+- Sur le pilotage d'agents IA, Philippe Rygiel en discute dans cette [prépublication](https://inria.hal.science/hal-05673494v1). Il aborde d'autres enjeux sur les technologies « IA » pour l'histoire (OCR, HTR, LLM, etc.)
 
-## Annexe 
+------------------------------------------------------------------------
+
+## Annexe
 
 - Les explorations et recommandations ont été faites par moi, par des lectures des tests de [Aaron Tay](https://aarontay.substack.com/) et du [papier](https://www.undermind.ai/whitepaper.pdf) (biaisé) de Undermind sur le sujet.
 

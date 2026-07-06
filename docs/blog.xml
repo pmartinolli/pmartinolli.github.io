@@ -189,6 +189,7 @@
 <li>Les outils évoluent vite : l’an passé mon exemple favori pour montrer les erreurs de l’IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu’à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « consensus » historique sur la question.</li>
 </ul></li>
 <li><p>Les outils IA peuvent être des outils bloqués sur la lecture distante. Il faut les forcer à faire de la « lecture télescopique » pour se rapprocher des sources.</p></li>
+<li><p>Sur le pilotage d’agents IA, Philippe Rygiel en discute dans cette <a href="https://inria.hal.science/hal-05673494v1">prépublication</a>. Il aborde d’autres enjeux sur les technologies « IA » pour l’histoire (OCR, HTR, LLM, etc.)</p></li>
 </ul>
 <hr>
 </section>
