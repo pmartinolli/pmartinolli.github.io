@@ -6,18 +6,18 @@ author:
         orcid: "0000-0003-0122-5300"
 date: "2026-07-06"
 categories: [HumanitésNumériques, histoire]
-description: "Où l'on explore l'outil de découverte Undermind pour la recherche d'études en histoire. Il utilise de l'IA générative, principalement à travers des agents de recherche et de traitement. On en profite pour affûter une démarche critique vis-à-vis de ces nouvelles méthodes de repérage et de traitement de la documentation."
+description: "Où l'on explore l'outil de découverte Undermind pour la recherche d'études en histoire qui utilise de l'IA générative, principalement à travers des agents de recherche et de traitement. On en profite pour affûter une démarche critique vis-à-vis de ces nouvelles méthodes de travail de la documentation."
 ---
 
 ## Introduction
 
-Undermind.ai est un outil de découverte de littérature scientifique utilisant l'IA générative. En 2026, les Bibliothèques de l'Université de Montréal se sont abonnées pour un an à trois outils de ce type dont Undermind. En voici quelques tests pour le domaine de l'histoire.
+Undermind.ai est un outil de découverte de littérature scientifique utilisant l'IA générative (IAgen) auquel les Bibliothèques de l'Université de Montréal se sont abonnées pour un an (avec les outils Consensus.app et LeapSpace). Voici quelques tests. suggestions et commentaires sur Undermind pour le domaine de l'histoire.
 
 ## Corpus
 
-Undermind.ai utilise principalement [Semantic Scholar](https://www.semanticscholar.org/), soit plus de [200](https://www.semanticscholar.org/product) millions d'études (articles de revues principalement). Cet index est géré par *The Allen Institute for Artificial Intelligence ([Ai2](https://allenai.org/))* qui fait des efforts pour diffuser en code source ouvert la plupart de ses projets.
+Undermind.ai utilise principalement le corpus de [Semantic Scholar](https://www.semanticscholar.org/), soit plus de [200](https://www.semanticscholar.org/product) millions d'études (articles de revues principalement). Cet index est géré par *The Allen Institute for Artificial Intelligence ([Ai2](https://allenai.org/))* qui fait des efforts pour diffuser en code source ouvert la plupart de ses projets.
 
-Il a été conçu à l'origine pour l'informatique, la biomédecine, les neuroscience, etc. Depuis 2024-2025 environ, il a intégré des éditeurs en sciences humaines et sociales. Semantic Scholar contient les notices de ces [maisons d'édition](https://www.semanticscholar.org/about/publishers) ou bases de données bibliographiques :
+Semantic Scholar a été conçu à l'origine pour l'informatique, la biomédecine, les neuroscience, etc. Depuis 2024-2025 environ, il a intégré des éditeurs en sciences humaines et sociales. Par exemple, il contient les notices de ces [maisons d'édition](https://www.semanticscholar.org/about/publishers) ou bases de données bibliographiques :
 
 - Cambridge University Press
 
@@ -25,11 +25,9 @@ Il a été conçu à l'origine pour l'informatique, la biomédecine, les neurosc
 
 - HAL
 
-- Microsoft Academic Graph (concurrent de Google Scholar qui a disparu)
-
 - Project Muse
 
-- Sage publishing
+- Sage Publishing
 
 - Science
 
@@ -45,17 +43,19 @@ Il a été conçu à l'origine pour l'informatique, la biomédecine, les neurosc
 
 - Wiley
 
-- etc. Il y en a d'autres. Je n'ai listé ci-dessus que les ressources qui contiennent de la documentation en histoire.
+- etc. Il y en a d'autres. Je n'ai listé ci-dessus que ceux qui contiennent de la documentation en histoire.
 
-Selon [cet article](https://doi.org/10.1515/bfp-2023-0057), le domaine de l'histoire ne contiendrait que 34 386 études (dont 33,24% en libre accès), soit 0.13% du corpus total. **Cependant**, cet article se base sur des données de 2008 à 2020 et les maisons d'édition contenant des études historiques ont été rajoutées par la suite. Si on fait une recherche simple avec le mot-clé *history* et que l'on filtre par Domaine d'étude : Histoire on obtient **1,4 millions de résultats** (juillet 2026). En volume, c'est l'équivalent des deux bases de données disciplinaires *Historical Abstracts* et *America History & Life* combinées.
+Selon [cet article](https://doi.org/10.1515/bfp-2023-0057), Semantic Scholar ne contiendrait que 34 386 études en histoire (dont 33,24% en libre accès), soit 0.13% du corpus total. **Cependant**, cet article se base sur des données de 2008 à 2020 et les maisons d'édition contenant des études historiques ont été rajoutées par la suite.
+
+J'ai fait une recherche simple avec le mot-clé *history* et le filtre par Domaine d'étude : Histoire pour obtenir **1,4 millions de résultats** (juillet 2026). En volume, c'est l'équivalent des deux bases de données disciplinaires *Historical Abstracts* et *America History & Life* combinées.
+
+Toutes les périodes historiques semblent couvertes (antique, médiévale, moderne et contemporaine).
 
 ## Fonctionnement
 
-Ces explorations ont été faites par moi, par des lectures des tests de [Aaron Tay](https://aarontay.substack.com/) et du [papier](https://www.undermind.ai/whitepaper.pdf) (biaisé) de Undermind sur le sujet.
-
 Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases :
 
-- **Agent recherche :** raffiner les questions et pour classer les résultats, pour suivre certains liens de citation, pour étendre la recherche booléenne de termes spécifiques à une recherche sémantique basée sur le poid des expressions. Selon moi, c'est [l'aspect le plus performant]{.underline} de Undermind.
+- **Agent recherche :** raffiner les questions et pour classer les résultats. Selon moi, c'est [l'aspect le plus performant]{.underline} de Undermind.
 
 - **Agent traitement** : Traiter le contenu des études récupérées en libre accès (ou celles versées par l'utilisateur) : synthétiser le contenu, extraire des informations, les traduire, etc. Cet aspect est plus limité.
 
@@ -63,7 +63,9 @@ Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases
 
 ### Agent recherche 
 
-- Undermind utilise seulement le titre et le résumé. Une fois les résultats affichés, il est possible de lancer un agent dans le texte intégral quand celui-ci est disponible.
+- La recherche utilise des opérateurs **booléens** classiques, une recherche **sémantique** et une exploration des liens de **citations** quand ceux-ci sont disponibles.
+
+- Undermind utilise **seulement le titre et le résumé** pour repérer des documents. Une fois les résultats affichés, il est possible de lancer un agent dans le texte intégral quand celui-ci est disponible.
 
 - Si on lance la recherche en français ou en anglais, les résultats peuvent varier.
 
@@ -73,11 +75,11 @@ Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases
 
 - Lancer plusieurs recherches dans un même projet avec différents angles pour augmenter l’ensemble des *All papers*.
 
-  - Avancé : Comme il n'y a pas de possibilité de supprimer des documents de All papers (et de virer les faux positifs) : Mettre sa sélection de documents dans *Starred* puis lancer un agent sur cette sur cette vue.
+  - Avancé : Comme il n'y a pas de possibilité de supprimer des documents de *All papers* (et de virer les faux positifs) : Mettre sa sélection de documents dans *Starred* puis lancer un agent traitement sur cette vue.
 
 ### Agent traitement : suggestions de demandes 
 
-Une fois la recherche terminée, voici quelques suggestions à lancer avec l'agent conversationnel de Undermind.
+Une fois les recherches terminées, voici quelques suggestions à lancer avec l'agent conversationnel de Undermind.
 
 #### Échanger sur les méthodes de travail
 
@@ -93,7 +95,7 @@ Une fois la recherche terminée, voici quelques suggestions à lancer avec l'age
 
 - Raisons = Couverture imparfaite du domaine • Métadonnées inégales
 
-- « Quel est le papier le plus cité ? • Quels sont les auteurs ou les équipes qui reviennent le plus souvent • Quelles sont les sources de financement des études ? • Quels sont les enjeux inter ou multidisciplinaires ? »
+- « Quel est le papier le plus cité ? • Quels sont les auteurs ou les équipes qui reviennent le plus souvent ? • Quelles sont les sources de financement des études ? • Quels sont les enjeux inter ou multidisciplinaires ? »
 
 #### Synthèse globale du sujet avec l’ensemble des documents 
 
@@ -101,23 +103,23 @@ Une fois la recherche terminée, voici quelques suggestions à lancer avec l'age
 
 - Raisons = Couverture imparfaite du domaine • Certains documents ne sont accessibles qu’en titre résumé • Extraction imparfaite
 
-- « Sur quels points la plupart des experts sont d’accord ? Et sur quels points ils ne sont pas d’accord • Quelles sont les principales limites des études ? • Quelles sont les résultats les plus robustes • Quels sont les aspects les plus/moins explorés • Quelles seraient les questions de recherche les plus prometteuses • Est ce que l’ensemble des documents repérés fait le tour de la question ? »
+- « Sur quels points la plupart des experts sont d’accord ? Et sur quels points ils ne sont pas d’accord • Quelles sont les principales limites des études ? • Quelles sont les résultats les plus robustes ? • Quels sont les aspects les plus/moins explorés ? • Quelles seraient les questions de recherche les plus prometteuses ? • Est ce que l’ensemble des documents repérés fait le tour de la question ? »
 
 #### Exemple de flux de travail 
 
 1.  Lancer une ou plusieurs recherches sur un sujet.
 
-2.  Aller dans All papers.
+2.  Aller dans *All papers.*
 
-3.  Demander à l'agent conversationnel : « Extrait tous les concepts et toutes les méthodes importantes à maîtriser pour étudier ce sujet à partir des documents. »
+3.  Demander à l'agent conversationnel : « Extrait à partir des documents tous les concepts et toutes les méthodes importantes à maîtriser pour étudier ce sujet. »
 
 4.  Une fois la liste des concepts et méthodes produites, demander : « Trouve des articles scientifiques pouvant servir de revues générales, d'introduction ou de synthèses conceptuelles pour introduire les concepts, les cadres méthodologiques et les notions nécessaires à la lecture de la littérature sur mon sujet. Privilégie les études historiographiques. »
 
-5.  Terminer en demandant : « Donne–moi des pistes pour aller chercher de l'information en dehors de Undermind. »
+5.  Terminer en demandant : « Donne-moi des pistes pour aller chercher de l'information en dehors de Undermind. »
 
 ### Astuces (*hacks*)
 
-- Même si Undermind n'a pas été conçu pour cela, il est possible de demander de faire des actions non-prévues hors du strict cadre recherche-traitement-rédaction :
+- Même si Undermind n'a pas été conçu pour cela, il est possible de demander de faire des actions non-prévues ou hors du strict cadre recherche-traitement-rédaction :
 
   - Traduire du texte
 
@@ -127,7 +129,7 @@ Une fois la recherche terminée, voici quelques suggestions à lancer avec l'age
 
   - etc.
 
-## Avantages
+## Avantages des outils AIgen
 
 Permet de réduire la « friction » des chercheurs débutants avec les outils de recherche :
 
@@ -139,11 +141,13 @@ Permet de réduire la « friction » des chercheurs débutants avec les outils d
 
 - Pointer les parties pertinentes d'une étude si le texte intégral est disponible : on peut vérifier ou rejeter une étude plus rapidement.
 
-Bref, toutes les fonctionnalités qui permettent de pousser vers les sources et de mieux les traiter sont « bonnes ».
+Bref, toutes les fonctionnalités qui permettent de pousser vers les sources et de mieux les traiter sont pertinentes.
 
-## Désavantages
+## Problèmes des outils IAgen 
 
-Par leur nature conversationnelle, ces types d'outils peuvent garder l'engagement de l'utilisateur à l'intérieur de l'outil sans les pousser vers les sources (ce n'est pas unique à Undermind). Exemples :
+### Limites de nature  
+
+Par leur nature conversationnelle, ces types d'outils peuvent garder l'engagement de l'utilisateur à l'intérieur de l'outil sans les pousser vers les sources (ce problème de méthode de travail n'est pas unique à Undermind). Exemples :
 
 - Ne pas lancer d'autres recherches dans d'autres outils plus exigeants ou méconnus, parce que la recherche dans Undermind semble suffire.
 
@@ -157,9 +161,9 @@ Par leur nature conversationnelle, ces types d'outils peuvent garder l'engagemen
 
 - Ne pas rédiger soi-même l'argumentaire.
 
-Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller vers les sources sont « mauvaises ».
+Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller vers les sources sont à rejeter.
 
-### Limites de fonctionnement
+### Limites de fonctionnement  
 
 - Effet « boîte noire » : même si les données de Semantic Scholar sont ouvertes, nous n'avons pas accès aux algorithmes de Undermind pour des raisons de concurrence commerciale intense. Cette non-transparence est éloignée de la reproductibilité scientifique.
 
@@ -191,7 +195,7 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 ## Quelques solutions et postures
 
-- Former aux biais lors des processus de recherche avec ces types d'outils.
+- Former aux biais induits par ces processus lors de recherches avec des outils IAgen.
 
 - Avoir une démarche d'auto-réflexion sur ses apprentissages.
 
@@ -203,13 +207,17 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 - Par nature, les algorithmes génératifs applatissent les nuances, les aspérités, les achoppements, etc. Or faire de l'histoire, n'est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?
 
-  - Évolution rapide : l'an passé mon exemple favori pour montrer les erreurs de l'IAgen était de demander régulièrement aux outils IA avec des fonctions génératives : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu'à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « [consensus](#0) » historique sur la question.
+  - Les outils évoluent vite : l'an passé mon exemple favori pour montrer les erreurs de l'IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu'à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « [consensus](#0) » historique sur la question.
 
 - Les outils IA peuvent être des outils bloqués sur la [lecture distante](#0). Il faut les forcer à faire de la « [lecture télescopique](#0) » pour se rapprocher des sources.
 
 ---
 
 ## Annexe 
+
+- Les explorations et recommandations ont été faites par moi, par des lectures des tests de [Aaron Tay](https://aarontay.substack.com/) et du [papier](https://www.undermind.ai/whitepaper.pdf) (biaisé) de Undermind sur le sujet.
+
+<!-- -->
 
 - Pascal Martinolli. 2025. **“Bingo critique de l’IAg pour la recherche de documents”**. <https://boite-outils.bib.umontreal.ca/ld.php?content_id=37726345>.
 
