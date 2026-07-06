@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pascal Martinolli">
+<meta name="dcterms.date" content="2026-07-06">
+<meta name="description" content="Où l’on explore l’outil de découverte Undermind pour la recherche d’études en histoire. Il utilise de l’IA générative, principalement à travers des agents de recherche et de traitement. On en profite pour affûter une démarche critique vis-à-vis de ces nouvelles méthodes de repérage et de traitement de la documentation.">
+
+<title>Undermind.ai est-il adapté pour découvrir des études en histoire ? – Pascal Martinolli</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-afa1767ab894c633a6efdfa517d42c1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Pascal Martinolli</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog.html"> 
+<span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/index.html"> 
+<span class="menu-text">projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../teaching/index.html"> 
+<span class="menu-text">teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html"> 
+<span class="menu-text">publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../ttrpg/index.html"> 
+<span class="menu-text">ttrpg</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Undermind.ai est-il adapté pour découvrir des études en histoire ?</h1>
+                  <div>
+        <div class="description">
+          Où l’on explore l’outil de découverte Undermind pour la recherche d’études en histoire. Il utilise de l’IA générative, principalement à travers des agents de recherche et de traitement. On en profite pour affûter une démarche critique vis-à-vis de ces nouvelles méthodes de repérage et de traitement de la documentation.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">HumanitésNumériques</div>
+                <div class="quarto-category">histoire</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pascal Martinolli <a href="https://orcid.org/0000-0003-0122-5300" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 6, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Undermind.ai est un outil de découverte de littérature scientifique utilisant l’IA générative. En 2026, les Bibliothèques de l’Université de Montréal se sont abonnées pour un an à trois outils de ce type dont Undermind. En voici quelques tests pour le domaine de l’histoire.</p>
+</section>
+<section id="corpus" class="level2">
+<h2 class="anchored" data-anchor-id="corpus">Corpus</h2>
+<p>Undermind.ai utilise principalement <a href="https://www.semanticscholar.org/">Semantic Scholar</a>, soit plus de <a href="https://www.semanticscholar.org/product">200</a> millions d’études (articles de revues principalement). Cet index est géré par <em>The Allen Institute for Artificial Intelligence (<a href="https://allenai.org/">Ai2</a>)</em> qui fait des efforts pour diffuser en code source ouvert la plupart de ses projets.</p>
+<p>Il a été conçu à l’origine pour l’informatique, la biomédecine, les neuroscience, etc. Depuis 2024-2025 environ, il a intégré des éditeurs en sciences humaines et sociales. Semantic Scholar contient les notices de ces <a href="https://www.semanticscholar.org/about/publishers">maisons d’édition</a> ou bases de données bibliographiques :</p>
+<ul>
+<li><p>Cambridge University Press</p></li>
+<li><p>De Gruyter (+Brill)</p></li>
+<li><p>HAL</p></li>
+<li><p>Microsoft Academic Graph (concurrent de Google Scholar qui a disparu)</p></li>
+<li><p>Project Muse</p></li>
+<li><p>Sage publishing</p></li>
+<li><p>Science</p></li>
+<li><p>Springer Nature</p></li>
+<li><p>Taylor &amp; Francis</p></li>
+<li><p>The MIT Press</p></li>
+<li><p>The Royal Society Publishing</p></li>
+<li><p>The University of Chicago Press</p></li>
+<li><p>Wiley</p></li>
+<li><p>etc. Il y en a d’autres. Je n’ai listé ci-dessus que les ressources qui contiennent de la documentation en histoire.</p></li>
+</ul>
+<p>Selon <a href="https://doi.org/10.1515/bfp-2023-0057">cet article</a>, le domaine de l’histoire ne contiendrait que 34 386 études (dont 33,24% en libre accès), soit 0.13% du corpus total. <strong>Cependant</strong>, cet article se base sur des données de 2008 à 2020 et les maisons d’édition contenant des études historiques ont été rajoutées par la suite. Si on fait une recherche simple avec le mot-clé <em>history</em> et que l’on filtre par Domaine d’étude : Histoire on obtient <strong>1,4 millions de résultats</strong> (juillet 2026). En volume, c’est l’équivalent des deux bases de données disciplinaires <em>Historical Abstracts</em> et <em>America History &amp; Life</em> combinées.</p>
+</section>
+<section id="fonctionnement" class="level2">
+<h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
+<p>Ces explorations ont été faites par moi, par des lectures des tests de <a href="https://aarontay.substack.com/">Aaron Tay</a> et du <a href="https://www.undermind.ai/whitepaper.pdf">papier</a> (biaisé) de Undermind sur le sujet.</p>
+<p>Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases :</p>
+<ul>
+<li><p><strong>Agent recherche :</strong> raffiner les questions et pour classer les résultats, pour suivre certains liens de citation, pour étendre la recherche booléenne de termes spécifiques à une recherche sémantique basée sur le poid des expressions. Selon moi, c’est <u>l’aspect le plus performant</u> de Undermind.</p></li>
+<li><p><strong>Agent traitement</strong> : Traiter le contenu des études récupérées en libre accès (ou celles versées par l’utilisateur) : synthétiser le contenu, extraire des informations, les traduire, etc. Cet aspect est plus limité.</p></li>
+<li><p><strong>Agent rédaction</strong> : Rédiger du texte. Cet aspect est aussi limité.</p></li>
+</ul>
+<section id="agent-recherche" class="level3">
+<h3 class="anchored" data-anchor-id="agent-recherche">Agent recherche</h3>
+<ul>
+<li><p>Undermind utilise seulement le titre et le résumé. Une fois les résultats affichés, il est possible de lancer un agent dans le texte intégral quand celui-ci est disponible.</p></li>
+<li><p>Si on lance la recherche en français ou en anglais, les résultats peuvent varier.</p></li>
+<li><p>De manière générale, les outils IA génératifs gèrent mal la négation (NOT ou “je ne veux pas de choses sur …”).</p></li>
+<li><p>Pour lancer la recherche, il faut se limiter aux mots-clés thématiques et ne pas utiliser des auteurs, des noms de revues, etc.</p></li>
+<li><p>Lancer plusieurs recherches dans un même projet avec différents angles pour augmenter l’ensemble des <em>All papers</em>.</p>
+<ul>
+<li>Avancé : Comme il n’y a pas de possibilité de supprimer des documents de All papers (et de virer les faux positifs) : Mettre sa sélection de documents dans <em>Starred</em> puis lancer un agent sur cette sur cette vue.</li>
+</ul></li>
+</ul>
+</section>
+<section id="agent-traitement-suggestions-de-demandes" class="level3">
+<h3 class="anchored" data-anchor-id="agent-traitement-suggestions-de-demandes">Agent traitement : suggestions de demandes</h3>
+<p>Une fois la recherche terminée, voici quelques suggestions à lancer avec l’agent conversationnel de Undermind.</p>
+<section id="échanger-sur-les-méthodes-de-travail" class="level4">
+<h4 class="anchored" data-anchor-id="échanger-sur-les-méthodes-de-travail">Échanger sur les méthodes de travail</h4>
+<ul>
+<li><p>Fiabilité = bonne</p></li>
+<li><p>Raisons = Ancré dans les résultats et augmenté par le modèle de langue • Interactivité raisonnée</p></li>
+<li><p>« Créer une grille de lecture pour classer les études selon la question centrale pour distinguer les études à garder au centre de la synthèse, celles à garder en appui, et celles à rejeter. • Quelles études lire en premier ? Rédiger un parcours des études les plus simples/générales aux études les plus avancées/spécifiques. Avec quel angle en tête ? • Lister les principaux concepts et les principales méthodes utilisés dans ces études et que je dois maîtriser. • Extraire les idées principales d’une seule étude en texte intégral avec sa [cle00] • Comparer deux études en texte intégral chacune. »</p></li>
+</ul>
+</section>
+<section id="demander-des-analyses-externes-des-documents" class="level4">
+<h4 class="anchored" data-anchor-id="demander-des-analyses-externes-des-documents">Demander des analyses externes des documents</h4>
+<ul>
+<li><p>Fiabilité = moyenne</p></li>
+<li><p>Raisons = Couverture imparfaite du domaine • Métadonnées inégales</p></li>
+<li><p>« Quel est le papier le plus cité ? • Quels sont les auteurs ou les équipes qui reviennent le plus souvent • Quelles sont les sources de financement des études ? • Quels sont les enjeux inter ou multidisciplinaires ? »</p></li>
+</ul>
+</section>
+<section id="synthèse-globale-du-sujet-avec-lensemble-des-documents" class="level4">
+<h4 class="anchored" data-anchor-id="synthèse-globale-du-sujet-avec-lensemble-des-documents">Synthèse globale du sujet avec l’ensemble des documents</h4>
+<ul>
+<li><p>Fiabilité = moyenne <u>voire basse</u></p></li>
+<li><p>Raisons = Couverture imparfaite du domaine • Certains documents ne sont accessibles qu’en titre résumé • Extraction imparfaite</p></li>
+<li><p>« Sur quels points la plupart des experts sont d’accord ? Et sur quels points ils ne sont pas d’accord • Quelles sont les principales limites des études ? • Quelles sont les résultats les plus robustes • Quels sont les aspects les plus/moins explorés • Quelles seraient les questions de recherche les plus prometteuses • Est ce que l’ensemble des documents repérés fait le tour de la question ? »</p></li>
+</ul>
+</section>
+<section id="exemple-de-flux-de-travail" class="level4">
+<h4 class="anchored" data-anchor-id="exemple-de-flux-de-travail">Exemple de flux de travail</h4>
+<ol type="1">
+<li><p>Lancer une ou plusieurs recherches sur un sujet.</p></li>
+<li><p>Aller dans All papers.</p></li>
+<li><p>Demander à l’agent conversationnel : « Extrait tous les concepts et toutes les méthodes importantes à maîtriser pour étudier ce sujet à partir des documents. »</p></li>
+<li><p>Une fois la liste des concepts et méthodes produites, demander : « Trouve des articles scientifiques pouvant servir de revues générales, d’introduction ou de synthèses conceptuelles pour introduire les concepts, les cadres méthodologiques et les notions nécessaires à la lecture de la littérature sur mon sujet. Privilégie les études historiographiques. »</p></li>
+<li><p>Terminer en demandant : « Donne–moi des pistes pour aller chercher de l’information en dehors de Undermind. »</p></li>
+</ol>
+</section>
+</section>
+<section id="astuces-hacks" class="level3">
+<h3 class="anchored" data-anchor-id="astuces-hacks">Astuces (<em>hacks</em>)</h3>
+<ul>
+<li><p>Même si Undermind n’a pas été conçu pour cela, il est possible de demander de faire des actions non-prévues hors du strict cadre recherche-traitement-rédaction :</p>
+<ul>
+<li><p>Traduire du texte</p></li>
+<li><p>Créer du code informatique simple</p></li>
+<li><p>Lancer une recherche sur le web</p></li>
+<li><p>etc.</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="avantages" class="level2">
+<h2 class="anchored" data-anchor-id="avantages">Avantages</h2>
+<p>Permet de réduire la « friction » des chercheurs débutants avec les outils de recherche :</p>
+<ul>
+<li><p>Lancer des recherches sans connaître de langage d’interogation.</p></li>
+<li><p>Ne pas avoir trop de résultats à évaluer.</p></li>
+<li><p>Intéragir « avec plaisance » avec l’outil.</p></li>
+<li><p>Pointer les parties pertinentes d’une étude si le texte intégral est disponible : on peut vérifier ou rejeter une étude plus rapidement.</p></li>
+</ul>
+<p>Bref, toutes les fonctionnalités qui permettent de pousser vers les sources et de mieux les traiter sont « bonnes ».</p>
+</section>
+<section id="désavantages" class="level2">
+<h2 class="anchored" data-anchor-id="désavantages">Désavantages</h2>
+<p>Par leur nature conversationnelle, ces types d’outils peuvent garder l’engagement de l’utilisateur à l’intérieur de l’outil sans les pousser vers les sources (ce n’est pas unique à Undermind). Exemples :</p>
+<ul>
+<li><p>Ne pas lancer d’autres recherches dans d’autres outils plus exigeants ou méconnus, parce que la recherche dans Undermind semble suffire.</p></li>
+<li><p>Ne pas suivre les liens de citation dans les sources repérées, pour découvrir de nouveaux documents.</p></li>
+<li><p>Ne pas passer par des types de documents plus adaptés pour la question de recherche car Undermind contient presque uniquement des articles (peu de chapitres). Par exemple : des articles d’encyclopédie spécialisées ou d’ouvrages de références, des livres spécialisés, etc.</p></li>
+<li><p>Demander à l’outil d’utiliser les documents repérés pour directement produire un texte synthétique sans lire les sources.</p></li>
+<li><p>Demander à l’outil d’extraire les idées principales et de les lier ensemble, sans passer par l’absorption personnelle du contenu, lu et compris.</p></li>
+<li><p>Ne pas rédiger soi-même l’argumentaire.</p></li>
+</ul>
+<p>Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller vers les sources sont « mauvaises ».</p>
+<section id="limites-de-fonctionnement" class="level3">
+<h3 class="anchored" data-anchor-id="limites-de-fonctionnement">Limites de fonctionnement</h3>
+<ul>
+<li><p>Effet « boîte noire » : même si les données de Semantic Scholar sont ouvertes, nous n’avons pas accès aux algorithmes de Undermind pour des raisons de concurrence commerciale intense. Cette non-transparence est éloignée de la reproductibilité scientifique.</p></li>
+<li><p>Effet « <a href="https://fr.wikipedia.org/wiki/Effet_ELIZA">Eliza</a> » : on attribue des pensées humaines (donc de processus mentaux logiques) à ces outils alors qu’ils sont essentiellement basés sur des règles syntaxiques et non logique/factuel. On peut aussi leur attribuer une sur-compétence.</p></li>
+<li><p>Parmi les algorithmes utilisés, ceux qui utilisent de l’IA générative ont une capacité de traitement limité ce qui fait un possible goulet d’étranglement invisible à l’utilisateur.</p></li>
+<li><p>Délestement de compétences de bases. Lorsque l’on fait une recherche de documents, on prend une multitude de décisions et on exerce sa mémoire et son jugement en alternance et progressivement. Ces processus mentaux produisent de l’apprentissage. Un outil qui se pose en intermédiaire facilitateur et prestataire de service et dont on connaît mal le fonctionnement peut réduire ces apprentissages. Exemples :</p>
+<ul>
+<li><p>Habileté à transcrire une demande d’information en mots-clés, à évaluer la qualité de la demande et à reformuler sa stratégie de recherche.</p></li>
+<li><p>Habileté à évaluer les résultats d’une recherche (avec les outils IAg c’est toujours une petite sélection de résultats dont on ne connaît pas les critères)</p></li>
+<li><p>Habileté à prendre la décision de sélectionner un résultat pertinent (les résultats sont présentés et rédigés dans un langage assertif ou d’autorité, où l’outil se substitue au jugement de l’utilisateur).</p></li>
+<li><p>Habileté à se construire une image mentale de l’ensemble de la documentation scientifique sur un sujet et comment la conversation scientifique s’articule entre ceux-ci.</p></li>
+<li><p>Habileté à évaluer et extraire l’information pertinente pour soutenir son argumentation.</p></li>
+<li><p>Habileté à repérer le niveau d’exhaustivité atteint lors d’une recherche d’information.</p></li>
+</ul></li>
+<li><p>Surévaluation de la qualité des résultats :</p>
+<ul>
+<li><p>« Je n’ai pas besoin de chercher plus, ou de chercher ailleurs, ou de chercher différemment. »</p></li>
+<li><p>« Je n’ai pas besoin de vérifier que la source dit bien ce qui est extrait. »</p></li>
+<li><p>etc.</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="quelques-solutions-et-postures" class="level2">
+<h2 class="anchored" data-anchor-id="quelques-solutions-et-postures">Quelques solutions et postures</h2>
+<ul>
+<li><p>Former aux biais lors des processus de recherche avec ces types d’outils.</p></li>
+<li><p>Avoir une démarche d’auto-réflexion sur ses apprentissages.</p></li>
+<li><p>Interroger ses propres biais pro- ou anti-IA pour la recherche documentaire.</p></li>
+<li><p>Demander à Undermind d’étendre ses métadonnées à plus de notices sur l’histoire (surtout pour les livres). Pour l’instant, de tous les outils de ce type que j’ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités.</p></li>
+</ul>
+</section>
+<section id="réflexions-sur-lia-générative-et-lhistoire" class="level2">
+<h2 class="anchored" data-anchor-id="réflexions-sur-lia-générative-et-lhistoire">Réflexions sur l’IA générative et l’histoire</h2>
+<ul>
+<li><p>Par nature, les algorithmes génératifs applatissent les nuances, les aspérités, les achoppements, etc. Or faire de l’histoire, n’est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?</p>
+<ul>
+<li>Évolution rapide : l’an passé mon exemple favori pour montrer les erreurs de l’IAgen était de demander régulièrement aux outils IA avec des fonctions génératives : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu’à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « <a href="#0">consensus</a> » historique sur la question.</li>
+</ul></li>
+<li><p>Les outils IA peuvent être des outils bloqués sur la <a href="#0">lecture distante</a>. Il faut les forcer à faire de la « <a href="#0">lecture télescopique</a> » pour se rapprocher des sources.</p></li>
+</ul>
+<hr>
+</section>
+<section id="annexe" class="level2">
+<h2 class="anchored" data-anchor-id="annexe">Annexe</h2>
+<ul>
+<li><p>Pascal Martinolli. 2025.&nbsp;<strong>“Bingo critique de l’IAg&nbsp;pour la recherche de documents”</strong>.&nbsp;<a href="https://boite-outils.bib.umontreal.ca/ld.php?content_id=37726345" class="uri">https://boite-outils.bib.umontreal.ca/ld.php?content_id=37726345</a>.</p>
+<ul>
+<li>Idéal pour affûter ses critiques lorsqu’on teste un outil IA génératif.</li>
+</ul></li>
+<li><p>———. 2025.&nbsp;<strong>“Test d’outils&nbsp;IAg&nbsp;génératives pour la recherche universitaire”</strong>.&nbsp;<a href="https://boite-outils.bib.umontreal.ca/ld.php?content_id=37640268" class="uri">https://boite-outils.bib.umontreal.ca/ld.php?content_id=37640268</a>.</p>
+<ul>
+<li>Un peu daté maintenant mais listant la plupart des outils de repérage de documents en libre accès ou en accès freemium.</li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/pmartinolli\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><small><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">CC-BY-NC 4.0</a> - Les informations diffusées sur ce site web n’engagent que leur auteur.</small></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
