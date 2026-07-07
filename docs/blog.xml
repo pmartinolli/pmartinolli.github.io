@@ -126,7 +126,7 @@
 <h2 class="anchored" data-anchor-id="avantages-des-outils-aigen">Avantages des outils AIgen</h2>
 <p>Permet de réduire la « friction » des chercheurs débutants avec les outils de recherche :</p>
 <ul>
-<li><p>Lancer des recherches sans connaître de langage d’interogation.</p></li>
+<li><p>Lancer des recherches sans connaître de langage d’interrogation.</p></li>
 <li><p>Ne pas avoir trop de résultats à évaluer.</p></li>
 <li><p>Intéragir « avec plaisance » avec l’outil.</p></li>
 <li><p>Pointer les parties pertinentes d’une étude si le texte intégral est disponible : on peut vérifier ou rejeter une étude plus rapidement.</p></li>
@@ -186,9 +186,9 @@
 <ul>
 <li><p>Par nature, les algorithmes génératifs applatissent les nuances, les aspérités, les achoppements, etc. Or faire de l’histoire, n’est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?</p>
 <ul>
-<li>Les outils évoluent vite : l’an passé mon exemple favori pour montrer les erreurs de l’IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu’à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « consensus » historique sur la question.</li>
+<li>Les outils évoluent vite : l’an passé mon exemple favori pour montrer les erreurs de l’IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu’à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « <a href="https://amzn.to/4pRq5k8">consensus</a> » historique sur la question.</li>
 </ul></li>
-<li><p>Les outils IA peuvent être des outils bloqués sur la lecture distante. Il faut les forcer à faire de la « lecture télescopique » pour se rapprocher des sources.</p></li>
+<li><p>Les outils IA peuvent être des outils bloqués sur la <a href="https://hal.science/hal-03152747v1">lecture distante</a>. Il faut les forcer à faire de la « <a href="https://skhole.ecrituresnumeriques.ca/episodes/ep10_aledavood/">lecture télescopique</a> » pour se rapprocher des sources.</p></li>
 <li><p>Sur le pilotage d’agents IA, Philippe Rygiel en discute dans cette <a href="https://inria.hal.science/hal-05673494v1">prépublication</a>. Il aborde d’autres enjeux sur les technologies « IA » pour l’histoire (OCR, HTR, LLM, etc.)</p></li>
 </ul>
 <hr>
