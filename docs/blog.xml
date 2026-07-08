@@ -45,9 +45,63 @@
 <li><p>Wiley</p></li>
 <li><p>etc. Il y en a d’autres. Je n’ai listé ci-dessus que ceux qui contiennent de la documentation en histoire.</p></li>
 </ul>
+<section id="place-de-lhistoire-dans-semantic-scholar" class="level3">
+<h3 class="anchored" data-anchor-id="place-de-lhistoire-dans-semantic-scholar">Place de l’histoire dans Semantic Scholar</h3>
 <p>Selon <a href="https://doi.org/10.1515/bfp-2023-0057">cet article</a>, Semantic Scholar ne contiendrait que 34 386 études en histoire (dont 33,24% en libre accès), soit 0.13% du corpus total. <strong>Cependant</strong>, cet article se base sur des données de 2008 à 2020 et les maisons d’édition contenant des études historiques ont été rajoutées par la suite.</p>
 <p>J’ai fait une recherche simple avec le mot-clé <em>history</em> et le filtre par Domaine d’étude : Histoire pour obtenir <strong>1,4 millions de résultats</strong> (juillet 2026). En volume, c’est l’équivalent des deux bases de données disciplinaires <em>Historical Abstracts</em> et <em>America History &amp; Life</em> combinées.</p>
 <p>Toutes les périodes historiques semblent couvertes (antique, médiévale, moderne et contemporaine).</p>
+</section>
+<section id="biais-généraux-envers-lhistoire" class="level3">
+<h3 class="anchored" data-anchor-id="biais-généraux-envers-lhistoire">Biais généraux envers l’histoire</h3>
+<p>Nous avons vu que la <strong>quantité</strong> de références sur l’histoire est minime dans le corpus de Semantic Scholar. Mais ce n’est pas tout, il y a aussi une différence de <strong>qualité</strong> des métadonnées des références qui peut biaiser ou sous-représenter ou moins bien repérer les études en histoire.</p>
+<p>J’ai mis dans ce tableau les deux extrêmes opposés de la qualité des métadonnées avec les neurosciences (excellentes métadonnées) et l’histoire (métadonnées inégales, hétérogènes, lacunaires).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Métadonnées en neuroscience</th>
+<th>Métadonnées en histoire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>99,9 % contiennent un résumé</td>
+<td>Résumés parcellaires</td>
+</tr>
+<tr class="even">
+<td>Indexation des principaux articles de revues ou de colloques</td>
+<td>Peu de livres<br>
+Tres peu de chapitres<br>
+Articles de revues</td>
+</tr>
+<tr class="odd">
+<td>Nombreuses données de citation</td>
+<td>Données de citation minimes</td>
+</tr>
+<tr class="even">
+<td>Identifiants pérennes (DOI, ORCID)</td>
+<td>Peu de DOI<br>
+Peu d’ORCID<br>
+ISBN sous-représentés</td>
+</tr>
+<tr class="odd">
+<td>99,9&amp; de documents nativement électroniques (meilleure extraction du texte)</td>
+<td>Moins de documents nativement électroniques : imprimés ou pages numérisées avec OCR de qualité variable</td>
+</tr>
+<tr class="even">
+<td>Peut être plus de publication en ibre accès, permettant un accès au texte intégral ?</td>
+<td>Peut être moins de libre accès ?</td>
+</tr>
+<tr class="odd">
+<td>Presque exclusivement rédigé en anglais</td>
+<td>Nombreuses langues différentes</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="fonctionnement" class="level2">
 <h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
@@ -67,7 +121,8 @@
 <li><p>Pour lancer la recherche, il faut se limiter aux mots-clés thématiques et ne pas utiliser des auteurs, des noms de revues, etc.</p></li>
 <li><p>Lancer plusieurs recherches dans un même projet avec différents angles pour augmenter l’ensemble des <em>All papers</em>.</p>
 <ul>
-<li>Avancé : Comme il n’y a pas de possibilité de supprimer des documents de <em>All papers</em> (et de virer les faux positifs) : Mettre sa sélection de documents dans <em>Starred</em> puis lancer un agent traitement sur cette vue.</li>
+<li><p>Lancer des requêtes génériques exploratoire et ensuite lancer de nombreuses requêtes spécifiques avec du vocabulaire adapté et spécifique pour développer des sous-sujets.</p></li>
+<li><p>Avancé : Comme il n’y a pas de possibilité de supprimer des documents de <em>All papers</em> (et de virer les faux positifs) : Mettre sa sélection de documents dans <em>Starred</em> puis lancer un agent traitement sur cette vue.</p></li>
 </ul></li>
 </ul>
 </section>
@@ -112,7 +167,7 @@
 <section id="astuces-hacks" class="level3">
 <h3 class="anchored" data-anchor-id="astuces-hacks">Astuces (<em>hacks</em>)</h3>
 <ul>
-<li><p>Même si Undermind n’a pas été conçu pour cela, il est possible de demander de faire des actions non-prévues ou hors du strict cadre recherche-traitement-rédaction :</p>
+<li><p>Même si Undermind n’a pas été conçu pour cela, il est possible de demander via le moteur GPT4 de faire des actions non-prévues ou hors du strict cadre recherche-traitement-rédaction :</p>
 <ul>
 <li><p>Traduire du texte</p></li>
 <li><p>Créer du code informatique simple</p></li>
