@@ -11,13 +11,13 @@ description: "Où l'on explore l'outil de découverte Undermind pour la recherch
 
 ## Introduction
 
-Undermind.ai est un outil de découverte de littérature scientifique utilisant l'IA générative (IAgen) auquel les Bibliothèques de l'Université de Montréal se sont abonnées pour un an (avec les outils Consensus.app et LeapSpace). Voici quelques tests. suggestions et commentaires sur Undermind pour le domaine de l'histoire.
+Undermind.ai est un outil de découverte de littérature scientifique utilisant l'IA générative (IAgen) auquel les Bibliothèques de l'Université de Montréal se sont abonnées pour un an (avec les outils Consensus.app et LeapSpace). Voici quelques tests, suggestions et commentaires sur Undermind pour le domaine de la recherche en histoire.
 
 ## Corpus
 
 Undermind.ai utilise principalement le corpus de [Semantic Scholar](https://www.semanticscholar.org/), soit plus de [200](https://www.semanticscholar.org/product) millions d'études (articles de revues principalement). Cet index est géré par *The Allen Institute for Artificial Intelligence ([Ai2](https://allenai.org/))* qui fait des efforts pour diffuser en code source ouvert la plupart de ses projets.
 
-Semantic Scholar a été conçu à l'origine pour l'informatique, la biomédecine, les neuroscience, etc. Depuis 2024-2025 environ, il a intégré des éditeurs en sciences humaines et sociales. Par exemple, il contient les notices de ces [maisons d'édition](https://www.semanticscholar.org/about/publishers) ou bases de données bibliographiques :
+Semantic Scholar a été conçu à l'origine pour l'informatique, la biomédecine, les neuroscience, etc. Depuis 2024-2025 environ, il a intégré des éditeurs en sciences humaines et sociales et il est ainsi devenu très intéressant pour les humanités. Par exemple, il contient les notices de ces [maisons d'édition](https://www.semanticscholar.org/about/publishers) ou bases de données bibliographiques :
 
 - Cambridge University Press
 
@@ -43,19 +43,19 @@ Semantic Scholar a été conçu à l'origine pour l'informatique, la biomédecin
 
 - Wiley
 
-- etc. Il y en a d'autres. Je n'ai listé ci-dessus que ceux qui contiennent de la documentation en histoire.
+- etc. Il y en a d'autres. Je n'ai listé ci-dessus que celles qui contiennent de la documentation en histoire.
 
 ### Place de l'histoire dans Semantic Scholar
 
-Selon [cet article](https://doi.org/10.1515/bfp-2023-0057), Semantic Scholar ne contiendrait que 34 386 études en histoire (dont 33,24% en libre accès), soit 0.13% du corpus total. **Cependant**, cet article se base sur des données de 2008 à 2020 et les maisons d'édition contenant des études historiques ont été rajoutées par la suite.
+Selon [cet article](https://doi.org/10.1515/bfp-2023-0057) daté, Semantic Scholar ne contiendrait que 34 386 études en histoire (dont 33,24% en libre accès), soit 0.13% du corpus total. **Cependant**, cet article se base sur des données de 2008 à 2020 et les maisons d'édition contenant des études historiques ont été rajoutées par la suite.
 
-J'ai fait une recherche simple avec le mot-clé *history* et le filtre par Domaine d'étude : Histoire pour obtenir **1,4 millions de résultats** (juillet 2026). En volume, c'est l'équivalent des deux bases de données disciplinaires *Historical Abstracts* et *America History & Life* combinées.
+Pour refaire une estimation, j'ai fait une recherche simple avec le mot-clé *history* et le filtre par Domaine d'étude : Histoire pour obtenir **1,4 millions de résultats** (juillet 2026). En volume, c'est l'équivalent des deux bases de données disciplinaires *Historical Abstracts* et *America History & Life* combinées.
 
 Toutes les périodes historiques semblent couvertes (antique, médiévale, moderne et contemporaine).
 
-### Biais généraux envers l'histoire
+### Biais envers l'histoire
 
-Nous avons vu que la **quantité** de références sur l'histoire est minime dans le corpus de Semantic Scholar. Mais ce n'est pas tout, il y a aussi une différence de **qualité** des métadonnées des références qui peut biaiser ou sous-représenter ou moins bien repérer les études en histoire.
+Nous avons vu que la **quantité** de références sur l'histoire est minime dans le corpus de Semantic Scholar. Mais ce n'est pas tout, il y a aussi une différence de **qualité** des métadonnées des références qui peut biaiser, ou sous-représenter, ou moins bien repérer les études en histoire.
 
 J'ai mis dans ce tableau les deux extrêmes opposés de la qualité des métadonnées avec les neurosciences (excellentes métadonnées) et l'histoire (métadonnées inégales, hétérogènes, lacunaires).
 
@@ -65,7 +65,7 @@ J'ai mis dans ce tableau les deux extrêmes opposés de la qualité des métadon
 | 99,9 % contiennent un résumé                                                         | Résumés parcellaires                                                                                    |
 +--------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
 | Indexation des principaux articles de revues ou de colloques                         | Peu de livres\                                                                                          |
-|                                                                                      | Tres peu de chapitres\                                                                                  |
+|                                                                                      | Très peu de chapitres\                                                                                  |
 |                                                                                      | Articles de revues                                                                                      |
 +--------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
 | Nombreuses données de citation                                                       | Données de citation minimes                                                                             |
@@ -85,21 +85,25 @@ J'ai mis dans ce tableau les deux extrêmes opposés de la qualité des métadon
 
 Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases :
 
-- **Agent recherche :** raffiner les questions et pour classer les résultats. Selon moi, c'est [l'aspect le plus performant]{.underline} de Undermind.
+- **Agent recherche :** raffiner les questions et pour classer les résultats. Selon moi, c'est [l'aspect le plus performant]{.underline} de Undermind. Il permet de repérer des documents souvent inaccessibles avec des opérateurs booléens classiques ([*search resistant concepts*](https://farhadinfo.medium.com/stop-searching-and-you-will-find-it-search-resistant-concepts-in-systematic-searching-c7968ddf22c8)).
 
-- **Agent traitement** : Traiter le contenu des études récupérées en libre accès (ou celles versées par l'utilisateur) : synthétiser le contenu, extraire des informations, les traduire, etc. Cet aspect est plus limité.
+- **Agent traitement** : Traiter le contenu des études récupérées en libre accès (ou celles versées par l'utilisateur) : synthétiser le contenu, extraire des informations, les traduire, etc. Cet aspect est un peu plus limité.
 
-- **Agent rédaction** : Rédiger du texte. Cet aspect est aussi limité.
+- **Agent rédaction** : Rédiger du texte. Cet aspect est aussi limité. Je préfère copier-coller les résultats des échanges avec l'agent de traitement plutôt que de les faire rédiger. En effet, c'est très lent et surtout il peut y avoir des pertes d'information entre le traitement et la rédaction.
+
+Allons dans les détails de l'Agent recherche et l'Agent traitement.
 
 ### Agent recherche
 
-- La recherche utilise des opérateurs **booléens** classiques, une recherche **sémantique** et une exploration des liens de **citations** quand ceux-ci sont disponibles.
+- La recherche utilise des opérateurs **booléens** classiques, une recherche **sémantique** (puissante) et une exploration des liens de **citations** quand ceux-ci sont disponibles.
 
-- Undermind utilise **seulement le titre et le résumé** pour repérer des documents. Une fois les résultats affichés, il est possible de lancer un agent dans le texte intégral quand celui-ci est disponible.
+  - L'algorithme de **sélection**, de tri et de classement est aussi très efficace. C'est la garantie que les résultats trouvés sont peu nombreux (souvent une centaine ou moins) et pertinents.
+
+- Undermind utilise **seulement le titre et le résumé** pour repérer des documents. Une fois les résultats affichés, il est possible de lancer l'Agent de traitement dans le texte intégral quand celui-ci est disponible.
 
 - Si on lance la recherche en français ou en anglais, les résultats peuvent varier.
 
-- De manière générale, les outils IA génératifs gèrent mal la négation (NOT ou "je ne veux pas de choses sur ...").
+- De manière générale, les outils IA génératifs gèrent mal la négation (NOT ou "je ne veux pas de choses sur ..."). À éviter.
 
 - Pour lancer la recherche, il faut se limiter aux mots-clés thématiques et ne pas utiliser des auteurs, des noms de revues, etc.
 
@@ -107,7 +111,7 @@ Les algorithmes de Undermind utilisent GPT 4 qui pilote des agents pour 3 phases
 
   - Lancer des requêtes génériques exploratoire et ensuite lancer de nombreuses requêtes spécifiques avec du vocabulaire adapté et spécifique pour développer des sous-sujets.
 
-  - Avancé : Comme il n'y a pas de possibilité de supprimer des documents de *All papers* (et de virer les faux positifs) : Mettre sa sélection de documents dans *Starred* puis lancer un agent traitement sur cette vue.
+  - Avancé : Comme il n'y a pas de possibilité de supprimer des documents de *All papers* (et de virer les faux positifs) : Mettre sa sélection de documents dans *Starred* puis lancer un Agent traitement sur cette vue.
 
 ### Agent traitement : suggestions de demandes
 
@@ -175,7 +179,9 @@ Permet de réduire la « friction » des chercheurs débutants avec les outils d
 
 Bref, toutes les fonctionnalités qui permettent de pousser vers les sources et de mieux les traiter sont pertinentes.
 
-## Problèmes des outils IAgen
+## Problèmes généraux de tous les outils IAgen 
+
+À garder à l'esprit pour tous les outils qui contiennent des fonctions IA génératives.
 
 ### Limites de nature
 
@@ -203,7 +209,9 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 - Parmi les algorithmes utilisés, ceux qui utilisent de l'IA générative ont une capacité de traitement limité ce qui fait un possible goulet d'étranglement invisible à l'utilisateur.
 
-- Délestement de compétences de bases. Lorsque l'on fait une recherche de documents, on prend une multitude de décisions et on exerce sa mémoire et son jugement en alternance et progressivement. Ces processus mentaux produisent de l'apprentissage. Un outil qui se pose en intermédiaire facilitateur et prestataire de service et dont on connaît mal le fonctionnement peut réduire ces apprentissages. Exemples :
+### Délestage de compétences de base ?
+
+- Lorsque l'on fait une recherche de documents, on prend une multitude de décisions et on exerce sa mémoire et son jugement en alternance et progressivement. Ces processus mentaux produisent de l'apprentissage. Un outil qui se pose en intermédiaire facilitateur et prestataire de service et dont on connaît mal le fonctionnement peut réduire ces apprentissages. Exemples :
 
   - Habileté à transcrire une demande d’information en mots-clés, à évaluer la qualité de la demande et à reformuler sa stratégie de recherche.
 
@@ -227,11 +235,11 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 ## Quelques solutions et postures
 
-- Former aux biais induits par ces processus lors de recherches avec des outils IAgen.
+- Former aux biais induits par ces méthodes de recherche documentaires nouvelles.
 
-- Avoir une démarche d'auto-réflexion sur ses apprentissages.
+  - Avoir une démarche d'auto-réflexion sur ses apprentissages.
 
-- Interroger ses propres biais pro- ou anti-IA pour la recherche documentaire.
+  - Interroger ses propres biais pro- ou anti-IA pour la recherche documentaire.
 
 - Demander à Undermind d'étendre ses métadonnées à plus de notices sur l'histoire (surtout pour les livres). Pour l'instant, de tous les outils de ce type que j'ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités.
 
@@ -243,20 +251,15 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 - Les outils IA peuvent être des outils bloqués sur la [lecture distante](https://hal.science/hal-03152747v1). Il faut les forcer à faire de la « [lecture télescopique](https://skhole.ecrituresnumeriques.ca/episodes/ep10_aledavood/) » pour se rapprocher des sources.
 
-- Sur le pilotage d'agents IA, Philippe Rygiel en discute dans cette [prépublication](https://inria.hal.science/hal-05673494v1). Il aborde d'autres enjeux sur les technologies « IA » pour l'histoire (OCR, HTR, LLM, etc.)
+- Les outils spécialisés comme Undermind sont intéressants à comparer avec d'autres outils semblables de la même famille (Consensus.app, LeapSpace, Elicit, SciSpace, etc.). Il faudrait aussi les comparer avec des outils généralistes de dernière génération comme Claude et ChatGPT qui commencent à intégrer des agents et des interrogations de bases de données avec le protocole MCP. À suivre...
 
 ------------------------------------------------------------------------
 
 ## Annexe
 
-- Les explorations et recommandations ont été faites par moi, par des lectures des tests de [Aaron Tay](https://aarontay.substack.com/) et du [papier](https://www.undermind.ai/whitepaper.pdf) (biaisé) de Undermind sur le sujet.
-
-<!-- -->
-
+- Les test, les explorations et les recommandations ont été faites par moi entre avril et juillet 20026. Ils ont été supplémentés par des lectures des tests de [Aaron Tay](https://aarontay.substack.com/) et du [papier](https://www.undermind.ai/whitepaper.pdf) (biaisé) de Undermind sur le sujet.
+- Sur le pilotage d'agents IA, Philippe Rygiel en discute dans cette [prépublication](https://inria.hal.science/hal-05673494v1). Il aborde d'autres enjeux sur les technologies « IA » pour l'histoire (OCR, HTR, LLM, etc.)
 - Pascal Martinolli. 2025. **“Bingo critique de l’IAg pour la recherche de documents”**. <https://boite-outils.bib.umontreal.ca/ld.php?content_id=37726345>.
-
   - Idéal pour affûter ses critiques lorsqu'on teste un outil IA génératif.
-
 - ———. 2025. **“Test d’outils IAg génératives pour la recherche universitaire”**. <https://boite-outils.bib.umontreal.ca/ld.php?content_id=37640268>.
-
   - Un peu daté maintenant mais listant la plupart des outils de repérage de documents en libre accès ou en accès freemium.
