@@ -1,5 +1,5 @@
 ---
-title: "Undermind.ai est-il adapté pour découvrir des études en histoire ?"
+title: "Undermind.ai pour la découverte d'études en histoire"
 format: html
 author:
       - name: "Pascal Martinolli"
