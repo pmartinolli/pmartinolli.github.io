@@ -38,10 +38,10 @@ Je pense que passer à côté de cette dimension est dommageable pour la valoris
 Établir une liste de bases de données et de plateformes à interroger pour chercher des comptes-rendus de lecture. Cette liste devrait contenir au moins :
 
 - Ces bases de données généralistes :
-  - [*Google Scholar*](https://scholar.google.com/)
-  - [*OpenAlex*](https://openalex.org/)
-  - [*JSTOR*](https://www.jstor.org/)
-  - [*Dimensions*](https://app.dimensions.ai/discover/publication)
+  - [*Google Scholar*](https://scholar.google.com/)avec `intitle:"prenom nom"`
+  - [*OpenAlex*](https://openalex.org/) avec `prenom nom` qui devrait se faire sur *title & abstract* par défaut
+  - [*JSTOR*](https://www.jstor.org/)avec *Advanced search : item title =* `prenom nom`
+  - [*Dimensions*](https://app.dimensions.ai/discover/publication) *avec* avec `"prenom nom"` et cocher *Title and abstract*
 - Et toutes les bases de données bibliographiques disciplinaires :
   - *Historical Abstracts*
   - *America : History & Life*
@@ -52,7 +52,7 @@ Pour aller plus loin et faire un travail avancé de recherche bibliographique, o
 - D'autres bases de données ou plateformes :
   - dans d'autres disciplines
   - *Web of Science*
-  - [Isidore](https://isidore.science/) *(*contient *[OpenEdition](https://www.openedition.org/))*
+  - [Isidore](https://isidore.science/) *(*contient [*OpenEdition*](https://www.openedition.org/)*)*
   - tout *ProQuest*
   - tout *EBSCO*
   - tout [Érudit](https://www.erudit.org/)
@@ -74,7 +74,9 @@ Pour aller plus loin et faire un travail avancé de recherche bibliographique, o
   - [Le Monde des livres](https://www.lemonde.fr/livres/)
   - etc.
 
-Pour chaque outil choisi, chercher uniquement dans le champ `Titre/Title` avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié.
+Pour chaque outil choisi, chercher uniquement dans le champ `Titre/Title` avec le nom du chercheur sous la forme `Prénom Nom` ou sous la forme `"Prénom Nom"`. Notez que certains outils ont des subtilités d'utilisation et que celles-ci peuvent changer d'une année à l'autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié. Il peut y avoir entre 0 et 40% de faux-positifs à rejeter.
+
+Pour les jeunes chercheurs qui ont surtout publié des chapitres dans des livres collectifs (et qui ont peu été auteur ou éditeur de livres au complet), je recommande de plutôt chercher le titre court du livre dans le champ titre.
 
 ## Collectionner les comptes-rendus
 
@@ -83,9 +85,10 @@ Collecter toutes les références aux comptes-rendus dans Zotero. Pour cela :
 1.  Créer une collection nommée `Prénom Nom` du chercheur.
 2.  Créer une sous-collection pour chaque outil interrogé, nommé avec le nom de l'outil.
 3.  Verser les comptes-rendus dans les collections correspondantes.
-4.  Quand la récolte est terminée, dédoublonner les comptes-rendus avec le plugin [Zoplicate](https://github.com/ChenglongMa/zoplicate) (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
+4.  Quand la récolte dans tous les outils est terminée, dédoublonner les comptes-rendus avec le plugin [Zoplicate](https://github.com/ChenglongMa/zoplicate) (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
     - Fusionner les doublons avec Zoplicate/Doublons.
-    - Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Année, puis par Créateur, puis par Publication. Clic-droit \> Fusionner les documents.
+    - Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Créateur, puis par Année, puis par Publication. Clic-droit \> Fusionner les documents.
+      - Attention aux recherches enregistrées excluant le `prénom nom` dans le champs Créateur car, depuis Zotero 8, il se peut que prénom nom se retrouve dans le titre mais aussi dans le champ `Auteur recensé`.
 
 ## Présenter les données
 

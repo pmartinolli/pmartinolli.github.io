@@ -376,10 +376,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Ces bases de données généralistes :
 <ul>
-<li><a href="https://scholar.google.com/"><em>Google Scholar</em></a></li>
-<li><a href="https://openalex.org/"><em>OpenAlex</em></a></li>
-<li><a href="https://www.jstor.org/"><em>JSTOR</em></a></li>
-<li><a href="https://app.dimensions.ai/discover/publication"><em>Dimensions</em></a></li>
+<li><a href="https://scholar.google.com/"><em>Google Scholar</em></a>avec <code>intitle:"prenom nom"</code></li>
+<li><a href="https://openalex.org/"><em>OpenAlex</em></a> avec <code>prenom nom</code> qui devrait se faire sur <em>title &amp; abstract</em> par défaut</li>
+<li><a href="https://www.jstor.org/"><em>JSTOR</em></a>avec <em>Advanced search : item title =</em> <code>prenom nom</code></li>
+<li><a href="https://app.dimensions.ai/discover/publication"><em>Dimensions</em></a> <em>avec</em> avec <code>"prenom nom"</code> et cocher <em>Title and abstract</em></li>
 </ul></li>
 <li>Et toutes les bases de données bibliographiques disciplinaires :
 <ul>
@@ -394,7 +394,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>dans d’autres disciplines</li>
 <li><em>Web of Science</em></li>
-<li><a href="https://isidore.science/">Isidore</a> <em>(</em>contient <em><a href="https://www.openedition.org/">OpenEdition</a>)</em></li>
+<li><a href="https://isidore.science/">Isidore</a> <em>(</em>contient <a href="https://www.openedition.org/"><em>OpenEdition</em></a><em>)</em></li>
 <li>tout <em>ProQuest</em></li>
 <li>tout <em>EBSCO</em></li>
 <li>tout <a href="https://www.erudit.org/">Érudit</a></li>
@@ -421,7 +421,8 @@ ul.task-list li input[type="checkbox"] {
 <li>etc.</li>
 </ul></li>
 </ul>
-<p>Pour chaque outil choisi, chercher uniquement dans le champ <code>Titre/Title</code> avec le nom du chercheur sous la forme <code>Prénom Nom</code> ou sous la forme <code>"Prénom Nom"</code>. Notez que certains outils ont des subtilités d’utilisation et que celles-ci peuvent changer d’une année à l’autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié.</p>
+<p>Pour chaque outil choisi, chercher uniquement dans le champ <code>Titre/Title</code> avec le nom du chercheur sous la forme <code>Prénom Nom</code> ou sous la forme <code>"Prénom Nom"</code>. Notez que certains outils ont des subtilités d’utilisation et que celles-ci peuvent changer d’une année à l’autre. À vous de développer votre expertise des outils et de noter les bonnes pratiques dans un document dédié. Il peut y avoir entre 0 et 40% de faux-positifs à rejeter.</p>
+<p>Pour les jeunes chercheurs qui ont surtout publié des chapitres dans des livres collectifs (et qui ont peu été auteur ou éditeur de livres au complet), je recommande de plutôt chercher le titre court du livre dans le champ titre.</p>
 </section>
 <section id="collectionner-les-comptes-rendus" class="level2">
 <h2 class="anchored" data-anchor-id="collectionner-les-comptes-rendus">Collectionner les comptes-rendus</h2>
@@ -430,10 +431,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Créer une collection nommée <code>Prénom Nom</code> du chercheur.</li>
 <li>Créer une sous-collection pour chaque outil interrogé, nommé avec le nom de l’outil.</li>
 <li>Verser les comptes-rendus dans les collections correspondantes.</li>
-<li>Quand la récolte est terminée, dédoublonner les comptes-rendus avec le plugin <a href="https://github.com/ChenglongMa/zoplicate">Zoplicate</a> (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
+<li>Quand la récolte dans tous les outils est terminée, dédoublonner les comptes-rendus avec le plugin <a href="https://github.com/ChenglongMa/zoplicate">Zoplicate</a> (qui fait ça mieux que les fonctions de dédoublonnage de base de Zotero).
 <ul>
 <li>Fusionner les doublons avec Zoplicate/Doublons.</li>
-<li>Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Année, puis par Créateur, puis par Publication. Clic-droit &gt; Fusionner les documents.</li>
+<li>Fusionner manuellement les doublons restants (car il va en rester). Pour cela, il faut trier les colonnes de Zotero par Créateur, puis par Année, puis par Publication. Clic-droit &gt; Fusionner les documents.
+<ul>
+<li>Attention aux recherches enregistrées excluant le <code>prénom nom</code> dans le champs Créateur car, depuis Zotero 8, il se peut que prénom nom se retrouve dans le titre mais aussi dans le champ <code>Auteur recensé</code>.</li>
+</ul></li>
 </ul></li>
 </ol>
 </section>
