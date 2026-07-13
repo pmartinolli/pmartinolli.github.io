@@ -245,9 +245,9 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
 ## Réflexions sur l'IA générative et l'histoire
 
-- Par nature, les algorithmes génératifs applatissent les nuances, les aspérités, les achoppements, etc. Or faire de l'histoire, n'est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?
+- Par nature, les algorithmes génératifs aplatissent les nuances, les aspérités, les achoppements, etc. Or faire de l'histoire, n'est-ce pas de les repérer, de les comparer, de les contextualiser, de les analyser et de les restituer dans un argumentaire ?
 
-  - Les outils évoluent vite : l'an passé mon exemple favori pour montrer les erreurs de l'IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagazaki ? » Jusqu'à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « [consensus](https://amzn.to/4pRq5k8) » historique sur la question.
+  - Les outils évoluent vite : l'an passé mon exemple favori pour montrer les erreurs de l'IAgen était de demander régulièrement : « Est-ce que Harry Truman est le décideur final du bombardement de Hiroshima et de Nagasaki ? » Jusqu'à mai 2026, les réponses ont toujours été décevantes. Depuis peu, elles sont plus nuancées et proches du « [consensus](https://amzn.to/4pRq5k8) » historique sur la question.
 
 - Les outils IA peuvent être des outils bloqués sur la [lecture distante](https://hal.science/hal-03152747v1). Il faut les forcer à faire de la « [lecture télescopique](https://skhole.ecrituresnumeriques.ca/episodes/ep10_aledavood/) » pour se rapprocher des sources.
 
