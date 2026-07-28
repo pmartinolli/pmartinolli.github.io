@@ -10,7 +10,361 @@
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Mon, 06 Jul 2026 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Jul 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Reconnaissance d’entités nommées dans OpenRefine : avec spaCy ou avec un LLM?</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2026/openrefine-spacy-llm/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="avec-spacy" class="level2">
+<h2 class="anchored" data-anchor-id="avec-spacy">Avec spaCy</h2>
+<p>J’ouvre le terminal et je lance successivement :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install flask spacy</span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> spacy download en_core_web_sm</span></code></pre></div></div>
+<p>N’importe où, je crée ensuite un fichier nommé <code>spacy_server.py</code> avec dedans :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> flask <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Flask, request, jsonify</span>
+<span id="cb2-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> spacy</span>
+<span id="cb2-3"></span>
+<span id="cb2-4">app <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Flask(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__name__</span>)</span>
+<span id="cb2-5">nlp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> spacy.load(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"en_core_web_sm"</span>)</span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">@app.route</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/process'</span>, methods<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'POST'</span>])</span>
+<span id="cb2-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> process():</span>
+<span id="cb2-9">    text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> request.json[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>]</span>
+<span id="cb2-10">    doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nlp(text)</span>
+<span id="cb2-11">    entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>: ent.text, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"label"</span>: ent.label_} <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> ent <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> doc.ents]</span>
+<span id="cb2-12">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> jsonify(entities)</span>
+<span id="cb2-13"></span>
+<span id="cb2-14"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__name__</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'__main__'</span>:</span>
+<span id="cb2-15">    app.run(port<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5000</span>)</span></code></pre></div></div>
+<p>Alternative pour pas avoir de JSON (remplacer <code>def</code> par ceci):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> process():</span>
+<span id="cb3-2">    text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> request.data.decode(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'utf-8'</span>)</span>
+<span id="cb3-3">    doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nlp(text)</span>
+<span id="cb3-4">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example: Extracting Named Entities (NER)</span></span>
+<span id="cb3-5">    entities <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>ent<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>text<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> (</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>ent<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>label_<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">)"</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> ent <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> doc.ents]</span>
+<span id="cb3-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>.join(entities)</span></code></pre></div></div>
+<p>Enuite, je lance ce script dans le terminal avec :</p>
+<pre><code>python spacy_server.py</code></pre>
+<p>Dans OpenRefine, je créé une nouvelle colonne basée sur la colonne à traiter (Edit column &gt; add column based on this column). Language = Jython/Python. Expression =</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> urllib2</span>
+<span id="cb5-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> json</span>
+<span id="cb5-3"></span>
+<span id="cb5-4">url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"http://localhost:5000/process"</span></span>
+<span id="cb5-5">payload <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> json.dumps({<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>: value})</span>
+<span id="cb5-6">req <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> urllib2.Request(url, payload, {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Content-Type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"application/json"</span>})</span>
+<span id="cb5-7"></span>
+<span id="cb5-8"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">try</span>:</span>
+<span id="cb5-9">    response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> urllib2.urlopen(req, timeout<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>)</span>
+<span id="cb5-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> json.dumps(json.loads(response.read()), indent<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb5-11"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">except</span> urllib2.URLError <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> e:</span>
+<span id="cb5-12">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ERROR: "</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(e)</span></code></pre></div></div>
+<p>Résultat préliminaire : c’est ultra-rapide, fiable, reproductible mais certaines entités ne sont pas labelisées correctement (une ville est labélisée comme une personne par exemple).</p>
+</section>
+<section id="avec-un-llm-via-ollama" class="level2">
+<h2 class="anchored" data-anchor-id="avec-un-llm-via-ollama">Avec un LLM (via Ollama)</h2>
+<p>TL;DR : C’est beaucoup plus gourmand (il faut un gros ordinateur) et il faut trouver le bon modèle adapté à la tâche et à sa machine. Cela extrait moins de choses.</p>
+<p>Matériel utilisé : Windows 11, 8 Gb de carte graphique, 64 Go de RAM, Intel i7-9700 CPU @ 3.00GHz.</p>
+<p>Installer <a href="https://ollama.com/download">Ollama</a>.</p>
+<p>Installer deux modèles adaptés à la tâche et à la machine ci-dessus en ouvrant le terminal et en lançant :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ollama</span> run gemma4:e4b</span></code></pre></div></div>
+<p>Puis en sortant du prompt avec <code>/bye</code></p>
+<p>et en lançant cet autre modèle :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ollama</span> run qwen3:8b</span></code></pre></div></div>
+<p>et <code>/bye</code></p>
+<p>Dans OpenRefine, installer <a href="https://github.com/sunilnatraj/llm-extension">LLM Extension</a> en téléchargeant le ZIP et en le décompressant dans le dossier Fichiers de programme (x86) &gt; OpenRefine &gt; webapp &gt; extensions &gt; llm-extension</p>
+<p>Relancer OpenRefine, observer un menu « AI » à gauche de « Wikibase ». Cliquer sur AI &gt; manage LLM Providers et ajouter les deux modèles avec les paramètres suivants :</p>
+<ul>
+<li>Label : gemma4:e4b</li>
+<li>Server URL : http://localhost:11434/v1/chat/completions</li>
+<li>Model : gemma4:e4b</li>
+<li>API key : 1234</li>
+<li>Temperature : 0</li>
+<li>Top-P : 0,9</li>
+<li>Seed : 32</li>
+<li>Max tokens : 6000</li>
+<li>Wait time : 0</li>
+</ul>
+<p>Cliquer sur la colonne à traiter, menu de colonne &gt; Extract using AI &gt; utiliser les paramètres ci-dessous :</p>
+<ul>
+<li>Add new : indiquer le nom de la nouvelle colonne qui sera créée (ex: le nom du modèle)</li>
+<li>LLM Provider : sélectionner le modèle</li>
+<li>Response format : JSON object</li>
+<li>Describe… : <code>Extract named entities</code></li>
+<li><em>Generate preview</em> pour tester</li>
+<li>OK</li>
+</ul>
+</section>
+<section id="comparaison-avec-des-références-bibliographiques" class="level2">
+<h2 class="anchored" data-anchor-id="comparaison-avec-des-références-bibliographiques">Comparaison avec des références bibliographiques</h2>
+<p>Je prends 10 références dans mon Zotero que j’exporte en CSV et que j’importe dans OpenRefine.</p>
+<p>Je créé une nouvelle colonne TI_ABS qui concatène titre et résumé (<em>Title</em> et <em>Abstract Note</em>), à partir de la colonne <em>Title</em> (GREL) :</p>
+<pre><code>if(isNotNull(cells["Abstract Note"].value), value + ". " + cells["Abstract Note"].value, value)</code></pre>
+<p>Je clique sur cette nouvelle colonne TI_ABS pour créer une colonne spaCY, une colonne Qwen et une colonne Gemma (voir plus haut). Je compare le tout.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 32%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>spaCy</th>
+<th>qwen3:8b</th>
+<th>gemma4:e4b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Temps (10 cellules)</td>
+<td>0,1 seconde</td>
+<td>2 minutes</td>
+<td>2 minutes</td>
+</tr>
+<tr class="even">
+<td>Reproductible</td>
+<td>Oui</td>
+<td>Oui (testé deux fois)</td>
+<td>Oui (testé deux fois)</td>
+</tr>
+<tr class="odd">
+<td>Échecs (rien d’extrait)</td>
+<td>0</td>
+<td>0</td>
+<td>4/10</td>
+</tr>
+<tr class="even">
+<td>Structure du JSON</td>
+<td>Parfaite</td>
+<td>Très variable*</td>
+<td>Très variable*</td>
+</tr>
+<tr class="odd">
+<td>Complétude de l’extraction</td>
+<td>Assez complet sauf pour les sujets/thèmes</td>
+<td>Moyen</td>
+<td>Moyen plus</td>
+</tr>
+<tr class="even">
+<td>Adéquation des labels avec le contenu</td>
+<td>Variable,<br>
+mais pas super</td>
+<td>Variable,<br>
+mais pas mauvais**</td>
+<td>Variable,<br>
+mais pas mauvais**</td>
+</tr>
+</tbody>
+</table>
+<p>* C’est selon moi le point faible principal des LLM, le JSON produit n’est pas consistant sur toutes les cellules. Il devrait être possible de le cadrer avec l’extension LLM en remplaçant JSON object par JSON as per schema et en donnant le schéma dans Provide JSON schema.</p>
+<p>** C’est selon moi, le principal avantage des LLM : deviner la classification des contenus mieux qu’avec une méthode comme spaCy.</p>
+<p>Idée : utiliser spaCy pour récupérer le maximum d’entités puis un LLM derrière pour mieux les classer ?</p>
+<section id="exemple-typique" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-typique">Exemple typique</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>TIT_ABS</th>
+<th>spaCy</th>
+<th>qwen3:8b</th>
+<th>gemma4:e4b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><sub>Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum.&nbsp;In&nbsp;recent&nbsp;reconstructions&nbsp;of&nbsp;the&nbsp;Old&nbsp;Babylonian&nbsp;Sumerian&nbsp;scribal&nbsp;curriculum&nbsp;it&nbsp;has&nbsp;been&nbsp;proposed&nbsp;that&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second&nbsp;or&nbsp;advanced&nbsp;phase&nbsp;of&nbsp;scribal&nbsp;training&nbsp;pupils&nbsp;learned&nbsp;a&nbsp;group&nbsp;of&nbsp;ten&nbsp;literary&nbsp;compositions&nbsp;called&nbsp;the&nbsp;Decad.&nbsp;These&nbsp;reconstructions&nbsp;are&nbsp;based&nbsp;primarily&nbsp;on&nbsp;the&nbsp;assumption&nbsp;that&nbsp;two&nbsp;OB&nbsp;incipit&nbsp;lists,&nbsp;known&nbsp;as&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues,&nbsp;list&nbsp;the&nbsp;content&nbsp;and&nbsp;sequence&nbsp;of&nbsp;the&nbsp;advanced&nbsp;curriculum.&nbsp;In&nbsp;this&nbsp;article&nbsp;this&nbsp;assumption&nbsp;is&nbsp;re-evaluated,&nbsp;and&nbsp;it&nbsp;is&nbsp;argued&nbsp;that&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues&nbsp;are&nbsp;inventories&nbsp;and&nbsp;not&nbsp;curricular&nbsp;lists.</sub></td>
+<td>~[</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Literary&nbsp;Catalogues” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PRODUCT”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Babylonian&nbsp;Sumerian” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“DATE”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“ten” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Decad” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“two” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;} ]~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“Places”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Nippur”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Time&nbsp;Periods”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Organizations/Institutions”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre”&nbsp; ], &nbsp;&nbsp;&nbsp;&nbsp;“Concepts/Subjects”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Decad” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Document&nbsp;Title”:&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;} }~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian”, &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian”, &nbsp;&nbsp;&nbsp;&nbsp;“Decad”, &nbsp;&nbsp;&nbsp;&nbsp;“Nippur&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“Louvre&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“OB&nbsp;incipit&nbsp;lists” &nbsp;&nbsp;] }~ |</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>HumanitésNumériques</category>
+  <category>OpenRefine</category>
+  <category>LLM</category>
+  <guid>https://pmartinolli.github.io/blog/2026/openrefine-spacy-llm/</guid>
+  <pubDate>Tue, 28 Jul 2026 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Undermind.ai pour la découverte d’études en histoire</title>
   <dc:creator>Pascal Martinolli</dc:creator>
@@ -11210,44 +11564,6 @@ font-style: inherit;">"[AUTO_LANGUAGE],mul,en"</span>. }</span>
   <category>Wikidata</category>
   <guid>https://pmartinolli.github.io/blog/2025/indexation-sujet-wikidata/</guid>
   <pubDate>Tue, 07 Oct 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>2025, année Wikidata ?</title>
-  <dc:creator>Pascal Martinolli</dc:creator>
-  <link>https://pmartinolli.github.io/blog/2025/2025-annee-wikidata/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Cette année marque ma 10e année de contribution à Wikimédia, commencée un peu avec Wikipédia et surtout poursuivie avec Wikidata qui a rapidement pris le dessus comme outil favori dans toute la galaxie Wikimedia.</p>
-<p>Dans les prochains jours, 3 articles vont être publiés sur le sujet :</p>
-<ul>
-<li>Deux sur le blogue Zotero francophone, centrés sur l’extension Cita.
-<ul>
-<li>« <a href="https://zotero.hypotheses.org/5740">Enrichir sa collection de références Zotero grâce à l’extension Cita</a> »</li>
-<li>« <a href="https://zotero.hypotheses.org/5780">Contribuer à Wikidata avec Cita</a> » Dans l’introduction, je parle de l’intérêt de Wikidata pour la science ouverte.</li>
-</ul></li>
-<li>Un dans <em>Programming historian</em> en français : « <a href="https://doi.org/10.46430/phfr0038">Enrichir ses données avec le processus de réconciliation d’OpenRefine</a> ». En conclusion, je discute des enjeux pour la gestion de données de recherche en histoire.</li>
-</ul>
-<p>À ce jour, j’ai contribué environ <a href="https://www.wikidata.org/wiki/Special:Contributions/Pmartinolli">4</a> millions de fois. J’ai aussi amélioré le fichier d’exportation Zotero pour <a href="https://github.com/zotero/translators/pull/3468">Wikidata QuickStatements.js</a>.</p>
-<p>Depuis cet année, je participe à une équipe de valorisation des <a href="https://www.wikidata.org/wiki/Wikidata:R%C3%A9seau_Circ%C3%A9">revues québécoises du réseau Circé</a>. Cette équipe poursuit l’excellente présentation faite par Michael Miller lors du congrès ACFAS de mai dernier où il expliquait les avantages à avoir une stratégie Wikimedia pour le rayonnement des revues. J’en parlerai dans un futur billet.</p>
-<p>J’ai développé plein de petits outils en JavaScript et HTML pour tirer parti de Wikidata et présenter simplement au grand public ce qu’il est possible de faire avec cet outil austère et méconnu.</p>
-<ul>
-<li>Liste de <a href="https://pmartinolli.github.io/code/revuesdhistoire/">revues en histoire</a></li>
-<li>Un réseau de citation sur une chronologie : pour les <a href="https://pmartinolli.github.io/code/timelined_networks/ttrpg_timelined_network.html">jeux de rôle</a> ou pour les <a href="https://pmartinolli.github.io/code/timelined_networks/scholarly_timelined_network.html">travaux scientifiques</a>. Ce dernier graphe a été positivement remarqué par Egon Willighagen, un des co-concepteur de <a href="https://scholia.toolforge.org/">Scholia</a> et il aimerait peut être développer ce type de visualisation. J’en parlerai dans un futur billet.</li>
-</ul>
-<p>Je vais aussi participer à la révision d’article pour un numéro spécial Wikidata du <a href="https://openhumanitiesdata.metajnl.com/"><em>Journal of Open Humanities Data (JOHD)</em></a>.</p>
-
-
-
- ]]></description>
-  <category>Wikidata</category>
-  <category>HumanitésNumériques</category>
-  <guid>https://pmartinolli.github.io/blog/2025/2025-annee-wikidata/</guid>
-  <pubDate>Mon, 06 Oct 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

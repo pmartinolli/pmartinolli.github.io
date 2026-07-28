@@ -1,0 +1,237 @@
+---
+title: "Reconnaissance d'entités nommées dans OpenRefine : avec spaCy ou avec un LLM?"
+format: html
+author:
+      - name: "Pascal Martinolli"
+        orcid: "0000-0003-0122-5300"
+date: "2026-07-28"
+categories: [HumanitésNumériques, OpenRefine, LLM]
+description: "Où l'on teste deux méthodes pour faire de la reconnaissance d'entités nommées dans OpenRefine : une méthode de traitement du langage naturel (NLP) avec spaCy et une méthode par LLM avec Ollama utilisant qwen ou gemma. On compare le tout pour voir les forces et faiblesses de chacun."
+---
+
+## Avec spaCy
+
+J'ouvre le terminal et je lance successivement :
+
+``` bash
+pip install flask spacy
+python -m spacy download en_core_web_sm
+```
+
+N'importe où, je crée ensuite un fichier nommé `spacy_server.py` avec dedans :
+
+``` python
+from flask import Flask, request, jsonify
+import spacy
+
+app = Flask(__name__)
+nlp = spacy.load("en_core_web_sm")
+
+@app.route('/process', methods=['POST'])
+def process():
+    text = request.json["text"]
+    doc = nlp(text)
+    entities = [{"text": ent.text, "label": ent.label_} for ent in doc.ents]
+    return jsonify(entities)
+
+if __name__ == '__main__':
+    app.run(port=5000)
+```
+
+Alternative pour pas avoir de JSON (remplacer `def` par ceci):
+
+``` python
+def process():
+    text = request.data.decode('utf-8')
+    doc = nlp(text)
+    # Example: Extracting Named Entities (NER)
+    entities = [f"{ent.text} ({ent.label_})" for ent in doc.ents]
+    return ", ".join(entities)
+```
+
+Enuite, je lance ce script dans le terminal avec :
+
+```         
+python spacy_server.py
+```
+
+Dans OpenRefine, je créé une nouvelle colonne basée sur la colonne à traiter (Edit column \> add column based on this column). Language = Jython/Python. Expression =
+
+``` python
+import urllib2
+import json
+
+url = "http://localhost:5000/process"
+payload = json.dumps({"text": value})
+req = urllib2.Request(url, payload, {"Content-Type": "application/json"})
+
+try:
+    response = urllib2.urlopen(req, timeout=30)
+    return json.dumps(json.loads(response.read()), indent=2)
+except urllib2.URLError as e:
+    return "ERROR: " + str(e)
+```
+
+Résultat préliminaire : c'est ultra-rapide, fiable, reproductible mais certaines entités ne sont pas labelisées correctement (une ville est labélisée comme une personne par exemple).
+
+## Avec un LLM (via Ollama)
+
+TL;DR : C'est beaucoup plus gourmand (il faut un gros ordinateur) et il faut trouver le bon modèle adapté à la tâche et à sa machine. Cela extrait moins de choses.
+
+Matériel utilisé : Windows 11, 8 Gb de carte graphique, 64 Go de RAM, Intel i7-9700 CPU \@ 3.00GHz.
+
+Installer [Ollama](https://ollama.com/download).
+
+Installer deux modèles adaptés à la tâche et à la machine ci-dessus en ouvrant le terminal et en lançant :
+
+``` bash
+ollama run gemma4:e4b
+```
+
+Puis en sortant du prompt avec `/bye`
+
+et en lançant cet autre modèle :
+
+``` bash
+ollama run qwen3:8b
+```
+
+et `/bye`
+
+Dans OpenRefine, installer [LLM Extension](https://github.com/sunilnatraj/llm-extension) en téléchargeant le ZIP et en le décompressant dans le dossier Fichiers de programme (x86) \> OpenRefine \> webapp \> extensions \> llm-extension
+
+Relancer OpenRefine, observer un menu « AI » à gauche de « Wikibase ». Cliquer sur AI \> manage LLM Providers et ajouter les deux modèles avec les paramètres suivants :
+
+- Label : gemma4:e4b
+- Server URL : http://localhost:11434/v1/chat/completions
+- Model : gemma4:e4b
+- API key : 1234
+- Temperature : 0
+- Top-P : 0,9
+- Seed : 32
+- Max tokens : 6000
+- Wait time : 0
+
+Cliquer sur la colonne à traiter, menu de colonne \> Extract using AI \> utiliser les paramètres ci-dessous :
+
+- Add new : indiquer le nom de la nouvelle colonne qui sera créée (ex: le nom du modèle)
+- LLM Provider : sélectionner le modèle
+- Response format : JSON object
+- Describe... : `Extract named entities`
+- *Generate preview* pour tester
+- OK
+
+## Comparaison avec des références bibliographiques 
+
+Je prends 10 références dans mon Zotero que j'exporte en CSV et que j'importe dans OpenRefine.
+
+Je créé une nouvelle colonne TI_ABS qui concatène titre et résumé (*Title* et *Abstract Note*), à partir de la colonne *Title* (GREL) :
+
+```         
+if(isNotNull(cells["Abstract Note"].value), value + ". " + cells["Abstract Note"].value, value)
+```
+
+Je clique sur cette nouvelle colonne TI_ABS pour créer une colonne spaCY, une colonne Qwen et une colonne Gemma (voir plus haut). Je compare le tout.
+
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+|                                        | spaCy                                     | qwen3:8b              | gemma4:e4b            |
++========================================+===========================================+=======================+=======================+
+| Temps (10 cellules)                    | 0,1 seconde                               | 2 minutes             | 2 minutes             |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Reproductible                          | Oui                                       | Oui (testé deux fois) | Oui (testé deux fois) |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Échecs (rien d'extrait)                | 0                                         | 0                     | 4/10                  |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Structure du JSON                      | Parfaite                                  | Très variable\*       | Très variable\*       |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Complétude de l'extraction             | Assez complet sauf pour les sujets/thèmes | Moyen                 | Moyen plus            |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Adéquation des labels avec le contenu  | Variable, \                               | Variable, \           | Variable, \           |
+|                                        | mais pas super                            | mais pas mauvais\*\*  | mais pas mauvais\*\*  |
++----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+
+\* C'est selon moi le point faible principal des LLM, le JSON produit n'est pas consistant sur toutes les cellules. Il devrait être possible de le cadrer avec l'extension LLM en remplaçant JSON object par JSON as per schema et en donnant le schéma dans Provide JSON schema.
+
+\*\* C'est selon moi, le principal avantage des LLM : deviner la classification des contenus mieux qu'avec une méthode comme spaCy.
+
+Idée : utiliser spaCy pour récupérer le maximum d'entités puis un LLM derrière pour mieux les classer ?
+
+### Exemple typique
+
+| TIT_ABS | spaCy | qwen3:8b | gemma4:e4b |
+|----|----|----|----|
+| ~Sumerian\ Literary\ Catalogues\ and\ the\ Scribal\ Curriculum.\ In\ recent\ reconstructions\ of\ the\ Old\ Babylonian\ Sumerian\ scribal\ curriculum\ it\ has\ been\ proposed\ that\ at\ the\ beginning\ of\ the\ second\ or\ advanced\ phase\ of\ scribal\ training\ pupils\ learned\ a\ group\ of\ ten\ literary\ compositions\ called\ the\ Decad.\ These\ reconstructions\ are\ based\ primarily\ on\ the\ assumption\ that\ two\ OB\ incipit\ lists,\ known\ as\ the\ Nippur\ and\ Louvre\ catalogues,\ list\ the\ content\ and\ sequence\ of\ the\ advanced\ curriculum.\ In\ this\ article\ this\ assumption\ is\ re-evaluated,\ and\ it\ is\ argued\ that\ the\ Nippur\ and\ Louvre\ catalogues\ are\ inventories\ and\ not\ curricular\ lists.~ | ~\[
+\ \ {
+\ \ \ \ "label":\ "PERSON",\ 
+\ \ \ \ "text":\ "Literary\ Catalogues"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "PRODUCT",\ 
+\ \ \ \ "text":\ "the\ Scribal\ Curriculum"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "PERSON",\ 
+\ \ \ \ "text":\ "Babylonian\ Sumerian"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "DATE",\ 
+\ \ \ \ "text":\ "the\ beginning\ of\ the\ second"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "CARDINAL",\ 
+\ \ \ \ "text":\ "ten"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "ORG",\ 
+\ \ \ \ "text":\ "Decad"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "CARDINAL",\ 
+\ \ \ \ "text":\ "two"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "ORG",\ 
+\ \ \ \ "text":\ "Nippur"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "PERSON",\ 
+\ \ \ \ "text":\ "Louvre"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "ORG",\ 
+\ \ \ \ "text":\ "Nippur"
+\ \ },\ 
+\ \ {
+\ \ \ \ "label":\ "PERSON",\ 
+\ \ \ \ "text":\ "Louvre"
+\ \ }
+\]~ | ~{
+\ \ "Named\ Entities":\ {
+\ \ \ \ "Places":\ \[
+\ \ \ \ \ \ "Nippur",
+\ \ \ \ \ \ "Louvre"
+\ \ \ \ \],
+\ \ \ \ "Time\ Periods":\ \[
+\ \ \ \ \ \ "Old\ Babylonian"
+\ \ \ \ \],
+\ \ \ \ "Organizations/Institutions":\ \[
+\ \ \ \ \ \ "Louvre"\ 	\],
+\ \ \ \ "Concepts/Subjects":\ \[
+\ \ \ \ \ \ "Sumerian\ Literary\ Catalogues",
+\ \ \ \ \ \ "Scribal\ Curriculum",
+\ \ \ \ \ \ "Decad"
+\ \ \ \ \],
+\ \ \ \ "Document\ Title":\ "Sumerian\ Literary\ Catalogues\ and\ the\ Scribal\ Curriculum"
+\ \ }
+}~ | ~{
+\ \ "Named\ Entities":\ \[
+\ \ \ \ "Sumerian\ Literary\ Catalogues",
+\ \ \ \ "Scribal\ Curriculum",
+\ \ \ \ "Old\ Babylonian",
+\ \ \ \ "Sumerian",
+\ \ \ \ "Decad",
+\ \ \ \ "Nippur\ catalogue",
+\ \ \ \ "Louvre\ catalogue",
+\ \ \ \ "OB\ incipit\ lists"
+\ \ \]
+}~ |
