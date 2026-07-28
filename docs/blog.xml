@@ -268,7 +268,7 @@ font-style: inherit;">ollama</span> run qwen3:8b</span></code></pre></div></div>
 <p>Je clique sur cette nouvelle colonne TI_ABS pour créer une colonne spaCY, une colonne Qwen et une colonne Gemma (voir plus haut). Je compare le tout.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 30%">
+<col style="width: 29%">
 <col style="width: 32%">
 <col style="width: 17%">
 <col style="width: 17%">
@@ -328,33 +328,98 @@ mais pas mauvais**</td>
 <p>Idée : utiliser spaCy pour récupérer le maximum d’entités puis un LLM derrière pour mieux les classer ?</p>
 <section id="exemple-typique" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-typique">Exemple typique</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>TIT_ABS</th>
-<th>spaCy</th>
-<th>qwen3:8b</th>
-<th>gemma4:e4b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><sub>Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum.&nbsp;In&nbsp;recent&nbsp;reconstructions&nbsp;of&nbsp;the&nbsp;Old&nbsp;Babylonian&nbsp;Sumerian&nbsp;scribal&nbsp;curriculum&nbsp;it&nbsp;has&nbsp;been&nbsp;proposed&nbsp;that&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second&nbsp;or&nbsp;advanced&nbsp;phase&nbsp;of&nbsp;scribal&nbsp;training&nbsp;pupils&nbsp;learned&nbsp;a&nbsp;group&nbsp;of&nbsp;ten&nbsp;literary&nbsp;compositions&nbsp;called&nbsp;the&nbsp;Decad.&nbsp;These&nbsp;reconstructions&nbsp;are&nbsp;based&nbsp;primarily&nbsp;on&nbsp;the&nbsp;assumption&nbsp;that&nbsp;two&nbsp;OB&nbsp;incipit&nbsp;lists,&nbsp;known&nbsp;as&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues,&nbsp;list&nbsp;the&nbsp;content&nbsp;and&nbsp;sequence&nbsp;of&nbsp;the&nbsp;advanced&nbsp;curriculum.&nbsp;In&nbsp;this&nbsp;article&nbsp;this&nbsp;assumption&nbsp;is&nbsp;re-evaluated,&nbsp;and&nbsp;it&nbsp;is&nbsp;argued&nbsp;that&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues&nbsp;are&nbsp;inventories&nbsp;and&nbsp;not&nbsp;curricular&nbsp;lists.</sub></td>
-<td>~[</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Literary&nbsp;Catalogues” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PRODUCT”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Babylonian&nbsp;Sumerian” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“DATE”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“ten” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Decad” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“two” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;} ]~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“Places”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Nippur”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Time&nbsp;Periods”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Organizations/Institutions”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre”&nbsp; ], &nbsp;&nbsp;&nbsp;&nbsp;“Concepts/Subjects”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Decad” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Document&nbsp;Title”:&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;} }~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian”, &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian”, &nbsp;&nbsp;&nbsp;&nbsp;“Decad”, &nbsp;&nbsp;&nbsp;&nbsp;“Nippur&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“Louvre&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“OB&nbsp;incipit&nbsp;lists” &nbsp;&nbsp;] }~ |</p>
+<section id="texte-de-la-cellule" class="level4">
+<h4 class="anchored" data-anchor-id="texte-de-la-cellule">Texte de la cellule</h4>
+<p><em>Sumerian Literary Catalogues and the Scribal Curriculum. In recent reconstructions of the Old Babylonian Sumerian scribal curriculum it has been proposed that at the beginning of the second or advanced phase of scribal training pupils learned a group of ten literary compositions called the Decad. These reconstructions are based primarily on the assumption that two OB incipit lists, known as the Nippur and Louvre catalogues, list the content and sequence of the advanced curriculum. In this article this assumption is re-evaluated, and it is argued that the Nippur and Louvre catalogues are inventories and not curricular lists.</em></p>
+</section>
+<section id="spacy" class="level4">
+<h4 class="anchored" data-anchor-id="spacy">spaCy</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb9-1">[</span>
+<span id="cb9-2">  {</span>
+<span id="cb9-3">    "label": "PERSON", </span>
+<span id="cb9-4">    "text": "Literary Catalogues"</span>
+<span id="cb9-5">  }, </span>
+<span id="cb9-6">  {</span>
+<span id="cb9-7">    "label": "PRODUCT", </span>
+<span id="cb9-8">    "text": "the Scribal Curriculum"</span>
+<span id="cb9-9">  }, </span>
+<span id="cb9-10">  {</span>
+<span id="cb9-11">    "label": "PERSON", </span>
+<span id="cb9-12">    "text": "Babylonian Sumerian"</span>
+<span id="cb9-13">  }, </span>
+<span id="cb9-14">  {</span>
+<span id="cb9-15">    "label": "DATE", </span>
+<span id="cb9-16">    "text": "the beginning of the second"</span>
+<span id="cb9-17">  }, </span>
+<span id="cb9-18">  {</span>
+<span id="cb9-19">    "label": "CARDINAL", </span>
+<span id="cb9-20">    "text": "ten"</span>
+<span id="cb9-21">  }, </span>
+<span id="cb9-22">  {</span>
+<span id="cb9-23">    "label": "ORG", </span>
+<span id="cb9-24">    "text": "Decad"</span>
+<span id="cb9-25">  }, </span>
+<span id="cb9-26">  {</span>
+<span id="cb9-27">    "label": "CARDINAL", </span>
+<span id="cb9-28">    "text": "two"</span>
+<span id="cb9-29">  }, </span>
+<span id="cb9-30">  {</span>
+<span id="cb9-31">    "label": "ORG", </span>
+<span id="cb9-32">    "text": "Nippur"</span>
+<span id="cb9-33">  }, </span>
+<span id="cb9-34">  {</span>
+<span id="cb9-35">    "label": "PERSON", </span>
+<span id="cb9-36">    "text": "Louvre"</span>
+<span id="cb9-37">  }, </span>
+<span id="cb9-38">  {</span>
+<span id="cb9-39">    "label": "ORG", </span>
+<span id="cb9-40">    "text": "Nippur"</span>
+<span id="cb9-41">  }, </span>
+<span id="cb9-42">  {</span>
+<span id="cb9-43">    "label": "PERSON", </span>
+<span id="cb9-44">    "text": "Louvre"</span>
+<span id="cb9-45">  }</span>
+<span id="cb9-46">]</span></code></pre></div></div>
+</section>
+<section id="qwen38b" class="level4">
+<h4 class="anchored" data-anchor-id="qwen38b">qwen3:8b</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb10-1">{</span>
+<span id="cb10-2">  "Named Entities": {</span>
+<span id="cb10-3">    "Places": [</span>
+<span id="cb10-4">      "Nippur",</span>
+<span id="cb10-5">      "Louvre"</span>
+<span id="cb10-6">    ],</span>
+<span id="cb10-7">    "Time Periods": [</span>
+<span id="cb10-8">      "Old Babylonian"</span>
+<span id="cb10-9">    ],</span>
+<span id="cb10-10">    "Organizations/Institutions": [</span>
+<span id="cb10-11">      "Louvre"  ],</span>
+<span id="cb10-12">    "Concepts/Subjects": [</span>
+<span id="cb10-13">      "Sumerian Literary Catalogues",</span>
+<span id="cb10-14">      "Scribal Curriculum",</span>
+<span id="cb10-15">      "Decad"</span>
+<span id="cb10-16">    ],</span>
+<span id="cb10-17">    "Document Title": "Sumerian Literary Catalogues and the Scribal Curriculum"</span>
+<span id="cb10-18">  }</span>
+<span id="cb10-19">}</span></code></pre></div></div>
+</section>
+<section id="gemma4e4b" class="level4">
+<h4 class="anchored" data-anchor-id="gemma4e4b">gemma4:e4b</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb11-1">{</span>
+<span id="cb11-2">  "Named Entities": [</span>
+<span id="cb11-3">    "Sumerian Literary Catalogues",</span>
+<span id="cb11-4">    "Scribal Curriculum",</span>
+<span id="cb11-5">    "Old Babylonian",</span>
+<span id="cb11-6">    "Sumerian",</span>
+<span id="cb11-7">    "Decad",</span>
+<span id="cb11-8">    "Nippur catalogue",</span>
+<span id="cb11-9">    "Louvre catalogue",</span>
+<span id="cb11-10">    "OB incipit lists"</span>
+<span id="cb11-11">  ]</span>
+<span id="cb11-12">}</span></code></pre></div></div>
 
 
+</section>
 </section>
 </section>
 

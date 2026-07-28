@@ -121,7 +121,7 @@ Cliquer sur la colonne à traiter, menu de colonne \> Extract using AI \> utilis
 - *Generate preview* pour tester
 - OK
 
-## Comparaison avec des références bibliographiques 
+## Comparaison avec des références bibliographiques
 
 Je prends 10 références dans mon Zotero que j'exporte en CSV et que j'importe dans OpenRefine.
 
@@ -133,22 +133,22 @@ if(isNotNull(cells["Abstract Note"].value), value + ". " + cells["Abstract Note"
 
 Je clique sur cette nouvelle colonne TI_ABS pour créer une colonne spaCY, une colonne Qwen et une colonne Gemma (voir plus haut). Je compare le tout.
 
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-|                                        | spaCy                                     | qwen3:8b              | gemma4:e4b            |
-+========================================+===========================================+=======================+=======================+
-| Temps (10 cellules)                    | 0,1 seconde                               | 2 minutes             | 2 minutes             |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-| Reproductible                          | Oui                                       | Oui (testé deux fois) | Oui (testé deux fois) |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-| Échecs (rien d'extrait)                | 0                                         | 0                     | 4/10                  |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-| Structure du JSON                      | Parfaite                                  | Très variable\*       | Très variable\*       |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-| Complétude de l'extraction             | Assez complet sauf pour les sujets/thèmes | Moyen                 | Moyen plus            |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
-| Adéquation des labels avec le contenu  | Variable, \                               | Variable, \           | Variable, \           |
-|                                        | mais pas super                            | mais pas mauvais\*\*  | mais pas mauvais\*\*  |
-+----------------------------------------+-------------------------------------------+-----------------------+-----------------------+
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+|                                       | spaCy                                     | qwen3:8b              | gemma4:e4b            |
++=======================================+===========================================+=======================+=======================+
+| Temps (10 cellules)                   | 0,1 seconde                               | 2 minutes             | 2 minutes             |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Reproductible                         | Oui                                       | Oui (testé deux fois) | Oui (testé deux fois) |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Échecs (rien d'extrait)               | 0                                         | 0                     | 4/10                  |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Structure du JSON                     | Parfaite                                  | Très variable\*       | Très variable\*       |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Complétude de l'extraction            | Assez complet sauf pour les sujets/thèmes | Moyen                 | Moyen plus            |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
+| Adéquation des labels avec le contenu | Variable,\                                | Variable,\            | Variable,\            |
+|                                       | mais pas super                            | mais pas mauvais\*\*  | mais pas mauvais\*\*  |
++---------------------------------------+-------------------------------------------+-----------------------+-----------------------+
 
 \* C'est selon moi le point faible principal des LLM, le JSON produit n'est pas consistant sur toutes les cellules. Il devrait être possible de le cadrer avec l'extension LLM en remplaçant JSON object par JSON as per schema et en donnant le schéma dans Provide JSON schema.
 
@@ -158,80 +158,98 @@ Idée : utiliser spaCy pour récupérer le maximum d'entités puis un LLM derri�
 
 ### Exemple typique
 
-| TIT_ABS | spaCy | qwen3:8b | gemma4:e4b |
-|----|----|----|----|
-| ~Sumerian\ Literary\ Catalogues\ and\ the\ Scribal\ Curriculum.\ In\ recent\ reconstructions\ of\ the\ Old\ Babylonian\ Sumerian\ scribal\ curriculum\ it\ has\ been\ proposed\ that\ at\ the\ beginning\ of\ the\ second\ or\ advanced\ phase\ of\ scribal\ training\ pupils\ learned\ a\ group\ of\ ten\ literary\ compositions\ called\ the\ Decad.\ These\ reconstructions\ are\ based\ primarily\ on\ the\ assumption\ that\ two\ OB\ incipit\ lists,\ known\ as\ the\ Nippur\ and\ Louvre\ catalogues,\ list\ the\ content\ and\ sequence\ of\ the\ advanced\ curriculum.\ In\ this\ article\ this\ assumption\ is\ re-evaluated,\ and\ it\ is\ argued\ that\ the\ Nippur\ and\ Louvre\ catalogues\ are\ inventories\ and\ not\ curricular\ lists.~ | ~\[
-\ \ {
-\ \ \ \ "label":\ "PERSON",\ 
-\ \ \ \ "text":\ "Literary\ Catalogues"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "PRODUCT",\ 
-\ \ \ \ "text":\ "the\ Scribal\ Curriculum"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "PERSON",\ 
-\ \ \ \ "text":\ "Babylonian\ Sumerian"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "DATE",\ 
-\ \ \ \ "text":\ "the\ beginning\ of\ the\ second"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "CARDINAL",\ 
-\ \ \ \ "text":\ "ten"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "ORG",\ 
-\ \ \ \ "text":\ "Decad"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "CARDINAL",\ 
-\ \ \ \ "text":\ "two"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "ORG",\ 
-\ \ \ \ "text":\ "Nippur"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "PERSON",\ 
-\ \ \ \ "text":\ "Louvre"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "ORG",\ 
-\ \ \ \ "text":\ "Nippur"
-\ \ },\ 
-\ \ {
-\ \ \ \ "label":\ "PERSON",\ 
-\ \ \ \ "text":\ "Louvre"
-\ \ }
-\]~ | ~{
-\ \ "Named\ Entities":\ {
-\ \ \ \ "Places":\ \[
-\ \ \ \ \ \ "Nippur",
-\ \ \ \ \ \ "Louvre"
-\ \ \ \ \],
-\ \ \ \ "Time\ Periods":\ \[
-\ \ \ \ \ \ "Old\ Babylonian"
-\ \ \ \ \],
-\ \ \ \ "Organizations/Institutions":\ \[
-\ \ \ \ \ \ "Louvre"\ 	\],
-\ \ \ \ "Concepts/Subjects":\ \[
-\ \ \ \ \ \ "Sumerian\ Literary\ Catalogues",
-\ \ \ \ \ \ "Scribal\ Curriculum",
-\ \ \ \ \ \ "Decad"
-\ \ \ \ \],
-\ \ \ \ "Document\ Title":\ "Sumerian\ Literary\ Catalogues\ and\ the\ Scribal\ Curriculum"
-\ \ }
-}~ | ~{
-\ \ "Named\ Entities":\ \[
-\ \ \ \ "Sumerian\ Literary\ Catalogues",
-\ \ \ \ "Scribal\ Curriculum",
-\ \ \ \ "Old\ Babylonian",
-\ \ \ \ "Sumerian",
-\ \ \ \ "Decad",
-\ \ \ \ "Nippur\ catalogue",
-\ \ \ \ "Louvre\ catalogue",
-\ \ \ \ "OB\ incipit\ lists"
-\ \ \]
-}~ |
+#### Texte de la cellule
+
+*Sumerian Literary Catalogues and the Scribal Curriculum. In recent reconstructions of the Old Babylonian Sumerian scribal curriculum it has been proposed that at the beginning of the second or advanced phase of scribal training pupils learned a group of ten literary compositions called the Decad. These reconstructions are based primarily on the assumption that two OB incipit lists, known as the Nippur and Louvre catalogues, list the content and sequence of the advanced curriculum. In this article this assumption is re-evaluated, and it is argued that the Nippur and Louvre catalogues are inventories and not curricular lists.*
+
+#### spaCy
+
+``` txt
+[
+  {
+    "label": "PERSON", 
+    "text": "Literary Catalogues"
+  }, 
+  {
+    "label": "PRODUCT", 
+    "text": "the Scribal Curriculum"
+  }, 
+  {
+    "label": "PERSON", 
+    "text": "Babylonian Sumerian"
+  }, 
+  {
+    "label": "DATE", 
+    "text": "the beginning of the second"
+  }, 
+  {
+    "label": "CARDINAL", 
+    "text": "ten"
+  }, 
+  {
+    "label": "ORG", 
+    "text": "Decad"
+  }, 
+  {
+    "label": "CARDINAL", 
+    "text": "two"
+  }, 
+  {
+    "label": "ORG", 
+    "text": "Nippur"
+  }, 
+  {
+    "label": "PERSON", 
+    "text": "Louvre"
+  }, 
+  {
+    "label": "ORG", 
+    "text": "Nippur"
+  }, 
+  {
+    "label": "PERSON", 
+    "text": "Louvre"
+  }
+]
+```
+
+#### qwen3:8b
+
+``` txt
+{
+  "Named Entities": {
+    "Places": [
+      "Nippur",
+      "Louvre"
+    ],
+    "Time Periods": [
+      "Old Babylonian"
+    ],
+    "Organizations/Institutions": [
+      "Louvre"  ],
+    "Concepts/Subjects": [
+      "Sumerian Literary Catalogues",
+      "Scribal Curriculum",
+      "Decad"
+    ],
+    "Document Title": "Sumerian Literary Catalogues and the Scribal Curriculum"
+  }
+}
+```
+
+#### gemma4:e4b
+
+``` txt
+{
+  "Named Entities": [
+    "Sumerian Literary Catalogues",
+    "Scribal Curriculum",
+    "Old Babylonian",
+    "Sumerian",
+    "Decad",
+    "Nippur catalogue",
+    "Louvre catalogue",
+    "OB incipit lists"
+  ]
+}
+```

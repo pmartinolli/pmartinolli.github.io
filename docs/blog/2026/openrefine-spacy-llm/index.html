@@ -469,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Je clique sur cette nouvelle colonne TI_ABS pour créer une colonne spaCY, une colonne Qwen et une colonne Gemma (voir plus haut). Je compare le tout.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 30%">
+<col style="width: 29%">
 <col style="width: 32%">
 <col style="width: 17%">
 <col style="width: 17%">
@@ -529,33 +529,98 @@ mais pas mauvais**</td>
 <p>Idée : utiliser spaCy pour récupérer le maximum d’entités puis un LLM derrière pour mieux les classer ?</p>
 <section id="exemple-typique" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-typique">Exemple typique</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>TIT_ABS</th>
-<th>spaCy</th>
-<th>qwen3:8b</th>
-<th>gemma4:e4b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><sub>Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum.&nbsp;In&nbsp;recent&nbsp;reconstructions&nbsp;of&nbsp;the&nbsp;Old&nbsp;Babylonian&nbsp;Sumerian&nbsp;scribal&nbsp;curriculum&nbsp;it&nbsp;has&nbsp;been&nbsp;proposed&nbsp;that&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second&nbsp;or&nbsp;advanced&nbsp;phase&nbsp;of&nbsp;scribal&nbsp;training&nbsp;pupils&nbsp;learned&nbsp;a&nbsp;group&nbsp;of&nbsp;ten&nbsp;literary&nbsp;compositions&nbsp;called&nbsp;the&nbsp;Decad.&nbsp;These&nbsp;reconstructions&nbsp;are&nbsp;based&nbsp;primarily&nbsp;on&nbsp;the&nbsp;assumption&nbsp;that&nbsp;two&nbsp;OB&nbsp;incipit&nbsp;lists,&nbsp;known&nbsp;as&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues,&nbsp;list&nbsp;the&nbsp;content&nbsp;and&nbsp;sequence&nbsp;of&nbsp;the&nbsp;advanced&nbsp;curriculum.&nbsp;In&nbsp;this&nbsp;article&nbsp;this&nbsp;assumption&nbsp;is&nbsp;re-evaluated,&nbsp;and&nbsp;it&nbsp;is&nbsp;argued&nbsp;that&nbsp;the&nbsp;Nippur&nbsp;and&nbsp;Louvre&nbsp;catalogues&nbsp;are&nbsp;inventories&nbsp;and&nbsp;not&nbsp;curricular&nbsp;lists.</sub></td>
-<td>~[</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Literary&nbsp;Catalogues” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PRODUCT”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Babylonian&nbsp;Sumerian” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“DATE”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;second” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“ten” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Decad” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“CARDINAL”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“two” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“ORG”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Nippur” &nbsp;&nbsp;},&nbsp; &nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“label”:&nbsp;“PERSON”,&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“text”:&nbsp;“Louvre” &nbsp;&nbsp;} ]~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;“Places”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Nippur”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Time&nbsp;Periods”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Organizations/Institutions”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Louvre”&nbsp; ], &nbsp;&nbsp;&nbsp;&nbsp;“Concepts/Subjects”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Decad” &nbsp;&nbsp;&nbsp;&nbsp;], &nbsp;&nbsp;&nbsp;&nbsp;“Document&nbsp;Title”:&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues&nbsp;and&nbsp;the&nbsp;Scribal&nbsp;Curriculum” &nbsp;&nbsp;} }~ | ~{ &nbsp;&nbsp;“Named&nbsp;Entities”:&nbsp;[ &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian&nbsp;Literary&nbsp;Catalogues”, &nbsp;&nbsp;&nbsp;&nbsp;“Scribal&nbsp;Curriculum”, &nbsp;&nbsp;&nbsp;&nbsp;“Old&nbsp;Babylonian”, &nbsp;&nbsp;&nbsp;&nbsp;“Sumerian”, &nbsp;&nbsp;&nbsp;&nbsp;“Decad”, &nbsp;&nbsp;&nbsp;&nbsp;“Nippur&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“Louvre&nbsp;catalogue”, &nbsp;&nbsp;&nbsp;&nbsp;“OB&nbsp;incipit&nbsp;lists” &nbsp;&nbsp;] }~ |</p>
+<section id="texte-de-la-cellule" class="level4">
+<h4 class="anchored" data-anchor-id="texte-de-la-cellule">Texte de la cellule</h4>
+<p><em>Sumerian Literary Catalogues and the Scribal Curriculum. In recent reconstructions of the Old Babylonian Sumerian scribal curriculum it has been proposed that at the beginning of the second or advanced phase of scribal training pupils learned a group of ten literary compositions called the Decad. These reconstructions are based primarily on the assumption that two OB incipit lists, known as the Nippur and Louvre catalogues, list the content and sequence of the advanced curriculum. In this article this assumption is re-evaluated, and it is argued that the Nippur and Louvre catalogues are inventories and not curricular lists.</em></p>
+</section>
+<section id="spacy" class="level4">
+<h4 class="anchored" data-anchor-id="spacy">spaCy</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    "label": "PERSON", </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    "text": "Literary Catalogues"</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    "label": "PRODUCT", </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    "text": "the Scribal Curriculum"</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    "label": "PERSON", </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    "text": "Babylonian Sumerian"</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    "label": "DATE", </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    "text": "the beginning of the second"</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    "label": "CARDINAL", </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    "text": "ten"</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    "label": "ORG", </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    "text": "Decad"</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    "label": "CARDINAL", </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    "text": "two"</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    "label": "ORG", </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    "text": "Nippur"</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    "label": "PERSON", </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    "text": "Louvre"</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    "label": "ORG", </span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    "text": "Nippur"</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  }, </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    "label": "PERSON", </span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    "text": "Louvre"</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="qwen38b" class="level4">
+<h4 class="anchored" data-anchor-id="qwen38b">qwen3:8b</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  "Named Entities": {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    "Places": [</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      "Nippur",</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      "Louvre"</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    "Time Periods": [</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      "Old Babylonian"</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    "Organizations/Institutions": [</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      "Louvre"  ],</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    "Concepts/Subjects": [</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      "Sumerian Literary Catalogues",</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      "Scribal Curriculum",</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      "Decad"</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    "Document Title": "Sumerian Literary Catalogues and the Scribal Curriculum"</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="gemma4e4b" class="level4">
+<h4 class="anchored" data-anchor-id="gemma4e4b">gemma4:e4b</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  "Named Entities": [</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    "Sumerian Literary Catalogues",</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    "Scribal Curriculum",</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    "Old Babylonian",</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    "Sumerian",</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    "Decad",</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    "Nippur catalogue",</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    "Louvre catalogue",</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    "OB incipit lists"</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 </section>
 </section>
 
