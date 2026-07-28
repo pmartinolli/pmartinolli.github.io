@@ -4,7 +4,7 @@ author:
       - name: "Pascal Martinolli"
         orcid: "0000-0003-0122-5300"
 date: "2026-04-01"
-categories: [Formation]
+categories: [Formation, LLM]
 description: "Où l'on pense les LLMs comme des tiers lieux pour la recherche, c'est-à-dire des endroits où on peut passer mais dont on ne peut pas se contenter. Où l'on discute des « inconnus inconnus » et du « syndrome du pont de La Joconde »."
 ---
 
@@ -18,11 +18,11 @@ Depuis longtemps, ma présentation se base sur le [Foutaisomètre](https://githu
 
 L'atelier se terminait en analysant une page Wikipédia avec ces trois questions :
 
--   Y a-t-il une dimension d'auteur (quasi non) ?
+- Y a-t-il une dimension d'auteur (quasi non) ?
 
--   Y a-t-il une dimension d'éditeur (non) ?
+- Y a-t-il une dimension d'éditeur (non) ?
 
--   Et y a-t-il une dimension de contenu (oui, mais avec des bémols qu'on listait) ?
+- Et y a-t-il une dimension de contenu (oui, mais avec des bémols qu'on listait) ?
 
 Bref, j'en concluais qu'à partir de ces critères, cela expliquait pourquoi ce n'était pas la peine de citer Wikipédia dans ses travaux. En effet, comme le disait William Marx, on devrait considérer Wikipédia comme une bibliothèque.
 
@@ -40,13 +40,13 @@ Certes, un bar c'est bruyant ou confus et on y entend des choses absurdes. Mais 
 
 Mais le plus important c'est qu'... **il faut en sortir** et changer sa manière de travailler. Car si on y reste :
 
--   on prend le risque de penser en milieu clos, fermé, et donc non pertinent pour la démarche scientifique;
+- on prend le risque de penser en milieu clos, fermé, et donc non pertinent pour la démarche scientifique;
 
--   on est prisonier de nos échanges et de nos compétences limités (la fameuse bulle);
+- on est prisonier de nos échanges et de nos compétences limités (la fameuse bulle);
 
--   on ne voit pas les biais ou les limites de ce qu'on a trouvé;
+- on ne voit pas les biais ou les limites de ce qu'on a trouvé;
 
--   on ne repère pas que ce n'est pas suffisant. On a besoin d'en sortir pour suivre des pistes, pour savoir si on n'a suffisament fait le tour d'un sujet, pour se confronter au monde extérieur complexe et sa réalité nuancée.
+- on ne repère pas que ce n'est pas suffisant. On a besoin d'en sortir pour suivre des pistes, pour savoir si on n'a suffisament fait le tour d'un sujet, pour se confronter au monde extérieur complexe et sa réalité nuancée.
 
 ## « Ce qu'on ne sait pas qu'on ne sait pas »
 

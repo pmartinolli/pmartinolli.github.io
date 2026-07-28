@@ -5,7 +5,7 @@ author:
       - name: "Pascal Martinolli"
         orcid: "0000-0003-0122-5300"
 date: "2026-07-06"
-categories: [HumanitésNumériques, histoire]
+categories: [HumanitésNumériques, histoire, LLM]
 description: "Où l'on explore Undermind, un outil de découverte pour la recherche d'études en histoire qui utilise de l'IA générative, principalement à travers des agents de recherche et de traitement. On en profite pour affûter une démarche critique vis-à-vis de ces nouvelles méthodes de travail de la documentation."
 ---
 
