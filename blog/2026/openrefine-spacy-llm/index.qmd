@@ -253,3 +253,52 @@ Idée : utiliser spaCy pour récupérer le maximum d'entités puis un LLM derri�
   ]
 }
 ```
+
+## Notes 
+
+Il n'est pas possible à ma connaissance de fournir un schéma JSON pour formater les données. En tout cas, cela ne fonctionne pas. J'ai testé avec ceci :
+
+``` JSON
+{
+  "$schema": "http://json-schema.org",
+  "title": "Named_Entities_Extraction",
+  "type": "object",
+  "properties": {
+    "person": {
+      "type": "string",
+      "description": "Name of a person"
+    },
+    "organisation": {
+      "type": "string",
+      "description": "Name of an organisation or group."
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date displayed."
+    },
+    "places": {
+      "type": "number",
+      "description": "The named places : cities, countries, geographical places, etc."
+    }
+  },
+  "required": ["person", "organisation", "date", "places"],
+  "additionalProperties": true
+}
+```
+
+et cela produit ceci :
+
+``` texinfo
+* **Sumerian Literary Catalogues**
+* **Scribal Curriculum**
+* **Old Babylonian**
+* **Decad**
+* **OB incipit lists**
+* **Nippur** (Catalogue)
+* **Louvre** (Catalogue)
+```
+
+J'ai testé d'autres schémas plus simples, [validés](https://jsonlint.com/), mais sans succès. Dommage.
+
+De plus, j'ai testé spaCy avec un modèle plus gros `en_core_web_lg` mais cela change peu les choses (même problème de labélisation, une ou deux extractions en plus).

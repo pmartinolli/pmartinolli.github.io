@@ -417,10 +417,213 @@ mais pas mauvais**</td>
 <span id="cb11-10">    "OB incipit lists"</span>
 <span id="cb11-11">  ]</span>
 <span id="cb11-12">}</span></code></pre></div></div>
-
-
 </section>
 </section>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>Il n’est pas possible à ma connaissance de fournir un schéma JSON pour formater les données. En tout cas, cela ne fonctionne pas. J’ai testé avec ceci :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"$schema"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"http://json-schema.org"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"title"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Named_Entities_Extraction"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"object"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-5">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"properties"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"person"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-7">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-8">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Name of a person"</span></span>
+<span id="cb12-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb12-10">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"organisation"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-11">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-12">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Name of an organisation or group."</span></span>
+<span id="cb12-13">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb12-14">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"date"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-15">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-16">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"format"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-17">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The date displayed."</span></span>
+<span id="cb12-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb12-19">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"places"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb12-20">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-21">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The named places : cities, countries, geographical places, etc."</span></span>
+<span id="cb12-22">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb12-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb12-24">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"required"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"person"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"organisation"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"places"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb12-25">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"additionalProperties"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span></span>
+<span id="cb12-26"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p>et cela produit ceci :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode texinfo code-with-copy"><code class="sourceCode texinfo"><span id="cb13-1">* **Sumerian Literary Catalogues**</span>
+<span id="cb13-2">* **Scribal Curriculum**</span>
+<span id="cb13-3">* **Old Babylonian**</span>
+<span id="cb13-4">* **Decad**</span>
+<span id="cb13-5">* **OB incipit lists**</span>
+<span id="cb13-6">* **Nippur** (Catalogue)</span>
+<span id="cb13-7">* **Louvre** (Catalogue)</span></code></pre></div></div>
+<p>J’ai testé d’autres schémas plus simples, <a href="https://jsonlint.com/">validés</a>, mais sans succès. Dommage.</p>
+<p>De plus, j’ai testé spaCy avec un modèle plus gros <code>en_core_web_lg</code> mais cela change peu les choses (même problème de labélisation, une ou deux extractions en plus).</p>
+
+
 </section>
 
  ]]></description>
