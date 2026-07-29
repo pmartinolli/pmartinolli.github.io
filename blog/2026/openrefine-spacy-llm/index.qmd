@@ -278,7 +278,7 @@ Il n'est pas possible à ma connaissance de fournir un schéma JSON pour formate
       "description": "The date displayed."
     },
     "places": {
-      "type": "number",
+      "type": "string",
       "description": "The named places : cities, countries, geographical places, etc."
     }
   },
