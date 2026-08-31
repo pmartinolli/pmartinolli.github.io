@@ -8,19 +8,25 @@ Que ce soit pour vos références bibliographiques ou pour vos données de terra
 
 ## Liste de ressources (presque en vrac)
 
--   Chapitre « [Thesaurus pour la recherche](https://pmartinolli.github.io/QMpRD/chapters/thesaurus.html) » du *Manuel pratique de recherche documentaire*. Idéal pour commencer et avoir une vision d’ensemble.
+- Chapitre « [Thesaurus pour la recherche](https://pmartinolli.github.io/QMpRD/chapters/thesaurus.html) » du *Manuel pratique de recherche documentaire*. Idéal pour commencer et avoir une vision d’ensemble.
 
--   La page GitHub [My Thesaurus](https://github.com/pmartinolli/MyThesaurus) contient de nombreuses ressources pratiques.
+- La page GitHub [My Thesaurus](https://github.com/pmartinolli/MyThesaurus) contient de nombreuses ressources pratiques.
 
--   Un cahier des charges fonctionnel pour qu’un codeur bénévole créé [ZotFlag, une extension Zotero](https://pmartinolli.github.io/ZotFlag/)
+  - Des modèles simples
+
+  - Un programme Python qui transforme un thésaurus en csv en un joli pdf (*Thesaurus builder CSV-\>PDF).* Exemple [en CSV](https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv) et [en PDF](https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.pdf)
+
+  - D'autres programmes expérimentaux
+
+- Un cahier des charges fonctionnel pour qu’un codeur bénévole créé [ZotFlag, une extension Zotero](https://pmartinolli.github.io/ZotFlag/)
 
 ## Pour aller plus loin
 
--   Pour coder un thésaurus simple, vous pouvez utiliser le language SKOS (Simple Knowledge Organization System). SKOS est spécifiquement conçu pour représenter des thésaurus, des taxonomies et d’autres vocabulaires contrôlés de manière standardisée.
+- Pour coder un thésaurus simple, vous pouvez utiliser le language SKOS (Simple Knowledge Organization System). SKOS est spécifiquement conçu pour représenter des thésaurus, des taxonomies et d’autres vocabulaires contrôlés de manière standardisée.
 
--   Pour un thésaurus plus complexe, avec des relations multiples, vous avez le language OWL/RDF (du XML). Il peut être facilement construit avec [WebProtégé](https://webprotege.stanford.edu/) (site web où il faut se créer un compte, gratuit) ou [Protégé](https://protege.stanford.edu/) (logiciel libre). OWL peut inclure du SKOS.
+- Pour un thésaurus plus complexe, avec des relations multiples, vous avez le language OWL/RDF (du XML). Il peut être facilement construit avec [WebProtégé](https://webprotege.stanford.edu/) (site web où il faut se créer un compte, gratuit) ou [Protégé](https://protege.stanford.edu/) (logiciel libre). OWL peut inclure du SKOS.
 
-    -   J’en parle un peu avec un exemple concret de mécanismes de jeu de rôle [ici](https://jdr.hypotheses.org/2144) et [ici](https://jdr.hypotheses.org/2230).
+  - J’en parle un peu avec un exemple concret de mécanismes de jeu de rôle [ici](https://jdr.hypotheses.org/2144) et [ici](https://jdr.hypotheses.org/2230).
 
 ## Note d’intention
 
