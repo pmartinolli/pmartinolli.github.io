@@ -15,9 +15,9 @@ Ce sont des données produites lors d'un projet de recherche. Le chercheur peut 
 
 Les intentions sont principalement :
 
--   la **reproductibilité** et l'intégrité de la démarche de recherche puisqu'on peut télécharger les données et les vérifier.
--   la **réutilisation** des données puisque d'autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.
--   l'amélioration de la **découvrabilité** de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d'articles ou autres) mais aussi leurs données brutes.
+- la **reproductibilité** et l'intégrité de la démarche de recherche puisqu'on peut télécharger les données et les vérifier.
+- la **réutilisation** des données puisque d'autres chercheurs peuvent reprendre les données pour conduire leurs propres recherches.
+- l'amélioration de la **découvrabilité** de la recherche puisque non seulement les résultats de la recherche sont publiés (sous la forme d'articles ou autres) mais aussi leurs données brutes.
 
 Même si elle existe depuis longtemps dans certains domaines (aéronautique, nucléaire,...), c'est une « mode » récente de la publication scientifique. Elle est rendue possible par les infrastructures technologiques d'hébergement de grands volumes d'information et par les techniques d'archivage digitales. Elle s'inscrit plus largement dans le prolongement des valeurs de partage et de reproductibilité de la science.
 
@@ -63,145 +63,147 @@ Pour l'[Université de Montréal](https://stockage-recherche.umontreal.ca/), le 
 
 On peut chercher à travers [tous les dépôts Borealis](https://borealisdata.ca/dataverse.xhtml) du Canada.
 
--   `Sujet : Arts et sciences humaines`
+- `Sujet : Arts et sciences humaines`
 
--   ou bien Boîte de recherche = [`histoire`](https://borealisdata.ca/dataverse/dv/?q=histoire)
+- ou bien Boîte de recherche = [`histoire`](https://borealisdata.ca/dataverse/dv/?q=histoire)
 
--   Exemples : [*Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871*](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX)*.*
+- Exemples : [*Tenants in Time: Family Strategies, Land, and Liberalism in Upper Canada, 1799-1871*](https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/HWTUCX)*.*
 
-    -   [*The Canadian Peoples 1871-1921 census data*](https://borealisdata.ca/dataverse/TCPCensusData)
+  - [*The Canadian Peoples 1871-1921 census data*](https://borealisdata.ca/dataverse/TCPCensusData)
 
-    -   [*Dave Leip US Election Data*](https://borealisdata.ca/dataverse/dave_leip_us_elections)
+  - [*Dave Leip US Election Data*](https://borealisdata.ca/dataverse/dave_leip_us_elections)
 
-    -   [*Slave Routes Datasets, 1650s - 1860s*](https://doi.org/10.7910/DVN/6HLXO3)
+  - [*Slave Routes Datasets, 1650s - 1860s*](https://doi.org/10.7910/DVN/6HLXO3)
+
+Les étudiants sont invités à se créer un compte [Dataverse Étudiant](https://borealisdata.ca/dataverse/montreal_etudiant) et indiquer leur direction de recherche dans le formulaire. Ensuite ce sera le bibliothécaire en charge de Borealis qui fera la validation finale de chaque dépôt de données (alors que c'est l'administrateur d'une collection pour les autres espaces Dataverse).
 
 ### FRDR-DFDR
 
 Il existe aussi la plateforme [FRDR-DFDR](https://www.frdr-dfdr.ca).
 
--   Explorer en allant dans la [recherche avancée](https://www.frdr-dfdr.ca/repo/search?advanced_search=true) puis Domaine de recherche puis [Histoire, archéologie et études connexes](https://www.frdr-dfdr.ca/repo/search?advanced_search=true&lang=fr&sort_by=score&order=desc&advanced_search_field_1=crdc&advanced_search_value_1=RDF601*)
+- Explorer en allant dans la [recherche avancée](https://www.frdr-dfdr.ca/repo/search?advanced_search=true) puis Domaine de recherche puis [Histoire, archéologie et études connexes](https://www.frdr-dfdr.ca/repo/search?advanced_search=true&lang=fr&sort_by=score&order=desc&advanced_search_field_1=crdc&advanced_search_value_1=RDF601*)
 
--   Exemple : [*Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania*](https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2)
+- Exemple : [*Petrographic Characterization of Raw Material Sources at Oldupai Gorge, Tanzania*](https://www.frdr-dfdr.ca/repo/dataset/a952da40-fc18-e6f2-3d4b-0f618a0373d2)
 
 ### ICPSR
 
--   L'[ICPSR](https://www.icpsr.umich.edu/) est un consortium d'institutions de recherche en sciences sociales qui offre de nombreuses collections dont celle du *Journal of Economic History.*Un chercheur peut faire un dépôt personnel sans frais ([*self-published*](https://www.icpsr.umich.edu/sites/icpsr/manage-data/deposit)).
+- L'[ICPSR](https://www.icpsr.umich.edu/) est un consortium d'institutions de recherche en sciences sociales qui offre de nombreuses collections dont celle du *Journal of Economic History.*Un chercheur peut faire un dépôt personnel sans frais ([*self-published*](https://www.icpsr.umich.edu/sites/icpsr/manage-data/deposit)).
 
-    -   Exemples : [*Knowledge Diffusion and Intellectual Change: When Chinese Literati Met European Jesuits*](https://www.icpsr.umich.edu/sites/jeh/view/studies/132821)
+  - Exemples : [*Knowledge Diffusion and Intellectual Change: When Chinese Literati Met European Jesuits*](https://www.icpsr.umich.edu/sites/jeh/view/studies/132821)
 
-    -   [*The Her in Inheritance: How Marriage Matching Has Always Mattered, Quebec 1800–1970*](https://www.icpsr.umich.edu/sites/jeh/view/studies/301485)
+  - [*The Her in Inheritance: How Marriage Matching Has Always Mattered, Quebec 1800–1970*](https://www.icpsr.umich.edu/sites/jeh/view/studies/301485)
 
 ## Dépôt généralistes
 
 Les dépôts généralistes sont souvent gérés par des organismes non-gouvernementaux ou para-universitaires. Ils offrent la plupart des services habituels requis :
 
--   Dépôts de gros volumes de données
+- Dépôts de gros volumes de données
 
--   Versionnage des fichiers
+- Versionnage des fichiers
 
--   Garantie d'un stockage pérenne
+- Garantie d'un stockage pérenne
 
--   Création d'identifiants uniques (DOI, handle, etc.)
+- Création d'identifiants uniques (DOI, handle, etc.)
 
--   Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.
+- Renseignement de métadonnées décrivant les données et interface pour découvrir ces données indexées.
 
--   Il existe un inventaire des dépôts de données : [**Re3data**](https://www.re3data.org/)(chercher avec le mot-clé `history`)
+- Il existe un inventaire des dépôts de données : [**Re3data**](https://www.re3data.org/)(chercher avec le mot-clé `history`)
 
 Exemples de dépôts généralistes :
 
 ### Zenodo
 
--   [Zenodo](https://zenodo.org/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resources Types = dataset`
+- [Zenodo](https://zenodo.org/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resources Types = dataset`
 
--   Boîte de recherche : `histoire OR history OR historical`
+- Boîte de recherche : `histoire OR history OR historical`
 
--   Résultats : environ 60+ en 2026
+- Résultats : environ 60+ en 2026
 
--   Exemples : [*Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786*](https://doi.org/10.5281/zenodo.1217600)
+- Exemples : [*Vagrant Lives: 14,789 Vagrants Processed by Middlesex County, 1777-1786*](https://doi.org/10.5281/zenodo.1217600)
 
-    -   [*Virginia Girls' Reformatory Admissions Database 1910-1938*](https://doi.org/10.5281/zenodo.3872018)
+  - [*Virginia Girls' Reformatory Admissions Database 1910-1938*](https://doi.org/10.5281/zenodo.3872018)
 
 ### OSF
 
--   [OSF](https://osf.io/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resource Type = dataset`
+- [OSF](https://osf.io/) est un dépôt généraliste qui contient aussi des articles, des présentations, etc. donc il faut filtrer par `Resource Type = dataset`
 
--   Subject = Arts & Humanities
+- Subject = Arts & Humanities
 
--   Boîte de recherche : `history`
+- Boîte de recherche : `history`
 
--   Résultats : environ 7+ en 2026
+- Résultats : environ 7+ en 2026
 
 ### Figshare
 
--   [FigShare](https://figshare.com/) est un dépôt généraliste.
+- [FigShare](https://figshare.com/) est un dépôt généraliste.
 
--   Browse : [History, Heritage & Archeology](https://figshare.com/categories/History_heritage_and_archaeology/27244) ; [Indigenous studies](https://figshare.com/categories/Indigenous_studies/27775) ; ou autres
+- Browse : [History, Heritage & Archeology](https://figshare.com/categories/History_heritage_and_archaeology/27244) ; [Indigenous studies](https://figshare.com/categories/Indigenous_studies/27775) ; ou autres
 
 ### QDR
 
--   [Qualitative Data Repository](https://qdr.syr.edu/) contient des données de sciences sociales et humaines.
-    -   Exemples : [*“Russia: The politics and psychology of overcommitment,” in: The ideology of the offensive: Military decision making and the disasters of 1914*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6KW5CXS)
-    -   [*Pedagogical Materials on International Politics and Cold War History*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6IQTIML)
+- [Qualitative Data Repository](https://qdr.syr.edu/) contient des données de sciences sociales et humaines.
+  - Exemples : [*“Russia: The politics and psychology of overcommitment,” in: The ideology of the offensive: Military decision making and the disasters of 1914*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6KW5CXS)
+  - [*Pedagogical Materials on International Politics and Cold War History*](https://data.qdr.syr.edu/dataset.xhtml?persistentId=doi:10.5064/F6IQTIML)
 
 ## Autres voies
 
 ### Forges logicielles
 
--   Exemples : [Github](https://github.com/), [Gitlab](https://about.gitlab.com/), [Codeberg](https://codeberg.org/) ou [Framagit](https://docs.framasoft.org/fr/gitlab/index.html)
+- Exemples : [Github](https://github.com/), [Gitlab](https://about.gitlab.com/), [Codeberg](https://codeberg.org/) ou [Framagit](https://docs.framasoft.org/fr/gitlab/index.html)
 
--   **Les forges logicielles ne sont pas des dépôts pérennes** pour des données de recherche. Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
+- **Les forges logicielles ne sont pas des dépôts pérennes** pour des données de recherche. Elles sont cependant utiles pour collaborer et travailler en commun sur des données « vivantes ».
 
--   Exemples : [*Timeline of Electoral Parties in the Republic of Ireland*](https://github.com/Aonrud/Irish-Electoral-Parties)
+- Exemples : [*Timeline of Electoral Parties in the Republic of Ireland*](https://github.com/Aonrud/Irish-Electoral-Parties)
 
-    -   [*Paper Trails: The US Post and the Making of the American West*](https://cblevins.github.io/paper-trails/) (voir plus bas)
+  - [*Paper Trails: The US Post and the Making of the American West*](https://cblevins.github.io/paper-trails/) (voir plus bas)
 
 ### Plateformes dédiées
 
 La plupart des plateformes dédiées proposent des sites web navigables ou des bases de données interrogeables. Cela ne correspond pas tout à fait à l'esprit des données de recherche qui devraient être facilement disponibles au téléchargement en intégralité sous la forme de fichiers de formats ouverts et bien documentés (selon les principes [FAIR](https://www.frdr-dfdr.ca/docs/fr/principes_fair/)), avec une garantie de pérennité.
 
--   [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France
+- [Huma-Num](https://www.huma-num.fr/) : Pour les chercheurs de France
 
-    -   Exemples : [*CARo - Corpus des actes royaux du Moyen-Âge*](https://caro.huma-num.fr/)
+  - Exemples : [*CARo - Corpus des actes royaux du Moyen-Âge*](https://caro.huma-num.fr/)
 
-        -   [*Guide de sources en histoire sociale des Européens en Algérie (1830-1962)*](https://europalg.huma-num.fr/)
+    - [*Guide de sources en histoire sociale des Européens en Algérie (1830-1962)*](https://europalg.huma-num.fr/)
 
-    -   NB : le service [Nakala](https://humanum.hypotheses.org/16199) de Huma-Num offre une solution d'hébergement complète de données de recherche liées à des publications.
+  - NB : le service [Nakala](https://humanum.hypotheses.org/16199) de Huma-Num offre une solution d'hébergement complète de données de recherche liées à des publications.
 
--   Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques via des bibliothèques de références partagées Zotero.
+- Service [Kerko UdeM](https://bib.umontreal.ca/recherche/diffuser/kerko/) : pour diffuser des données bibliographiques via des bibliothèques de références partagées Zotero.
 
--   Site web dédié : par exemple l'[Index Thomisticus](https://www.corpusthomisticum.org/), la transcription de l'oeuvre intégrale de Thomas d'Aquin par le Père Busa s.j., premier projet d'humanité numérique datant de 1949, a été mis sous CD-ROM en 1989 et en ligne en 2025 mais il n'y a pas de manière de tout télécharger d'un coup (hors *web scrapping*).
+- Site web dédié : par exemple l'[Index Thomisticus](https://www.corpusthomisticum.org/), la transcription de l'oeuvre intégrale de Thomas d'Aquin par le Père Busa s.j., premier projet d'humanité numérique datant de 1949, a été mis sous CD-ROM en 1989 et en ligne en 2025 mais il n'y a pas de manière de tout télécharger d'un coup (hors *web scrapping*).
 
 ### Wikidata, WikiCommons
 
--   [Wikidata](https://www.wikidata.org/) peut héberger des métadonnées, tandis que [WikiCommons](https://commons.wikimedia.org/) peut héberger des données brutes (tableaux de données, images, etc.). Les données sont téléchageables en lot (*dump*) ou par requêtes plus ou moins facilement. Les formats sont ouverts et souvent interopérables. Les données sont plus ou moins décrites avec des métadonnées.
+- [Wikidata](https://www.wikidata.org/) peut héberger des métadonnées, tandis que [WikiCommons](https://commons.wikimedia.org/) peut héberger des données brutes (tableaux de données, images, etc.). Les données sont téléchageables en lot (*dump*) ou par requêtes plus ou moins facilement. Les formats sont ouverts et souvent interopérables. Les données sont plus ou moins décrites avec des métadonnées.
 
--   Exemples :
+- Exemples :
 
-    -   [*100 ans*](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) *de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)* (les stations météo sont sur Wikidata, les tableaux de données météo sont dans Wikimédia Commons).
+  - [*100 ans*](https://www.wikimedia.ca/100-ans-de-donnees-meteorologiques-denvironnement-et-changement-climatique-canada-dans-commons/) *de [données météorologiques du Canada](https://parcoursnumeriques-pum.ca/13-wikimedia/chapitre6.html)* (les stations météo sont sur Wikidata, les tableaux de données météo sont dans Wikimédia Commons).
 
-    -   [*Numérisation de milliers de tablettes mésopotamiennes*](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
+  - [*Numérisation de milliers de tablettes mésopotamiennes*](https://commons.wikimedia.org/wiki/Category:Cuneiform_on_clay_tablets)
 
 ## Formations à la GDR en histoire
 
 Lorsque je donne des ateliers sur la GDR en histoire (maîtrise et doctorat), voici le plan de ma formation (1 heure environ) :
 
--   Pourquoi la GDR en histoire ?
+- Pourquoi la GDR en histoire ?
 
--   Rédiger un plan de gestion de données de recherche
+- Rédiger un plan de gestion de données de recherche
 
--   Les 4 étages de la fusée (ou du gâteau) :
+- Les 4 étages de la fusée (ou du gâteau) :
 
-    -   Base : stockage et sauvegarde (123, nommage de fichiers, zip, confidentialité infonuagique)
+  - Base : stockage et sauvegarde (123, nommage de fichiers, zip, confidentialité infonuagique)
 
-    -   Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)
+  - Étage 1 : descriptions et métadonnées du projet (readme, carnet de labo, etc.)
 
-    -   Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, données ouvertes liées, etc.)
+  - Étage 2 : ontologies et organisation des données (thesaurus, normalisation, entités nommées, alignements et reconciliations, données ouvertes liées, etc.)
 
-    -   Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)
+  - Sommet : pérennité et diffusion (rayonnement, droit d'auteur, identifiants pérennes, préservation, archivage, etc.)
 
--   Exemples, questions, discussions.
+- Exemples, questions, discussions.
 
--   Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm)pour rédiger un plan de gestion de données de recherche en histoire.
+- Un chapitre de mon *Manuel de recherche documentaire* a une [section d'exemples](https://pmartinolli.github.io/QMpRD/chapters/gestiondonneesrecherche.htm)pour rédiger un plan de gestion de données de recherche en histoire.
 
 ## Prospectives
 

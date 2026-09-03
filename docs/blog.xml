@@ -1040,7 +1040,7 @@ ISBN sous-représentés</td>
 </section>
 
  ]]></description>
-  <category>Formation</category>
+  <category>formation</category>
   <category>LLM</category>
   <guid>https://pmartinolli.github.io/blog/2026/bar-llm/</guid>
   <pubDate>Wed, 01 Apr 2026 04:00:00 GMT</pubDate>
@@ -8320,6 +8320,7 @@ font-style: inherit;">False</span>)</span></code></pre></div></div>
 <li><p><a href="https://doi.org/10.7910/DVN/6HLXO3"><em>Slave Routes Datasets, 1650s - 1860s</em></a></p></li>
 </ul></li>
 </ul>
+<p>Les étudiants sont invités à se créer un compte <a href="https://borealisdata.ca/dataverse/montreal_etudiant">Dataverse Étudiant</a> et indiquer leur direction de recherche dans le formulaire. Ensuite ce sera le bibliothécaire en charge de Borealis qui fera la validation finale de chaque dépôt de données (alors que c’est l’administrateur d’une collection pour les autres espaces Dataverse).</p>
 </section>
 <section id="frdr-dfdr" class="level3">
 <h3 class="anchored" data-anchor-id="frdr-dfdr">FRDR-DFDR</h3>
@@ -8492,9 +8493,6 @@ font-style: inherit;">False</span>)</span></code></pre></div></div>
 
 
 
-<p></p><blockquote class="bluesky-embed blockquote" data-bluesky-uri="at://did:plc:h5slgmcxfehhdfclzoe2wye6/app.bsky.feed.post/3mchl3jt72c2r" data-bluesky-cid="bafyreiafq6mybl6toqsga3s4psvrrdypif3womfcovs42hars77zerta2q"><p lang="en">On the hunt for TTRPGs with annotated ludographies/bibliographies in their text. (In other words, not *just* a list of inspirations)
-
-(Bonus points for in-line citations or marginal notes that credit other texts/games/people)</p>— <a href="https://bsky.app/profile/did:plc:h5slgmcxfehhdfclzoe2wye6?ref_src=embed">Dr. Emily Friedman (@friede.bsky.social)</a> <a href="https://bsky.app/profile/did:plc:h5slgmcxfehhdfclzoe2wye6/post/3mchl3jt72c2r?ref_src=embed">2026-01-15T12:21:17.781Z</a></blockquote><script async="" src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script><p></p>
 <p>En lisant le message de <a href="https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r">Dr.&nbsp;Emily Friedman</a> sur Bluesky, je me suis souvenu que j’avais des données de recherche sous le coude. Comme j’avais sous-estimé leur intérêt, je ne les avais jamais versé en ligne. Je vais donc rattraper ce retard et progressivement indexer les données dans Wikidata dans les prochains mois.</p>
 <section id="bibliographie-ou-pas" class="level2">
 <h2 class="anchored" data-anchor-id="bibliographie-ou-pas">Bibliographie ou pas</h2>
@@ -10366,6 +10364,7 @@ font-style: inherit;">:Q2144077</span> }</span></code></pre></div></div>
 
  ]]></description>
   <category>HumanitésNumériques</category>
+  <category>formation</category>
   <guid>https://pmartinolli.github.io/blog/2025/viens-voir-booleens/</guid>
   <pubDate>Thu, 18 Dec 2025 05:00:00 GMT</pubDate>
 </item>

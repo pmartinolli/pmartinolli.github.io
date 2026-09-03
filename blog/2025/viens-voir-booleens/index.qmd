@@ -2,7 +2,7 @@
 title: "Viens voir les booléens !"
 author: "Pascal Martinolli"
 date: "2025-12-18"
-categories: [HumanitésNumériques]
+categories: [HumanitésNumériques,formation]
 description: "Où l'on revient aux bases de la recherche documentaire en s'instruisant sur les opérateurs de recherche qui permettent de combiner les mots-clés à chercher."
 format: html
 ---
@@ -71,6 +71,6 @@ Lire le [chapitre sur les opérateurs](https://pmartinolli.github.io/QMpRD/chapt
 
 ------------------------------------------------------------------------
 
-#### Colophon : 
+#### Colophon :
 
 Le titre du billet est inspiré de la chanson [*Les Comédiens*](https://fr.wikipedia.org/wiki/Les_Com%C3%A9diens_(chanson)), de Jacques Plante, interprétée par Charles Aznavour. Cette série de capsules est toujours utilisée dans la plupart de mes formations documentaires.

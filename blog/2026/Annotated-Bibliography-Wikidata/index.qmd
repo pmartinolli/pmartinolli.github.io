@@ -7,41 +7,39 @@ categories: [TTRPG, Wikidata]
 description: "Où l'on indexe dans Wikidata si des jeux de rôle possèdent une bibliographie ou une bibliographie annotée."
 ---
 
-{{< bsky "https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r" >}}
-
 En lisant le message de [Dr. Emily Friedman](https://bsky.app/profile/friede.bsky.social/post/3mchl3jt72c2r) sur Bluesky, je me suis souvenu que j'avais des données de recherche sous le coude. Comme j'avais sous-estimé leur intérêt, je ne les avais jamais versé en ligne. Je vais donc rattraper ce retard et progressivement indexer les données dans Wikidata dans les prochains mois.
 
 ## Bibliographie ou pas
 
 Je vais indiquer si tel jeu ou telle édition de jeu possède :
 
--   une **bibliographie** : une liste simple d'oeuvres ;
+- une **bibliographie** : une liste simple d'oeuvres ;
 
--   ou une **bibliographie annotée** : une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. En effet, elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque jeu mentionné doit être accompagné d'un commentaire ou d'une annotation spécifique à celui-ci (le plus souvent pour indiquer son apport au jeu) ;
+- ou une **bibliographie annotée** : une énumération commentée d'oeuvres, sous la forme de liste ou sous la forme de paragraphes rédigés. En effet, elle peut être présentée sous la forme de paragraphes qui se suivent avec un jeu par paragraphes ou par phrases de manière consécutive. Chaque jeu mentionné doit être accompagné d'un commentaire ou d'une annotation spécifique à celui-ci (le plus souvent pour indiquer son apport au jeu) ;
 
-    ![Exemple de bibliographie annotée (*Apocalypse World* 1st edition)](apocalypseWorld-ex.png){width="500"}
+  ![Exemple de bibliographie annotée (*Apocalypse World* 1st edition)](apocalypseWorld-ex.png){width="500"}
 
--   ou des **références dans le texte** : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le texte pour illustrer le discours ou l'argumentation ou pour donner des exemples. Ces mentions listées ne sont pas commentées systématiquement ou spécifiquement. On peut aussi aussi utiliser ceci dans les cas où seulement quelques oeuvres sont mentionnées ;
+- ou des **références dans le texte** : des mentions à des oeuvres dans un paragraphe de texte. Ces mentions sont insérées dans le texte pour illustrer le discours ou l'argumentation ou pour donner des exemples. Ces mentions listées ne sont pas commentées systématiquement ou spécifiquement. On peut aussi aussi utiliser ceci dans les cas où seulement quelques oeuvres sont mentionnées ;
 
-    ![Exemple de références dans le texte (*Aquelarre*, 3 ed.)](aquelarre3.png){width="500"}
+  ![Exemple de références dans le texte (*Aquelarre*, 3 ed.)](aquelarre3.png){width="500"}
 
--   ou des **notes de marge** : des petits blocs de texte présentés en annotation dans les marges. NB : contrairement aux 3 premiers éléments, ces *marginalia* ne contiennent pas forcément des références. ;
+- ou des **notes de marge** : des petits blocs de texte présentés en annotation dans les marges. NB : contrairement aux 3 premiers éléments, ces *marginalia* ne contiennent pas forcément des références. ;
 
--   ou des **notes de bas de page** : des petits blocs de texte présentés en annotation dans le bas des pages. NB : contrairement aux 3 premiers éléments, ces notes de bas de page ne contiennent pas forcément des références. 
+- ou des **notes de bas de page** : des petits blocs de texte présentés en annotation dans le bas des pages. NB : contrairement aux 3 premiers éléments, ces notes de bas de page ne contiennent pas forcément des références.
 
 - ou des **filmographies** : des **listes de films** ; ou des **listes de musiques** ou de groupes ; ou des **listes de jeux vidéo**.
 
-Je pense que je rajouterai automatiquement des **ludographies** à partir des citations de jeux de rôles déjà faites. 
+Je pense que je rajouterai automatiquement des **ludographies** à partir des citations de jeux de rôles déjà faites.
 
 #### Indexation
 
 Pour indexer ces éléments, dans Wikidata j'utilise la propriété `uses (P2283)` avec la valeur :
 
--   *bibliography* [Q1631107](https://www.wikidata.org/wiki/Q1631107)
--   ou *annotated bibliography* [Q4769616](https://www.wikidata.org/wiki/Q4769616)
--   ou *inline reference* [Q137842886](https://www.wikidata.org/wiki/Q137842886)
--   ou *marginalia* [Q1572441](https://www.wikidata.org/wiki/Q1572441)
--   ou *footnote* [Q25424643](https://www.wikidata.org/wiki/Q25424643)
+- *bibliography* [Q1631107](https://www.wikidata.org/wiki/Q1631107)
+- ou *annotated bibliography* [Q4769616](https://www.wikidata.org/wiki/Q4769616)
+- ou *inline reference* [Q137842886](https://www.wikidata.org/wiki/Q137842886)
+- ou *marginalia* [Q1572441](https://www.wikidata.org/wiki/Q1572441)
+- ou *footnote* [Q25424643](https://www.wikidata.org/wiki/Q25424643)
 - ou *filmography* [Q1371849](https://www.wikidata.org/wiki/Q1371849)
 - ou *list of music references* [Q19220511](https://www.wikidata.org/wiki/Q19220511)
 - ou *bibliographical list of video games* [Q137859315](https://www.wikidata.org/wiki/Q137859315)
@@ -55,9 +53,9 @@ Je n'ai pas (encore) trouvé comment indiquer élégamment qu'un jeu ne possède
 
 #### Exemples d'indexations
 
--   [*10.000*](https://www.wikidata.org/wiki/Q68028056)
--   [*7th Sea (1st edition)*](https://www.wikidata.org/wiki/Q110883344)
--   [*Against the Darkmaster*](https://www.wikidata.org/wiki/Q106036541)
+- [*10.000*](https://www.wikidata.org/wiki/Q68028056)
+- [*7th Sea (1st edition)*](https://www.wikidata.org/wiki/Q110883344)
+- [*Against the Darkmaster*](https://www.wikidata.org/wiki/Q106036541)
 
 #### SPARQL
 
@@ -107,21 +105,21 @@ J'avais commencé à indexer la présence d'épigraphes dans les jeux de rôle s
 
 J'avais aussi utilisé la propriété `uses` avec comme valeur :
 
--   *epigraph* [(Q669777](https://www.wikidata.org/wiki/Q669777)) avec comme qualifiers :
+- *epigraph* [(Q669777](https://www.wikidata.org/wiki/Q669777)) avec comme qualifiers :
 
-    -   *quantity* (P1117)
+  - *quantity* (P1117)
 
-    -   *has characteristic* (P1552) = *referenced value* ([Q71536081](https://www.wikidata.org/wiki/Q71536081))
+  - *has characteristic* (P1552) = *referenced value* ([Q71536081](https://www.wikidata.org/wiki/Q71536081))
 
--   *fictional quotation* ([Q18011336](https://www.wikidata.org/wiki/Q18011336))
+- *fictional quotation* ([Q18011336](https://www.wikidata.org/wiki/Q18011336))
 
-    -   *quantity* (P1117)
+  - *quantity* (P1117)
 
-    -   *has characteristic* (P1552) = *in-universe perspective* ([Q96102813](https://www.wikidata.org/wiki/Q96102813))
+  - *has characteristic* (P1552) = *in-universe perspective* ([Q96102813](https://www.wikidata.org/wiki/Q96102813))
 
 #### Exemple
 
--   [7th Sea (1st edition)](https://www.wikidata.org/wiki/Q110883344)
+- [7th Sea (1st edition)](https://www.wikidata.org/wiki/Q110883344)
 
 #### Requête pour afficher l'indexation des épigraphes
 
