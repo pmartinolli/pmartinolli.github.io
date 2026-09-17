@@ -87,3 +87,11 @@ description: "Listes de tous les programmes à réinstaller dans le cas d'un pas
     -   Lancer Powershell en mode Administrateur : `wsl --install -d Ubuntu`
 -   [Ollama](https://ollama.com/) : pour installer un LLM
     -   [DeepSeek 7b](https://ollama.com/library/deepseek-r1:7b) (run `ollama run deepseek-r1:7b` in terminal after Ollama installed)
+
+### Limiter (un peu) la surveillance 
+
+-   Dans Gmail :
+    -   Interrupteur 1 : Gmail (Desktop): ⚙️ Settings → See all settings → Smart features and personalization → Uncheck "Turn on smart features in Gmail, Chat, and Meet" → Save Changes. 
+    -   Interrupteur 2 : On the same settings page: Google Workspace smart features → Manage Workspace smart feature settings → Turn off both checkboxes → Save. 
+    -   Sur téléphone : Gmail app → Menu (☰) → Settings → Select your account → Turn off "Smart features and personalization" → Confirm.
+    -   Rappel : pour des courriels financiers, légaux ou médicaux ne pas utiliser ce type de messagerie. 

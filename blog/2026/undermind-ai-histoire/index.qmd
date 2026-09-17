@@ -241,7 +241,9 @@ Bref, toutes les fonctionnalités qui font « travailler hors-sol » sans aller 
 
   - Interroger ses propres biais pro- ou anti-IA pour la recherche documentaire.
 
-- Demander à Undermind d'étendre ses métadonnées à plus de notices sur l'histoire (surtout pour les livres). Pour l'instant, de tous les outils de ce type que j'ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités.
+- Demander à la compagnie Undermind d'étendre ses métadonnées à plus de notices sur l'histoire (surtout pour les livres). Pour l'instant, de tous les outils de ce type que j'ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités. Semantic Scholar moissonne de manière autonome (et plus ou moins bien) de Gruyter, Brill, etc. ce serait bien qu'ils aient des partenariats.
+
+- Completer les découvertes de documents par la technique de la « [perle ou boule de neige](https://fr.wikipedia.org/wiki/Technique_de_la_perle) » pour trouver plus de documents pertinents. Ainsi on sort de l'outil IAg, on utilise une technique valorisant la profondeur et la nuance, la précision, et la sélection raisonnée par une personne plutôt que les généralités et la sélection automatique.
 
 ## Réflexions sur l'IA générative et l'histoire
 

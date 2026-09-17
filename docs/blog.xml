@@ -867,7 +867,8 @@ ISBN sous-représentés</td>
 <li><p>Avoir une démarche d’auto-réflexion sur ses apprentissages.</p></li>
 <li><p>Interroger ses propres biais pro- ou anti-IA pour la recherche documentaire.</p></li>
 </ul></li>
-<li><p>Demander à Undermind d’étendre ses métadonnées à plus de notices sur l’histoire (surtout pour les livres). Pour l’instant, de tous les outils de ce type que j’ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités.</p></li>
+<li><p>Demander à la compagnie Undermind d’étendre ses métadonnées à plus de notices sur l’histoire (surtout pour les livres). Pour l’instant, de tous les outils de ce type que j’ai testé, Undermind est celui qui a le mieux fonctionné pour les humanités. Semantic Scholar moissonne de manière autonome (et plus ou moins bien) de Gruyter, Brill, etc. ce serait bien qu’ils aient des partenariats.</p></li>
+<li><p>Completer les découvertes de documents par la technique de la « <a href="https://fr.wikipedia.org/wiki/Technique_de_la_perle">perle ou boule de neige</a> » pour trouver plus de documents pertinents. Ainsi on sort de l’outil IAg, on utilise une technique valorisant la profondeur et la nuance, la précision, et la sélection raisonnée par une personne plutôt que les généralités et la sélection automatique.</p></li>
 </ul>
 </section>
 <section id="réflexions-sur-lia-générative-et-lhistoire" class="level2">
@@ -10753,6 +10754,18 @@ comment Gilgamesh passa au travers de toutes ses épreuves.</em> [Tablette 1<sup
 <li><a href="https://ollama.com/">Ollama</a> : pour installer un LLM
 <ul>
 <li><a href="https://ollama.com/library/deepseek-r1:7b">DeepSeek 7b</a> (run <code>ollama run deepseek-r1:7b</code> in terminal after Ollama installed)</li>
+</ul></li>
+</ul>
+</section>
+<section id="limiter-un-peu-la-surveillance" class="level3">
+<h3 class="anchored" data-anchor-id="limiter-un-peu-la-surveillance">Limiter (un peu) la surveillance</h3>
+<ul>
+<li>Dans Gmail :
+<ul>
+<li>Interrupteur 1 : Gmail (Desktop): ⚙️ Settings → See all settings → Smart features and personalization → Uncheck “Turn on smart features in Gmail, Chat, and Meet” → Save Changes.</li>
+<li>Interrupteur 2 : On the same settings page: Google Workspace smart features → Manage Workspace smart feature settings → Turn off both checkboxes → Save.</li>
+<li>Sur téléphone : Gmail app → Menu (☰) → Settings → Select your account → Turn off “Smart features and personalization” → Confirm.</li>
+<li>Rappel : pour des courriels financiers, légaux ou médicaux ne pas utiliser ce type de messagerie.</li>
 </ul></li>
 </ul>
 
