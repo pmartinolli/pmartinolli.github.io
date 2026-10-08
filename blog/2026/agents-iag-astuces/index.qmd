@@ -1,0 +1,123 @@
+---
+title: "Recommandations pour l'utilisation d'agents des outils IAg"
+format: html
+author:
+      - name: "Pascal Martinolli"
+        orcid: "0000-0003-0122-5300"
+date: "2026-10-08"
+categories: [LLM]
+description: "Où l'on teste des agents IAg pour formuler des recommandations pour leur utilisation dans le contexte de la recherche documentaire."
+---
+
+## Introduction
+
+Depuis l'an passé, l'utilisation d'agents (ou de « skills ») qui lancent des sous-tâches est la nouvelle mode des outils IAg généralistes (*ChatGPT*, *Claude*, etc.) ou spécialisés (*Undermind.ia, Consensus.app, LeapSpace*, etc.).
+
+Cette promesse promotionnelle laisse entendre que **plus de traitements adaptés** vont être entrepris et que donc des meilleurs résultats vont être produits. Cette promesse vient avec une limite : moins de contrôle sur les traitements effectués.
+
+### Principes généraux
+
+- Tous les outils IAg n'utilisent pas des agents.
+
+- Les outils IAg utilisant des agents ne les utilisent pas toujours de la manière qu'ils le déclarent.
+
+- Comme on l'a dit, par nature, l'utilisation d'agent IA vous éloigne du contrôle sur votre travail. Pour contrebalancer, il va être nécessaire de :
+
+  - tester plusieurs fois les tâches demandées pour tenter de comprendre comment ça marche (ce billet vous donne quelques clés),
+
+  - vérifier tous les résultats
+
+  - et enfin documenter (pour vous) et déclarer (pour les autres) l'utilisation qui a été faites.
+
+## Agents de type « recherche de documents »
+
+Labels promotionnels de ces agents : *Deep search, deep research, iterative deep research, research mode, automatic literature review*, etc.
+
+### Stratégie recommandée
+
+Ne pas demander un sujet large et espérer que l'outil effectue une recherche vaste et puissante pour vous sur tout ce qu'il faut savoir. Il faut **lancer plusieurs recherches sur des sous-sujets**. Cela demande de travailler son sujet en amont pour mieux orienter les recherches.
+
+#### Pourquoi ?
+
+- Pour éviter les limites de traitement de l'outil (les outils IAg ont toujours un volume limité de textes traitables) et ainsi éviter que l'outil fasse des économies de traitement et coupe les coins ronds
+- Pour contrôler chaque étape ou chaque module de notre sujet
+- Pour éviter que les angles morts ne soient pas traités (car si l'outil n'a rien trouvé, vous voulez lire explicitement qu'il n'a rien trouvé plutôt que du silence).
+
+#### Exemple 
+
+- Ne pas demander : ***Quels sont les premiers catalogues de livres dans les bibliothèques des civilisations anciennes (mésopotamiennes, égyptiennes, indiennes, chinoises, etc.).***
+- Demander :
+  - ***Quels sont les premiers index, ou listes ou catalogues de textes dans des archives ou des bibliothèques des civilisations mésopotamiennes.***
+  - Puis recommencer pour chaque autre civilisation individuellement.
+- Raisons :
+  - J'ai un peu travaillé mon sujet en amont !
+  - J'ai listé toutes les civilisations anciennes majeures que je veux voir traiter. Les outils ne vont pas bien d'eux-mêmes repérer des documents pour des sujets non-listés. Par exemple, il n'y a pas de documents sur ce sujet pour la ***civilisation Mohenjo-daro*** ni pour les ***civilisations pré-colombiennes***, donc l'outil ne vous dira pas de lui-même qu'il est allé chercher cette civilisation et n'a rien trouvé.
+  - De plus, j'ai repéré que parler de ***livres*** est trop spécifique (voire anachronique) et qu'il vaut mieux parler de ***textes***. De même, j'ai remarqué que ***catalogues*** et ***bibliothèques*** sont aussi trop spécifiques et qu'il est pertinent de chercher ***index***, ***listes*** et ***archives***.
+
+Moralité spécifique : les agents ne me permettent pas de travailler moins, ils m'incitent à travailler différemment.
+
+### Autres stratégies
+
+Faire des demandes courtes et des demandes longues. Comparer.
+
+Faire des demandes multilingues : en français, puis en anglais par exemple. Comparer.
+
+Diversifier ses méthodes de recherche : chercher en dehors des outils IAg (bases de données traditionnelles, catalogues, etc.) voire sur d'autres formats (imprimés, collègues, etc.).
+
+## Agents de type « Boule de neige de citations »
+
+Labels promotionnels de ces agents : *snowballing citation, pearl weaving references, citation crawler, literature-mapping tool, citation-based discovery tool*, etc.
+
+Dans la recherche de documents, la technique dite de la « boule de neige » (ou « de la [perle](https://fr.wikipedia.org/wiki/Technique_de_la_perle) » ... les bibliothécaires sont de grandes poètes.ses) est un ensemble de stratégies alternatives aux mots-clés dans des moteurs de recherche. Elle permet de retrouver d'autres documents à partir du document en main. Parmi ces stratégies, celle qui consiste à remonter les citations en amont ou en aval est très pertinente car filtrée par la communauté scientifique (les références les plus pertinentes vont être citées).
+
+Auparavant (c'est-à-dire dans l'époque qui a précédé des outils IAg), des « outils de cartographie de la recherche » (*Inciteful*, *ResearchRabbit*, etc.) permettaient de le faire manuellement dans des graphes de citations. Dorénavant, des agents nous promettent de naviguer ces liens de citation à partir d'un ou plusieurs documents-sources (*seed papers*). Est-ce que ça marche ?
+
+### Principes 
+
+- Pour le moment, la qualité des résultats dépend de la qualité d'indexation des liens de citation dans des index de citations (*Semantic scholar, Scopus*, etc.).
+
+  - Certains domaines sont très bien indexés (neuroscience par exemple), d'autres très peu indexés (arts et humanités);
+
+  - Certains types de documents sont bien indexés (articles avec DOI), d'autres très peu indexés (livres imprimés seulement, etc.);
+
+  - Les documents récents sont mieux indexés que les documents plus anciens;
+
+  - etc.
+
+- On ne sait pas quels sont les critères de sélection des agents qui descendent ou remontent les liens de citations.
+
+- On se doute qu'il existe une limite au nombre de documents traités, mais on ne connaît pas cette limite.
+
+- Si l'outil ne trouve pas le document-source dans un index de citation, certains outils (*Consensus.app* par exemple) vont tenter d'extraire des références bibliographiques du texte intégral (pas toutes, un petit nombre seulement) puis chercher ces références extraites dans des index de citations.
+
+  - On peut demander par exemple : `Extract citations from fulltext and snowball backward citations and forward citations`
+
+Moralité spécifique : Ça va peut être trouver des choses en mode pilotage automatique mais ce sera à moi de compléter ou de vérifier si l'essentiel a été repéré.
+
+## Agents de type « Vérification d'affirmations »
+
+Labels promotionnels de ces agents : *Verify claim*, *Supports claim*, *Reverse citation search, Verify citations,* etc.
+
+Vous saisissez une affirmation (ou vous cliquez sur une affirmation affichée) et l'outil IAg lance une recherche de documents, puis il extrait les résumés ou le texte intégral ou les deux, puis il calcule une réponse basée sur l'affirmation et les informations extraites.
+
+Certains agents proposent de calculer à partir d'une affirmation seulement (*Reverse citation search* de Consensus.app par exemple, ou *Verify Claim* de LeapSpace) ou à partir d'une affirmation combinée avec une référence pour vérifier la cohérence des deux (*Verify citations* de Consensus.app par exemple, ou *Supports claim* de LeapSpace).
+
+### Principes 
+
+- Les outils IAg sont encore par nature fortement basés sur des traitements syntaxiques des informations. Donc :
+
+  - Une information répétée plusieurs fois de la même manière ou de manières différentes (paraphrases, etc.) va avoir plus de poids qu'une affirmation potentiellement plus pertinente ou plus juste mais mentionnée une seule fois.
+
+  - Plusieurs documents de qualité médiocre (revues prédatrices, preprints, colloques, etc.) et soutenant un morceau de phrase dans un sens auront plus de poids qu'un seul document de haute qualité (article issu d'une revue prestigieuse révisée par les pairs et cité de nombreuses fois) soutenant ce morceau de phrase dans un autre sens.
+
+  - Une formulation syntaxique trop originale peut être mal interprétée car peu représentée dans le corpus.
+
+  - Les formulations fortement assertives et simples peuvent être favorisées face à des formulations nuancées ou complexes.
+
+Moralité spécifique : Vous trouverez des sources. Ce sera à vous d'aller les lire dans le détail pour les juger et décider de leur pertinence.
+
+## Moralité générale
+
+> « *As in any fairytale, accepting magical assistance comes with risks.* » \
+> \[Comme dans tout conte de fées, accepter une aide magique vient avec des risques.\] \
+> [Ted Underwood](https://tedunderwood.com/2024/08/31/will-ai-make-us-overconfident/) (U of Illinois)
