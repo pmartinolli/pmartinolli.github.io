@@ -1,12 +1,12 @@
 ---
-title: "Recommandations pour l'utilisation d'agents des outils IAg"
+title: "Recommandations pour l'utilisation d'agents IAg"
 format: html
 author:
       - name: "Pascal Martinolli"
         orcid: "0000-0003-0122-5300"
 date: "2026-10-08"
 categories: [LLM]
-description: "Où l'on teste des agents IAg pour formuler des recommandations pour leur utilisation dans le contexte de la recherche documentaire."
+description: "Où l'on teste des agents dans des outils d'intelligence artificielle générative. On formule des recommandations pour leur utilisation dans le contexte de la recherche documentaire : recherche par sujet, par citations et vérification d'affirmations."
 ---
 
 ## Introduction
@@ -50,11 +50,11 @@ Ne pas demander un sujet large et espérer que l'outil effectue une recherche va
   - ***Quels sont les premiers index, ou listes ou catalogues de textes dans des archives ou des bibliothèques des civilisations mésopotamiennes.***
   - Puis recommencer pour chaque autre civilisation individuellement.
 - Raisons :
-  - J'ai un peu travaillé mon sujet en amont !
-  - J'ai listé toutes les civilisations anciennes majeures que je veux voir traiter. Les outils ne vont pas bien d'eux-mêmes repérer des documents pour des sujets non-listés. Par exemple, il n'y a pas de documents sur ce sujet pour la ***civilisation Mohenjo-daro*** ni pour les ***civilisations pré-colombiennes***, donc l'outil ne vous dira pas de lui-même qu'il est allé chercher cette civilisation et n'a rien trouvé.
+  - J'ai un peu travaillé mon sujet en amont.
+  - J'ai listé toutes les civilisations anciennes majeures que je veux traiter. Par eux-mêmes, les outils ne vont pas bien repérer des documents pour des sujets non-listés. Par exemple, il n'y a pas de document sur ce sujet pour la ***civilisation Mohenjo-daro*** ni pour les ***civilisations pré-colombiennes***. L'outil n'est pas allé cherché de lui-même sur ces civilisations. Même s'il l'avait fait, il ne vous aurait pas dit qu'il n'a rien trouvé.
   - De plus, j'ai repéré que parler de ***livres*** est trop spécifique (voire anachronique) et qu'il vaut mieux parler de ***textes***. De même, j'ai remarqué que ***catalogues*** et ***bibliothèques*** sont aussi trop spécifiques et qu'il est pertinent de chercher ***index***, ***listes*** et ***archives***.
 
-Moralité spécifique : les agents ne me permettent pas de travailler moins, ils m'incitent à travailler différemment.
+Moralité spécifique : les agents ne me permettent pas de travailler moins, ils m'incitent à travailler différemment, principalement en cadrant bien mes investigations.
 
 ### Autres stratégies
 

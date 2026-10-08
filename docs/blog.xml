@@ -12,7 +12,7 @@
 <generator>quarto-1.8.26</generator>
 <lastBuildDate>Thu, 08 Oct 2026 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Recommandations pour l’utilisation d’agents des outils IAg</title>
+  <title>Recommandations pour l’utilisation d’agents IAg</title>
   <dc:creator>Pascal Martinolli</dc:creator>
   <link>https://pmartinolli.github.io/blog/2026/agents-iag-astuces/</link>
   <description><![CDATA[ 
@@ -65,12 +65,12 @@
 </ul></li>
 <li>Raisons :
 <ul>
-<li>J’ai un peu travaillé mon sujet en amont !</li>
-<li>J’ai listé toutes les civilisations anciennes majeures que je veux voir traiter. Les outils ne vont pas bien d’eux-mêmes repérer des documents pour des sujets non-listés. Par exemple, il n’y a pas de documents sur ce sujet pour la <strong><em>civilisation Mohenjo-daro</em></strong> ni pour les <strong><em>civilisations pré-colombiennes</em></strong>, donc l’outil ne vous dira pas de lui-même qu’il est allé chercher cette civilisation et n’a rien trouvé.</li>
+<li>J’ai un peu travaillé mon sujet en amont.</li>
+<li>J’ai listé toutes les civilisations anciennes majeures que je veux traiter. Par eux-mêmes, les outils ne vont pas bien repérer des documents pour des sujets non-listés. Par exemple, il n’y a pas de document sur ce sujet pour la <strong><em>civilisation Mohenjo-daro</em></strong> ni pour les <strong><em>civilisations pré-colombiennes</em></strong>. L’outil n’est pas allé cherché de lui-même sur ces civilisations. Même s’il l’avait fait, il ne vous aurait pas dit qu’il n’a rien trouvé.</li>
 <li>De plus, j’ai repéré que parler de <strong><em>livres</em></strong> est trop spécifique (voire anachronique) et qu’il vaut mieux parler de <strong><em>textes</em></strong>. De même, j’ai remarqué que <strong><em>catalogues</em></strong> et <strong><em>bibliothèques</em></strong> sont aussi trop spécifiques et qu’il est pertinent de chercher <strong><em>index</em></strong>, <strong><em>listes</em></strong> et <strong><em>archives</em></strong>.</li>
 </ul></li>
 </ul>
-<p>Moralité spécifique : les agents ne me permettent pas de travailler moins, ils m’incitent à travailler différemment.</p>
+<p>Moralité spécifique : les agents ne me permettent pas de travailler moins, ils m’incitent à travailler différemment, principalement en cadrant bien mes investigations.</p>
 </section>
 </section>
 <section id="autres-stratégies" class="level3">
