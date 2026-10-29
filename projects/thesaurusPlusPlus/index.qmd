@@ -18,7 +18,7 @@ Que ce soit pour vos références bibliographiques ou pour vos données de terra
 
   - D'autres programmes expérimentaux
 
-- Un cahier des charges fonctionnel pour qu’un codeur bénévole créé [ZotFlag, une extension Zotero](https://pmartinolli.github.io/ZotFlag/)
+- Une extension [**ZotFlag**](https://github.com/pmartinolli/ZotFlag) (aller dans *Releases* et télécharger le fichier .xpi) pour automatiquement indexer des marqueurs selon des champs et des concordances. ([cahier des charges](https://pmartinolli.github.io/ZotFlag_cahierdescharges/), billet de sortie de l'extension)
 
 ## Pour aller plus loin
 

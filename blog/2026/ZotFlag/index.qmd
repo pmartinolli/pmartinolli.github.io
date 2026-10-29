@@ -1,0 +1,48 @@
+---
+title: "ZotFlag : un extension Zotero pour ajouter des marqueurs automatiquement"
+format: html
+author:
+      - name: "Pascal Martinolli"
+        orcid: "0000-0003-0122-5300"
+date: "2026-10-29"
+categories: [HumanitésNumériques, Zotero, thesaurus]
+description: "Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV qui cherchent dans les noms de revues, les auteurs, les maisons d'édition, les DOI et les mots-clés (titre, résumé et marqueurs)."
+---
+
+## Historique
+
+Les [thésaurus](https://pmartinolli.github.io/projects/thesaurusPlusPlus/) et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L'an passé, j'avais rédigé un [cahier des charges fonctionnels](https://pmartinolli.github.io/ZotFlag_cahierdescharges/) sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j'ai pu avoir accès à Claude AI pro et il m'a produit le code pour générer l'[extension XPI à installer](https://github.com/pmartinolli/ZotFlag). Je suis encore dans les tests mais ça marche bien.
+
+## Note d'intention
+
+Dans un contexte d**’inflation documentaire** et de **mésinformation** (rétractions, prédations, pollution en cascade, etc.) dans la publication scientifique, , il est important d’outiller les chercheurs avec des algorithmes simples leur permettant de marquer (de drapeauter ? *flagging*) automatiquement des documents selon des critères précis. Pour ça, j'aimerai ajouter un marqueur si un auteur, un éditeur, une maison d’édition, un nom de revue, un mot-clé, etc. apparaît dans les métadonnées d’un élément présent dans sa propre bibliothèque Zotero.
+
+Dans un contexte de **besoin de robustesse** et de facilité d’utilisation des marqueurs gérés par les chercheurs dans Zotero, il est important de leur donner un outil simple pour automatiquement valider, enrichir et compléter leurs ontologies et leurs indexations manuelles. J'aimerai ajouter un marqueur si un autre marqueur ou un terme est présent dans sa propre bibliothèque Zotero. Cela est particulièrement utile pour :
+
+- Pré-sélectionner des documents dans une phase de triage
+
+- Jouer avec un thésaurus à 2 niveaux car parfois nous faisons une indexation trop limitées et il peut être pertinent de regrouper des marqueurs sous un seul marqueur plus générique pour repérer des choses connexes (pour le marqueur générique j'utilise des MAJUSCULES, pour les marqueurs spécifiques j'utilise des minuscules).
+
+- *Clusteriser* un corpus de documents selon des règles précises
+
+## Fonctionnement
+
+Une fois installé ([ZotFlag](https://github.com/pmartinolli/ZotFlag) puis aller dans *Releases*), on paramètre l'extension pour qu'elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs.
+
+En lançant l'action *Marquage : maisons d'édition, revues, etc.*, ZotFlag lit les fichiers journals.csv et publishers.csv puis il compare leurs colonnes Cible et si elles correspondent aux champs Publication et Publishers de Zotero alors la valeur de la colonne Marqueurs du fichier CSV est ajouté comme marqueur dans la référence.
+
+Idem pour *Marquage : auteurs, etc.*, qui lit persons.csv et cherche dans les rôles d'auteurs, d'éditeurs, etc.
+
+Idem pour *Marquage : termes dans les métadonnées*, qui lit metadata.csv et cherche dans titre, résumé et marqueurs déjà présents.
+
+Idem pour *Marquage : articles*, qui lit des DOI.
+
+Il y a une option pour lancer toutes ces actions à la fois.
+
+Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois, ou en lot sur 5000 références. Je recommande d'utiliser des marqueurs précédés de caractères spéciaux (comme \_ ou = ou autres) pour distinguer les opérations automatiques.
+
+## Réflexions
+
+Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.
+
+Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.

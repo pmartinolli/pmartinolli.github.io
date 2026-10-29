@@ -10,7 +10,57 @@
 <atom:link href="https://pmartinolli.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>RSS feed de ce blogue : https://pmartinolli.github.io/blog.xml&lt;br/&gt;Autre microblogue de mes lectures : https://tinyurl.com/lefiltre</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Thu, 08 Oct 2026 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 Oct 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>ZotFlag : un extension Zotero pour ajouter des marqueurs automatiquement</title>
+  <dc:creator>Pascal Martinolli</dc:creator>
+  <link>https://pmartinolli.github.io/blog/2026/ZotFlag/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="historique" class="level2">
+<h2 class="anchored" data-anchor-id="historique">Historique</h2>
+<p>Les <a href="https://pmartinolli.github.io/projects/thesaurusPlusPlus/">thésaurus</a> et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un <a href="https://pmartinolli.github.io/ZotFlag_cahierdescharges/">cahier des charges fonctionnels</a> sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’<a href="https://github.com/pmartinolli/ZotFlag">extension XPI à installer</a>. Je suis encore dans les tests mais ça marche bien.</p>
+</section>
+<section id="note-dintention" class="level2">
+<h2 class="anchored" data-anchor-id="note-dintention">Note d’intention</h2>
+<p>Dans un contexte d<strong>’inflation documentaire</strong> et de <strong>mésinformation</strong> (rétractions, prédations, pollution en cascade, etc.) dans la publication scientifique, , il est important d’outiller les chercheurs avec des algorithmes simples leur permettant de marquer (de drapeauter ? <em>flagging</em>) automatiquement des documents selon des critères précis. Pour ça, j’aimerai ajouter un marqueur si un auteur, un éditeur, une maison d’édition, un nom de revue, un mot-clé, etc. apparaît dans les métadonnées d’un élément présent dans sa propre bibliothèque Zotero.</p>
+<p>Dans un contexte de <strong>besoin de robustesse</strong> et de facilité d’utilisation des marqueurs gérés par les chercheurs dans Zotero, il est important de leur donner un outil simple pour automatiquement valider, enrichir et compléter leurs ontologies et leurs indexations manuelles. J’aimerai ajouter un marqueur si un autre marqueur ou un terme est présent dans sa propre bibliothèque Zotero. Cela est particulièrement utile pour :</p>
+<ul>
+<li><p>Pré-sélectionner des documents dans une phase de triage</p></li>
+<li><p>Jouer avec un thésaurus à 2 niveaux car parfois nous faisons une indexation trop limitées et il peut être pertinent de regrouper des marqueurs sous un seul marqueur plus générique pour repérer des choses connexes (pour le marqueur générique j’utilise des MAJUSCULES, pour les marqueurs spécifiques j’utilise des minuscules).</p></li>
+<li><p><em>Clusteriser</em> un corpus de documents selon des règles précises</p></li>
+</ul>
+</section>
+<section id="fonctionnement" class="level2">
+<h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
+<p>Une fois installé (<a href="https://github.com/pmartinolli/ZotFlag">ZotFlag</a> puis aller dans <em>Releases</em>), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs.</p>
+<p>En lançant l’action <em>Marquage : maisons d’édition, revues, etc.</em>, ZotFlag lit les fichiers journals.csv et publishers.csv puis il compare leurs colonnes Cible et si elles correspondent aux champs Publication et Publishers de Zotero alors la valeur de la colonne Marqueurs du fichier CSV est ajouté comme marqueur dans la référence.</p>
+<p>Idem pour <em>Marquage : auteurs, etc.</em>, qui lit persons.csv et cherche dans les rôles d’auteurs, d’éditeurs, etc.</p>
+<p>Idem pour <em>Marquage : termes dans les métadonnées</em>, qui lit metadata.csv et cherche dans titre, résumé et marqueurs déjà présents.</p>
+<p>Idem pour <em>Marquage : articles</em>, qui lit des DOI.</p>
+<p>Il y a une option pour lancer toutes ces actions à la fois.</p>
+<p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois, ou en lot sur 5000 références. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les opérations automatiques.</p>
+</section>
+<section id="réflexions" class="level2">
+<h2 class="anchored" data-anchor-id="réflexions">Réflexions</h2>
+<p>Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.</p>
+<p>Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>HumanitésNumériques</category>
+  <category>Zotero</category>
+  <category>thesaurus</category>
+  <guid>https://pmartinolli.github.io/blog/2026/ZotFlag/</guid>
+  <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Recommandations pour l’utilisation d’agents IAg</title>
   <dc:creator>Pascal Martinolli</dc:creator>
@@ -11413,122 +11463,6 @@ font-style: inherit;">"output_languages.csv"</span>)</span></code></pre></div></
   <category>HumanitésNumériques</category>
   <guid>https://pmartinolli.github.io/blog/2025/comment-faire-10-millions/</guid>
   <pubDate>Sun, 30 Nov 2025 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Modifier des références en lot dans Zotero</title>
-  <dc:creator>Pascal Martinolli</dc:creator>
-  <link>https://pmartinolli.github.io/blog/2025/zotero-actions-tags-multiremplacement/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<ul>
-<li>Exemple d’application :
-<ul>
-<li>Pour une série de documents dans un fonds d’archives.</li>
-<li>Avec le style Chicago 18.</li>
-</ul></li>
-<li>Outils :
-<ul>
-<li>Zotero.</li>
-<li>Extension <em>Actions &amp; Tags</em>, de <a href="https://github.com/windingwind/">windingwind</a>.</li>
-<li>Script <em>Bulk Edit Multiple Items</em>, de <a href="https://github.com/thalient-ai">thalient-ai</a>.</li>
-</ul></li>
-</ul>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Dans <a href="https://zotero.hypotheses.org/5162">un billet de Zotero francophone</a>, j’ai découvert qu’on pouvait utiliser l’extension <em>Actions &amp; Tags</em> avec un JavaScript dédié pour modifier en lot des champs de Zotero. Cette méthode peut être adaptée pour modifier n’importe quel champ. C’est vraiment très utile car l’absence de modification en lot a toujours été un gros défaut de Zotero pour un travail documentaire poussé. En passant, l’extension <a href="https://github.com/ChenglongMa/zoplicate">Zoplicate</a> est aussi un bon outil pour travailler comme un.e pro de la documentation car il permet de dédoublonner avec plus de fonctionalités que les fonctions de base de Zotero. Ces deux extensions avancées témoignent de la croissance bienvenue de contributeurs chinois dans la communauté des utilisateurs de Zotero (qui serait la 3e après les anglophones et les francophones).</p>
-</section>
-<section id="cas-pratique" class="level2">
-<h2 class="anchored" data-anchor-id="cas-pratique">Cas pratique</h2>
-<p>Imaginons que nous ayons une cinquantaine de références bibliographiques dans Zotero qui correspondent à des documents que nous avons trouvé dans la boîte d’archive numéro 14, du Fonds d’archives numéro 33 de l’Unseen University de Ankh-Morpork. Pour les citer convenablement, on va ajouter en lot :</p>
-<ul>
-<li><code>Boîte 14</code> dans le champ <strong>Loc. dans l’archive</strong></li>
-<li><code>Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld</code> dans le champ <strong>Archive</strong>.</li>
-</ul>
-<p>Car nous allons utiliser <a href="www.zotero.org/styles/chicago-notes-bibliography-archive-place-first"><em>Chicago Manual of Style 18th edition (notes and bibliography, archival references with place first)</em></a> qui va nous créer une référence qui ressemblera à ceci en note de bas de page :</p>
-<blockquote class="blockquote">
-<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777, Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).</p>
-</blockquote>
-<p>Et à ceci en bibliographie finale (seul le point après 777 change):</p>
-<blockquote class="blockquote">
-<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777. Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld (Boîte 14).</p>
-</blockquote>
-<section id="problème-du-style-chicago-actuel" class="level4">
-<h4 class="anchored" data-anchor-id="problème-du-style-chicago-actuel">Problème du style Chicago actuel</h4>
-<p>Normalement, la note de bas de page devrait avoir cette forme :</p>
-<blockquote class="blockquote">
-<p>Question numéro 842 du <em>The Unseen University Challenge</em>, 7 juillet 777, Boîte 14, Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld.</p>
-</blockquote>
-<p>Et la bibliographie finale celle-ci :</p>
-<blockquote class="blockquote">
-<p>Fonds d’archives 33, Unseen University, Ankh-Morpork, DiscWorld.</p>
-</blockquote>
-<p>Il faudrait que je modifie le fichier CSL pour refléter ça. Ce sera pour une prochaine fois.</p>
-</section>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<ul>
-<li>Aller à <a href="https://github.com/windingwind/zotero-actions-tags" class="uri">https://github.com/windingwind/zotero-actions-tags</a></li>
-<li>Cliquer sur <em>Releases</em> à droite</li>
-<li>Télécharger le fichier .xpi sur votre ordinateur</li>
-<li>Zotero &gt; Outils &gt; Extensions &gt; (roue) <em>Install plugin from file</em> &gt; sélectionner le fichier .xpi. Redémarrer Zotero.</li>
-<li>Zotero &gt; Édition &gt; Paramètres &gt; <em>Actions &amp; Tags</em>
-<ul>
-<li>Cliquer sur (+)</li>
-<li>Name = <code>MultiModif</code></li>
-<li>Event = <code>None</code></li>
-<li>Operation = <code>Script</code></li>
-<li>Data = Copier-coller le code JavaScript de la page <a href="https://github.com/windingwind/zotero-actions-tags/discussions/343"><em>Bulk edit Multiple Items</em></a></li>
-<li>Menu Label = <code>MultiModif</code></li>
-<li>In Item Menu = cocher</li>
-<li><em>Save</em>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="traitement" class="level2">
-<h2 class="anchored" data-anchor-id="traitement">Traitement</h2>
-<ul>
-<li>Mettre les 50 références dans une collection « Boîte 14 » par exemple.</li>
-<li>Sélectionner toutes les références de cette collection.</li>
-<li>Clic-droit : <em>Trigger Action</em> &gt; MultiModif
-<ol type="1">
-<li><em>Do you want to modify…</em> : saisir <code>1</code></li>
-<li><em>Start typing the field name…</em> : saisir <code>archive</code></li>
-<li><em>Multiple matches found…</em> : saisir le numéro correspondant au champ à éditer :
-<ul>
-<li><em>Archive</em> (pour le chemin du Fonds à la ville)</li>
-</ul></li>
-<li><em>Enter characters…</em> : laisser vide pour les champs vides ou saisir <code>*</code> pour les champs avec du texte</li>
-<li><em>Enter the replacement…</em> : saisir <code>Fonds d'archives 33, Unseen University, Ankh-Morpork, DiscWorld</code></li>
-<li><em>You have chosen…</em> : OK</li>
-<li><em>Confirm…</em> : OK</li>
-<li><em>(x) items updated…</em> : OK</li>
-</ol></li>
-<li>Recommencer avec ceci pour l’étape 3 :
-<ul>
-<li><em>Location in Archive</em> (pour le chemin du dossier à la boîte ou la série)</li>
-</ul></li>
-<li>Et ceci à l’étape 5 :
-<ul>
-<li><em>Enter the replacement…</em> : saisir <code>Boîte 14</code> ou <code>Dossier 2a, Boîte 14, Série IV</code></li>
-</ul></li>
-</ul>
-<p>Le script bogue si on tente de remplacer un champ qui n’existe pas dans le type de document d’une référence sélectionnée. Par exemple, ne pas tenter de remplacer le contenu de <em>Language</em> dans une référence de type <em>Software</em>. On peut s’aider de <a href="https://www.zotero.org/support/kb/item_types_and_fields">cette page</a> ou de <a href="https://pobrien333.github.io/zot2csl/">zot2csl</a> (traduit en <a href="https://docs.zotero-fr.org/kb/item_types_and_fields/">français</a>) pour repérer quels champs sont disponibles selon le type de document.</p>
-<p>⚠️ Avertissement : il n’y a pas de fonction Annuler (<em>Undo</em>). Donc soyez prudent.e avant tout traitement en lot. Une sauvegarde préalable est fortement recommandée avant tout travail de ce type.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Zotero</category>
-  <category>HumanitésNumériques</category>
-  <guid>https://pmartinolli.github.io/blog/2025/zotero-actions-tags-multiremplacement/</guid>
-  <pubDate>Wed, 22 Oct 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
