@@ -963,14 +963,14 @@
     "href": "blog/2026/ZotFlag/index.html",
     "title": "ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement",
     "section": "",
-    "text": "Les thésaurus et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un cahier des charges fonctionnels sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien."
+    "text": "Page de l’extension avec une jolie infographie reproduite ci-dessous.\nLe dépôt GitHub pour télécharger le plugin (puis aller dans Releases à droite pour télécharger le tout dernier fichier .xpi)."
   },
   {
     "objectID": "blog/2026/ZotFlag/index.html#historique",
     "href": "blog/2026/ZotFlag/index.html#historique",
     "title": "ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement",
-    "section": "",
-    "text": "Les thésaurus et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un cahier des charges fonctionnels sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien."
+    "section": "Historique",
+    "text": "Historique\nLes thésaurus et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un cahier des charges fonctionnels sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien."
   },
   {
     "objectID": "blog/2026/ZotFlag/index.html#note-dintention",
@@ -984,7 +984,7 @@
     "href": "blog/2026/ZotFlag/index.html#fonctionnement",
     "title": "ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement",
     "section": "Fonctionnement",
-    "text": "Fonctionnement\nUne fois installé (ZotFlag puis aller dans Releases), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier zotero.sqlite, on peut le trouver via Paramètres &gt; Avancés &gt; Ouvrir le répertoire de données).\n\nEn lançant l’action Marquage : maisons d’édition, revues, etc., ZotFlag lit les fichiers journals.csv et publishers.csv puis il compare leurs colonnes Cible et si elles correspondent aux champs Publication et Publishers de Zotero alors la valeur de la colonne Marqueurs du fichier CSV est ajouté comme marqueur dans la référence.\nIdem pour Marquage : auteurs, etc., qui lit persons.csv et cherche dans les rôles d’auteurs, d’éditeurs, etc.\nIdem pour Marquage : termes dans les métadonnées, qui lit metadata.csv et cherche dans titre, résumé et marqueurs déjà présents.\nIdem pour Marquage : articles, qui lit des DOI.\nIl y a une option pour lancer toutes ces actions à la fois.\n\nLes actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois, ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…"
+    "text": "Fonctionnement\nUne fois installé (ZotFlag puis aller dans Releases), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier zotero.sqlite, on peut le trouver via Paramètres &gt; Avancés &gt; Ouvrir le répertoire de données).\n\n\n\n\n\nLes actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…"
   },
   {
     "objectID": "blog/2026/ZotFlag/index.html#réflexions",
@@ -1019,6 +1019,6 @@
     "href": "blog/2026/ZotFlag/index.html#réflexions-méta",
     "title": "ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement",
     "section": "Réflexions méta",
-    "text": "Réflexions méta\nLes institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.\nPlus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés."
+    "text": "Réflexions méta\nLes institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.\nPlus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.\nVous n’avez plus d’excuses pour ne pas faire des listes, plein de listes ! Et de partager vos listes ! Tenez, pour les rôlistes, voici une liste de mots-clés pour les jeux de rôle sur table."
   }
 ]

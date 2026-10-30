@@ -22,9 +22,13 @@
 
 
 
+<ul>
+<li><p>Page de l’extension avec une <a href="https://pmartinolli.github.io/ZotFlag/">jolie infographie</a> reproduite ci-dessous.</p></li>
+<li><p>Le <a href="https://github.com/pmartinolli/ZotFlag">dépôt GitHub</a> pour télécharger le plugin (puis aller dans <em>Releases</em> à droite pour télécharger le tout dernier fichier .xpi).</p></li>
+</ul>
 <section id="historique" class="level2">
 <h2 class="anchored" data-anchor-id="historique">Historique</h2>
-<p>Les <a href="https://pmartinolli.github.io/projects/thesaurusPlusPlus/">thésaurus</a> et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un <a href="https://pmartinolli.github.io/ZotFlag_cahierdescharges/">cahier des charges fonctionnels</a> sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’<a href="https://github.com/pmartinolli/ZotFlag">extension XPI</a> à installer. Je suis encore dans les tests mais ça marche bien.</p>
+<p>Les <a href="https://pmartinolli.github.io/projects/thesaurusPlusPlus/">thésaurus</a> et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un <a href="https://pmartinolli.github.io/ZotFlag_cahierdescharges/">cahier des charges fonctionnels</a> sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien.</p>
 </section>
 <section id="note-dintention" class="level2">
 <h2 class="anchored" data-anchor-id="note-dintention">Note d’intention</h2>
@@ -39,19 +43,18 @@
 <section id="fonctionnement" class="level2">
 <h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
 <p>Une fois installé (<a href="https://github.com/pmartinolli/ZotFlag">ZotFlag</a> puis aller dans <em>Releases</em>), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier <code>zotero.sqlite</code>, on peut le trouver via Paramètres &gt; Avancés &gt; Ouvrir le répertoire de données).</p>
-<ul>
-<li><p>En lançant l’action <em>Marquage : maisons d’édition, revues, etc.</em>, ZotFlag lit les fichiers <code>journals.csv</code> et <code>publishers.csv</code> puis il compare leurs colonnes Cible et si elles correspondent aux champs Publication et Publishers de Zotero alors la valeur de la colonne Marqueurs du fichier CSV est ajouté comme marqueur dans la référence.</p></li>
-<li><p>Idem pour <em>Marquage : auteurs, etc.</em>, qui lit <code>persons.csv</code> et cherche dans les rôles d’auteurs, d’éditeurs, etc.</p></li>
-<li><p>Idem pour <em>Marquage : termes dans les métadonnées</em>, qui lit <code>metadata.csv</code> et cherche dans titre, résumé et marqueurs déjà présents.</p></li>
-<li><p>Idem pour <em>Marquage : articles</em>, qui lit des DOI.</p></li>
-<li><p>Il y a une option pour lancer toutes ces actions à la fois.</p></li>
-</ul>
-<p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois, ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pmartinolli.github.io/ZotFlag/zotflag-infographic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…</p>
 </section>
 <section id="réflexions-méta" class="level2">
 <h2 class="anchored" data-anchor-id="réflexions-méta">Réflexions <em>méta</em></h2>
 <p>Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.</p>
 <p>Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.</p>
+<p>Vous n’avez plus d’excuses pour ne pas faire des <a href="https://en.wikipedia.org/wiki/The_Infinity_of_Lists">listes</a>, plein de listes ! Et de partager vos listes ! Tenez, pour les rôlistes, voici une liste de mots-clés pour les <a href="https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/keywords-TTRPG.csv">jeux de rôle sur table</a>.</p>
 
 
 </section>

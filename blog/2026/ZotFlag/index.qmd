@@ -9,9 +9,13 @@ categories: [HumanitésNumériques, Zotero, thesaurus]
 description: "Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV qui cherchent dans les noms de revues, les auteurs, les maisons d'édition, les DOI et les mots-clés (titre, résumé et marqueurs)."
 ---
 
+- Page de l'extension avec une [jolie infographie](https://pmartinolli.github.io/ZotFlag/) reproduite ci-dessous.
+
+- Le [dépôt GitHub](https://github.com/pmartinolli/ZotFlag) pour télécharger le plugin (puis aller dans *Releases* à droite pour télécharger le tout dernier fichier .xpi).
+
 ## Historique
 
-Les [thésaurus](https://pmartinolli.github.io/projects/thesaurusPlusPlus/) et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L'an passé, j'avais rédigé un [cahier des charges fonctionnels](https://pmartinolli.github.io/ZotFlag_cahierdescharges/) sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j'ai pu avoir accès à Claude AI pro et il m'a produit le code pour générer l'[extension XPI](https://github.com/pmartinolli/ZotFlag) à installer. Je suis encore dans les tests mais ça marche bien.
+Les [thésaurus](https://pmartinolli.github.io/projects/thesaurusPlusPlus/) et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L'an passé, j'avais rédigé un [cahier des charges fonctionnels](https://pmartinolli.github.io/ZotFlag_cahierdescharges/) sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j'ai pu avoir accès à Claude AI pro et il m'a produit le code pour générer l'extension XPI à installer. Je suis encore dans les tests mais ça marche bien.
 
 ## Note d'intention
 
@@ -29,20 +33,14 @@ Dans un contexte de **besoin de robustesse** et de facilité d’utilisation des
 
 Une fois installé ([ZotFlag](https://github.com/pmartinolli/ZotFlag) puis aller dans *Releases*), on paramètre l'extension pour qu'elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier `zotero.sqlite`, on peut le trouver via Paramètres \> Avancés \> Ouvrir le répertoire de données).
 
-- En lançant l'action *Marquage : maisons d'édition, revues, etc.*, ZotFlag lit les fichiers `journals.csv` et `publishers.csv` puis il compare leurs colonnes Cible et si elles correspondent aux champs Publication et Publishers de Zotero alors la valeur de la colonne Marqueurs du fichier CSV est ajouté comme marqueur dans la référence.
+![](https://pmartinolli.github.io/ZotFlag/zotflag-infographic.png){fig-align="center"}
 
-- Idem pour *Marquage : auteurs, etc.*, qui lit `persons.csv` et cherche dans les rôles d'auteurs, d'éditeurs, etc.
-
-- Idem pour *Marquage : termes dans les métadonnées*, qui lit `metadata.csv` et cherche dans titre, résumé et marqueurs déjà présents.
-
-- Idem pour *Marquage : articles*, qui lit des DOI.
-
-- Il y a une option pour lancer toutes ces actions à la fois.
-
-Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois, ou en lot. Je recommande d'utiliser des marqueurs précédés de caractères spéciaux (comme \_ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D'ailleurs ce serait bien de faire vos tests dans une base séparées d'abord...
+Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d'utiliser des marqueurs précédés de caractères spéciaux (comme \_ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D'ailleurs ce serait bien de faire vos tests dans une base séparées d'abord...
 
 ## Réflexions *méta*
 
 Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.
 
 Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.
+
+Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.org/wiki/The_Infinity_of_Lists), plein de listes ! Et de partager vos listes ! Tenez, pour les rôlistes, voici une liste de mots-clés pour les [jeux de rôle sur table](https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/keywords-TTRPG.csv).
