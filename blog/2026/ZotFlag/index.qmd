@@ -6,7 +6,7 @@ author:
         orcid: "0000-0003-0122-5300"
 date: "2026-10-29"
 categories: [HumanitésNumériques, Zotero, thesaurus]
-description: "Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV que vous gérez. Utile pour drapeauté la bonne/mauvaise science basée sur vos critères. Utile aussi pour ajouter un niveau générique à votre vocabulaire contrôlé. Cherche dans les noms de revues, les auteurs et éditeurs, les maisons d'édition, les DOI et les mots-clés (titre, résumé et marqueurs)."
+description: "Discussion autour d'une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV que vous gérez. Utile pour drapeauté la bonne/mauvaise science basée sur vos critères. Utile aussi pour ajouter un niveau générique à votre vocabulaire contrôlé. Analyse comparative de deux corpus indexés manuellement et automatiquement."
 ---
 
 - [Page de l'extension](https://pmartinolli.github.io/ZotFlag/) avec une jolie infographie.
@@ -45,7 +45,7 @@ Plus généralement, il est une bonne chose de créer des outils ouverts et libr
 
 Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.org/wiki/The_Infinity_of_Lists), plein de listes ! Et de partager (en privé) vos listes !
 
-## Test empirique
+## Analyse comparative des 2 indexations
 
 ### Expérience
 
@@ -63,9 +63,9 @@ Je compare deux bases de données de 4599 références sur le jeu de rôle sur t
 
 - L'analyse ci-dessous pointe rapidement les concordances de marqueurs à améliorer (ceux qui font trop de bruit).
 
----
+------------------------------------------------------------------------
 
-### Analyse comparative des 2 indexations (par ClaudeAI)
+### Rapport d'analyse (par Claude AI)
 
 \[début de rapport de Claude AI\] «
 
