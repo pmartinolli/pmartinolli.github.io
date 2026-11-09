@@ -8,7 +8,7 @@
 
 <meta name="author" content="Pascal Martinolli">
 <meta name="dcterms.date" content="2026-10-29">
-<meta name="description" content="Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV qui cherchent dans les noms de revues, les auteurs, les maisons d’édition, les DOI et les mots-clés (titre, résumé et marqueurs).">
+<meta name="description" content="Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV que vous gérez. Utile pour drapeauté la bonne/mauvaise science basée sur vos critères. Utile aussi pour ajouter un niveau générique à votre vocabulaire contrôlé. Cherche dans les noms de revues, les auteurs et éditeurs, les maisons d’édition, les DOI et les mots-clés (titre, résumé et marqueurs).">
 
 <title>ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement – Pascal Martinolli</title>
 <style>
@@ -303,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">ZotFlag : une extension Zotero pour ajouter des marqueurs automatiquement</h1>
                   <div>
         <div class="description">
-          Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV qui cherchent dans les noms de revues, les auteurs, les maisons d’édition, les DOI et les mots-clés (titre, résumé et marqueurs).
+          Une extension pour ajouter des marqueurs automatiquement, basés sur des tableaux de concordance CSV que vous gérez. Utile pour drapeauté la bonne/mauvaise science basée sur vos critères. Utile aussi pour ajouter un niveau générique à votre vocabulaire contrôlé. Cherche dans les noms de revues, les auteurs et éditeurs, les maisons d’édition, les DOI et les mots-clés (titre, résumé et marqueurs).
         </div>
       </div>
                           <div class="quarto-categories">
@@ -348,8 +348,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <ul>
-<li><p>Page de l’extension avec une <a href="https://pmartinolli.github.io/ZotFlag/">jolie infographie</a> reproduite ci-dessous.</p></li>
-<li><p>Le <a href="https://github.com/pmartinolli/ZotFlag">dépôt GitHub</a> pour télécharger le plugin (puis aller dans <em>Releases</em> à droite pour télécharger le tout dernier fichier .xpi).</p></li>
+<li><p><a href="https://pmartinolli.github.io/ZotFlag/">Page de l’extension</a> avec une jolie infographie.</p></li>
+<li><p><a href="https://github.com/pmartinolli/ZotFlag">Dépôt GitHub</a> pour télécharger le plugin (puis aller dans <em>Releases</em> à droite pour télécharger le tout dernier fichier .xpi).</p></li>
 </ul>
 <section id="historique" class="level2">
 <h2 class="anchored" data-anchor-id="historique">Historique</h2>
@@ -357,31 +357,583 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="note-dintention" class="level2">
 <h2 class="anchored" data-anchor-id="note-dintention">Note d’intention</h2>
-<p>Dans un contexte d<strong>’inflation documentaire</strong> et de <strong>mésinformation</strong> (rétractions, prédations, pollution en cascade, etc.) dans la publication scientifique, , il est important d’outiller les chercheurs avec des algorithmes simples leur permettant de marquer (de drapeauter ? <em>flagging</em>) automatiquement des documents selon des critères précis. Pour ça, j’aimerai ajouter un marqueur si un auteur, un éditeur, une maison d’édition, un nom de revue, un mot-clé, etc. apparaît dans les métadonnées d’un élément présent dans sa propre bibliothèque Zotero.</p>
-<p>Dans un contexte de <strong>besoin de robustesse</strong> et de facilité d’utilisation des marqueurs gérés par les chercheurs dans Zotero, il est important de leur donner un outil simple pour automatiquement valider, enrichir et compléter leurs ontologies et leurs indexations manuelles. J’aimerai ajouter un marqueur si un autre marqueur ou un terme est présent dans sa propre bibliothèque Zotero. Cela est particulièrement utile pour :</p>
-<ul>
-<li><p>Pré-sélectionner des documents dans une phase de triage</p></li>
-<li><p>Jouer avec un thésaurus à 2 niveaux car parfois nous faisons une indexation trop limitées et il peut être pertinent de regrouper des marqueurs sous un seul marqueur plus générique pour repérer des choses connexes (pour le marqueur générique j’utilise des MAJUSCULES, pour les marqueurs spécifiques j’utilise des minuscules).</p></li>
-<li><p><em>Clusteriser</em> un corpus de documents selon des règles précises</p></li>
-</ul>
+<section id="drapeautez-la-bonnemauvaise-science" class="level3">
+<h3 class="anchored" data-anchor-id="drapeautez-la-bonnemauvaise-science">Drapeautez la bonne/mauvaise science</h3>
+<p>Vous connaissez d’excellentes maisons d’édition ou des revues horribles pour la diffusion de la recherche ? Vous connaissez des noms de chercheurs à lire en priorité ou à fuir comme la peste ? Vous savez que des articles sont prêts à être rétractés ? etc. Ajoutez automatiquement des marqueurs personnels et contrôlés à vos références Zotero, basés sur les critères de vos choix.</p>
+<p>C’est l’idéal pour pré-sélectionner des documents dans une phase de triage. Spécialement dans le cadre d’une revue de connaissance et dans un contexte d<strong>’inflation documentaire</strong> et de <strong>mésinformation</strong> (rétractions, prédations, pollution en cascade, etc.) dans la publication scientifique.</p>
+</section>
+<section id="musclez-votre-indexation-thématique" class="level3">
+<h3 class="anchored" data-anchor-id="musclez-votre-indexation-thématique">Musclez votre indexation thématique</h3>
+<p>Vous voulez indexez automatiquement vos références avec un vocabulaire contrôlé et à partir de termes trouvés dans la notice bibliographique (titre, résumé, marqueurs) ? Dressez une double liste terme à repérer / _marqueur à indexer (j’aime bien le caractère spécial _ pour indiquer mon vocabulaire contrôlé personnel).</p>
+<p>Ou bien, encore plus avancé, vous avez déjà un système d’indexation personnel basé sur un vocabulaire contrôlé ? Ajoutez une couche de marqueurs plus génériques pour regrouper vos marqueurs existants et ainsi mieux repérer des notices dans un gros volume de références indexées. (j’aime bien mettre ces marqueurs génériques précédés du caractère _ et en majuscules). Avec ce système à deux niveaux, cela <strong>rajoute de la robustesse</strong> sans altérer votre indexation, car vous repérez mieux des documents sur des sujets connexes ou mal indexés puisque vous pouvez filtrer sur un marqueur plus générique plutôt que sur un marqueur spécifique.</p>
+</section>
 </section>
 <section id="fonctionnement" class="level2">
 <h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
 <p>Une fois installé (<a href="https://github.com/pmartinolli/ZotFlag">ZotFlag</a> puis aller dans <em>Releases</em>), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier <code>zotero.sqlite</code>, on peut le trouver via Paramètres &gt; Avancés &gt; Ouvrir le répertoire de données).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://pmartinolli.github.io/ZotFlag/zotflag-infographic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
 <p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…</p>
 </section>
 <section id="réflexions-méta" class="level2">
 <h2 class="anchored" data-anchor-id="réflexions-méta">Réflexions <em>méta</em></h2>
-<p>Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil qui laisse au chercheur le soin de se constituer ses propres listes dégage la responsabilité du créateur de l’outil.</p>
+<p>Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil comme ZotFlag, qui laisse au chercheur le soin de se constituer ses propres listes, dégage la responsabilité du créateur de l’outil.</p>
 <p>Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.</p>
-<p>Vous n’avez plus d’excuses pour ne pas faire des <a href="https://en.wikipedia.org/wiki/The_Infinity_of_Lists">listes</a>, plein de listes ! Et de partager vos listes ! Tenez, pour les rôlistes, voici une liste de mots-clés pour les <a href="https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/keywords-TTRPG.csv">jeux de rôle sur table</a>.</p>
+<p>Vous n’avez plus d’excuses pour ne pas faire des <a href="https://en.wikipedia.org/wiki/The_Infinity_of_Lists">listes</a>, plein de listes ! Et de partager (en privé) vos listes !</p>
+</section>
+<section id="test-empirique" class="level2">
+<h2 class="anchored" data-anchor-id="test-empirique">Test empirique</h2>
+<section id="expérience" class="level3">
+<h3 class="anchored" data-anchor-id="expérience">Expérience</h3>
+<p>Je compare deux bases de données de 4599 références sur le jeu de rôle sur table.</p>
+<ul>
+<li><p>Une est indexée <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_manually.ris">à la main</a> depuis 10 ans avec une <a href="https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv">liste contrôlée</a> créée manuellement .</p></li>
+<li><p>L’autre a été vidée de tous les marqueurs (avec Notepad++ : remplacer l’expression régulière du RIS <code>^KW.*\r?\n</code> par rien) puis elle a ensuite été <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_automatically.ris">indexée automatiquement</a> avec <a href="https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/examples/keywords-TTRPG.csv">cette liste</a> (utilisant la liste contrôlée précédente et ensuite boostée par Claude AI).</p></li>
+</ul>
+</section>
+<section id="résultats" class="level3">
+<h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
+<ul>
+<li><p>L’indexation automatique attribue plus de marqueurs que l’indexation manuelle.</p></li>
+<li><p>Certains marqueurs sont extrinsèques aux références (comme _peer reviewed) et ne peuvent être inférés par le texte à traiter. Ce sont principalement des marqueurs de jugement ou de classification de haut niveau.</p></li>
+<li><p>L’analyse ci-dessous pointe rapidement les concordances de marqueurs à améliorer (ceux qui font trop de bruit).</p></li>
+</ul>
+<hr>
+</section>
+<section id="analyse-comparative-des-2-indexations-par-claudeai" class="level3">
+<h3 class="anchored" data-anchor-id="analyse-comparative-des-2-indexations-par-claudeai">Analyse comparative des 2 indexations (par ClaudeAI)</h3>
+<p>[début de rapport de Claude AI] «</p>
+<section id="synthèse" class="level4">
+<h4 class="anchored" data-anchor-id="synthèse">Synthèse</h4>
+<p>L’indexation automatique attribue trois fois plus de marqueurs que l’indexation manuelle (médiane 9 contre 3 par notice), et cet écart grandit avec la longueur du titre + résumé. Seuls 14 % des marqueurs thématiques automatiques se retrouvent dans l’indexation manuelle.</p>
+<ul>
+<li><strong>Volume</strong> : 10,3 marqueurs par notice en moyenne en automatique contre 3,4 en manuel (vocabulaire commun). L’automatique en donne plus pour 80 % des notices.</li>
+<li><strong>Effet de la taille</strong> : en manuel, le nombre de marqueurs thématiques reste presque fixe (médiane 1 à 2,5) quelle que soit la longueur du texte. En automatique, il monte de 2 (titre seul) à 20 (plus de 500 mots). Corrélation de Spearman : 0,29 en manuel, 0,84 en automatique.</li>
+<li><strong>Concordance</strong> : précision 14 %, rappel 46 % sur les marqueurs thématiques (référence = indexation manuelle). Pour 42 % des notices, les deux indexations n’ont aucun marqueur thématique en commun.</li>
+<li><strong>Catégories</strong> : meilleure concordance au niveau des 11 grandes catégories (rappel 61 %, précision 23 %).</li>
+<li><strong>Causes principales du bruit</strong> : quelques variantes très générales ou ambiguës (« IT » sur 989 notices, « de-role », « culture », « genre ») et la recherche dans tous les champs (URL, base de données, titre de revue), pas seulement le titre + résumé.</li>
+<li><strong>Ce que l’automatique ne peut pas faire</strong> : 31 % des marqueurs manuels sont hors de la liste de mots-clés (_TTRPG, _dnd_game, pays, jeux), donc hors de portée de ZotFlag.</li>
+</ul>
+</section>
+<section id="corpus-et-méthode" class="level4">
+<h4 class="anchored" data-anchor-id="corpus-et-méthode">Corpus et méthode</h4>
+<p>Les deux fichiers RIS contiennent les mêmes 4 599 notices dans le même ordre ; elles ont été appariées une à une (titre et auteurs vérifiés).</p>
+<ul>
+<li><strong>Taille du texte</strong> : nombre de mots du titre + résumé (champs TI et AB). Médiane 84 mots, moyenne 115. 1 111 notices (24 %) n’ont pas de résumé ; parmi les autres, médiane 136 mots.</li>
+<li><strong>Marqueurs pris en compte</strong> : seulement ceux qui commencent par « _ ». Les marqueurs de travail du fichier manuel (=cleaned, #french, etc.) sont exclus.</li>
+<li><strong>Vocabulaire commun</strong> : pour comparer à armes égales, les deux indexations sont limitées aux marqueurs présents dans keywords-TTRPG.csv. Six équivalences de libellé ont été harmonisées (_HISTORYOFRPG → _HISTORY OF RPG, _serials → _serial, _osr_game → _osr, _the forge_game → _the forge, _text mining/text analysis → _text mining, _yo1-5 → _yo1-12).</li>
+<li><strong>Deux niveaux</strong> : les marqueurs thématiques (feuilles, ex. _empathy) et les 11 catégories (_PSYCHOLOGY, _MEDIA…) qui s’ajoutent par chaînage.</li>
+<li><strong>Concordance</strong> : l’indexation manuelle sert de référence. Précision = part des marqueurs automatiques aussi présents en manuel ; rappel = part des marqueurs manuels retrouvés par l’automatique ; Jaccard = recouvrement par notice.</li>
+</ul>
+<p>Le fichier automatique a été produit avec la liste enrichie (variantes anglaises et françaises ajoutées dans cette conversation) : des variantes comme « de-role » ou « YouTube » y déclenchent des marqueurs.</p>
+</section>
+<section id="nombre-de-marqueurs-par-notice" class="level4">
+<h4 class="anchored" data-anchor-id="nombre-de-marqueurs-par-notice">Nombre de marqueurs par notice</h4>
+<p>Sur le vocabulaire commun, l’automatique donne une médiane de 9 marqueurs par notice contre 3 en manuel, avec une dispersion trois fois plus grande.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Marqueurs</th>
+<th>Méthode</th>
+<th>Moyenne</th>
+<th>Médiane</th>
+<th>Écart-type</th>
+<th>Q1–Q3</th>
+<th>Max</th>
+<th>Notices sans marqueur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tous (vocabulaire commun)</td>
+<td>Manuel</td>
+<td>3,39</td>
+<td>3</td>
+<td>2,40</td>
+<td>2–5</td>
+<td>18</td>
+<td>9,8 %</td>
+</tr>
+<tr class="even">
+<td>Tous (vocabulaire commun)</td>
+<td>Automatique</td>
+<td>10,31</td>
+<td>9</td>
+<td>7,55</td>
+<td>4–15</td>
+<td>84</td>
+<td>3,4 %</td>
+</tr>
+<tr class="odd">
+<td>Thématiques</td>
+<td>Manuel</td>
+<td>2,13</td>
+<td>2</td>
+<td>1,87</td>
+<td>1–3</td>
+<td>13</td>
+<td>19,5 %</td>
+</tr>
+<tr class="even">
+<td>Thématiques</td>
+<td>Automatique</td>
+<td>6,99</td>
+<td>5</td>
+<td>5,69</td>
+<td>2–10</td>
+<td>76</td>
+<td>3,6 %</td>
+</tr>
+<tr class="odd">
+<td>Catégories</td>
+<td>Manuel</td>
+<td>1,26</td>
+<td>1</td>
+<td>0,93</td>
+<td>1–2</td>
+<td>9</td>
+<td>19,6 %</td>
+</tr>
+<tr class="even">
+<td>Catégories</td>
+<td>Automatique</td>
+<td>3,32</td>
+<td>3</td>
+<td>2,08</td>
+<td>2–5</td>
+<td>10</td>
+<td>5,8 %</td>
+</tr>
+<tr class="odd">
+<td>Tous « _ », sans filtre</td>
+<td>Manuel</td>
+<td>4,68</td>
+<td>4</td>
+<td>2,70</td>
+<td>3–6</td>
+<td>19</td>
+<td>7,9 %</td>
+</tr>
+<tr class="even">
+<td>Tous « _ », sans filtre</td>
+<td>Automatique</td>
+<td>10,35</td>
+<td>9</td>
+<td>7,57</td>
+<td>4–15</td>
+<td>84</td>
+<td>3,3 %</td>
+</tr>
+</tbody>
+</table>
+<p>Notice par notice, l’automatique attribue en médiane 3 marqueurs de plus (écart moyen +4,9). Il en donne plus pour 80,3 % des notices, autant pour 10,5 % et moins pour 9,2 %. L’écart est significatif (test de Wilcoxon apparié, p &lt; 0,001). Les deux méthodes utilisent chacune 193 marqueurs distincts du vocabulaire commun.</p>
+</section>
+<section id="selon-la-taille-du-texte" class="level4">
+<h4 class="anchored" data-anchor-id="selon-la-taille-du-texte">Selon la taille du texte</h4>
+<p>En manuel, la médiane des marqueurs thématiques plafonne à 2 dès 100 mots ; en automatique, elle passe de 2 (titre seul) à 20 (plus de 500 mots).</p>
+<p>[embedded content: academicTTRPG_indexed_manually.ris et _automatically.ris · 4 599 notices · vocabulaire commun]</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tranche (titre + résumé)</th>
+<th>Notices</th>
+<th>Mots (médiane)</th>
+<th>Tous marqueurs, manuel (moy. / méd.)</th>
+<th>Tous marqueurs, auto (moy. / méd.)</th>
+<th>Sans marqueur thématique, manuel</th>
+<th>Sans marqueur thématique, auto</th>
+<th>Marqueurs thématiques / 100 mots, manuel</th>
+<th>idem, auto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Titre seul (sans résumé)</td>
+<td>1 111</td>
+<td>9</td>
+<td>2,55 / 2</td>
+<td>3,61 / 3</td>
+<td>27 %</td>
+<td>12 %</td>
+<td>14,3</td>
+<td>23,1</td>
+</tr>
+<tr class="even">
+<td>1–100 mots</td>
+<td>1 340</td>
+<td>42</td>
+<td>3,06 / 3</td>
+<td>6,48 / 6</td>
+<td>22 %</td>
+<td>2 %</td>
+<td>3,5</td>
+<td>8,7</td>
+</tr>
+<tr class="odd">
+<td>101–200 mots</td>
+<td>1 217</td>
+<td>152</td>
+<td>4,00 / 4</td>
+<td>13,56 / 13</td>
+<td>12 %</td>
+<td>0 %</td>
+<td>1,6</td>
+<td>6,1</td>
+</tr>
+<tr class="even">
+<td>201–300 mots</td>
+<td>683</td>
+<td>234</td>
+<td>4,02 / 4</td>
+<td>18,32 / 18</td>
+<td>16 %</td>
+<td>0 %</td>
+<td>1,0</td>
+<td>5,4</td>
+</tr>
+<tr class="odd">
+<td>301–500 mots</td>
+<td>210</td>
+<td>353</td>
+<td>4,25 / 4</td>
+<td>21,94 / 22</td>
+<td>15 %</td>
+<td>0 %</td>
+<td>0,7</td>
+<td>4,2</td>
+</tr>
+<tr class="even">
+<td>Plus de 500 mots</td>
+<td>38</td>
+<td>681</td>
+<td>4,03 / 4</td>
+<td>28,55 / 27</td>
+<td>18 %</td>
+<td>0 %</td>
+<td>0,4</td>
+<td>2,8</td>
+</tr>
+</tbody>
+</table>
+<p>Par quartiles de taille (notices avec résumé), la moyenne de marqueurs thématiques passe de 1,66 (Q1, 4–52 mots) à 2,68 (Q4, 207 mots et plus) en manuel, et de 3,13 à 14,26 en automatique.</p>
+<p>La corrélation de Spearman entre taille et nombre de marqueurs thématiques est de 0,29 en manuel et 0,84 en automatique (0,23 et 0,79 sur les seules notices avec résumé). L’indexeur humain choisit un petit nombre de sujets principaux ; l’outil marque chaque terme trouvé, donc plus de texte donne plus de marqueurs.</p>
+<p>Par langue : les notices en français, plus courtes (médiane 34 mots contre 110 en anglais), reçoivent 4,6 marqueurs thématiques en moyenne en automatique contre 1,6 en manuel ; en anglais, 7,7 contre 2,4.</p>
+</section>
+<section id="concordance-entre-les-deux-indexations" class="level4">
+<h4 class="anchored" data-anchor-id="concordance-entre-les-deux-indexations">Concordance entre les deux indexations</h4>
+<p>L’automatique retrouve 46 % des marqueurs thématiques manuels, mais 86 % de ce qu’il ajoute n’est pas dans l’indexation manuelle. Sur l’ensemble : 4 488 marqueurs thématiques en commun, sur 9 817 attribués en manuel et 32 146 en automatique.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Niveau</th>
+<th>Précision</th>
+<th>Rappel</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Marqueurs thématiques</td>
+<td>14,0 %</td>
+<td>45,7 %</td>
+<td>21,4 %</td>
+</tr>
+<tr class="even">
+<td>Catégories (11)</td>
+<td>23,2 %</td>
+<td>61,3 %</td>
+<td>33,7 %</td>
+</tr>
+</tbody>
+</table>
+<p>Par notice, l’indice de Jaccard vaut 0,13 en moyenne (médiane 0,09). 42 % des notices n’ont aucun marqueur thématique commun ; 1 % ont exactement le même ensemble.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tranche (titre + résumé)</th>
+<th>Précision</th>
+<th>Rappel</th>
+<th>F1</th>
+<th>Jaccard moyen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Titre seul (sans résumé)</td>
+<td>20 %</td>
+<td>30 %</td>
+<td>24 %</td>
+<td>0,14</td>
+</tr>
+<tr class="even">
+<td>1–100 mots</td>
+<td>17 %</td>
+<td>36 %</td>
+<td>23 %</td>
+<td>0,14</td>
+</tr>
+<tr class="odd">
+<td>101–200 mots</td>
+<td>14 %</td>
+<td>50 %</td>
+<td>22 %</td>
+<td>0,13</td>
+</tr>
+<tr class="even">
+<td>201–300 mots</td>
+<td>12 %</td>
+<td>59 %</td>
+<td>20 %</td>
+<td>0,11</td>
+</tr>
+<tr class="odd">
+<td>301–500 mots</td>
+<td>11 %</td>
+<td>62 %</td>
+<td>18 %</td>
+<td>0,10</td>
+</tr>
+<tr class="even">
+<td>Plus de 500 mots</td>
+<td>7 %</td>
+<td>55 %</td>
+<td>12 %</td>
+<td>0,07</td>
+</tr>
+</tbody>
+</table>
+<p>Plus le texte est long, plus l’automatique retrouve de marqueurs manuels (rappel de 30 % à 62 %), mais plus il ajoute de bruit (précision de 20 % à 7 %). Le F1 reste stable autour de 20 % jusqu’à 500 mots.</p>
+<p>Par langue, la précision est de 15 % et le rappel de 48 % en anglais, contre 13 % et 36 % en français. Le rappel plus faible en français s’explique en partie par des résumés plus courts (ou absents).</p>
+</section>
+<section id="analyse-par-marqueur" class="level4">
+<h4 class="anchored" data-anchor-id="analyse-par-marqueur">Analyse par marqueur</h4>
+<p>Treize variantes produisent une grande partie du bruit : à elles seules, elles déclenchent environ 4 100 attributions, dont 63 (1,5 %) sont confirmées en manuel.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Marqueur</th>
+<th>Variante en cause</th>
+<th>Notices marquées</th>
+<th>Confirmées en manuel</th>
+<th>Cause</th>
+<th>Origine de la variante</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_stem</td>
+<td>IT</td>
+<td>989</td>
+<td>9</td>
+<td>pronom anglais « it » (casse ignorée)</td>
+<td>liste initiale</td>
+</tr>
+<tr class="even">
+<td>_cultural transmission</td>
+<td>culture</td>
+<td>422</td>
+<td>9</td>
+<td>mot trop général</td>
+<td>liste initiale</td>
+</tr>
+<tr class="odd">
+<td>_layout</td>
+<td>pdf</td>
+<td>398</td>
+<td>1</td>
+<td>dans l’URL (385 notices)</td>
+<td>liste initiale</td>
+</tr>
+<tr class="even">
+<td>_game studies</td>
+<td>game studies</td>
+<td>379</td>
+<td>15</td>
+<td>titre de la revue <em>Game Studies</em> (champ T2)</td>
+<td>liste initiale</td>
+</tr>
+<tr class="odd">
+<td>_social media</td>
+<td>YouTube</td>
+<td>322</td>
+<td>2</td>
+<td>champs base de données (DP) et URL</td>
+<td>ajout (conversation)</td>
+</tr>
+<tr class="even">
+<td>_student</td>
+<td>students</td>
+<td>269</td>
+<td>4</td>
+<td>mot trop général</td>
+<td>ajout (conversation)</td>
+</tr>
+<tr class="odd">
+<td>_archive</td>
+<td>library</td>
+<td>265</td>
+<td>2</td>
+<td>« Library Catalog » dans le champ DP</td>
+<td>ajout (conversation)</td>
+</tr>
+<tr class="even">
+<td>_cognition</td>
+<td>process</td>
+<td>257</td>
+<td>0</td>
+<td>mot trop général</td>
+<td>liste initiale</td>
+</tr>
+<tr class="odd">
+<td>_interview</td>
+<td>interviews</td>
+<td>220</td>
+<td>6</td>
+<td>entrevues = méthode, pas sujet</td>
+<td>ajout (conversation)</td>
+</tr>
+<tr class="even">
+<td>_cinema</td>
+<td>series</td>
+<td>176</td>
+<td>2</td>
+<td>« series » au sens de collection</td>
+<td>liste initiale</td>
+</tr>
+<tr class="odd">
+<td>_gender</td>
+<td>genre</td>
+<td>176</td>
+<td>9</td>
+<td>genre littéraire ou ludique</td>
+<td>ajout (conversation)</td>
+</tr>
+<tr class="even">
+<td>_rpg theory</td>
+<td>of games</td>
+<td>153</td>
+<td>4</td>
+<td>ligne cassée de la liste</td>
+<td>liste initiale</td>
+</tr>
+<tr class="odd">
+<td>_de-roling</td>
+<td>de-role</td>
+<td>118</td>
+<td>0</td>
+<td>le trait d’union devient une espace : « de rôle » dans « jeu de rôle »</td>
+<td>ajout (conversation)</td>
+</tr>
+</tbody>
+</table>
+<p>La recherche se fait dans tous les champs de la notice, pas seulement le titre + résumé : URL, base de données (DP), titre de revue (T2) et éditeur (PB) déclenchent aussi des marqueurs. Une partie du nombre de marqueurs automatiques ne dépend donc pas de la taille du texte analysé ici.</p>
+<p><strong>Marqueurs bien traités par l’automatique</strong> (au moins 40 attributions manuelles) : _autism (rappel 87 %, précision 77 %), _lgbtq (76 % / 65 %), _actual play (91 % / 35 %), _law studies (80 % / 37 %).</p>
+<p><strong>Marqueurs manuels peu retrouvés</strong> : ils décrivent le type ou le statut du document plutôt qu’un terme du texte.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Marqueur</th>
+<th>Manuel</th>
+<th>Automatique</th>
+<th>En commun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_peer reviewed</td>
+<td>1 077</td>
+<td>19</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>_major publication</td>
+<td>140</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>_advice</td>
+<td>137</td>
+<td>126</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>_roleplay</td>
+<td>126</td>
+<td>414</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td>_classroom rpg</td>
+<td>117</td>
+<td>132</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>_rpg theory</td>
+<td>110</td>
+<td>243</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>_group dynamics</td>
+<td>108</td>
+<td>92</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>_theoretical work</td>
+<td>81</td>
+<td>201</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hors de portée de l’automatique</strong> : 177 marqueurs manuels (6 729 attributions, 31 % du total manuel) n’existent pas dans la liste. Les plus fréquents sont _TTRPG (3 671), _dnd_game (1 048), _CYOA (89), _gamification (76), les pays (_france_country 64, _brazil_country 34…) et les jeux (_wod_game 54, _call of cthulhu_game 49, _blackmoor_game 47…).</p>
+</section>
+<section id="recommandations" class="level4">
+<h4 class="anchored" data-anchor-id="recommandations">Recommandations</h4>
+<p>Le plus gros gain viendrait de la suppression d’une douzaine de variantes trop générales et de la limitation de la recherche au titre, au résumé et aux marqueurs.</p>
+<ol type="1">
+<li><strong>Retirer les variantes bruyantes</strong> du tableau ci-dessus : IT, culture, pdf, process, students, library, YouTube, series, genre, interviews, de-role et la ligne cassée « of games » (avec « etc. » et « of GMs »).</li>
+<li><strong>Limiter les champs comparés</strong> au titre, au résumé et aux marqueurs existants, si ZotFlag le permet. Sinon, éviter toute variante qui peut apparaître dans une URL, un nom de base de données ou un titre de revue.</li>
+<li><strong>Garder l’automatique comme suggestion pour les catégories</strong>, où il retrouve 61 % des choix manuels, et le relire pour les marqueurs thématiques.</li>
+<li><strong>Compenser l’effet de taille</strong> : sur les notices de plus de 200 mots, l’automatique donne en médiane 13 à 20 marqueurs, contre 2 en manuel. Une règle d’au moins deux occurrences du terme, ou un plafond de marqueurs par notice, rapprocherait les deux profils.</li>
+<li><strong>Ajouter à la liste les marqueurs manuels fréquents qui y manquent</strong> et qui ont des termes repérables : _gamification, _CYOA, les noms de jeux (_dnd_game : « Dungeons &amp; Dragons », « D&amp;D ») et les pays.</li>
+<li><strong>Mesurer de nouveau après nettoyage</strong> avec les mêmes scripts, pour vérifier le gain en précision sans perte de rappel.</li>
+</ol>
+<p>» [fin de rapport de Claude AI]</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
