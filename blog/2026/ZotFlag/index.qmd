@@ -41,7 +41,7 @@ Les actions se lancent seulement sur les références sélectionnées. On peut d
 
 Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil comme ZotFlag, qui laisse au chercheur le soin de se constituer ses propres listes, dégage la responsabilité du créateur de l’outil.
 
-Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés.
+Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés. Voici une liste de [termes douteux](https://github.com/pmartinolli/ZotFlag/blob/main/examples/keywords-dubiousScience.csv) (générée automatiquement par Claude AI) à tester sur votre corpus de références avant de faire une revue systématique.
 
 Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.org/wiki/The_Infinity_of_Lists), plein de listes ! Et de partager (en privé) vos listes !
 
@@ -63,145 +63,30 @@ Je compare deux bases de données de 4599 références sur le jeu de rôle sur t
 
 - L'analyse ci-dessous pointe rapidement les concordances de marqueurs à améliorer (ceux qui font trop de bruit).
 
-------------------------------------------------------------------------
+- *Distinct Keywords* : il y a plein de mots clés de pays et de jeux qui ne sont pas dans le tableau csv. Cela explique en partie la différence.
 
-### Rapport d'analyse (par Claude AI)
+Ci-dessous un extrait du rapport de comparaison dans Claude AI Fable 5.2
 
-\[début de rapport de Claude AI\] «
+|                             | Manual  | Automatic |
+|-----------------------------|---------|-----------|
+| Keyword assignments         | 27,924  | 42,276    |
+| Distinct keywords           | 914     | 204       |
+| Average per record (median) | 6.1 (6) | 9.2 (7)   |
+| Most on one record          | 33      | 84        |
+| Records with no keywords    | 297     | 429       |
 
-#### Synthèse
+### Agreement on the shared vocabulary
 
-L'indexation automatique attribue trois fois plus de marqueurs que l'indexation manuelle (médiane 9 contre 3 par notice), et cet écart grandit avec la longueur du titre + résumé. Seuls 14 % des marqueurs thématiques automatiques se retrouvent dans l'indexation manuelle.
+Across the 201 tags both sets use, the automatic indexing made 41,995 assignments against 15,427 manual ones, with 7,664 in common.
 
-- **Volume** : 10,3 marqueurs par notice en moyenne en automatique contre 3,4 en manuel (vocabulaire commun). L'automatique en donne plus pour 80 % des notices.
-- **Effet de la taille** : en manuel, le nombre de marqueurs thématiques reste presque fixe (médiane 1 à 2,5) quelle que soit la longueur du texte. En automatique, il monte de 2 (titre seul) à 20 (plus de 500 mots). Corrélation de Spearman : 0,29 en manuel, 0,84 en automatique.
-- **Concordance** : précision 14 %, rappel 46 % sur les marqueurs thématiques (référence = indexation manuelle). Pour 42 % des notices, les deux indexations n'ont aucun marqueur thématique en commun.
-- **Catégories** : meilleure concordance au niveau des 11 grandes catégories (rappel 61 %, précision 23 %).
-- **Causes principales du bruit** : quelques variantes très générales ou ambiguës (« IT » sur 989 notices, « de-role », « culture », « genre ») et la recherche dans tous les champs (URL, base de données, titre de revue), pas seulement le titre + résumé.
-- **Ce que l'automatique ne peut pas faire** : 31 % des marqueurs manuels sont hors de la liste de mots-clés (\_TTRPG, \_dnd_game, pays, jeux), donc hors de portée de ZotFlag.
+-  **Overall:** about half of your manual tags were found (recall 50%), but only 18% of the automatic tags match one of yours (precision), giving an F1 of 0.27.
 
-#### Corpus et méthode
+-  **Per record:** average overlap (Jaccard) is 0.16. Only 45 records have identical tag sets, and 1,448 share no tag at all.
 
-Les deux fichiers RIS contiennent les mêmes 4 599 notices dans le même ordre ; elles ont été appariées une à une (titre et auteurs vérifiés).
+-  **Over-assigned:** `_stem` is the extreme case (1,264 automatic, 31 manual), followed by `_teaching` (702 vs 40), `_character` (657 vs 39), `_authorship`, `_playfulness` and `_storytelling` (973 vs 100). The broad categories `_MEDIA`, `_DESIGN`, `_GAMEPLAY` and `_EMOTIONS` are applied 3.5 to 5 times more often than you applied them.
 
-- **Taille du texte** : nombre de mots du titre + résumé (champs TI et AB). Médiane 84 mots, moyenne 115. 1 111 notices (24 %) n'ont pas de résumé ; parmi les autres, médiane 136 mots.
-- **Marqueurs pris en compte** : seulement ceux qui commencent par « \_ ». Les marqueurs de travail du fichier manuel (=cleaned, #french, etc.) sont exclus.
-- **Vocabulaire commun** : pour comparer à armes égales, les deux indexations sont limitées aux marqueurs présents dans keywords-TTRPG.csv. Six équivalences de libellé ont été harmonisées (\_HISTORYOFRPG → \_HISTORY OF RPG, \_serials → \_serial, \_osr_game → \_osr, \_the forge_game → \_the forge, \_text mining/text analysis → \_text mining, \_yo1-5 → \_yo1-12).
-- **Deux niveaux** : les marqueurs thématiques (feuilles, ex. \_empathy) et les 11 catégories (\_PSYCHOLOGY, \_MEDIA…) qui s'ajoutent par chaînage.
-- **Concordance** : l'indexation manuelle sert de référence. Précision = part des marqueurs automatiques aussi présents en manuel ; rappel = part des marqueurs manuels retrouvés par l'automatique ; Jaccard = recouvrement par notice.
+-  **Under-assigned:** `_HISTORYOFRPG` (266 vs 651), `_moral panic`, `_storygame`, `_bleed` and `_LARP` (422 vs 592, though 83% of those are correct).
 
-Le fichier automatique a été produit avec la liste enrichie (variantes anglaises et françaises ajoutées dans cette conversation) : des variantes comme « de-role » ou « YouTube » y déclenchent des marqueurs.
+-  **Best agreement:** concrete topics, such as `_autism` (F1 0.82), `_LARP` and `_lgbtq` (0.69), `_therapy` (0.67), `_lovecraft` and `_character sheet` (0.60).
 
-#### Nombre de marqueurs par notice
-
-Sur le vocabulaire commun, l'automatique donne une médiane de 9 marqueurs par notice contre 3 en manuel, avec une dispersion trois fois plus grande.
-
-| Marqueurs | Méthode | Moyenne | Médiane | Écart-type | Q1–Q3 | Max | Notices sans marqueur |
-|---------|---------|---------|---------|---------|---------|---------|---------|
-| Tous (vocabulaire commun) | Manuel | 3,39 | 3 | 2,40 | 2–5 | 18 | 9,8 % |
-| Tous (vocabulaire commun) | Automatique | 10,31 | 9 | 7,55 | 4–15 | 84 | 3,4 % |
-| Thématiques | Manuel | 2,13 | 2 | 1,87 | 1–3 | 13 | 19,5 % |
-| Thématiques | Automatique | 6,99 | 5 | 5,69 | 2–10 | 76 | 3,6 % |
-| Catégories | Manuel | 1,26 | 1 | 0,93 | 1–2 | 9 | 19,6 % |
-| Catégories | Automatique | 3,32 | 3 | 2,08 | 2–5 | 10 | 5,8 % |
-| Tous « \_ », sans filtre | Manuel | 4,68 | 4 | 2,70 | 3–6 | 19 | 7,9 % |
-| Tous « \_ », sans filtre | Automatique | 10,35 | 9 | 7,57 | 4–15 | 84 | 3,3 % |
-
-Notice par notice, l'automatique attribue en médiane 3 marqueurs de plus (écart moyen +4,9). Il en donne plus pour 80,3 % des notices, autant pour 10,5 % et moins pour 9,2 %. L'écart est significatif (test de Wilcoxon apparié, p \< 0,001). Les deux méthodes utilisent chacune 193 marqueurs distincts du vocabulaire commun.
-
-#### Selon la taille du texte
-
-En manuel, la médiane des marqueurs thématiques plafonne à 2 dès 100 mots ; en automatique, elle passe de 2 (titre seul) à 20 (plus de 500 mots).
-
-\[embedded content: academicTTRPG_indexed_manually.ris et \_automatically.ris · 4 599 notices · vocabulaire commun\]
-
-| Tranche (titre + résumé) | Notices | Mots (médiane) | Tous marqueurs, manuel (moy. / méd.) | Tous marqueurs, auto (moy. / méd.) | Sans marqueur thématique, manuel | Sans marqueur thématique, auto | Marqueurs thématiques / 100 mots, manuel | idem, auto |
-|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| Titre seul (sans résumé) | 1 111 | 9 | 2,55 / 2 | 3,61 / 3 | 27 % | 12 % | 14,3 | 23,1 |
-| 1–100 mots | 1 340 | 42 | 3,06 / 3 | 6,48 / 6 | 22 % | 2 % | 3,5 | 8,7 |
-| 101–200 mots | 1 217 | 152 | 4,00 / 4 | 13,56 / 13 | 12 % | 0 % | 1,6 | 6,1 |
-| 201–300 mots | 683 | 234 | 4,02 / 4 | 18,32 / 18 | 16 % | 0 % | 1,0 | 5,4 |
-| 301–500 mots | 210 | 353 | 4,25 / 4 | 21,94 / 22 | 15 % | 0 % | 0,7 | 4,2 |
-| Plus de 500 mots | 38 | 681 | 4,03 / 4 | 28,55 / 27 | 18 % | 0 % | 0,4 | 2,8 |
-
-Par quartiles de taille (notices avec résumé), la moyenne de marqueurs thématiques passe de 1,66 (Q1, 4–52 mots) à 2,68 (Q4, 207 mots et plus) en manuel, et de 3,13 à 14,26 en automatique.
-
-La corrélation de Spearman entre taille et nombre de marqueurs thématiques est de 0,29 en manuel et 0,84 en automatique (0,23 et 0,79 sur les seules notices avec résumé). L'indexeur humain choisit un petit nombre de sujets principaux ; l'outil marque chaque terme trouvé, donc plus de texte donne plus de marqueurs.
-
-Par langue : les notices en français, plus courtes (médiane 34 mots contre 110 en anglais), reçoivent 4,6 marqueurs thématiques en moyenne en automatique contre 1,6 en manuel ; en anglais, 7,7 contre 2,4.
-
-#### Concordance entre les deux indexations
-
-L'automatique retrouve 46 % des marqueurs thématiques manuels, mais 86 % de ce qu'il ajoute n'est pas dans l'indexation manuelle. Sur l'ensemble : 4 488 marqueurs thématiques en commun, sur 9 817 attribués en manuel et 32 146 en automatique.
-
-| Niveau                | Précision | Rappel | F1     |
-|-----------------------|-----------|--------|--------|
-| Marqueurs thématiques | 14,0 %    | 45,7 % | 21,4 % |
-| Catégories (11)       | 23,2 %    | 61,3 % | 33,7 % |
-
-Par notice, l'indice de Jaccard vaut 0,13 en moyenne (médiane 0,09). 42 % des notices n'ont aucun marqueur thématique commun ; 1 % ont exactement le même ensemble.
-
-| Tranche (titre + résumé) | Précision | Rappel | F1   | Jaccard moyen |
-|--------------------------|-----------|--------|------|---------------|
-| Titre seul (sans résumé) | 20 %      | 30 %   | 24 % | 0,14          |
-| 1–100 mots               | 17 %      | 36 %   | 23 % | 0,14          |
-| 101–200 mots             | 14 %      | 50 %   | 22 % | 0,13          |
-| 201–300 mots             | 12 %      | 59 %   | 20 % | 0,11          |
-| 301–500 mots             | 11 %      | 62 %   | 18 % | 0,10          |
-| Plus de 500 mots         | 7 %       | 55 %   | 12 % | 0,07          |
-
-Plus le texte est long, plus l'automatique retrouve de marqueurs manuels (rappel de 30 % à 62 %), mais plus il ajoute de bruit (précision de 20 % à 7 %). Le F1 reste stable autour de 20 % jusqu'à 500 mots.
-
-Par langue, la précision est de 15 % et le rappel de 48 % en anglais, contre 13 % et 36 % en français. Le rappel plus faible en français s'explique en partie par des résumés plus courts (ou absents).
-
-#### Analyse par marqueur
-
-Treize variantes produisent une grande partie du bruit : à elles seules, elles déclenchent environ 4 100 attributions, dont 63 (1,5 %) sont confirmées en manuel.
-
-| Marqueur | Variante en cause | Notices marquées | Confirmées en manuel | Cause | Origine de la variante |
-|------------|------------|------------|------------|------------|------------|
-| \_stem | IT | 989 | 9 | pronom anglais « it » (casse ignorée) | liste initiale |
-| \_cultural transmission | culture | 422 | 9 | mot trop général | liste initiale |
-| \_layout | pdf | 398 | 1 | dans l'URL (385 notices) | liste initiale |
-| \_game studies | game studies | 379 | 15 | titre de la revue *Game Studies* (champ T2) | liste initiale |
-| \_social media | YouTube | 322 | 2 | champs base de données (DP) et URL | ajout (conversation) |
-| \_student | students | 269 | 4 | mot trop général | ajout (conversation) |
-| \_archive | library | 265 | 2 | « Library Catalog » dans le champ DP | ajout (conversation) |
-| \_cognition | process | 257 | 0 | mot trop général | liste initiale |
-| \_interview | interviews | 220 | 6 | entrevues = méthode, pas sujet | ajout (conversation) |
-| \_cinema | series | 176 | 2 | « series » au sens de collection | liste initiale |
-| \_gender | genre | 176 | 9 | genre littéraire ou ludique | ajout (conversation) |
-| \_rpg theory | of games | 153 | 4 | ligne cassée de la liste | liste initiale |
-| \_de-roling | de-role | 118 | 0 | le trait d'union devient une espace : « de rôle » dans « jeu de rôle » | ajout (conversation) |
-
-La recherche se fait dans tous les champs de la notice, pas seulement le titre + résumé : URL, base de données (DP), titre de revue (T2) et éditeur (PB) déclenchent aussi des marqueurs. Une partie du nombre de marqueurs automatiques ne dépend donc pas de la taille du texte analysé ici.
-
-**Marqueurs bien traités par l'automatique** (au moins 40 attributions manuelles) : \_autism (rappel 87 %, précision 77 %), \_lgbtq (76 % / 65 %), \_actual play (91 % / 35 %), \_law studies (80 % / 37 %).
-
-**Marqueurs manuels peu retrouvés** : ils décrivent le type ou le statut du document plutôt qu'un terme du texte.
-
-| Marqueur            | Manuel | Automatique | En commun |
-|---------------------|--------|-------------|-----------|
-| \_peer reviewed     | 1 077  | 19          | 6         |
-| \_major publication | 140    | 0           | 0         |
-| \_advice            | 137    | 126         | 12        |
-| \_roleplay          | 126    | 414         | 27        |
-| \_classroom rpg     | 117    | 132         | 18        |
-| \_rpg theory        | 110    | 243         | 16        |
-| \_group dynamics    | 108    | 92          | 11        |
-| \_theoretical work  | 81     | 201         | 13        |
-
-**Hors de portée de l'automatique** : 177 marqueurs manuels (6 729 attributions, 31 % du total manuel) n'existent pas dans la liste. Les plus fréquents sont \_TTRPG (3 671), \_dnd_game (1 048), \_CYOA (89), \_gamification (76), les pays (\_france_country 64, \_brazil_country 34…) et les jeux (\_wod_game 54, \_call of cthulhu_game 49, \_blackmoor_game 47…).
-
-#### Recommandations
-
-Le plus gros gain viendrait de la suppression d'une douzaine de variantes trop générales et de la limitation de la recherche au titre, au résumé et aux marqueurs.
-
-1.  **Retirer les variantes bruyantes** du tableau ci-dessus : IT, culture, pdf, process, students, library, YouTube, series, genre, interviews, de-role et la ligne cassée « of games » (avec « etc. » et « of GMs »).
-2.  **Limiter les champs comparés** au titre, au résumé et aux marqueurs existants, si ZotFlag le permet. Sinon, éviter toute variante qui peut apparaître dans une URL, un nom de base de données ou un titre de revue.
-3.  **Garder l'automatique comme suggestion pour les catégories**, où il retrouve 61 % des choix manuels, et le relire pour les marqueurs thématiques.
-4.  **Compenser l'effet de taille** : sur les notices de plus de 200 mots, l'automatique donne en médiane 13 à 20 marqueurs, contre 2 en manuel. Une règle d'au moins deux occurrences du terme, ou un plafond de marqueurs par notice, rapprocherait les deux profils.
-5.  **Ajouter à la liste les marqueurs manuels fréquents qui y manquent** et qui ont des termes repérables : \_gamification, \_CYOA, les noms de jeux (\_dnd_game : « Dungeons & Dragons », « D&D ») et les pays.
-6.  **Mesurer de nouveau après nettoyage** avec les mêmes scripts, pour vérifier le gain en précision sans perte de rappel.
-
-» \[fin de rapport de Claude AI\]
+-  **Worst agreement:** abstract or judgment-based tags, such as `_rpg theory`, `_theoretical work`, `_advice`, `_group dynamics` and `_classroom rpg`, all at F1 0.15 or below with similar counts but little overlap.
