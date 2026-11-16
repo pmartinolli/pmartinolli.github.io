@@ -353,7 +353,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <section id="historique" class="level2">
 <h2 class="anchored" data-anchor-id="historique">Historique</h2>
-<p>Les <a href="https://pmartinolli.github.io/projects/thesaurusPlusPlus/">thésaurus</a> et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un <a href="https://pmartinolli.github.io/ZotFlag_cahierdescharges/">cahier des charges fonctionnels</a> sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien.</p>
+<p>Les <a href="https://pmartinolli.github.io/projects/thesaurusPlusPlus/">thésaurus</a> et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L’an passé, j’avais rédigé un <a href="https://pmartinolli.github.io/ZotFlag_cahierdescharges/">cahier des charges fonctionnels</a> sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères.</p>
+<p>Cette année, j’ai pu avoir accès à Claude AI pro et il m’a produit le code pour générer l’extension XPI à installer. Je suis encore dans les tests mais ça marche bien. En ce moment, dans mes formations sur les outils IAg je termine souvent en expliquant qu’une utilisation recommandée est de les traiter <strong>les IAg comme des</strong> <strong>constructeurs d’outils</strong> plutôt que comme des outils qui fournissent le service directement.</p>
 </section>
 <section id="note-dintention" class="level2">
 <h2 class="anchored" data-anchor-id="note-dintention">Note d’intention</h2>
@@ -364,20 +365,24 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="musclez-votre-indexation-thématique" class="level3">
 <h3 class="anchored" data-anchor-id="musclez-votre-indexation-thématique">Musclez votre indexation thématique</h3>
-<p>Vous voulez indexez automatiquement vos références avec un vocabulaire contrôlé et à partir de termes trouvés dans la notice bibliographique (titre, résumé, marqueurs) ? Dressez une double liste terme à repérer / _marqueur à indexer (j’aime bien le caractère spécial _ pour indiquer mon vocabulaire contrôlé personnel).</p>
-<p>Ou bien, encore plus avancé, vous avez déjà un système d’indexation personnel basé sur un vocabulaire contrôlé ? Ajoutez une couche de marqueurs plus génériques pour regrouper vos marqueurs existants et ainsi mieux repérer des notices dans un gros volume de références indexées. (j’aime bien mettre ces marqueurs génériques précédés du caractère _ et en majuscules). Avec ce système à deux niveaux, cela <strong>rajoute de la robustesse</strong> sans altérer votre indexation, car vous repérez mieux des documents sur des sujets connexes ou mal indexés puisque vous pouvez filtrer sur un marqueur plus générique plutôt que sur un marqueur spécifique.</p>
+<p>Vous voulez indexer automatiquement vos références avec un vocabulaire contrôlé et à partir de termes trouvés dans la notice bibliographique (titre, résumé, marqueurs) ? Dressez une double liste termes à repérer et de _marqueurs correspondants à indexer. NB : j’aime bien le caractère spécial _ pour indiquer mon vocabulaire contrôlé personnel.</p>
+<p>Ou bien, encore plus avancé, vous avez déjà un système d’indexation personnel basé sur un vocabulaire contrôlé ? Ajoutez une couche de marqueurs plus génériques pour regrouper vos marqueurs existants et ainsi mieux repérer des notices dans un gros volume de références indexées. NB: j’aime bien mettre ces marqueurs génériques précédés du caractère _ et en majuscules.</p>
+<blockquote class="blockquote">
+<p>Exemple : une recherche avec (_toy et _cease&amp;desist) ne donne pas assez de résultats ? tentez de chercher avec (_GAME et _LEGAL) ou (_GAME et _cease&amp;desist) ou (_toy et _LEGAL) pour repérer plus de références. (en assumant que _toy est accompagné de son générique _GAME et que _cease&amp;desist est accompagné de _LEGAL).</p>
+</blockquote>
+<p>Avec ce système à deux niveaux, cela <strong>rajoute de la robustesse</strong> sans altérer votre indexation, car vous repérez mieux des documents sur des sujets connexes ou mal indexés puisque vous pouvez filtrer sur un marqueur plus générique plutôt que sur un marqueur spécifique.</p>
 </section>
 </section>
 <section id="fonctionnement" class="level2">
 <h2 class="anchored" data-anchor-id="fonctionnement">Fonctionnement</h2>
 <p>Une fois installé (<a href="https://github.com/pmartinolli/ZotFlag">ZotFlag</a> puis aller dans <em>Releases</em>), on paramètre l’extension pour qu’elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier <code>zotero.sqlite</code>, on peut le trouver via Paramètres &gt; Avancés &gt; Ouvrir le répertoire de données).</p>
-<p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs ce serait bien de faire vos tests dans une base séparées d’abord…</p>
+<p>Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d’utiliser des marqueurs précédés de caractères spéciaux (comme _ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D’ailleurs, ce serait bien de faire vos tests dans une base séparées d’abord…</p>
 </section>
 <section id="réflexions-méta" class="level2">
 <h2 class="anchored" data-anchor-id="réflexions-méta">Réflexions <em>méta</em></h2>
 <p>Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil comme ZotFlag, qui laisse au chercheur le soin de se constituer ses propres listes, dégage la responsabilité du créateur de l’outil.</p>
-<p>Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés. Voici une liste de <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/keywords-dubiousScience.csv">termes douteux</a> (générée automatiquement par Claude AI) à tester sur votre corpus de références avant de faire une revue systématique.</p>
-<p>Vous n’avez plus d’excuses pour ne pas faire des <a href="https://en.wikipedia.org/wiki/The_Infinity_of_Lists">listes</a>, plein de listes ! Et de partager (en privé) vos listes !</p>
+<p>Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés. Voici une liste de <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/keywords-dubiousScience.csv">termes douteux</a> en sciences de la santé. Elle a été commencée manuellement au fil de l’eau, puis elle a été boostée ensuite par Claude AI et enfin elle a été refiltrée à la main par moi. À tester sur votre corpus de références avant de faire une revue systématique ?</p>
+<p>Vous n’avez plus d’excuses pour ne pas faire des <a href="https://en.wikipedia.org/wiki/The_Infinity_of_Lists">listes</a>, plein de listes ! Et de les partager en public ou en privé, selon les contraintes légales. Au-delà de cet outil, cela pousse en avant un autre aspect qui m’est cher : le <strong>partage de fichiers textes bruts</strong>. En effet, je crois qu’il est possible de construire une infrastructure robuste et pérenne au-delà des API et autres technologies d’échanges avancées, basée sur le dépôts de fichiers textes dans des dossiers en ligne (csv, xml, tei, html, yaml, json, etc).</p>
 </section>
 <section id="analyse-comparative-des-2-indexations" class="level2">
 <h2 class="anchored" data-anchor-id="analyse-comparative-des-2-indexations">Analyse comparative des 2 indexations</h2>
@@ -385,50 +390,50 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="expérience">Expérience</h3>
 <p>Je compare deux bases de données de 4599 références sur le jeu de rôle sur table.</p>
 <ul>
-<li><p>Une est indexée <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_manually.ris">à la main</a> depuis 10 ans avec une <a href="https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv">liste contrôlée</a> créée manuellement .</p></li>
-<li><p>L’autre a été vidée de tous les marqueurs (avec Notepad++ : remplacer l’expression régulière du RIS <code>^KW.*\r?\n</code> par rien) puis elle a ensuite été <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_automatically.ris">indexée automatiquement</a> avec <a href="https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/examples/keywords-TTRPG.csv">cette liste</a> (utilisant la liste contrôlée précédente et ensuite boostée par Claude AI).</p></li>
+<li><p>Une est indexée <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_manually.ris">à la main</a> depuis 10 ans avec une <a href="https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv">liste contrôlée</a> créée aussi manuellement au fil des années.</p></li>
+<li><p>L’autre a été vidée de tous les marqueurs (avec Notepad++ : remplacer l’expression régulière du RIS <code>^KW.*\r?\n</code> par rien dans un export RIS) puis elle a ensuite été <a href="https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_automatically.ris">indexée automatiquement</a> avec <a href="https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/examples/keywords-TTRPG.csv">une autre liste contrôlée</a> qui utilise la liste contrôlée précédente, qui a été boostée par Claude AI et qui a enfin été revérifiée à la main par moi (surtout pour enlever les termes qui générent trop de bruit).</p></li>
 </ul>
 </section>
 <section id="résultats" class="level3">
 <h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
 <ul>
 <li><p>L’indexation automatique attribue plus de marqueurs que l’indexation manuelle.</p></li>
-<li><p>Certains marqueurs sont extrinsèques aux références (comme _peer reviewed) et ne peuvent être inférés par le texte à traiter. Ce sont principalement des marqueurs de jugement ou de classification de haut niveau.</p></li>
+<li><p>Certains marqueurs sont extrinsèques aux références (comme <code>_peer reviewed</code>) et ne peuvent être inférés par le texte à traiter. Ce sont principalement des marqueurs de jugement ou de classification de haut niveau.</p></li>
 <li><p>L’analyse ci-dessous pointe rapidement les concordances de marqueurs à améliorer (ceux qui font trop de bruit).</p></li>
 <li><p><em>Distinct Keywords</em> : il y a plein de mots clés de pays et de jeux qui ne sont pas dans le tableau csv. Cela explique en partie la différence.</p></li>
 </ul>
-<p>Ci-dessous un extrait du rapport de comparaison dans Claude AI Fable 5.2</p>
+<p>Ci-dessous, un extrait du rapport de comparaison exécuté par Claude AI.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
-<th>Manual</th>
-<th>Automatic</th>
+<th><em>Manual</em></th>
+<th><em>Automatic</em></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Keyword assignments</td>
+<td><em>Keyword assignments</em></td>
 <td>27,924</td>
 <td>42,276</td>
 </tr>
 <tr class="even">
-<td>Distinct keywords</td>
+<td><em>Distinct keywords</em></td>
 <td>914</td>
 <td>204</td>
 </tr>
 <tr class="odd">
-<td>Average per record (median)</td>
+<td><em>Average per record (median)</em></td>
 <td>6.1 (6)</td>
 <td>9.2 (7)</td>
 </tr>
 <tr class="even">
-<td>Most on one record</td>
+<td><em>Most on one record</em></td>
 <td>33</td>
 <td>84</td>
 </tr>
 <tr class="odd">
-<td>Records with no keywords</td>
+<td><em>Records with no keywords</em></td>
 <td>297</td>
 <td>429</td>
 </tr>
@@ -436,15 +441,15 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="agreement-on-the-shared-vocabulary" class="level3">
-<h3 class="anchored" data-anchor-id="agreement-on-the-shared-vocabulary">Agreement on the shared vocabulary</h3>
-<p>Across the 201 tags both sets use, the automatic indexing made 41,995 assignments against 15,427 manual ones, with 7,664 in common.</p>
+<h3 class="anchored" data-anchor-id="agreement-on-the-shared-vocabulary"><em>Agreement on the shared vocabulary</em></h3>
+<p><em>Across the 201 tags both sets use, the automatic indexing made 41,995 assignments against 15,427 manual ones, with 7,664 in common.</em></p>
 <ul>
-<li><p><strong>Overall:</strong> about half of your manual tags were found (recall 50%), but only 18% of the automatic tags match one of yours (precision), giving an F1 of 0.27.</p></li>
-<li><p><strong>Per record:</strong> average overlap (Jaccard) is 0.16. Only 45 records have identical tag sets, and 1,448 share no tag at all.</p></li>
-<li><p><strong>Over-assigned:</strong> <code>_stem</code> is the extreme case (1,264 automatic, 31 manual), followed by <code>_teaching</code> (702 vs 40), <code>_character</code> (657 vs 39), <code>_authorship</code>, <code>_playfulness</code> and <code>_storytelling</code> (973 vs 100). The broad categories <code>_MEDIA</code>, <code>_DESIGN</code>, <code>_GAMEPLAY</code> and <code>_EMOTIONS</code> are applied 3.5 to 5 times more often than you applied them.</p></li>
-<li><p><strong>Under-assigned:</strong> <code>_HISTORYOFRPG</code> (266 vs 651), <code>_moral panic</code>, <code>_storygame</code>, <code>_bleed</code> and <code>_LARP</code> (422 vs 592, though 83% of those are correct).</p></li>
-<li><p><strong>Best agreement:</strong> concrete topics, such as <code>_autism</code> (F1 0.82), <code>_LARP</code> and <code>_lgbtq</code> (0.69), <code>_therapy</code> (0.67), <code>_lovecraft</code> and <code>_character sheet</code> (0.60).</p></li>
-<li><p><strong>Worst agreement:</strong> abstract or judgment-based tags, such as <code>_rpg theory</code>, <code>_theoretical work</code>, <code>_advice</code>, <code>_group dynamics</code> and <code>_classroom rpg</code>, all at F1 0.15 or below with similar counts but little overlap.</p></li>
+<li><p><em><strong>Overall:</strong> about half of your manual tags were found (recall 50%), but only 18% of the automatic tags match one of yours (precision), giving an F1 of 0.27.</em></p></li>
+<li><p><em><strong>Per record:</strong> average overlap (Jaccard) is 0.16. Only 45 records have identical tag sets, and 1,448 share no tag at all.</em></p></li>
+<li><p><em><strong>Over-assigned:</strong><code>_stem</code> is the extreme case (1,264 automatic, 31 manual), followed by <code>_teaching</code> (702 vs 40), <code>_character</code> (657 vs 39), <code>_authorship</code>, <code>_playfulness</code> and <code>_storytelling</code> (973 vs 100). The broad categories <code>_MEDIA</code>, <code>_DESIGN</code>, <code>_GAMEPLAY</code> and <code>_EMOTIONS</code> are applied 3.5 to 5 times more often than you applied them.</em></p></li>
+<li><p><em><strong>Under-assigned:</strong><code>_HISTORYOFRPG</code> (266 vs 651), <code>_moral panic</code>, <code>_storygame</code>, <code>_bleed</code> and <code>_LARP</code> (422 vs 592, though 83% of those are correct).</em></p></li>
+<li><p><em><strong>Best agreement:</strong> concrete topics, such as <code>_autism</code> (F1 0.82), <code>_LARP</code> and <code>_lgbtq</code> (0.69), <code>_therapy</code> (0.67), <code>_lovecraft</code> and <code>_character sheet</code> (0.60).</em></p></li>
+<li><p><em><strong>Worst agreement:</strong> abstract or judgment-based tags, such as <code>_rpg theory</code>, <code>_theoretical work</code>, <code>_advice</code>, <code>_group dynamics</code> and <code>_classroom rpg</code>, all at F1 0.15 or below with similar counts but little overlap.</em></p></li>
 </ul>
 
 

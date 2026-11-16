@@ -15,7 +15,9 @@ description: "Discussion autour d'une extension pour ajouter des marqueurs autom
 
 ## Historique
 
-Les [thésaurus](https://pmartinolli.github.io/projects/thesaurusPlusPlus/) et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L'an passé, j'avais rédigé un [cahier des charges fonctionnels](https://pmartinolli.github.io/ZotFlag_cahierdescharges/) sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères. Cette année, j'ai pu avoir accès à Claude AI pro et il m'a produit le code pour générer l'extension XPI à installer. Je suis encore dans les tests mais ça marche bien.
+Les [thésaurus](https://pmartinolli.github.io/projects/thesaurusPlusPlus/) et les listes de vocabulaire contrôlés sont les amours de ma vie (professionnelle). L'an passé, j'avais rédigé un [cahier des charges fonctionnels](https://pmartinolli.github.io/ZotFlag_cahierdescharges/) sur ce que je souhaitais comme extension Zotero pour ajouter des marqueurs basés sur des critères.
+
+Cette année, j'ai pu avoir accès à Claude AI pro et il m'a produit le code pour générer l'extension XPI à installer. Je suis encore dans les tests mais ça marche bien. En ce moment, dans mes formations sur les outils IAg je termine souvent en expliquant qu'une utilisation recommandée est de les traiter **les IAg comme des** **constructeurs d'outils** plutôt que comme des outils qui fournissent le service directement.
 
 ## Note d'intention
 
@@ -27,23 +29,27 @@ C'est l'idéal pour pré-sélectionner des documents dans une phase de triage. S
 
 ### Musclez votre indexation thématique
 
-Vous voulez indexez automatiquement vos références avec un vocabulaire contrôlé et à partir de termes trouvés dans la notice bibliographique (titre, résumé, marqueurs) ? Dressez une double liste terme à repérer / \_marqueur à indexer (j'aime bien le caractère spécial \_ pour indiquer mon vocabulaire contrôlé personnel).
+Vous voulez indexer automatiquement vos références avec un vocabulaire contrôlé et à partir de termes trouvés dans la notice bibliographique (titre, résumé, marqueurs) ? Dressez une double liste termes à repérer et de \_marqueurs correspondants à indexer. NB : j'aime bien le caractère spécial \_ pour indiquer mon vocabulaire contrôlé personnel.
 
-Ou bien, encore plus avancé, vous avez déjà un système d'indexation personnel basé sur un vocabulaire contrôlé ? Ajoutez une couche de marqueurs plus génériques pour regrouper vos marqueurs existants et ainsi mieux repérer des notices dans un gros volume de références indexées. (j'aime bien mettre ces marqueurs génériques précédés du caractère \_ et en majuscules). Avec ce système à deux niveaux, cela **rajoute de la robustesse** sans altérer votre indexation, car vous repérez mieux des documents sur des sujets connexes ou mal indexés puisque vous pouvez filtrer sur un marqueur plus générique plutôt que sur un marqueur spécifique.
+Ou bien, encore plus avancé, vous avez déjà un système d'indexation personnel basé sur un vocabulaire contrôlé ? Ajoutez une couche de marqueurs plus génériques pour regrouper vos marqueurs existants et ainsi mieux repérer des notices dans un gros volume de références indexées. NB: j'aime bien mettre ces marqueurs génériques précédés du caractère \_ et en majuscules.
+
+> Exemple : une recherche avec (\_toy et \_cease&desist) ne donne pas assez de résultats ? tentez de chercher avec (\_GAME et \_LEGAL) ou (\_GAME et \_cease&desist) ou (\_toy et \_LEGAL) pour repérer plus de références. (en assumant que \_toy est accompagné de son générique \_GAME et que \_cease&desist est accompagné de \_LEGAL).
+
+Avec ce système à deux niveaux, cela **rajoute de la robustesse** sans altérer votre indexation, car vous repérez mieux des documents sur des sujets connexes ou mal indexés puisque vous pouvez filtrer sur un marqueur plus générique plutôt que sur un marqueur spécifique.
 
 ## Fonctionnement
 
 Une fois installé ([ZotFlag](https://github.com/pmartinolli/ZotFlag) puis aller dans *Releases*), on paramètre l'extension pour qu'elle aille chercher un dossier où se trouvent des fichiers CSV contenant les cibles et les marqueurs. Je recommande de placer ce dossier dans votre bibliothèque Zotero (là où se trouve le fichier `zotero.sqlite`, on peut le trouver via Paramètres \> Avancés \> Ouvrir le répertoire de données).
 
-Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d'utiliser des marqueurs précédés de caractères spéciaux (comme \_ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D'ailleurs ce serait bien de faire vos tests dans une base séparées d'abord...
+Les actions se lancent seulement sur les références sélectionnées. On peut donc y aller une référence à la fois (avec la touche F12), ou en lot. Je recommande d'utiliser des marqueurs précédés de caractères spéciaux (comme \_ ou = ou autres) pour distinguer les marqueurs personnels, voire vos tests. D'ailleurs, ce serait bien de faire vos tests dans une base séparées d'abord...
 
 ## Réflexions *méta*
 
 Les institutions documentaires et de la recherche sont susceptibles d’être poursuivis pour diffamation s’ils présentent certaines revues ou maisons d’édition ou personnes comme douteuses. Un outil comme ZotFlag, qui laisse au chercheur le soin de se constituer ses propres listes, dégage la responsabilité du créateur de l’outil.
 
-Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés. Voici une liste de [termes douteux](https://github.com/pmartinolli/ZotFlag/blob/main/examples/keywords-dubiousScience.csv) (générée automatiquement par Claude AI) à tester sur votre corpus de références avant de faire une revue systématique.
+Plus généralement, il est une bonne chose de créer des outils ouverts et libres pour mieux contrôler l’information, via des marquages/filtrages semi-automatisées, transparents (ou pas), reproductibles, paramétrables, partageables et simplifiés. Voici une liste de [termes douteux](https://github.com/pmartinolli/ZotFlag/blob/main/examples/keywords-dubiousScience.csv) en sciences de la santé. Elle a été commencée manuellement au fil de l'eau, puis elle a été boostée ensuite par Claude AI et enfin elle a été refiltrée à la main par moi. À tester sur votre corpus de références avant de faire une revue systématique ?
 
-Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.org/wiki/The_Infinity_of_Lists), plein de listes ! Et de partager (en privé) vos listes !
+Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.org/wiki/The_Infinity_of_Lists), plein de listes ! Et de les partager en public ou en privé, selon les contraintes légales. Au-delà de cet outil, cela pousse en avant un autre aspect qui m'est cher : le **partage de fichiers textes bruts**. En effet, je crois qu'il est possible de construire une infrastructure robuste et pérenne au-delà des API et autres technologies d'échanges avancées, basée sur le dépôts de fichiers textes dans des dossiers en ligne (csv, xml, tei, html, yaml, json, etc).
 
 ## Analyse comparative des 2 indexations
 
@@ -51,42 +57,42 @@ Vous n'avez plus d'excuses pour ne pas faire des [listes](https://en.wikipedia.o
 
 Je compare deux bases de données de 4599 références sur le jeu de rôle sur table.
 
-- Une est indexée [à la main](https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_manually.ris) depuis 10 ans avec une [liste contrôlée](https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv) créée manuellement .
+- Une est indexée [à la main](https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_manually.ris) depuis 10 ans avec une [liste contrôlée](https://github.com/pmartinolli/MyThesaurus/blob/master/ThesaurusBuilder/TTRPG_thesaurus.csv) créée aussi manuellement au fil des années.
 
-- L'autre a été vidée de tous les marqueurs (avec Notepad++ : remplacer l'expression régulière du RIS `^KW.*\r?\n` par rien) puis elle a ensuite été [indexée automatiquement](https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_automatically.ris) avec [cette liste](https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/examples/keywords-TTRPG.csv) (utilisant la liste contrôlée précédente et ensuite boostée par Claude AI).
+- L'autre a été vidée de tous les marqueurs (avec Notepad++ : remplacer l'expression régulière du RIS `^KW.*\r?\n` par rien dans un export RIS) puis elle a ensuite été [indexée automatiquement](https://github.com/pmartinolli/ZotFlag/blob/main/examples/academicTTRPG_indexed_automatically.ris) avec [une autre liste contrôlée](https://raw.githubusercontent.com/pmartinolli/ZotFlag/refs/heads/main/examples/keywords-TTRPG.csv) qui utilise la liste contrôlée précédente, qui a été boostée par Claude AI et qui a enfin été revérifiée à la main par moi (surtout pour enlever les termes qui générent trop de bruit).
 
 ### Résultats
 
 - L'indexation automatique attribue plus de marqueurs que l'indexation manuelle.
 
-- Certains marqueurs sont extrinsèques aux références (comme \_peer reviewed) et ne peuvent être inférés par le texte à traiter. Ce sont principalement des marqueurs de jugement ou de classification de haut niveau.
+- Certains marqueurs sont extrinsèques aux références (comme `_peer reviewed`) et ne peuvent être inférés par le texte à traiter. Ce sont principalement des marqueurs de jugement ou de classification de haut niveau.
 
 - L'analyse ci-dessous pointe rapidement les concordances de marqueurs à améliorer (ceux qui font trop de bruit).
 
 - *Distinct Keywords* : il y a plein de mots clés de pays et de jeux qui ne sont pas dans le tableau csv. Cela explique en partie la différence.
 
-Ci-dessous un extrait du rapport de comparaison dans Claude AI Fable 5.2
+Ci-dessous, un extrait du rapport de comparaison exécuté par Claude AI.
 
-|                             | Manual  | Automatic |
-|-----------------------------|---------|-----------|
-| Keyword assignments         | 27,924  | 42,276    |
-| Distinct keywords           | 914     | 204       |
-| Average per record (median) | 6.1 (6) | 9.2 (7)   |
-| Most on one record          | 33      | 84        |
-| Records with no keywords    | 297     | 429       |
+|                               | *Manual* | *Automatic* |
+|-------------------------------|----------|-------------|
+| *Keyword assignments*         | 27,924   | 42,276      |
+| *Distinct keywords*           | 914      | 204         |
+| *Average per record (median)* | 6.1 (6)  | 9.2 (7)     |
+| *Most on one record*          | 33       | 84          |
+| *Records with no keywords*    | 297      | 429         |
 
-### Agreement on the shared vocabulary
+### *Agreement on the shared vocabulary*
 
-Across the 201 tags both sets use, the automatic indexing made 41,995 assignments against 15,427 manual ones, with 7,664 in common.
+*Across the 201 tags both sets use, the automatic indexing made 41,995 assignments against 15,427 manual ones, with 7,664 in common.*
 
--  **Overall:** about half of your manual tags were found (recall 50%), but only 18% of the automatic tags match one of yours (precision), giving an F1 of 0.27.
+- ***Overall:** about half of your manual tags were found (recall 50%), but only 18% of the automatic tags match one of yours (precision), giving an F1 of 0.27.*
 
--  **Per record:** average overlap (Jaccard) is 0.16. Only 45 records have identical tag sets, and 1,448 share no tag at all.
+- ***Per record:** average overlap (Jaccard) is 0.16. Only 45 records have identical tag sets, and 1,448 share no tag at all.*
 
--  **Over-assigned:** `_stem` is the extreme case (1,264 automatic, 31 manual), followed by `_teaching` (702 vs 40), `_character` (657 vs 39), `_authorship`, `_playfulness` and `_storytelling` (973 vs 100). The broad categories `_MEDIA`, `_DESIGN`, `_GAMEPLAY` and `_EMOTIONS` are applied 3.5 to 5 times more often than you applied them.
+- ***Over-assigned:**`_stem` is the extreme case (1,264 automatic, 31 manual), followed by `_teaching` (702 vs 40), `_character` (657 vs 39), `_authorship`, `_playfulness` and `_storytelling` (973 vs 100). The broad categories `_MEDIA`, `_DESIGN`, `_GAMEPLAY` and `_EMOTIONS` are applied 3.5 to 5 times more often than you applied them.*
 
--  **Under-assigned:** `_HISTORYOFRPG` (266 vs 651), `_moral panic`, `_storygame`, `_bleed` and `_LARP` (422 vs 592, though 83% of those are correct).
+- ***Under-assigned:**`_HISTORYOFRPG` (266 vs 651), `_moral panic`, `_storygame`, `_bleed` and `_LARP` (422 vs 592, though 83% of those are correct).*
 
--  **Best agreement:** concrete topics, such as `_autism` (F1 0.82), `_LARP` and `_lgbtq` (0.69), `_therapy` (0.67), `_lovecraft` and `_character sheet` (0.60).
+- ***Best agreement:** concrete topics, such as `_autism` (F1 0.82), `_LARP` and `_lgbtq` (0.69), `_therapy` (0.67), `_lovecraft` and `_character sheet` (0.60).*
 
--  **Worst agreement:** abstract or judgment-based tags, such as `_rpg theory`, `_theoretical work`, `_advice`, `_group dynamics` and `_classroom rpg`, all at F1 0.15 or below with similar counts but little overlap.
+- ***Worst agreement:** abstract or judgment-based tags, such as `_rpg theory`, `_theoretical work`, `_advice`, `_group dynamics` and `_classroom rpg`, all at F1 0.15 or below with similar counts but little overlap.*
